@@ -29,18 +29,18 @@ public class Base extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         //
-        panel.setBounds(0, 0, this.panel_contenedor.getWidth(), this.panel_contenedor.getHeight());
-        this.panel_contenedor.add(panel );
-        this.panel_contenedor.validate();
-        this.panel_contenedor.repaint();
-        this.panel_contenedor = panel;
+        panel.setBounds(0, 0, this.panelContenedor.getWidth(), this.panelContenedor.getHeight());
+        this.panelContenedor.add(panel );
+        this.panelContenedor.validate();
+        this.panelContenedor.repaint();
+        this.panelContenedor = panel;
         
         // Establecer el fondo de la ventana
         this.panel_background.setImagenFondo( new ImagenBackground( Backgrounds.loggin , 0.3f) );
         
         // ** Testing **
         System.out.println("Tamaño de la ventana = " + this.getBounds());
-        System.out.println("Tamaño del panel = " + this.panel_contenedor.getBounds());
+        System.out.println("Tamaño del panel = " + this.panelContenedor.getBounds());
 
     }   
 
@@ -54,28 +54,28 @@ public class Base extends javax.swing.JFrame {
     private void initComponents() {
 
         panel_background = new vista.componentes.PanelBackground();
-        panel_contenedor = new javax.swing.JPanel();
+        panelContenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panel_background.setBackground(new java.awt.Color(255, 255, 255));
 
-        panel_contenedor.setBackground(new java.awt.Color(255, 255, 255));
-        panel_contenedor.setOpaque(false);
+        panelContenedor.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenedor.setOpaque(false);
 
-        javax.swing.GroupLayout panel_contenedorLayout = new javax.swing.GroupLayout(panel_contenedor);
-        panel_contenedor.setLayout(panel_contenedorLayout);
-        panel_contenedorLayout.setHorizontalGroup(
-            panel_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);
+        panelContenedor.setLayout(panelContenedorLayout);
+        panelContenedorLayout.setHorizontalGroup(
+            panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 940, Short.MAX_VALUE)
         );
-        panel_contenedorLayout.setVerticalGroup(
-            panel_contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelContenedorLayout.setVerticalGroup(
+            panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 530, Short.MAX_VALUE)
         );
 
-        panel_background.add(panel_contenedor);
-        panel_contenedor.setBounds(40, 80, 940, 530);
+        panel_background.add(panelContenedor);
+        panelContenedor.setBounds(40, 80, 940, 530);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,12 +127,12 @@ public class Base extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel panelContenedor;
     private vista.componentes.PanelBackground panel_background;
-    private javax.swing.JPanel panel_contenedor;
     // End of variables declaration//GEN-END:variables
 
-    public JPanel getPanel_contenedor() {
-        return panel_contenedor;
+    public JPanel getPanelContenedor() {
+        return panelContenedor;
     }
     
 }

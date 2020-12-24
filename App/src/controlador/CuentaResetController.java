@@ -10,20 +10,30 @@ import vista.ventanas.Base;
 
 public class CuentaResetController extends VentanaController {
     
-    public CuentaResetController() {
+    // Atributos o campos
+    private panel_recuper_cuenta mi_panel;
+    
+    // Constructuros
+    public CuentaResetController() {}
+    
+    public CuentaResetController(Base vp) {
+        this.inicializar(vp);
     }
     
-    public CuentaResetController(Base ventana_principal) {
-        this.setVentana_activa(ventana_principal);
-        this.getVentana_activa().setTitle("Recuperar cuenta");
-        this.setP(ventana_principal.getPanel_contenedor());
+    // Métodos
+    private void inicializar(Base vp){
+        // Para poder usar abrir y cerrar ventana
+        this.setVentanaActiva( vp );
         
-        this.abrir_ventana();
+        // Para poder controlar los eventos en el panel
+        this.mi_panel  = (panel_recuper_cuenta) vp.getPanelContenedor();
+        
+        // Establecer propiedades a la ventana
+        this.getVentanaActiva().setTitle("Recuperar cuenta");
+        this.eventos_de_mouse();
     }
-    
-   
-    
-    public void testing(){       
+        
+    public void eventos_de_mouse(){
     }
-    
+
 }

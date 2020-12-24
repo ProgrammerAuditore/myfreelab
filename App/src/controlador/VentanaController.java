@@ -8,14 +8,13 @@ import vista.paneles.panel_loggin;
 public class VentanaController {
     
     // Propiedades
-    private JFrame ventana_activa=null;
-    private JPanel p = new JPanel();
+    private JFrame ventanaActiva = null;
     
     // Métodos
     public boolean abrir_ventana(){
-        if( !ventana_activa.isVisible() ){
-            ventana_activa.setLocationRelativeTo(null);
-            ventana_activa.setVisible(true);
+        if( !ventanaActiva.isVisible() ){
+            ventanaActiva.setLocationRelativeTo(null);
+            ventanaActiva.setVisible(true);
             
             return true;
         }
@@ -23,10 +22,10 @@ public class VentanaController {
         return false;
     }
     
-    public boolean cerrar_ventana(){
-        if( ventana_activa.isVisible() ){
-            ventana_activa.setVisible(false);
-            ventana_activa.dispose();
+    public boolean cerrar_ventana_actual(){
+        if( ventanaActiva.isVisible() ){
+            ventanaActiva.setVisible(false);
+            ventanaActiva.dispose();
             
             return true;
         }
@@ -34,20 +33,12 @@ public class VentanaController {
         return false;
     }
 
-    public JFrame getVentana_activa() {
-        return ventana_activa;
+    public JFrame getVentanaActiva() {
+        return ventanaActiva;
     }
 
-    public void setVentana_activa(JFrame ventana_activa) {
-        this.ventana_activa = ventana_activa;
+    public void setVentanaActiva(JFrame ventanaActiva) {
+        this.ventanaActiva = ventanaActiva;
     }
 
-    public JPanel getP() {
-        return p;
-    }
-
-    public void setP(JPanel p) {
-        this.p = p;
-    }
-    
 }

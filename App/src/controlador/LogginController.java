@@ -10,27 +10,42 @@ import vista.ventanas.Base;
 
 public class LogginController extends VentanaController {
     
-    public LogginController() {
+    // Atributos o campos
+    private panel_loggin mi_panel;
+    
+    // Constructuros
+    public LogginController() {}
+    
+    public LogginController(Base vp) {
+        this.inicializar(vp);
     }
     
-    public LogginController(Base ventana_principal) {
-        this.setVentana_activa(ventana_principal);
-        this.getVentana_activa().setTitle("Iniciar session");
-        this.setP(ventana_principal.getPanel_contenedor());
+    // Métodos
+    private void inicializar(Base vp){
+        // Para poder usar abrir y cerrar ventana
+        this.setVentanaActiva( vp );
         
-        this.abrir_ventana();
+        // Para poder controlar los eventos en el panel
+        this.mi_panel  = (panel_loggin) vp.getPanelContenedor();
+        
+        // Establecer propiedades a la ventana
+        this.getVentanaActiva().setTitle("Iniciar session");
         this.eventos_de_mouse();
     }
-    
+        
     public void eventos_de_mouse(){
-        panel_loggin a  = (panel_loggin) this.getP();
-        a.lbl_recuperar_cuenta.addMouseListener( new MouseAdapter() {
+        this.fncRecuperarCuenta();
+    }
+    
+    public void fncRecuperarCuenta(){
+        mi_panel.lbl_recuperar_cuenta.addMouseListener( new MouseAdapter() {
+            
             @Override
             public void mouseReleased(MouseEvent e) {
-                JOptionPane.showMessageDialog(null, "Recuperar cuenta...");
-                CuentaResetController a1 = new CuentaResetController( new Base(new panel_recuper_cuenta()) );
-                cerrar_ventana();
+                new CuentaResetController(new Base(new panel_recuper_cuenta())).abrir_ventana();
+                cerrar_ventana_actual();
             }
+            
         });
     }
     
