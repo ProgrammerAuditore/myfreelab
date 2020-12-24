@@ -1,11 +1,11 @@
-package modelo.dao;
+package controlador;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import vista.paneles.panel_loggin;
 
 
-public class VentanaDao {
+public class VentanaController {
     
     // Propiedades
     private JFrame ventana_activa=null;

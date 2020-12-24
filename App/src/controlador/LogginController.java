@@ -4,17 +4,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import modelo.dao.VentanaDao;
 import vista.paneles.panel_loggin;
 import vista.paneles.panel_recuper_cuenta;
 import vista.ventanas.Base;
 
-public class CtrlVentanaLoggin extends VentanaDao {
+public class LogginController extends VentanaController {
     
-    public CtrlVentanaLoggin() {
+    public LogginController() {
     }
     
-    public CtrlVentanaLoggin(Base ventana_principal) {
+    public LogginController(Base ventana_principal) {
         this.setVentana_activa(ventana_principal);
         this.getVentana_activa().setTitle("Iniciar session");
         this.setP(ventana_principal.getPanel_contenedor());
@@ -29,7 +28,7 @@ public class CtrlVentanaLoggin extends VentanaDao {
             @Override
             public void mouseReleased(MouseEvent e) {
                 JOptionPane.showMessageDialog(null, "Recuperar cuenta...");
-                CtrlVentanaCuentaReset a1 = new CtrlVentanaCuentaReset( new Base(new panel_recuper_cuenta()) );
+                CuentaResetController a1 = new CuentaResetController( new Base(new panel_recuper_cuenta()) );
                 cerrar_ventana();
             }
         });
