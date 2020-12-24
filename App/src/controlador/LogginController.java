@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import vista.paneles.panel_conexion;
 import vista.paneles.panel_loggin;
 import vista.paneles.panel_recuper_cuenta;
+import vista.paneles.panel_registrarme;
 import vista.ventanas.Base;
 
 public class LogginController extends VentanaController implements ventana_acciones{
@@ -42,6 +43,7 @@ public class LogginController extends VentanaController implements ventana_accio
     public void eventos_de_mouse(){
         this.fncRecuperarCuenta();
         this.fncConfigurarConexion();
+        this.fncRegistrarme();
     }
     
     @Override
@@ -70,6 +72,21 @@ public class LogginController extends VentanaController implements ventana_accio
             @Override
             public void mouseReleased(MouseEvent e) {
                 ConexionController vista = new ConexionController(new Base(new panel_conexion()));
+                vista.setVentanaAnterior( getVentanaActiva() );
+                vista.abrir_ventana();
+                
+                cerrar_ventana_actual();
+            }
+            
+        });
+    }
+    
+    public void fncRegistrarme(){
+        mi_panel.lbl_registrarme.addMouseListener( new MouseAdapter() {
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                RegistrarmeController vista = new RegistrarmeController(new Base(new panel_registrarme()));
                 vista.setVentanaAnterior( getVentanaActiva() );
                 vista.abrir_ventana();
                 

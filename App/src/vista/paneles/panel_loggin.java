@@ -35,6 +35,7 @@ public class panel_loggin extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnConfigConexion = new javax.swing.JButton();
+        lbl_registrarme = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -57,10 +58,23 @@ public class panel_loggin extends javax.swing.JPanel {
 
         btnConfigConexion.setText("cofig");
 
+        lbl_registrarme.setText("Registrarme");
+        lbl_registrarme.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lbl_registrarmeMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConfigConexion)
+                .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -76,14 +90,11 @@ public class panel_loggin extends javax.swing.JPanel {
                             .addComponent(jLabel4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(289, 289, 289)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(354, 354, 354)
+                        .addComponent(lbl_registrarme)))
                 .addContainerGap(412, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConfigConexion)
-                .addGap(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +115,9 @@ public class panel_loggin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox1)
                     .addComponent(lbl_recuperar_cuenta))
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lbl_registrarme)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,6 +125,10 @@ public class panel_loggin extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_lbl_recuperar_cuentaMouseReleased
+
+    private void lbl_registrarmeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_registrarmeMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_registrarmeMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -123,5 +140,6 @@ public class panel_loggin extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     public javax.swing.JLabel lbl_recuperar_cuenta;
+    public javax.swing.JLabel lbl_registrarme;
     // End of variables declaration//GEN-END:variables
 }
