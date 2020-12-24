@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.interfaces.ventana_acciones;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
@@ -8,7 +9,7 @@ import vista.paneles.panel_loggin;
 import vista.paneles.panel_recuper_cuenta;
 import vista.ventanas.Base;
 
-public class CuentaResetController extends VentanaController {
+public class CuentaResetController extends VentanaController implements ventana_acciones{
     
     // Atributos o campos
     private panel_recuper_cuenta mi_panel;
@@ -30,10 +31,20 @@ public class CuentaResetController extends VentanaController {
         
         // Establecer propiedades a la ventana
         this.getVentanaActiva().setTitle("Recuperar cuenta");
-        this.eventos_de_mouse();
-    }
         
-    public void eventos_de_mouse(){
+        // Establecer ventana acciones
+        this.eventos_de_mouse();
+        this.eventos_de_teclado();
+    }
+
+    @Override
+    public void eventos_de_teclado() {
+        
+    }
+
+    @Override
+    public void eventos_de_mouse() {
+        
     }
 
 }
