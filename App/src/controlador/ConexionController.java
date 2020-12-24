@@ -47,6 +47,7 @@ public class ConexionController extends VentanaController implements ventana_acc
     @Override
     public void eventos_de_mouse() {
         this.establecerConexion();
+        this.fncVolver();
     }
     
     private void establecerConexion(){
@@ -81,6 +82,18 @@ public class ConexionController extends VentanaController implements ventana_acc
 
     }
     
+    private void fncVolver() {
+        Base a = (Base) this.getVentanaActiva();
+        a.btnVolver.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                volver_ventana_anterior();
+            }
+            
+        });
+        
+    }
+    
 //    public void capturar(){
 //        conn =  modelo.obtener_conexion();
 //    }
@@ -94,5 +107,5 @@ public class ConexionController extends VentanaController implements ventana_acc
 //        conn =  modelo.obtener_conexion();
 //        System.out.println("" + conn.getPuerto());
 //    } 
-    
+
 }

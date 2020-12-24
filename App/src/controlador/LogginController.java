@@ -30,6 +30,8 @@ public class LogginController extends VentanaController implements ventana_accio
         
         // Establecer propiedades a la ventana
         this.getVentanaActiva().setTitle("Iniciar session");
+        vp.btnVolver.setVisible(false);
+        vp.btnVolver.setEnabled(false);
         
         // Establecer ventana acciones
         this.eventos_de_mouse();
@@ -52,7 +54,10 @@ public class LogginController extends VentanaController implements ventana_accio
             
             @Override
             public void mouseReleased(MouseEvent e) {
-                new CuentaResetController(new Base(new panel_recuper_cuenta())).abrir_ventana();
+                CuentaResetController vista = new CuentaResetController(new Base(new panel_recuper_cuenta()));
+                vista.setVentanaAnterior( getVentanaActiva() );
+                vista.abrir_ventana();
+                
                 cerrar_ventana_actual();
             }
             
@@ -64,7 +69,10 @@ public class LogginController extends VentanaController implements ventana_accio
             
             @Override
             public void mouseReleased(MouseEvent e) {
-                new ConexionController(new Base(new panel_conexion())).abrir_ventana();
+                ConexionController vista = new ConexionController(new Base(new panel_conexion()));
+                vista.setVentanaAnterior( getVentanaActiva() );
+                vista.abrir_ventana();
+                
                 cerrar_ventana_actual();
             }
             

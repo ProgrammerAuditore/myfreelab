@@ -55,8 +55,10 @@ public class Base extends javax.swing.JFrame {
 
         panel_background = new vista.componentes.PanelBackground();
         panelContenedor = new javax.swing.JPanel();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         panel_background.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,6 +78,10 @@ public class Base extends javax.swing.JFrame {
 
         panel_background.add(panelContenedor);
         panelContenedor.setBounds(40, 80, 940, 530);
+
+        btnVolver.setText("Volver");
+        panel_background.add(btnVolver);
+        btnVolver.setBounds(889, 20, 100, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +133,7 @@ public class Base extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnVolver;
     private javax.swing.JPanel panelContenedor;
     private vista.componentes.PanelBackground panel_background;
     // End of variables declaration//GEN-END:variables

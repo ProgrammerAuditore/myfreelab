@@ -9,6 +9,9 @@ public class VentanaController {
     
     // Propiedades
     private JFrame ventanaActiva = null;
+    private JFrame ventanaAnterior = null;
+    
+    public VentanaController(){}
     
     // Métodos
     public boolean abrir_ventana(){
@@ -32,6 +35,15 @@ public class VentanaController {
         
         return false;
     }
+    
+    public void volver_ventana_anterior(){
+        JFrame ant =  ventanaAnterior;
+        ant.setVisible(true);
+        
+        JFrame act =  ventanaActiva;
+        act.setVisible(false);
+        act.dispose();
+    }
 
     public JFrame getVentanaActiva() {
         return ventanaActiva;
@@ -41,4 +53,12 @@ public class VentanaController {
         this.ventanaActiva = ventanaActiva;
     }
 
+    public JFrame getVentanaAnterior() {
+        return ventanaAnterior;
+    }
+
+    public void setVentanaAnterior(JFrame ventanaAnterior) {
+        this.ventanaAnterior = ventanaAnterior;
+    }
+        
 }

@@ -1,6 +1,8 @@
 package controlador;
 
 import controlador.interfaces.ventana_acciones;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import vista.paneles.panel_recuper_cuenta;
 import vista.ventanas.Base;
 
@@ -39,6 +41,18 @@ public class CuentaResetController extends VentanaController implements ventana_
 
     @Override
     public void eventos_de_mouse() {
+        this.fncVolver();
+    }
+    
+    private void fncVolver() {
+        Base a = (Base) this.getVentanaActiva();
+        a.btnVolver.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                volver_ventana_anterior();
+            }
+            
+        });
         
     }
 
