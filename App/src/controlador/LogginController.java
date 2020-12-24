@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.interfaces.ventana_acciones;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
@@ -8,10 +9,10 @@ import vista.paneles.panel_loggin;
 import vista.paneles.panel_recuper_cuenta;
 import vista.ventanas.Base;
 
-public class LogginController extends VentanaController {
+public class LogginController extends VentanaController implements ventana_acciones{
     
     // Atributos o campos
-    private panel_loggin mi_panel;
+    private panel_loggin mi_panel = null;
     
     // Constructuros
     public LogginController() {}
@@ -30,11 +31,20 @@ public class LogginController extends VentanaController {
         
         // Establecer propiedades a la ventana
         this.getVentanaActiva().setTitle("Iniciar session");
+        
+        // Establecer ventana acciones
         this.eventos_de_mouse();
+        this.eventos_de_teclado();
     }
         
+    @Override
     public void eventos_de_mouse(){
         this.fncRecuperarCuenta();
+    }
+    
+    @Override
+    public void eventos_de_teclado() {
+    
     }
     
     public void fncRecuperarCuenta(){
