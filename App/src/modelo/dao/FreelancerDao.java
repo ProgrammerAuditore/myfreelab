@@ -20,11 +20,10 @@ import modelo.interfaces.keyword_query;
  *
  * @author victo
  */
-public class FreelancerDao extends Conexion implements keyword_query<FreelancerDto> {
+public class FreelancerDao implements keyword_query<FreelancerDto> {
 
-    private String tabla = "freelancer";
-    private String query_consultar = "SELECT * FROM " + this.tabla + " WHERE idFreelancer = ?";
-    private final Connection conexion = getConexion();
+    private final static String query_consultar = "SELECT * FROM freelancer WHERE idFreelancer = ?";
+    private final Conexion conexion = Conexion.estado_conexion();
     
     @Override
     public boolean agregar(FreelancerDto c) {
@@ -39,11 +38,13 @@ public class FreelancerDao extends Conexion implements keyword_query<FreelancerD
     @Override
     public FreelancerDto consultar(Object key) {
         FreelancerDto freelancer = null;
+        PreparedStatement pst;
+        ResultSet query;
         
         try {
-            PreparedStatement pst = this.conexion.prepareStatement(query_consultar);
+            pst = this.conexion.getConn().prepareStatement(query_consultar);
             pst.setInt(1, Integer.parseInt(( String.valueOf(key) )));
-            ResultSet query = pst.executeQuery();
+            query = pst.executeQuery();
             
             if( query.next() ){
                 freelancer = new FreelancerDto();
@@ -57,7 +58,7 @@ public class FreelancerDao extends Conexion implements keyword_query<FreelancerD
         } catch (Exception e) {
             System.out.println(e);
         } finally {
-            this.cerrar_conexion();
+            this.conexion.cerrar_conexion();
         }
         
         return freelancer;

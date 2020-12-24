@@ -14,28 +14,32 @@ public class Conexion {
     private String usuario = "root";
     private String pass = "";
     private Connection conn = null;
+    public static Conexion instance = null; // Singleton
     
-    public Connection getConexion(){
-        
+    private Conexion(){
         try {
             
             String url = "jdbc:mysql://" + this.host + ":" + this.puerto + "/" + this.database + "?useSSL=false";
             this.conn = (Connection) DriverManager.getConnection(url, this.usuario, this.pass);
             
-            return this.conn;
         } catch (Exception e) {
             System.out.println(e);
         }
-        
-        return null;
     }
-    
-    public void cerrar_conexion(){
-        try {
-            this.conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+
+    public synchronized static Conexion estado_conexion() {
+        if( instance == null ){
+            instance = new Conexion();
         }
+        return instance;
+    }
+        
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void cerrar_conexion(){
+        instance = null;
     }
     
 }
