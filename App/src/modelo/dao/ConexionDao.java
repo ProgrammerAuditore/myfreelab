@@ -5,24 +5,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import modelo.dto.ConexionDto;
 import modelo.interfaces.keyword_conexion;
 
 public class ConexionDao implements keyword_conexion<ConexionDto>{
 
-    private String path = getClass().getResource("/source/config/db.dat").getPath();
+    File file = new File( getClass().getResource("/source/config/db.dat").getPath() ); 
     protected ConexionDto db = null;
     
     @Override
-    public ConexionDto leer() {
+    public ConexionDto obtener_conexion() {
         ConexionDto db = null;
-        File file = new File( path ); 
         
         try(FileInputStream fis = new FileInputStream(file)){
             ObjectInputStream ois;
@@ -30,6 +24,12 @@ public class ConexionDao implements keyword_conexion<ConexionDto>{
             while(fis.available() > 0){
                 ois = new ObjectInputStream(fis);
                 db = (ConexionDto) ois.readObject();
+                
+                // Verificar si la contraseña es null
+                if(db.getPass().length() == 0){
+                    db.setPass("");
+                }
+                
                 System.out.println("" + db);
             }
             
@@ -42,9 +42,7 @@ public class ConexionDao implements keyword_conexion<ConexionDto>{
     }
 
     @Override
-    public void actualizar(ConexionDto c) {
-        File file = new File( path ); 
-        
+    public void actualizar_conexion(ConexionDto c) {
         try (FileOutputStream fos = new FileOutputStream(file)) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
@@ -59,9 +57,7 @@ public class ConexionDao implements keyword_conexion<ConexionDto>{
     }
 
     @Override
-    public void escribir(ConexionDto c) {
-        File file = new File( path ); 
-        
+    public void regitrar_conexion(ConexionDto c) {
         try (FileOutputStream fos = new FileOutputStream(file)) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);

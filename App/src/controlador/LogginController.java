@@ -3,8 +3,7 @@ package controlador;
 import controlador.interfaces.ventana_acciones;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import vista.paneles.panel_conexion;
 import vista.paneles.panel_loggin;
 import vista.paneles.panel_recuper_cuenta;
 import vista.ventanas.Base;
@@ -12,7 +11,7 @@ import vista.ventanas.Base;
 public class LogginController extends VentanaController implements ventana_acciones{
     
     // Atributos o campos
-    private panel_loggin mi_panel;
+    private panel_loggin mi_panel; // Vista
     
     // Constructuros
     public LogginController() {}
@@ -40,6 +39,7 @@ public class LogginController extends VentanaController implements ventana_accio
     @Override
     public void eventos_de_mouse(){
         this.fncRecuperarCuenta();
+        this.fncConfigurarConexion();
     }
     
     @Override
@@ -53,6 +53,18 @@ public class LogginController extends VentanaController implements ventana_accio
             @Override
             public void mouseReleased(MouseEvent e) {
                 new CuentaResetController(new Base(new panel_recuper_cuenta())).abrir_ventana();
+                cerrar_ventana_actual();
+            }
+            
+        });
+    }
+    
+    public void fncConfigurarConexion(){
+        mi_panel.btnConfigConexion.addMouseListener( new MouseAdapter() {
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                new ConexionController(new Base(new panel_conexion())).abrir_ventana();
                 cerrar_ventana_actual();
             }
             

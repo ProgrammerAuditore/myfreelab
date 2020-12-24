@@ -12,8 +12,8 @@ public class ConexionDto implements Serializable{
     public ConexionDto() {
     }
 
-    public ConexionDto(int puerto, String host, String database, String usuario, String pass) {
-        this.puerto = puerto;
+    public ConexionDto(Object puerto, String host, String database, String usuario, String pass) {
+        this.puerto = Integer.parseInt(String.valueOf(puerto));
         this.host = host;
         this.database = database;
         this.usuario = usuario;
@@ -24,8 +24,8 @@ public class ConexionDto implements Serializable{
         return puerto;
     }
 
-    public void setPuerto(int puerto) {
-        this.puerto = puerto;
+    public void setPuerto(Object puerto) {
+        this.puerto = Integer.parseInt(String.valueOf(puerto));
     }
 
     public String getHost() {

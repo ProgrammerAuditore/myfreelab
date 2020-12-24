@@ -1,7 +1,7 @@
 package modelo.interfaces;
 
 public interface keyword_conexion <none> {
-    public none leer();
-    public void escribir(none c);
-    public void actualizar(none c);
+    public none obtener_conexion();
+    public void regitrar_conexion(none c);
+    public void actualizar_conexion(none c);
 }
