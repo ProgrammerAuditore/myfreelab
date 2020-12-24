@@ -9,6 +9,7 @@ import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -128,7 +129,29 @@ public class FreelancerDao implements keyword_query<FreelancerDto> {
 
     @Override
     public List<FreelancerDto> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<FreelancerDto> freelancers = new ArrayList<FreelancerDto>();
+        PreparedStatement pst;
+        ResultSet query;
+        try {
+            
+            pst = this.conexion.getConn().prepareStatement(query_listar);
+            query = pst.executeQuery();
+            
+            while(query.next()){
+                freelancers.add( new FreelancerDto(
+                        query.getInt("idFreelancer"), 
+                        query.getString("Nombre"), 
+                        query.getString("Direccion"),
+                        query.getString("Telefono"),
+                        query.getString("Correo"))
+                );
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return freelancers;
     }
     
 }
