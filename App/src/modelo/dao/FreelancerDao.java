@@ -22,17 +22,59 @@ import modelo.interfaces.keyword_query;
  */
 public class FreelancerDao implements keyword_query<FreelancerDto> {
 
+    private final static String query_agregar = "INSERT INTO freelancer(Nombre, Direccion, Telefono, Correo) VALUES (?,?,?,?)";
+    private final static String query_actualizar = "UPDATE freelancer SET Nombre=?, Direccion=?, Telefono=?, Correo=?  WHERE idFreelancer = ?";
     private final static String query_consultar = "SELECT * FROM freelancer WHERE idFreelancer = ?";
+    private final static String query_eliminar = "DELETE FROM freelancer WHERE idFreelancer = ?";
+    private final static String query_listar = "SELECT * FROM freelancer";
+    
     private final Conexion conexion = Conexion.estado_conexion();
     
     @Override
     public boolean agregar(FreelancerDto c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst;
+        
+        try {
+            pst = this.conexion.getConn().prepareStatement(query_agregar);
+            pst.setString(1, c.getStrNombre() );
+            pst.setString(2, c.getStrDireccion());
+            pst.setString(3, c.getStrTelefono());
+            pst.setString(4, c.getStrCorreo());
+            
+            if( pst.executeUpdate() > 0)
+                return true;
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            this.conexion.cerrar_conexion();
+        }
+        
+        return false;
     }
 
     @Override
     public boolean actualizar(FreelancerDto c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst;
+        
+        try {
+            pst = this.conexion.getConn().prepareStatement(query_actualizar);
+            pst.setString(1, c.getStrNombre() );
+            pst.setString(2, c.getStrDireccion());
+            pst.setString(3, c.getStrTelefono());
+            pst.setString(4, c.getStrCorreo());
+            pst.setInt(5, c.getIdFreelancer());
+            
+            if( pst.executeUpdate() > 0)
+                return true;
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            this.conexion.cerrar_conexion();
+        }
+        
+        return false;
     }
 
     @Override
@@ -55,7 +97,7 @@ public class FreelancerDao implements keyword_query<FreelancerDto> {
                 freelancer.setStrCorreo( query.getString(5) );
             }
             
-        } catch (Exception e) {
+        } catch (NumberFormatException | SQLException e) {
             System.out.println(e);
         } finally {
             this.conexion.cerrar_conexion();
@@ -66,7 +108,22 @@ public class FreelancerDao implements keyword_query<FreelancerDto> {
 
     @Override
     public boolean eliminar(Object key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst;
+        
+        try {
+            pst = this.conexion.getConn().prepareStatement(query_eliminar);
+            pst.setInt(1, Integer.parseInt(( String.valueOf(key) )));
+            
+            if( pst.executeUpdate() > 0 )
+                return true;
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            this.conexion.cerrar_conexion();
+        }
+        
+        return false;
     }
 
     @Override
