@@ -5,22 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.dao.ConexionDao;
+import modelo.dto.ConexionDto;
 
 public class Conexion {
     
-    private int puerto = 3306;
-    private String host = "localhost";
-    private String database = "freenlab";
-    private String usuario = "root";
-    private String pass = "";
     private Connection conn = null;
     public static Conexion instance = null; // Singleton
     
     private Conexion(){
         try {
+            ConexionDto objConn = new ConexionDao().obtener_conexion();
             
-            String url = "jdbc:mysql://" + this.host + ":" + this.puerto + "/" + this.database + "?useSSL=false";
-            this.conn = (Connection) DriverManager.getConnection(url, this.usuario, this.pass);
+            String url = "jdbc:mysql://" + objConn.getHost() + ":" + objConn.getPuerto() + "/" + objConn.getDatabase()+ "?useSSL=false";
+            this.conn = (Connection) DriverManager.getConnection(url, objConn.getUsuario(), objConn.getPass());
             
         } catch (Exception e) {
             System.out.println(e);

@@ -1,18 +1,13 @@
 package controlador;
 
 import controlador.interfaces.ventana_acciones;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import vista.paneles.panel_loggin;
 import vista.paneles.panel_recuper_cuenta;
 import vista.ventanas.Base;
 
 public class CuentaResetController extends VentanaController implements ventana_acciones{
     
     // Atributos o campos
-    private panel_recuper_cuenta mi_panel = null;
+    private panel_recuper_cuenta mi_panel; // Vista
     
     // Constructuros
     public CuentaResetController() {}
