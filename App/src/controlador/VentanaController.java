@@ -38,9 +38,11 @@ public class VentanaController {
     
     public void volver_ventana_anterior(){
         JFrame ant =  ventanaAnterior;
+        ant.setLocationRelativeTo(null);
         ant.setVisible(true);
         
         JFrame act =  ventanaActiva;
+        act.setLocationRelativeTo(null);
         act.setVisible(false);
         act.dispose();
     }

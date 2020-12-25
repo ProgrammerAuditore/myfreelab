@@ -13,7 +13,7 @@ public class ConexionController extends VentanaController implements ventana_acc
     
     // Atributos o campos
     private panel_conexion mi_panel; // Vista
-    private ConexionDao modelo = new ConexionDao(); // Modelo
+    private ConexionDao modelo; // Modelo
     private ConexionDto conn;
     
     // Constructores
@@ -69,6 +69,7 @@ public class ConexionController extends VentanaController implements ventana_acc
                         password = "";
                 
                 ConexionDto conexion = new ConexionDto(puerto, host, database, usuario, password);
+                modelo = new ConexionDao();
                 modelo.regitrar_conexion(conexion );
                 
                 } catch (Exception error) {
