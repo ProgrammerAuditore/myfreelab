@@ -6,7 +6,8 @@
 package vista.ventanas;
 
 import javax.swing.JPanel;
-import src.Backgrounds;
+import src.Img;
+import src.Source;
 import vista.componentes.ImagenBackground;
 
 /**
@@ -36,7 +37,7 @@ public class Base extends javax.swing.JFrame {
         this.panelContenedor = panel;
         
         // Establecer el fondo de la ventana
-        this.panel_background.setImagenFondo( new ImagenBackground( Backgrounds.loggin , 0.3f) );
+        this.panel_background.setImagenFondo(Source.bkgLoggin );
         
         // ** Testing **
         System.out.println("Tamaño de la ventana = " + this.getBounds());

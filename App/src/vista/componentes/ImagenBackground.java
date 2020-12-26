@@ -7,8 +7,11 @@ public class ImagenBackground implements Serializable{
     private File rutaImagen;
     private Float Opacity;
 
-    public ImagenBackground(String rutaImagen, Float Opacity) {
-        this.rutaImagen = new File( getClass().getResource( rutaImagen ).getPath() );
+    public ImagenBackground() {
+    }
+
+    public ImagenBackground(File rutaImagen, Float Opacity) {
+        this.rutaImagen = rutaImagen;
         this.Opacity = Opacity;
         this.fncVerificador();
     }
