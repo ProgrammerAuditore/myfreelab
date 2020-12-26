@@ -32,7 +32,7 @@ public class InicioController extends VentanaController implements ventana_accio
         
         // Establecer propiedades a la ventana
         this.fncEstablecerMensaje();
-        this.getVentanaActiva().setTitle(getClass().getResource("/").getPath());
+        this.getVentanaActiva().setTitle("MyFreenLab v0.1.5Alpha");
         
         // Establecer ventana acciones
         this.eventos_de_mouse();

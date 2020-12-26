@@ -12,7 +12,7 @@ class Resource {
     public File dataConexion() {
         File data = null;
         try {
-            patString = getClass().getResource("/").getPath() + Rutas.pathDataConexion;
+            patString = Rutas.pathDataConexion;
             objFile = new File( patString );
             
             // Si el archivo .dat no existe, se crea
@@ -30,7 +30,7 @@ class Resource {
     public ImagenBackground bkgLoggin() {
         ImagenBackground bckg = null;
         try {
-            patString = getClass().getResource("/").getPath() + Rutas.pathBkgLoggin;
+            patString = Rutas.pathBkgLoggin;
             bckg = new ImagenBackground(new File( patString ), 0.5f);
         } catch (Exception e) {
             System.out.println(e.getMessage());
