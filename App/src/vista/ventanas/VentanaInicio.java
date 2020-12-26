@@ -7,7 +7,7 @@ package vista.ventanas;
 
 import java.awt.Dimension;
 import javax.swing.JPanel;
-import storage.Backgrounds;
+import src.Backgrounds;
 import vista.componentes.ImagenBackground;
 
 /**
