@@ -31,7 +31,9 @@ class Resource {
         ImagenBackground bckg = null;
         try {
             patString = Rutas.pathBkgLoggin;
-            bckg = new ImagenBackground( getClass().getResource(patString) );
+            objFile = new File( patString );
+            
+            bckg = new ImagenBackground( objFile );
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

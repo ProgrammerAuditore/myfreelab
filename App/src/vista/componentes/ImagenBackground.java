@@ -12,34 +12,47 @@ public class ImagenBackground implements Serializable{
     private URL rutaURL;
     private File rutaFile;
     private float opacidad = 1.0f;
-    private transient Image image;
     
     // Constructores
     public ImagenBackground(String ruta) {
-        this.rutaFile = new File(ruta);
-        this.fncVerificador();
-    }
-    
-    public ImagenBackground(URL ruta) {
-        image = Toolkit.getDefaultToolkit().getImage(ruta);
-        if (image == null) {
-            return;
-        }
-        this.rutaURL = ruta;
+        this (new File(ruta));
     }
     
     public ImagenBackground(String ruta, float o) {
-        this.rutaFile = new File(ruta);
+        this (new File(ruta), o);
+    }
+    
+    public ImagenBackground(File ruta) {
+        this.rutaFile = ruta;
+        if (!this.rutaFile.getAbsoluteFile().exists()) {
+            return;
+        }
+        this.fncVerificador();
+    }
+    
+    public ImagenBackground(File ruta, float o) {
+        this.rutaFile = ruta;
         this.opacidad = o;
+        if (!this.rutaFile.getAbsoluteFile().exists()) {
+            return;
+        }
         this.fncVerificador();
     }
     
     public ImagenBackground(URL ruta, float o) {
-        image = Toolkit.getDefaultToolkit().getImage(ruta);
+        Image image = Toolkit.getDefaultToolkit().getImage(ruta);
         if (image == null) {
             return;
         }
         this.opacidad = o;
+        this.rutaURL = ruta;
+    }
+    
+    public ImagenBackground(URL ruta) {
+        Image image = Toolkit.getDefaultToolkit().getImage(ruta);
+        if (image == null) {
+            return;
+        }
         this.rutaURL = ruta;
     }
     
@@ -62,14 +75,6 @@ public class ImagenBackground implements Serializable{
 
     public void setOpacidad(float opacidad) {
         this.opacidad = opacidad;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
 
     public URL getRutaURL() {
