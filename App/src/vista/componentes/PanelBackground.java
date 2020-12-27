@@ -20,31 +20,57 @@ import javax.swing.JLabel;
  */
 public class PanelBackground extends JComponent{
     
-    private ImagenBackground imagenFondo;
+    // Propiedades
+    ImagenBackground imagen;
     
-    public void setImagenFondo(ImagenBackground imagenFondo) {
-        this.imagenFondo = imagenFondo;
+    // Constructores
+    public PanelBackground() {
+    }
+    
+    public PanelBackground(ImagenBackground imagen) {
+        this.imagen = imagen;
         this.validate();
         this.repaint();
     }
-
+    
+    // Métodos
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); 
-        if( imagenFondo != null ){
-            if( imagenFondo.getRutaImagen().exists() && imagenFondo.getRutaImagen() != null ){
+        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+        if( imagen != null ){
+            
+            ImageIcon ic = null;
+            ImageIcon icOriginal = null;
+               
+            // Verificar si el archivo es invocado por getClass().getResource()
+            if(imagen.getRutaURL() != null){
                 
-                ImageIcon ic = new ImageIcon( imagenFondo.getRutaImagen().getAbsolutePath() );
-                ImageIcon icOriginal = new ImageIcon( ic.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
+                ic = new ImageIcon( imagen.getRutaURL() );
+                icOriginal = new ImageIcon( ic.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
+            
+            // Verificar si el archivo es invocado por java.io.File
+            }else if( imagen.getRutaFile() != null ){
                 
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, imagenFondo.getOpacity()));
-                
-                g.drawImage(icOriginal.getImage() , 0, 0, null);
-                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+                ic = new ImageIcon( imagen.getRutaFile().getAbsolutePath() );
+                icOriginal = new ImageIcon( ic.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
             
             }
+            
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, imagen.getOpacidad()));
+
+            g.drawImage(icOriginal.getImage() , 0, 0, null);
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
-    }    
+    }
+
+    // Getters y Setters
+    public ImagenBackground getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(ImagenBackground imagen) {
+        this.imagen = imagen;
+    }
     
 }

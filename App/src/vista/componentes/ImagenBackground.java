@@ -1,47 +1,91 @@
 package vista.componentes;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.Serializable;
+import java.net.URL;
 
 public class ImagenBackground implements Serializable{
-    private File rutaImagen;
-    private Float Opacity;
-
-    public ImagenBackground() {
-    }
-
-    public ImagenBackground(File rutaImagen, Float Opacity) {
-        this.rutaImagen = rutaImagen;
-        this.Opacity = Opacity;
+    
+    // Propiedades
+    private URL rutaURL;
+    private File rutaFile;
+    private float opacidad = 1.0f;
+    private transient Image image;
+    
+    // Constructores
+    public ImagenBackground(String ruta) {
+        this.rutaFile = new File(ruta);
         this.fncVerificador();
-    }
-
-    public File getRutaImagen() {
-        return rutaImagen;
-    }
-
-    public void setRutaImagen(File rutaImagen) {
-        this.rutaImagen = rutaImagen;
-        this.fncVerificador();
-    }
-
-    public Float getOpacity() {
-        return Opacity;
-    }
-
-    public void setOpacity(Float Opacity) {
-        this.Opacity = Opacity;
     }
     
+    public ImagenBackground(URL ruta) {
+        image = Toolkit.getDefaultToolkit().getImage(ruta);
+        if (image == null) {
+            return;
+        }
+        this.rutaURL = ruta;
+    }
+    
+    public ImagenBackground(String ruta, float o) {
+        this.rutaFile = new File(ruta);
+        this.opacidad = o;
+        this.fncVerificador();
+    }
+    
+    public ImagenBackground(URL ruta, float o) {
+        image = Toolkit.getDefaultToolkit().getImage(ruta);
+        if (image == null) {
+            return;
+        }
+        this.opacidad = o;
+        this.rutaURL = ruta;
+    }
+    
+    // Métodos
     private void fncVerificador(){
         if( System.getProperty("os.name").equals("Windows 10") ){
-            this.rutaImagen = new File( this.rutaImagen.getAbsolutePath().replace('\\', '/') );
+            this.rutaFile = new File( this.rutaFile.getAbsolutePath().replace('\\', '/') );
         }
         
-        String extension = this.rutaImagen.getAbsolutePath();
-        if( !(this.rutaImagen.exists() || extension.contains(".png") || extension.contains(".jpg") || extension.contains(".jpeg") || extension.contains(".gif")) ){
-            this.rutaImagen = null;
+        String extension = this.rutaFile.getAbsolutePath();
+        if( !(this.rutaFile.exists() || extension.contains(".png") || extension.contains(".jpg") || extension.contains(".jpeg") || extension.contains(".gif")) ){
+            this.rutaFile = null;
         }
+    }
+    
+    // Getters y Setters
+    public float getOpacidad() {
+        return opacidad;
+    }
+
+    public void setOpacidad(float opacidad) {
+        this.opacidad = opacidad;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public URL getRutaURL() {
+        return rutaURL;
+    }
+
+    public void setRutaURL(URL rutaURL) {
+        this.rutaURL = rutaURL;
+    }
+
+    public File getRutaFile() {
+        return rutaFile;
+    }
+
+    public void setRutaFile(File rutaFile) {
+        this.rutaFile = rutaFile;
     }
     
 }

@@ -16,9 +16,9 @@ class Resource {
             objFile = new File( patString );
             
             // Si el archivo .dat no existe, se crea
-            //if( !objFile.exists() ){
-            //    objFile.createNewFile();
-            //}
+            if( !objFile.exists() ){
+                objFile.createNewFile();
+            }
             
             data = objFile;
         } catch (Exception e) {
@@ -31,7 +31,7 @@ class Resource {
         ImagenBackground bckg = null;
         try {
             patString = Rutas.pathBkgLoggin;
-            bckg = new ImagenBackground(new File( patString ), 0.5f);
+            bckg = new ImagenBackground( getClass().getResource(patString) );
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
