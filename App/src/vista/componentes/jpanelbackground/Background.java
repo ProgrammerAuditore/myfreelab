@@ -1,9 +1,8 @@
 package vista.componentes.jpanelbackground;
 
 import java.io.File;
-import java.io.Serializable;
 
-public class Background implements Serializable{
+public class Background{
     
     private String imgRutaInterno;
     private File imgRutaExterno;

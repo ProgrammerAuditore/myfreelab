@@ -7,16 +7,11 @@ package vista.componentes.jpanelbackground;
  */
 
 
-import vista.componentes.jpanelbackground.Background;
 import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
-import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -24,11 +19,10 @@ import javax.swing.JPanel;
  *
  * @author victo
  */
-public class JPanelBackground extends JPanel implements Serializable{
+public class JPanelBackground extends JPanel{
     
     protected Background imgBackground = new Background();
     protected boolean imgRutaInternoActivo = true;
-    protected boolean bControl = false;
 
     public JPanelBackground() {
         this.init();
@@ -63,8 +57,6 @@ public class JPanelBackground extends JPanel implements Serializable{
 
             g.drawImage(icOriginal.getImage() , 0, 0, null);
             g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-            
-            bControl = true;
 
         // Verificar si el archivo es invocado por java.io.File
         }else if( imgBackground.getImgRutaExterno() != null && !imgBackground.isImgRutaInternoActivo() ){
@@ -79,31 +71,29 @@ public class JPanelBackground extends JPanel implements Serializable{
             g.drawImage(icOriginal.getImage() , 0, 0, null);
             g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
             
-            bControl = true;
-
         }
         
     }
 
     public void setImgRutaInterno(String imgRutaInterno) {
         imgBackground.setImgRutaInterno( imgRutaInterno );
-        repaint();
+        //repaint();
     }
 
     public void setImgRutaExterno(File imgRutaExterno) {
         imgBackground.setImgRutaExterno( imgRutaExterno );
-        repaint();
+        //repaint();
     }
 
     public void setImgOpacidad(float imgOpacidad) {
         imgBackground.setImgOpacidad( imgOpacidad );
-        repaint();
+        //repaint();
     }
     
     public void setImgRutaInternoActivo(boolean imgRutaInternoActivo) {
         this.imgRutaInternoActivo = imgRutaInternoActivo;
         imgBackground.setImgRutaInternoActivo( imgRutaInternoActivo );
-        repaint();
+        //repaint();
     }
 
 }

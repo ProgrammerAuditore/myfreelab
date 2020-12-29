@@ -9,12 +9,10 @@ import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.Serializable;
 import javax.swing.JLabel;
 import src.Source;
 
-public class Button extends JPanelBackground implements MouseListener, Serializable{
+public class Button extends JPanelBackground implements MouseListener{
     
     // Propiedades del componente
     private String texto;
