@@ -7,7 +7,7 @@ package vista.ventanas;
 
 import javax.swing.JPanel;
 import src.Source;
-import vista.componentes.ImagenBackground;
+import vista.componentes.jpanelbackground.Background;
 
 /**
  *
@@ -36,7 +36,7 @@ public class Base extends javax.swing.JFrame {
         this.panelContenedor = panel;
         
         // Establecer el fondo de la ventana
-        this.panel_background.setImagen(Source.bkgLoggin );
+        this.panel_background.setImgRutaInterno( Source.bkgLoggin );
         
         // ** Testing **
         System.out.println("Tamaño de la ventana = " + this.getBounds());
@@ -53,14 +53,12 @@ public class Base extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel_background = new vista.componentes.PanelBackground();
+        panel_background = new vista.componentes.jpanelbackground.JPanelBackground();
         panelContenedor = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
-        panel_background.setBackground(new java.awt.Color(255, 255, 255));
 
         panelContenedor.setBackground(new java.awt.Color(255, 255, 255));
         panelContenedor.setOpaque(false);
@@ -76,22 +74,38 @@ public class Base extends javax.swing.JFrame {
             .addGap(0, 530, Short.MAX_VALUE)
         );
 
-        panel_background.add(panelContenedor);
-        panelContenedor.setBounds(40, 80, 940, 530);
-
         btnVolver.setText("Volver");
-        panel_background.add(btnVolver);
-        btnVolver.setBounds(889, 20, 100, 25);
+
+        javax.swing.GroupLayout panel_backgroundLayout = new javax.swing.GroupLayout(panel_background);
+        panel_background.setLayout(panel_backgroundLayout);
+        panel_backgroundLayout.setHorizontalGroup(
+            panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_backgroundLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        panel_backgroundLayout.setVerticalGroup(
+            panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(18, 18, 18)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -135,7 +149,7 @@ public class Base extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnVolver;
     private javax.swing.JPanel panelContenedor;
-    private vista.componentes.PanelBackground panel_background;
+    private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
 
     public JPanel getPanelContenedor() {

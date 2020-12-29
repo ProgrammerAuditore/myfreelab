@@ -2,7 +2,6 @@ package src;
 
 import java.io.File;
 import java.io.IOException;
-import vista.componentes.ImagenBackground;
 
 class Resource {
 
@@ -21,23 +20,10 @@ class Resource {
             }
             
             data = objFile;
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         return data;
-    }
-    
-    public ImagenBackground bkgLoggin() {
-        ImagenBackground bckg = null;
-        try {
-            patString = Rutas.pathBkgLoggin;
-            objFile = new File( patString );
-            
-            bckg = new ImagenBackground( objFile );
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return bckg;
     }
     
     private String patString = null;

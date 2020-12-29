@@ -1,9 +1,12 @@
 package src;
 
 import java.io.File;
-import vista.componentes.ImagenBackground;
 
 public class Source {
     public static final File dataConexion = new Resource().dataConexion();
-    public static final ImagenBackground bkgLoggin = new Resource().bkgLoggin();   
+    
+    // * Recursos internos
+    public static final String bkgLoggin = "/storage/img/background_loggin.png";   
+    public static final String temasContenedor = "/storage/shared/themes/";
+    
 }

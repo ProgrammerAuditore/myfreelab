@@ -8,7 +8,7 @@ package vista.ventanas;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import src.Source;
-import vista.componentes.ImagenBackground;
+import vista.componentes.jpanelbackground.Background;
 
 /**
  *
@@ -37,11 +37,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.panelContenedor = panel;
         
         // Establecer el fondo de la ventana
-        this.panel_background.setImagen( Source.bkgLoggin );
+        this.panel_background.setImgRutaInterno( Source.bkgLoggin );
         
         // ** Testing **
         System.out.println("Tamaño de la ventana = " + this.getBounds());
-        System.out.println("Tamaño del panel = " + this.panelContenedor.getBounds());
+        System.out.println("Tamaño del panel = " + this.panel_background.getBounds());
 
     }   
 
@@ -54,7 +54,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel_background = new vista.componentes.PanelBackground();
+        panel_background = new vista.componentes.jpanelbackground.JPanelBackground();
         panelContenedor = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -72,24 +72,33 @@ public class VentanaInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panel_background.setBackground(new java.awt.Color(255, 255, 255));
-
-        panelContenedor.setBackground(new java.awt.Color(255, 255, 255));
-        panelContenedor.setOpaque(false);
-
         javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);
         panelContenedor.setLayout(panelContenedorLayout);
         panelContenedorLayout.setHorizontalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 970, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         panelContenedorLayout.setVerticalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
 
-        panel_background.add(panelContenedor);
-        panelContenedor.setBounds(30, 20, 970, 570);
+        javax.swing.GroupLayout panel_backgroundLayout = new javax.swing.GroupLayout(panel_background);
+        panel_background.setLayout(panel_backgroundLayout);
+        panel_backgroundLayout.setHorizontalGroup(
+            panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_backgroundLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel_backgroundLayout.setVerticalGroup(
+            panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_backgroundLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(227, 36));
 
@@ -146,11 +155,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+            .addComponent(panel_background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -221,8 +230,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     public javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem8;
     public javax.swing.JMenuItem jMenuItem9;
-    public javax.swing.JPanel panelContenedor;
-    public vista.componentes.PanelBackground panel_background;
+    private javax.swing.JPanel panelContenedor;
+    private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
     private ModalAcercaDe acercaDe;
     
