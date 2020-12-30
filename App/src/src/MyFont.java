@@ -48,7 +48,7 @@ public class MyFont {
             font = font.deriveFont(Font.PLAIN, 14);
             
         } catch (FontFormatException | IOException e) {
-            System.err.println(fuente_name + " No se cargo la fuente");
+            System.err.println("Warining: La siguiente fuente no se pudo cargar [\"" +fuente_name+ "-"+fuente_style+".ttf" + "\"]");
             font = new Font("Arial", Font.PLAIN, 14);
         }
     }

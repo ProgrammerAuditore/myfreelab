@@ -14,6 +14,7 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import src.Source;
 
 /**
  *
@@ -32,6 +33,7 @@ public class JPanelBackground extends JPanel{
         setBackground(null);
         setOpaque(true);
         imgBackground.setImgRutaInternoActivo(true);
+        imgBackground.setImgRutaInterno( Source.bkgLoggin );
     }
     
     @Override

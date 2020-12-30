@@ -35,6 +35,10 @@
   </Layout>
   <SubComponents>
     <Container class="vista.componentes.jpanelbackground.JPanelBackground" name="panel_background">
+      <Properties>
+        <Property name="imgRutaInterno" type="java.lang.String" value="/storage/img/background_loggin.png"/>
+        <Property name="imgRutaInternoActivo" type="boolean" value="true"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

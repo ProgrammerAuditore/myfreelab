@@ -23,7 +23,7 @@ public class Button extends JPanelBackground implements MouseListener{
     private String autoEstadoControl = "ModoNormal";
     
     private String imgButtonType = "primary";
-    private String imgButtonTheme = "bootstrap";
+    private String imgButtonTheme = Source.styleButtonDefault;
     private final String contenedor = Source.temasContenedor;
     private String imgButtonActivado = null;
     private String imgButtonHover = null;
@@ -47,6 +47,7 @@ public class Button extends JPanelBackground implements MouseListener{
         // Establecer propiedades del JPanel
         imgBackground.setImgRutaInternoActivo(true);
         setBackground(null);
+        setOpaque(true);
         setLayout(new GridBagLayout()); 
         addMouseListener(this);
         setSize( tamahoDefult );
@@ -85,8 +86,8 @@ public class Button extends JPanelBackground implements MouseListener{
             default:  imgButtonType = "primary"; break;
         }
         
-        imgButtonActivado = contenedor + imgButtonTheme + "/buttons/" + imgButtonType + "/activado.png";
-        imgButtonHover = contenedor + imgButtonTheme + "/buttons/" + imgButtonType + "/hover.png";
+        imgButtonActivado = contenedor + imgButtonTheme + "/" + imgButtonType + "/activado.png";
+        imgButtonHover = contenedor + imgButtonTheme + "/" + imgButtonType + "/hover.png";
         setBackgroundButton(imgButtonActivado);
         
     }

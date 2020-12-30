@@ -73,7 +73,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         setResizable(false);
 
         panel_background.setImgRutaExterno(new java.io.File("C:\\Program Files\\NetBeans 8.2\\<Not Set>"));
-        panel_background.setImgRutaInterno("/storage/img/background_loggin.png");
+        panel_background.setImgRutaInterno("/storage/shared/img/background_loggin.png");
         panel_background.setImgRutaInternoActivo(true);
 
         javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);

@@ -60,6 +60,9 @@ public class Base extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        panel_background.setImgRutaInterno("/storage/img/background_loggin.png");
+        panel_background.setImgRutaInternoActivo(true);
+
         panelContenedor.setBackground(new java.awt.Color(255, 255, 255));
         panelContenedor.setOpaque(false);
 

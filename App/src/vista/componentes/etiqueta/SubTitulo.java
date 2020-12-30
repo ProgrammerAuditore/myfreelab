@@ -22,7 +22,7 @@ public class SubTitulo extends JLabel {
 
     private void init() {
         setText("Subtitulo");
-        setFont(Source.fontLabelSubtitulo );
+        setFont( Source.fontLabelSubtitulo );
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SubTitulo extends JLabel {
 
     @Override
     public void setFont(Font font) {
-        super.setFont( Source.fontLabelEtiqueta.deriveFont(font.getStyle(), font.getSize()) );
+        super.setFont( Source.fontLabelEtiqueta.deriveFont( font.getStyle(), font.getSize()) );
     }
     
 }
