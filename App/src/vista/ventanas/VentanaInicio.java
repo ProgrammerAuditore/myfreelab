@@ -80,11 +80,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         panelContenedor.setLayout(panelContenedorLayout);
         panelContenedorLayout.setHorizontalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 940, Short.MAX_VALUE)
         );
         panelContenedorLayout.setVerticalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel_backgroundLayout = new javax.swing.GroupLayout(panel_background);
@@ -92,16 +92,16 @@ public class VentanaInicio extends javax.swing.JFrame {
         panel_backgroundLayout.setHorizontalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_backgroundLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(35, 35, 35)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         panel_backgroundLayout.setVerticalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_backgroundLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(227, 36));

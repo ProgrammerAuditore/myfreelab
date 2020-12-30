@@ -152,18 +152,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelContenedor" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="panelContenedor" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="43" max="32767" attributes="0"/>
                   <Component id="panelContenedor" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -174,12 +174,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1000" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="940" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="548" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="530" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

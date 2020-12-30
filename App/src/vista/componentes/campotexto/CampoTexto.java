@@ -7,12 +7,15 @@ package vista.componentes.campotexto;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import src.MyFont;
+import src.Source;
 
 /**
  *
@@ -47,11 +50,7 @@ public class CampoTexto extends JTextField implements FocusListener{
         setToolTip();
         
         // Fuentes
-        // *  Times New Roman --- Links
-        // *  Times New Roman --- Links
-        // *  Times New Roman --- Links
-        // * Personalizar el campo de texto
-        setFont(new java.awt.Font("Candara", 0, 16)); // NOI18N
+        setFont( Source.fontTextField );
         //setHorizontalAlignment(javax.swing.JTextField.CENTER);
         //setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 204, 255), new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153), null));
         setBorderMargin( borderColor );

@@ -39,7 +39,8 @@ public class Button extends JPanelBackground implements MouseListener{
         // Establecer propieades para JLabel
         titulo = new JLabel("Titulo");
         texto = titulo.getText();
-        titulo.setFont( new Font("Arial Rounded MT Bold", 0, 16) );
+        //titulo.setFont( new Font("Arial Rounded MT Bold", 0, 16) );
+        titulo.setFont( Source.fontButton );
         titulo.setForeground(new Color(255, 255, 255));
         titulo.setSize( getWidth() , getHeight() );
         

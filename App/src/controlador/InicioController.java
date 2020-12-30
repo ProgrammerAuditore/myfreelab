@@ -44,17 +44,17 @@ public class InicioController extends VentanaController implements ventana_accio
         
         // Verificar si tenemos una conexion registrada
         if( conexion.getConn() == null ){
-            this.mi_panel.jLabel1.setText("Sin conexión a la base de datos");
-            this.mi_panel.jLabel2.setText("Configurar");
+            this.mi_panel.lbl_msg.setText("Sin conexión a la base de datos");
+            this.mi_panel.lbl_accion.setText("Configurar");
         }else{
             int freelancers = new FreelancerDao().listar().size();
-            System.out.println("");
+            
             if( freelancers == 0 ){
-                this.mi_panel.jLabel1.setText("No hay freelancers creados");
-                this.mi_panel.jLabel2.setText("Crear un freelancer");
+                this.mi_panel.lbl_msg.setText("No hay freelancers creados");
+                this.mi_panel.lbl_accion.setText("Crear un freelancer");
             }else{
-                this.mi_panel.jLabel1.setText("Espera por los freelancer");
-                this.mi_panel.jLabel2.setText("Por favor...");
+                this.mi_panel.lbl_msg.setText("Espera por los freelancer");
+                this.mi_panel.lbl_accion.setText("Por favor...");
             }
         }
 
@@ -73,10 +73,10 @@ public class InicioController extends VentanaController implements ventana_accio
     
     // Métodos para cotrolar la vista
     private void fncAbrirConfigConexion(){
-        this.mi_panel.jLabel2.addMouseListener(new MouseAdapter() {
+        this.mi_panel.lbl_accion.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                if(mi_panel.jLabel2.getText().equals("Configurar")){
+                if(mi_panel.lbl_accion.getText().equals("Configurar")){
                     ConexionController vista = new ConexionController(new Base(new panel_conexion()));
                     vista.setVentanaAnterior( getVentanaActiva() );
                     vista.abrir_ventana();
