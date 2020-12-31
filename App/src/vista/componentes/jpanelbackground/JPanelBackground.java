@@ -26,6 +26,7 @@ public class JPanelBackground extends JPanel{
     
     private Background imgBackground = new Background();
     private boolean imgRutaInternoActivo = true;
+    private boolean imgBackgroundDisabled = true;
 
     public JPanelBackground() {
         this.init();
@@ -43,42 +44,66 @@ public class JPanelBackground extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        if(  imgBackground.getImgBackground() != null ){
-            ImageIcon icOriginal = new ImageIcon(  imgBackground.getImgBackground().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,  imgBackground.getImgOpacidad() ));
+        if( imgBackgroundDisabled == false ){
+            if(  imgBackground.getImgBackground() != null ){
+                ImageIcon icOriginal = new ImageIcon(  imgBackground.getImgBackground().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
+                Graphics2D g2d = (Graphics2D) g;
+                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,  imgBackground.getImgOpacidad() ));
 
-            g.drawImage(icOriginal.getImage() , 0, 0, null);
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+                g.drawImage(icOriginal.getImage() , 0, 0, null);
+                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+            }
+        }
+    }
+    
+    public void setImgBackgroundIn_Ex(boolean ex_in){
+        try {
+        
+            Image icOrigina;
+        if( ex_in ){
+            icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ) );
+        }else{
+            icOrigina = Toolkit.getDefaultToolkit().getImage( imgBackground.getImgRutaExterno().getAbsolutePath() );
+        }
+        
+        if( icOrigina == null ) return;
+        
+        imgBackground.setImgBackground(icOrigina);
+            
+        } catch (Exception e) {
         }
         
     }
 
     public void setImgRutaInterno(String imgRutaInterno) {
         imgBackground.setImgRutaInterno( imgRutaInterno );
-        Image icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ) );
-        imgBackground.setImgBackground(icOrigina);
-        //System.out.println("JPanelBackground::: Path = " + imgRutaInterno );
-        //System.out.println("JPanelBackground::: Image = " + imgBackground.getImgBackground() );
-        //repaint();
+        setImgBackgroundIn_Ex(true);
     }
 
     public void setImgRutaExterno(File imgRutaExterno) {
         imgBackground.setImgRutaExterno( imgRutaExterno );
-        Image icOrigina = Toolkit.getDefaultToolkit().getImage( imgBackground.getImgRutaExterno().getAbsolutePath() );
-        imgBackground.setImgBackground(icOrigina);
-        //repaint();
+        setImgBackgroundIn_Ex(false);
     }
 
     public void setImgOpacidad(float imgOpacidad) {
         imgBackground.setImgOpacidad( imgOpacidad );
-        //repaint();
     }
     
     public void setImgRutaInternoActivo(boolean imgRutaInternoActivo) {
         this.imgRutaInternoActivo = imgRutaInternoActivo;
-        imgBackground.setImgRutaInternoActivo( imgRutaInternoActivo );
-        //repaint();
+        setImgBackgroundIn_Ex( getImgRutaInternoActivo() );
+    }
+    
+    public boolean getImgRutaInternoActivo(){
+        return this.imgRutaInternoActivo;
     }
 
+    public boolean isImgBackgroundDisabled() {
+        return imgBackgroundDisabled;
+    }
+
+    public void setImgBackgroundDisabled(boolean imgBackgroundDisabled) {
+        this.imgBackgroundDisabled = imgBackgroundDisabled;
+    }
+  
 }

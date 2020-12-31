@@ -9,7 +9,6 @@ public class Background{
     private File imgRutaExterno;
     private Image imgBackground;
     private float imgOpacidad = 1.0f;
-    private boolean imgRutaInternoActivo = true;
 
     public Background() {
     }
@@ -37,15 +36,7 @@ public class Background{
     public void setImgOpacidad(float imgOpacidad) {
         this.imgOpacidad = imgOpacidad;
     }
-
-    public boolean isImgRutaInternoActivo() {
-        return imgRutaInternoActivo;
-    }
-
-    public void setImgRutaInternoActivo(boolean imgRutaInternoActivo) {
-        this.imgRutaInternoActivo = imgRutaInternoActivo;
-    }
-
+    
     public Image getImgBackground() {
         return imgBackground;
     }
