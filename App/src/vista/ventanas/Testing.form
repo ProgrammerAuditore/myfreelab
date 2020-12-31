@@ -51,9 +51,9 @@
                       <Group type="102" attributes="0">
                           <Component id="panel_1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="panel_2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="32767" attributes="0"/>
-                          <Component id="jPanel3" max="32767" attributes="0"/>
+                          <Component id="panel_3" max="32767" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -79,8 +79,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel3" max="32767" attributes="0"/>
-                      <Component id="jPanel2" max="32767" attributes="0"/>
+                      <Component id="panel_3" max="32767" attributes="0"/>
+                      <Component id="panel_2" max="32767" attributes="0"/>
                       <Component id="panel_1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -246,50 +246,359 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel2">
+        <Container class="javax.swing.JPanel" name="panel_2">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="325" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="campoTexto2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="enlace2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="button14" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="button16" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="button13" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="button15" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="subTitulo2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titulo2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="etiqueta2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="90" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="button9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="button10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="button11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="button12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="titulo2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="subTitulo2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="etiqueta2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="campoTexto2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="enlace2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="button9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button12" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="button13" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="button15" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="button16" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="button14" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="vista.componentes.etiqueta.Enlace" name="enlace2">
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button16">
+              <Properties>
+                <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
+                <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
+                <Property name="imgButtonType" type="java.lang.String" value="danger"/>
+                <Property name="texto" type="java.lang.String" value="Cancelar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button15">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
+                <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
+                <Property name="imgButtonType" type="java.lang.String" value="danger"/>
+                <Property name="texto" type="java.lang.String" value="Cancelar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta2">
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button13">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
+                <Property name="imgButtonType" type="java.lang.String" value="success"/>
+                <Property name="texto" type="java.lang.String" value="Aceptar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.etiqueta.Titulo" name="titulo2">
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button14">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
+                <Property name="imgButtonType" type="java.lang.String" value="success"/>
+                <Property name="texto" type="java.lang.String" value="Aceptar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button10">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
+                <Property name="imgButtonType" type="java.lang.String" value="warning"/>
+                <Property name="texto" type="java.lang.String" value="Modificar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button12">
+              <Properties>
+                <Property name="imgButtonType" type="java.lang.String" value="danger"/>
+                <Property name="texto" type="java.lang.String" value="Eliminar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.etiqueta.SubTitulo" name="subTitulo2">
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button9">
+              <Properties>
+                <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
+                <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
+                <Property name="texto" type="java.lang.String" value="Generar reporte"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.campotexto.CampoTexto" name="campoTexto2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="campoTexto1"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button11">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
+                <Property name="imgButtonType" type="java.lang.String" value="info"/>
+                <Property name="texto" type="java.lang.String" value="Ver proyecto"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="panel_3">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="319" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="campoTexto3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="enlace3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="button22" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="button24" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="button21" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="button23" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="subTitulo3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="titulo3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="etiqueta3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="90" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="button17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="button18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="button19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="button20" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="titulo3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="subTitulo3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="etiqueta3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="campoTexto3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="enlace3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="button17" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button18" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button19" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button20" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="button21" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="button23" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="button24" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="button22" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="vista.componentes.etiqueta.Titulo" name="titulo3">
+            </Component>
+            <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta3">
+            </Component>
+            <Component class="vista.componentes.etiqueta.Enlace" name="enlace3">
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button21">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="imgButtonType" type="java.lang.String" value="success"/>
+                <Property name="texto" type="java.lang.String" value="Aceptar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button18">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="imgButtonType" type="java.lang.String" value="warning"/>
+                <Property name="texto" type="java.lang.String" value="Modificar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button24">
+              <Properties>
+                <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="imgButtonType" type="java.lang.String" value="danger"/>
+                <Property name="texto" type="java.lang.String" value="Cancelar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button17">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="texto" type="java.lang.String" value="Generar reporte"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button20">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="imgButtonType" type="java.lang.String" value="danger"/>
+                <Property name="texto" type="java.lang.String" value="Eliminar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button19">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="imgButtonType" type="java.lang.String" value="info"/>
+                <Property name="texto" type="java.lang.String" value="Ver proyecto"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button23">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="imgButtonType" type="java.lang.String" value="danger"/>
+                <Property name="texto" type="java.lang.String" value="Cancelar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.button.Button" name="button22">
+              <Properties>
+                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
+                <Property name="imgButtonType" type="java.lang.String" value="success"/>
+                <Property name="texto" type="java.lang.String" value="Aceptar"/>
+              </Properties>
+            </Component>
+            <Component class="vista.componentes.etiqueta.SubTitulo" name="subTitulo3">
+            </Component>
+            <Component class="vista.componentes.campotexto.CampoTexto" name="campoTexto3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="campoTexto1"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseReleased"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
