@@ -36,6 +36,7 @@ public class Button extends JPanelBackground implements MouseListener{
     private void init() {
         // * Este metodo define las propiedades por defecto del componente
         super.setImgBackgroundEnabled(true);
+        super.setImgRutaInternoActivo(true);
         
         // Establecer propieades para JLabel
         titulo = new JLabel("Titulo");
@@ -46,7 +47,6 @@ public class Button extends JPanelBackground implements MouseListener{
         titulo.setSize( getWidth() , getHeight() );
         
         // Establecer propiedades del JPanel
-        super.setImgRutaInternoActivo(true);
         setBackground(new Color(0, 0, 0));
         setOpaque(false);
         setLayout(new GridBagLayout()); 

@@ -6,7 +6,7 @@ import java.io.File;
 public class Background{
     
     private String imgRutaInterno;
-    private File imgRutaExterno;
+    private File imgRutaExterno; 
     private Image imgBackground;
     private float imgOpacidad = 1.0f;
 
