@@ -26,7 +26,7 @@ public class JPanelBackground extends JPanel{
     
     private Background imgBackground = new Background();
     private boolean imgRutaInternoActivo = true;
-    private boolean imgBackgroundDisabled = true;
+    private boolean imgBackgroundEnabled = false;
 
     public JPanelBackground() {
         this.init();
@@ -37,14 +37,14 @@ public class JPanelBackground extends JPanel{
         setOpaque(true);
         setSize(new Dimension(200, 200));
         setPreferredSize(new Dimension(200, 200));
-        setImgRutaInternoActivo(false);
+        setImgRutaInterno( Source.bkgDefault );
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        if( imgBackgroundDisabled == false ){
+        if( imgBackgroundEnabled == true ){
             if(  imgBackground.getImgBackground() != null ){
                 ImageIcon icOriginal = new ImageIcon(  imgBackground.getImgBackground().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
                 Graphics2D g2d = (Graphics2D) g;
@@ -98,12 +98,12 @@ public class JPanelBackground extends JPanel{
         return this.imgRutaInternoActivo;
     }
 
-    public boolean isImgBackgroundDisabled() {
-        return imgBackgroundDisabled;
+    public boolean isImgBackgroundEnabled() {
+        return imgBackgroundEnabled;
     }
 
-    public void setImgBackgroundDisabled(boolean imgBackgroundDisabled) {
-        this.imgBackgroundDisabled = imgBackgroundDisabled;
+    public void setImgBackgroundEnabled(boolean imgBackgroundEnabled) {
+        this.imgBackgroundEnabled = imgBackgroundEnabled;
     }
   
 }

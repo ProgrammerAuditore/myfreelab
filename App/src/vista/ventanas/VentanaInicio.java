@@ -37,7 +37,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.panelContenedor = panel;
         
         // Establecer el fondo de la ventana
-        this.panel_background.setImgRutaInterno( Source.bkgLoggin );
+        this.panel_background.setImgRutaInterno(Source.bkgDefault );
         
         // ** Testing **
         System.out.println("Tamaño de la ventana = " + this.getBounds());

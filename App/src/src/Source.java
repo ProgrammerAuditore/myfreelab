@@ -9,7 +9,7 @@ public class Source {
     public static final File dataConexion = new Resource().dataConexion();
     
     // * Recursos internos
-    public static final String bkgLoggin = Rutas.pathBkgLoggin;   
+    public static final String bkgDefault = Rutas.pathBkgDefault;   
     public static final String temasContenedor = Rutas.pahtContenedorThemes;
     public static final String fuentesContenedor = Rutas.pathContenedorFuentes;
     
