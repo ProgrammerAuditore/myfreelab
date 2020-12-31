@@ -57,22 +57,19 @@ public class JPanelBackground extends JPanel{
     }
     
     public void setImgBackgroundIn_Ex(boolean ex_in){
+        Image icOrigina;
         try {
-        
-            Image icOrigina;
-        if( ex_in ){
-            icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ) );
-        }else{
-            icOrigina = Toolkit.getDefaultToolkit().getImage( imgBackground.getImgRutaExterno().getAbsolutePath() );
-        }
-        
-        if( icOrigina == null ) return;
-        
-        imgBackground.setImgBackground(icOrigina);
             
-        } catch (Exception e) {
-        }
-        
+            if( ex_in ){
+                icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ) );
+            }else{
+                icOrigina = Toolkit.getDefaultToolkit().getImage( imgBackground.getImgRutaExterno().getAbsolutePath() );
+            }
+            
+            if( icOrigina == null ) 
+                return;
+            imgBackground.setImgBackground(icOrigina);
+        } catch (Exception e) { }
     }
 
     public void setImgRutaInterno(String imgRutaInterno) {

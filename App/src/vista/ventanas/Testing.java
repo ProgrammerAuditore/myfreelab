@@ -37,6 +37,9 @@ public class Testing extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanelBackground1.setImgBackgroundEnabled(true);
+        jPanelBackground1.setImgBackgroundIn_Ex(false);
+        jPanelBackground1.setImgRutaExterno(new java.io.File("C:\\Program Files\\NetBeans 8.2\\<Not Set>"));
+        jPanelBackground1.setImgRutaInterno("/storage/b2.png");
 
         javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
         jPanelBackground1.setLayout(jPanelBackground1Layout);
