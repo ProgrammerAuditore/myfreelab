@@ -137,9 +137,9 @@ public class Button extends JPanelBackground implements MouseListener{
         // Verificar, si boton esta deshabilitado
         if( !isEnabled() ){
             setTemaButton();
-            titulo.setForeground(new Color(200,200,200));
+            titulo.setForeground(new Color(220,220,220));
             super.setImgRutaInterno( imgButtonHover );
-            super.setImgOpacidad(0.5f);
+            super.setImgOpacidad(0.6f);
             addMouseListener(null);
         }
     }

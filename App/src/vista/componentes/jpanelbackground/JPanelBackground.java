@@ -37,7 +37,7 @@ public class JPanelBackground extends JPanel{
         setOpaque(true);
         setSize(new Dimension(200, 200));
         setPreferredSize(new Dimension(200, 200));
-        setImgBackgroundEnabled(true);
+        setImgBackgroundEnabled(false);
         setImgRutaInternoActivo(true);
         setImgRutaInterno( Source.bkgDefault );
     }
