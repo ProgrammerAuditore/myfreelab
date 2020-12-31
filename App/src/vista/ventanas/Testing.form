@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                       <Component id="enlace1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
@@ -36,27 +36,20 @@
                       <Component id="titulo1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                       <Component id="campoTexto1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="button1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="399" max="32767" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanelBackground1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace pref="407" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="enlace1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="etiqueta1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -68,14 +61,7 @@
                   <Component id="campoTexto1" min="-2" max="-2" attributes="0"/>
                   <Component id="button1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="359" max="32767" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanelBackground1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace pref="287" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,20 +82,5 @@
     </Component>
     <Component class="vista.componentes.button.Button" name="button1">
     </Component>
-    <Container class="vista.componentes.jpanelbackground.JPanelBackground" name="jPanelBackground1">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-    </Container>
   </SubComponents>
 </Form>

@@ -8,9 +8,11 @@ package vista.componentes.jpanelbackground;
 
 
 import java.awt.AlphaComposite;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -22,8 +24,8 @@ import src.Source;
  */
 public class JPanelBackground extends JPanel{
     
-    protected Background imgBackground = new Background();
-    protected boolean imgRutaInternoActivo = true;
+    private Background imgBackground = new Background();
+    private boolean imgRutaInternoActivo = true;
 
     public JPanelBackground() {
         this.init();
@@ -32,58 +34,39 @@ public class JPanelBackground extends JPanel{
     private void init(){
         setBackground(null);
         setOpaque(true);
-        imgBackground.setImgRutaInternoActivo(true);
-        imgBackground.setImgRutaInterno( Source.bkgLoggin );
+        setSize(new Dimension(200, 200));
+        setPreferredSize(new Dimension(200, 200));
+        setImgRutaInternoActivo(false);
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        ImageIcon ic = null;
-        ImageIcon icOriginal = null;
-        setImgRutaInternoActivo(imgRutaInternoActivo);
-        
-        // Verificar si el archivo es invocado por getClass().getResource()
-        if(  imgBackground.getImgRutaInterno() != null && imgBackground.isImgRutaInternoActivo() ){
-            
-            //Toolkit.getDefaultToolkit().getImage(ruta)
-            ic = new ImageIcon( getClass().getResource( imgBackground.getImgRutaInterno() ) );
-            icOriginal = new ImageIcon( ic.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
-//            Image icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ));
-//            ic = new ImageIcon( icOrigina );
-//            icOriginal = new ImageIcon( ic.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
-           
+        if(  imgBackground.getImgBackground() != null ){
+            ImageIcon icOriginal = new ImageIcon(  imgBackground.getImgBackground().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
             Graphics2D g2d = (Graphics2D) g;
             g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,  imgBackground.getImgOpacidad() ));
 
             g.drawImage(icOriginal.getImage() , 0, 0, null);
             g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-
-        // Verificar si el archivo es invocado por java.io.File
-        }else if( imgBackground.getImgRutaExterno() != null && !imgBackground.isImgRutaInternoActivo() ){
-            
-           
-            ic = new ImageIcon( imgBackground.getImgRutaExterno().getAbsolutePath() );
-            icOriginal = new ImageIcon( ic.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH) );
-            
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, imgBackground.getImgOpacidad() ));
-
-            g.drawImage(icOriginal.getImage() , 0, 0, null);
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-            
         }
         
     }
 
     public void setImgRutaInterno(String imgRutaInterno) {
         imgBackground.setImgRutaInterno( imgRutaInterno );
+        Image icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ) );
+        imgBackground.setImgBackground(icOrigina);
+        //System.out.println("JPanelBackground::: Path = " + imgRutaInterno );
+        //System.out.println("JPanelBackground::: Image = " + imgBackground.getImgBackground() );
         //repaint();
     }
 
     public void setImgRutaExterno(File imgRutaExterno) {
         imgBackground.setImgRutaExterno( imgRutaExterno );
+        Image icOrigina = Toolkit.getDefaultToolkit().getImage( imgBackground.getImgRutaExterno().getAbsolutePath() );
+        imgBackground.setImgBackground(icOrigina);
         //repaint();
     }
 

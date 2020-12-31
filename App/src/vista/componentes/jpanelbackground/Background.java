@@ -1,11 +1,13 @@
 package vista.componentes.jpanelbackground;
 
+import java.awt.Image;
 import java.io.File;
 
 public class Background{
     
     private String imgRutaInterno;
     private File imgRutaExterno;
+    private Image imgBackground;
     private float imgOpacidad = 1.0f;
     private boolean imgRutaInternoActivo = true;
 
@@ -42,6 +44,14 @@ public class Background{
 
     public void setImgRutaInternoActivo(boolean imgRutaInternoActivo) {
         this.imgRutaInternoActivo = imgRutaInternoActivo;
+    }
+
+    public Image getImgBackground() {
+        return imgBackground;
+    }
+
+    public void setImgBackground(Image imgBackground) {
+        this.imgBackground = imgBackground;
     }
     
 }

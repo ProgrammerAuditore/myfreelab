@@ -45,7 +45,7 @@ public class Button extends JPanelBackground implements MouseListener{
         titulo.setSize( getWidth() , getHeight() );
         
         // Establecer propiedades del JPanel
-        imgBackground.setImgRutaInternoActivo(true);
+        super.setImgRutaInternoActivo(true);
         setBackground(null);
         setOpaque(true);
         setLayout(new GridBagLayout()); 
@@ -93,8 +93,8 @@ public class Button extends JPanelBackground implements MouseListener{
     }
     
     private void setBackgroundButton(String estado_button){
-        imgBackground.setImgOpacidad(1.0f);
-        imgBackground.setImgRutaInterno( estado_button );
+        super.setImgOpacidad(1.0f);
+        super.setImgRutaInterno( estado_button );
         repaint();
     }
     
@@ -124,8 +124,8 @@ public class Button extends JPanelBackground implements MouseListener{
         if( isEnabled() ){
             setTemaButton();
             titulo.setForeground(new Color(255,255,255));
-            imgBackground.setImgRutaInterno( imgButtonActivado );
-            imgBackground.setImgOpacidad(1.0f);
+            super.setImgRutaInterno( imgButtonActivado );
+            super.setImgOpacidad(1.0f);
         }
     }
 
@@ -137,8 +137,8 @@ public class Button extends JPanelBackground implements MouseListener{
         if( !isEnabled() ){
             setTemaButton();
             titulo.setForeground(new Color(200,200,200));
-            imgBackground.setImgRutaInterno( imgButtonHover );
-            imgBackground.setImgOpacidad(0.5f);
+            super.setImgRutaInterno( imgButtonHover );
+            super.setImgOpacidad(0.5f);
             addMouseListener(null);
         }
     }
@@ -150,8 +150,8 @@ public class Button extends JPanelBackground implements MouseListener{
         // Verificar, si boton esta habilitado
         if( isEnabled() ){
             if( autoDesactivado ){
-//                imgBackground.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
-//                imgBackground.setImgOpacidad(1.0f);
+//                super.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
+//                super.setImgOpacidad(1.0f);
 //                repaint();
                   setBackgroundButton( imgButtonActivado );
 
@@ -166,8 +166,8 @@ public class Button extends JPanelBackground implements MouseListener{
         if( isEnabled() ){
             botonPresionado = true;
             if( autoDesactivado ){
-//                imgBackground.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/hover.png");
-//                imgBackground.setImgOpacidad(1.0f);
+//                super.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/hover.png");
+//                super.setImgOpacidad(1.0f);
 //                repaint();
                 setBackgroundButton( imgButtonHover );
 
@@ -181,8 +181,8 @@ public class Button extends JPanelBackground implements MouseListener{
         if( isEnabled() ){
             botonPresionado = false;
             if( autoDesactivado ){
-//                imgBackground.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
-//                imgBackground.setImgOpacidad(1.0f);
+//                super.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
+//                super.setImgOpacidad(1.0f);
 //                repaint();
                 setBackgroundButton( imgButtonActivado );
 
@@ -195,15 +195,15 @@ public class Button extends JPanelBackground implements MouseListener{
         // Verificar, si boton esta habilitado
         if( isEnabled() ){
             if( autoDesactivado ){
-//                imgBackground.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/hover.png");
-//                imgBackground.setImgOpacidad(1.0f);
+//                super.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/hover.png");
+//                super.setImgOpacidad(1.0f);
 //                repaint();
                 setBackgroundButton( imgButtonHover );
                 
             }else{
                 if( autoEstadoControl.equals("ModoNormal") ){
-//                    imgBackground.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/hover.png");
-//                    imgBackground.setImgOpacidad(1.0f);
+//                    super.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/hover.png");
+//                    super.setImgOpacidad(1.0f);
 //                    repaint();
                     setBackgroundButton( imgButtonHover );
                     
@@ -220,8 +220,8 @@ public class Button extends JPanelBackground implements MouseListener{
             if( autoDesactivado ){
 
                 if(!botonPresionado){
-//                    imgBackground.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
-//                    imgBackground.setImgOpacidad(1.0f);
+//                    super.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
+//                    super.setImgOpacidad(1.0f);
 //                    repaint();
                     setBackgroundButton( imgButtonActivado );
                     
@@ -230,8 +230,8 @@ public class Button extends JPanelBackground implements MouseListener{
             }else{
                 
                 if( autoEstadoControl.equals("ModoNormal") ){
-//                    imgBackground.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
-//                    imgBackground.setImgOpacidad(1.0f);
+//                    super.setImgRutaInterno("/shared/themes/bootstrap/buttons/info/activado.png");
+//                    super.setImgOpacidad(1.0f);
 //                    repaint();
                     setBackgroundButton( imgButtonActivado );
                     
