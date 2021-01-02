@@ -83,7 +83,8 @@ public class Button extends JPanelBackground implements MouseListener{
             case "warning": imgButtonType = "warning"; break;
             case "danger": imgButtonType = "danger"; break;
             case "info": imgButtonType = "info"; break;
-
+            case "dark": imgButtonType = "dark"; break;
+            case "peace": imgButtonType = "peace"; break;
             default:  imgButtonType = "primary"; break;
         }
         

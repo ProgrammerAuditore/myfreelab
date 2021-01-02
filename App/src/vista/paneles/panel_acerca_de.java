@@ -61,6 +61,7 @@ public class panel_acerca_de extends javax.swing.JPanel {
 
         enlace1.setText("ProgrammerAuditore");
 
+        btnAceptar.setImgButtonType("dark");
         btnAceptar.setTexto("Aceptar");
         btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {

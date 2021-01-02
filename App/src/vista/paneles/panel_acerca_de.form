@@ -101,6 +101,7 @@
     </Component>
     <Component class="vista.componentes.button.Button" name="btnAceptar">
       <Properties>
+        <Property name="imgButtonType" type="java.lang.String" value="dark"/>
         <Property name="texto" type="java.lang.String" value="Aceptar"/>
       </Properties>
       <Events>
