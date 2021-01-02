@@ -108,8 +108,6 @@ public class CampoTexto extends JTextField implements FocusListener{
     
     @Override
     public void focusGained(FocusEvent e) {
-        System.out.println("Escribe");
-        
         getEstiloTextEscritura();
         if( getText().equals( getPlaceholder() ) ){
             setText(null);
@@ -119,9 +117,6 @@ public class CampoTexto extends JTextField implements FocusListener{
 
     @Override
     public void focusLost(FocusEvent e) {
-        System.out.println("Ya no puedes escribir");
-        
-        
         if( getText().isEmpty() ){
             setText(getPlaceholder());
             getEstiloTextEmpty();

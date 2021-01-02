@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import modelo.Conexion;
 import modelo.dao.FreelancerDao;
+import src.Info;
 import vista.paneles.panel_conexion;
 import vista.paneles.panel_inicio;
 import vista.ventanas.Base;
@@ -32,7 +33,7 @@ public class InicioController extends VentanaController implements ventana_accio
         
         // Establecer propiedades a la ventana
         this.fncEstablecerMensaje();
-        this.getVentanaActiva().setTitle("MyFreenLab v0.2.0Alpha");
+        this.getVentanaActiva().setTitle(Info.NombreSoftware );
         
         // Establecer ventana acciones
         this.eventos_de_mouse();
