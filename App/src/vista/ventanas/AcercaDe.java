@@ -35,8 +35,7 @@ public class AcercaDe extends javax.swing.JFrame{
         setDefaultCloseOperation( WindowConstants.DO_NOTHING_ON_CLOSE );
         setLocation(w_fondo.getX() + 241 , w_fondo.getY() + 177 );
         setResizable(false);
-        setAlwaysOnTop(true);
-        setFocusCycleRoot(true);
+        //setAlwaysOnTop(true);
         setFocusable(true);
         setEnabled(true);
         setVisible(true);
@@ -58,9 +57,10 @@ public class AcercaDe extends javax.swing.JFrame{
         dispose();
 
         // Habilitar la ventana de fondo
-        w_fondo.setAlwaysOnTop(false);
+        //w_fondo.setAlwaysOnTop(false);
         w_fondo.setFocusable(true);
         w_fondo.setEnabled(true);
+        w_fondo.setVisible(true);
         System.out.println("windowClosing");
     }
 

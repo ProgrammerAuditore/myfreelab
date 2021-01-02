@@ -7,6 +7,8 @@ package vista.ventanas;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JPanel;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
@@ -169,14 +171,13 @@ public class VentanaInicio extends javax.swing.JFrame {
        // Deshabilitar la ventana actual o principal
        System.out.println("VentanaInicio = " + getBounds());
        AcercaDe.w_fondo = this;
-       setAlwaysOnTop(true);
+       //setAlwaysOnTop(true);
        setFocusable(false);
        setEnabled(false);
        
        // Habilitar la ventana hacia adelante
         w_acerca_de = new AcercaDe();
         w_acerca_de.init();
-      
            
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
