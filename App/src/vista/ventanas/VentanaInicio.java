@@ -257,8 +257,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         panelAcercaDe.init();
         modal.setResizable(false);
         modal.setTitle("Acerca de");
-        modal.setLocation(getX()+241 , getY()+173);
-        modal.setSize(panelAcercaDe.getWidth(), panelAcercaDe.getHeight());
+        modal.setLocation( this.getX()+241 , this.getY()+173);
+        modal.setPreferredSize(panelAcercaDe.getSize());
+        modal.setSize(panelAcercaDe.getSize());
         panelAcercaDe.setBounds(0, 0, panelAcercaDe.getWidth(), panelAcercaDe.getHeight());
         panelAcercaDe.btnAceptar.addMouseListener(new MouseAdapter() {
             @Override
