@@ -5,6 +5,7 @@
  */
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
@@ -12,7 +13,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
 import vista.paneles.panel_acerca_de;
@@ -255,17 +258,23 @@ public class VentanaInicio extends javax.swing.JFrame {
         
         // Establecemos las propiedades para AcercaDe
         panelAcercaDe.init();
+        modal.setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
         modal.setResizable(false);
         modal.setTitle("Acerca de");
-        modal.setLocation( this.getX()+241 , this.getY()+173);
+        modal.setLocation( 662, 293 );
         modal.setPreferredSize(panelAcercaDe.getSize());
         modal.setSize(panelAcercaDe.getSize());
         panelAcercaDe.setBounds(0, 0, panelAcercaDe.getWidth(), panelAcercaDe.getHeight());
         panelAcercaDe.btnAceptar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                modal.setVisible(false);
-                modal.dispose();
+                if( panelAcercaDe.btnAceptar.isEnabled() ){
+                    panelAcercaDe.contendor_licencia.setBorder(null);
+                    modal.setVisible(false);
+                    modal.dispose();
+                }
+                //System.out.println("location ventana = " + getLocation() );
+                //System.out.println("location modal = " + modal.getLocation() );
             }
         });
         

@@ -5,9 +5,24 @@
  */
 package vista.paneles;
 
+import java.awt.Adjustable;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import javax.swing.JScrollBar;
+import javax.swing.border.LineBorder;
 import src.Info;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 
 /**
  *
@@ -30,20 +45,41 @@ public class panel_acerca_de extends javax.swing.JPanel {
         setSize(tamahno);
         setPreferredSize(tamahno);
         setMaximumSize(tamahno);
+        btnAceptar.setEnabled(false);
         
         // Establecer información para la licencia
+        String licencia = txt_licencia.getText();
         lbl_Software.setText( Info.NombreSoftware );
         lbl_Licencia.setText( Info.Licencia );
-        
-        String licencia = txt_licencia_.getText();
         licencia = licencia.replace("<name of author>", Info.Autor );
         licencia = licencia.replace("<name of program>", Info.sNombre );
         licencia = licencia.replace("<version of program>", Info.sVersion );
         licencia = licencia.replace("<year>", Info.Anho );
         licencia = licencia.replace("<description>", Info.Descripcion );
         licencia = licencia.replace("<details>", Info.Detalle);
-        txt_licencia_.setText(licencia);
+        txt_licencia.setText(licencia);
+        txt_licencia.setCaretPosition(0);
         
+        // Establecer evento para activar boton al leer la licencia
+        contendor_licencia.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener(){ 
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                // Check if user has done dragging the scroll bar
+                if(!e.getValueIsAdjusting()){
+                    JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
+                    int extent = scrollBar.getModel().getExtent();
+                    int maximum = scrollBar.getModel().getMaximum();
+                    if(extent + e.getValue() == maximum){
+                        contendor_licencia.setBorder(new LineBorder(Color.GREEN, 1));
+                        btnAceptar.setEnabled(true);
+                    }else{
+                        contendor_licencia.setBorder(new LineBorder(Color.RED, 1));
+                        btnAceptar.setEnabled(false);
+                    }
+                }
+            }
+        });
+            
     }
 
     /**
@@ -58,8 +94,8 @@ public class panel_acerca_de extends javax.swing.JPanel {
         lbl_Software = new vista.componentes.etiqueta.Etiqueta();
         lbl_Licencia = new vista.componentes.etiqueta.Enlace();
         btnAceptar = new vista.componentes.button.Button();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txt_licencia_ = new javax.swing.JTextArea();
+        contendor_licencia = new javax.swing.JScrollPane();
+        txt_licencia = new javax.swing.JTextArea();
 
         lbl_Software.setText("Nombre de software");
 
@@ -73,15 +109,16 @@ public class panel_acerca_de extends javax.swing.JPanel {
             }
         });
 
-        txt_licencia_.setEditable(false);
-        txt_licencia_.setColumns(20);
-        txt_licencia_.setFont(new java.awt.Font("Consolas", 0, 13)); // NOI18N
-        txt_licencia_.setLineWrap(true);
-        txt_licencia_.setRows(5);
-        txt_licencia_.setText("Copyright (C) <year>  <name of author>\n\n<name of program> <version of program>\n\n<description>\n<details>\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.");
-        txt_licencia_.setWrapStyleWord(true);
-        txt_licencia_.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jScrollPane1.setViewportView(txt_licencia_);
+        txt_licencia.setEditable(false);
+        txt_licencia.setColumns(20);
+        txt_licencia.setFont(new java.awt.Font("Consolas", 0, 13)); // NOI18N
+        txt_licencia.setLineWrap(true);
+        txt_licencia.setRows(5);
+        txt_licencia.setText("Copyright (C) <year>  <name of author>\n\n<name of program> <version of program>\n\n<description>\n<details>\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.");
+        txt_licencia.setWrapStyleWord(true);
+        txt_licencia.setCaretPosition(0);
+        txt_licencia.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        contendor_licencia.setViewportView(txt_licencia);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,7 +128,7 @@ public class panel_acerca_de extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(contendor_licencia))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -115,7 +152,7 @@ public class panel_acerca_de extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_Licencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(contendor_licencia, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -129,9 +166,9 @@ public class panel_acerca_de extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public vista.componentes.button.Button btnAceptar;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane contendor_licencia;
     private vista.componentes.etiqueta.Enlace lbl_Licencia;
     private vista.componentes.etiqueta.Etiqueta lbl_Software;
-    private javax.swing.JTextArea txt_licencia_;
+    public javax.swing.JTextArea txt_licencia;
     // End of variables declaration//GEN-END:variables
 }
