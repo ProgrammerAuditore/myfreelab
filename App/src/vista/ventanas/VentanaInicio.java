@@ -7,11 +7,15 @@ package vista.ventanas;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
+import vista.paneles.panel_acerca_de;
 
 /**
  *
@@ -66,13 +70,16 @@ public class VentanaInicio extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuItem_AcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         panel_background.setImgBackgroundEnabled(true);
         panel_background.setImgRutaExterno(new java.io.File("C:\\Program Files\\NetBeans 8.2\\<Not Set>"));
+
+        panelContenedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelContenedor.setOpaque(false);
 
         javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);
         panelContenedor.setLayout(panelContenedorLayout);
@@ -92,12 +99,12 @@ public class VentanaInicio extends javax.swing.JFrame {
             .addGroup(panel_backgroundLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         panel_backgroundLayout.setVerticalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -141,13 +148,13 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jMenu5.setText("Ayuda");
 
-        jMenuItem1.setText("Acerca de");
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuItem_AcercaDe.setText("Acerca de");
+        menuItem_AcercaDe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseReleased(evt);
+                menuItem_AcercaDeMouseReleased(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        jMenu5.add(menuItem_AcercaDe);
 
         jMenuBar1.add(jMenu5);
 
@@ -167,19 +174,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
-       // Deshabilitar la ventana actual o principal
-       System.out.println("VentanaInicio = " + getBounds());
-       AcercaDe.w_fondo = this;
-       //setAlwaysOnTop(true);
-       setFocusable(false);
-       setEnabled(false);
-       
-       // Habilitar la ventana hacia adelante
-        w_acerca_de = new AcercaDe();
-        w_acerca_de.init();
-           
-    }//GEN-LAST:event_jMenuItem1MouseReleased
+    private void menuItem_AcercaDeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_AcercaDeMouseReleased
+        this.fncAcercaDe();
+    }//GEN-LAST:event_menuItem_AcercaDeMouseReleased
 
     private void menuItem_SalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_SalirMouseReleased
         // TODO add your handling code here:
@@ -231,20 +228,50 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     public javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jMenuItem10;
     public javax.swing.JMenuItem jMenuItem12;
     public javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem8;
     public javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem menuItem_AcercaDe;
     public javax.swing.JMenuItem menuItem_Salir;
     private javax.swing.JPanel panelContenedor;
     private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
-    private AcercaDe w_acerca_de = null;
+    private JDialog modal = new JDialog(this, true);
+    private panel_acerca_de panelAcercaDe = null;
     
     public JPanel getPanelContenedor() {
         return panelContenedor;
     }
+    
+    // Este metodo crea un modal para AcercaDe
+    private void fncAcercaDe() {
+        
+        // Patron de diseño Singleton 
+        if( panelAcercaDe == null ){
+            panelAcercaDe = new panel_acerca_de();
+        }
+        
+        // Establecemos las propiedades para AcercaDe
+        panelAcercaDe.init();
+        modal.setResizable(false);
+        modal.setTitle("Acerca de");
+        modal.setLocation(getX()+241 , getY()+173);
+        modal.setSize(panelAcercaDe.getWidth(), panelAcercaDe.getHeight());
+        panelAcercaDe.setBounds(0, 0, panelAcercaDe.getWidth(), panelAcercaDe.getHeight());
+        panelAcercaDe.btnAceptar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                modal.setVisible(false);
+                modal.dispose();
+            }
+        });
+        
+        // Se agrega el panel de acerca de y se muestra el modal
+        modal.add( panelAcercaDe );
+        modal.setVisible(true);
+    }
+    
     
 }
