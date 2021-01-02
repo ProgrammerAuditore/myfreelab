@@ -5,28 +5,65 @@
  */
 package vista.ventanas;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
 /**
  *
  * @author victo
  */
-public class ModalAcercaDe extends javax.swing.JFrame {
+public class AcercaDe extends javax.swing.JFrame{
+    
+    // Propiedades
+    public static VentanaInicio w_fondo;
 
     /**
-     * Creates new form ModalAcercaDe
+     * Creates new form AcercaDe
      */
-    public ModalAcercaDe() {
+    public AcercaDe() {
         initComponents();
-        this.iniciar();
-       
     }
     
-    public static VentanaInicio init = new VentanaInicio();
-    
-    private void iniciar(){
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+    // Métodos
+    public void init(){
+        
+        // Establecer propiedades para la ventana principal
+        setDefaultCloseOperation( WindowConstants.DO_NOTHING_ON_CLOSE );
+        setLocation(w_fondo.getX() + 241 , w_fondo.getY() + 177 );
+        setResizable(false);
+        setAlwaysOnTop(true);
+        setFocusCycleRoot(true);
+        setFocusable(true);
+        setEnabled(true);
+        setVisible(true);
+        
+        // Establecer eventos
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                fncCerrarModal();
+            }
+        });
+                
     }
     
+    private void fncCerrarModal(){
+        // Deshabilitar la ventana principal
+        setVisible(false);
+        dispose();
+
+        // Habilitar la ventana de fondo
+        w_fondo.setAlwaysOnTop(false);
+        w_fondo.setFocusable(true);
+        w_fondo.setEnabled(true);
+        System.out.println("windowClosing");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,31 +74,15 @@ public class ModalAcercaDe extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        button1 = new vista.componentes.button.Button();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
-        setUndecorated(true);
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ProgrammerAduitore");
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creado por");
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Aceptar");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton2MouseReleased(evt);
+                button1MouseReleased(evt);
             }
         });
 
@@ -70,28 +91,16 @@ public class ModalAcercaDe extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jLabel2)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(275, 275, 275)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(363, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(37, 37, 37))
+                .addContainerGap(393, Short.MAX_VALUE)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,16 +114,12 @@ public class ModalAcercaDe extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getAccessibleContext().setAccessibleDescription("");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
-        init.setEnabled(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_jButton2MouseReleased
+    private void button1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseReleased
+       fncCerrarModal();
+    }//GEN-LAST:event_button1MouseReleased
 
     /**
      * @param args the command line arguments
@@ -133,28 +138,26 @@ public class ModalAcercaDe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModalAcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModalAcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModalAcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModalAcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModalAcercaDe().setVisible(true);
+                new AcercaDe().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private vista.componentes.button.Button button1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

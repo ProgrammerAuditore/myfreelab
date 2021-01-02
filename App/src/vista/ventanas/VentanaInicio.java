@@ -6,6 +6,7 @@
 package vista.ventanas;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import javax.swing.JPanel;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
@@ -15,10 +16,6 @@ import vista.componentes.jpanelbackground.Background;
  * @author victo
  */
 public class VentanaInicio extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Base
-     */
     
     public VentanaInicio(  ) {
     }   
@@ -37,7 +34,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.panelContenedor = panel;
         
         // Establecer el fondo de la ventana
-        this.panel_background.setImgRutaInterno(Source.bkgDefault );
+        this.panel_background.setImgRutaInterno( Source.bkgDefault );
         
         // ** Testing **
         System.out.println("Tamaño de la ventana = " + this.getBounds());
@@ -58,7 +55,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         panelContenedor = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuItem_Salir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -72,19 +69,18 @@ public class VentanaInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        panel_background.setImgBackgroundEnabled(true);
         panel_background.setImgRutaExterno(new java.io.File("C:\\Program Files\\NetBeans 8.2\\<Not Set>"));
-        panel_background.setImgRutaInterno("/storage/shared/img/background_loggin.png");
-        panel_background.setImgRutaInternoActivo(true);
 
         javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);
         panelContenedor.setLayout(panelContenedorLayout);
         panelContenedorLayout.setHorizontalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 1105, Short.MAX_VALUE)
         );
         panelContenedorLayout.setVerticalGroup(
             panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel_backgroundLayout = new javax.swing.GroupLayout(panel_background);
@@ -92,29 +88,29 @@ public class VentanaInicio extends javax.swing.JFrame {
         panel_backgroundLayout.setHorizontalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_backgroundLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(51, 51, 51)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         panel_backgroundLayout.setVerticalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
                 .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(25, 25, 25))
         );
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(227, 36));
 
         jMenu1.setText("Archivo");
 
-        jMenuItem2.setText("Salir");
-        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuItem_Salir.setText("Salir");
+        menuItem_Salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jMenuItem2MouseReleased(evt);
+                menuItem_SalirMouseReleased(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(menuItem_Salir);
 
         jMenuBar1.add(jMenu1);
 
@@ -159,29 +155,36 @@ public class VentanaInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, 1204, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseReleased
-       ModalAcercaDe acerca = new ModalAcercaDe();
-       acerca.setAlwaysOnTop(true);
-       this.setEnabled(false);
-       acerca.setVisible(true);
-       ModalAcercaDe.init = this;
+       // Deshabilitar la ventana actual o principal
+       System.out.println("VentanaInicio = " + getBounds());
+       AcercaDe.w_fondo = this;
+       setAlwaysOnTop(true);
+       setFocusable(false);
+       setEnabled(false);
+       
+       // Habilitar la ventana hacia adelante
+        w_acerca_de = new AcercaDe();
+        w_acerca_de.init();
+      
+           
     }//GEN-LAST:event_jMenuItem1MouseReleased
 
-    private void jMenuItem2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseReleased
+    private void menuItem_SalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_SalirMouseReleased
         // TODO add your handling code here:
         this.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2MouseReleased
+    }//GEN-LAST:event_menuItem_SalirMouseReleased
 
     /**
      * @param args the command line arguments
@@ -230,14 +233,14 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jMenuItem10;
     public javax.swing.JMenuItem jMenuItem12;
-    public javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem8;
     public javax.swing.JMenuItem jMenuItem9;
+    public javax.swing.JMenuItem menuItem_Salir;
     private javax.swing.JPanel panelContenedor;
     private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
-    private ModalAcercaDe acercaDe;
+    private AcercaDe w_acerca_de = null;
     
     public JPanel getPanelContenedor() {
         return panelContenedor;

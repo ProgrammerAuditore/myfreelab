@@ -11,10 +11,10 @@ public class Index {
             System.out.println("Inicializando programa...");
             
             // * Inicializar el programa
-            //new InicioController( new VentanaInicio(new panel_inicio())).abrir_ventana();
-            Testing probar = new Testing();
-            probar.setLocationRelativeTo(null);
-            probar.setVisible(true);
+            new InicioController( new VentanaInicio(new panel_inicio())).abrir_ventana();
+//            Testing probar = new Testing();
+//            probar.setLocationRelativeTo(null);
+//            probar.setVisible(true);
         
     }
 }
