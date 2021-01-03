@@ -49,7 +49,7 @@ public class p_conexion extends javax.swing.JPanel {
         panel_estado = new javax.swing.JPanel();
         button1 = new vista.componentes.button.Button();
 
-        jPanelBackground1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
 
         javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
         jPanelBackground1.setLayout(jPanelBackground1Layout);
@@ -62,7 +62,7 @@ public class p_conexion extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(51, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
         titulo1.setForeground(new java.awt.Color(255, 255, 255));
         titulo1.setText("CONFIGURAR LA CONEXION");

@@ -23,6 +23,7 @@ import javax.swing.border.LineBorder;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
 import vista.paneles.p_conexion;
+import vista.paneles.p_mis_datos;
 import vista.paneles.panel_acerca_de;
 import vista.paneles.panel_conexion;
 
@@ -72,7 +73,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         menuItem_Salir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuItem_datosPersonales = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -134,8 +135,13 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jMenu3.setText("Editar");
 
-        jMenuItem4.setText("Mis datos");
-        jMenu3.add(jMenuItem4);
+        menuItem_datosPersonales.setText("Mis datos");
+        menuItem_datosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menuItem_datosPersonalesMouseReleased(evt);
+            }
+        });
+        jMenu3.add(menuItem_datosPersonales);
 
         jMenuItem9.setText("Buscar proyecto");
         jMenu3.add(jMenuItem9);
@@ -203,6 +209,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.fncConexion();
     }//GEN-LAST:event_menuItem_ConexionMouseReleased
 
+    private void menuItem_datosPersonalesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_datosPersonalesMouseReleased
+        // TODO add your handling code here:
+        this.fncDatosPersonales();
+    }//GEN-LAST:event_menuItem_datosPersonalesMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -248,18 +259,20 @@ public class VentanaInicio extends javax.swing.JFrame {
     public javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem jMenuItem10;
     public javax.swing.JMenuItem jMenuItem12;
-    public javax.swing.JMenuItem jMenuItem4;
     public javax.swing.JMenuItem jMenuItem9;
     public javax.swing.JMenu menuConfigurar;
     private javax.swing.JMenuItem menuItem_AcercaDe;
     public javax.swing.JMenuItem menuItem_Conexion;
     public javax.swing.JMenuItem menuItem_Salir;
+    public javax.swing.JMenuItem menuItem_datosPersonales;
     private javax.swing.JPanel panelContenedor;
     private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
     private JDialog modal;
     private panel_acerca_de panelAcercaDe = null;
     private p_conexion panelConexion = null;
+    private p_mis_datos panelDatosPersonales = null;
+
     
     public JPanel getPanelContenedor() {
         return panelContenedor;
@@ -323,6 +336,16 @@ public class VentanaInicio extends javax.swing.JFrame {
                 modal = null;
             }
         });
+    }
+
+    private void fncDatosPersonales() {
+        // Patron de diseño Singleton 
+        if( panelDatosPersonales == null ){
+            panelDatosPersonales = new p_mis_datos();
+        }
+        
+        // Crear un nuevo modal para Configurar conexión
+        setModalNuevo(panelDatosPersonales, "Mis datos personales");
     }
     
 }
