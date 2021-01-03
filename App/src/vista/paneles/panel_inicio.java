@@ -31,7 +31,7 @@ public class panel_inicio extends javax.swing.JPanel {
         lbl_accion = new vista.componentes.etiqueta.Enlace();
         lbl_msg = new vista.componentes.etiqueta.Titulo();
         etiqueta2 = new vista.componentes.etiqueta.Etiqueta();
-        campoTexto2 = new vista.componentes.campotexto.CampoTexto();
+        campoTexto2 = new vista.componentes.campos.CampoTexto();
         button2 = new vista.componentes.button.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -102,7 +102,7 @@ public class panel_inicio extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.button.Button button2;
-    private vista.componentes.campotexto.CampoTexto campoTexto2;
+    private vista.componentes.campos.CampoTexto campoTexto2;
     private vista.componentes.etiqueta.Etiqueta etiqueta2;
     public javax.swing.JPanel jPanel1;
     public vista.componentes.etiqueta.Enlace lbl_accion;

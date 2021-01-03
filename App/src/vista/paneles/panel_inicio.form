@@ -114,7 +114,7 @@
     </Container>
     <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta2">
     </Component>
-    <Component class="vista.componentes.campotexto.CampoTexto" name="campoTexto2">
+    <Component class="vista.componentes.campos.CampoTexto" name="campoTexto2">
       <Properties>
         <Property name="text" type="java.lang.String" value="campoTexto2"/>
       </Properties>

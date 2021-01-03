@@ -40,7 +40,7 @@ public class panel_conexion extends javax.swing.JPanel {
         btnEstablecerConn = new javax.swing.JButton();
         panelEstadoConn = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        cmpHost = new vista.componentes.campotexto.CampoTexto();
+        cmpHost = new vista.componentes.campos.CampoTexto();
 
         jLabel2.setText("Configurar la base de datos");
 
@@ -158,7 +158,7 @@ public class panel_conexion extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEstablecerConn;
     public javax.swing.JTextField cmpDatabase;
-    public vista.componentes.campotexto.CampoTexto cmpHost;
+    public vista.componentes.campos.CampoTexto cmpHost;
     public javax.swing.JTextField cmpPass;
     public javax.swing.JTextField cmpPuerto;
     public javax.swing.JTextField cmpUsuario;

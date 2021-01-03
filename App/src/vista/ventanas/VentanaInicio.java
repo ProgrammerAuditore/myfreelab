@@ -6,6 +6,7 @@
 package vista.ventanas;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -75,7 +76,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuConfigurar = new javax.swing.JMenu();
         menuItem_Conexion = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         menuItem_AcercaDe = new javax.swing.JMenuItem();
@@ -147,7 +148,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Configurar");
+        menuConfigurar.setText("Configurar");
 
         menuItem_Conexion.setText("Conexion");
         menuItem_Conexion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,9 +156,9 @@ public class VentanaInicio extends javax.swing.JFrame {
                 menuItem_ConexionMouseReleased(evt);
             }
         });
-        jMenu4.add(menuItem_Conexion);
+        menuConfigurar.add(menuItem_Conexion);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuConfigurar);
 
         jMenu5.setText("Ayuda");
 
@@ -243,20 +244,20 @@ public class VentanaInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenu jMenu1;
     public javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     public javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem jMenuItem10;
     public javax.swing.JMenuItem jMenuItem12;
     public javax.swing.JMenuItem jMenuItem4;
     public javax.swing.JMenuItem jMenuItem9;
+    public javax.swing.JMenu menuConfigurar;
     private javax.swing.JMenuItem menuItem_AcercaDe;
-    private javax.swing.JMenuItem menuItem_Conexion;
+    public javax.swing.JMenuItem menuItem_Conexion;
     public javax.swing.JMenuItem menuItem_Salir;
     private javax.swing.JPanel panelContenedor;
     private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
-    //private JDialog modal = new JDialog(this, true);
+    private JDialog modal;
     private panel_acerca_de panelAcercaDe = null;
     private p_conexion panelConexion = null;
     
@@ -264,9 +265,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         return panelContenedor;
     }
     
-    // Este metodo crea un modal para AcercaDe
     private void fncAcercaDe() {
-        
         // Patron de diseño Singleton 
         if( panelAcercaDe == null ){
             panelAcercaDe = new panel_acerca_de();
@@ -274,12 +273,12 @@ public class VentanaInicio extends javax.swing.JFrame {
         
         // Establecemos las propiedades para AcercaDe
         panelAcercaDe.init();
-        JDialog modal = new JDialog(this,"Acerca de", true);
-        modal.setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
-        modal.setResizable(false);
-        modal.setLocation( 662, 293 );
-        modal.setPreferredSize(panelAcercaDe.getSize());
-        modal.setSize(panelAcercaDe.getSize());
+        JDialog modalAcercaDe = new JDialog(this,"Acerca de", true);
+        modalAcercaDe.setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
+        modalAcercaDe.setResizable(false);
+        modalAcercaDe.setLocation( 662, 293 );
+        modalAcercaDe.setPreferredSize(panelAcercaDe.getSize());
+        modalAcercaDe.setSize(panelAcercaDe.getSize());
         panelAcercaDe.setBounds(0, 0, panelAcercaDe.getWidth(), panelAcercaDe.getHeight());
         
         panelAcercaDe.btnAceptar.addMouseListener(new MouseAdapter() {
@@ -287,38 +286,43 @@ public class VentanaInicio extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e) {
                 if( panelAcercaDe.btnAceptar.isEnabled() ){
                     panelAcercaDe.contendor_licencia.setBorder(null);
-                    modal.setVisible(false);
-                    modal.dispose();
+                    modalAcercaDe.setVisible(false);
+                    modalAcercaDe.dispose();
                 }
             }
         });
         
-        // Se agrega el panel de acerca de y se muestra el modal
-        modal.add( panelAcercaDe );
-        modal.setVisible(true);
+        // Se agrega el panel de acerca de y se muestra el modalAcercaDe
+        modalAcercaDe.add( panelAcercaDe );
+        modalAcercaDe.setVisible(true);
     }
 
     private void fncConexion() {
-        
         // Patron de diseño Singleton 
         if( panelConexion == null ){
             panelConexion = new p_conexion();
         }
         
-        // Establecemos las propiedades para AcercaDe
-        panelConexion.init();
-        JDialog modal = new JDialog(this, "Configurar conexión", true);
-        modal.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        modal.setPreferredSize( panelConexion.getSize() );
-        modal.setSize( panelConexion.getSize() );
-        modal.setResizable(false);
-        modal.setLayout(null);
-        modal.setBounds(541, 300, panelConexion.getWidth()+20, panelConexion.getHeight()+40);
-        
-        // Se agrega el panel de acerca de y se muestra el modal
-        modal.add( panelConexion );
-        modal.setVisible(true);
+        // Crear un nuevo modal para Configurar conexión
+        setModalNuevo(panelConexion, "Configurar conexión");
     }
     
+    private void setModalNuevo(Container panel, String titulo){
+        // Establecemos las propiedades para el modal generico
+        modal = new JDialog(this, titulo, true);
+        modal.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        modal.setLocation(541, 300);
+        modal.setSize(850, 540);
+        modal.setContentPane(panel);
+        modal.setVisible(true);
+        
+        // Establecer un evento generico
+        modal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                modal = null;
+            }
+        });
+    }
     
 }

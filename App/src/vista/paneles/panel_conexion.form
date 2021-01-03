@@ -208,7 +208,7 @@
         <Property name="text" type="java.lang.String" value="Estado"/>
       </Properties>
     </Component>
-    <Component class="vista.componentes.campotexto.CampoTexto" name="cmpHost">
+    <Component class="vista.componentes.campos.CampoTexto" name="cmpHost">
       <Properties>
         <Property name="text" type="java.lang.String" value="campoTexto1"/>
       </Properties>

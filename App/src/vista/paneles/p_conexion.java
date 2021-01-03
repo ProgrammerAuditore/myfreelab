@@ -21,15 +21,6 @@ public class p_conexion extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void init(){
-        // Establecer propiedades para el panel
-        Dimension tamahno = new Dimension(850, 500);
-        setSize(tamahno);
-        setPreferredSize(tamahno);
-        setMaximumSize(tamahno);
-        setMinimumSize(tamahno);
-        setBounds(0, 0, getWidth(), getHeight());
-    }
      
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,19 +36,18 @@ public class p_conexion extends javax.swing.JPanel {
         titulo1 = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
         lbl_host = new vista.componentes.etiqueta.Etiqueta();
-        cmpHost = new vista.componentes.campotexto.CampoTexto();
+        cmpHost = new vista.componentes.campos.CampoTexto();
         lbl_usuario = new vista.componentes.etiqueta.Etiqueta();
-        cmpUsuario = new vista.componentes.campotexto.CampoTexto();
+        cmpUsuario = new vista.componentes.campos.CampoTexto();
         lbl_puerto = new vista.componentes.etiqueta.Etiqueta();
-        cmpPuerto = new vista.componentes.campotexto.CampoTexto();
+        cmpPuerto = new vista.componentes.campos.CampoTexto();
         lbl_contrasenha = new vista.componentes.etiqueta.Etiqueta();
-        cmpContrasenha = new vista.componentes.campotexto.CampoTexto();
+        cmpContrasenha = new vista.componentes.campos.CampoTexto();
         lbl_database = new vista.componentes.etiqueta.Etiqueta();
-        cmpUsuario1 = new vista.componentes.campotexto.CampoTexto();
+        cmpUsuario1 = new vista.componentes.campos.CampoTexto();
         etiqueta1 = new vista.componentes.etiqueta.Etiqueta();
         panel_estado = new javax.swing.JPanel();
         button1 = new vista.componentes.button.Button();
-        button2 = new vista.componentes.button.Button();
 
         jPanelBackground1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -74,6 +64,7 @@ public class p_conexion extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
 
+        titulo1.setForeground(new java.awt.Color(255, 255, 255));
         titulo1.setText("CONFIGURAR LA CONEXION");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -116,6 +107,7 @@ public class p_conexion extends javax.swing.JPanel {
 
         etiqueta1.setText("Estado");
 
+        panel_estado.setBackground(new java.awt.Color(153, 0, 0));
         panel_estado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout panel_estadoLayout = new javax.swing.GroupLayout(panel_estado);
@@ -195,6 +187,9 @@ public class p_conexion extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
+        button1.setImgButtonType("success");
+        button1.setTexto("Establecer conexión");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,9 +205,7 @@ public class p_conexion extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -224,9 +217,7 @@ public class p_conexion extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -234,12 +225,11 @@ public class p_conexion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.button.Button button1;
-    private vista.componentes.button.Button button2;
-    private vista.componentes.campotexto.CampoTexto cmpContrasenha;
-    private vista.componentes.campotexto.CampoTexto cmpHost;
-    private vista.componentes.campotexto.CampoTexto cmpPuerto;
-    private vista.componentes.campotexto.CampoTexto cmpUsuario;
-    private vista.componentes.campotexto.CampoTexto cmpUsuario1;
+    private vista.componentes.campos.CampoTexto cmpContrasenha;
+    private vista.componentes.campos.CampoTexto cmpHost;
+    private vista.componentes.campos.CampoTexto cmpPuerto;
+    private vista.componentes.campos.CampoTexto cmpUsuario;
+    private vista.componentes.campos.CampoTexto cmpUsuario1;
     private vista.componentes.etiqueta.Etiqueta etiqueta1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

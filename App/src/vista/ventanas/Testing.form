@@ -111,8 +111,7 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="campoTexto1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="enlace1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -160,10 +159,7 @@
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="campoTexto1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="enlace1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="enlace1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="button2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -229,11 +225,6 @@
             </Component>
             <Component class="vista.componentes.etiqueta.Enlace" name="enlace1">
             </Component>
-            <Component class="vista.componentes.campotexto.CampoTexto" name="campoTexto1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="campoTexto1"/>
-              </Properties>
-            </Component>
             <Component class="vista.componentes.button.Button" name="button2">
               <Properties>
                 <Property name="texto" type="java.lang.String" value="Generar reporte"/>
@@ -293,19 +284,6 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="button10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="button11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="button12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="campoTexto2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="enlace2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="button14" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="93" max="32767" attributes="0"/>
@@ -315,6 +293,17 @@
                                       <Component id="button13" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="button15" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="button10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="button11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="button12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="enlace2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -338,10 +327,7 @@
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="etiqueta2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="campoTexto2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="enlace2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="enlace2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="button9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -426,11 +412,6 @@
                 <Property name="texto" type="java.lang.String" value="Generar reporte"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.campotexto.CampoTexto" name="campoTexto2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="campoTexto1"/>
-              </Properties>
-            </Component>
             <Component class="vista.componentes.button.Button" name="button11">
               <Properties>
                 <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
@@ -463,19 +444,6 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="button18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="button19" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="button20" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="campoTexto3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="enlace3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="button22" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="97" max="32767" attributes="0"/>
@@ -485,6 +453,17 @@
                                       <Component id="button21" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="button23" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="button18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="button19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="button20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="enlace3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -508,10 +487,7 @@
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="etiqueta3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="campoTexto3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="enlace3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="enlace3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="button17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -602,11 +578,6 @@
               </Properties>
             </Component>
             <Component class="vista.componentes.etiqueta.SubTitulo" name="subTitulo3">
-            </Component>
-            <Component class="vista.componentes.campotexto.CampoTexto" name="campoTexto3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="campoTexto1"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

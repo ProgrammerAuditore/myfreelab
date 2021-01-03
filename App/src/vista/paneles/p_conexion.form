@@ -29,9 +29,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="button1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="button2" min="-2" max="-2" attributes="0"/>
+                      <Component id="button1" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -47,10 +45,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="button1" min="-2" max="-2" attributes="0"/>
-                  <Component id="button2" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="button1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -106,6 +101,9 @@
       <SubComponents>
         <Component class="vista.componentes.etiqueta.Titulo" name="titulo1">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="CONFIGURAR LA CONEXION"/>
           </Properties>
         </Component>
@@ -211,7 +209,7 @@
             <Property name="text" type="java.lang.String" value="Introduzca el host"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campotexto.CampoTexto" name="cmpHost">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpHost">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_host"/>
@@ -223,7 +221,7 @@
             <Property name="text" type="java.lang.String" value="Introduzca el usuario"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campotexto.CampoTexto" name="cmpUsuario">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpUsuario">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_usuario"/>
@@ -235,7 +233,7 @@
             <Property name="text" type="java.lang.String" value="Introduzca el puerto"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campotexto.CampoTexto" name="cmpPuerto">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpPuerto">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_puerto"/>
@@ -247,7 +245,7 @@
             <Property name="text" type="java.lang.String" value="Introduzca la contrase&#xf1;a"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campotexto.CampoTexto" name="cmpContrasenha">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpContrasenha">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_contrasenha"/>
@@ -259,7 +257,7 @@
             <Property name="text" type="java.lang.String" value="Introduzca la base de datos"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campotexto.CampoTexto" name="cmpUsuario1">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpUsuario1">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_database"/>
@@ -273,6 +271,9 @@
         </Component>
         <Container class="javax.swing.JPanel" name="panel_estado">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="99" type="rgb"/>
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
@@ -296,8 +297,10 @@
       </SubComponents>
     </Container>
     <Component class="vista.componentes.button.Button" name="button1">
-    </Component>
-    <Component class="vista.componentes.button.Button" name="button2">
+      <Properties>
+        <Property name="imgButtonType" type="java.lang.String" value="success"/>
+        <Property name="texto" type="java.lang.String" value="Establecer conexi&#xf3;n"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
