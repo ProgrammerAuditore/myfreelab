@@ -131,13 +131,13 @@
                               <Component id="lbl_usuario" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cmpUsuario" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="161" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbl_puerto" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_contrasenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpContrasenha" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="cmpPuerto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="cmpNull" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpContrasenha" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
@@ -178,13 +178,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lbl_usuario" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmpUsuario" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cmpUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpContrasenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_contrasenha" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmpContrasenha" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lbl_contrasenha" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="cmpNull" min="-2" max="-2" attributes="0"/>
@@ -269,16 +268,6 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpContrasenha">
-          <Properties>
-            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_contrasenha"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_database">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca la base de datos"/>
@@ -337,6 +326,11 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
+        </Component>
+        <Component class="vista.componentes.campos.CampoPassword" name="cmpContrasenha">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="campoPassword1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

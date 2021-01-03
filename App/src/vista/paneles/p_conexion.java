@@ -61,12 +61,12 @@ public class p_conexion extends javax.swing.JPanel {
         lbl_puerto = new vista.componentes.etiqueta.Etiqueta();
         cmpPuerto = new vista.componentes.campos.CampoTexto();
         lbl_contrasenha = new vista.componentes.etiqueta.Etiqueta();
-        cmpContrasenha = new vista.componentes.campos.CampoTexto();
         lbl_database = new vista.componentes.etiqueta.Etiqueta();
         cmpUsuario1 = new vista.componentes.campos.CampoTexto();
         etiqueta1 = new vista.componentes.etiqueta.Etiqueta();
         panel_estado = new javax.swing.JPanel();
         cmpNull = new javax.swing.JCheckBox();
+        cmpContrasenha = new vista.componentes.campos.CampoPassword();
         button1 = new vista.componentes.button.Button();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
@@ -119,8 +119,6 @@ public class p_conexion extends javax.swing.JPanel {
 
         lbl_contrasenha.setText("Introduzca la contraseña");
 
-        cmpContrasenha.setComponenteDidireccional(lbl_contrasenha);
-
         lbl_database.setText("Introduzca la base de datos");
 
         cmpUsuario1.setComponenteDidireccional(lbl_database);
@@ -143,6 +141,8 @@ public class p_conexion extends javax.swing.JPanel {
 
         cmpNull.setText("Null");
 
+        cmpContrasenha.setText("campoPassword1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -156,13 +156,13 @@ public class p_conexion extends javax.swing.JPanel {
                             .addComponent(cmpHost, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_contrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpNull))
+                            .addComponent(cmpNull)
+                            .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,11 +192,10 @@ public class p_conexion extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lbl_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbl_contrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_contrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmpNull)
                 .addGap(12, 12, 12)
@@ -250,7 +249,7 @@ public class p_conexion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.button.Button button1;
-    public vista.componentes.campos.CampoTexto cmpContrasenha;
+    private vista.componentes.campos.CampoPassword cmpContrasenha;
     public vista.componentes.campos.CampoTexto cmpHost;
     public javax.swing.JCheckBox cmpNull;
     public vista.componentes.campos.CampoTexto cmpPuerto;
