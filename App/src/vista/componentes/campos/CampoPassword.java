@@ -33,6 +33,7 @@ public class CampoPassword extends JPasswordField implements FocusListener{
         // * Personalizar los colores al seleccionar el texto
         setSelectionColor(Color.LIGHT_GRAY);
         setSelectedTextColor(Color.WHITE);
+        setEchoChar((char)0);
         
         // Establecer texto de ayuda
         setToolTip();
@@ -54,6 +55,7 @@ public class CampoPassword extends JPasswordField implements FocusListener{
     
     // Métodos custom
     private void getEstiloTextEmpty(){
+        setEchoChar((char)0);
         setBackground( backgroundColor );
         setBorderMargin( Color.RED );
         setForeground( placeholderColor );
@@ -61,6 +63,7 @@ public class CampoPassword extends JPasswordField implements FocusListener{
     }
     
     private void getEstiloTextEscritura(){
+        setEchoChar('*');
         setBackground( backgroundColor );
         setBorderMargin( borderColor );
         setForeground( textoColor );
@@ -106,7 +109,7 @@ public class CampoPassword extends JPasswordField implements FocusListener{
     @Override
     public void focusGained(FocusEvent e) {
         getEstiloTextEscritura();
-        if( getText().equals( getPlaceholder() ) ){
+        if( String.valueOf(getPassword()).equals( getPlaceholder() ) ){
             setText(null);
         }
         
@@ -114,7 +117,7 @@ public class CampoPassword extends JPasswordField implements FocusListener{
 
     @Override
     public void focusLost(FocusEvent e) {
-        if( getText().isEmpty() ){
+        if( String.valueOf(getPassword()).isEmpty() ){
             setText(getPlaceholder());
             getEstiloTextEmpty();
         }else{

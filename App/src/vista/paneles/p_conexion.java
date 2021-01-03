@@ -141,7 +141,7 @@ public class p_conexion extends javax.swing.JPanel {
 
         cmpNull.setText("Null");
 
-        cmpContrasenha.setText("campoPassword1");
+        cmpContrasenha.setComponenteDidireccional(lbl_contrasenha);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

@@ -329,7 +329,9 @@
         </Component>
         <Component class="vista.componentes.campos.CampoPassword" name="cmpContrasenha">
           <Properties>
-            <Property name="text" type="java.lang.String" value="campoPassword1"/>
+            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="lbl_contrasenha"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
