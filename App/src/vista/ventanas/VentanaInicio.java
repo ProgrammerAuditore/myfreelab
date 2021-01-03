@@ -6,8 +6,11 @@
 package vista.ventanas;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -18,7 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
+import vista.paneles.p_conexion;
 import vista.paneles.panel_acerca_de;
+import vista.paneles.panel_conexion;
 
 /**
  *
@@ -71,7 +76,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        menuItem_Conexion = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         menuItem_AcercaDe = new javax.swing.JMenuItem();
 
@@ -144,8 +149,13 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jMenu4.setText("Configurar");
 
-        jMenuItem8.setText("Conexion");
-        jMenu4.add(jMenuItem8);
+        menuItem_Conexion.setText("Conexion");
+        menuItem_Conexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menuItem_ConexionMouseReleased(evt);
+            }
+        });
+        jMenu4.add(menuItem_Conexion);
 
         jMenuBar1.add(jMenu4);
 
@@ -186,6 +196,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuItem_SalirMouseReleased
+
+    private void menuItem_ConexionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_ConexionMouseReleased
+        // TODO add your handling code here:
+        this.fncConexion();
+    }//GEN-LAST:event_menuItem_ConexionMouseReleased
 
     /**
      * @param args the command line arguments
@@ -234,15 +249,16 @@ public class VentanaInicio extends javax.swing.JFrame {
     public javax.swing.JMenuItem jMenuItem10;
     public javax.swing.JMenuItem jMenuItem12;
     public javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem8;
     public javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem menuItem_AcercaDe;
+    private javax.swing.JMenuItem menuItem_Conexion;
     public javax.swing.JMenuItem menuItem_Salir;
     private javax.swing.JPanel panelContenedor;
     private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
-    private JDialog modal = new JDialog(this, true);
+    //private JDialog modal = new JDialog(this, true);
     private panel_acerca_de panelAcercaDe = null;
+    private p_conexion panelConexion = null;
     
     public JPanel getPanelContenedor() {
         return panelContenedor;
@@ -258,13 +274,14 @@ public class VentanaInicio extends javax.swing.JFrame {
         
         // Establecemos las propiedades para AcercaDe
         panelAcercaDe.init();
+        JDialog modal = new JDialog(this,"Acerca de", true);
         modal.setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
         modal.setResizable(false);
-        modal.setTitle("Acerca de");
         modal.setLocation( 662, 293 );
         modal.setPreferredSize(panelAcercaDe.getSize());
         modal.setSize(panelAcercaDe.getSize());
         panelAcercaDe.setBounds(0, 0, panelAcercaDe.getWidth(), panelAcercaDe.getHeight());
+        
         panelAcercaDe.btnAceptar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -273,13 +290,33 @@ public class VentanaInicio extends javax.swing.JFrame {
                     modal.setVisible(false);
                     modal.dispose();
                 }
-                //System.out.println("location ventana = " + getLocation() );
-                //System.out.println("location modal = " + modal.getLocation() );
             }
         });
         
         // Se agrega el panel de acerca de y se muestra el modal
         modal.add( panelAcercaDe );
+        modal.setVisible(true);
+    }
+
+    private void fncConexion() {
+        
+        // Patron de diseño Singleton 
+        if( panelConexion == null ){
+            panelConexion = new p_conexion();
+        }
+        
+        // Establecemos las propiedades para AcercaDe
+        panelConexion.init();
+        JDialog modal = new JDialog(this, "Configurar conexión", true);
+        modal.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        modal.setPreferredSize( panelConexion.getSize() );
+        modal.setSize( panelConexion.getSize() );
+        modal.setResizable(false);
+        modal.setLayout(null);
+        modal.setBounds(541, 300, panelConexion.getWidth()+20, panelConexion.getHeight()+40);
+        
+        // Se agrega el panel de acerca de y se muestra el modal
+        modal.add( panelConexion );
         modal.setVisible(true);
     }
     

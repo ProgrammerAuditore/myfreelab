@@ -80,10 +80,13 @@
             <Property name="text" type="java.lang.String" value="Configurar"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItem_Conexion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Conexion"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuItem_ConexionMouseReleased"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
