@@ -7,6 +7,8 @@ package vista.paneles;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.MouseEvent;
+import javax.swing.event.MouseInputAdapter;
 
 /**
  *
@@ -19,6 +21,23 @@ public class p_conexion extends javax.swing.JPanel {
      */
     public p_conexion() {
         initComponents();
+        
+        // Establecer evento de teclado para el chechkbox
+        cmpNull.addMouseListener(new MouseInputAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if( cmpNull.isSelected() ){
+                    cmpContrasenha.setText("");
+                    cmpContrasenha.aceptarCampo();
+                    cmpContrasenha.setEditable(false);
+                    cmpContrasenha.setEnabled(false);
+                }else{
+                    cmpContrasenha.rechazarCampo();
+                    cmpContrasenha.setEditable(true);
+                    cmpContrasenha.setEnabled(true);
+                }
+            }
+        });
     }
     
      
@@ -47,6 +66,7 @@ public class p_conexion extends javax.swing.JPanel {
         cmpUsuario1 = new vista.componentes.campos.CampoTexto();
         etiqueta1 = new vista.componentes.etiqueta.Etiqueta();
         panel_estado = new javax.swing.JPanel();
+        cmpNull = new javax.swing.JCheckBox();
         button1 = new vista.componentes.button.Button();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
@@ -121,6 +141,8 @@ public class p_conexion extends javax.swing.JPanel {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        cmpNull.setText("Null");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -139,7 +161,8 @@ public class p_conexion extends javax.swing.JPanel {
                             .addComponent(lbl_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_contrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmpPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpNull))
                         .addGap(39, 39, 39))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +197,9 @@ public class p_conexion extends javax.swing.JPanel {
                         .addComponent(lbl_contrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmpNull)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lbl_database, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,20 +250,21 @@ public class p_conexion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.button.Button button1;
-    private vista.componentes.campos.CampoTexto cmpContrasenha;
-    private vista.componentes.campos.CampoTexto cmpHost;
-    private vista.componentes.campos.CampoTexto cmpPuerto;
-    private vista.componentes.campos.CampoTexto cmpUsuario;
-    private vista.componentes.campos.CampoTexto cmpUsuario1;
-    private vista.componentes.etiqueta.Etiqueta etiqueta1;
+    public vista.componentes.campos.CampoTexto cmpContrasenha;
+    public vista.componentes.campos.CampoTexto cmpHost;
+    public javax.swing.JCheckBox cmpNull;
+    public vista.componentes.campos.CampoTexto cmpPuerto;
+    public vista.componentes.campos.CampoTexto cmpUsuario;
+    public vista.componentes.campos.CampoTexto cmpUsuario1;
+    public vista.componentes.etiqueta.Etiqueta etiqueta1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
-    private vista.componentes.etiqueta.Etiqueta lbl_contrasenha;
-    private vista.componentes.etiqueta.Etiqueta lbl_database;
-    private vista.componentes.etiqueta.Etiqueta lbl_host;
-    private vista.componentes.etiqueta.Etiqueta lbl_puerto;
-    private vista.componentes.etiqueta.Etiqueta lbl_usuario;
+    public vista.componentes.etiqueta.Etiqueta lbl_contrasenha;
+    public vista.componentes.etiqueta.Etiqueta lbl_database;
+    public vista.componentes.etiqueta.Etiqueta lbl_host;
+    public vista.componentes.etiqueta.Etiqueta lbl_puerto;
+    public vista.componentes.etiqueta.Etiqueta lbl_usuario;
     private javax.swing.JPanel panel_estado;
     private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables

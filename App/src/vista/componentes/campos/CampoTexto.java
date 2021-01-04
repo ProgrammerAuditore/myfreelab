@@ -94,6 +94,15 @@ public class CampoTexto extends JTextField implements FocusListener{
         String EstiloToolTip = "<html><b><font color=white>" + getPlaceholder() + " aquí" + "</font></b></html>" ;
         setToolTipText( EstiloToolTip );
     }
+    
+    public void aceptarCampo(){
+        getEstiloTextEstablecido();
+    }
+    
+    public void rechazarCampo(){
+        getEstiloTextEmpty();
+        setText(getPlaceholder());
+    }
        
     // Setters y Getters
     public String getPlaceholder() {

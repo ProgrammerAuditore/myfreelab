@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import javax.swing.event.MouseInputAdapter;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
 import vista.paneles.p_conexion;

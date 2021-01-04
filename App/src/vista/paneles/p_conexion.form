@@ -137,6 +137,7 @@
                               <Component id="lbl_contrasenha" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cmpContrasenha" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="cmpPuerto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="cmpNull" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
@@ -185,7 +186,9 @@
                           <Component id="cmpContrasenha" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="cmpNull" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="lbl_database" min="-2" max="-2" attributes="0"/>
@@ -208,6 +211,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca el host"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="cmpHost">
           <Properties>
@@ -215,11 +221,17 @@
               <ComponentRef name="lbl_host"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_usuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca el usuario"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="cmpUsuario">
           <Properties>
@@ -227,11 +239,17 @@
               <ComponentRef name="lbl_usuario"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_puerto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca el puerto"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="cmpPuerto">
           <Properties>
@@ -239,11 +257,17 @@
               <ComponentRef name="lbl_puerto"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_contrasenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca la contrase&#xf1;a"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="cmpContrasenha">
           <Properties>
@@ -251,11 +275,17 @@
               <ComponentRef name="lbl_contrasenha"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_database">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca la base de datos"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="cmpUsuario1">
           <Properties>
@@ -263,11 +293,17 @@
               <ComponentRef name="lbl_database"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Estado"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="panel_estado">
           <Properties>
@@ -294,6 +330,14 @@
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="javax.swing.JCheckBox" name="cmpNull">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Null"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="vista.componentes.button.Button" name="button1">
