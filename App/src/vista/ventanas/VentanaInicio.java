@@ -288,7 +288,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private JDialog modal;
     private panel_acerca_de panelAcercaDe = null;
-    private p_conexion panelConexion = null;
+    public p_conexion panelConexion = null;
     private p_mis_datos panelDatosPersonales = null;
     private p_gestionar_empresas panelGestionarEmpresas  = null;
     private p_gestionar_proyectos panelGestionarProyectos  = null;
