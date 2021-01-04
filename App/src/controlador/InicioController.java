@@ -1,10 +1,12 @@
 package controlador;
 
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import modelo.Conexion;
 import modelo.dao.FreelancerDao;
 import src.Info;
+import src.Source;
 import vista.paneles.p_conexion;
 import vista.paneles.panel_inicio;
 import vista.ventanas.VentanaInicio;
@@ -34,6 +36,7 @@ public class InicioController{
     }
     
     public void fncAbrirVentana(){
+        vInicio.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(Source.iconDefault)));
         vInicio.setTitle(Info.NombreSoftware );
         vInicio.setLocationRelativeTo(null);
         vInicio.setEnabled(true);
