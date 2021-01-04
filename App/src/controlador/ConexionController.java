@@ -1,112 +1,100 @@
 package controlador;
 
-import controlador.interfaces.ventana_acciones;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import modelo.dao.ConexionDao;
 import modelo.dto.ConexionDto;
-import vista.paneles.panel_conexion;
-import vista.ventanas.Base;
+import vista.paneles.p_conexion;
 
-public class ConexionController extends VentanaController implements ventana_acciones{
+public class ConexionController{
     
     // Atributos o campos
-    private panel_conexion mi_panel; // Vista
+    private p_conexion panel; // Vista
     private ConexionDao modelo; // Modelo
     private ConexionDto conn;
     
     // Constructores
-    public ConexionController() {}
-    
-    public ConexionController(Base vp) {
-        this.inicializar(vp);
+    public ConexionController() {
+    }
+
+    public ConexionController(p_conexion mi_panel) {
+        this.panel = mi_panel;
     }
     
     // Métodos
-    private void inicializar(Base vp){
-        // Para poder usar abrir y cerrar ventana
-        this.setVentanaActiva( vp );
-        
-        // Para poder controlar los eventos en el panel
-        this.mi_panel  = (panel_conexion) vp.getPanelContenedor();
-        
-        // Establecer propiedades modelo la ventana
-        this.getVentanaActiva().setTitle("Configurar conexion a la base de datos");
-        
-        // Establecer ventana acciones
-        this.eventos_de_mouse();
-        this.eventos_de_teclado();
-    }
-
-    @Override
-    public void eventos_de_teclado() {
-        
-    }
-
-    @Override
-    public void eventos_de_mouse() {
-        this.establecerConexion();
-        this.fncVolver();
-    }
-    
-    private void establecerConexion(){
-        
-        mi_panel.btnEstablecerConn.addMouseListener(new MouseAdapter() {
+    public void init() {
+        // Establecer todo los eventos para Configurar conexión
+        panel.btnEstablecerConexion.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                String password = mi_panel.cmpPass.getText();
-                
-                try {
-                    
-                    String database = mi_panel.cmpDatabase.getText();
-                    String puerto = mi_panel.cmpPuerto.getText();
-                    String host = mi_panel.cmpHost.getText();
-                    String usuario = mi_panel.cmpUsuario.getText();
-                    
-                    
-                    if( password.length() == 0)
-                        password = "";
-                
-                ConexionDto conexion = new ConexionDto(puerto, host, database, usuario, password);
-                modelo = new ConexionDao();
-                modelo.regitrar_conexion(conexion );
-                
-                } catch (Exception error) {
-                    JOptionPane.showMessageDialog(null, "Error los campos son incorrectos...");
-                    // x.printStackTrace();
-                }
-                
-                
+                fncEstablecerConexion();
             }
         });
-
     }
     
-    private void fncVolver() {
-        Base a = (Base) this.getVentanaActiva();
-        a.btnVolver.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                volver_ventana_anterior();
+    public void fncCargarDatosConexion(){
+        //System.out.println("Cargando los datos...");
+        try {
+            ConexionDao conexion = new ConexionDao();
+            conn = conexion.obtener_conexion();
+
+            panel.cmpUsuario.setText( conn.getUsuario() );
+            panel.cmpHost.setText( conn.getHost() );
+            panel.cmpDatabase.setText( conn.getDatabase() );
+            panel.cmpPuerto.setText( "" + conn.getPuerto() );
+            panel.cmpContrasenha.setText( conn.getPass() );
+
+            if( conn.getPass().length() == 0 ){
+                panel.cmpContrasenha.setEditable(false);
+                panel.cmpContrasenha.setEnabled(false);
+                panel.cmpNull.setSelected(true);
+            }
+        } catch (Exception e) {
+            System.out.println("El archivo db.dat no tiene propiedades o no existe.");
+        }
+    }
+    
+    private void fncEstablecerConexion(){
+        String password = String.valueOf( panel.cmpContrasenha.getPassword() );
+        
+        if( panel.cmpDatabase.isAprobado() && panel.cmpHost.isAprobado() && 
+            panel.cmpPuerto.isAprobado() && panel.cmpUsuario.isAprobado()){
+            
+            int puerto;
+            try {
+                puerto = Integer.parseInt(panel.cmpPuerto.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Verifica el puerto, por favor.");
+                return;
             }
             
-        });
-        
+            String database = panel.cmpDatabase.getText();
+            
+            String host = panel.cmpHost.getText();
+            String usuario = panel.cmpUsuario.getText();
+
+            if(panel.cmpNull.isSelected()){
+                password = "";
+            }
+
+            ConexionDto conexion = new ConexionDto(puerto, host, database, usuario, password);
+            modelo = new ConexionDao();
+            modelo.regitrar_conexion(conexion );
+            
+            JOptionPane.showMessageDialog(null, "Espera, estableciendo la conexión.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifica los campos, por favor.");
+        }
     }
     
-//    public void capturar(){
-//        conn =  modelo.obtener_conexion();
-//    }
-//    
-//    public void actualizar_conexion(){
-//        conn.setPuerto(1234);
-//        modelo.actualizar_conexion(conn);
-//    }
-//    
-//    public void mostrar(){
-//        conn =  modelo.obtener_conexion();
-//        System.out.println("" + conn.getPuerto());
-//    } 
+    // Getters y Setters
+    public p_conexion getPanel() {
+        return panel;
+    }
+
+    public void setPanel(p_conexion panel) {
+        this.panel = panel;
+    }
 
 }

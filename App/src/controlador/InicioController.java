@@ -64,7 +64,7 @@ public class InicioController{
 
     }
     
-    private ConnController ctlConexion = null;
+    private ConexionController ctlConexion = null;
     private void fncMenuItemConexion(){
         vInicio.menuItem_Conexion.addMouseListener(new MouseAdapter() {
             @Override
@@ -73,8 +73,8 @@ public class InicioController{
                 if( vInicio.panelConexion == null ){
                     vInicio.panelConexion = new p_conexion();
                     
-                    // Habilitar el controlador ConnController
-                    ctlConexion = new ConnController();
+                    // Habilitar el controlador ConexionController
+                    ctlConexion = new ConexionController();
                     ctlConexion.setPanel(vInicio.panelConexion);
                     ctlConexion.init();
                     
