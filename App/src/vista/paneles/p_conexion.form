@@ -29,7 +29,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="button1" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="btnEstablecerConexion" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -45,7 +45,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="button1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnEstablecerConexion" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -336,11 +336,14 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="vista.componentes.button.Button" name="button1">
+    <Component class="vista.componentes.button.Button" name="btnEstablecerConexion">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="success"/>
         <Property name="texto" type="java.lang.String" value="Establecer conexi&#xf3;n"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -67,7 +67,7 @@ public class p_conexion extends javax.swing.JPanel {
         panel_estado = new javax.swing.JPanel();
         cmpNull = new javax.swing.JCheckBox();
         cmpContrasenha = new vista.componentes.campos.CampoPassword();
-        button1 = new vista.componentes.button.Button();
+        btnEstablecerConexion = new vista.componentes.button.Button();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -211,8 +211,8 @@ public class p_conexion extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        button1.setImgButtonType("success");
-        button1.setTexto("Establecer conexión");
+        btnEstablecerConexion.setImgButtonType("success");
+        btnEstablecerConexion.setTexto("Establecer conexión");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -229,7 +229,7 @@ public class p_conexion extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEstablecerConexion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -241,14 +241,14 @@ public class p_conexion extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEstablecerConexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.componentes.button.Button button1;
+    public vista.componentes.button.Button btnEstablecerConexion;
     private vista.componentes.campos.CampoPassword cmpContrasenha;
     public vista.componentes.campos.CampoTexto cmpHost;
     public javax.swing.JCheckBox cmpNull;

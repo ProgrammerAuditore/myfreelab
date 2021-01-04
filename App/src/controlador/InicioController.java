@@ -1,8 +1,11 @@
 package controlador;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import modelo.Conexion;
 import modelo.dao.FreelancerDao;
 import src.Info;
+import vista.paneles.p_conexion;
 import vista.paneles.panel_inicio;
 import vista.ventanas.VentanaInicio;
 
@@ -18,6 +21,7 @@ public class InicioController{
     public InicioController(VentanaInicio vp) {
         // Para poder controlar los eventos en el panel
         vInicio = vp;
+       
         this.init();
     }
     
@@ -26,6 +30,7 @@ public class InicioController{
         // Establecer acciones y propiedades a la ventana
         pInicio = (panel_inicio) vInicio.getPanelContenedor();
         fncEstablecerMensaje();
+        fncMenuItemConexion(); // Este método crea un modal para "Configurar conexión"
     }
     
     public void fncAbrirVentana(){
@@ -55,5 +60,24 @@ public class InicioController{
         }
 
     }
-
+    
+    private void fncMenuItemConexion(){
+        vInicio.menuItem_Conexion.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // Patron de diseño singleton
+                if( vInicio.panelConexion == null )
+                    vInicio.panelConexion = new p_conexion();
+                
+                // Habilitar el controlador ConnController
+                ConnController ctlConexion = new ConnController();
+                ctlConexion.setMi_panel(vInicio.panelConexion);
+                ctlConexion.init();
+                
+                // Crear un nuevo modal para "Configurar conexión"
+                vInicio.setModalNuevo(vInicio.panelConexion, "Configurar conexión");
+            }
+        });
+    }
+    
 }

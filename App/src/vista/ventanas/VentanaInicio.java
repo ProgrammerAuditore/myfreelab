@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.event.MouseInputAdapter;
+import src.Info;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
 import vista.paneles.p_conexion;
@@ -41,25 +42,27 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     public VentanaInicio(JPanel panel) {
         initComponents();
+        this.init();
         
-        // Posicionarlo al centro
-        this.setLocationRelativeTo(null);
-        
-        //
+        // Establecer las propiedades de la ventana de inicio
         panel.setBounds(0, 0, this.panelContenedor.getWidth(), this.panelContenedor.getHeight());
-        this.panelContenedor.add(panel );
+        this.panelContenedor.add(panel);
         this.panelContenedor.validate();
         this.panelContenedor.repaint();
         this.panelContenedor = panel;
         
-        // Establecer el fondo de la ventana
-        this.panel_background.setImgRutaInterno( Source.bkgDefault );
-        
         // ** Testing **
         System.out.println("Tamaño de la ventana = " + this.getBounds());
         System.out.println("Tamaño del panel = " + this.panel_background.getBounds());
-
-    }   
+    }
+    
+    private void init(){
+        // Posicionarlo al centro
+        this.setLocationRelativeTo(null);
+        
+        // Establecer el fondo de la ventana
+        this.panel_background.setImgRutaInterno( Source.bkgDefault );
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -215,7 +218,6 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void menuItem_ConexionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_ConexionMouseReleased
         // TODO add your handling code here:
-        this.fncConexion();
     }//GEN-LAST:event_menuItem_ConexionMouseReleased
 
     private void menuItem_datosPersonalesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_datosPersonalesMouseReleased
@@ -294,6 +296,13 @@ public class VentanaInicio extends javax.swing.JFrame {
     private p_gestionar_proyectos panelGestionarProyectos  = null;
 
     
+    public void fncAbrirVentana(){
+        setTitle(Info.NombreSoftware );
+        setLocationRelativeTo(null);
+        setEnabled(true);
+        setVisible(true);
+    }
+            
     public JPanel getPanelContenedor() {
         return panelContenedor;
     }
@@ -329,18 +338,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         modalAcercaDe.add( panelAcercaDe );
         modalAcercaDe.setVisible(true);
     }
-
-    private void fncConexion() {
-        // Patron de diseño Singleton 
-        if( panelConexion == null ){
-            panelConexion = new p_conexion();
-        }
-        
-        // Crear un nuevo modal para Configurar conexión
-        setModalNuevo(panelConexion, "Configurar conexión");
-    }
     
-    private void setModalNuevo(Container panel, String titulo){
+    public void setModalNuevo(Container panel, String titulo){
         // Establecemos las propiedades para el modal generico
         modal = new JDialog(this, titulo, true);
         modal.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
@@ -358,7 +357,7 @@ public class VentanaInicio extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private void fncDatosPersonales() {
         // Patron de diseño Singleton 
         if( panelDatosPersonales == null ){
