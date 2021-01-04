@@ -135,9 +135,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbl_puerto" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_contrasenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpPuerto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="cmpNull" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cmpContrasenha" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="cmpPuerto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
@@ -250,16 +250,6 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpPuerto">
-          <Properties>
-            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_puerto"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_contrasenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca la contrase&#xf1;a"/>
@@ -331,6 +321,16 @@
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_contrasenha"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="vista.componentes.campos.CampoNumerico" name="cmpPuerto">
+          <Properties>
+            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="lbl_puerto"/>
             </Property>
           </Properties>
           <AuxValues>

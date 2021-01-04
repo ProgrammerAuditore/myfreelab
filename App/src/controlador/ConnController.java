@@ -34,7 +34,7 @@ public class ConnController{
     }
     
     public void fncCargarDatosConexion(){
-        System.out.println("Cargando los datos...");
+        //System.out.println("Cargando los datos...");
         ConexionDao conexion = new ConexionDao();
         conn = conexion.obtener_conexion();
         

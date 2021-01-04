@@ -59,7 +59,6 @@ public class p_conexion extends javax.swing.JPanel {
         lbl_usuario = new vista.componentes.etiqueta.Etiqueta();
         cmpUsuario = new vista.componentes.campos.CampoTexto();
         lbl_puerto = new vista.componentes.etiqueta.Etiqueta();
-        cmpPuerto = new vista.componentes.campos.CampoTexto();
         lbl_contrasenha = new vista.componentes.etiqueta.Etiqueta();
         lbl_database = new vista.componentes.etiqueta.Etiqueta();
         cmpDatabase = new vista.componentes.campos.CampoTexto();
@@ -67,6 +66,7 @@ public class p_conexion extends javax.swing.JPanel {
         panel_estado = new javax.swing.JPanel();
         cmpNull = new javax.swing.JCheckBox();
         cmpContrasenha = new vista.componentes.campos.CampoPassword();
+        cmpPuerto = new vista.componentes.campos.CampoNumerico();
         btnEstablecerConexion = new vista.componentes.button.Button();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
@@ -115,8 +115,6 @@ public class p_conexion extends javax.swing.JPanel {
 
         lbl_puerto.setText("Introduzca el puerto");
 
-        cmpPuerto.setComponenteDidireccional(lbl_puerto);
-
         lbl_contrasenha.setText("Introduzca la contraseña");
 
         lbl_database.setText("Introduzca la base de datos");
@@ -143,6 +141,8 @@ public class p_conexion extends javax.swing.JPanel {
 
         cmpContrasenha.setComponenteDidireccional(lbl_contrasenha);
 
+        cmpPuerto.setComponenteDidireccional(lbl_puerto);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -160,9 +160,9 @@ public class p_conexion extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_puerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_contrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpNull)
-                            .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +253,7 @@ public class p_conexion extends javax.swing.JPanel {
     public vista.componentes.campos.CampoTexto cmpDatabase;
     public vista.componentes.campos.CampoTexto cmpHost;
     public javax.swing.JCheckBox cmpNull;
-    public vista.componentes.campos.CampoTexto cmpPuerto;
+    public vista.componentes.campos.CampoNumerico cmpPuerto;
     public vista.componentes.campos.CampoTexto cmpUsuario;
     public vista.componentes.etiqueta.Etiqueta etiqueta1;
     private javax.swing.JPanel jPanel1;
