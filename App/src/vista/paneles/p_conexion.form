@@ -144,7 +144,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbl_database" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpUsuario1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="cmpDatabase" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -192,7 +192,7 @@
                       <Group type="102" attributes="0">
                           <Component id="lbl_database" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmpUsuario1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpDatabase" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
@@ -276,7 +276,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpUsuario1">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpDatabase">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_database"/>
@@ -333,6 +333,9 @@
               <ComponentRef name="lbl_contrasenha"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

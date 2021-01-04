@@ -61,18 +61,24 @@ public class InicioController{
 
     }
     
+    private ConnController ctlConexion = null;
     private void fncMenuItemConexion(){
         vInicio.menuItem_Conexion.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 // Patron de diseño singleton
-                if( vInicio.panelConexion == null )
+                if( vInicio.panelConexion == null ){
                     vInicio.panelConexion = new p_conexion();
+                    
+                    // Habilitar el controlador ConnController
+                    ctlConexion = new ConnController();
+                    ctlConexion.setPanel(vInicio.panelConexion);
+                    ctlConexion.init();
+                    
+                }
                 
-                // Habilitar el controlador ConnController
-                ConnController ctlConexion = new ConnController();
-                ctlConexion.setMi_panel(vInicio.panelConexion);
-                ctlConexion.init();
+                // Cargar los datos de la conexión
+                ctlConexion.fncCargarDatosConexion();
                 
                 // Crear un nuevo modal para "Configurar conexión"
                 vInicio.setModalNuevo(vInicio.panelConexion, "Configurar conexión");

@@ -115,6 +115,10 @@ public class CampoTexto extends JTextField implements FocusListener{
         setToolTip();
     }
     
+    public boolean isAprobado(){
+        return !getText().equals( getPlaceholder() );          
+    }
+    
     @Override
     public void focusGained(FocusEvent e) {
         getEstiloTextEscritura();
