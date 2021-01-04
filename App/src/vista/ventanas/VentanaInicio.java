@@ -23,6 +23,8 @@ import javax.swing.border.LineBorder;
 import src.Source;
 import vista.componentes.jpanelbackground.Background;
 import vista.paneles.p_conexion;
+import vista.paneles.p_gestionar_empresas;
+import vista.paneles.p_gestionar_proyectos;
 import vista.paneles.p_mis_datos;
 import vista.paneles.panel_acerca_de;
 import vista.paneles.panel_conexion;
@@ -74,9 +76,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         menuItem_Salir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuItem_datosPersonales = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        menuItem_GestionarEmpresa = new javax.swing.JMenuItem();
+        menuItem_GestionarProyectos = new javax.swing.JMenuItem();
         menuConfigurar = new javax.swing.JMenu();
         menuItem_Conexion = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -143,14 +144,21 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         jMenu3.add(menuItem_datosPersonales);
 
-        jMenuItem9.setText("Buscar proyecto");
-        jMenu3.add(jMenuItem9);
+        menuItem_GestionarEmpresa.setText("Gestionar empresas");
+        menuItem_GestionarEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menuItem_GestionarEmpresaMouseReleased(evt);
+            }
+        });
+        jMenu3.add(menuItem_GestionarEmpresa);
 
-        jMenuItem10.setText("Gestionar empresas");
-        jMenu3.add(jMenuItem10);
-
-        jMenuItem12.setText("Gestionar proyectos");
-        jMenu3.add(jMenuItem12);
+        menuItem_GestionarProyectos.setText("Gestionar proyectos");
+        menuItem_GestionarProyectos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menuItem_GestionarProyectosMouseReleased(evt);
+            }
+        });
+        jMenu3.add(menuItem_GestionarProyectos);
 
         jMenuBar1.add(jMenu3);
 
@@ -214,6 +222,16 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.fncDatosPersonales();
     }//GEN-LAST:event_menuItem_datosPersonalesMouseReleased
 
+    private void menuItem_GestionarEmpresaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_GestionarEmpresaMouseReleased
+        // TODO add your handling code here:
+        this.fncGestionarEmpresas();
+    }//GEN-LAST:event_menuItem_GestionarEmpresaMouseReleased
+
+    private void menuItem_GestionarProyectosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_GestionarProyectosMouseReleased
+        // TODO add your handling code here:
+        this.fncGestionarProyectos();
+    }//GEN-LAST:event_menuItem_GestionarProyectosMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -257,12 +275,11 @@ public class VentanaInicio extends javax.swing.JFrame {
     public javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     public javax.swing.JMenuBar jMenuBar1;
-    public javax.swing.JMenuItem jMenuItem10;
-    public javax.swing.JMenuItem jMenuItem12;
-    public javax.swing.JMenuItem jMenuItem9;
     public javax.swing.JMenu menuConfigurar;
     private javax.swing.JMenuItem menuItem_AcercaDe;
     public javax.swing.JMenuItem menuItem_Conexion;
+    public javax.swing.JMenuItem menuItem_GestionarEmpresa;
+    public javax.swing.JMenuItem menuItem_GestionarProyectos;
     public javax.swing.JMenuItem menuItem_Salir;
     public javax.swing.JMenuItem menuItem_datosPersonales;
     private javax.swing.JPanel panelContenedor;
@@ -272,6 +289,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     private panel_acerca_de panelAcercaDe = null;
     private p_conexion panelConexion = null;
     private p_mis_datos panelDatosPersonales = null;
+    private p_gestionar_empresas panelGestionarEmpresas  = null;
+    private p_gestionar_proyectos panelGestionarProyectos  = null;
 
     
     public JPanel getPanelContenedor() {
@@ -324,8 +343,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         // Establecemos las propiedades para el modal generico
         modal = new JDialog(this, titulo, true);
         modal.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        modal.setLocation(541, 300);
-        modal.setSize(850, 540);
+        modal.setLocation(531, 300);
+        modal.setResizable(false);
+        modal.setSize(860, 540);
         modal.setContentPane(panel);
         modal.setVisible(true);
         
@@ -344,8 +364,29 @@ public class VentanaInicio extends javax.swing.JFrame {
             panelDatosPersonales = new p_mis_datos();
         }
         
-        // Crear un nuevo modal para Configurar conexión
+        // Crear un nuevo modal para Datos personales
         setModalNuevo(panelDatosPersonales, "Mis datos personales");
+    }
+
+    private void fncGestionarEmpresas() {
+        // Patron de diseño singleton
+        if( panelGestionarEmpresas == null ){
+            panelGestionarEmpresas = new p_gestionar_empresas();
+        }
+        
+        // Crear un nuevo modal para Gestionar empresas
+        setModalNuevo(panelGestionarEmpresas, "Gestionar empresas");
+        
+    }
+
+    private void fncGestionarProyectos() {
+        // Patron de diseño singleton
+        if( panelGestionarProyectos == null ){
+            panelGestionarProyectos = new p_gestionar_proyectos();
+        }
+        
+        // Crear un nuevo modal para Gestionar proyectos
+        setModalNuevo(panelGestionarProyectos, "Gestionar proyectos");
     }
     
 }
