@@ -21,7 +21,7 @@ public class Conexion {
             this.conn = (Connection) DriverManager.getConnection(url, objConn.getUsuario(), objConn.getPass());
             
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Conexion :: No se establecio la conexión  a la base de datos...");
         }
     }
 
