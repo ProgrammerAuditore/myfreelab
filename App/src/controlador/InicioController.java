@@ -57,8 +57,8 @@ public class InicioController implements Runnable{
                     pInicio.lbl_msg.setText("No hay freelancers creados");
                     pInicio.lbl_accion.setText("Crear un freelancer");
                 }else{
-                    pInicio.lbl_msg.setText("Conexión a la base de datos, "+ freelancers +" querys");
-                    pInicio.lbl_accion.setText("Espera por los freelancer, por favor...");
+                    pInicio.lbl_msg.setText("Conexión a la base de datos ");
+                    pInicio.lbl_accion.setText(freelancers +" querys");
                 }
             }else{
                 pInicio.lbl_msg.setText("Sin conexión a la base de datos");
