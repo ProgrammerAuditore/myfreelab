@@ -9,12 +9,12 @@ package vista.paneles;
  *
  * @author victo
  */
-public class panel_inicio extends javax.swing.JPanel {
+public class PanelInicio extends javax.swing.JPanel {
 
     /**
      * Creates new form panel_recuper_cuenta
      */
-    public panel_inicio() {
+    public PanelInicio() {
         initComponents();
     }
 

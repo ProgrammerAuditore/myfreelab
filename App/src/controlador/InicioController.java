@@ -6,14 +6,14 @@ import java.awt.event.MouseEvent;
 import modelo.dao.FreelancerDao;
 import src.Info;
 import src.Source;
-import vista.paneles.p_conexion;
-import vista.paneles.panel_inicio;
+import vista.paneles.PanelConexion;
+import vista.paneles.PanelInicio;
 import vista.ventanas.VentanaInicio;
 
 public class InicioController implements Runnable{
     
     // Atributos o campos
-    private panel_inicio pInicio; // Vista
+    private PanelInicio pInicio; // Vista
     private VentanaInicio vInicio; // Vista
     
     // Constructuros
@@ -29,7 +29,7 @@ public class InicioController implements Runnable{
     // Métodos
     private void init(){
         // Establecer acciones y propiedades a la ventana
-        pInicio = (panel_inicio) vInicio.getPanelContenedor();
+        pInicio = (PanelInicio) vInicio.getPanelContenedor();
         fncEstablecerMensaje();
         fncMenuItemConexion(); // Este método crea un modal para "Configurar conexión"
     }
@@ -79,7 +79,7 @@ public class InicioController implements Runnable{
             public void mouseReleased(MouseEvent e) {
                 // Patron de diseño singleton
                 if( vInicio.panelConexion == null ){
-                    vInicio.panelConexion = new p_conexion();
+                    vInicio.panelConexion = new PanelConexion();
                     
                     // Habilitar el controlador ConexionController
                     ctlConexion = new ConexionController();
@@ -100,7 +100,7 @@ public class InicioController implements Runnable{
     @Override
     public void run() {
         while (Source.pEjecucion.isAlive()) {            
-            System.out.println("Ejecutando hilo cada 3seg!!!");
+            System.out.println("Ejecutando hilo cada 1seg!!!");
             fncEstablecerMensaje();
             try {
                 Thread.sleep(1000);

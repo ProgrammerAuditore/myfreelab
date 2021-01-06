@@ -28,14 +28,14 @@ import javax.swing.event.ChangeListener;
  *
  * @author victo
  */
-public class panel_acerca_de extends javax.swing.JPanel {
+public class PanelAcercaDe extends javax.swing.JPanel {
     
     
     
     /**
      * Creates new form panel_acerca_de
      */
-    public panel_acerca_de() {
+    public PanelAcercaDe() {
         initComponents();
     }
     

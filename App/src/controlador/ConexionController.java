@@ -8,12 +8,12 @@ import modelo.Conexion;
 import modelo.dao.ConexionDao;
 import modelo.dto.ConexionDto;
 import src.Source;
-import vista.paneles.p_conexion;
+import vista.paneles.PanelConexion;
 
 public class ConexionController{
     
     // Atributos o campos
-    private p_conexion panel; // Vista
+    private PanelConexion panel; // Vista
     private ConexionDao modelo; // Modelo
     private ConexionDto conn;
     
@@ -21,7 +21,7 @@ public class ConexionController{
     public ConexionController() {
     }
 
-    public ConexionController(p_conexion mi_panel) {
+    public ConexionController(PanelConexion mi_panel) {
         this.panel = mi_panel;
     }
     
@@ -119,11 +119,11 @@ public class ConexionController{
     }
     
     // Getters y Setters
-    public p_conexion getPanel() {
+    public PanelConexion getPanel() {
         return panel;
     }
 
-    public void setPanel(p_conexion panel) {
+    public void setPanel(PanelConexion panel) {
         this.panel = panel;
     }
 

@@ -5,13 +5,7 @@
  */
 package vista.ventanas;
 
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dialog;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -19,17 +13,13 @@ import java.awt.event.WindowEvent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-import javax.swing.event.MouseInputAdapter;
 import src.Info;
 import src.Source;
-import vista.componentes.jpanelbackground.Background;
-import vista.paneles.p_conexion;
-import vista.paneles.p_gestionar_empresas;
-import vista.paneles.p_gestionar_proyectos;
-import vista.paneles.p_mis_datos;
-import vista.paneles.panel_acerca_de;
-import vista.paneles.panel_conexion;
+import vista.paneles.PanelConexion;
+import vista.paneles.PanelGestionarEmpresas;
+import vista.paneles.PanelGestionarProyectos;
+import vista.paneles.PanelDatos;
+import vista.paneles.PanelAcercaDe;
 
 /**
  *
@@ -289,11 +279,11 @@ public class VentanaInicio extends javax.swing.JFrame {
     private vista.componentes.jpanelbackground.JPanelBackground panel_background;
     // End of variables declaration//GEN-END:variables
     private JDialog modal;
-    private panel_acerca_de panelAcercaDe = null;
-    public p_conexion panelConexion = null;
-    private p_mis_datos panelDatosPersonales = null;
-    private p_gestionar_empresas panelGestionarEmpresas  = null;
-    private p_gestionar_proyectos panelGestionarProyectos  = null;
+    private PanelAcercaDe panelAcercaDe = null;
+    public PanelConexion panelConexion = null;
+    private PanelDatos panelDatosPersonales = null;
+    private PanelGestionarEmpresas panelGestionarEmpresas  = null;
+    private PanelGestionarProyectos panelGestionarProyectos  = null;
 
     
     public void fncAbrirVentana(){
@@ -310,7 +300,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void fncAcercaDe() {
         // Patron de diseño Singleton 
         if( panelAcercaDe == null ){
-            panelAcercaDe = new panel_acerca_de();
+            panelAcercaDe = new PanelAcercaDe();
         }
         
         // Establecemos las propiedades para AcercaDe
@@ -361,7 +351,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void fncDatosPersonales() {
         // Patron de diseño Singleton 
         if( panelDatosPersonales == null ){
-            panelDatosPersonales = new p_mis_datos();
+            panelDatosPersonales = new PanelDatos();
         }
         
         // Crear un nuevo modal para Datos personales
@@ -371,7 +361,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void fncGestionarEmpresas() {
         // Patron de diseño singleton
         if( panelGestionarEmpresas == null ){
-            panelGestionarEmpresas = new p_gestionar_empresas();
+            panelGestionarEmpresas = new PanelGestionarEmpresas();
         }
         
         // Crear un nuevo modal para Gestionar empresas
@@ -382,7 +372,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void fncGestionarProyectos() {
         // Patron de diseño singleton
         if( panelGestionarProyectos == null ){
-            panelGestionarProyectos = new p_gestionar_proyectos();
+            panelGestionarProyectos = new PanelGestionarProyectos();
         }
         
         // Crear un nuevo modal para Gestionar proyectos

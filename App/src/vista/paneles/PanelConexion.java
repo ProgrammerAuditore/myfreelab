@@ -15,12 +15,12 @@ import javax.swing.event.MouseInputAdapter;
  *
  * @author victo
  */
-public class p_conexion extends javax.swing.JPanel {
+public class PanelConexion extends javax.swing.JPanel {
 
     /**
      * Creates new form p_conexion
      */
-    public p_conexion() {
+    public PanelConexion() {
         initComponents();
         panel_estado.setBackground(Color.red);
         

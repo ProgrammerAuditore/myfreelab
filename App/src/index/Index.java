@@ -1,7 +1,7 @@
 package index;
 
 import controlador.InicioController;
-import vista.paneles.panel_inicio;
+import vista.paneles.PanelInicio;
 import vista.ventanas.Testing;
 import vista.ventanas.VentanaInicio;
 
@@ -11,7 +11,7 @@ public class Index {
         System.out.println("Inicializando programa...");
             
         // * Inicializar el programa
-        VentanaInicio ventana = new VentanaInicio(new panel_inicio());
+        VentanaInicio ventana = new VentanaInicio(new PanelInicio());
         InicioController controlador = new InicioController( ventana  );
         controlador.fncAbrirVentana();
 //        Testing probar = new Testing();
