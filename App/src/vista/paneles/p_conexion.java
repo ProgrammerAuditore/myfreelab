@@ -5,6 +5,7 @@
  */
 package vista.paneles;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,7 @@ public class p_conexion extends javax.swing.JPanel {
      */
     public p_conexion() {
         initComponents();
+        panel_estado.setBackground(Color.red);
         
         // Establecer evento de teclado para el chechkbox
         cmpNull.addMouseListener(new MouseInputAdapter() {
@@ -264,7 +266,7 @@ public class p_conexion extends javax.swing.JPanel {
     public vista.componentes.etiqueta.Etiqueta lbl_host;
     public vista.componentes.etiqueta.Etiqueta lbl_puerto;
     public vista.componentes.etiqueta.Etiqueta lbl_usuario;
-    private javax.swing.JPanel panel_estado;
+    public javax.swing.JPanel panel_estado;
     private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables
 }

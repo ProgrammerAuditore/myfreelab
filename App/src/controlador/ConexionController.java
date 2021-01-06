@@ -1,10 +1,13 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import modelo.Conexion;
 import modelo.dao.ConexionDao;
 import modelo.dto.ConexionDto;
+import src.Source;
 import vista.paneles.p_conexion;
 
 public class ConexionController{
@@ -28,7 +31,8 @@ public class ConexionController{
         panel.btnEstablecerConexion.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                fncEstablecerConexion();
+                if( panel.btnEstablecerConexion.isEnabled()  )
+                    fncEstablecerConexion();
             }
         });
     }
@@ -50,6 +54,11 @@ public class ConexionController{
                 panel.cmpContrasenha.setEnabled(false);
                 panel.cmpNull.setSelected(true);
             }
+            
+            if( Source.conn.getConn() != null )
+                Source.conn = Conexion.estado_conexion();
+            
+            fncEstadoConexion();
         } catch (Exception e) {
             System.out.println("El archivo db.dat no tiene propiedades o no existe.");
         }
@@ -82,9 +91,30 @@ public class ConexionController{
             modelo = new ConexionDao();
             modelo.regitrar_conexion(conexion );
             
-            JOptionPane.showMessageDialog(null, "Espera, estableciendo la conexión.");
+            Source.conn = Conexion.estado_conexion();
+            fncEstadoConexion();
+            
+             if( Source.conn.getConn() == null )
+                 JOptionPane.showMessageDialog(null, "Conexión no establecido.");
+            
+            
         }else{
             JOptionPane.showMessageDialog(null, "Verifica los campos, por favor.");
+        }
+    }
+    
+    private void fncEstadoConexion(){
+        if( Source.conn.getConn() == null ){
+            System.out.println("conn null = " + Source.conn.getConn());
+            Source.conn.cerrar_conexion();
+            panel.panel_estado.setBackground(Color.red);
+            panel.btnEstablecerConexion.setEnabled(true);
+        }else{
+            System.out.println("conn abierto = " + Source.conn.getConn());
+            Source.conn.cerrar_conexion();
+            panel.panel_estado.setBackground(Color.green);
+            panel.btnEstablecerConexion.addMouseListener(null);
+            panel.btnEstablecerConexion.setEnabled(false);
         }
     }
     
