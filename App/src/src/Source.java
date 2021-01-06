@@ -15,6 +15,7 @@ public class Source {
     public static final String temasContenedor = Rutas.pahtContenedorThemes;
     public static final String fuentesContenedor = Rutas.pathContenedorFuentes;
     public static Conexion conn;
+    public static Thread pEjecucion;
     
     // * Recursos del sistema
     // Fuentes
