@@ -31,7 +31,10 @@ public class InicioController implements Runnable{
         // Establecer acciones y propiedades a la ventana
         pInicio = (PanelInicio) vInicio.getPanelContenedor();
         fncEstablecerMensaje();
-        fncMenuItemConexion(); // Este método crea un modal para "Configurar conexión"
+        
+        /* Definir evento realeased  */
+        // Este método crea un modal para "Configurar conexión"
+        fncMenuItemConexion(); 
     }
     
     public void fncAbrirVentana(){
@@ -50,6 +53,7 @@ public class InicioController implements Runnable{
             System.out.println("Estado de conexión = " + Source.conn.getConn());
             
             if( Source.conn.getConn().isValid(100) ){
+                
                 int freelancers = new FreelancerDao().listar().size();
                 System.out.println("Total de freenlancers = " + freelancers);
 
@@ -60,12 +64,21 @@ public class InicioController implements Runnable{
                     pInicio.lbl_msg.setText("Conexión a la base de datos ");
                     pInicio.lbl_accion.setText(freelancers +" querys");
                 }
+                
             }else{
+                
                 pInicio.lbl_msg.setText("Sin conexión a la base de datos");
                 pInicio.lbl_accion.setText("Configurar");
-                Source.conn.cerrar_conexion();
-                System.out.println("TESTING :: cerrando la conexión");
+                
+                try {
+                    Source.conn.destruir_conexion();
+                    Source.conn = null;
+                    ctlConexion.fncLookCerrarConexion();
+                    System.out.println("TESTING :: cerrando la conexión");
+                } catch (Exception e) {}
+                
             }
+            
             
             
         } catch (Exception e) {}
@@ -101,7 +114,9 @@ public class InicioController implements Runnable{
     public void run() {
         while (Source.pEjecucion.isAlive()) {            
             System.out.println("Ejecutando hilo cada 1seg!!!");
+            
             fncEstablecerMensaje();
+            
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {}

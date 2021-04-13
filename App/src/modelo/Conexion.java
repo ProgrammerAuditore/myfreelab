@@ -40,4 +40,8 @@ public class Conexion {
         instance = null;
     }
     
+    public void destruir_conexion(){
+        instance = null;
+        conn = null;
+    }
 }

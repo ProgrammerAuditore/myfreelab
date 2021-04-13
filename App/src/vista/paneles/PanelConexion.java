@@ -27,21 +27,25 @@ public class PanelConexion extends javax.swing.JPanel {
         // Establecer evento de teclado para el chechkbox
         cmpNull.addMouseListener(new MouseInputAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
+                // Si el checkbox para el NULL es seleccionado
                 if( cmpNull.isSelected() ){
-                    cmpContrasenha.setText("");
+                    // * Deshabilitar el campo contraseña 
+                    cmpContrasenha.setText(null);
                     cmpContrasenha.aceptarCampo();
                     cmpContrasenha.setEditable(false);
                     cmpContrasenha.setEnabled(false);
+                    cmpContrasenha.setFocusable(false);
                 }else{
+                    // * Deshabilitar el campo contraseña
                     cmpContrasenha.rechazarCampo();
                     cmpContrasenha.setEditable(true);
                     cmpContrasenha.setEnabled(true);
+                    cmpContrasenha.setFocusable(true);
                 }
             }
         });
     }
-    
      
     /**
      * This method is called from within the constructor to initialize the form.
