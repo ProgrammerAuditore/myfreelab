@@ -33,8 +33,8 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelBackground1" alignment="0" pref="500" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
+          <Component id="jPanelBackground1" pref="500" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -80,7 +80,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                   <Component id="titulo1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="117" max="32767" attributes="0"/>
+                  <EmptySpace pref="118" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -187,7 +187,7 @@
       <SubComponents>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_nombres">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre(s)"/>
+            <Property name="text" type="java.lang.String" value="Nombre (s)"/>
           </Properties>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="campoTexto1">
@@ -199,7 +199,7 @@
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_apellidos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Apellido(s)"/>
+            <Property name="text" type="java.lang.String" value="Apellido (s)"/>
           </Properties>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="campoTexto2">
@@ -223,7 +223,7 @@
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_telefono">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Telefono"/>
+            <Property name="text" type="java.lang.String" value="Tel&#xe9;fono / M&#xf3;vil"/>
           </Properties>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="campoTexto4">
@@ -235,7 +235,7 @@
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_email">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Correo electronico"/>
+            <Property name="text" type="java.lang.String" value="Correo electr&#xf3;nico"/>
           </Properties>
         </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="campoTexto5">

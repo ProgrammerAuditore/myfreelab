@@ -68,7 +68,7 @@ public class PanelDatos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,11 +79,11 @@ public class PanelDatos extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos personales"));
 
-        lbl_nombres.setText("Nombre(s)");
+        lbl_nombres.setText("Nombre (s)");
 
         campoTexto1.setComponenteDidireccional(lbl_nombres);
 
-        lbl_apellidos.setText("Apellido(s)");
+        lbl_apellidos.setText("Apellido (s)");
 
         campoTexto2.setComponenteDidireccional(lbl_apellidos);
 
@@ -91,11 +91,11 @@ public class PanelDatos extends javax.swing.JPanel {
 
         campoTexto3.setComponenteDidireccional(lbl_direccion);
 
-        lbl_telefono.setText("Telefono");
+        lbl_telefono.setText("Teléfono / Móvil");
 
         campoTexto4.setComponenteDidireccional(lbl_telefono);
 
-        lbl_email.setText("Correo electronico");
+        lbl_email.setText("Correo electrónico");
 
         campoTexto5.setComponenteDidireccional(lbl_email);
 

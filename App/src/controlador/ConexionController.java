@@ -27,12 +27,21 @@ public class ConexionController{
     
     // Métodos
     public void init() {
-        // Establecer todo los eventos para Configurar conexión
+        // Establecer todo los eventos para establecer conexión
         panel.btnEstablecerConexion.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if( panel.btnEstablecerConexion.isEnabled()  )
                     fncEstablecerConexion();
+            }
+        });
+        
+        // Establecer todo los eventos para cerrar conexión
+        panel.btnCerrarConexion.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if( panel.btnCerrarConexion.isEnabled()  )
+                    fncCerrarConexion();
             }
         });
     }
@@ -89,7 +98,7 @@ public class ConexionController{
 
             ConexionDto conexion = new ConexionDto(puerto, host, database, usuario, password);
             modelo = new ConexionDao();
-            modelo.regitrar_conexion(conexion );
+            modelo.regitrar_conexion( conexion );
             
             Source.conn = Conexion.estado_conexion();
             fncEstadoConexion();
@@ -101,6 +110,18 @@ public class ConexionController{
         }else{
             JOptionPane.showMessageDialog(null, "Verifica los campos, por favor.");
         }
+    }
+    
+    private void fncCerrarConexion(){
+        ConexionDto conexion = new ConexionDto("0", "", "", "", "");
+        modelo = new ConexionDao();
+        modelo.regitrar_conexion( conexion );
+            
+        Source.conn = Conexion.estado_conexion();
+        if( Source.conn.getConn() == null ){
+            JOptionPane.showMessageDialog(null, "La conexión se cerro.");
+        }
+        Source.conn.cerrar_conexion();        
     }
     
     private void fncEstadoConexion(){
