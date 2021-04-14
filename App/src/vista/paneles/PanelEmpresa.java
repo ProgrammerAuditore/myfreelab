@@ -253,7 +253,7 @@ public class PanelEmpresa extends javax.swing.JPanel {
     public vista.componentes.campos.CampoTexto cmpCEO;
     public vista.componentes.campos.CampoTexto cmpCorreo;
     public vista.componentes.campos.CampoTexto cmpDireccion;
-    private vista.componentes.campos.CampoTexto cmpIdEmpresa;
+    public vista.componentes.campos.CampoTexto cmpIdEmpresa;
     public vista.componentes.campos.CampoTexto cmpNombreEmpresa;
     public vista.componentes.campos.CampoTexto cmpTelMovil;
     public vista.componentes.etiqueta.Enlace etqAsociar;
