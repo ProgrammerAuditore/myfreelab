@@ -123,37 +123,22 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="campoTexto5" max="32767" attributes="0"/>
-                                  <Component id="lbl_direccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoTexto3" alignment="0" pref="260" max="32767" attributes="0"/>
-                                  <Component id="lbl_direccion2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_nombres" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoTexto1" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="etiqueta3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="78" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="etiqueta1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_direccion3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_nombres1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_direccion1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="campoTexto6" alignment="0" pref="281" max="32767" attributes="0"/>
-                              <Component id="campoTexto2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBox2" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="enlace2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="enlace1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="campoTexto5" max="32767" attributes="0"/>
+                      <Component id="lbl_direccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoTexto3" alignment="0" pref="260" max="32767" attributes="0"/>
+                      <Component id="lbl_direccion2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_nombres" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoTexto1" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lbl_direccion3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_nombres1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_direccion1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoTexto4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="campoTexto6" alignment="0" pref="281" max="32767" attributes="0"/>
+                      <Component id="campoTexto2" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -163,7 +148,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="lbl_nombres" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -176,8 +161,6 @@
                           <Component id="lbl_direccion2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="campoTexto5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="etiqueta3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="lbl_nombres1" min="-2" max="-2" attributes="0"/>
@@ -195,21 +178,9 @@
                           <Component id="lbl_direccion3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="campoTexto6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="enlace1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="enlace2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="127" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -280,56 +251,12 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Ninguno"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Proyectos"/>
-          </Properties>
-        </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Asociar a un proyecto"/>
-          </Properties>
-        </Component>
         <Component class="vista.componentes.campos.CampoTexto" name="campoTexto2">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_nombres1"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="vista.componentes.etiqueta.Enlace" name="enlace1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Eliminar"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Ninguno"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="vista.componentes.etiqueta.Enlace" name="enlace2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Asociar"/>
           </Properties>
         </Component>
       </SubComponents>
