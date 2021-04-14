@@ -177,7 +177,7 @@ public class ConexionController {
         fncCtlCampos(true);
 
         // * Deshabilitar los sig. componentes
-        panel.panel_estado.setBackground(Color.red);
+        panel.panelEstado.setBackground(Color.red);
         panel.btnCerrarConexion.addMouseListener(null);
         panel.btnCerrarConexion.setEnabled(false);
     }
@@ -188,7 +188,7 @@ public class ConexionController {
 
         // * Deshabilitar los sig. componentes
         fncCtlCampos(false);
-        panel.panel_estado.setBackground(Color.green);
+        panel.panelEstado.setBackground(Color.green);
         panel.btnEstablecerConexion.addMouseListener(null);
         panel.btnEstablecerConexion.setEnabled(false);
     }

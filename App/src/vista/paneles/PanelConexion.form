@@ -29,8 +29,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnEstablecerConexion" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnCerrarConexion" min="-2" pref="135" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -39,7 +40,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelBackground1" pref="500" max="32767" attributes="0"/>
+          <Component id="jPanelBackground1" pref="492" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -50,7 +51,7 @@
                   <Component id="btnEstablecerConexion" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCerrarConexion" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,7 +89,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="113" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -96,14 +97,14 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Titulo" name="titulo1">
+        <Component class="vista.componentes.etiqueta.Titulo" name="etqTitulo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -125,39 +126,50 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_host" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpHost" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="lbl_usuario" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpUsuario" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="161" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_puerto" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_contrasenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpNull" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpContrasenha" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="cmpPuerto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmpDatabase" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="lbl_database" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqHost" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpUsuario" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="cmpHost" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
-                              <Component id="panel_estado" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="etqContrasenha" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="cmpNull" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="etqPuerto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="cmpContrasenha" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="cmpPuerto" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="etqDatabase" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpDatabase" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="etqEstado" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="panelEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -166,52 +178,45 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_puerto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmpPuerto" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_host" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="cmpHost" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_usuario" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="etqUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqPuerto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cmpUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpContrasenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpPuerto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="lbl_contrasenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="cmpNull" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="lbl_database" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmpDatabase" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="panel_estado" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="etqContrasenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpNull" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqHost" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Component id="cmpContrasenha" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="etqDatabase" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <Component id="cmpDatabase" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="panelEstado" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="etqEstado" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_host">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqHost">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca el host"/>
           </Properties>
@@ -222,14 +227,14 @@
         <Component class="vista.componentes.campos.CampoTexto" name="cmpHost">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_host"/>
+              <ComponentRef name="etqHost"/>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_usuario">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca el usuario"/>
           </Properties>
@@ -240,14 +245,14 @@
         <Component class="vista.componentes.campos.CampoTexto" name="cmpUsuario">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_usuario"/>
+              <ComponentRef name="etqUsuario"/>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_puerto">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqPuerto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca el puerto"/>
           </Properties>
@@ -255,7 +260,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_contrasenha">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqContrasenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca la contrase&#xf1;a"/>
           </Properties>
@@ -263,7 +268,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_database">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqDatabase">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca la base de datos"/>
           </Properties>
@@ -274,14 +279,14 @@
         <Component class="vista.componentes.campos.CampoTexto" name="cmpDatabase">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_database"/>
+              <ComponentRef name="etqDatabase"/>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqEstado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Estado"/>
           </Properties>
@@ -289,7 +294,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Container class="javax.swing.JPanel" name="panel_estado">
+        <Container class="javax.swing.JPanel" name="panelEstado">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
@@ -328,7 +333,7 @@
         <Component class="vista.componentes.campos.CampoPassword" name="cmpContrasenha">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_contrasenha"/>
+              <ComponentRef name="etqContrasenha"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -338,7 +343,7 @@
         <Component class="vista.componentes.campos.CampoNumerico" name="cmpPuerto">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_puerto"/>
+              <ComponentRef name="etqPuerto"/>
             </Property>
           </Properties>
           <AuxValues>
