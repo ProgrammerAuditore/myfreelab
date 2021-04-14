@@ -27,12 +27,19 @@
                               <Component id="cmpMontoEstimado" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmpFechaInicial" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="etqFechaInicial" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="eqtFechaFinal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="etqFechaInicial" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eqtFechaFinal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="campoTexto1" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="eqtMontoInicial1" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmpMontoInicial" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
@@ -86,8 +93,8 @@
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cmpFechaInicial" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmpMontoInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoTexto1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -117,13 +124,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="vista.componentes.campos.CampoTexto" name="cmpFechaInicial">
-      <Properties>
-        <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="etqFechaInicial"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="vista.componentes.etiqueta.Etiqueta" name="etqFechaInicial">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fecha Inicial"/>
@@ -209,5 +209,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="vista.componentes.campos.CampoTexto" name="campoTexto1">
+      <Properties>
+        <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="etqFechaInicial"/>
+        </Property>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
