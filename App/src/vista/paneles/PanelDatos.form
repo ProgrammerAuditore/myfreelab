@@ -23,7 +23,9 @@
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="button1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -40,8 +42,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="button1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,7 +84,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="118" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -87,20 +92,23 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Titulo" name="titulo1">
+        <Component class="vista.componentes.etiqueta.Titulo" name="etqTitulo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="MIS DATOS PERSONALES"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -117,140 +125,139 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_email" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto5" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="etqEmail" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_nombres" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto1" min="-2" pref="260" max="-2" attributes="0"/>
-                              <Component id="lbl_direccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto3" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="cmpCorreo" max="32767" attributes="0"/>
+                              <Component id="etqNombres" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpNombres" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cmpDireccion" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_apellidos" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto2" min="-2" pref="260" max="-2" attributes="0"/>
-                              <Component id="lbl_telefono" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto4" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="etqApellidos" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqTelMovil" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpApellidos" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cmpTelMovil" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_nombres" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="etqApellidos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpApellidos" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="etqTelMovil" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cmpTelMovil" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_apellidos" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="etqNombres" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpNombres" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="etqDireccion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cmpDireccion" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_direccion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_telefono" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="lbl_email" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="etqEmail" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="campoTexto5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <Component id="cmpCorreo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="119" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_nombres">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqNombres">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre (s)"/>
+            <Property name="text" type="java.lang.String" value="Introduzca nombre (s)"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto1">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpNombres">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_nombres"/>
+              <ComponentRef name="etqNombres"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_apellidos">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqApellidos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Apellido (s)"/>
+            <Property name="text" type="java.lang.String" value="Introduzca apellido (s)"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto2">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpApellidos">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_apellidos"/>
+              <ComponentRef name="etqApellidos"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_direccion">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqDireccion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Introduzca direcci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto3">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpDireccion">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_direccion"/>
+              <ComponentRef name="etqDireccion"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_telefono">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqTelMovil">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tel&#xe9;fono / M&#xf3;vil"/>
+            <Property name="text" type="java.lang.String" value="Introduzca Tel&#xe9;fono / M&#xf3;vil"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto4">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpTelMovil">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_telefono"/>
+              <ComponentRef name="etqTelMovil"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_email">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqEmail">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Correo electr&#xf3;nico"/>
+            <Property name="text" type="java.lang.String" value="Introduzca correo electr&#xf3;nico"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto5">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpCorreo">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_email"/>
+              <ComponentRef name="etqEmail"/>
             </Property>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="vista.componentes.button.Button" name="button1">
+    <Component class="vista.componentes.button.Button" name="btnAceptar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="success"/>
         <Property name="texto" type="java.lang.String" value="Aceptar"/>
+      </Properties>
+    </Component>
+    <Component class="vista.componentes.button.Button" name="btnCancelar">
+      <Properties>
+        <Property name="imgButtonType" type="java.lang.String" value="secondary"/>
+        <Property name="texto" type="java.lang.String" value="Cancelar"/>
       </Properties>
     </Component>
   </SubComponents>
