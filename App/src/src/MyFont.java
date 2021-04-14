@@ -45,18 +45,18 @@ public class MyFont {
             
             InputStream is = getClass().getResourceAsStream(fuente_path);
             font = Font.createFont(Font.TRUETYPE_FONT, is);
-            font = font.deriveFont(Font.PLAIN, 14);
+            font = font.deriveFont(Font.PLAIN, 12);
             
         } catch (FontFormatException | IOException e) {
             System.err.println("Warining: La siguiente fuente no se pudo cargar [\"" +fuente_name+ "-"+fuente_style+".ttf" + "\"]");
-            font = new Font("Arial", Font.PLAIN, 14);
+            font = new Font("Arial", Font.PLAIN, 12);
         }
     }
 
     public Font changeStyle(int estilo, int tamanho) {
         //System.out.println("Nombre del fuente = " + font.getName());
         
-        if( tamanho <= 0 ){ tamanho = 14; }
+        if( tamanho <= 0 ){ tamanho = 12; }
         
         if( font.getName().contains("Arial") ){
             return new Font("Arial", estilo, tamanho);
