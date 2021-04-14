@@ -131,9 +131,9 @@
                       <Component id="lbl_nombres" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="campoTexto1" alignment="1" pref="260" max="32767" attributes="0"/>
                       <Component id="lbl_nombres2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="1" pref="260" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="lbl_direccion3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_nombres1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -266,7 +266,7 @@
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_nombres2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Empresas"/>
+            <Property name="text" type="java.lang.String" value="Detalles"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -333,7 +333,7 @@
             </Component>
             <Component class="vista.componentes.etiqueta.Enlace" name="enlace2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Administrar empresa"/>
+                <Property name="text" type="java.lang.String" value="Vincular a una empresa"/>
               </Properties>
             </Component>
           </SubComponents>
