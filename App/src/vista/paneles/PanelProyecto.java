@@ -45,7 +45,7 @@ public class PanelProyecto extends javax.swing.JPanel {
         etqDetalles = new vista.componentes.etiqueta.Etiqueta();
         jScrollPane1 = new javax.swing.JScrollPane();
         cmpDetalles = new javax.swing.JTextArea();
-        cmpIdProducto = new vista.componentes.campos.CampoTexto();
+        cmpIdProyecto = new vista.componentes.campos.CampoTexto();
         btnAceptar = new vista.componentes.button.Button();
         btnCancelar = new vista.componentes.button.Button();
 
@@ -113,7 +113,7 @@ public class PanelProyecto extends javax.swing.JPanel {
         cmpDetalles.setRows(5);
         jScrollPane1.setViewportView(cmpDetalles);
 
-        cmpIdProducto.setComponenteDidireccional(etqIdProyecto);
+        cmpIdProyecto.setComponenteDidireccional(etqIdProyecto);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -138,7 +138,7 @@ public class PanelProyecto extends javax.swing.JPanel {
                             .addComponent(etqFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpFechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                             .addComponent(cmpMontoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpIdProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cmpIdProyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(etqDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -156,7 +156,7 @@ public class PanelProyecto extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(etqIdProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmpIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmpIdProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -230,7 +230,7 @@ public class PanelProyecto extends javax.swing.JPanel {
     public javax.swing.JTextArea cmpDetalles;
     public vista.componentes.campos.CampoTexto cmpFechaFinal;
     public vista.componentes.campos.CampoTexto cmpFechaInicial;
-    public vista.componentes.campos.CampoTexto cmpIdProducto;
+    public vista.componentes.campos.CampoTexto cmpIdProyecto;
     public vista.componentes.campos.CampoNumerico cmpMontoFinal;
     public vista.componentes.campos.CampoNumerico cmpMontoInicial;
     public vista.componentes.campos.CampoTexto cmpNombreProyecto;

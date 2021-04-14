@@ -144,7 +144,7 @@
                               <Component id="etqFechaFinal" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cmpFechaFinal" alignment="0" pref="281" max="32767" attributes="0"/>
                               <Component id="cmpMontoFinal" max="32767" attributes="0"/>
-                              <Component id="cmpIdProducto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cmpIdProyecto" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -169,7 +169,7 @@
                       <Group type="102" attributes="0">
                           <Component id="etqIdProyecto" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="cmpIdProducto" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpIdProyecto" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -314,7 +314,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpIdProducto">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpIdProyecto">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="etqIdProyecto"/>
