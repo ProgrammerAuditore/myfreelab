@@ -23,7 +23,7 @@
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="button1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bntCancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -43,7 +43,7 @@
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="button1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
                   <Component id="bntCancelar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -83,29 +83,32 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="184" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                  <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="126" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Titulo" name="titulo1">
+        <Component class="vista.componentes.etiqueta.Titulo" name="lblTitulo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CREAR PROYECTO"/>
+            <Property name="text" type="java.lang.String" value="TITULO TITULO TITULO"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -127,25 +130,25 @@
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbl_direccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto3" alignment="0" pref="260" max="32767" attributes="0"/>
-                              <Component id="lbl_direccion2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_nombres" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto1" alignment="0" pref="260" max="32767" attributes="0"/>
-                              <Component id="campoNumerico1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblFechaInicial" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpFechaInicial" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="lblMontoInicial" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNombreProyecto" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpNombreProyecto" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="cmpMontoInicial" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="78" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbl_direccion3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_nombres1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto2" alignment="0" pref="281" max="32767" attributes="0"/>
-                              <Component id="lbl_direccion1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoTexto4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="campoNumerico2" max="32767" attributes="0"/>
+                              <Component id="lblMontoFinal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblIdProyecto" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFechaFinal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpFechaFinal" alignment="0" pref="281" max="32767" attributes="0"/>
+                              <Component id="cmpMontoFinal" max="32767" attributes="0"/>
+                              <Component id="cmpIdProducto" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDetalles" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -157,46 +160,46 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lbl_nombres" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombreProyecto" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpNombreProyecto" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_nombres1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto2" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblIdProyecto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cmpIdProducto" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="lbl_direccion" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFechaInicial" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpFechaInicial" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="lbl_direccion1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFechaFinal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoTexto4" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpFechaFinal" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_direccion2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMontoInicial" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoNumerico1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpMontoInicial" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_direccion3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMontoFinal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoNumerico2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmpMontoFinal" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDetalles" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="81" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -205,83 +208,93 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_nombres">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="lblNombreProyecto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre del proyecto"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto1">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpNombreProyecto">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_nombres"/>
+              <ComponentRef name="lblNombreProyecto"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_direccion">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="lblFechaInicial">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fecha inicial"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto3">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpFechaInicial">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_direccion"/>
+              <ComponentRef name="lblFechaInicial"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto2">
-          <Properties>
-            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_nombres"/>
-            </Property>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_nombres1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="lblIdProyecto">
           <Properties>
             <Property name="text" type="java.lang.String" value="ID del proyecto"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto4">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpFechaFinal">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_direccion"/>
+              <ComponentRef name="lblFechaInicial"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_direccion1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="lblFechaFinal">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fecha final"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_direccion2">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="lblMontoInicial">
           <Properties>
             <Property name="text" type="java.lang.String" value="Monto inicial"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_direccion3">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="lblMontoFinal">
           <Properties>
             <Property name="text" type="java.lang.String" value="Monto final"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoNumerico" name="campoNumerico1">
+        <Component class="vista.componentes.campos.CampoNumerico" name="cmpMontoInicial">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_direccion2"/>
+              <ComponentRef name="lblMontoInicial"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="vista.componentes.campos.CampoNumerico" name="campoNumerico2">
+        <Component class="vista.componentes.campos.CampoNumerico" name="cmpMontoFinal">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_direccion3"/>
+              <ComponentRef name="lblMontoFinal"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="lblDetalles">
           <Properties>
             <Property name="text" type="java.lang.String" value="Detalles"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -290,27 +303,46 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="cmpDetalle">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpIdProducto">
+          <Properties>
+            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="lblIdProyecto"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
-    <Component class="vista.componentes.button.Button" name="button1">
+    <Component class="vista.componentes.button.Button" name="btnAceptar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="success"/>
         <Property name="texto" type="java.lang.String" value="Aceptar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="vista.componentes.button.Button" name="bntCancelar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="secondary"/>
         <Property name="texto" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
