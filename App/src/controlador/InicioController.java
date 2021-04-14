@@ -52,7 +52,7 @@ public class InicioController implements Runnable{
         try {
             System.out.println("Estado de conexión = " + Source.conn.getConn());
             
-            if( Source.conn.getConn().isValid(100) ){
+            if( Source.conn != null ){
                 
                 int freelancers = new FreelancerDao().listar().size();
                 System.out.println("Total de freenlancers = " + freelancers);
@@ -65,7 +65,9 @@ public class InicioController implements Runnable{
                     pInicio.lbl_accion.setText(freelancers +" querys");
                 }
                 
-            }else{
+            }else
+            
+            if( !Source.conn.getConn().isValid(100) || Source.conn == null ){
                 
                 pInicio.lbl_msg.setText("Sin conexión a la base de datos");
                 pInicio.lbl_accion.setText("Configurar");

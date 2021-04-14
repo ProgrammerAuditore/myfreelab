@@ -145,7 +145,7 @@ public class ConexionController {
 
                 // Destruir la conexion actual
                 Source.conn.destruir_conexion();
-
+                
             }
 
             // Verificar que la conexión se cerro exitosamente
