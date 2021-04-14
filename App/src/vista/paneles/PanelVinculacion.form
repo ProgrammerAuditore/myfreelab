@@ -27,7 +27,9 @@
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="button1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -44,7 +46,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="button1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -83,7 +88,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -91,14 +96,14 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
+                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Titulo" name="titulo1">
+        <Component class="vista.componentes.etiqueta.Titulo" name="etqTitulo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -123,11 +128,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="enlace2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_nombres" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqAsociar" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqProyectos" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="0" pref="360" max="32767" attributes="0"/>
+                      <Component id="etqEmpresas" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbProyectos" alignment="0" pref="360" max="32767" attributes="0"/>
                       <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -136,14 +141,14 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbl_apellidos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
+                                  <Component id="etqEmpresasAsociadas" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="enlace3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etqEliminar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -155,15 +160,15 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_nombres" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqProyectos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqEmpresasAsociadas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbProyectos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="etiqueta1" min="-2" max="-2" attributes="0"/>
+                          <Component id="etqEmpresas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -173,8 +178,8 @@
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="enlace2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="enlace3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqAsociar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -182,14 +187,14 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_nombres">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqProyectos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Proyectos"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_apellidos">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqEmpresasAsociadas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Empresas asociadas"/>
+            <Property name="text" type="java.lang.String" value="Empresas vinculadas"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -199,7 +204,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList3">
+            <Component class="javax.swing.JList" name="lstEmpresas">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="1">
@@ -209,11 +214,12 @@
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cmbProyectos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
@@ -223,6 +229,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -230,10 +237,13 @@
             <Property name="text" type="java.lang.String" value="Selecciona una empresa para asociar a un proyecto."/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Enlace" name="enlace2">
+        <Component class="vista.componentes.etiqueta.Enlace" name="etqAsociar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Asociar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -242,7 +252,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList1">
+            <Component class="javax.swing.JList" name="lstEmpresasAsociadas">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="1">
@@ -252,27 +262,43 @@
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="vista.componentes.etiqueta.Enlace" name="enlace3">
+        <Component class="vista.componentes.etiqueta.Enlace" name="etqEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqEmpresas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Empresas"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="vista.componentes.button.Button" name="button1">
+    <Component class="vista.componentes.button.Button" name="btnAceptar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="success"/>
         <Property name="texto" type="java.lang.String" value="Aceptar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="vista.componentes.button.Button" name="btnCancelar">
+      <Properties>
+        <Property name="imgButtonType" type="java.lang.String" value="secondary"/>
+        <Property name="texto" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
