@@ -9,12 +9,12 @@ package vista.paneles;
  *
  * @author victo
  */
-public class PanelCrearProyecto extends javax.swing.JPanel {
+public class PanelProyectoCrear extends javax.swing.JPanel {
 
     /**
      * Creates new form p_mis_datos
      */
-    public PanelCrearProyecto() {
+    public PanelProyectoCrear() {
         initComponents();
     }
 
