@@ -144,6 +144,11 @@ public class VentanaInicio extends javax.swing.JFrame {
                 menuItem_GestionarEmpresaMouseReleased(evt);
             }
         });
+        menuItem_GestionarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_GestionarEmpresaActionPerformed(evt);
+            }
+        });
         jMenu3.add(menuItem_GestionarEmpresa);
 
         menuItem_GestionarProyectos.setText("Gestionar proyectos");
@@ -217,13 +222,17 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void menuItem_GestionarEmpresaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_GestionarEmpresaMouseReleased
         // TODO add your handling code here:
-        this.fncGestionarEmpresas();
+        //this.fncGestionarEmpresas();
     }//GEN-LAST:event_menuItem_GestionarEmpresaMouseReleased
 
     private void menuItem_GestionarProyectosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItem_GestionarProyectosMouseReleased
         // TODO add your handling code here:
         this.fncGestionarProyectos();
     }//GEN-LAST:event_menuItem_GestionarProyectosMouseReleased
+
+    private void menuItem_GestionarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_GestionarEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItem_GestionarEmpresaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,7 +291,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private PanelAcercaDe panelAcercaDe = null;
     public PanelConexion panelConexion = null;
     private PanelDatos panelDatosPersonales = null;
-    private PanelGestionarEmpresas panelGestionarEmpresas  = null;
+    public PanelGestionarEmpresas panelGestionarEmpresas  = null;
     private PanelGestionarProyectos panelGestionarProyectos  = null;
 
     
@@ -333,7 +342,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         // Establecemos las propiedades para el modal generico
         modal = new JDialog(this, titulo, true);
         modal.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        modal.setLocation(531, 300);
+        //modal.setLocation(531, 300);
+        modal.setLocation( this.getX() + 200 , this.getY() + 150);
         modal.setResizable(false);
         modal.setSize(860, 540);
         modal.setContentPane(panel);
@@ -343,6 +353,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         modal.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
+                modal.setVisible(false);
+                modal.dispose();
                 modal = null;
             }
         });
@@ -357,7 +369,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         // Crear un nuevo modal para Datos personales
         setModalNuevo(panelDatosPersonales, "Mis datos personales");
     }
-
+    
+    /*
     private void fncGestionarEmpresas() {
         // Patron de diseño singleton
         if( panelGestionarEmpresas == null ){
@@ -368,6 +381,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         setModalNuevo(panelGestionarEmpresas, "Gestionar empresas");
         
     }
+    */
 
     private void fncGestionarProyectos() {
         // Patron de diseño singleton

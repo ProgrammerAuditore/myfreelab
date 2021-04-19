@@ -86,7 +86,7 @@ public class PanelEmpresa extends javax.swing.JPanel {
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Proyecto"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Empresa"));
 
         etqNombreEmpresa.setText("Nombre de la empresa");
 

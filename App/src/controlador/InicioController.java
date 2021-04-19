@@ -7,6 +7,7 @@ import modelo.dao.FreelancerDao;
 import src.Info;
 import src.Source;
 import vista.paneles.PanelConexion;
+import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelInicio;
 import vista.ventanas.VentanaInicio;
 
@@ -28,13 +29,15 @@ public class InicioController implements Runnable{
     
     // Métodos
     private void init(){
-        // Establecer acciones y propiedades a la ventana
+        /****** Establecer acciones y propiedades a la ventana *******/
         pInicio = (PanelInicio) vInicio.getPanelContenedor();
         fncEstablecerMensaje();
         
-        /* Definir evento realeased  */
+        /****** Definir evento realeased ******/
         // Este método crea un modal para "Configurar conexión"
-        fncMenuItemConexion(); 
+        fncMenuItemConexion();
+        // Este método crea un modal para "Gestionar empresas"
+        fncMenuItemGestionarEmpresa();
     }
     
     public void fncAbrirVentana(){
@@ -51,6 +54,7 @@ public class InicioController implements Runnable{
         // Verificar si tenemos una conexion registrada
         try {
             System.out.println("Estado de conexión = " + Source.conn.getConn());
+            System.out.println("Source.conn = " + Source.conn);
             
             if( Source.conn != null ){
                 
@@ -108,6 +112,29 @@ public class InicioController implements Runnable{
                 
                 // Crear un nuevo modal para "Configurar conexión"
                 vInicio.setModalNuevo(vInicio.panelConexion, "Configurar conexión");
+            }
+        });
+    }
+    
+    private GestionarEmpresaController ctlGestionarEmpresa = null;
+    private void fncMenuItemGestionarEmpresa(){
+        vInicio.menuItem_GestionarEmpresa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // Patron de diseño singleton
+                if( vInicio.panelGestionarEmpresas == null ){
+                    System.out.println("Iniciando modal de Gestionar empresa...");
+                    vInicio.panelGestionarEmpresas = new PanelGestionarEmpresas();
+                    
+                    // Habilitar el controlador ConexionController
+                    ctlGestionarEmpresa = new GestionarEmpresaController();
+                    ctlGestionarEmpresa.setPanel(vInicio.panelGestionarEmpresas);
+                    ctlGestionarEmpresa.init();
+                    
+                }
+                
+                // Crear un nuevo modal para "Configurar conexión"
+                vInicio.setModalNuevo(vInicio.panelGestionarEmpresas, "Configurar conexión");
             }
         });
     }

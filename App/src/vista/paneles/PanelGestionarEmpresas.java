@@ -179,7 +179,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.button.Button btnBuscar;
-    private vista.componentes.button.Button btnCrear;
+    public vista.componentes.button.Button btnCrear;
     private vista.componentes.button.Button btnEliminar;
     private vista.componentes.button.Button btnModificar;
     private vista.componentes.campos.CampoTexto campoTexto1;
