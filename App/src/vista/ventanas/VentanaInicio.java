@@ -67,6 +67,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         panelContenedor = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuItem_Salir = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuItem_datosPersonales = new javax.swing.JMenuItem();
@@ -117,6 +120,13 @@ public class VentanaInicio extends javax.swing.JFrame {
         jMenuBar1.setPreferredSize(new java.awt.Dimension(227, 36));
 
         jMenu1.setText("Archivo");
+
+        jMenuItem1.setText("Generar reporte");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Generar cotización");
+        jMenu1.add(jMenuItem2);
+        jMenu1.add(jSeparator1);
 
         menuItem_Salir.setText("Salir");
         menuItem_Salir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -268,6 +278,9 @@ public class VentanaInicio extends javax.swing.JFrame {
     public javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     public javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     public javax.swing.JMenu menuConfigurar;
     private javax.swing.JMenuItem menuItem_AcercaDe;
     public javax.swing.JMenuItem menuItem_Conexion;
