@@ -34,6 +34,15 @@ public class HiloPrincipal extends Thread{
                             System.out.println("La conexion esta cerrada");
                             CtrlHiloConexion.ctrlEstado = false;
                             CtrlHiloConexion.ctrlHiloC.notify();
+                        } else{
+                            
+                            // Validar la conexión actual (?) 
+                            /// Si Conexion Es Falso : Se cierra la conexion
+                            if( CtrlHiloConexion.ctrlConexion.isValid(1000) == false  ){
+                                CtrlHiloConexion.ctrlEstado = false;
+                                CtrlHiloConexion.ctrlHiloC.notify();
+                            }
+                            
                         }
                         
                         Thread.sleep(1000);
