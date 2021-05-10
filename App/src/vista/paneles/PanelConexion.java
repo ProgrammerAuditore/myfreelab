@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
+import src.Source;
 
 /**
  *
@@ -22,6 +23,8 @@ public class PanelConexion extends javax.swing.JPanel {
      */
     public PanelConexion() {
         initComponents();
+        this.setSize( Source.tamDialog );
+        this.setPreferredSize( Source.tamDialog );
         panelEstado.setBackground(Color.red);
         
         // Establecer evento de teclado para el chechkbox
@@ -250,7 +253,7 @@ public class PanelConexion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

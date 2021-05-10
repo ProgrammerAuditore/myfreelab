@@ -1,5 +1,6 @@
 package src;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.io.File;
 import modelo.Conexion;
@@ -29,5 +30,8 @@ public class Source {
     
     // Estilos
     public static final String styleButtonDefault = "bulma";
+    
+    // Dimension de los paneles para el modal
+    public static final Dimension tamDialog = new Dimension(850, 534);
     
 }
