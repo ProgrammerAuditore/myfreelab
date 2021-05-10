@@ -5,6 +5,8 @@
  */
 package vista.paneles;
 
+import src.Source;
+
 /**
  *
  * @author victo
@@ -16,6 +18,8 @@ public class PanelDatos extends javax.swing.JPanel {
      */
     public PanelDatos() {
         initComponents();
+        this.setSize( Source.tamDialog );
+        this.setPreferredSize(Source.tamDialog );
     }
 
     /**
@@ -194,13 +198,13 @@ public class PanelDatos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.componentes.button.Button btnAceptar;
-    private vista.componentes.button.Button btnCancelar;
-    private vista.componentes.campos.CampoTexto cmpApellidos;
-    private vista.componentes.campos.CampoTexto cmpCorreo;
-    private vista.componentes.campos.CampoTexto cmpDireccion;
-    private vista.componentes.campos.CampoTexto cmpNombres;
-    private vista.componentes.campos.CampoTexto cmpTelMovil;
+    public vista.componentes.button.Button btnAceptar;
+    public vista.componentes.button.Button btnCancelar;
+    public vista.componentes.campos.CampoTexto cmpApellidos;
+    public vista.componentes.campos.CampoTexto cmpCorreo;
+    public vista.componentes.campos.CampoTexto cmpDireccion;
+    public vista.componentes.campos.CampoTexto cmpNombres;
+    public vista.componentes.campos.CampoTexto cmpTelMovil;
     private vista.componentes.etiqueta.Etiqueta etqApellidos;
     private vista.componentes.etiqueta.Etiqueta etqDireccion;
     private vista.componentes.etiqueta.Etiqueta etqEmail;

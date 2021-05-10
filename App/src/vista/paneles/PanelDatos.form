@@ -197,6 +197,9 @@
               <ComponentRef name="etqNombres"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqApellidos">
           <Properties>
@@ -209,6 +212,9 @@
               <ComponentRef name="etqApellidos"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqDireccion">
           <Properties>
@@ -221,6 +227,9 @@
               <ComponentRef name="etqDireccion"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqTelMovil">
           <Properties>
@@ -233,6 +242,9 @@
               <ComponentRef name="etqTelMovil"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqEmail">
           <Properties>
@@ -245,6 +257,9 @@
               <ComponentRef name="etqEmail"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -253,12 +268,18 @@
         <Property name="imgButtonType" type="java.lang.String" value="success"/>
         <Property name="texto" type="java.lang.String" value="Aceptar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="vista.componentes.button.Button" name="btnCancelar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="secondary"/>
         <Property name="texto" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
