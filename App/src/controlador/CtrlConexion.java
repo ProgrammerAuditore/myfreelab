@@ -23,8 +23,8 @@ public class CtrlConexion implements MouseListener{
     private MdlConexion elModelo;
     public JDialog modal;
     private ConexionDto datos;
-    private ObjConexion conn;
-    private Connection conexion;
+    //private ObjConexion conn;
+    //private Connection conexion;
 
     public CtrlConexion(PanelConexion laVista, MdlConexion elModelo) {
         this.laVista = laVista;
@@ -71,6 +71,15 @@ public class CtrlConexion implements MouseListener{
         
         // Si mtdCapturarDatos() Es Verdadero
         if( mtdCapturarDatos() ){
+            CtrlHiloConexion.ctrlDatos = datos;
+            if(CtrlHiloConexion.mtdEstablecer()){
+                estilosConexionAbierto();
+            }
+        }
+        
+        /*
+        // Si mtdCapturarDatos() Es Verdadero
+        if( mtdCapturarDatos() ){
             try {
                 
                 // Realizar la conexion
@@ -81,6 +90,8 @@ public class CtrlConexion implements MouseListener{
                 // Si la conexio es valida  
                 if(conexion.isValid(1000)){
                     estilosConexionAbierto();
+                    CtrlHiloConexion.ctrlDatos = datos;
+                    CtrlHiloConexion.mtdEstablecer();
                     
                     // Mostrar mensaje
                     System.out.println("La conexion se establecio exitosamente.");
@@ -92,11 +103,17 @@ public class CtrlConexion implements MouseListener{
                 Logger.getLogger(CtrlConexion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        */
     }
     
     private void mtdCerrarConexion(){
         System.out.println("Cerrar conexión");
         
+        if( CtrlHiloConexion.mtdCerrar() ){
+            estilosConexionCerrada();
+        }
+        
+        /*
         // * Verificar si conn y conexion son instancias
         if( conn != null && conexion != null ){
             try {
@@ -109,6 +126,7 @@ public class CtrlConexion implements MouseListener{
                     conn = null;
                     conexion = null;
                     estilosConexionCerrada();
+                    CtrlHiloConexion.mtdCerrar();
                     
                     // Mostrar mensaje
                     System.out.println("La conexion se cerro existamente.");
@@ -119,7 +137,7 @@ public class CtrlConexion implements MouseListener{
                 Logger.getLogger(CtrlConexion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        */
     }
     
     private boolean mtdCapturarDatos(){

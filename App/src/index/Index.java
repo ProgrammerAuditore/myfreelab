@@ -1,6 +1,8 @@
 package index;
 
 import controlador.CtrlPrincipal;
+import hilos.HiloConexion;
+import hilos.HiloPrincipal;
 import modelo.MdlPrincipal;
 import vista.paneles.PanelInicio;
 import vista.splash.Bienvenida;
@@ -33,6 +35,10 @@ public class Index {
         splash.dispose();
         */
 
+        // * Crear hilos
+        HiloConexion hc = new HiloConexion();
+        HiloPrincipal hp = new HiloPrincipal();
+        
         // * Crear la ventana principal con su respectivo patrón de diseño MVC
         VentanaPrincipal frame_p = new VentanaPrincipal();
         MdlPrincipal mdl_p = new MdlPrincipal();
@@ -42,6 +48,10 @@ public class Index {
 //        Testing probar = new Testing();
 //        probar.setLocationRelativeTo(null);
 //        probar.setVisible(true);
-        
+    
+        // * Ejecutar hilos
+        hc.start();
+        hp.start();
+
     }
 }

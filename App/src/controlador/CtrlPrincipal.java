@@ -2,12 +2,10 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JDialog;
 import modelo.MdlConexion;
 import modelo.MdlPrincipal;
 import modelo.ObjConexion;
 import vista.paneles.PanelConexion;
-import vista.ventanas.VentanaInicio;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements  ActionListener{
