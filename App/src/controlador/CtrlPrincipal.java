@@ -81,9 +81,15 @@ public class CtrlPrincipal implements  ActionListener{
         
     }
     
-    private void mtdHabilitarMenus(){}
+    private void mtdHabilitarMenus(){
+        // * Habilitar las opciones de menu del menubar
+        laVista.menuEditar.setEnabled(true);
+    }
     
-    private void mtdDesHabilitarMenus(){}
+    private void mtdDesHabilitarMenus(){
+        // * DesHabilitar las opciones de menu del menubar
+        laVista.menuEditar.setEnabled(false);
+    }
     
     private void mtdTesting(String msg){
         System.out.println("ctrlPrincipal ::: " + msg + " ::: id [" + TestId + "]" );

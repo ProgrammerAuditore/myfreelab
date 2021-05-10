@@ -30,7 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         bntSalir = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        menuEditar = new javax.swing.JMenu();
         btnDatosPersonales = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
@@ -49,12 +49,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(jMenu1);
 
-        jMenu3.setText("Editar");
+        menuEditar.setText("Editar");
+        menuEditar.setEnabled(false);
 
         btnDatosPersonales.setText("Mis datos personales");
-        jMenu3.add(btnDatosPersonales);
+        menuEditar.add(btnDatosPersonales);
 
-        menuBar.add(jMenu3);
+        menuBar.add(menuEditar);
 
         jMenu2.setText("Configurar");
 
@@ -124,7 +125,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnDatosPersonales;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     public javax.swing.JMenuBar menuBar;
+    public javax.swing.JMenu menuEditar;
     // End of variables declaration//GEN-END:variables
 }

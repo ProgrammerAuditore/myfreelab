@@ -80,8 +80,8 @@ public class DatosPersonalesDao implements keyword_datos_personales<DatosPersona
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "UPDATE tbldatospersonales "
-                + "SET (cmpNombres = ?, cmpApellidos = ?, cmpDireccion = ?, cmpTMovil = ?, cmpCorreo = ?)"
-                + "WHERE cmpID = ?";
+                + "SET cmpNombres = ?, cmpApellidos = ?, cmpDireccion = ?, cmpTMovil = ?, cmpCorreo = ? "
+                + "WHERE cmpID = ?; ";
         
         try {
             

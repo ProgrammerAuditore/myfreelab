@@ -94,8 +94,8 @@ public class CtrlDatos implements MouseListener{
                 // Titulo
                 msg[0] = "Modificar datos personales";
                 // Pregunta
-                msg[1] = "Los datos personales, ya están definidos, ¿Deseas actualizarlo?"; 
-                int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
+                msg[1] = "Los datos personales, ya están definidos\n¿Deseas actualizarlo?"; 
+                int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
                 
                 if( opc ==  JOptionPane.YES_OPTION ){
                     if(dao.mtdActualizarDatos(datos_dto))
