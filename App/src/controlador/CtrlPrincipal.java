@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import modelo.MdlConexion;
 import modelo.MdlPrincipal;
+import modelo.ObjConexion;
 import vista.paneles.PanelConexion;
 import vista.ventanas.VentanaInicio;
 import vista.ventanas.VentanaPrincipal;
@@ -14,6 +15,7 @@ public class CtrlPrincipal implements  ActionListener{
     private int TestId;
     private MdlPrincipal elModelo;
     private VentanaPrincipal laVista;
+    private ObjConexion hconexion; 
 
     public CtrlPrincipal(MdlPrincipal elModelo, VentanaPrincipal laVista) {
         this.elModelo = elModelo;

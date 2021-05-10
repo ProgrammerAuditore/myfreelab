@@ -14,6 +14,7 @@ public class Index {
         // * Inicializar el programa
         System.out.println("Inicializando programa...");
         
+        /*
         // * Splash de bienvenida
         Bienvenida splash = new Bienvenida();
         splash.setLocationRelativeTo(null);
@@ -30,7 +31,8 @@ public class Index {
         }
         splash.setVisible(false);
         splash.dispose();
-        
+        */
+
         // * Crear la ventana principal con su respectivo patrón de diseño MVC
         VentanaPrincipal frame_p = new VentanaPrincipal();
         MdlPrincipal mdl_p = new MdlPrincipal();
