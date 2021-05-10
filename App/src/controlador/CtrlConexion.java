@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -39,6 +40,7 @@ public class CtrlConexion implements MouseListener{
     }
     
     private void mtdInit(){
+        estilosConexionCerrada();
         datos = new ConexionDto();
         modal = new JDialog();
         
@@ -55,10 +57,12 @@ public class CtrlConexion implements MouseListener{
     public void mouseReleased(MouseEvent e) {
         
         if( e.getSource() == laVista.btnCerrarConexion )
-            mtdCerrarConexion();
+            if( laVista.btnCerrarConexion.isEnabled() )
+                mtdCerrarConexion();
         
         if( e.getSource() == laVista.btnEstablecerConexion )
-            mtdEstablecerConexion();
+            if( laVista.btnEstablecerConexion.isEnabled() )
+                mtdEstablecerConexion();
         
     }
     
@@ -76,6 +80,7 @@ public class CtrlConexion implements MouseListener{
 
                 // Si la conexio es valida  
                 if(conexion.isValid(1000)){
+                    estilosConexionAbierto();
                     
                     // Mostrar mensaje
                     System.out.println("La conexion se establecio exitosamente.");
@@ -103,6 +108,9 @@ public class CtrlConexion implements MouseListener{
                     conexion.close();
                     conn = null;
                     conexion = null;
+                    estilosConexionCerrada();
+                    
+                    // Mostrar mensaje
                     System.out.println("La conexion se cerro existamente.");
                 
                 }
@@ -140,6 +148,32 @@ public class CtrlConexion implements MouseListener{
         }
         
         return false;
+    }
+    
+    private void estilosConexionAbierto(){
+        laVista.panelEstado.setBackground(Color.GREEN);
+        laVista.btnEstablecerConexion.setEnabled(false);
+        
+        laVista.btnCerrarConexion.setEnabled(true);
+        laVista.cmpContrasenha.setEnabled(false);
+        laVista.cmpDatabase.setEnabled(false);
+        laVista.cmpUsuario.setEnabled(false);
+        laVista.cmpPuerto.setEnabled(false);
+        laVista.cmpHost.setEnabled(false);
+        laVista.cmpNull.setEnabled(false);
+    }
+    
+    private void estilosConexionCerrada(){
+        laVista.panelEstado.setBackground(Color.RED);
+        laVista.btnCerrarConexion.setEnabled(false);
+        
+        laVista.btnEstablecerConexion.setEnabled(true);
+        laVista.cmpContrasenha.setEnabled(true);
+        laVista.cmpDatabase.setEnabled(true);
+        laVista.cmpUsuario.setEnabled(true);
+        laVista.cmpPuerto.setEnabled(true);
+        laVista.cmpHost.setEnabled(true);
+        laVista.cmpNull.setEnabled(true);
     }
     
     @Override
