@@ -69,4 +69,26 @@ public class CtrlHiloConexion{
     }
     
     
+    public static boolean checkConexion(){
+         if( ctrlConn != null && ctrlConexion != null ){
+            
+            try {
+                if( ctrlConexion.isValid(1000) ) return true;
+            } catch (SQLException ex) {
+                //Logger.getLogger(CtrlHiloConexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        return false;
+    }
+    
+    public static Connection getConexion(){
+        if( ctrlConn != null && ctrlConexion != null ){
+            return ctrlConexion;
+        }
+        
+        return null;
+    }
+    
 }

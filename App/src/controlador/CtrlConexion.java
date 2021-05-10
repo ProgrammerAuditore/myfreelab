@@ -23,8 +23,6 @@ public class CtrlConexion implements MouseListener{
     private MdlConexion elModelo;
     public JDialog modal;
     private ConexionDto datos;
-    //private ObjConexion conn;
-    //private Connection conexion;
 
     public CtrlConexion(PanelConexion laVista, MdlConexion elModelo) {
         this.laVista = laVista;
@@ -33,7 +31,6 @@ public class CtrlConexion implements MouseListener{
         // * Definir Oyentes
         this.laVista.btnCerrarConexion.addMouseListener(this);
         this.laVista.btnEstablecerConexion.addMouseListener(this);
-        
         
         // * Crear el modal
         mtdInit();
@@ -84,33 +81,6 @@ public class CtrlConexion implements MouseListener{
             }
         }
         
-        /*
-        // Si mtdCapturarDatos() Es Verdadero
-        if( mtdCapturarDatos() ){
-            try {
-                
-                // Realizar la conexion
-                conn = new ObjConexion(datos);
-                conn.mtdEstablecerConexion();
-                conexion = conn.getConexion();
-
-                // Si la conexio es valida  
-                if(conexion.isValid(1000)){
-                    estilosConexionAbierto();
-                    CtrlHiloConexion.ctrlDatos = datos;
-                    CtrlHiloConexion.mtdEstablecer();
-                    
-                    // Mostrar mensaje
-                    System.out.println("La conexion se establecio exitosamente.");
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(CtrlConexion.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassCastException ex) {
-                Logger.getLogger(CtrlConexion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        */
     }
     
     private void mtdCerrarConexion(){
@@ -120,31 +90,6 @@ public class CtrlConexion implements MouseListener{
             estilosConexionCerrada();
         }
         
-        /*
-        // * Verificar si conn y conexion son instancias
-        if( conn != null && conexion != null ){
-            try {
-                
-                // Verificar si conexion esta establecida
-                if( conexion.isValid(1000) ){
-                
-                    // Cerrar la conexión
-                    conexion.close();
-                    conn = null;
-                    conexion = null;
-                    estilosConexionCerrada();
-                    CtrlHiloConexion.mtdCerrar();
-                    
-                    // Mostrar mensaje
-                    System.out.println("La conexion se cerro existamente.");
-                
-                }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(CtrlConexion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        */
     }
     
     private boolean mtdCapturarDatos(){
@@ -179,8 +124,8 @@ public class CtrlConexion implements MouseListener{
         
         laVista.cmpDatabase.setText( datos.getDatabase() );
         laVista.cmpHost.setText( datos.getHost());
-        laVista.cmpPuerto.setText( datos.getHost());
-        laVista.cmpUsuario.setText( datos.getUsuario());
+        laVista.cmpPuerto.setText( "" + datos.getPuerto() );
+        laVista.cmpUsuario.setText( datos.getUsuario() );
         
         if( datos.getPass().isEmpty() ){
             laVista.cmpNull.setSelected(true);

@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 import modelo.MdlConexion;
 import modelo.MdlPrincipal;
 import modelo.ObjConexion;
+import modelo.dao.DatosPersonalesDao;
 import vista.paneles.PanelConexion;
+import vista.paneles.PanelDatos;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements  ActionListener{
@@ -26,6 +28,7 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.setLocationRelativeTo(null);
         laVista.bntSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
+        laVista.btnDatosPersonales.addActionListener(this);
     }
 
     @Override
@@ -36,6 +39,10 @@ public class CtrlPrincipal implements  ActionListener{
         
         if( e.getSource() == laVista.btnConexion )
             modalConfigurarConexion();
+        
+        if( e.getSource() == laVista.btnDatosPersonales )
+            modalDatosPersonales();
+        
     }
     
     
@@ -56,7 +63,27 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
+        if( CtrlHiloConexion.ctrlEstado )
+            mtdHabilitarMenus();
+        else
+            mtdDesHabilitarMenus();
+        
     }
+    
+    private void modalDatosPersonales() {
+        
+        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
+        PanelDatos vista = new PanelDatos();
+        DatosPersonalesDao modelo = new DatosPersonalesDao();
+        CtrlDatos controlador = new CtrlDatos(vista, modelo);
+        controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setVisible(true);
+        
+    }
+    
+    private void mtdHabilitarMenus(){}
+    
+    private void mtdDesHabilitarMenus(){}
     
     private void mtdTesting(String msg){
         System.out.println("ctrlPrincipal ::: " + msg + " ::: id [" + TestId + "]" );
