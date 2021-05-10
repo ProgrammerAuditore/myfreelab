@@ -4,15 +4,11 @@ import controlador.CtrlPrincipal;
 import hilos.HiloConexion;
 import hilos.HiloPrincipal;
 import modelo.MdlPrincipal;
-import vista.paneles.PanelInicio;
-import vista.splash.Bienvenida;
-import vista.ventanas.Testing;
-import vista.ventanas.VentanaInicio;
 import vista.ventanas.VentanaPrincipal;
 
 public class Index {
     public static void main(String[] args) {
-      
+        
         // * Inicializar el programa
         System.out.println("Inicializando programa...");
         
@@ -38,6 +34,8 @@ public class Index {
         // * Crear hilos
         HiloConexion hc = new HiloConexion();
         HiloPrincipal hp = new HiloPrincipal();
+        hc.setDaemon(true);
+        hp.setDaemon(true);
         
         // * Crear la ventana principal con su respectivo patrón de diseño MVC
         VentanaPrincipal frame_p = new VentanaPrincipal();
@@ -52,6 +50,6 @@ public class Index {
         // * Ejecutar hilos
         hc.start();
         hp.start();
-
+        
     }
 }

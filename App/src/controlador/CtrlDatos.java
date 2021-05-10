@@ -1,5 +1,7 @@
 package controlador;
 
+import java.awt.Dialog;
+import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JDialog;
@@ -30,7 +32,9 @@ public class CtrlDatos implements MouseListener{
         datos_dto = new DatosPersonalesDto();
         modal = new JDialog();
         
-        modal.setModal(true);
+        //modal.setModal(true);
+        modal.setType(Window.Type.UTILITY);
+        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         modal.setTitle("Datos personales");
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );

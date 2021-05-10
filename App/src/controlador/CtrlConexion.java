@@ -1,19 +1,12 @@
 package controlador;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
+import java.awt.Dialog;
+import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import modelo.MdlConexion;
-import modelo.ObjConexion;
 import modelo.dto.ConexionDto;
 import vista.paneles.PanelConexion;
 
@@ -40,7 +33,9 @@ public class CtrlConexion implements MouseListener{
         datos = new ConexionDto();
         modal = new JDialog();
         
-        modal.setModal(true);
+        //modal.setModal(true);
+        modal.setType(Window.Type.UTILITY);
+        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         modal.setTitle("Configurar conexión");
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );

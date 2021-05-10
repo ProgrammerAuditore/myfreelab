@@ -2,9 +2,12 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import modelo.MdlConexion;
 import modelo.MdlPrincipal;
 import modelo.ObjConexion;
+import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatos;
@@ -16,6 +19,7 @@ public class CtrlPrincipal implements  ActionListener{
     private MdlPrincipal elModelo;
     private VentanaPrincipal laVista;
     private ObjConexion hconexion; 
+    private ConexionDao conexion;
 
     public CtrlPrincipal(MdlPrincipal elModelo, VentanaPrincipal laVista) {
         this.elModelo = elModelo;
@@ -25,10 +29,26 @@ public class CtrlPrincipal implements  ActionListener{
     }
 
     private void mtdInit() {
+        conexion = new ConexionDao();
+        
         laVista.setLocationRelativeTo(null);
         laVista.bntSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
         laVista.btnDatosPersonales.addActionListener(this);
+        
+        laVista.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                mtdAbriendoPrograma();
+            }
+            
+            @Override
+            public void windowClosing(WindowEvent e) {
+               mtdCerrandoPrograma();
+                
+            }
+        });
+        
     }
 
     @Override
@@ -89,6 +109,29 @@ public class CtrlPrincipal implements  ActionListener{
     private void mtdDesHabilitarMenus(){
         // * DesHabilitar las opciones de menu del menubar
         laVista.menuEditar.setEnabled(false);
+    }
+    
+    private void mtdAbriendoPrograma() {
+        System.out.println("Ventana abierto.");
+
+        // Obtener los datos de la conexion antes de abrir el programa
+        CtrlHiloConexion.ctrlDatos = conexion.obtener_conexion();
+        if( CtrlHiloConexion.mtdEstablecer() ){
+            System.out.println("Iniciando el programa con exion establecida.");
+            mtdHabilitarMenus();
+        }
+        
+    }
+    
+    private void mtdCerrandoPrograma() {
+        System.out.println("Finalizo el programa.");
+
+        // Guardar los datos de la conexion antes de cerrar el programa
+        if( CtrlHiloConexion.checkConexion() ){
+            conexion.regitrar_conexion( CtrlHiloConexion.ctrlDatos );
+            System.out.println("Conexion guardada.");
+        }
+        
     }
     
     private void mtdTesting(String msg){
