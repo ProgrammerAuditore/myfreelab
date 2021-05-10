@@ -40,7 +40,6 @@ public class CtrlConexion implements MouseListener{
     }
     
     private void mtdInit(){
-        estilosConexionCerrada();
         datos = new ConexionDto();
         modal = new JDialog();
         
@@ -50,6 +49,14 @@ public class CtrlConexion implements MouseListener{
         modal.setPreferredSize( laVista.getSize() );
         modal.setResizable(false);
         modal.setContentPane(laVista);
+        
+        if( CtrlHiloConexion.ctrlEstado == true  ){
+            datos = CtrlHiloConexion.ctrlDatos;
+            mtdEstablecerDatos();
+            estilosConexionAbierto();
+        } else {
+            estilosConexionCerrada();
+        }
     }
     
     
@@ -166,6 +173,22 @@ public class CtrlConexion implements MouseListener{
         }
         
         return false;
+    }
+    
+    private void mtdEstablecerDatos(){
+        
+        laVista.cmpDatabase.setText( datos.getDatabase() );
+        laVista.cmpHost.setText( datos.getHost());
+        laVista.cmpPuerto.setText( datos.getHost());
+        laVista.cmpUsuario.setText( datos.getUsuario());
+        
+        if( datos.getPass().isEmpty() ){
+            laVista.cmpNull.setSelected(true);
+            laVista.cmpContrasenha.setText("");
+        } else{
+            laVista.cmpContrasenha.setText( datos.getPass() );
+        }
+        
     }
     
     private void estilosConexionAbierto(){
