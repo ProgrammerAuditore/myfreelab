@@ -32,6 +32,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bntSalir = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
         btnDatosPersonales = new javax.swing.JMenuItem();
+        btnGestionarProyectos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
 
@@ -54,6 +55,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnDatosPersonales.setText("Mis datos personales");
         menuEditar.add(btnDatosPersonales);
+
+        btnGestionarProyectos.setText("Gestionar proyectos");
+        menuEditar.add(btnGestionarProyectos);
 
         menuBar.add(menuEditar);
 
@@ -123,6 +127,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem bntSalir;
     public javax.swing.JMenuItem btnConexion;
     public javax.swing.JMenuItem btnDatosPersonales;
+    public javax.swing.JMenuItem btnGestionarProyectos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     public javax.swing.JMenuBar menuBar;

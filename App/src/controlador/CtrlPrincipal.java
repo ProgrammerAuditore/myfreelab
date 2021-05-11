@@ -11,6 +11,7 @@ import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatos;
+import vista.paneles.PanelGestionarProyectos;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements  ActionListener{
@@ -32,6 +33,7 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.bntSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
         laVista.btnDatosPersonales.addActionListener(this);
+        laVista.btnGestionarProyectos.addActionListener(this);
         
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -59,6 +61,9 @@ public class CtrlPrincipal implements  ActionListener{
         
         if( e.getSource() == laVista.btnDatosPersonales )
             modalDatosPersonales();
+        
+        if( e.getSource() == laVista.btnGestionarProyectos )
+            modalGestionarProyectos();
         
     }
     
@@ -93,6 +98,16 @@ public class CtrlPrincipal implements  ActionListener{
         PanelDatos vista = new PanelDatos();
         DatosPersonalesDao modelo = new DatosPersonalesDao();
         CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, modelo);
+        controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setVisible(true);
+        
+    }
+    
+    private void modalGestionarProyectos(){
+        
+        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
+        PanelGestionarProyectos vista = new PanelGestionarProyectos();
+        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos(vista);
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
