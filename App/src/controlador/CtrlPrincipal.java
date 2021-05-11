@@ -92,7 +92,7 @@ public class CtrlPrincipal implements  ActionListener{
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelDatos vista = new PanelDatos();
         DatosPersonalesDao modelo = new DatosPersonalesDao();
-        CtrlDatos controlador = new CtrlDatos(vista, modelo);
+        CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, modelo);
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         

@@ -10,11 +10,8 @@ import modelo.interfaces.keyword_datos_personales;
 
 public class DatosPersonalesDao implements keyword_datos_personales<DatosPersonalesDto> {
     
-    private DatosPersonalesDto datos_dto;
-    
-    
     @Override
-    public boolean mtdChecar(DatosPersonalesDto datos_dto) {
+    public boolean mtdConsultar(DatosPersonalesDto datos_dto) {
         
         PreparedStatement ps= null;
         Connection conn = CtrlHiloConexion.getConexion();
@@ -103,17 +100,5 @@ public class DatosPersonalesDao implements keyword_datos_personales<DatosPersona
         
         return false;
     }
-
-    @Override
-    public void setDatosPersonales(DatosPersonalesDto datos_dto) {
-        this.datos_dto = datos_dto;
-    }
-
-    @Override
-    public DatosPersonalesDto getDatosPersonales() {
-        return datos_dto;
-    }
-
-
-   
+    
 }

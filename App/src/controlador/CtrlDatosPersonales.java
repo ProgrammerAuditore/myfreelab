@@ -10,14 +10,14 @@ import modelo.dao.DatosPersonalesDao;
 import modelo.dto.DatosPersonalesDto;
 import vista.paneles.PanelDatos;
 
-public class CtrlDatos implements MouseListener{
+public class CtrlDatosPersonales implements MouseListener{
     
     private PanelDatos laVista;
     private DatosPersonalesDao dao;
     public JDialog modal;
     private DatosPersonalesDto datos_dto;
 
-    public CtrlDatos(PanelDatos laVista, DatosPersonalesDao dao) {
+    public CtrlDatosPersonales(PanelDatos laVista, DatosPersonalesDao dao) {
         this.laVista = laVista;
         this.dao = dao;
         
@@ -45,7 +45,7 @@ public class CtrlDatos implements MouseListener{
         if( CtrlHiloConexion.checkConexion() ){
             
             // Extraer los datos personales desde la base de datos
-            if( dao.mtdChecar(datos_dto) ){
+            if( dao.mtdConsultar(datos_dto) ){
                 
                 // Establecer los datos al laVista o formulario del panel
                 mtdEstablecerDatosFrm();
@@ -85,7 +85,7 @@ public class CtrlDatos implements MouseListener{
         
         if( mtdCapturarDatos() ){
             
-            if( dao.mtdChecar(datos_dto) == false ){
+            if( dao.mtdConsultar(datos_dto) == false ){
                 
                 // Registrarlo a la base de datos...
                 System.out.println("Registrarlo a la base de datos");
@@ -100,6 +100,7 @@ public class CtrlDatos implements MouseListener{
                 // Pregunta
                 msg[1] = "Los datos personales, ya están definidos\n¿Deseas actualizarlo?"; 
                 int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+                mtdCapturarDatos();
                 
                 if( opc ==  JOptionPane.YES_OPTION ){
                     if(dao.mtdActualizarDatos(datos_dto))
@@ -131,7 +132,7 @@ public class CtrlDatos implements MouseListener{
             
                 return true;
         }else{
-            System.out.println("Los datos personales no son validos.");
+            JOptionPane.showMessageDialog(null, "Verifica los campos, para datos personales.");
         }
             
         return false;

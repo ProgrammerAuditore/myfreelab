@@ -68,5 +68,12 @@ public class DatosPersonalesDto {
     public void setCmpID(int cmpID) {
         this.cmpID = cmpID;
     }
+
+    @Override
+    public String toString() {
+        return "DatosPersonalesDto{" + "cmpNombres=" + cmpNombres + ", cmpApellidos=" 
+                + cmpApellidos + ", cmpDireccion=" + cmpDireccion + ", cmpTMovil=" + cmpTMovil 
+                + ", cmpCorreo=" + cmpCorreo + ", cmpID=" + cmpID + '}';
+    }
     
 }
