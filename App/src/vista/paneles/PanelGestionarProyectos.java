@@ -93,7 +93,8 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
 
         tblProyectos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1), "Mario Molina", "03/01/2021", "15/03/2021", "0000", "0000"}
+                { new Integer(1), "Mario Molina", "03/01/2021", "15/03/2021", "0000", "0000"},
+                { new Integer(2), "Nuevo", null, null, null, null}
             },
             new String [] {
                 "Id", "Nombre", "Fecha incial", "Fecha final", "Costo estimado", "Monto adelantado"

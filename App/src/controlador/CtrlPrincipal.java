@@ -9,6 +9,8 @@ import modelo.MdlPrincipal;
 import modelo.ObjConexion;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
+import modelo.dao.ProyectoDao;
+import modelo.dto.ProyectoDto;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatos;
 import vista.paneles.PanelGestionarProyectos;
@@ -107,7 +109,9 @@ public class CtrlPrincipal implements  ActionListener{
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelGestionarProyectos vista = new PanelGestionarProyectos();
-        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos(vista);
+        ProyectoDao dao = new ProyectoDao();
+        ProyectoDto dto = new ProyectoDto();
+        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos( vista, dao, dto);
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
