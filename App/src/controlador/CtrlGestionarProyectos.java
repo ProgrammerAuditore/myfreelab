@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ProyectoDao;
 import modelo.dto.ProyectoDto;
@@ -37,13 +38,14 @@ public class CtrlGestionarProyectos implements MouseListener{
         // * Definir el modelo para la tabla
         modeloTabla = (DefaultTableModel) this.laVista.tblProyectos.getModel();
         this.laVista.tblProyectos.getTableHeader().setReorderingAllowed(false);
+        //this.laVista.tblProyectos.setRowSelectionAllowed(false);
+        this.laVista.tblProyectos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.laVista.tblProyectos.setModel(modeloTabla);
         
         mtdInit();
     }
 
     private void mtdInit() {
-        mtdVaciarTabla();
         modal = new JDialog();
         
         modal.setType(Window.Type.UTILITY);
@@ -55,11 +57,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         
         // Verificar si hay conexion al servidor de base datos
         if( CtrlHiloConexion.checkConexion() ){
-            proyectos = dao.mtdConsultar();
-            
-            if( proyectos.size() > 0 )
-                mtdAgregarProyectos();
-        
+           mtdRellenarTabla();
         }
     }
 
@@ -95,13 +93,10 @@ public class CtrlGestionarProyectos implements MouseListener{
             dto.setCmpNombre( cmpProyecto );
             
             if(dao.mtdInsetar(dto)){
-                dto.setCmpID( modeloTabla.getRowCount() + 1 );
-                proyectos.add(dto);
-            
-                mtdAgregarProyecto();
-                JOptionPane.showMessageDialog(null, "El proyecto `" + cmpProyecto + "` se creo exitosamente.");
-            
+                mtdRellenarTabla();
+                JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se creo exitosamente.");
             }
+            
         } else 
         JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
         
@@ -114,20 +109,54 @@ public class CtrlGestionarProyectos implements MouseListener{
     }
     
     private void mtdEliminarProyecto(){
-        System.out.println("Eliminar proyectos");
+        int seleccionado = laVista.tblProyectos.getSelectedRow();
+        
+        if( seleccionado >= 0 ){
+            dto = mtdObtenerProyecto(seleccionado);
+            String[] msg =  new String[2];
+            System.out.println("Eliminar proyectos");
+            
+            msg[0] = "Eliminar proyecto";
+            msg[1] = "¿Seguro que deseas eliminar el proyecto seleccionado?";
+            int opc = JOptionPane.showConfirmDialog(null, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                if( dao.mtdEliminar(dto) ){
+                    modeloTabla.removeRow(seleccionado);
+                    JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                }
+            }
+            
+        } else
+        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar un proyecto.");
         
     }
     
-    private boolean mtdValidarCampo(){
-        String cmp = laVista.cmpProyecto.getText().trim();
-
-        if( laVista.cmpProyecto.isAprobado() && !cmp.isEmpty() ){
-            cmpProyecto = cmp;
-            laVista.cmpProyecto.setText(null);
-            return true;
-        }
+    private ProyectoDto mtdObtenerProyecto(int fila){
+        ProyectoDto p = new ProyectoDto();
         
-        return false;
+        p.setCmpID( Integer.parseInt( laVista.tblProyectos.getValueAt(fila, 0).toString() ) );
+        p.setCmpNombre( String.valueOf( laVista.tblProyectos.getValueAt(fila, 1)) );
+        p.setCmpFechaInicial(String.valueOf( laVista.tblProyectos.getValueAt(fila, 2)) );
+        p.setCmpFechaFinal(String.valueOf( laVista.tblProyectos.getValueAt(fila, 3)) );
+        p.setCmpCostoEstimado( Double.parseDouble( laVista.tblProyectos.getValueAt(fila, 4).toString() ) );
+        p.setCmpMontoAdelantado(Double.parseDouble( laVista.tblProyectos.getValueAt(fila, 5).toString() ) );
+        
+        return p;
+    }
+    
+    private void mtdRellenarTabla() {
+        mtdVaciarTabla();
+        proyectos = dao.mtdConsultar();
+            
+        if( proyectos.size() > 0 )
+            mtdAgregarProyectos();
+    }
+    
+    private void mtdVaciarTabla(){
+        while( modeloTabla.getRowCount() > 0){
+            modeloTabla.removeRow(0);
+        }
     }
     
     private void mtdAgregarProyectos(){
@@ -150,10 +179,16 @@ public class CtrlGestionarProyectos implements MouseListener{
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpMontoAdelantado(), fila, 5);
     }
     
-    private void mtdVaciarTabla(){
-        while( modeloTabla.getRowCount() > 0){
-            modeloTabla.removeRow(0);
+    private boolean mtdValidarCampo(){
+        String cmp = laVista.cmpProyecto.getText().trim();
+
+        if( laVista.cmpProyecto.isAprobado() && !cmp.isEmpty() ){
+            cmpProyecto = cmp;
+            laVista.cmpProyecto.setText(null);
+            return true;
         }
+        
+        return false;
     }
     
     @Override
@@ -167,5 +202,5 @@ public class CtrlGestionarProyectos implements MouseListener{
 
     @Override
     public void mouseExited(MouseEvent e) {}
-    
+
 }

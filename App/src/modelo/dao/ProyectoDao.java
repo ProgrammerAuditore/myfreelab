@@ -75,5 +75,27 @@ public class ProyectoDao implements keyword_proyecto<ProyectoDto>{
     public boolean mtdComprobar(ProyectoDto proyecto_dto) {
         return false;
     }
+
+    @Override
+    public boolean mtdEliminar(ProyectoDto proyecto_dto) {
+        
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "DELETE FROM tblproyectos WHERE cmpID = ?; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, proyecto_dto.getCmpID());
+            int resp = ps.executeUpdate();
+            
+            if( resp > 0 )
+                return true;
+            
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+        return false;
+    }
     
 }
