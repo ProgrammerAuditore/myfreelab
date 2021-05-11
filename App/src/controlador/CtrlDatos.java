@@ -34,7 +34,7 @@ public class CtrlDatos implements MouseListener{
         
         //modal.setModal(true);
         modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
+        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Datos personales");
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );

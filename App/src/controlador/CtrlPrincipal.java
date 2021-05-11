@@ -19,7 +19,6 @@ public class CtrlPrincipal implements  ActionListener{
     private MdlPrincipal elModelo;
     private VentanaPrincipal laVista;
     private ObjConexion hconexion; 
-    private ConexionDao conexion;
 
     public CtrlPrincipal(MdlPrincipal elModelo, VentanaPrincipal laVista) {
         this.elModelo = elModelo;
@@ -29,8 +28,6 @@ public class CtrlPrincipal implements  ActionListener{
     }
 
     private void mtdInit() {
-        conexion = new ConexionDao();
-        
         laVista.setLocationRelativeTo(null);
         laVista.bntSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
@@ -115,8 +112,7 @@ public class CtrlPrincipal implements  ActionListener{
         System.out.println("Ventana abierto.");
 
         // Obtener los datos de la conexion antes de abrir el programa
-        CtrlHiloConexion.ctrlDatos = conexion.obtener_conexion();
-        if( CtrlHiloConexion.mtdEstablecer() ){
+        if( CtrlHiloConexion.checkConexion() ){
             System.out.println("Iniciando el programa con exion establecida.");
             mtdHabilitarMenus();
         }
@@ -128,7 +124,7 @@ public class CtrlPrincipal implements  ActionListener{
 
         // Guardar los datos de la conexion antes de cerrar el programa
         if( CtrlHiloConexion.checkConexion() ){
-            conexion.regitrar_conexion( CtrlHiloConexion.ctrlDatos );
+            new ConexionDao().regitrar_conexion( CtrlHiloConexion.ctrlDatos );
             System.out.println("Conexion guardada.");
         }
         
