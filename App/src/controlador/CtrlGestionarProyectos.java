@@ -80,9 +80,27 @@ public class CtrlGestionarProyectos implements MouseListener{
     }
     
     private void mtdBuscarProyecto(){
-        System.out.println("Buscar proyectos");
         
-        
+        if( mtdValidarCampo() ){
+            System.out.println("Buscar proyectos");
+            int p = modeloTabla.getRowCount();
+            boolean encontrado = false;
+            
+            for (int i = 0; i < p; i++) {
+                String pr = String.valueOf( modeloTabla.getValueAt(i, 0) );
+                
+                if( pr.contains( cmpProyecto ) || modeloTabla.getValueAt(i, 1).equals( cmpProyecto ) ){
+                    laVista.tblProyectos.setRowSelectionInterval(i, i);
+                    encontrado = true;
+                }
+                
+            }
+            
+            if( !encontrado )
+            JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpProyecto +"` no existe  .");
+            
+        } else 
+        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
         
     }
     
@@ -103,8 +121,32 @@ public class CtrlGestionarProyectos implements MouseListener{
     }
     
     private void mtdModificarProyecto(){
-        System.out.println("Modificar proyectos");
+        int seleccionado = laVista.tblProyectos.getSelectedRow();
         
+        if( seleccionado >= 0 ){
+            System.out.println("Modificar proyectos");
+            String[] msg = new String[2];
+            dto = mtdObtenerProyecto(seleccionado);
+            
+            System.out.println("FF = " + dto.getCmpFechaFinal() + " FI = " + dto.getCmpFechaInicial());
+            if( mtdFormatoFecha(dto.getCmpFechaInicial()) && mtdFormatoFecha(dto.getCmpFechaFinal())  ){
+                msg[1] = "Modificar proyecto";
+                msg[0] = "¿Seguro que deseas modificar el proyecto seleccionado?";
+                int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
+
+                if( opc == JOptionPane.YES_OPTION){
+
+                    if(dao.mtdActualizar(dto)){
+                        mtdRellenarTabla();
+                        JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se modifico exitosamente.");
+                    }
+
+                }
+            } else
+            JOptionPane.showMessageDialog(null, "El formato de fecha es incorrecto, debe ser dd-mm-aaaa o dd/mm/aaaa.");
+                
+        } else
+        JOptionPane.showMessageDialog(null, "Selecciona una fila para modificar un proyecto.");
         
     }
     
@@ -147,7 +189,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     
     private void mtdRellenarTabla() {
         mtdVaciarTabla();
-        proyectos = dao.mtdConsultar();
+        proyectos = dao.mtdListar();
             
         if( proyectos.size() > 0 )
             mtdAgregarProyectos();
@@ -182,13 +224,41 @@ public class CtrlGestionarProyectos implements MouseListener{
     private boolean mtdValidarCampo(){
         String cmp = laVista.cmpProyecto.getText().trim();
 
-        if( laVista.cmpProyecto.isAprobado() && !cmp.isEmpty() ){
-            cmpProyecto = cmp;
-            laVista.cmpProyecto.setText(null);
-            return true;
+        if( laVista.cmpProyecto.isAprobado() == false || cmp.isEmpty() ){
+            return false;
+        } else if( cmp.length() > 20 ) {
+            JOptionPane.showMessageDialog(null, "El campo tiene que ser menor a 20 caracteres.");
+            return false;
         }
         
-        return false;
+        cmpProyecto = cmp;
+        laVista.cmpProyecto.setText(null);
+        return true;
+    }
+    
+    private boolean mtdFormatoFecha(String cmpFecha){
+        int formato = 0;
+        int entero = 0;
+        
+        // dd-mm-aaaa
+        if( cmpFecha.length() > 10 )
+            return false;
+        
+        for (int i = 0; i < cmpFecha.length(); i++) {
+            Boolean flag = Character.isDigit(cmpFecha.charAt(i));
+
+            if( (cmpFecha.charAt(i) == '/' || cmpFecha.charAt(i) == '-') && i == 2 )
+                formato++;
+                    
+            if( (cmpFecha.charAt(i) == '/' || cmpFecha.charAt(i) == '-') && i == 5  )
+                formato++;
+
+            if( flag ) entero++;
+            
+        }
+            
+        System.out.println("Resultado :" + formato + " : " + entero + " :: " + cmpFecha.length());
+        return ( (formato + entero) == cmpFecha.length()  );
     }
     
     @Override
