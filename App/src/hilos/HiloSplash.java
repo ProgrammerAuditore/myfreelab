@@ -2,6 +2,7 @@ package hilos;
 
 import controlador.CtrlHiloConexion;
 import modelo.dao.ConexionDao;
+import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;
 import src.Source;
 import vista.splash.Bienvenida;
@@ -16,12 +17,18 @@ public class HiloSplash extends Thread{
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
         String[] msg = new String[3];
-        int src = 2, avance = 0;
+        int src = 4, avance = 0, pause = 2;
         
+        // * Cargar los datos de conexion..
         Source.dataConexion.exists();
         for (int i = 1; i > 0; i--) {
             
             splash.etqMensaje.setText("Cargando datos de conexion..");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
             if( new ConexionDao().obtener_conexion() != null ){
                 splash.etqMensaje.setText("Datos de conexión cargado.");
                 System.out.println("Datos de conexión cargado. [!]");
@@ -36,25 +43,80 @@ public class HiloSplash extends Thread{
             splash.pbProgreso.setValue(avance);
             splash.etqCarga.setText("" + avance + "%");
             try {
-                Thread.sleep( avance * 10 );
+                Thread.sleep( avance * pause );
             } catch (Exception e) {}
         }
         
+        // * Establecer conexion..
         CtrlHiloConexion.ctrlDatos = new ConexionDao().obtener_conexion();
         for (int i = 1; i > 0; i--) {
             
             splash.etqMensaje.setText("Estableciendo conexion..");
-            if(CtrlHiloConexion.mtdEstablecer()){
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
+            if(CtrlHiloConexion.mtdEstablecer())
                 splash.etqMensaje.setText("Conexion establecienda.");
-            }else {
+            else
                 splash.etqMensaje.setText("Conexion no establecida.");
-            }
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
             splash.etqCarga.setText("" + avance + "%");
             try {
-                Thread.sleep( avance * 2 );
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+        }
+
+        // * Cargar tabla proyectos..
+        for (int i = 1; i > 0; i--) {
+            
+            splash.etqMensaje.setText("Cargando tabla proyectos del SGBD..");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
+            if( CtrlHiloConexion.checkConexion() ){
+                if( !MyFreeLabDao.mtdCrearTablaProyectos() )
+                    splash.etqMensaje.setText("Tabla proyectos cargado.");
+                else
+                    splash.etqMensaje.setText("Tabla proyectos creado.");
+            } else
+                splash.etqMensaje.setText("Conexion no establecida.");
+            
+            avance += (100 / src);
+            splash.pbProgreso.setValue(avance);
+            splash.etqCarga.setText("" + avance + "%");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+        }
+        
+        // * Cargar tabla datos personales..
+        for (int i = 1; i > 0; i--) {
+            
+            splash.etqMensaje.setText("Cargando tabla datos personales del SGBD..");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
+            if( CtrlHiloConexion.checkConexion() ){
+                if( !MyFreeLabDao.mtdCrearTablaDatosPersonales() )
+                    splash.etqMensaje.setText("Tabla datos personales cargado.");
+                else
+                    splash.etqMensaje.setText("Tabla datos personales creado.");
+            } else
+                splash.etqMensaje.setText("Conexion no establecida.");
+            
+            avance += (100 / src);
+            splash.pbProgreso.setValue(avance);
+            splash.etqCarga.setText("" + avance + "%");
+            try {
+                Thread.sleep( avance * pause );
             } catch (Exception e) {}
         }
         
