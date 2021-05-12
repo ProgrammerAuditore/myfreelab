@@ -43,7 +43,7 @@ public class HiloSplash extends Thread{
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga
-            splash.etqMensaje.setText("Cargando datos de conexion..");
+            splash.etqMensaje.setText("Cargando datos de conexion ...");
             try {
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
@@ -74,7 +74,7 @@ public class HiloSplash extends Thread{
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga
-            splash.etqMensaje.setText("Estableciendo conexion..");
+            splash.etqMensaje.setText("Estableciendo conexion ...");
             try {
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
@@ -99,7 +99,7 @@ public class HiloSplash extends Thread{
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla proyectos del SGBD..");
+            splash.etqMensaje.setText("Cargando tabla proyectos ...");
             try {
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
@@ -127,7 +127,7 @@ public class HiloSplash extends Thread{
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla datos personales del SGBD..");
+            splash.etqMensaje.setText("Cargando tabla datos personales ...");
             try {
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
