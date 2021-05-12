@@ -9,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.MdlConexion;
 import modelo.dao.ConexionDao;
+import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;
 import vista.paneles.PanelConexion;
 
@@ -79,6 +80,25 @@ public class CtrlConexion implements MouseListener{
             CtrlHiloConexion.ctrlDatos = datos;
             if(CtrlHiloConexion.mtdEstablecer()){
                 estilosConexionAbierto();
+                
+                if( !MyFreeLabDao.mtdChecarTablas() ){
+                    int opc = JOptionPane.showConfirmDialog(null,"Se detecto que la base de datos\n"
+                            + "No cuenta con las tablas necesarios\n"
+                            + "¿Deseas crearlos?", "Crear tablas", JOptionPane.YES_OPTION);
+                    
+                    if( JOptionPane.YES_OPTION == opc ){
+                        
+                        MyFreeLabDao.mtdCrearTablaDatosPersonales();
+                        MyFreeLabDao.mtdCrearTablaProyectos();
+                        JOptionPane.showMessageDialog(null, "Creando tablas...");
+                    }else{
+                        
+                        mtdCerrarConexion();
+                        JOptionPane.showMessageDialog(null, "Se cerro la conexion, tablas insuficientes.");
+                    }
+                    
+                }
+                
             }else 
                 JOptionPane.showMessageDialog(null, "Conexion no establecida\n"
                 + "Por favor, verifique los datos y el servidor en estado de ejecución.");

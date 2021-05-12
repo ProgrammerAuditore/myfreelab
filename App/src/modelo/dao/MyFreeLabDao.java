@@ -32,11 +32,8 @@ public class MyFreeLabDao{
                 ResultSet rs = metadata.getTables(null, null, tables[i], null);
                 // Verficcar si existe o no la tabla
                 if(!rs.next()) {
-                    //mtdCrearTablaProyectos(tables[i]);
                     tablas_existentes--;
-                    System.out.println("Table " + tables[i] + " created");
-                }else
-                tablas_existentes++;
+                }else tablas_existentes++;
 
             }   
 
