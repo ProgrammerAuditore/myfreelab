@@ -8,21 +8,41 @@ import src.Source;
 import vista.splash.Bienvenida;
 
 public class HiloSplash extends Thread{
-
+    
+    private Bienvenida splash;
+    private int src;
+    private int avance;
+    private int pause;
+    
     @Override
     public void run() {
         
         // * Splash de bienvenida
-        Bienvenida splash = new Bienvenida();
+        splash = new Bienvenida();
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
-        String[] msg = new String[3];
-        int src = 4, avance = 0, pause = 2;
+        src = 4; avance = 0; pause = 2;
         
+        mtdCargarDatosDeConexion();
+        mtdEstablecerConexion();
+        mtdCargarTablaProyectos();
+        mtdCargarTablaDatosPersonales();
+        
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+        }
+        
+        splash.setVisible(false);
+        splash.dispose();
+    }
+    
+    private void mtdCargarDatosDeConexion(){
         // * Cargar los datos de conexion..
         Source.dataConexion.exists();
         for (int i = 1; i > 0; i--) {
             
+            // Titulo - Carga
             splash.etqMensaje.setText("Cargando datos de conexion..");
             try {
                 Thread.sleep( avance * pause );
@@ -46,11 +66,14 @@ public class HiloSplash extends Thread{
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
         }
-        
+    }
+    
+    private void mtdEstablecerConexion(){
         // * Establecer conexion..
         CtrlHiloConexion.ctrlDatos = new ConexionDao().obtener_conexion();
         for (int i = 1; i > 0; i--) {
             
+            // Titulo - Carga
             splash.etqMensaje.setText("Estableciendo conexion..");
             try {
                 Thread.sleep( avance * pause );
@@ -69,10 +92,13 @@ public class HiloSplash extends Thread{
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
         }
-
+    }
+    
+    private void mtdCargarTablaProyectos(){
         // * Cargar tabla proyectos..
         for (int i = 1; i > 0; i--) {
             
+            // Titulo - Carga
             splash.etqMensaje.setText("Cargando tabla proyectos del SGBD..");
             try {
                 Thread.sleep( avance * pause );
@@ -85,7 +111,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Tabla proyectos creado.");
             } else
-                splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexion no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -94,10 +120,13 @@ public class HiloSplash extends Thread{
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
         }
-        
+    }
+    
+    private void mtdCargarTablaDatosPersonales(){
         // * Cargar tabla datos personales..
         for (int i = 1; i > 0; i--) {
             
+            // Titulo - Carga
             splash.etqMensaje.setText("Cargando tabla datos personales del SGBD..");
             try {
                 Thread.sleep( avance * pause );
@@ -110,7 +139,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Tabla datos personales creado.");
             } else
-                splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexion no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -119,14 +148,7 @@ public class HiloSplash extends Thread{
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
         }
-        
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
-        }
-        
-        splash.setVisible(false);
-        splash.dispose();
     }
+    
     
 }
