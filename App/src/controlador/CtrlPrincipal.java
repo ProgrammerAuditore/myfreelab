@@ -88,10 +88,12 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
-        if( CtrlHiloConexion.ctrlEstado )
+        if( CtrlHiloConexion.ctrlEstado ){
             mtdHabilitarMenus();
-        else
-            mtdDesHabilitarMenus();
+            mtdCrearHilo();
+
+        }else
+        mtdDesHabilitarMenus();
         
     }
     
@@ -135,6 +137,7 @@ public class CtrlPrincipal implements  ActionListener{
         if( CtrlHiloConexion.checkConexion() ){
             System.out.println("Iniciando el programa con exion establecida.");
             mtdHabilitarMenus();
+            mtdCrearHilo();
         }
         
     }
@@ -150,6 +153,31 @@ public class CtrlPrincipal implements  ActionListener{
             if(CtrlHiloConexion.mtdCerrar())
                 System.out.println("Conexion finalizada.");
         }
+        
+    }
+    
+    private void mtdCrearHilo(){
+        Runnable watcher = () -> {
+            System.out.println("CtrlPrincipal ::: Hilo Creado [!]");
+            boolean estado = true;
+            
+            while( estado ){
+                synchronized( CtrlHiloConexion.ctrlHiloC ){
+                    
+                    if( CtrlHiloConexion.ctrlEstado == false ){
+                        mtdDesHabilitarMenus();
+                        estado = false;
+                    }
+                    
+                }
+            }
+            
+            System.out.println("CtrlPrincipal ::: Hilo Terminado [!]");
+        };
+        
+        Thread hilo = new Thread(watcher);
+        hilo.setDaemon(true);
+        hilo.start();
         
     }
     
