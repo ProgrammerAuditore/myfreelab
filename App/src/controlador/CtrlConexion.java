@@ -6,6 +6,7 @@ import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import modelo.MdlConexion;
 import modelo.dao.ConexionDao;
 import modelo.dto.ConexionDto;
@@ -78,7 +79,9 @@ public class CtrlConexion implements MouseListener{
             CtrlHiloConexion.ctrlDatos = datos;
             if(CtrlHiloConexion.mtdEstablecer()){
                 estilosConexionAbierto();
-            }
+            }else 
+                JOptionPane.showMessageDialog(null, "Conexion no establecida\n"
+                + "Por favor, verifique los datos y el servidor en estado de ejecución.");
         }
         
     }
@@ -127,11 +130,16 @@ public class CtrlConexion implements MouseListener{
         laVista.cmpPuerto.setText( "" + datos.getPuerto() );
         laVista.cmpUsuario.setText( datos.getUsuario() );
         
-        if( datos.getPass().isEmpty() ){
+        String passwd = datos.getPass().trim();
+        if( passwd.isEmpty() || passwd.length() == 0  ){
             laVista.cmpNull.setSelected(true);
-            laVista.cmpContrasenha.setText("");
+            laVista.cmpContrasenha.setText(null);
+            laVista.cmpContrasenha.aceptarCampo();
+            laVista.cmpContrasenha.setEditable(false);
+            laVista.cmpContrasenha.setEnabled(false);
+            laVista.cmpContrasenha.setFocusable(false);
         } else{
-            laVista.cmpContrasenha.setText( datos.getPass() );
+            laVista.cmpContrasenha.setText( passwd );
         }
         
     }
