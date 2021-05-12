@@ -9,10 +9,13 @@ import modelo.MdlPrincipal;
 import modelo.ObjConexion;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
+import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
+import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatos;
+import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
 import vista.ventanas.VentanaPrincipal;
 
@@ -36,6 +39,7 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.btnConexion.addActionListener(this);
         laVista.btnDatosPersonales.addActionListener(this);
         laVista.btnGestionarProyectos.addActionListener(this);
+        laVista.btnGestionarEmpresas.addActionListener(this);
         
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -66,6 +70,9 @@ public class CtrlPrincipal implements  ActionListener{
         
         if( e.getSource() == laVista.btnGestionarProyectos )
             modalGestionarProyectos();
+        
+        if( e.getSource() == laVista.btnGestionarEmpresas )
+            modalGestionarEmpresas();
         
     }
     
@@ -116,6 +123,18 @@ public class CtrlPrincipal implements  ActionListener{
         ProyectoDto dto = new ProyectoDto();
         CtrlGestionarProyectos controlador = new CtrlGestionarProyectos( vista, dao, dto);
         controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setVisible(true);
+        
+    }
+    
+    private void modalGestionarEmpresas(){
+        
+        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
+        PanelGestionarEmpresas vista = new PanelGestionarEmpresas();
+        EmpresaDao dao = new EmpresaDao();
+        EmpresaDto dto = new EmpresaDto();
+        CtrlGestionarEmpresas controlador = new CtrlGestionarEmpresas(vista, dao, dto);
+        controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
         
     }

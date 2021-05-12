@@ -5,6 +5,8 @@
  */
 package vista.paneles;
 
+import src.Source;
+
 /**
  *
  * @author victo
@@ -15,6 +17,8 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
      * Creates new form p_mis_datos
      */
     public PanelGestionarEmpresas() {
+        this.setSize( Source.tamDialog );
+        this.setPreferredSize( Source.tamDialog );
         initComponents();
     }
 
@@ -36,8 +40,8 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
         btnBuscar = new vista.componentes.button.Button();
         btnCrear = new vista.componentes.button.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        campoTexto1 = new vista.componentes.campos.CampoTexto();
+        tblEmpresas = new javax.swing.JTable();
+        cmpEmpresa = new vista.componentes.campos.CampoTexto();
         btnEliminar = new vista.componentes.button.Button();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
@@ -87,7 +91,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
         btnCrear.setImgButtonType("success");
         btnCrear.setTexto("Crear");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmpresas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1), "Mario Molina", "Desconocido", "example@example.com", "000000000"}
             },
@@ -103,9 +107,9 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEmpresas);
 
-        campoTexto1.setComponenteDidireccional(lbl_empresa);
+        cmpEmpresa.setComponenteDidireccional(lbl_empresa);
 
         btnEliminar.setImgButtonType("danger");
         btnEliminar.setTexto("Eliminar");
@@ -127,7 +131,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(200, 200, 200))))
@@ -140,7 +144,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                 .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,17 +182,17 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.componentes.button.Button btnBuscar;
+    public vista.componentes.button.Button btnBuscar;
     public vista.componentes.button.Button btnCrear;
-    private vista.componentes.button.Button btnEliminar;
-    private vista.componentes.button.Button btnModificar;
-    private vista.componentes.campos.CampoTexto campoTexto1;
+    public vista.componentes.button.Button btnEliminar;
+    public vista.componentes.button.Button btnModificar;
+    public vista.componentes.campos.CampoTexto cmpEmpresa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private vista.componentes.etiqueta.Etiqueta lbl_empresa;
+    public javax.swing.JTable tblEmpresas;
     private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables
 }

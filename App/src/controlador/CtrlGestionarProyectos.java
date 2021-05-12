@@ -48,6 +48,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     private void mtdInit() {
         modal = new JDialog();
         
+        modal.setTitle("Gestionar proyectos");
         modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setResizable(false);

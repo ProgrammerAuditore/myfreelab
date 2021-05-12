@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.dto.ProyectoDto;
-import modelo.interfaces.keyword_proyecto;
+import modelo.interfaces.keyword_query;
 
-public class ProyectoDao implements keyword_proyecto<ProyectoDto>{
+public class ProyectoDao implements keyword_query<ProyectoDto>{
 
     @Override
     public boolean mtdInsetar(ProyectoDto proyecto_dto) {
