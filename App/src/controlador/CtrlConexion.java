@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JDialog;
 import modelo.MdlConexion;
+import modelo.dao.ConexionDao;
 import modelo.dto.ConexionDto;
 import vista.paneles.PanelConexion;
 
@@ -48,6 +49,10 @@ public class CtrlConexion implements MouseListener{
             estilosConexionAbierto();
         } else {
             estilosConexionCerrada();
+            datos = new ConexionDao().obtener_conexion();
+            
+            if( datos != null )
+                mtdEstablecerDatos();
         }
     }
     

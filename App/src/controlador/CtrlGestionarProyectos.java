@@ -56,7 +56,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         modal.setContentPane(laVista);
         
         // Verificar si hay conexion al servidor de base datos
-        if( CtrlHiloConexion.checkConexion() ){
+        if( CtrlHiloConexion.ctrlEstado == true ){
            mtdRellenarTabla();
         }
     }

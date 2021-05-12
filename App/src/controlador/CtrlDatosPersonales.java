@@ -42,7 +42,7 @@ public class CtrlDatosPersonales implements MouseListener{
         modal.setContentPane(laVista);
         
         // Verificar si hay conexion al servidor de base datos
-        if( CtrlHiloConexion.checkConexion() ){
+        if( CtrlHiloConexion.ctrlEstado == true ){
             
             // Extraer los datos personales desde la base de datos
             if( dao.mtdConsultar(datos_dto) ){
