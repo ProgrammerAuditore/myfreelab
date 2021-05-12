@@ -73,6 +73,7 @@ public class CtrlPrincipal implements  ActionListener{
     private void mtdSalirDelPrograma(){
         // * Método para cerrar el programa
         laVista.setVisible(false);
+        mtdCerrandoPrograma();
         laVista.dispose();
         System.exit(0);
         
@@ -145,6 +146,9 @@ public class CtrlPrincipal implements  ActionListener{
         if( CtrlHiloConexion.checkConexion() ){
             new ConexionDao().regitrar_conexion( CtrlHiloConexion.ctrlDatos );
             System.out.println("Conexion guardada.");
+            
+            if(CtrlHiloConexion.mtdCerrar())
+                System.out.println("Conexion finalizada.");
         }
         
     }
