@@ -5,6 +5,8 @@
  */
 package vista.paneles;
 
+import src.Source;
+
 /**
  *
  * @author victo
@@ -16,6 +18,8 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
      */
     public PanelGestionarRequisitos() {
         initComponents();
+        this.setSize( Source.tamDialog );
+        this.setPreferredSize( Source.tamDialog );
     }
 
     /**
@@ -36,12 +40,12 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         btnBuscar = new vista.componentes.button.Button();
         btnCrear = new vista.componentes.button.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        campoTexto1 = new vista.componentes.campos.CampoTexto();
+        tblRequisitos = new javax.swing.JTable();
+        cmpRequisito = new vista.componentes.campos.CampoTexto();
         btnEliminar = new vista.componentes.button.Button();
         etqMontoEstimado = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoEstimado = new vista.componentes.campos.CampoNumerico();
-        campoNumerico1 = new vista.componentes.campos.CampoNumerico();
+        cmpCosto = new vista.componentes.campos.CampoNumerico();
         etqCosto = new vista.componentes.etiqueta.Etiqueta();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
@@ -91,7 +95,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         btnCrear.setImgButtonType("success");
         btnCrear.setTexto("Crear");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRequisitos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1), "Base de datos", "$3500.00"}
             },
@@ -107,9 +111,9 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblRequisitos);
 
-        campoTexto1.setComponenteDidireccional(lbl_empresa);
+        cmpRequisito.setComponenteDidireccional(lbl_empresa);
 
         btnEliminar.setImgButtonType("danger");
         btnEliminar.setTexto("Eliminar");
@@ -119,7 +123,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         cmpMontoEstimado.setComponenteDidireccional(etqMontoEstimado);
         cmpMontoEstimado.setEnabled(false);
 
-        campoNumerico1.setComponenteDidireccional(etqCosto);
+        cmpCosto.setComponenteDidireccional(etqCosto);
 
         etqCosto.setText("Costo");
 
@@ -144,7 +148,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmpRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(23, 23, 23))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,7 +157,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(etqCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(237, 237, 237))
-                                .addComponent(campoNumerico1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(cmpCosto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(cmpMontoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -169,8 +173,8 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                         .addComponent(etqCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoNumerico1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmpRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmpCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,21 +216,21 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.componentes.button.Button btnBuscar;
-    private vista.componentes.button.Button btnCrear;
-    private vista.componentes.button.Button btnEliminar;
-    private vista.componentes.button.Button btnModificar;
-    private vista.componentes.campos.CampoNumerico campoNumerico1;
-    private vista.componentes.campos.CampoTexto campoTexto1;
-    private vista.componentes.campos.CampoNumerico cmpMontoEstimado;
+    public vista.componentes.button.Button btnBuscar;
+    public vista.componentes.button.Button btnCrear;
+    public vista.componentes.button.Button btnEliminar;
+    public vista.componentes.button.Button btnModificar;
+    public vista.componentes.campos.CampoNumerico cmpCosto;
+    public vista.componentes.campos.CampoNumerico cmpMontoEstimado;
+    public vista.componentes.campos.CampoTexto cmpRequisito;
     private vista.componentes.etiqueta.Etiqueta etqCosto;
     private vista.componentes.etiqueta.Etiqueta etqMontoEstimado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private vista.componentes.etiqueta.Etiqueta lbl_empresa;
+    public javax.swing.JTable tblRequisitos;
     private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables
 }

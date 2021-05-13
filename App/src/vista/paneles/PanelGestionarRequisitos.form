@@ -128,7 +128,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="campoTexto1" min="-2" pref="301" max="-2" attributes="0"/>
+                                      <Component id="cmpRequisito" min="-2" pref="301" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -141,7 +141,7 @@
                                       <Component id="etqCosto" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="campoNumerico1" max="32767" attributes="0"/>
+                                  <Component id="cmpCosto" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -166,8 +166,8 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="campoTexto1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoNumerico1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmpRequisito" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmpCosto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -198,18 +198,27 @@
             <Property name="imgButtonType" type="java.lang.String" value="warning"/>
             <Property name="texto" type="java.lang.String" value="Modificar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.button.Button" name="btnBuscar">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="info"/>
             <Property name="texto" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.button.Button" name="btnCrear">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="success"/>
             <Property name="texto" type="java.lang.String" value="Crear"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -218,7 +227,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tblRequisitos">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="1">
@@ -234,21 +243,30 @@
                   </Table>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto1">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpRequisito">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="lbl_empresa"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.button.Button" name="btnEliminar">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="danger"/>
             <Property name="texto" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqMontoEstimado">
           <Properties>
@@ -262,13 +280,19 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="vista.componentes.campos.CampoNumerico" name="campoNumerico1">
+        <Component class="vista.componentes.campos.CampoNumerico" name="cmpCosto">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection component="etqCosto" type="bean"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqCosto">
           <Properties>

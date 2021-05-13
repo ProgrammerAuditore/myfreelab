@@ -29,7 +29,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     private DefaultTableModel modeloTabla = new DefaultTableModel();
     private List<ProyectoDto> proyectos = new ArrayList<>();
 
-    public CtrlGestionarProyectos(PanelGestionarProyectos laVista, ProyectoDao dao, ProyectoDto dto) {
+    public CtrlGestionarProyectos(PanelGestionarProyectos laVista, ProyectoDto dto, ProyectoDao dao) {
         this.laVista = laVista;
         this.dao = dao;
         this.dto = dto;
@@ -43,7 +43,6 @@ public class CtrlGestionarProyectos implements MouseListener{
         // * Definir el modelo para la tabla
         modeloTabla = (DefaultTableModel) this.laVista.tblProyectos.getModel();
         this.laVista.tblProyectos.getTableHeader().setReorderingAllowed(false);
-        //this.laVista.tblProyectos.setRowSelectionAllowed(false);
         this.laVista.tblProyectos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.laVista.tblProyectos.setModel(modeloTabla);
         

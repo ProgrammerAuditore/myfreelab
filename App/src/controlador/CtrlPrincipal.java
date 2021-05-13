@@ -8,13 +8,16 @@ import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
+import modelo.dao.RequisitoDao;
 import modelo.dto.ConexionDto;
 import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
+import modelo.dto.RequisitoDto;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatos;
 import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
+import vista.paneles.PanelGestionarRequisitos;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements  ActionListener{
@@ -33,12 +36,15 @@ public class CtrlPrincipal implements  ActionListener{
     }
 
     private void mtdInit() {
+        
+        // * Definir oyentes
         laVista.setLocationRelativeTo(null);
         laVista.bntSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
         laVista.btnDatosPersonales.addActionListener(this);
         laVista.btnGestionarProyectos.addActionListener(this);
         laVista.btnGestionarEmpresas.addActionListener(this);
+        laVista.btnGestionarRequisitos.addActionListener(this);
         
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -72,6 +78,9 @@ public class CtrlPrincipal implements  ActionListener{
         
         if( e.getSource() == laVista.btnGestionarEmpresas )
             modalGestionarEmpresas();
+        
+        if( e.getSource() == laVista.btnGestionarRequisitos )
+            modalGestionarRequisitos();
         
     }
     
@@ -108,8 +117,8 @@ public class CtrlPrincipal implements  ActionListener{
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelDatos vista = new PanelDatos();
-        DatosPersonalesDao modelo = new DatosPersonalesDao();
-        CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, modelo);
+        DatosPersonalesDao dao = new DatosPersonalesDao();
+        CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, dao);
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
@@ -121,7 +130,19 @@ public class CtrlPrincipal implements  ActionListener{
         PanelGestionarProyectos vista = new PanelGestionarProyectos();
         ProyectoDao dao = new ProyectoDao();
         ProyectoDto dto = new ProyectoDto();
-        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos( vista, dao, dto);
+        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos( vista, dto, dao);
+        controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setVisible(true);
+        
+    }
+    
+    private void modalGestionarRequisitos(){
+        
+        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
+        PanelGestionarRequisitos vista = new PanelGestionarRequisitos();
+        RequisitoDao dao = new RequisitoDao();
+        RequisitoDto dto = new RequisitoDto();
+        CtrlGestionarRequisitos controlador = new CtrlGestionarRequisitos( vista, dto, dao);
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
