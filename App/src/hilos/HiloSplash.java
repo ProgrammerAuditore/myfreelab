@@ -21,7 +21,7 @@ public class HiloSplash extends Thread{
         splash = new Bienvenida();
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
-        src = 4; avance = 0; pause = 2;
+        src = 6; avance = 0; pause = 2;
         
         mtdCargarDatosDeConexion();
         mtdEstablecerConexion();
@@ -30,6 +30,9 @@ public class HiloSplash extends Thread{
         mtdCargarTablaProyectos();
         mtdCargarTablaEmpresas();
         
+        splash.pbProgreso.setValue(100);
+        splash.etqCarga.setText("100%");
+                
         try {
             Thread.sleep(1000);
         } catch (Exception e) {

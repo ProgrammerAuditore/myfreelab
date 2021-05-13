@@ -212,7 +212,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     
     private void mtdAgregarProyecto(){
         int fila = modeloTabla.getRowCount();
-        modeloTabla.setNumRows( modeloTabla.getRowCount() + 1 );
+        modeloTabla.setNumRows( fila + 1 );
         
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpID() , fila, 0);
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpNombre(), fila, 1);

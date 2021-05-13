@@ -3,6 +3,7 @@ package modelo.dao;
 import controlador.CtrlHiloConexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +18,12 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "INSERT INTO tblempresas (cmpNombre, cmpDireccion, cmpCorreo, cmpTMovil) "
-                + "VALUES (?,?,?,?)";
+                + "VALUES (?, 'Desconocido', 'Desconocido', 'Desconocido')";
         
         try {
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, proyecto_dto.getCmpNombre());
-            ps.setString(2, proyecto_dto.getCmpDireccion());
-            ps.setString(3, proyecto_dto.getCmpCorreo());
-            ps.setString(4, proyecto_dto.getCmpTMovil());
             int rs = ps.executeUpdate();
             
             if( rs > 0 )
@@ -56,6 +54,31 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
     @Override
     public List<EmpresaDto> mtdListar() {
         List<EmpresaDto> empresas = new ArrayList<EmpresaDto>();
+        
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblempresas ;";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while( rs.next() ){
+                EmpresaDto empresa = new EmpresaDto();
+                
+                empresa.setCmpID(rs.getInt( "cmpID" ));
+                empresa.setCmpNombre(rs.getString( "cmpNombre" ));
+                empresa.setCmpDireccion(rs.getString( "cmpDireccion" ));
+                empresa.setCmpCorreo(rs.getString( "cmpCorreo" ));
+                empresa.setCmpTMovil(rs.getString( "cmpTMovil" ));
+                
+                empresas.add(empresa);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("" + e.getCause());
+        }
         
         return empresas;
     }
