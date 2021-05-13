@@ -4,13 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import modelo.MdlConexion;
-import modelo.MdlPrincipal;
-import modelo.ObjConexion;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
+import modelo.dto.ConexionDto;
 import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import vista.paneles.PanelConexion;
@@ -21,15 +19,16 @@ import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements  ActionListener{
     
-    private int TestId;
-    private MdlPrincipal elModelo;
+    // * Vista
     private VentanaPrincipal laVista;
-    private ObjConexion hconexion; 
+    
+    // * Atributos
+    private int TestId;
 
-    public CtrlPrincipal(MdlPrincipal elModelo, VentanaPrincipal laVista) {
-        this.elModelo = elModelo;
+    public CtrlPrincipal(VentanaPrincipal laVista) {
         this.laVista = laVista;
-
+        
+        // * Inicializar
         mtdInit();
     }
 
@@ -90,8 +89,9 @@ public class CtrlPrincipal implements  ActionListener{
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelConexion vista = new PanelConexion();
-        MdlConexion modelo = new MdlConexion();
-        CtrlConexion controlador = new CtrlConexion(vista, modelo);
+        ConexionDto dto = new ConexionDto();
+        ConexionDao dao = new ConexionDao();
+        CtrlConexion controlador = new CtrlConexion(vista, dto, dao);
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
