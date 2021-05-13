@@ -21,7 +21,7 @@ public class HiloSplash extends Thread{
         splash = new Bienvenida();
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
-        src = 6; avance = 0; pause = 2;
+        src = 7; avance = 0; pause = 7;
         
         mtdCargarDatosDeConexion();
         mtdEstablecerConexion();
@@ -29,6 +29,7 @@ public class HiloSplash extends Thread{
         mtdCargarTablaDatosPersonales();
         mtdCargarTablaProyectos();
         mtdCargarTablaEmpresas();
+        mtdCargarTablaRequisitos();
         
         splash.pbProgreso.setValue(100);
         splash.etqCarga.setText("100%");
@@ -200,6 +201,34 @@ public class HiloSplash extends Thread{
                     splash.etqMensaje.setText("Tabla empresas cargado.");
                 else
                     splash.etqMensaje.setText("Tabla empresas creado.");
+            } else
+            splash.etqMensaje.setText("Conexion no establecida.");
+            
+            avance += (100 / src);
+            splash.pbProgreso.setValue(avance);
+            splash.etqCarga.setText("" + avance + "%");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+        }
+    }
+    
+    private void mtdCargarTablaRequisitos() {
+        // * Cargar tabla requisitos..
+        for (int i = 1; i > 0; i--) {
+            
+            // Titulo - Carga
+            splash.etqMensaje.setText("Cargando tabla requisitos ...");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
+            if( CtrlHiloConexion.checkConexion() ){
+                if( !MyFreeLabDao.mtdCrearTablaRequisitos())
+                    splash.etqMensaje.setText("Tabla requisitos cargado.");
+                else
+                    splash.etqMensaje.setText("Tabla requisitos creado.");
             } else
             splash.etqMensaje.setText("Conexion no establecida.");
             

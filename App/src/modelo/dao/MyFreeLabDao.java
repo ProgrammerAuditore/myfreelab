@@ -42,7 +42,7 @@ public class MyFreeLabDao{
     
     public static boolean mtdChecarTablas(){
         Connection conn = CtrlHiloConexion.getConexion();
-        String[] tables = {"tblproyectos", "tbldatospersonales", "tblempresas"};//thats table names that I need to create if not exists
+        String[] tables = {"tblproyectos", "tbldatospersonales", "tblempresas", "tblrequisitos"};
         int tablas_existentes = 0;
         
         // Verificar la conexion a la base de datos
@@ -130,6 +130,30 @@ public class MyFreeLabDao{
                sql += " cmpDireccion varchar(20) null default 'Desconocido',";
                sql += " cmpCorreo varchar(20) null default 'Desconocido',";
                sql += " cmpTMovil varchar(20) null default 'Desconocido'";
+               sql += " ); ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+            
+            return true; 
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
+        return false;
+    }
+
+    public static boolean mtdCrearTablaRequisitos() {
+        PreparedStatement ps = null;
+        String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "Create Table "+dbname+".tblRequisitos ( ";
+               sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
+               sql += " cmpNombre varchar(20) not null,";
+               sql += " cmpMonto double not null";
                sql += " ); ";
         
         try {

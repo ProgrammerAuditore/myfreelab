@@ -4,7 +4,7 @@ public class RequisitoDto {
     
     private int cmpID;
     private String cmpNombre;
-    private double cmpPrecio;
+    private double cmpCosto;
 
     public int getCmpID() {
         return cmpID;
@@ -22,12 +22,12 @@ public class RequisitoDto {
         this.cmpNombre = cmpNombre;
     }
 
-    public double getCmpPrecio() {
-        return cmpPrecio;
+    public double getCmpCosto() {
+        return cmpCosto;
     }
 
-    public void setCmpPrecio(double cmpPrecio) {
-        this.cmpPrecio = cmpPrecio;
+    public void setCmpCosto(double cmpPrecio) {
+        this.cmpCosto = cmpPrecio;
     }
     
 }
