@@ -90,7 +90,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             for (int i = 0; i < p; i++) {
                 String pr = String.valueOf( modeloTabla.getValueAt(i, 0) );
                 
-                if( pr.contains( cmpProyecto ) || modeloTabla.getValueAt(i, 1).equals( cmpProyecto ) ){
+                if( pr.equals(cmpProyecto ) || modeloTabla.getValueAt(i, 1).equals( cmpProyecto ) ){
                     laVista.tblProyectos.setRowSelectionInterval(i, i);
                     encontrado = true;
                 }

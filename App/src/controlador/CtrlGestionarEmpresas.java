@@ -121,7 +121,27 @@ public class CtrlGestionarEmpresas implements MouseListener {
     }
     
     private void mtdBuscarEmpresa(){
-        System.out.println("CtrlGestionarEmpresas - Buscar empresa [!]");
+        
+        if( mtdValidarCampo() ){
+            System.out.println("CtrlGestionarEmpresas - Buscar empresa [!]");
+            int tam = modeloTabla.getRowCount();
+            boolean resultado = false;
+            
+            for (int i = 0; i < tam; i++) {
+                String valor = String.valueOf( modeloTabla.getValueAt(i, 0) );
+                
+                if( valor.equals(cmpEmpresa ) || modeloTabla.getValueAt(i, 1).equals( cmpEmpresa )){
+                    laVista.tblEmpresas.setRowSelectionInterval(i, i);
+                    resultado = true;
+                }
+            }
+            
+            if( !resultado )
+            JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpEmpresa +"` no existe  .");
+            
+        } else 
+        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        
     }
     
     private void mtdCrearEmpresa(){
@@ -136,7 +156,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             }
             
         } else
-        JOptionPane.showMessageDialog(null, "Verifica que los campo sea valido.");
+        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
         
     }
     
@@ -145,7 +165,40 @@ public class CtrlGestionarEmpresas implements MouseListener {
     }
     
     private void mtdEliminarEmpresa(){
-        System.out.println("CtrlGestionarEmpresas - Eliminar empresa [!]");
+        int seleccionado = laVista.tblEmpresas.getSelectedRow();
+        
+        if( seleccionado >= 0 ){
+            System.out.println("CtrlGestionarEmpresas - Eliminar empresa [!]");
+            String[] msg = new String[2];
+            dto = mtdObtenerEmpresa(seleccionado);
+            
+            msg[1] = "Eliminar empresa";
+            msg[0] = "¿Seguro que deseas eliminar la empresa seleccionado?";
+            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION );
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                if( dao.mtdEliminar(dto) ){
+                    modeloTabla.removeRow(seleccionado);
+                    JOptionPane.showMessageDialog(null, "La empresa `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                }
+            }
+            
+        }else
+        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar una empresa.");
+        
+        
+    }
+    
+    private EmpresaDto mtdObtenerEmpresa(int fila){
+        EmpresaDto empresa = new EmpresaDto();
+        
+        empresa.setCmpID( Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()) );
+        empresa.setCmpNombre( String.valueOf( modeloTabla.getValueAt(fila, 1))  );
+        empresa.setCmpDireccion( String.valueOf(modeloTabla.getValueAt(fila, 2)) );
+        empresa.setCmpCorreo( String.valueOf(modeloTabla.getValueAt(fila, 3)) );
+        empresa.setCmpTMovil( String.valueOf(modeloTabla.getValueAt(fila, 4)) );
+        
+        return empresa;
     }
     
     private boolean mtdValidarCampo(){

@@ -13,7 +13,7 @@ import modelo.interfaces.keyword_query;
 public class EmpresaDao implements keyword_query<EmpresaDto>{
 
     @Override
-    public boolean mtdInsetar(EmpresaDto proyecto_dto) {
+    public boolean mtdInsetar(EmpresaDto empresa_dto) {
         
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
@@ -23,7 +23,7 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
         try {
             
             ps = conn.prepareStatement(sql);
-            ps.setString(1, proyecto_dto.getCmpNombre());
+            ps.setString(1, empresa_dto.getCmpNombre());
             int rs = ps.executeUpdate();
             
             if( rs > 0 )
@@ -37,17 +37,33 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
     }
 
     @Override
-    public boolean mtdEliminar(EmpresaDto proyecto_dto) {
+    public boolean mtdEliminar(EmpresaDto empresa_dto) {
+        PreparedStatement ps = null;
+        Connection conn  = CtrlHiloConexion.getConexion();
+        String sql = "DELETE FROM tblempresas WHERE cmpID = ?; ";
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, empresa_dto.getCmpID());
+            int rs = ps.executeUpdate();
+            
+            if( rs > 0)
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
         return false;
     }
 
     @Override
-    public boolean mtdActualizar(EmpresaDto proyecto_dto) {
+    public boolean mtdActualizar(EmpresaDto empresa_dto) {
         return false;
     }
 
     @Override
-    public boolean mtdConsultar(EmpresaDto proyecto_dto) {
+    public boolean mtdConsultar(EmpresaDto empresa_dto) {
         return false;
     }
 
@@ -84,7 +100,7 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
     }
 
     @Override
-    public boolean mtdComprobar(EmpresaDto proyecto_dto) {
+    public boolean mtdComprobar(EmpresaDto empresa_dto) {
         return false;
     }
     
