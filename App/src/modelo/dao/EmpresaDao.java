@@ -59,6 +59,29 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
 
     @Override
     public boolean mtdActualizar(EmpresaDto empresa_dto) {
+        
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "UPDATE tblempresas "
+                + "SET cmpNombre = ?, cmpDireccion = ?, cmpCorreo = ?, cmpTMovil = ? "
+                + "WHERE cmpID = ?; ";
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, empresa_dto.getCmpNombre());
+            ps.setString(2, empresa_dto.getCmpDireccion());
+            ps.setString(3, empresa_dto.getCmpCorreo());
+            ps.setString(4, empresa_dto.getCmpTMovil());
+            ps.setInt(5, empresa_dto.getCmpID());
+            int rs = ps.executeUpdate();
+            
+            if( rs > 0 )
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
         return false;
     }
 

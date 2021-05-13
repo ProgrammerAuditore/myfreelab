@@ -16,11 +16,16 @@ import vista.paneles.PanelGestionarProyectos;
 
 public class CtrlGestionarProyectos implements MouseListener{
     
+    // * Vistas
     private PanelGestionarProyectos laVista;
+    public JDialog modal;
+    
+    // * Modelos
     private ProyectoDao dao;
     private ProyectoDto dto;
+    
+    // * Atributos
     private String cmpProyecto;
-    public JDialog modal;
     private DefaultTableModel modeloTabla = new DefaultTableModel();
     private List<ProyectoDto> proyectos = new ArrayList<>();
 
@@ -42,6 +47,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         this.laVista.tblProyectos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.laVista.tblProyectos.setModel(modeloTabla);
         
+        // * Inicializar
         mtdInit();
     }
 

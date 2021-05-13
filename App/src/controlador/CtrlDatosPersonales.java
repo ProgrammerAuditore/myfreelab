@@ -12,9 +12,12 @@ import vista.paneles.PanelDatos;
 
 public class CtrlDatosPersonales implements MouseListener{
     
+    // * Vistas
     private PanelDatos laVista;
-    private DatosPersonalesDao dao;
     public JDialog modal;
+    
+    // * Modelos
+    private DatosPersonalesDao dao;
     private DatosPersonalesDto datos_dto;
 
     public CtrlDatosPersonales(PanelDatos laVista, DatosPersonalesDao dao) {
@@ -25,6 +28,7 @@ public class CtrlDatosPersonales implements MouseListener{
         this.laVista.btnAceptar.addMouseListener(this);
         this.laVista.btnCancelar.addMouseListener(this);
         
+        // * Inicializar
         mtdInit();
     }
    

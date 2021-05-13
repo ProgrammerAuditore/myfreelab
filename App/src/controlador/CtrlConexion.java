@@ -5,9 +5,9 @@ import java.awt.Dialog;
 import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import modelo.MdlConexion;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;
@@ -15,25 +15,28 @@ import vista.paneles.PanelConexion;
 
 public class CtrlConexion implements MouseListener{
     
+    // * Vistas
     private PanelConexion laVista;
-    private MdlConexion elModelo;
     public JDialog modal;
-    private ConexionDto datos;
+    
+    // * Modelos
+    private ConexionDto dto;
+    private ConexionDao dao;
 
-    public CtrlConexion(PanelConexion laVista, MdlConexion elModelo) {
+    public CtrlConexion(PanelConexion laVista, ConexionDto dto, ConexionDao dao) {
         this.laVista = laVista;
-        this.elModelo = elModelo;
+        this.dto = dto;
+        this.dao = dao;
         
         // * Definir Oyentes
         this.laVista.btnCerrarConexion.addMouseListener(this);
         this.laVista.btnEstablecerConexion.addMouseListener(this);
         
-        // * Crear el modal
+        // * Inicializar
         mtdInit();
     }
     
     private void mtdInit(){
-        datos = new ConexionDto();
         modal = new JDialog();
         
         //modal.setModal(true);
@@ -46,14 +49,14 @@ public class CtrlConexion implements MouseListener{
         modal.setContentPane(laVista);
         
         if( CtrlHiloConexion.ctrlEstado == true  ){
-            datos = CtrlHiloConexion.ctrlDatos;
+            dto = CtrlHiloConexion.ctrlDatos;
             mtdEstablecerDatos();
             estilosConexionAbierto();
         } else {
             estilosConexionCerrada();
-            datos = new ConexionDao().obtener_conexion();
+            dto = dao.obtener_conexion();
             
-            if( datos != null )
+            if( dto != null )
                 mtdEstablecerDatos();
         }
     }
@@ -77,7 +80,7 @@ public class CtrlConexion implements MouseListener{
         
         // Si mtdCapturarDatos() Es Verdadero
         if( mtdCapturarDatos() ){
-            CtrlHiloConexion.ctrlDatos = datos;
+            CtrlHiloConexion.ctrlDatos = dto;
             if(CtrlHiloConexion.mtdEstablecer()){
                 estilosConexionAbierto();
                 
@@ -123,16 +126,16 @@ public class CtrlConexion implements MouseListener{
             laVista.cmpUsuario.isAprobado() && 
             laVista.cmpDatabase.isAprobado() ){
             
-            // Obtener todo los datos validados
-            datos.setDatabase( laVista.cmpDatabase.getText() );
-            datos.setHost( laVista.cmpHost.getText() );
-            datos.setPuerto( laVista.cmpPuerto.getText() );
-            datos.setUsuario( laVista.cmpUsuario.getText() );
+            // Obtener todo los dto validados
+            dto.setDatabase( laVista.cmpDatabase.getText() );
+            dto.setHost( laVista.cmpHost.getText() );
+            dto.setPuerto( laVista.cmpPuerto.getText() );
+            dto.setUsuario( laVista.cmpUsuario.getText() );
             
             if( laVista.cmpNull.isSelected() ){
-                datos.setPass("");
+                dto.setPass("");
             }else{
-                datos.setPass( laVista.cmpContrasenha.getPassword().toString() );
+                dto.setPass(Arrays.toString(laVista.cmpContrasenha.getPassword()) );
             }
             
             return true;
@@ -145,12 +148,12 @@ public class CtrlConexion implements MouseListener{
     
     private void mtdEstablecerDatos(){
         
-        laVista.cmpDatabase.setText( datos.getDatabase() );
-        laVista.cmpHost.setText( datos.getHost());
-        laVista.cmpPuerto.setText( "" + datos.getPuerto() );
-        laVista.cmpUsuario.setText( datos.getUsuario() );
+        laVista.cmpDatabase.setText(dto.getDatabase() );
+        laVista.cmpHost.setText(dto.getHost());
+        laVista.cmpPuerto.setText("" + dto.getPuerto() );
+        laVista.cmpUsuario.setText(dto.getUsuario() );
         
-        String passwd = datos.getPass().trim();
+        String passwd = dto.getPass().trim();
         if( passwd.isEmpty() || passwd.length() == 0  ){
             laVista.cmpNull.setSelected(true);
             laVista.cmpContrasenha.setText(null);

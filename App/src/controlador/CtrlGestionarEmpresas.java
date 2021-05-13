@@ -50,6 +50,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
         this.laVista.tblEmpresas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.laVista.tblEmpresas.setModel(modeloTabla);
         
+        // * Inicializar
         mtdInit();
     }
 
@@ -161,7 +162,27 @@ public class CtrlGestionarEmpresas implements MouseListener {
     }
     
     private void mtdModificarEmpresa(){
-        System.out.println("CtrlGestionarEmpresas - Modificar empresa [!]");
+        int seleccionado = laVista.tblEmpresas.getSelectedRow();
+        
+        if( seleccionado >= 0 ){
+            System.out.println("CtrlGestionarEmpresas - Modificar empresa [!]");
+            String[] msg = new String[2];
+            dto = mtdObtenerEmpresa(seleccionado);
+            
+            msg[1] = "Modificar empresa";
+            msg[0] = "¿Seguro que deseas modificar la empresa seleccionado?";
+            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                if( dao.mtdActualizar(dto) ){
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(null, "La empresa `" + dto.getCmpNombre() + "` se modifico exitosamente.");
+                }
+            }
+            
+        }else
+        JOptionPane.showMessageDialog(null, "Selecciona una fila para modificar una empresa.");
+        
     }
     
     private void mtdEliminarEmpresa(){
