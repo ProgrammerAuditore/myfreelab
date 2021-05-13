@@ -47,7 +47,6 @@ public class CtrlGestionarRequisitos implements MouseListener{
         this.laVista.btnBuscar.addMouseListener(this);
         this.laVista.btnModificar.addMouseListener(this);
         this.laVista.btnEliminar.addMouseListener(this);
-        this.laVista.btnBuscar.addMouseListener(this);
         
         // * Inicializar
         mtdInit();
@@ -89,7 +88,28 @@ public class CtrlGestionarRequisitos implements MouseListener{
         
     }
     
-    private void mtdBuscarRequisito(){}
+    private void mtdBuscarRequisito(){
+        
+        if( mtdValidarCampoRequisito() ){
+            int tam = modeloTabla.getRowCount();
+            boolean encontrado = false;
+            
+            for (int i = 0; i < tam; i++) {
+                String req = String.valueOf( modeloTabla.getValueAt(i, 0) );
+                
+                if( req.equals(cmpRequisito) || modeloTabla.getValueAt(i, 1).equals(cmpRequisito) ){
+                    laVista.tblRequisitos.setRowSelectionInterval(i, i);
+                    encontrado = true;
+                }
+            }
+            
+            if( !encontrado )
+            JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpRequisito +"` no existe.");
+            
+        } else 
+        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        
+    }
     
     private void mtdCrearRequisito(){
      
@@ -196,8 +216,5 @@ public class CtrlGestionarRequisitos implements MouseListener{
         
         laVista.cmpMontoEstimado.setText("" + cmpMonto);
     }
-    
-    
-    
    
 }
