@@ -19,9 +19,30 @@ import jdk.nashorn.internal.runtime.ScriptRuntime;
  */
 public class MyFreeLabDao{
     
+    public static boolean mtdCrearBaseDeDatos(){
+        PreparedStatement ps = null;
+        String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = " Create Database If Not Exists "+ dbname +" Default Character Set 'utf8' Collate 'utf8_general_ci' ; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            int rs = ps.executeUpdate();
+            
+            if( rs > 0 )
+            return true; 
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
+        return false;
+    }
+    
     public static boolean mtdChecarTablas(){
         Connection conn = CtrlHiloConexion.getConexion();
-        String[] tables = {"tblproyectos", "tbldatospersonales"};//thats table names that I need to create if not exists
+        String[] tables = {"tblproyectos", "tbldatospersonales", "tblempresas"};//thats table names that I need to create if not exists
         int tablas_existentes = 0;
         
         // Verificar la conexion a la base de datos
@@ -83,6 +104,32 @@ public class MyFreeLabDao{
                sql += " cmpFechaFinal varchar(20) null default 'Desconocido',";
                sql += " cmpCostoEstimado double null default 0.0,";
                sql += " cmpMontoEstimado double null default 0.0";
+               sql += " ); ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+            
+            return true; 
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
+        return false;
+    }
+    
+    public static boolean mtdCrearTablaEmpresas(){
+        PreparedStatement ps = null;
+        String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "Create Table "+dbname+".tblEmpresas ( ";
+               sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
+               sql += " cmpNombre varchar(20) not null,";
+               sql += " cmpDireccion varchar(20) null default 'Desconocido',";
+               sql += " cmpCorreo varchar(20) null default 'Desconocido',";
+               sql += " cmpTMovil varchar(20) null default 'Desconocido'";
                sql += " ); ";
         
         try {

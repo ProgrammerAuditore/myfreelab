@@ -25,8 +25,10 @@ public class HiloSplash extends Thread{
         
         mtdCargarDatosDeConexion();
         mtdEstablecerConexion();
-        mtdCargarTablaProyectos();
+        mtdCargarBaseDeDatos();
         mtdCargarTablaDatosPersonales();
+        mtdCargarTablaProyectos();
+        mtdCargarTablaEmpresas();
         
         try {
             Thread.sleep(1000);
@@ -94,22 +96,22 @@ public class HiloSplash extends Thread{
         }
     }
     
-    private void mtdCargarTablaProyectos(){
-        // * Cargar tabla proyectos..
+    private void mtdCargarBaseDeDatos() {
+        // * Cargar tabla datos personales..
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla proyectos ...");
+            splash.etqMensaje.setText("Cargando base de datos ...");
             try {
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
             
             // Proceso de carga
             if( CtrlHiloConexion.checkConexion() ){
-                if( !MyFreeLabDao.mtdCrearTablaProyectos() )
-                    splash.etqMensaje.setText("Tabla proyectos cargado.");
+                if( !MyFreeLabDao.mtdCrearBaseDeDatos())
+                    splash.etqMensaje.setText("Base de datos cargado.");
                 else
-                    splash.etqMensaje.setText("Tabla proyectos creado.");
+                    splash.etqMensaje.setText("Base de datos creado.");
             } else
             splash.etqMensaje.setText("Conexion no establecida.");
             
@@ -121,6 +123,7 @@ public class HiloSplash extends Thread{
             } catch (Exception e) {}
         }
     }
+    
     
     private void mtdCargarTablaDatosPersonales(){
         // * Cargar tabla datos personales..
@@ -150,5 +153,60 @@ public class HiloSplash extends Thread{
         }
     }
     
+    private void mtdCargarTablaProyectos(){
+        // * Cargar tabla proyectos..
+        for (int i = 1; i > 0; i--) {
+            
+            // Titulo - Carga
+            splash.etqMensaje.setText("Cargando tabla proyectos ...");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
+            if( CtrlHiloConexion.checkConexion() ){
+                if( !MyFreeLabDao.mtdCrearTablaProyectos() )
+                    splash.etqMensaje.setText("Tabla proyectos cargado.");
+                else
+                    splash.etqMensaje.setText("Tabla proyectos creado.");
+            } else
+            splash.etqMensaje.setText("Conexion no establecida.");
+            
+            avance += (100 / src);
+            splash.pbProgreso.setValue(avance);
+            splash.etqCarga.setText("" + avance + "%");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+        }
+    }
+    
+    private void mtdCargarTablaEmpresas() {
+        // * Cargar tabla datos personales..
+        for (int i = 1; i > 0; i--) {
+            
+            // Titulo - Carga
+            splash.etqMensaje.setText("Cargando tabla empresas ...");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
+            if( CtrlHiloConexion.checkConexion() ){
+                if( !MyFreeLabDao.mtdCrearTablaEmpresas())
+                    splash.etqMensaje.setText("Tabla empresas cargado.");
+                else
+                    splash.etqMensaje.setText("Tabla empresas creado.");
+            } else
+            splash.etqMensaje.setText("Conexion no establecida.");
+            
+            avance += (100 / src);
+            splash.pbProgreso.setValue(avance);
+            splash.etqCarga.setText("" + avance + "%");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+        }
+    }
     
 }
