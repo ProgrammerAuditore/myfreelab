@@ -17,9 +17,9 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
      * Creates new form p_mis_datos
      */
     public PanelGestionarEmpresas() {
+        initComponents();
         this.setSize( Source.tamDialog );
         this.setPreferredSize( Source.tamDialog );
-        initComponents();
     }
 
     /**

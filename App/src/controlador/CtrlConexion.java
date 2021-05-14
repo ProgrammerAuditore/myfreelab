@@ -33,15 +33,15 @@ public class CtrlConexion implements MouseListener{
         this.laVista.btnEstablecerConexion.addMouseListener(this);
         
         // * Inicializar
-        mtdInit();
+        //mtdInit();
     }
     
-    private void mtdInit(){
-        modal = new JDialog();
+    public void mtdInit(){
+        //modal = new JDialog();
         
         //modal.setModal(true);
-        modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        //modal.setType(Window.Type.UTILITY);
+        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         modal.setTitle("Configurar conexión");
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );

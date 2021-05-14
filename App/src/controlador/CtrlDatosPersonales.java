@@ -18,10 +18,11 @@ public class CtrlDatosPersonales implements MouseListener{
     
     // * Modelos
     private DatosPersonalesDao dao;
-    private DatosPersonalesDto datos_dto;
+    private DatosPersonalesDto dto;
 
-    public CtrlDatosPersonales(PanelDatos laVista, DatosPersonalesDao dao) {
+    public CtrlDatosPersonales(PanelDatos laVista, DatosPersonalesDto dto, DatosPersonalesDao dao) {
         this.laVista = laVista;
+        this.dto = dto;
         this.dao = dao;
         
         // * Definir oyentes
@@ -29,16 +30,15 @@ public class CtrlDatosPersonales implements MouseListener{
         this.laVista.btnCancelar.addMouseListener(this);
         
         // * Inicializar
-        mtdInit();
+        //mtdInit();
     }
    
-    private void mtdInit() {
-        datos_dto = new DatosPersonalesDto();
-        modal = new JDialog();
+    public void mtdInit() {
+        //modal = new JDialog();
         
         //modal.setModal(true);
-        modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        //modal.setType(Window.Type.UTILITY);
+        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         modal.setTitle("Datos personales");
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
@@ -49,7 +49,7 @@ public class CtrlDatosPersonales implements MouseListener{
         if( CtrlHiloConexion.ctrlEstado == true ){
             
             // Extraer los datos personales desde la base de datos
-            if( dao.mtdConsultar(datos_dto) ){
+            if( dao.mtdConsultar(dto) ){
                 
                 // Establecer los datos al laVista o formulario del panel
                 mtdEstablecerDatosFrm();
@@ -62,11 +62,11 @@ public class CtrlDatosPersonales implements MouseListener{
     
     private void mtdEstablecerDatosFrm(){
         
-        laVista.cmpNombres.setText( datos_dto.getCmpNombres() );
-        laVista.cmpApellidos.setText( datos_dto.getCmpApellidos());
-        laVista.cmpDireccion.setText( datos_dto.getCmpDireccion());
-        laVista.cmpCorreo.setText( datos_dto.getCmpCorreo());
-        laVista.cmpTelMovil.setText( datos_dto.getCmpTMovil());
+        laVista.cmpNombres.setText(dto.getCmpNombres() );
+        laVista.cmpApellidos.setText(dto.getCmpApellidos());
+        laVista.cmpDireccion.setText(dto.getCmpDireccion());
+        laVista.cmpCorreo.setText(dto.getCmpCorreo());
+        laVista.cmpTelMovil.setText(dto.getCmpTMovil());
         
     }
 
@@ -89,11 +89,11 @@ public class CtrlDatosPersonales implements MouseListener{
         
         if( mtdCapturarDatos() ){
             
-            if( dao.mtdConsultar(datos_dto) == false ){
+            if( dao.mtdConsultar(dto) == false ){
                 
                 // Registrarlo a la base de datos...
                 System.out.println("Registrarlo a la base de datos");
-                dao.mtdInsertar(datos_dto);
+                dao.mtdInsertar(dto);
             
             } else{
                 
@@ -107,7 +107,7 @@ public class CtrlDatosPersonales implements MouseListener{
                 mtdCapturarDatos();
                 
                 if( opc ==  JOptionPane.YES_OPTION ){
-                    if(dao.mtdActualizarDatos(datos_dto))
+                    if(dao.mtdActualizarDatos(dto))
                         JOptionPane.showMessageDialog(null, "Datos personales actualizados.");
                 }
                 
@@ -127,12 +127,12 @@ public class CtrlDatosPersonales implements MouseListener{
             laVista.cmpTelMovil.isAprobado() ){
             
                 // Definir los datos
-                datos_dto.setCmpID(1);
-                datos_dto.setCmpNombres(laVista.cmpNombres.getText() );
-                datos_dto.setCmpApellidos( laVista.cmpApellidos.getText() );
-                datos_dto.setCmpDireccion(laVista.cmpDireccion.getText() );
-                datos_dto.setCmpCorreo(laVista.cmpCorreo.getText() );
-                datos_dto.setCmpTMovil(laVista.cmpTelMovil.getText() );
+                dto.setCmpID(1);
+                dto.setCmpNombres(laVista.cmpNombres.getText() );
+                dto.setCmpApellidos( laVista.cmpApellidos.getText() );
+                dto.setCmpDireccion(laVista.cmpDireccion.getText() );
+                dto.setCmpCorreo(laVista.cmpCorreo.getText() );
+                dto.setCmpTMovil(laVista.cmpTelMovil.getText() );
             
                 return true;
         }else{

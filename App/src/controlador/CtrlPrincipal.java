@@ -4,12 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JDialog;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
 import modelo.dto.ConexionDto;
+import modelo.dto.DatosPersonalesDto;
 import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
@@ -101,6 +103,8 @@ public class CtrlPrincipal implements  ActionListener{
         ConexionDto dto = new ConexionDto();
         ConexionDao dao = new ConexionDao();
         CtrlConexion controlador = new CtrlConexion(vista, dto, dao);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
@@ -118,7 +122,10 @@ public class CtrlPrincipal implements  ActionListener{
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelDatos vista = new PanelDatos();
         DatosPersonalesDao dao = new DatosPersonalesDao();
-        CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, dao);
+        DatosPersonalesDto dto = new DatosPersonalesDto();
+        CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, dto, dao);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
@@ -131,6 +138,8 @@ public class CtrlPrincipal implements  ActionListener{
         ProyectoDao dao = new ProyectoDao();
         ProyectoDto dto = new ProyectoDto();
         CtrlGestionarProyectos controlador = new CtrlGestionarProyectos( vista, dto, dao);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
@@ -143,6 +152,8 @@ public class CtrlPrincipal implements  ActionListener{
         RequisitoDao dao = new RequisitoDao();
         RequisitoDto dto = new RequisitoDto();
         CtrlGestionarRequisitos controlador = new CtrlGestionarRequisitos( vista, dto, dao);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
         
@@ -155,6 +166,8 @@ public class CtrlPrincipal implements  ActionListener{
         EmpresaDao dao = new EmpresaDao();
         EmpresaDto dto = new EmpresaDto();
         CtrlGestionarEmpresas controlador = new CtrlGestionarEmpresas(vista, dao, dto);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
         

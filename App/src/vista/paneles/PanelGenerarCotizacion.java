@@ -42,15 +42,12 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
         etqMontoFinal = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoInicial = new vista.componentes.campos.CampoNumerico();
         cmpMontoFinal = new vista.componentes.campos.CampoNumerico();
-        etqDetalles = new vista.componentes.etiqueta.Etiqueta();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cmpDetalles = new javax.swing.JTextArea();
         cmpIdProyecto = new vista.componentes.campos.CampoTexto();
         jPanel3 = new javax.swing.JPanel();
         enlace1 = new vista.componentes.etiqueta.Enlace();
         enlace2 = new vista.componentes.etiqueta.Enlace();
-        btnAceptar = new vista.componentes.button.Button();
         btnCancelar = new vista.componentes.button.Button();
+        btnAceptar = new vista.componentes.button.Button();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -110,12 +107,6 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
 
         cmpMontoFinal.setComponenteDidireccional(etqMontoFinal);
 
-        etqDetalles.setText("Detalles");
-
-        cmpDetalles.setColumns(20);
-        cmpDetalles.setRows(5);
-        jScrollPane1.setViewportView(cmpDetalles);
-
         cmpIdProyecto.setComponenteDidireccional(etqIdProyecto);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
@@ -139,12 +130,12 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(enlace1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(enlace2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -171,10 +162,7 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
                             .addComponent(cmpMontoFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmpIdProyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(etqDetalles, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(346, 346, 346)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -211,21 +199,16 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
                         .addComponent(etqMontoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmpMontoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(etqDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnAceptar.setImgButtonType("success");
-        btnAceptar.setTexto("Aceptar");
-
         btnCancelar.setImgButtonType("secondary");
         btnCancelar.setTexto("Cancelar");
+
+        btnAceptar.setImgButtonType("success");
+        btnAceptar.setTexto("Aceptar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -246,17 +229,17 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -264,16 +247,14 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public vista.componentes.button.Button btnAceptar;
     public vista.componentes.button.Button btnCancelar;
-    public javax.swing.JTextArea cmpDetalles;
     public vista.componentes.campos.CampoTexto cmpFechaFinal;
     public vista.componentes.campos.CampoTexto cmpFechaInicial;
     public vista.componentes.campos.CampoTexto cmpIdProyecto;
     public vista.componentes.campos.CampoNumerico cmpMontoFinal;
     public vista.componentes.campos.CampoNumerico cmpMontoInicial;
-    private vista.componentes.campos.CampoTexto cmpNombreProyecto;
+    public vista.componentes.campos.CampoTexto cmpNombreProyecto;
     private vista.componentes.etiqueta.Enlace enlace1;
     private vista.componentes.etiqueta.Enlace enlace2;
-    public vista.componentes.etiqueta.Etiqueta etqDetalles;
     private vista.componentes.etiqueta.Etiqueta etqFechaFinal;
     private vista.componentes.etiqueta.Etiqueta etqFechaInicial;
     private vista.componentes.etiqueta.Etiqueta etqIdProyecto;
@@ -285,6 +266,5 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

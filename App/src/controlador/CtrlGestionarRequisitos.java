@@ -49,16 +49,16 @@ public class CtrlGestionarRequisitos implements MouseListener{
         this.laVista.btnEliminar.addMouseListener(this);
         
         // * Inicializar
-        mtdInit();
+        //mtdInit();
     }
     
-    private void mtdInit(){
+    public void mtdInit(){
         requisitos = new ArrayList<RequisitoDto>();
-        modal = new JDialog();
+        //modal = new JDialog();
         
         modal.setTitle("Gestionar requisitos");
-        modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        //modal.setType(Window.Type.UTILITY);
+        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );

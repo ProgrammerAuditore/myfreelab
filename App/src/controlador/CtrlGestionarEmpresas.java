@@ -51,15 +51,15 @@ public class CtrlGestionarEmpresas implements MouseListener {
         this.laVista.tblEmpresas.setModel(modeloTabla);
         
         // * Inicializar
-        mtdInit();
+        //mtdInit();
     }
 
-    private void mtdInit() {
-        modal = new JDialog();
+    public void mtdInit() {
+        //modal = new JDialog();
         
         modal.setTitle("Gestionar empresas");
-        modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        //modal.setType(Window.Type.UTILITY);
+        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
