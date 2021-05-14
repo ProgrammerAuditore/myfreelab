@@ -26,6 +26,9 @@ public class PanelConexion extends javax.swing.JPanel {
         this.setSize( Source.tamDialog );
         this.setPreferredSize( Source.tamDialog );
         panelEstado.setBackground(Color.red);
+        bkgAside.setImgBackgroundEnabled(true);
+        bkgAside.setImgBackgroundIn_Ex(true);
+        bkgAside.setImgRutaInterno( Source.bkgAside );
         
         // Establecer evento de teclado para el chechkbox
         cmpNull.addMouseListener(new MouseInputAdapter() {
@@ -63,7 +66,7 @@ public class PanelConexion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelBackground1 = new vista.componentes.jpanelbackground.JPanelBackground();
+        bkgAside = new vista.componentes.jpanelbackground.JPanelBackground();
         jPanel1 = new javax.swing.JPanel();
         etqTitulo = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
@@ -83,16 +86,20 @@ public class PanelConexion extends javax.swing.JPanel {
         btnEstablecerConexion = new vista.componentes.button.Button();
         btnCerrarConexion = new vista.componentes.button.Button();
 
-        jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
+        bkgAside.setBackground(new java.awt.Color(102, 102, 102));
+        bkgAside.setImgBackgroundEnabled(true);
+        bkgAside.setImgBackgroundIn_Ex(true);
+        bkgAside.setImgRutaExterno(null);
+        bkgAside.setImgRutaInterno("<Not Set>");
 
-        javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
-        jPanelBackground1.setLayout(jPanelBackground1Layout);
-        jPanelBackground1Layout.setHorizontalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bkgAsideLayout = new javax.swing.GroupLayout(bkgAside);
+        bkgAside.setLayout(bkgAsideLayout);
+        bkgAsideLayout.setHorizontalGroup(
+            bkgAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 170, Short.MAX_VALUE)
         );
-        jPanelBackground1Layout.setVerticalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bkgAsideLayout.setVerticalGroup(
+            bkgAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -240,7 +247,7 @@ public class PanelConexion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelBackground1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bkgAside, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -257,7 +264,7 @@ public class PanelConexion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(bkgAside, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,6 +280,7 @@ public class PanelConexion extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.button.Button btnCerrarConexion;
     public vista.componentes.button.Button btnEstablecerConexion;
     public vista.componentes.campos.CampoPassword cmpContrasenha;
@@ -290,7 +298,6 @@ public class PanelConexion extends javax.swing.JPanel {
     public vista.componentes.etiqueta.Etiqueta etqUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
     public javax.swing.JPanel panelEstado;
     // End of variables declaration//GEN-END:variables
 }

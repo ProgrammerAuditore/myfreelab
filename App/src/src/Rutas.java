@@ -10,5 +10,6 @@ class Rutas {
     public static String pahtContenedorThemes = "/storage/shared/buttons/";
     public static String pathContenedorFuentes = "/storage/shared/fonts/";
     public static String pathIconDefault = "/storage/shared/img/ms-icon-70x70.png";
+    public static String pathBkgAside = "/storage/shared/img/background_aside.png";
     
 }

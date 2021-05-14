@@ -20,6 +20,9 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         initComponents();
         this.setSize( Source.tamDialog );
         this.setPreferredSize( Source.tamDialog );
+        bkgAside.setImgBackgroundEnabled(true);
+        bkgAside.setImgBackgroundIn_Ex(true);
+        bkgAside.setImgRutaInterno( Source.bkgAside );
     }
 
     /**
@@ -31,7 +34,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelBackground1 = new vista.componentes.jpanelbackground.JPanelBackground();
+        bkgAside = new vista.componentes.jpanelbackground.JPanelBackground();
         jPanel1 = new javax.swing.JPanel();
         titulo1 = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
@@ -48,16 +51,16 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         etqCosto = new vista.componentes.etiqueta.Etiqueta();
         cmpCosto = new vista.componentes.campos.CampoNumerico();
 
-        jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
+        bkgAside.setBackground(new java.awt.Color(102, 102, 102));
 
-        javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
-        jPanelBackground1.setLayout(jPanelBackground1Layout);
-        jPanelBackground1Layout.setHorizontalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bkgAsideLayout = new javax.swing.GroupLayout(bkgAside);
+        bkgAside.setLayout(bkgAsideLayout);
+        bkgAsideLayout.setHorizontalGroup(
+            bkgAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 171, Short.MAX_VALUE)
         );
-        jPanelBackground1Layout.setVerticalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bkgAsideLayout.setVerticalGroup(
+            bkgAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -195,7 +198,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelBackground1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bkgAside, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -204,7 +207,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(bkgAside, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,6 +219,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.button.Button btnBuscar;
     public vista.componentes.button.Button btnCrear;
     public vista.componentes.button.Button btnEliminar;
@@ -227,7 +231,6 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
     private vista.componentes.etiqueta.Etiqueta etqMontoEstimado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
     private javax.swing.JScrollPane jScrollPane1;
     private vista.componentes.etiqueta.Etiqueta lbl_empresa;
     public javax.swing.JTable tblRequisitos;
