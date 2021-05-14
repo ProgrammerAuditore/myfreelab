@@ -153,7 +153,7 @@ public class MyFreeLabDao{
         String sql = "Create Table "+dbname+".tblRequisitos ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
                sql += " cmpNombre varchar(20) not null,";
-               sql += " cmpMonto double not null";
+               sql += " cmpCosto double not null";
                sql += " ); ";
         
         try {

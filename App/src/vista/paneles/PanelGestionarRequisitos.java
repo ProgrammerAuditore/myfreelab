@@ -45,8 +45,8 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         btnEliminar = new vista.componentes.button.Button();
         etqMontoEstimado = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoEstimado = new vista.componentes.campos.CampoNumerico();
-        cmpCosto = new vista.componentes.campos.CampoNumerico();
         etqCosto = new vista.componentes.etiqueta.Etiqueta();
+        cmpCosto = new vista.componentes.campos.CampoNumerico();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -123,9 +123,9 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         cmpMontoEstimado.setComponenteDidireccional(etqMontoEstimado);
         cmpMontoEstimado.setEnabled(false);
 
-        cmpCosto.setComponenteDidireccional(etqCosto);
-
         etqCosto.setText("Costo");
+
+        cmpCosto.setComponenteDidireccional(etqCosto);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,11 +148,11 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(cmpRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(255, 255, 255)))
+                                    .addGap(255, 255, 255))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(cmpRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(23, 23, 23)))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(etqCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

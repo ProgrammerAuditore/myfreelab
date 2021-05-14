@@ -16,7 +16,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
     public boolean mtdInsetar(RequisitoDto requisito_dto) {
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "INSERT INTO tblrequisitos (cmpNombre, cmpMonto) "
+        String sql = "INSERT INTO tblrequisitos (cmpNombre, cmpCosto) "
                 + "VALUES (?, ?); ";        
         try {
             ps = conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "UPDATE tblrequisitos "
-                + "SET cmpNombre = ?, cmpMonto = ? "
+                + "SET cmpNombre = ?, cmpCosto = ? "
                 + "WHERE cmpID = ?; ";
         
         try {
@@ -102,7 +102,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
                 RequisitoDto requisito = new RequisitoDto();
                 requisito.setCmpID( rs.getInt( "cmpID" ) );
                 requisito.setCmpNombre(rs.getString( "cmpNombre" ) );
-                requisito.setCmpCosto( rs.getDouble( "cmpMonto" ) );
+                requisito.setCmpCosto( rs.getDouble( "cmpCosto" ) );
                 
                 requisitos.add(requisito);
             }
