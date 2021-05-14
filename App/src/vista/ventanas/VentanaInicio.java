@@ -18,7 +18,7 @@ import src.Source;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
-import vista.paneles.PanelDatos;
+import vista.paneles.PanelDatosPersonales;
 import vista.paneles.PanelAcercaDe;
 
 /**
@@ -303,7 +303,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private JDialog modal;
     private PanelAcercaDe panelAcercaDe = null;
     public PanelConexion panelConexion = null;
-    private PanelDatos panelDatosPersonales = null;
+    private PanelDatosPersonales panelDatosPersonales = null;
     public PanelGestionarEmpresas panelGestionarEmpresas  = null;
     private PanelGestionarProyectos panelGestionarProyectos  = null;
 
@@ -376,7 +376,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void fncDatosPersonales() {
         // Patron de diseño Singleton 
         if( panelDatosPersonales == null ){
-            panelDatosPersonales = new PanelDatos();
+            panelDatosPersonales = new PanelDatosPersonales();
         }
         
         // Crear un nuevo modal para Datos personales

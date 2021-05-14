@@ -8,19 +8,19 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.dao.DatosPersonalesDao;
 import modelo.dto.DatosPersonalesDto;
-import vista.paneles.PanelDatos;
+import vista.paneles.PanelDatosPersonales;
 
 public class CtrlDatosPersonales implements MouseListener{
     
     // * Vistas
-    private PanelDatos laVista;
+    private PanelDatosPersonales laVista;
     public JDialog modal;
     
     // * Modelos
     private DatosPersonalesDao dao;
     private DatosPersonalesDto dto;
 
-    public CtrlDatosPersonales(PanelDatos laVista, DatosPersonalesDto dto, DatosPersonalesDao dao) {
+    public CtrlDatosPersonales(PanelDatosPersonales laVista, DatosPersonalesDto dto, DatosPersonalesDao dao) {
         this.laVista = laVista;
         this.dto = dto;
         this.dao = dao;
@@ -38,7 +38,7 @@ public class CtrlDatosPersonales implements MouseListener{
         
         //modal.setModal(true);
         //modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
+        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Datos personales");
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );

@@ -11,12 +11,12 @@ import src.Source;
  *
  * @author victo
  */
-public class PanelDatos extends javax.swing.JPanel {
+public class PanelDatosPersonales extends javax.swing.JPanel {
 
     /**
      * Creates new form p_mis_datos
      */
-    public PanelDatos() {
+    public PanelDatosPersonales() {
         initComponents();
         this.setSize( Source.tamDialog );
         this.setPreferredSize(Source.tamDialog );

@@ -59,7 +59,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
         
         modal.setTitle("Gestionar empresas");
         //modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
+        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );

@@ -41,7 +41,7 @@ public class CtrlConexion implements MouseListener{
         
         //modal.setModal(true);
         //modal.setType(Window.Type.UTILITY);
-        modal.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
+        modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Configurar conexión");
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );

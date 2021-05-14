@@ -16,7 +16,7 @@ import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
 import vista.paneles.PanelConexion;
-import vista.paneles.PanelDatos;
+import vista.paneles.PanelDatosPersonales;
 import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
 import vista.paneles.PanelGestionarRequisitos;
@@ -120,7 +120,7 @@ public class CtrlPrincipal implements  ActionListener{
     private void modalDatosPersonales() {
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        PanelDatos vista = new PanelDatos();
+        PanelDatosPersonales vista = new PanelDatosPersonales();
         DatosPersonalesDao dao = new DatosPersonalesDao();
         DatosPersonalesDto dto = new DatosPersonalesDto();
         CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, dto, dao);
