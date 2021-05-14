@@ -127,8 +127,62 @@ public class CtrlGestionarRequisitos implements MouseListener{
         
     }
     
-    private void mtdModificarRequisito(){}
-    private void mtdEliminarRequisito(){}
+    private void mtdModificarRequisito(){
+        int seleccionado = laVista.tblRequisitos.getSelectedRow();
+        
+        if( seleccionado >= 0 ){
+            String[] msg = new String[2];
+            dto = mtdObtenerRequisito(seleccionado);
+            
+            msg[0] = "Modificar requisito";
+            msg[1] = "¿Seguro que deseas modificar el requisito seleccionado?";
+            int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                if( dao.mtdActualizar(dto) ){
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre()+ "` se modifico exitosamente.");
+                }
+            }
+            
+        }else 
+        JOptionPane.showMessageDialog(null, "Selecciona una fila para modificar un requisito.");
+            
+    }
+    
+    private void mtdEliminarRequisito(){
+        int seleccionado = laVista.tblRequisitos.getSelectedRow();
+        
+        if( seleccionado >= 0){
+            String[] msg = new String[2];
+            dto = mtdObtenerRequisito(seleccionado);
+            
+            msg[0] = "Eliminar requisito";
+            msg[1] = "¿Seguro que deseas eliminar el requisito seleccionado?";
+            int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                if( dao.mtdEliminar(dto) ){
+                    modeloTabla.removeRow(seleccionado);
+                    mtdCalcularMonto();
+                    JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre()+ "` se elimino exitosamente.");
+                }
+            }
+            
+        } else
+        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar un requisito.");
+    
+    }
+    
+    private RequisitoDto mtdObtenerRequisito(int fila){
+        RequisitoDto requisito = new RequisitoDto();
+        
+        requisito.setCmpID( Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()) );
+        requisito.setCmpNombre( modeloTabla.getValueAt(fila, 1).toString() );
+        requisito.setCmpCosto( Double.parseDouble(modeloTabla.getValueAt(fila, 2).toString())  );
+        
+        return requisito;
+    }
     
     private boolean mtdValidarCampoRequisito(){
         String campo = laVista.cmpRequisito.getText();
@@ -176,10 +230,9 @@ public class CtrlGestionarRequisitos implements MouseListener{
         mtdVaciar();
         requisitos = dao.mtdListar();
         
-        if( requisitos.size() > 0){
+        if( requisitos.size() > 0)
             mtdAgregarRequisitos();
             mtdCalcularMonto();
-        }
         
     }
 

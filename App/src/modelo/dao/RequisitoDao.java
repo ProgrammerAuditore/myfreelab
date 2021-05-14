@@ -35,11 +35,50 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
 
     @Override
     public boolean mtdEliminar(RequisitoDto requisito_dto) {
+        
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "DELETE FROM tblrequisitos WHERE cmpID = ?; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, requisito_dto.getCmpID());
+            int rs = ps.executeUpdate();
+            
+            if( rs > 0)
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
         return false;
     }
 
     @Override
     public boolean mtdActualizar(RequisitoDto requisito_dto) {
+        
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "UPDATE tblrequisitos "
+                + "SET cmpNombre = ?, cmpMonto = ? "
+                + "WHERE cmpID = ?; ";
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, requisito_dto.getCmpNombre());
+            ps.setDouble(2, requisito_dto.getCmpCosto());
+            ps.setInt(3, requisito_dto.getCmpID());
+            int rs = ps.executeUpdate();
+            
+            if( rs > 0)
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
         return false;
     }
 
