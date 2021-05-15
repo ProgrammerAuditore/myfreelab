@@ -2,6 +2,8 @@ package src;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import modelo.Conexion;
 
@@ -9,6 +11,7 @@ public class Source {
     
     // * Recursos externos
     public static final File dataConexion = new Resource().dataConexion();
+    public static final Image imgIconoDefault = new Resource().iconoDefault();
     
     // * Recursos internos
     public static final String bkgDefault = Rutas.pathBkgDefault;
@@ -32,7 +35,7 @@ public class Source {
     public static final Font fontLabelEnlace = new MyFont( fontName ).changeStyle( MyFont.ITALIC, 14);
     
     // Estilos
-    public static final String styleButtonDefault = "bulma";
+    public static final String styleButtonDefault = "oval";
     
     // Dimension de los paneles para el modal
     public static final Dimension tamDialog = new Dimension(850, 534);

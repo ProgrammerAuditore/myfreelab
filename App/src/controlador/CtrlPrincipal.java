@@ -1,6 +1,5 @@
 package controlador;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -24,6 +23,8 @@ import modelo.dto.DatosPersonalesDto;
 import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
+import src.Info;
+import src.Source;
 import vista.paneles.PanelCard;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatosPersonales;
@@ -49,6 +50,11 @@ public class CtrlPrincipal implements  ActionListener{
         this.laVista = laVista;
         this.dao = dao;
         this.daoE = daoE;
+        
+        // * Definir datos
+        this.laVista.setTitle(Info.NombreSoftware);
+        this.laVista.setIconImage(Source.imgIconoDefault);
+        
         
         // * Inicializar
         mtdInit();
@@ -241,8 +247,6 @@ public class CtrlPrincipal implements  ActionListener{
         mtdRellenarContenedor();
         
     }
-    
-    
     
     private void mtdCrearHilo(){
         Runnable watcher = () -> {

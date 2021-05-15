@@ -69,6 +69,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnConexion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1204, 724));
 
         pnlLogo.setBackground(new java.awt.Color(255, 255, 255));
         pnlLogo.setImgBackgroundEnabled(true);
