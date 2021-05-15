@@ -11,7 +11,9 @@ public class Source {
     public static final File dataConexion = new Resource().dataConexion();
     
     // * Recursos internos
-    public static final String bkgDefault = Rutas.pathBkgDefault; 
+    public static final String bkgDefault = Rutas.pathBkgDefault;
+    public static final String bkgLogo = Rutas.pathBkgLogo;
+    public static final String bkgPortada = Rutas.pathBkgPortada;
     public static final String bkgAside = Rutas.pathBkgAside;
     public static final String iconDefault = Rutas.pathIconDefault;
     public static final String temasContenedor = Rutas.pahtContenedorThemes;

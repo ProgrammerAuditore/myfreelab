@@ -315,7 +315,7 @@ public class CtrlPrincipal implements  ActionListener{
                 c.gridwidth = 1; // Cantidad de filas a ocupar
                 c.weightx = 0.0; // Estirar en ancho
                 c.weighty = 0.0;// Estirar en alto
-                c.insets = new Insets(0, 0, 60, 0);  //top padding
+                c.insets = new Insets(30, 0, 30, 0);  //top padding
                 c.fill = GridBagConstraints.BOTH; // El modo de estirar
                 laVista.pnlContenedor.add(tarjeta_proyecto, c);
         }
@@ -339,7 +339,7 @@ public class CtrlPrincipal implements  ActionListener{
         int proyectos_c = proyectos.size();
         
         laVista.cmpProyectos.setText("Proyectos : " + proyectos_c);
-        laVista.cmpEmpresas.setText("Proyectos : " + empresas_c);
+        laVista.cmpEmpresas.setText("Empresas : " + empresas_c);
     }
     
     private void mtdTesting(String msg){
