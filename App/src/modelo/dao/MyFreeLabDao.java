@@ -103,7 +103,7 @@ public class MyFreeLabDao{
                sql += " cmpFechaInicial varchar(20) null default 'Desconocido',";
                sql += " cmpFechaFinal varchar(20) null default 'Desconocido',";
                sql += " cmpCostoEstimado double null default 0.0,";
-               sql += " cmpMontoEstimado double null default 0.0";
+               sql += " cmpMontoAdelantado double null default 0.0";
                sql += " ); ";
         
         try {

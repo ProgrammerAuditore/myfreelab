@@ -1,10 +1,19 @@
 package controlador;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
@@ -15,6 +24,7 @@ import modelo.dto.DatosPersonalesDto;
 import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
+import vista.paneles.PanelCard;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatosPersonales;
 import vista.paneles.PanelGestionarEmpresas;
@@ -27,17 +37,27 @@ public class CtrlPrincipal implements  ActionListener{
     // * Vista
     private VentanaPrincipal laVista;
     
+    // * Modelos
+    private ProyectoDao dao;
+    private EmpresaDao daoE;
+    
     // * Atributos
     private int TestId;
+    private List<ProyectoDto> proyectos;
 
-    public CtrlPrincipal(VentanaPrincipal laVista) {
+    public CtrlPrincipal(VentanaPrincipal laVista, ProyectoDao dao, EmpresaDao daoE) {
         this.laVista = laVista;
+        this.dao = dao;
+        this.daoE = daoE;
         
         // * Inicializar
         mtdInit();
     }
 
     private void mtdInit() {
+        proyectos = new ArrayList<>();
+        laVista.pnlContenedor.setLayout( new GridBagLayout() );
+        mtdDesHabilitarMenus();
         
         // * Definir oyentes
         laVista.setLocationRelativeTo(null);
@@ -86,6 +106,51 @@ public class CtrlPrincipal implements  ActionListener{
         
     }
     
+    private void mtdHabilitarMenus(){
+        // * Habilitar las opciones de menu del menubar
+        laVista.menuEditar.setEnabled(true);
+        mtdRellenarContenedor();
+    }
+    
+    private void mtdDesHabilitarMenus(){
+        // * DesHabilitar las opciones de menu del menubar
+        laVista.menuEditar.setEnabled(false);
+        mtdVaciarProyectos();
+        laVista.cmpProyectos.setText("Proyectos : " + "#");
+        laVista.cmpEmpresas.setText("Empresas : " + "#");
+        mtdMensaje("Sin conexión a la base de datos.");
+    }
+    
+    private void mtdAbriendoPrograma() {
+        System.out.println("Ventana abierto.");
+
+        // Obtener los datos de la conexion antes de abrir el programa
+        if( CtrlHiloConexion.checkConexion() ){
+            System.out.println("Iniciando el programa con exion establecida.");
+            mtdHabilitarMenus();
+            mtdCrearHilo();
+            mtdRellenarContenedor();
+        } else{
+            mtdDesHabilitarMenus();
+        }
+        
+    }
+    
+    private void mtdCerrandoPrograma() {
+        System.out.println("Finalizo el programa.");
+
+        // Guardar los datos de la conexion antes de cerrar el programa
+        if( CtrlHiloConexion.checkConexion() ){
+            new ConexionDao().regitrar_conexion( CtrlHiloConexion.ctrlDatos );
+            System.out.println("Conexion guardada.");
+            
+            if(CtrlHiloConexion.mtdCerrar()){
+                mtdDesHabilitarMenus();
+                System.out.println("Conexion finalizada.");
+            }
+        }
+        
+    }
     
     private void mtdSalirDelPrograma(){
         // * Método para cerrar el programa
@@ -111,6 +176,7 @@ public class CtrlPrincipal implements  ActionListener{
         if( CtrlHiloConexion.ctrlEstado ){
             mtdHabilitarMenus();
             mtdCrearHilo();
+            mtdRellenarContenedor();
 
         }else
         mtdDesHabilitarMenus();
@@ -142,6 +208,7 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
+        mtdRellenarContenedor();
         
     }
     
@@ -156,6 +223,7 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
+        mtdRellenarContenedor();
         
     }
     
@@ -170,44 +238,11 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
+        mtdRellenarContenedor();
         
     }
     
-    private void mtdHabilitarMenus(){
-        // * Habilitar las opciones de menu del menubar
-        laVista.menuEditar.setEnabled(true);
-    }
     
-    private void mtdDesHabilitarMenus(){
-        // * DesHabilitar las opciones de menu del menubar
-        laVista.menuEditar.setEnabled(false);
-    }
-    
-    private void mtdAbriendoPrograma() {
-        System.out.println("Ventana abierto.");
-
-        // Obtener los datos de la conexion antes de abrir el programa
-        if( CtrlHiloConexion.checkConexion() ){
-            System.out.println("Iniciando el programa con exion establecida.");
-            mtdHabilitarMenus();
-            mtdCrearHilo();
-        }
-        
-    }
-    
-    private void mtdCerrandoPrograma() {
-        System.out.println("Finalizo el programa.");
-
-        // Guardar los datos de la conexion antes de cerrar el programa
-        if( CtrlHiloConexion.checkConexion() ){
-            new ConexionDao().regitrar_conexion( CtrlHiloConexion.ctrlDatos );
-            System.out.println("Conexion guardada.");
-            
-            if(CtrlHiloConexion.mtdCerrar())
-                System.out.println("Conexion finalizada.");
-        }
-        
-    }
     
     private void mtdCrearHilo(){
         Runnable watcher = () -> {
@@ -232,6 +267,79 @@ public class CtrlPrincipal implements  ActionListener{
         hilo.setDaemon(true);
         hilo.start();
         
+    }
+    
+    private void mtdRellenarContenedor(){
+        mtdVaciarProyectos();
+        proyectos = dao.mtdListar();
+        int tam = proyectos.size();
+        
+        System.out.println("[!] proyectos : " + tam);
+        if( tam > 0 ){
+            mtdAgregarProyectos();
+        } else{
+            mtdMensaje("No hay proyectos creados.");
+        }
+        
+        mtdEstablecerCamposBar();
+        laVista.pnlContenedor.validate();
+        laVista.pnlContenedor.revalidate();
+        laVista.pnlContenedor.repaint();
+    }
+    
+    private void mtdVaciarProyectos(){
+        proyectos.clear();
+        laVista.pnlContenedor.removeAll();
+        laVista.pnlContenedor.validate();
+        laVista.pnlContenedor.revalidate();
+        laVista.pnlContenedor.repaint();
+    }
+    
+    private void mtdAgregarProyectos(){
+        int tam = proyectos.size();
+        
+        for (int i = 0; i < tam; i++) {
+                PanelCard tarjeta_proyecto = new PanelCard();
+                GridBagConstraints c = new GridBagConstraints();
+                tarjeta_proyecto.setVisible(true);
+                
+                tarjeta_proyecto.etqTitulo.setText( proyectos.get(i).getCmpNombre() );
+                tarjeta_proyecto.cmpFechaInicial.setText( proyectos.get(i).getCmpFechaInicial() );
+                tarjeta_proyecto.cmpFechaFinal.setText( proyectos.get(i).getCmpFechaFinal() );
+                tarjeta_proyecto.cmpCostoEstimado.setText("" + proyectos.get(i).getCmpCostoEstimado());
+                tarjeta_proyecto.cmpMontoInicial.setText("" + proyectos.get(i).getCmpMontoAdelantado());
+                
+                c.gridx = 0; // Columna 
+                c.gridy = i; // Fila
+                c.gridheight = 1; // Cantidad de columnas a ocupar
+                c.gridwidth = 1; // Cantidad de filas a ocupar
+                c.weightx = 0.0; // Estirar en ancho
+                c.weighty = 0.0;// Estirar en alto
+                c.insets = new Insets(0, 0, 60, 0);  //top padding
+                c.fill = GridBagConstraints.BOTH; // El modo de estirar
+                laVista.pnlContenedor.add(tarjeta_proyecto, c);
+        }
+    }
+    
+    private void mtdMensaje(String msg){
+        JPanel mensaje = new JPanel();
+        JLabel titulo = new JLabel();
+            
+        titulo.setText(msg);
+        titulo.setFont(new Font("Arial ", Font.PLAIN, 24));
+        mensaje.add(titulo);
+        laVista.pnlContenedor.add(mensaje);
+        
+        laVista.pnlContenedor.validate();
+        laVista.pnlContenedor.repaint();
+    }
+    
+    private void mtdEstablecerCamposBar(){
+        int empresas_c = daoE.mtdListar().size();
+        int proyectos_c = proyectos.size();
+        
+        laVista.cmpProyectos.setText("Proyectos : " + proyectos_c);
+        laVista.cmpEmpresas.setText("Proyectos : " + empresas_c);
     }
     
     private void mtdTesting(String msg){

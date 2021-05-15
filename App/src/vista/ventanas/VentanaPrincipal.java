@@ -5,6 +5,8 @@
  */
 package vista.ventanas;
 
+import java.awt.Color;
+
 /**
  *
  * @author victor
@@ -16,6 +18,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        // * Convertir en transparente el contendor de proyectos
+        this.pnlContenedor.setOpaque(false);
+        this.scpContenedor.setOpaque(false);
+        this.scpContenedor.getViewport().setOpaque(false);
+        
+        // * Eliminar los bordes del contendor de proyectos
+        this.pnlContenedor.setBorder(null);
+        this.scpContenedor.setBorder(null);
+        this.scpContenedor.getViewport().setBorder(null);
+        
     }
 
     /**
@@ -27,6 +39,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelBackground1 = new vista.componentes.jpanelbackground.JPanelBackground();
+        scpContenedor = new javax.swing.JScrollPane();
+        pnlContenedor = new javax.swing.JPanel();
+        jToolBar1 = new javax.swing.JToolBar();
+        cmpProyectos = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        cmpEmpresas = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         bntSalir = new javax.swing.JMenuItem();
@@ -39,6 +58,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnConexion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanelBackground1.setImgBackgroundEnabled(true);
+        jPanelBackground1.setImgBackgroundIn_Ex(true);
+
+        javax.swing.GroupLayout pnlContenedorLayout = new javax.swing.GroupLayout(pnlContenedor);
+        pnlContenedor.setLayout(pnlContenedorLayout);
+        pnlContenedorLayout.setHorizontalGroup(
+            pnlContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1097, Short.MAX_VALUE)
+        );
+        pnlContenedorLayout.setVerticalGroup(
+            pnlContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 604, Short.MAX_VALUE)
+        );
+
+        scpContenedor.setViewportView(pnlContenedor);
+
+        javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
+        jPanelBackground1.setLayout(jPanelBackground1Layout);
+        jPanelBackground1Layout.setHorizontalGroup(
+            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackground1Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(scpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 1120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        jPanelBackground1Layout.setVerticalGroup(
+            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBackground1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(scpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+        );
+
+        jToolBar1.setBackground(new java.awt.Color(255, 255, 204));
+        jToolBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jToolBar1.setFloatable(false);
+
+        cmpProyectos.setText("Proyectos : #");
+        jToolBar1.add(cmpProyectos);
+
+        jLabel1.setText("  |  ");
+        jToolBar1.add(jLabel1);
+
+        cmpEmpresas.setText("Empresa : #");
+        jToolBar1.add(cmpEmpresas);
 
         jMenu1.setText("Archivo");
 
@@ -82,11 +147,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1204, Short.MAX_VALUE)
+            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 1204, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -138,9 +207,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
     public javax.swing.JMenuItem btnGestionarRequisitos;
+    public javax.swing.JLabel cmpEmpresas;
+    public javax.swing.JLabel cmpProyectos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
+    private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenuBar menuBar;
     public javax.swing.JMenu menuEditar;
+    public javax.swing.JPanel pnlContenedor;
+    public javax.swing.JScrollPane scpContenedor;
     // End of variables declaration//GEN-END:variables
 }
