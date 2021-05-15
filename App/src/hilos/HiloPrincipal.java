@@ -17,21 +17,21 @@ public class HiloPrincipal extends Thread{
                     while ( CtrlHiloConexion.ctrlEstado == false ) {                        
                         try {
                             // * Esperaré para establecer la conexion
-                            System.out.println("HiloPrincipal :: Wait... ");
-                            System.out.println(" Esperaré para establecer la conexion : Estado " + CtrlHiloConexion.ctrlEstado);
+                            //System.out.println("HiloPrincipal :: Wait... ");
+                            //System.out.println(" Esperaré para establecer la conexion : Estado " + CtrlHiloConexion.ctrlEstado);
                             CtrlHiloConexion.ctrlHiloC.wait();
                         } catch (Exception e) {}
                     }
                     
                     // * Conexion establecida
-                    System.out.println("HiloPrincipal :: Funcionando... ");
-                    System.out.println("...");
+                    //System.out.println("HiloPrincipal :: Funcionando... ");
+                    //System.out.println("...");
                     
                     try {
                         
                         // Verificando cada 1s Si la conexin está cerrada 
                         if( ctrlConn == null && ctrlConexion == null ){
-                            System.out.println("La conexion esta cerrada");
+                            //System.out.println("La conexion esta cerrada");
                             CtrlHiloConexion.ctrlEstado = false;
                             CtrlHiloConexion.ctrlHiloC.notify();
                         } else{

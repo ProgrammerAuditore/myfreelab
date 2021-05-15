@@ -36,7 +36,7 @@ public class DatosPersonalesDao implements keyword_datos_personales<DatosPersona
             
             
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
         
         
@@ -65,7 +65,7 @@ public class DatosPersonalesDao implements keyword_datos_personales<DatosPersona
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -94,7 +94,7 @@ public class DatosPersonalesDao implements keyword_datos_personales<DatosPersona
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         

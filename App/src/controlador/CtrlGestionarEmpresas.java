@@ -124,7 +124,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
     private void mtdBuscarEmpresa(){
         
         if( mtdValidarCampo() ){
-            System.out.println("CtrlGestionarEmpresas - Buscar empresa [!]");
+            ////System.out.println("CtrlGestionarEmpresas - Buscar empresa [!]");
             int tam = modeloTabla.getRowCount();
             boolean resultado = false;
             
@@ -148,7 +148,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
     private void mtdCrearEmpresa(){
         
         if( mtdValidarCampo() ){
-            System.out.println("CtrlGestionarEmpresas - Crear empresa [!]");
+            ////System.out.println("CtrlGestionarEmpresas - Crear empresa [!]");
             dto.setCmpNombre( cmpEmpresa );
             
             if( dao.mtdInsetar(dto) ){
@@ -165,7 +165,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
         int seleccionado = laVista.tblEmpresas.getSelectedRow();
         
         if( seleccionado >= 0 ){
-            System.out.println("CtrlGestionarEmpresas - Modificar empresa [!]");
+            ////System.out.println("CtrlGestionarEmpresas - Modificar empresa [!]");
             String[] msg = new String[2];
             dto = mtdObtenerEmpresa(seleccionado);
             
@@ -189,7 +189,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
         int seleccionado = laVista.tblEmpresas.getSelectedRow();
         
         if( seleccionado >= 0 ){
-            System.out.println("CtrlGestionarEmpresas - Eliminar empresa [!]");
+            ////System.out.println("CtrlGestionarEmpresas - Eliminar empresa [!]");
             String[] msg = new String[2];
             dto = mtdObtenerEmpresa(seleccionado);
             

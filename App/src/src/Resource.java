@@ -17,7 +17,7 @@ class Resource {
             // Obtener el archivo conn
             data = new File( Rutas.pathDataConexion );
         } catch (IOException ex) {
-            System.out.println("Resource :: Archivo conn no localizado...");
+            //System.out.println("Resource :: Archivo conn no localizado...");
         }
         return data;
     }

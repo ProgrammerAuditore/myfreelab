@@ -76,7 +76,7 @@ public class CtrlConexion implements MouseListener{
     }
     
     private void mtdEstablecerConexion() {
-        System.out.println("Establecer conexión");
+        ////System.out.println("Establecer conexión");
         
         // Si mtdCapturarDatos() Es Verdadero
         if( mtdCapturarDatos() ){
@@ -110,7 +110,7 @@ public class CtrlConexion implements MouseListener{
     }
     
     private void mtdCerrarConexion(){
-        System.out.println("Cerrar conexión");
+        ////System.out.println("Cerrar conexión");
         
         if( CtrlHiloConexion.mtdCerrar() ){
             estilosConexionCerrada();
@@ -140,7 +140,7 @@ public class CtrlConexion implements MouseListener{
             
             return true;
         }else{
-            System.out.println("Falto informacion");
+            ////System.out.println("Falto informacion");
         }
         
         return false;

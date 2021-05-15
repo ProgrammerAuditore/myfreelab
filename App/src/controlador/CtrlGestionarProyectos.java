@@ -88,7 +88,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     private void mtdBuscarProyecto(){
         
         if( mtdValidarCampo() ){
-            System.out.println("Buscar proyectos");
+            ////System.out.println("Buscar proyectos");
             int p = modeloTabla.getRowCount();
             boolean encontrado = false;
             
@@ -113,7 +113,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     private void mtdCrearProyecto(){
        
         if( mtdValidarCampo() ){
-            System.out.println("Crear proyectos");
+            ////System.out.println("Crear proyectos");
             dto.setCmpNombre( cmpProyecto );
             
             if(dao.mtdInsetar(dto)){
@@ -130,11 +130,11 @@ public class CtrlGestionarProyectos implements MouseListener{
         int seleccionado = laVista.tblProyectos.getSelectedRow();
         
         if( seleccionado >= 0 ){
-            System.out.println("Modificar proyectos");
+            ////System.out.println("Modificar proyectos");
             String[] msg = new String[2];
             dto = mtdObtenerProyecto(seleccionado);
             
-            System.out.println("FF = " + dto.getCmpFechaFinal() + " FI = " + dto.getCmpFechaInicial());
+            ////System.out.println("FF = " + dto.getCmpFechaFinal() + " FI = " + dto.getCmpFechaInicial());
             if( mtdFormatoFecha(dto.getCmpFechaInicial()) && mtdFormatoFecha(dto.getCmpFechaFinal())  ){
                 msg[1] = "Modificar proyecto";
                 msg[0] = "¿Seguro que deseas modificar el proyecto seleccionado?";
@@ -162,7 +162,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         if( seleccionado >= 0 ){
             dto = mtdObtenerProyecto(seleccionado);
             String[] msg =  new String[2];
-            System.out.println("Eliminar proyectos");
+            ////System.out.println("Eliminar proyectos");
             
             msg[0] = "Eliminar proyecto";
             msg[1] = "¿Seguro que deseas eliminar el proyecto seleccionado?";
@@ -263,7 +263,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             
         }
             
-        System.out.println("Resultado :" + formato + " : " + entero + " :: " + cmpFecha.length());
+        ////System.out.println("Resultado :" + formato + " : " + entero + " :: " + cmpFecha.length());
         return ( (formato + entero) == cmpFecha.length()  );
     }
     

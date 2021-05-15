@@ -59,8 +59,8 @@ public class CampoTexto extends JTextField implements FocusListener{
         getEstiloTextEstablecido();
         addFocusListener(this);
 
-        System.out.println("Texto = " + getText());
-        System.out.println("Placeholder = " + getPlaceholder());
+        //System.out.println("Texto = " + getText());
+        //System.out.println("Placeholder = " + getPlaceholder());
         
     }
     

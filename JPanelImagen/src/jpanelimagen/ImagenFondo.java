@@ -32,7 +32,7 @@ public class ImagenFondo implements Serializable{
     }
     
     private void fncVerificador(){
-        if( System.getProperty("os.name").equals("Windows 10") ){
+        if( //System.getProperty("os.name").equals("Windows 10") ){
             this.rutaImagen = new File( this.rutaImagen.getAbsolutePath().replace('\\', '/') );
         }
         

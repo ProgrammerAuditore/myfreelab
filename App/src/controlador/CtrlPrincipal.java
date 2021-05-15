@@ -128,11 +128,11 @@ public class CtrlPrincipal implements  ActionListener{
     }
     
     private void mtdAbriendoPrograma() {
-        System.out.println("Ventana abierto.");
+        ////System.out.println("Ventana abierto.");
 
         // Obtener los datos de la conexion antes de abrir el programa
         if( CtrlHiloConexion.checkConexion() ){
-            System.out.println("Iniciando el programa con exion establecida.");
+            ////System.out.println("Iniciando el programa con exion establecida.");
             mtdHabilitarMenus();
             mtdCrearHilo();
             mtdRellenarContenedor();
@@ -143,16 +143,16 @@ public class CtrlPrincipal implements  ActionListener{
     }
     
     private void mtdCerrandoPrograma() {
-        System.out.println("Finalizo el programa.");
+        ////System.out.println("Finalizo el programa.");
 
         // Guardar los datos de la conexion antes de cerrar el programa
         if( CtrlHiloConexion.checkConexion() ){
             new ConexionDao().regitrar_conexion( CtrlHiloConexion.ctrlDatos );
-            System.out.println("Conexion guardada.");
+            ////System.out.println("Conexion guardada.");
             
             if(CtrlHiloConexion.mtdCerrar()){
                 mtdDesHabilitarMenus();
-                System.out.println("Conexion finalizada.");
+                ////System.out.println("Conexion finalizada.");
             }
         }
         
@@ -163,7 +163,7 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.setVisible(false);
         mtdCerrandoPrograma();
         laVista.dispose();
-        System.exit(0);
+        //System.exit(0);
         
     }
 
@@ -250,7 +250,7 @@ public class CtrlPrincipal implements  ActionListener{
     
     private void mtdCrearHilo(){
         Runnable watcher = () -> {
-            System.out.println("CtrlPrincipal ::: Hilo Creado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo Creado [!]");
             boolean estado = true;
             
             while( estado ){
@@ -264,7 +264,7 @@ public class CtrlPrincipal implements  ActionListener{
                 }
             }
             
-            System.out.println("CtrlPrincipal ::: Hilo Terminado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo Terminado [!]");
         };
         
         Thread hilo = new Thread(watcher);
@@ -278,7 +278,7 @@ public class CtrlPrincipal implements  ActionListener{
         proyectos = dao.mtdListar();
         int tam = proyectos.size();
         
-        System.out.println("[!] proyectos : " + tam);
+        //System.out.println("[!] proyectos : " + tam);
         if( tam > 0 ){
             mtdAgregarProyectos();
         } else{
@@ -347,7 +347,7 @@ public class CtrlPrincipal implements  ActionListener{
     }
     
     private void mtdTesting(String msg){
-        System.out.println("ctrlPrincipal ::: " + msg + " ::: id [" + TestId + "]" );
+        //System.out.println("ctrlPrincipal ::: " + msg + " ::: id [" + TestId + "]" );
         TestId++;
     }
     

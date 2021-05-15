@@ -85,14 +85,14 @@ public class CtrlDatosPersonales implements MouseListener{
     }
     
     private void mtdEstablecerDatos(){
-        System.out.println("Establecer datos personales [!DP]");
+        ////System.out.println("Establecer datos personales [!DP]");
         
         if( mtdCapturarDatos() ){
             
             if( dao.mtdConsultar(dto) == false ){
                 
                 // Registrarlo a la base de datos...
-                System.out.println("Registrarlo a la base de datos");
+                ////System.out.println("Registrarlo a la base de datos");
                 dao.mtdInsertar(dto);
             
             } else{

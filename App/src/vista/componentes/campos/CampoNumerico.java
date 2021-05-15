@@ -60,8 +60,8 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
         addFocusListener(this);
         addKeyListener(this);
 
-        System.out.println("Texto = " + getText());
-        System.out.println("Placeholder = " + getPlaceholder());
+        //System.out.println("Texto = " + getText());
+        //System.out.println("Placeholder = " + getPlaceholder());
         
     }
     

@@ -34,7 +34,7 @@ public class MyFreeLabDao{
             return true; 
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -60,7 +60,7 @@ public class MyFreeLabDao{
 
 
         } catch (SQLException ex) {
-            System.out.println("" + ex.getMessage());
+            //System.out.println("" + ex.getMessage());
         }
         
         return ( tablas_existentes == tables.length );
@@ -87,7 +87,7 @@ public class MyFreeLabDao{
             return true; 
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -114,7 +114,7 @@ public class MyFreeLabDao{
             return true; 
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -140,7 +140,7 @@ public class MyFreeLabDao{
             return true; 
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -164,7 +164,7 @@ public class MyFreeLabDao{
             return true; 
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;

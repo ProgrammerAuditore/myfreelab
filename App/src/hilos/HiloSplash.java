@@ -57,12 +57,12 @@ public class HiloSplash extends Thread{
             // Proceso de carga
             if( new ConexionDao().obtener_conexion() != null ){
                 splash.etqMensaje.setText("Datos de conexión cargado.");
-                System.out.println("Datos de conexión cargado. [!]");
+                //System.out.println("Datos de conexión cargado. [!]");
             }else {
                 ConexionDto conec = new ConexionDto("0", "", "", "", "");
                 new ConexionDao().regitrar_conexion(conec);
                 splash.etqMensaje.setText("Datos de conexión creado.");
-                System.out.println("Datos de conexión creado. [!]");
+                //System.out.println("Datos de conexión creado. [!]");
             }
             
             avance += (100 / src);

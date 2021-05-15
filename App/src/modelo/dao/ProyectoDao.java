@@ -28,7 +28,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -58,7 +58,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -90,7 +90,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
             }
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return proyectos;
@@ -118,7 +118,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
                 return true;
             
         } catch (Exception e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         return false;
     }
@@ -148,7 +148,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
             return true;
                     
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;

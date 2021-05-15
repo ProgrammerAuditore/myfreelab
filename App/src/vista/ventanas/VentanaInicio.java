@@ -42,8 +42,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.panelContenedor = panel;
         
         // ** Testing **
-        System.out.println("Tamaño de la ventana = " + this.getBounds());
-        System.out.println("Tamaño del panel = " + this.panel_background.getBounds());
+        //System.out.println("Tamaño de la ventana = " + this.getBounds());
+        //System.out.println("Tamaño del panel = " + this.panel_background.getBounds());
     }
     
     private void init(){

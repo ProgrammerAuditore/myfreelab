@@ -40,7 +40,7 @@ public class MyFont {
     // Métodos
     private void initFuente() {
         fuente_path = Source.fuentesContenedor + fuente_name + "/" +fuente_name+ "-"+fuente_style+".ttf";
-        //System.out.println("fuente_path = " + fuente_path);
+        ////System.out.println("fuente_path = " + fuente_path);
         try {
             
             InputStream is = getClass().getResourceAsStream(fuente_path);
@@ -48,13 +48,13 @@ public class MyFont {
             font = font.deriveFont(Font.PLAIN, 12);
             
         } catch (FontFormatException | IOException e) {
-            System.err.println("Warining: La siguiente fuente no se pudo cargar [\"" +fuente_name+ "-"+fuente_style+".ttf" + "\"]");
+            //System.err.println("Warining: La siguiente fuente no se pudo cargar [\"" +fuente_name+ "-"+fuente_style+".ttf" + "\"]");
             font = new Font("Arial", Font.PLAIN, 12);
         }
     }
 
     public Font changeStyle(int estilo, int tamanho) {
-        //System.out.println("Nombre del fuente = " + font.getName());
+        ////System.out.println("Nombre del fuente = " + font.getName());
         
         if( tamanho <= 0 ){ tamanho = 12; }
         

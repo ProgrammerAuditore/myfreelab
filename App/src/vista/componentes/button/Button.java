@@ -147,7 +147,7 @@ public class Button extends JPanelBackground implements MouseListener{
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        //System.out.println("clickeado");
+        ////System.out.println("clickeado");
         
         // Verificar, si boton esta habilitado
         if( isEnabled() ){

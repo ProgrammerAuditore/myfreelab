@@ -15,14 +15,14 @@ public class HiloConexion extends Thread{
                     while ( CtrlHiloConexion.ctrlEstado == true ) {                        
                         try {
                             // * Esperaré a terminar la conexion
-                            System.out.println("HiloConexion :: Wait... ");
-                            System.out.println(" Esperaré a terminar la conexion ");
+                            //System.out.println("HiloConexion :: Wait... ");
+                            //System.out.println(" Esperaré a terminar la conexion ");
                             CtrlHiloConexion.ctrlHiloC.wait();
                         } catch (Exception e) {}
                     }
                     
                     // * Conexion cerrada
-                    System.out.println("HiloConexion :: Funcionando... ");
+                    //System.out.println("HiloConexion :: Funcionando... ");
                     
                     try {
                         

@@ -28,7 +28,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         return false;
     }
@@ -50,7 +50,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -76,7 +76,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -108,7 +108,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
             }
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return requisitos;

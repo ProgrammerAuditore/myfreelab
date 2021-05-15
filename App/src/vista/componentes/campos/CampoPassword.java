@@ -48,8 +48,8 @@ public class CampoPassword extends JPasswordField implements FocusListener{
         getEstiloTextEstablecido();
         addFocusListener(this);
 
-        System.out.println("Texto = " + String.valueOf(getPassword()));
-        System.out.println("Placeholder = " + getPlaceholder());
+        //System.out.println("Texto = " + String.valueOf(getPassword()));
+        //System.out.println("Placeholder = " + getPlaceholder());
         
     }
     

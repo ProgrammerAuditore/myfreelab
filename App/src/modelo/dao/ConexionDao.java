@@ -29,11 +29,11 @@ public class ConexionDao implements keyword_conexion<ConexionDto>{
                     db.setPass("");
                 }
                 
-                System.out.println("" + db);
+                //System.out.println("" + db);
             }
             
         } catch(Exception e){
-            System.out.println("Error");
+            //System.out.println("Error");
             e.printStackTrace();
         }
         
@@ -49,7 +49,7 @@ public class ConexionDao implements keyword_conexion<ConexionDto>{
             oss.close();
             fos.close();
             
-            System.out.println("Successfully actualizar data to the file");
+            //System.out.println("Successfully actualizar data to the file");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class ConexionDao implements keyword_conexion<ConexionDto>{
             oss.close();
             fos.close();
             
-            System.out.println("Successfully escribir data to the file");
+            //System.out.println("Successfully escribir data to the file");
         } catch (IOException e) {
             e.printStackTrace();
         }

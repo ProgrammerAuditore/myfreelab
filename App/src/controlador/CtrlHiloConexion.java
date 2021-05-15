@@ -27,7 +27,7 @@ public class CtrlHiloConexion{
             
             if( ctrlConexion.isValid(550) ){
                 
-                System.out.println("Conexion establecida.");
+                ////System.out.println("Conexion establecida.");
                 //ctrlEstado = true;
                 return true;
                 
@@ -55,7 +55,7 @@ public class CtrlHiloConexion{
                     ctrlConn = null;
                     ctrlConexion = null;
                     //ctrlEstado = false;
-                    System.out.println("Conexion cerrada.");
+                    ////System.out.println("Conexion cerrada.");
                     
                     return true;
                 }
