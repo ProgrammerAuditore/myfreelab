@@ -19,7 +19,7 @@ public class Titulo extends JLabel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        this.setFont( Source.fontLabelEtiqueta.deriveFont( getFont().getStyle() , getFont().getSize() ) );
+        //this.setFont( Source.fontLabelEtiqueta.deriveFont( getFont().getStyle() , getFont().getSize() ) );
         
     }
 

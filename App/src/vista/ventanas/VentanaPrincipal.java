@@ -63,6 +63,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlLogo = new vista.componentes.jpanelbackground.JPanelBackground();
         etqBusqueda = new vista.componentes.campos.CampoTexto();
         pnlPortada = new vista.componentes.jpanelbackground.JPanelBackground();
+        titulo1 = new vista.componentes.etiqueta.Titulo();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         bntSalir = new javax.swing.JMenuItem();
@@ -70,7 +71,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnDatosPersonales = new javax.swing.JMenuItem();
         btnGestionarProyectos = new javax.swing.JMenuItem();
         btnGestionarEmpresas = new javax.swing.JMenuItem();
-        btnGestionarRequisitos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
 
@@ -136,15 +136,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        titulo1.setText("INICIO");
+
         javax.swing.GroupLayout pnlPortadaLayout = new javax.swing.GroupLayout(pnlPortada);
         pnlPortada.setLayout(pnlPortadaLayout);
         pnlPortadaLayout.setHorizontalGroup(
             pnlPortadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPortadaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         pnlPortadaLayout.setVerticalGroup(
             pnlPortadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPortadaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jMenu1.setText("Archivo");
@@ -170,9 +178,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnGestionarEmpresas.setText("Gestionar empresas");
         menuEditar.add(btnGestionarEmpresas);
-
-        btnGestionarRequisitos.setText("Gestionar requisitos");
-        menuEditar.add(btnGestionarRequisitos);
 
         menuBar.add(menuEditar);
 
@@ -264,7 +269,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnDatosPersonales;
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
-    public javax.swing.JMenuItem btnGestionarRequisitos;
     public javax.swing.JLabel cmpEmpresas;
     public javax.swing.JLabel cmpProyectos;
     private vista.componentes.campos.CampoTexto etqBusqueda;
@@ -279,5 +283,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlOpciones;
     private vista.componentes.jpanelbackground.JPanelBackground pnlPortada;
     public javax.swing.JScrollPane scpContenedor;
+    private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables
 }
