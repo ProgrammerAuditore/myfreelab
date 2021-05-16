@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -63,7 +65,7 @@ public class CtrlPrincipal implements  ActionListener{
     private void mtdInit() {
         proyectos = new ArrayList<>();
         laVista.pnlContenedor.setLayout( new GridBagLayout() );
-        mtdDesHabilitarMenus();
+        mtdMensaje("Cargando ...");
         
         // * Definir oyentes
         laVista.setLocationRelativeTo(null);
@@ -72,7 +74,6 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.btnDatosPersonales.addActionListener(this);
         laVista.btnGestionarProyectos.addActionListener(this);
         laVista.btnGestionarEmpresas.addActionListener(this);
-        laVista.btnGestionarRequisitos.addActionListener(this);
         
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -106,9 +107,6 @@ public class CtrlPrincipal implements  ActionListener{
         
         if( e.getSource() == laVista.btnGestionarEmpresas )
             modalGestionarEmpresas();
-        
-        if( e.getSource() == laVista.btnGestionarRequisitos )
-            modalGestionarRequisitos();
         
     }
     
@@ -218,18 +216,17 @@ public class CtrlPrincipal implements  ActionListener{
         
     }
     
-    private void modalGestionarRequisitos(){
+    private void modalGestionarRequisitos(ProyectoDto proyecto_dto){
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelGestionarRequisitos vista = new PanelGestionarRequisitos();
         RequisitoDao dao = new RequisitoDao();
         RequisitoDto dto = new RequisitoDto();
-        CtrlGestionarRequisitos controlador = new CtrlGestionarRequisitos( vista, dto, dao);
+        CtrlGestionarRequisitos controlador = new CtrlGestionarRequisitos( vista, proyecto_dto , dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo( laVista );
         controlador.modal.setVisible(true);
-        mtdRellenarContenedor();
         
     }
     
@@ -289,6 +286,7 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.pnlContenedor.validate();
         laVista.pnlContenedor.revalidate();
         laVista.pnlContenedor.repaint();
+        proyectos.clear();
     }
     
     private void mtdVaciarProyectos(){
@@ -304,8 +302,17 @@ public class CtrlPrincipal implements  ActionListener{
         
         for (int i = 0; i < tam; i++) {
                 PanelCard tarjeta_proyecto = new PanelCard();
+                ProyectoDto proyecto = proyectos.get(i);
                 GridBagConstraints c = new GridBagConstraints();
                 tarjeta_proyecto.setVisible(true);
+                
+                tarjeta_proyecto.btnModificar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        modalGestionarRequisitos( proyecto );
+                    }
+                });
+                
                 
                 tarjeta_proyecto.etqTitulo.setText( proyectos.get(i).getCmpNombre() );
                 tarjeta_proyecto.cmpFechaInicial.setText( proyectos.get(i).getCmpFechaInicial() );

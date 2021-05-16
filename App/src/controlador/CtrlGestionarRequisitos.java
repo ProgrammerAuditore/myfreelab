@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.RequisitoDao;
+import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
 import vista.paneles.PanelGestionarRequisitos;
 
@@ -23,6 +24,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
     // * Modelos
     private RequisitoDto dto;
     private RequisitoDao dao;
+    private ProyectoDto proyecto_dto;
     
     // * Atributos
     private DefaultTableModel modeloTabla;
@@ -31,8 +33,9 @@ public class CtrlGestionarRequisitos implements MouseListener{
     private double cmpMonto;
     private List<RequisitoDto> requisitos;
     
-    public CtrlGestionarRequisitos(PanelGestionarRequisitos laVista, RequisitoDto dto, RequisitoDao dao) {
+    public CtrlGestionarRequisitos(PanelGestionarRequisitos laVista, ProyectoDto proyecto_dto,  RequisitoDto dto, RequisitoDao dao) {
         this.laVista = laVista;
+        this.proyecto_dto = proyecto_dto;
         this.dto = dto;
         this.dao = dao;
         
@@ -56,7 +59,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
         requisitos = new ArrayList<RequisitoDto>();
         //modal = new JDialog();
         
-        modal.setTitle("Gestionar requisitos");
+        modal.setTitle("Gestionar requisitos | " + proyecto_dto.getCmpNombre() );
         //modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setResizable(false);
@@ -114,6 +117,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
     private void mtdCrearRequisito(){
      
         if( mtdValidarCampoCosto() && mtdValidarCampoRequisito() ){
+            dto.setCmpProID( proyecto_dto.getCmpID() );
             dto.setCmpNombre( cmpRequisito );
             dto.setCmpCosto( cmpCosto );
             
@@ -228,7 +232,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
 
     private void mtdRellenarTabla() {
         mtdVaciar();
-        requisitos = dao.mtdListar();
+        requisitos = dao.mtdListar(proyecto_dto);
         
         if( requisitos.size() > 0)
             mtdAgregarRequisitos();

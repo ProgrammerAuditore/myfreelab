@@ -30,10 +30,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.scpContenedor.getViewport().setBorder(null);
         
         // * Establece logo
+        this.pnlLogo.setImgBackgroundEnabled(true);
+        this.pnlLogo.setImgRutaInternoActivo(true);
         this.pnlLogo.setImgRutaInterno(Source.bkgLogo);
         
         // * Establece portada
+        this.pnlPortada.setImgBackgroundEnabled(true);
+        this.pnlPortada.setImgRutaInternoActivo(true);
         this.pnlPortada.setImgRutaInterno(Source.bkgPortada);
+        
+        // * Establecer placeholder
+        this.etqBusqueda.setPlaceholder("Buscar empresa o proyecto.");
         
     }
 
@@ -46,17 +53,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlLogo = new vista.componentes.jpanelbackground.JPanelBackground();
-        campoTexto1 = new vista.componentes.campos.CampoTexto();
         jToolBar1 = new javax.swing.JToolBar();
         cmpProyectos = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cmpEmpresas = new javax.swing.JLabel();
         scpContenedor = new javax.swing.JScrollPane();
         pnlContenedor = new javax.swing.JPanel();
-        pnlPortada = new vista.componentes.jpanelbackground.JPanelBackground();
-        titulo1 = new vista.componentes.etiqueta.Titulo();
         pnlOpciones = new javax.swing.JPanel();
+        pnlLogo = new vista.componentes.jpanelbackground.JPanelBackground();
+        etqBusqueda = new vista.componentes.campos.CampoTexto();
+        pnlPortada = new vista.componentes.jpanelbackground.JPanelBackground();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         bntSalir = new javax.swing.JMenuItem();
@@ -70,31 +76,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1204, 724));
-
-        pnlLogo.setBackground(new java.awt.Color(255, 255, 255));
-        pnlLogo.setImgBackgroundEnabled(true);
-        pnlLogo.setImgBackgroundIn_Ex(false);
-        pnlLogo.setImgRutaExterno(new java.io.File("C:\\Program Files\\NetBeans 8.2\\<Not Set>"));
-        pnlLogo.setImgRutaInterno("");
-
-        campoTexto1.setPlaceholder("Buscar proyectos y empresas");
-
-        javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
-        pnlLogo.setLayout(pnlLogoLayout);
-        pnlLogoLayout.setHorizontalGroup(
-            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLogoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(campoTexto1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnlLogoLayout.setVerticalGroup(
-            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
-                .addContainerGap(203, Short.MAX_VALUE)
-                .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 204));
         jToolBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -122,29 +103,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         scpContenedor.setViewportView(pnlContenedor);
 
-        pnlPortada.setImgBackgroundEnabled(true);
-        pnlPortada.setImgBackgroundIn_Ex(true);
-
-        titulo1.setForeground(new java.awt.Color(255, 255, 255));
-        titulo1.setText("INICIO");
-
-        javax.swing.GroupLayout pnlPortadaLayout = new javax.swing.GroupLayout(pnlPortada);
-        pnlPortada.setLayout(pnlPortadaLayout);
-        pnlPortadaLayout.setHorizontalGroup(
-            pnlPortadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPortadaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-        );
-        pnlPortadaLayout.setVerticalGroup(
-            pnlPortadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPortadaLayout.createSequentialGroup()
-                .addContainerGap(185, Short.MAX_VALUE)
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
         pnlOpciones.setBackground(new java.awt.Color(211, 211, 211));
         pnlOpciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -157,6 +115,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlOpcionesLayout.setVerticalGroup(
             pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 378, Short.MAX_VALUE)
+        );
+
+        etqBusqueda.setText("campoTexto1");
+
+        javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
+        pnlLogo.setLayout(pnlLogoLayout);
+        pnlLogoLayout.setHorizontalGroup(
+            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(etqBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlLogoLayout.setVerticalGroup(
+            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
+                .addContainerGap(190, Short.MAX_VALUE)
+                .addComponent(etqBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnlPortadaLayout = new javax.swing.GroupLayout(pnlPortada);
+        pnlPortada.setLayout(pnlPortadaLayout);
+        pnlPortadaLayout.setHorizontalGroup(
+            pnlPortadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnlPortadaLayout.setVerticalGroup(
+            pnlPortadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Archivo");
@@ -216,11 +204,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlPortada, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlPortada, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(pnlLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(scpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
@@ -277,9 +265,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
     public javax.swing.JMenuItem btnGestionarRequisitos;
-    private vista.componentes.campos.CampoTexto campoTexto1;
     public javax.swing.JLabel cmpEmpresas;
     public javax.swing.JLabel cmpProyectos;
+    private vista.componentes.campos.CampoTexto etqBusqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -291,6 +279,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlOpciones;
     private vista.componentes.jpanelbackground.JPanelBackground pnlPortada;
     public javax.swing.JScrollPane scpContenedor;
-    private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,7 @@ package modelo.dto;
 public class RequisitoDto {
     
     private int cmpID;
+    private int cmpProID;
     private String cmpNombre;
     private double cmpCosto;
 
@@ -28,6 +29,14 @@ public class RequisitoDto {
 
     public void setCmpCosto(double cmpPrecio) {
         this.cmpCosto = cmpPrecio;
+    }
+
+    public int getCmpProID() {
+        return cmpProID;
+    }
+
+    public void setCmpProID(int cmpProID) {
+        this.cmpProID = cmpProID;
     }
     
 }

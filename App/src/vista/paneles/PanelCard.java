@@ -36,7 +36,6 @@ public class PanelCard extends javax.swing.JPanel {
         etqFechaInicial = new vista.componentes.etiqueta.Etiqueta();
         etqMontoInicial = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoInicial = new vista.componentes.campos.CampoTexto();
-        cmpFechaFinal = new vista.componentes.campos.CampoTexto();
         etqCostoEstimado = new vista.componentes.etiqueta.Etiqueta();
         cmpCostoEstimado = new vista.componentes.campos.CampoTexto();
         etqTitulo = new vista.componentes.etiqueta.Titulo();
@@ -47,6 +46,7 @@ public class PanelCard extends javax.swing.JPanel {
         btnCotizar = new vista.componentes.button.Button();
         btnModificar = new vista.componentes.button.Button();
         btnEliminar = new vista.componentes.button.Button();
+        cmpFechaFinal = new vista.componentes.campos.CampoTexto();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,15 +69,13 @@ public class PanelCard extends javax.swing.JPanel {
         etqMontoInicial.setText("Monto inicial");
 
         cmpMontoInicial.setComponenteDidireccional(etqMontoInicial);
-        cmpMontoInicial.setEnabled(false);
-
-        cmpFechaFinal.setEnabled(false);
+        cmpMontoInicial.setFocusable(false);
 
         etqCostoEstimado.setForeground(new java.awt.Color(255, 255, 255));
         etqCostoEstimado.setText("Costo estimado");
 
         cmpCostoEstimado.setComponenteDidireccional(etqCostoEstimado);
-        cmpCostoEstimado.setEnabled(false);
+        cmpCostoEstimado.setFocusable(false);
 
         etqTitulo.setBackground(new java.awt.Color(0, 0, 0));
         etqTitulo.setText("Titulo del proyecto");
@@ -86,7 +84,7 @@ public class PanelCard extends javax.swing.JPanel {
         etqFechaFinal.setText("Fecha final");
 
         cmpFechaInicial.setComponenteDidireccional(etqFechaInicial);
-        cmpFechaInicial.setEnabled(false);
+        cmpFechaInicial.setFocusable(false);
 
         jPanel2.setBackground(new java.awt.Color(25, 100, 126));
 
@@ -105,11 +103,11 @@ public class PanelCard extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCotizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCotizar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -122,6 +120,8 @@ public class PanelCard extends javax.swing.JPanel {
                     .addComponent(btnCotizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        cmpFechaFinal.setComponenteDidireccional(etqFechaFinal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,12 +170,13 @@ public class PanelCard extends javax.swing.JPanel {
                         .addComponent(cmpFechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(etqFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmpFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(etqMontoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmpMontoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmpMontoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(etqCostoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

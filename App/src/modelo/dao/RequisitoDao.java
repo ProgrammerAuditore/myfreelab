@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
 import modelo.interfaces.keyword_query;
 
@@ -16,12 +17,13 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
     public boolean mtdInsetar(RequisitoDto requisito_dto) {
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "INSERT INTO tblrequisitos (cmpNombre, cmpCosto) "
-                + "VALUES (?, ?); ";        
+        String sql = "INSERT INTO tblrequisitos (cmpProID, cmpNombre, cmpCosto) "
+                + "VALUES (?, ?, ?); ";        
         try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1, requisito_dto.getCmpNombre());
-            ps.setDouble(2, requisito_dto.getCmpCosto());
+            ps.setInt(1, requisito_dto.getCmpProID());
+            ps.setString(2, requisito_dto.getCmpNombre());
+            ps.setDouble(3, requisito_dto.getCmpCosto());
             int rs = ps.executeUpdate();
             
             if( rs > 0 )
@@ -87,15 +89,15 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         return false;
     }
 
-    @Override
-    public List<RequisitoDto> mtdListar() {
+    public List<RequisitoDto> mtdListar(ProyectoDto dto) {
         List<RequisitoDto> requisitos = new ArrayList<>();
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "SELECT * FROM tblrequisitos; ";
+        String sql = "SELECT * FROM tblrequisitos WHERE cmpProID= ?; ";
         
         try {
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, dto.getCmpID());
             ResultSet rs = ps.executeQuery();
             
             while( rs.next() ){
@@ -117,6 +119,11 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
     @Override
     public boolean mtdComprobar(RequisitoDto requisito_dto) {
         return false;
+    }
+
+    @Override
+    public List<RequisitoDto> mtdListar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

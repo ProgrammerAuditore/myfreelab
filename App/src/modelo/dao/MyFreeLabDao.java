@@ -70,7 +70,7 @@ public class MyFreeLabDao{
         PreparedStatement ps = null;
         String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "Create Table "+dbname+".tblDatosPersonales ( ";
+        String sql = "Create Table "+dbname+".tbldatospersonales ( ";
                sql += " cmpID int not null, Primary Key(cmpID), ";
                sql += " cmpNombres varchar(60) null default 'Desconocido',";
                sql += " cmpApellidos varchar(60) null default 'Desconocido',";
@@ -97,7 +97,7 @@ public class MyFreeLabDao{
         PreparedStatement ps = null;
         String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "Create Table "+dbname+".tblProyectos ( ";
+        String sql = "Create Table "+dbname+".tblproyectos ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
                sql += " cmpNombre varchar(20) not null,";
                sql += " cmpFechaInicial varchar(20) null default 'Desconocido',";
@@ -124,8 +124,10 @@ public class MyFreeLabDao{
         PreparedStatement ps = null;
         String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "Create Table "+dbname+".tblEmpresas ( ";
+        String sql = "Create Table "+dbname+".tblempresas ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
+               sql += " cmpProID int not null, ";
+               sql += " Foreign Key(cmpProID) References tblproyectos(cmpID) ON DELETE CASCADE, ";
                sql += " cmpNombre varchar(20) not null,";
                sql += " cmpDireccion varchar(20) null default 'Desconocido',";
                sql += " cmpCorreo varchar(20) null default 'Desconocido',";
@@ -150,10 +152,12 @@ public class MyFreeLabDao{
         PreparedStatement ps = null;
         String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "Create Table "+dbname+".tblRequisitos ( ";
+        String sql = "Create Table "+dbname+".tblrequisitos ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
-               sql += " cmpNombre varchar(20) not null,";
-               sql += " cmpCosto double not null";
+               sql += " cmpProID int not null, ";
+               sql += " Foreign Key(cmpProID) References tblproyectos(cmpID) ON DELETE CASCADE, ";
+               sql += " cmpNombre varchar(20) not null, ";
+               sql += " cmpCosto double not null ";
                sql += " ); ";
         
         try {
