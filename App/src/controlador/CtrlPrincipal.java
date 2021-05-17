@@ -26,6 +26,7 @@ import modelo.dto.DatosPersonalesDto;
 import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
+import modelo.dto.VinculacionDto;
 import src.Info;
 import src.Source;
 import vista.paneles.PanelCard;
@@ -258,7 +259,8 @@ public class CtrlPrincipal implements  ActionListener{
         EmpresaDao empresa_dao = new EmpresaDao();
         ProyectoDao proyecto_dao = new ProyectoDao();
         VinculacionDao vinculacion_dao = new VinculacionDao();
-        CtrlVinculacion controlador = new  CtrlVinculacion(vista, proyecto_dao, empresa_dao, vinculacion_dao);
+        VinculacionDto vinculacion_dto = new VinculacionDto();
+        CtrlVinculacion controlador = new  CtrlVinculacion(vista, proyecto_dao, empresa_dao, vinculacion_dao, vinculacion_dto);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);

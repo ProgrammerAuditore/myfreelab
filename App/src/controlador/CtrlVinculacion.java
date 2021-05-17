@@ -6,6 +6,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
@@ -15,6 +16,7 @@ import modelo.dao.ProyectoDao;
 import modelo.dao.VinculacionDao;
 import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
+import modelo.dto.VinculacionDto;
 import vista.paneles.PanelVinculacion;
 
 public class CtrlVinculacion implements MouseListener, ItemListener{
@@ -27,18 +29,21 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     private EmpresaDao empresa_dao;
     private ProyectoDao proyecto_dao;
     private VinculacionDao vinculacion_dao;
+    private VinculacionDto vinculacion_dto;
     
     // * Atributos
-    private List<EmpresaDto> lista_empresa;
-    private List<ProyectoDto> lista_proyecto;
-    private DefaultListModel lista_asociada;
+    private List<EmpresaDto> lista_empresas;
+    private List<ProyectoDto> lista_proyectos;
+    private DefaultListModel lista_asociados;
+    private List<VinculacionDto> vinculos;
     
-    public CtrlVinculacion(PanelVinculacion laVista, ProyectoDao proyectos, EmpresaDao empresas, VinculacionDao vinculacion_dao) {
+    public CtrlVinculacion(PanelVinculacion laVista, ProyectoDao proyectos, EmpresaDao empresas, VinculacionDao vinculacion_dao, VinculacionDto vinculacion_dto) {
         this.laVista = laVista;
         this.modal = modal;
         this.empresa_dao = empresas;
         this.proyecto_dao = proyectos;
         this.vinculacion_dao = vinculacion_dao;
+        this.vinculacion_dto = vinculacion_dto;
         
         // * Defini propiedades
         this.laVista.lstEmpresas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -46,6 +51,8 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         this.laVista.lstEmpresasAsociadas.setEnabled(false);
         
         // * Definir oyentes
+        this.laVista.etqAsociar.addMouseListener(this);
+        this.laVista.etqEliminar.addMouseListener(this);
         this.laVista.btnCancelar.addMouseListener(this);
         this.laVista.btnAceptar.addMouseListener(this);
         this.laVista.cmbProyectos.addItemListener(this);
@@ -54,9 +61,10 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     }
     
     public void mtdInit(){
-        lista_asociada = new DefaultListModel();
-        lista_empresa = new ArrayList<>();
-        lista_proyecto = new ArrayList<>();
+        lista_asociados = new DefaultListModel();
+        lista_empresas = new ArrayList<>();
+        lista_proyectos = new ArrayList<>();
+        vinculos = new ArrayList<>();
         
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Vinculación");
@@ -67,33 +75,34 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         
         if( CtrlHiloConexion.ctrlEstado == true ){
             mtdRellenarProyectos();
-            mtdRellenarEmpresas();
+            mtdDeshabilitar();
+            mtdVaciarListaAsociados();
         }
         
     }
     
     private void mtdRellenarProyectos(){
         laVista.cmbProyectos.removeAllItems();
-        lista_proyecto.clear();
+        lista_proyectos.clear();
         
         laVista.cmbProyectos.addItem("Ninguno");
-        lista_proyecto = proyecto_dao.mtdListar();
+        lista_proyectos = proyecto_dao.mtdListar();
         
-        for (int i = 0; i < lista_proyecto.size(); i++) {
-            laVista.cmbProyectos.addItem( lista_proyecto.get(i).getCmpNombre() );
+        for (int i = 0; i < lista_proyectos.size(); i++) {
+            laVista.cmbProyectos.addItem(lista_proyectos.get(i).getCmpNombre() );
         }
         
     }
     
     private void mtdRellenarEmpresas(){
         laVista.lstEmpresas.removeAll();
-        lista_empresa.clear();
+        lista_empresas.clear();
         
         DefaultListModel modelo = new DefaultListModel();
-        lista_empresa = empresa_dao.mtdListar();
+        lista_empresas = empresa_dao.mtdListar();
         
-        for (int i = 0; i < lista_empresa.size(); i++) {
-            modelo.addElement( lista_empresa.get(i).getCmpNombre() );
+        for (int i = 0; i < lista_empresas.size(); i++) {
+            modelo.addElement( lista_empresas.get(i).getCmpNombre() );
         }
         
         laVista.lstEmpresas.setModel(modelo);
@@ -108,6 +117,14 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         if( e.getSource() == laVista.btnAceptar )
             mtdBtnAceptar();
         
+        if( e.getSource() == laVista.etqAsociar )
+            if( laVista.etqEliminar.isEnabled() )
+            mtdAsociar();
+        
+        if( e.getSource() == laVista.etqEliminar )
+            if( laVista.etqEliminar.isEnabled() )
+            mtdEliminar();
+        
     }
     
     private void mtdBtnCancelar(){
@@ -119,25 +136,94 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         
     }
     
+    private void mtdAsociar(){
+        laVista.btnAceptar.setEnabled(true);
+       
+    }
+    
+    private void mtdEliminar(){
+        laVista.btnAceptar.setEnabled(true);
+    }
+    
     @Override
     public void itemStateChanged(ItemEvent e) {
         
         if( e.getSource() == laVista.cmbProyectos )
-            mtdCambio();
-    
+            mtdElegirItem();
+        
     }
     
-    private void mtdCambio(){
+    private void mtdElegirItem(){
+        mtdDeshabilitar();
+        mtdVaciarListaAsociados();
+        mtdRellenarEmpresas();
         String seleccionado = String.valueOf( laVista.cmbProyectos.getSelectedItem() );
-        if( seleccionado.equalsIgnoreCase("Ninguno") ){
-            laVista.etqAsociar.setEnabled(false);
-            laVista.etqEliminar.setEnabled(false);
-            laVista.btnAceptar.setEnabled(false);
-        } else {
-            laVista.etqAsociar.setEnabled(true);
-            laVista.etqEliminar.setEnabled(true);
+        
+        if( !seleccionado.equalsIgnoreCase("Ninguno") ){
+        laVista.etqAsociar.setEnabled(true);
+            
+            if(  mtdDefinirAsociados() ){
+                laVista.etqEliminar.setEnabled(true);
+                laVista.lstEmpresasAsociadas.setEnabled(true);
+                laVista.lstEmpresasAsociadas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                mtdRellenarLstEmpresas();
+            }
         }
-    }   
+    }
+    
+    private void mtdRellenarLstEmpresas(){
+        DefaultListModel modelo = (DefaultListModel) laVista.lstEmpresas.getModel();
+        
+        for (int i = 0; i < vinculos.size(); i++) {
+            String valor = vinculos.get(i).getCmpEmpNombre();
+            
+            laVista.lstEmpresas.setSelectedValue( valor , false);
+            int index = laVista.lstEmpresas.getSelectedIndex();
+            
+            modelo.remove(index);
+        }
+        
+        laVista.lstEmpresas.setModel(modelo);
+    }
+        
+    private boolean mtdDefinirAsociados(){
+        int seleccionado = laVista.cmbProyectos.getSelectedIndex();
+        
+        if( seleccionado > 0 ){
+            vinculacion_dto.setCmpProID( lista_proyectos.get(seleccionado - 1).getCmpID() );
+            vinculos = vinculacion_dao.mtdListar(vinculacion_dto);
+            
+            //System.out.println( "" + lista_proyectos.get(seleccionado - 1).getCmpNombre() + " - " + vinculos.size() );
+            Iterator<VinculacionDto> vc = vinculos.iterator();
+
+            while(vc.hasNext()){
+                lista_asociados.addElement( "" + vc.next().getCmpEmpNombre());
+            }
+                
+            laVista.lstEmpresasAsociadas.setModel(lista_asociados);
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private void mtdVaciarListaAsociados(){
+        String[] ninguno = {"Ninguno"};
+        lista_asociados.clear();
+        lista_asociados.removeAllElements();
+        vinculos.clear();
+        
+        laVista.lstEmpresasAsociadas.removeAll();
+        laVista.lstEmpresasAsociadas.setEnabled(false);
+        laVista.lstEmpresasAsociadas.setFocusable(false);
+        laVista.lstEmpresasAsociadas.setListData(ninguno);
+    }
+    
+    private void mtdDeshabilitar(){
+        laVista.etqAsociar.setEnabled(false);
+        laVista.etqEliminar.setEnabled(false);
+        laVista.btnAceptar.setEnabled(false);
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {}
