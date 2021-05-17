@@ -5,6 +5,9 @@
  */
 package vista.paneles;
 
+import java.awt.Color;
+import src.Source;
+
 /**
  *
  * @author victo
@@ -16,6 +19,16 @@ public class PanelVinculacion extends javax.swing.JPanel {
      */
     public PanelVinculacion() {
         initComponents();
+        
+        // * Definir tamaños por defecto 
+        this.setSize( Source.tamDialog );
+        this.setPreferredSize( Source.tamDialog );
+        
+        // * Definir el background
+        bkgAside.setImgBackgroundEnabled(true);
+        bkgAside.setImgRutaInternoActivo(true);
+        bkgAside.setImgRutaInterno( Source.bkgAside );
+        
     }
 
     /**
@@ -28,7 +41,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
     private void initComponents() {
 
         enlace1 = new vista.componentes.etiqueta.Enlace();
-        jPanelBackground1 = new vista.componentes.jpanelbackground.JPanelBackground();
+        bkgAside = new vista.componentes.jpanelbackground.JPanelBackground();
         jPanel1 = new javax.swing.JPanel();
         etqTitulo = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
@@ -46,16 +59,16 @@ public class PanelVinculacion extends javax.swing.JPanel {
         btnAceptar = new vista.componentes.button.Button();
         btnCancelar = new vista.componentes.button.Button();
 
-        jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
+        bkgAside.setBackground(new java.awt.Color(102, 102, 102));
 
-        javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
-        jPanelBackground1.setLayout(jPanelBackground1Layout);
-        jPanelBackground1Layout.setHorizontalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout bkgAsideLayout = new javax.swing.GroupLayout(bkgAside);
+        bkgAside.setLayout(bkgAsideLayout);
+        bkgAsideLayout.setHorizontalGroup(
+            bkgAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 171, Short.MAX_VALUE)
         );
-        jPanelBackground1Layout.setVerticalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bkgAsideLayout.setVerticalGroup(
+            bkgAsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -104,6 +117,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        lstEmpresasAsociadas.setFocusable(false);
         jScrollPane1.setViewportView(lstEmpresasAsociadas);
 
         etqEliminar.setText("Eliminar");
@@ -130,7 +144,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(etqEmpresasAsociadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 38, Short.MAX_VALUE))))
+                                .addGap(0, 37, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(etqEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -172,7 +186,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelBackground1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bkgAside, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,7 +200,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(bkgAside, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,6 +216,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.button.Button btnAceptar;
     public vista.componentes.button.Button btnCancelar;
     public javax.swing.JComboBox<String> cmbProyectos;
@@ -215,7 +230,6 @@ public class PanelVinculacion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JList<String> lstEmpresas;

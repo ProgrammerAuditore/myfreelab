@@ -42,7 +42,7 @@ public class MyFreeLabDao{
     
     public static boolean mtdChecarTablas(){
         Connection conn = CtrlHiloConexion.getConexion();
-        String[] tables = {"tblproyectos", "tbldatospersonales", "tblempresas", "tblrequisitos"};
+        String[] tables = {"tblproyectos", "tbldatospersonales", "tblempresas", "tblrequisitos", "tblasociados" };
         int tablas_existentes = 0;
         
         // Verificar la conexion a la base de datos
@@ -127,7 +127,6 @@ public class MyFreeLabDao{
         String sql = "Create Table "+dbname+".tblempresas ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
                sql += " cmpProID int not null, ";
-               sql += " Foreign Key(cmpProID) References tblproyectos(cmpID) ON DELETE CASCADE, ";
                sql += " cmpNombre varchar(20) not null,";
                sql += " cmpDireccion varchar(20) null default 'Desconocido',";
                sql += " cmpCorreo varchar(20) null default 'Desconocido',";
@@ -158,6 +157,34 @@ public class MyFreeLabDao{
                sql += " Foreign Key(cmpProID) References tblproyectos(cmpID) ON DELETE CASCADE, ";
                sql += " cmpNombre varchar(20) not null, ";
                sql += " cmpCosto double not null ";
+               sql += " ); ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+            
+            return true; 
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return false;
+    }
+    
+    public static boolean mtdCrearTablaAsociados() {
+        PreparedStatement ps = null;
+        String dbname = CtrlHiloConexion.ctrlDatos.getDatabase();
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "Create Table "+dbname+".tblasociados ( ";
+               sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
+               sql += " cmpProID int not null, ";
+               sql += " Foreign Key(cmpProID) References tblproyectos(cmpID) ON DELETE CASCADE, ";
+               sql += " cmpEmpID int not null, ";
+               sql += " Foreign Key(cmpEmpID) References tblempresas(cmpID) ON DELETE CASCADE, ";
+               sql += " cmpProNombre varchar(20) not null, ";
+               sql += " cmpEmpNombre varchar(20) not null ";
                sql += " ); ";
         
         try {

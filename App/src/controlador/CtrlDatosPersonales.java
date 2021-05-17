@@ -29,13 +29,9 @@ public class CtrlDatosPersonales implements MouseListener{
         this.laVista.btnAceptar.addMouseListener(this);
         this.laVista.btnCancelar.addMouseListener(this);
         
-        // * Inicializar
-        //mtdInit();
     }
    
     public void mtdInit() {
-        //modal = new JDialog();
-        
         //modal.setModal(true);
         //modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);

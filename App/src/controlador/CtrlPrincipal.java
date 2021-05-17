@@ -20,6 +20,7 @@ import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
+import modelo.dao.VinculacionDao;
 import modelo.dto.ConexionDto;
 import modelo.dto.DatosPersonalesDto;
 import modelo.dto.EmpresaDto;
@@ -33,6 +34,7 @@ import vista.paneles.PanelDatosPersonales;
 import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
 import vista.paneles.PanelGestionarRequisitos;
+import vista.paneles.PanelVinculacion;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements  ActionListener{
@@ -74,6 +76,7 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.btnDatosPersonales.addActionListener(this);
         laVista.btnGestionarProyectos.addActionListener(this);
         laVista.btnGestionarEmpresas.addActionListener(this);
+        laVista.btnVinculacion.addActionListener(this);
         
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -107,6 +110,9 @@ public class CtrlPrincipal implements  ActionListener{
         
         if( e.getSource() == laVista.btnGestionarEmpresas )
             modalGestionarEmpresas();
+        
+        if( e.getSource() == laVista.btnVinculacion )
+            modalVinculacion();
         
     }
     
@@ -242,6 +248,21 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
         mtdRellenarContenedor();
+        
+    }
+    
+    private void modalVinculacion(){
+        
+        // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
+        PanelVinculacion vista = new PanelVinculacion();
+        EmpresaDao empresa_dao = new EmpresaDao();
+        ProyectoDao proyecto_dao = new ProyectoDao();
+        VinculacionDao vinculacion_dao = new VinculacionDao();
+        CtrlVinculacion controlador = new  CtrlVinculacion(vista, proyecto_dao, empresa_dao, vinculacion_dao);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
+        controlador.modal.setLocationRelativeTo(laVista);
+        controlador.modal.setVisible(true);
         
     }
     

@@ -71,6 +71,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnDatosPersonales = new javax.swing.JMenuItem();
         btnGestionarProyectos = new javax.swing.JMenuItem();
         btnGestionarEmpresas = new javax.swing.JMenuItem();
+        btnVinculacion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
 
@@ -179,6 +180,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnGestionarEmpresas.setText("Gestionar empresas");
         menuEditar.add(btnGestionarEmpresas);
 
+        btnVinculacion.setText("Vinculacion");
+        menuEditar.add(btnVinculacion);
+
         menuBar.add(menuEditar);
 
         jMenu2.setText("Configurar");
@@ -269,6 +273,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnDatosPersonales;
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
+    public javax.swing.JMenuItem btnVinculacion;
     public javax.swing.JLabel cmpEmpresas;
     public javax.swing.JLabel cmpProyectos;
     private vista.componentes.campos.CampoTexto etqBusqueda;
