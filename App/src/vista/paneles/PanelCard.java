@@ -122,6 +122,7 @@ public class PanelCard extends javax.swing.JPanel {
         );
 
         cmpFechaFinal.setComponenteDidireccional(etqFechaFinal);
+        cmpFechaFinal.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

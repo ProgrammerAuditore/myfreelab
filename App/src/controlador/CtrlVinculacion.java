@@ -35,8 +35,7 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     // * Atributos
     private List<EmpresaDto> lista_empresas;
     private List<ProyectoDto> lista_proyectos;
-    private DefaultListModel lista_asociados;
-    private List<VinculacionDto> vinculos;
+    private List<VinculacionDto> lista_asociados;
     
     public CtrlVinculacion(PanelVinculacion laVista, ProyectoDao proyectos, EmpresaDao empresas, VinculacionDao vinculacion_dao, VinculacionDto vinculacion_dto) {
         this.laVista = laVista;
@@ -61,10 +60,9 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     }
     
     public void mtdInit(){
-        lista_asociados = new DefaultListModel();
         lista_empresas = new ArrayList<>();
         lista_proyectos = new ArrayList<>();
-        vinculos = new ArrayList<>();
+        lista_asociados = new ArrayList<>();
         
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Vinculación");
@@ -176,9 +174,9 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         if( index >= 0 ){
             
             int index_empresa = laVista.lstEmpresasAsociadas.getSelectedIndex();
-            vinculacion_dto.setCmpID( vinculos.get(index_empresa).getCmpID() );
-            vinculacion_dto.setCmpEmpNombre( vinculos.get(index_empresa).getCmpEmpNombre() );
-            vinculacion_dto.setCmpProNombre( vinculos.get(index_empresa).getCmpProNombre() );
+            vinculacion_dto.setCmpID(lista_asociados.get(index_empresa).getCmpID() );
+            vinculacion_dto.setCmpEmpNombre(lista_asociados.get(index_empresa).getCmpEmpNombre() );
+            vinculacion_dto.setCmpProNombre(lista_asociados.get(index_empresa).getCmpProNombre() );
             
             if( vinculacion_dao.mtdEliminar(vinculacion_dto) ){
                 mtdElegirItem();
@@ -231,12 +229,15 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     private void mtdRellenarLstEmpresas(){
         DefaultListModel modelo = (DefaultListModel) laVista.lstEmpresas.getModel();
         
-        for (int i = 0; i < vinculos.size(); i++) {
-            String valor = vinculos.get(i).getCmpEmpNombre();
+        System.out.println("Tamaño empresas vinculadas : " + lista_asociados.size());
+        
+        for (int i = 0; i < lista_asociados.size(); i++) {
+            String valor = lista_asociados.get(i).getCmpEmpNombre();
             
             laVista.lstEmpresas.setSelectedValue( valor , false);
             int index = laVista.lstEmpresas.getSelectedIndex();
             
+            if( index >= 0 )
             modelo.remove(index);
         }
         
@@ -247,17 +248,15 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         int seleccionado = laVista.cmbProyectos.getSelectedIndex();
         
         if( seleccionado > 0 ){
+            DefaultListModel modelo = new DefaultListModel();
             vinculacion_dto.setCmpProID( lista_proyectos.get(seleccionado - 1).getCmpID() );
-            vinculos = vinculacion_dao.mtdListar(vinculacion_dto);
+            lista_asociados = vinculacion_dao.mtdListar(vinculacion_dto);
             
-            //System.out.println( "" + lista_proyectos.get(seleccionado - 1).getCmpNombre() + " - " + vinculos.size() );
-            Iterator<VinculacionDto> vc = vinculos.iterator();
-
-            while(vc.hasNext()){
-                lista_asociados.addElement( "" + vc.next().getCmpEmpNombre());
+            for (int i = 0; i < lista_asociados.size(); i++) {
+                modelo.addElement( ""  + lista_asociados.get(i).getCmpEmpNombre() );
             }
                 
-            laVista.lstEmpresasAsociadas.setModel(lista_asociados);
+            laVista.lstEmpresasAsociadas.setModel(modelo);
             return true;
         }
         
@@ -267,8 +266,6 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     private void mtdVaciarListaAsociados(){
         String[] ninguno = {"Ninguno"};
         lista_asociados.clear();
-        lista_asociados.removeAllElements();
-        vinculos.clear();
         
         laVista.lstEmpresasAsociadas.removeAll();
         laVista.lstEmpresasAsociadas.setEnabled(false);
@@ -293,6 +290,6 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
 
     @Override
     public void mouseExited(MouseEvent e) {}
-
+    
     
 }
