@@ -30,7 +30,7 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
             return true;
             
         } catch (SQLException e) {
-            //System.out.println("" + e.getMessage());
+            System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -51,7 +51,7 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
             return true;
             
         } catch (SQLException e) {
-            //System.out.println("" + e.getMessage());
+            System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -79,7 +79,7 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
             return true;
             
         } catch (SQLException e) {
-            //System.out.println("" + e.getMessage());
+            System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -116,7 +116,7 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
             }
             
         } catch (Exception e) {
-            //System.out.println("" + e.getCause());
+            System.out.println("" + e.getCause());
         }
         
         return empresas;

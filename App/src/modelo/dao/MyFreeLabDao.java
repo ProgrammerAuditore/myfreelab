@@ -126,7 +126,6 @@ public class MyFreeLabDao{
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "Create Table "+dbname+".tblempresas ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
-               sql += " cmpProID int not null, ";
                sql += " cmpNombre varchar(20) not null,";
                sql += " cmpDireccion varchar(20) null default 'Desconocido',";
                sql += " cmpCorreo varchar(20) null default 'Desconocido',";
