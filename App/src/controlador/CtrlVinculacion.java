@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
@@ -54,7 +55,6 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         this.laVista.etqAsociar.addMouseListener(this);
         this.laVista.etqEliminar.addMouseListener(this);
         this.laVista.btnCancelar.addMouseListener(this);
-        this.laVista.btnAceptar.addMouseListener(this);
         this.laVista.cmbProyectos.addItemListener(this);
         
         
@@ -114,11 +114,8 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         if( e.getSource() == laVista.btnCancelar)
             mtdBtnCancelar();
         
-        if( e.getSource() == laVista.btnAceptar )
-            mtdBtnAceptar();
-        
         if( e.getSource() == laVista.etqAsociar )
-            if( laVista.etqEliminar.isEnabled() )
+            if( laVista.etqAsociar.isEnabled() )
             mtdAsociar();
         
         if( e.getSource() == laVista.etqEliminar )
@@ -137,12 +134,72 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     }
     
     private void mtdAsociar(){
-        laVista.btnAceptar.setEnabled(true);
-       
+        int index_empresa = laVista.lstEmpresas.getSelectedIndex();
+        
+        if( index_empresa >= 0 ){
+            // * Obtener los datos para la vinculación
+            String nombre_empresa = laVista.lstEmpresas.getSelectedValue();
+            vinculacion_dto.setCmpEmpID( lista_empresas.get(index_empresa).getCmpID() );
+            vinculacion_dto.setCmpEmpNombre( nombre_empresa );
+            //System.out.println("Nombre : " + nombre_empresa );
+            
+            int index_proyecto = laVista.cmbProyectos.getSelectedIndex();
+            vinculacion_dto.setCmpProID( lista_proyectos.get(index_proyecto - 1).getCmpID() );
+            vinculacion_dto.setCmpProNombre( lista_proyectos.get(index_proyecto - 1).getCmpNombre() );
+            //System.out.println("Proyecto : " + lista_proyectos.get(index_proyecto - 1).getCmpNombre() );
+            
+            if( vinculacion_dao.mtdVincular(vinculacion_dto) ){
+                mtdElegirItem();
+                /*
+                // * Agregar una empresa en la lista de asociados
+                DefaultListModel modelo_empresas_asociadas = (DefaultListModel) laVista.lstEmpresasAsociadas.getModel();
+                modelo_empresas_asociadas.addElement(nombre_empresa);
+                laVista.lstEmpresasAsociadas.setModel(modelo_empresas_asociadas);
+
+                // * Eliminar una empresas de la lista de empresas
+                DefaultListModel modelo_empresa = (DefaultListModel) laVista.lstEmpresas.getModel();
+                modelo_empresa.removeElementAt(index_empresa);
+                laVista.lstEmpresas.setModel(modelo_empresa);
+                */
+                JOptionPane.showMessageDialog(null, "La empresa `" + vinculacion_dto.getCmpEmpNombre() 
+                        + "` fue viculado al proyecto `" + vinculacion_dto.getCmpProNombre() + "`.");
+            }
+            
+        } else
+        JOptionPane.showMessageDialog(null, "Selecciona una empresa para vincular al proyecto actual.");
+        
     }
     
     private void mtdEliminar(){
-        laVista.btnAceptar.setEnabled(true);
+        int index = laVista.lstEmpresasAsociadas.getSelectedIndex();
+        
+        if( index >= 0 ){
+            
+            int index_empresa = laVista.lstEmpresasAsociadas.getSelectedIndex();
+            vinculacion_dto.setCmpID( vinculos.get(index_empresa).getCmpID() );
+            vinculacion_dto.setCmpEmpNombre( vinculos.get(index_empresa).getCmpEmpNombre() );
+            vinculacion_dto.setCmpProNombre( vinculos.get(index_empresa).getCmpProNombre() );
+            
+            if( vinculacion_dao.mtdEliminar(vinculacion_dto) ){
+                mtdElegirItem();
+                /*
+                // * Eliminar una empresas desde la lista de asiciados
+                DefaultListModel modelo = (DefaultListModel) laVista.lstEmpresasAsociadas.getModel();
+                String valor = laVista.lstEmpresasAsociadas.getSelectedValue();
+                modelo.removeElementAt(index);
+                laVista.lstEmpresasAsociadas.setModel(modelo);
+
+                // * Agregar la empresa eliminada en la lista de empresas
+                DefaultListModel m = (DefaultListModel) laVista.lstEmpresas.getModel();
+                m.addElement( valor );
+                laVista.lstEmpresas.setModel(m);
+                */
+                JOptionPane.showMessageDialog(null, "La empresa `" + vinculacion_dto.getCmpEmpNombre() 
+                        + "` fue desviculado al proyecto `" + vinculacion_dto.getCmpProNombre() + "`.");
+            }
+        } else
+        JOptionPane.showMessageDialog(null, "Selecciona una empresa vinculada para desvincular del proyecto actual.");
+        
     }
     
     @Override
@@ -222,7 +279,6 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     private void mtdDeshabilitar(){
         laVista.etqAsociar.setEnabled(false);
         laVista.etqEliminar.setEnabled(false);
-        laVista.btnAceptar.setEnabled(false);
     }
 
     @Override
