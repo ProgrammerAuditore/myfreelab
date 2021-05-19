@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.dto.VinculacionDto;
+import modelo.interfaces.keywork_vinculacion;
 
-public class VinculacionDao {
+public class VinculacionDao implements keywork_vinculacion<VinculacionDto>{
     
+    @Override
     public List<VinculacionDto> mtdListar(VinculacionDto dto) {
         List<VinculacionDto> vinculaciones = new ArrayList<>();
         PreparedStatement ps = null;
@@ -36,13 +38,14 @@ public class VinculacionDao {
                 
             }
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("" + e.getMessage());
         }
         
         return vinculaciones;
     }
     
+    @Override
     public boolean mtdVincular(VinculacionDto dto){
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
@@ -68,6 +71,7 @@ public class VinculacionDao {
         return false;
     }
     
+    @Override
     public boolean mtdEliminar(VinculacionDto dto){
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
@@ -81,7 +85,7 @@ public class VinculacionDao {
             if( rs > 0 )
             return true;
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("" + e.getMessage());
         }
         

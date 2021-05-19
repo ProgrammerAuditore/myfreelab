@@ -232,7 +232,8 @@ public class CtrlGestionarRequisitos implements MouseListener{
 
     private void mtdRellenarTabla() {
         mtdVaciar();
-        requisitos = dao.mtdListar(proyecto_dto);
+        dto.setCmpProID( proyecto_dto.getCmpID()  );
+        requisitos = dao.mtdListar(dto);
         
         if( requisitos.size() > 0)
             mtdAgregarRequisitos();

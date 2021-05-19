@@ -153,5 +153,10 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
         
         return false;
     }
-    
+
+    @Override
+    public List<ProyectoDto> mtdListar(ProyectoDto dto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

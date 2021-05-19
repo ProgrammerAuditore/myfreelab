@@ -9,6 +9,7 @@ public interface keyword_query <none> {
     public boolean mtdActualizar(none obj_dto);
     public boolean mtdConsultar(none obj_dto);
     public List<none> mtdListar();
+    public List<none> mtdListar(none dto);
     public boolean mtdComprobar(none obj_dto);
     
 }

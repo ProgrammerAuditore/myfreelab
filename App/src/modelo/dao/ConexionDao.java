@@ -11,8 +11,6 @@ import src.Source;
 
 public class ConexionDao implements keyword_conexion<ConexionDto>{
 
-    protected ConexionDto db = null;
-    
     @Override
     public ConexionDto obtener_conexion() {
         ConexionDto db = null;

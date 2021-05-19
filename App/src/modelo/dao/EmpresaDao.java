@@ -126,5 +126,10 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
     public boolean mtdComprobar(EmpresaDto empresa_dto) {
         return false;
     }
+
+    @Override
+    public List<EmpresaDto> mtdListar(EmpresaDto dto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

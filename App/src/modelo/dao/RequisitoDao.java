@@ -89,7 +89,17 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         return false;
     }
 
-    public List<RequisitoDto> mtdListar(ProyectoDto dto) {
+    @Override
+    public boolean mtdComprobar(RequisitoDto requisito_dto) {
+        return false;
+    }
+
+    @Override
+    public List<RequisitoDto> mtdListar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<RequisitoDto> mtdListar(RequisitoDto dto) {
         List<RequisitoDto> requisitos = new ArrayList<>();
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
@@ -97,7 +107,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         
         try {
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, dto.getCmpID());
+            ps.setInt( 1, dto.getCmpProID() );
             ResultSet rs = ps.executeQuery();
             
             while( rs.next() ){
@@ -116,14 +126,4 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         return requisitos;
     }
 
-    @Override
-    public boolean mtdComprobar(RequisitoDto requisito_dto) {
-        return false;
-    }
-
-    @Override
-    public List<RequisitoDto> mtdListar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
