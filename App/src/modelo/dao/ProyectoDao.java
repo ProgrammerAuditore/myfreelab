@@ -98,6 +98,28 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
 
     @Override
     public boolean mtdComprobar(ProyectoDto proyecto_dto) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblproyectos WHERE cmpNombre = ? ; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString( 1, proyecto_dto.getCmpNombre() );
+            ResultSet rs = ps.executeQuery();
+            int filas = 0;
+            
+            while ( rs.next() ) {                
+                filas++;
+            }
+            
+            if( filas > 0 )
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
         return false;
     }
 

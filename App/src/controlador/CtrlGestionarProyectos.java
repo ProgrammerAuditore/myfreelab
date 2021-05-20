@@ -116,10 +116,15 @@ public class CtrlGestionarProyectos implements MouseListener{
             ////System.out.println("Crear proyectos");
             dto.setCmpNombre( cmpProyecto );
             
-            if(dao.mtdInsetar(dto)){
-                mtdRellenarTabla();
-                JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se creo exitosamente.");
-            }
+            if( !dao.mtdComprobar(dto) ){
+            
+                if(dao.mtdInsetar(dto)){
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se creo exitosamente.");
+                }
+                
+            } else
+            JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` ya existe.");
             
         } else 
         JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");

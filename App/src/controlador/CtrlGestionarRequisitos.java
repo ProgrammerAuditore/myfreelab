@@ -121,10 +121,15 @@ public class CtrlGestionarRequisitos implements MouseListener{
             dto.setCmpNombre( cmpRequisito );
             dto.setCmpCosto( cmpCosto );
             
-            if( dao.mtdInsetar(dto) ){
-                mtdRellenarTabla();
-                JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre() + "` se agrego exitosamente.");
-            }
+            if( !dao.mtdComprobar(dto) ){
+                
+                if( dao.mtdInsetar(dto) ){
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre() + "` se agrego exitosamente.");
+                }
+                
+            }else
+            JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre() + "` ya existe.");   
 
         }else 
         JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");

@@ -124,6 +124,28 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
 
     @Override
     public boolean mtdComprobar(EmpresaDto empresa_dto) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblempresas WHERE cmpNombre = ? ; ";
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString( 1 , empresa_dto.getCmpNombre());
+            ResultSet rs = ps.executeQuery();
+            int filas = 0;
+            
+            while (rs.next()) {                
+                filas++;
+            }
+            
+            System.out.println("Filas  : " + filas);
+            if( filas > 0 )
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
         return false;
     }
 

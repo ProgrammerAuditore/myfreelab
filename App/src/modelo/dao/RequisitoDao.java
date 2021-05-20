@@ -91,6 +91,27 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
 
     @Override
     public boolean mtdComprobar(RequisitoDto requisito_dto) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblrequisitos WHERE cmpNombre = ? ; ";
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString( 1, requisito_dto.getCmpNombre());
+            ResultSet rs = ps.executeQuery();
+            int filas = 0;
+            
+            while ( rs.next() ) {                
+                filas++;
+            }
+            
+            if( filas > 0 )
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
         return false;
     }
 

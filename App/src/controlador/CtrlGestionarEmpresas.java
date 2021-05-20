@@ -151,10 +151,15 @@ public class CtrlGestionarEmpresas implements MouseListener {
             ////System.out.println("CtrlGestionarEmpresas - Crear empresa [!]");
             dto.setCmpNombre( cmpEmpresa );
             
-            if( dao.mtdInsetar(dto) ){
-                mtdRellenarTabla();
-                JOptionPane.showMessageDialog(null, "La empresa `"+ dto.getCmpNombre() +"` se creo exitosamente.");
-            }
+            if( !dao.mtdComprobar(dto) ){
+                
+                if( dao.mtdInsetar(dto) ){
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(null, "La empresa `"+ dto.getCmpNombre() +"` se creo exitosamente.");
+                }
+                
+            }else 
+            JOptionPane.showMessageDialog(null,  "La empresa `"+ dto.getCmpNombre() +"` ya existe.");
             
         } else
         JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
