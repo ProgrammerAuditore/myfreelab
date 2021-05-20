@@ -124,22 +124,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="etqEmail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="cmpCorreo" max="32767" attributes="0"/>
                               <Component id="etqNombres" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="etqDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cmpNombres" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmpDireccion" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="cmpDireccion" alignment="1" pref="280" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="59" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="etqApellidos" min="-2" max="-2" attributes="0"/>
                               <Component id="etqTelMovil" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -251,7 +251,7 @@
             <Property name="text" type="java.lang.String" value="Introduzca correo electr&#xf3;nico"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpCorreo">
+        <Component class="vista.componentes.campos.CampoCorreo" name="cmpCorreo">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="etqEmail"/>

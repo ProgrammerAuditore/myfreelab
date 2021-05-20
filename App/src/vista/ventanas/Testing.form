@@ -47,14 +47,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="panel_1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="panel_2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="panel_3" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -62,9 +59,21 @@
                           <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="318" max="-2" attributes="0"/>
+                          <Component id="campoTexto1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="panel_3" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="campoMoneda1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="campoCorreo1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -72,12 +81,24 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="45" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="campoMoneda1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="campoCorreo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="campoTexto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="panel_3" max="32767" attributes="0"/>
                       <Component id="panel_2" max="32767" attributes="0"/>
@@ -521,14 +542,12 @@
             <Component class="vista.componentes.button.Button" name="button21">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="imgButtonType" type="java.lang.String" value="success"/>
                 <Property name="texto" type="java.lang.String" value="Aceptar"/>
               </Properties>
             </Component>
             <Component class="vista.componentes.button.Button" name="button18">
               <Properties>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="imgButtonType" type="java.lang.String" value="warning"/>
                 <Property name="texto" type="java.lang.String" value="Modificar"/>
               </Properties>
@@ -536,27 +555,23 @@
             <Component class="vista.componentes.button.Button" name="button24">
               <Properties>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
             <Component class="vista.componentes.button.Button" name="button17">
               <Properties>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="texto" type="java.lang.String" value="Generar reporte"/>
               </Properties>
             </Component>
             <Component class="vista.componentes.button.Button" name="button20">
               <Properties>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Eliminar"/>
               </Properties>
             </Component>
             <Component class="vista.componentes.button.Button" name="button19">
               <Properties>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="imgButtonType" type="java.lang.String" value="info"/>
                 <Property name="texto" type="java.lang.String" value="Ver proyecto"/>
               </Properties>
@@ -565,14 +580,12 @@
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
             <Component class="vista.componentes.button.Button" name="button22">
               <Properties>
-                <Property name="imgButtonTheme" type="java.lang.String" value="oval"/>
                 <Property name="imgButtonType" type="java.lang.String" value="success"/>
                 <Property name="texto" type="java.lang.String" value="Aceptar"/>
               </Properties>
@@ -605,6 +618,21 @@
             <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseReleased"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="vista.componentes.campos.CampoMoneda" name="campoMoneda1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="campoMoneda1"/>
+          </Properties>
+        </Component>
+        <Component class="vista.componentes.campos.CampoCorreo" name="campoCorreo1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="campoCorreo1"/>
+          </Properties>
+        </Component>
+        <Component class="vista.componentes.campos.CampoTexto" name="campoTexto1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="campoTexto1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

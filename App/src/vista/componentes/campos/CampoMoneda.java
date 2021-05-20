@@ -22,7 +22,7 @@ import src.Source;
  *
  * @author victo
  */
-public class CampoNumerico extends JTextField implements FocusListener, KeyListener{
+public class CampoMoneda extends JTextField implements FocusListener, KeyListener{
     
     // * Propiedadades
     public String Placeholder = "Establezca un placeholder";
@@ -35,7 +35,7 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
     private final Dimension tamahno = new Dimension(280, 27);
     public JLabel componenteDidireccional;
     
-    public CampoNumerico() {
+    public CampoMoneda() {
         super(14);
         this.iniciar_propiedades();
     }
@@ -165,13 +165,25 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
     @Override
     public void keyTyped(KeyEvent evt) {
         char charCap = evt.getKeyChar();
+        
+        if( charCap == '.' || Character.isDigit(charCap) ){
+           if (charCap == '.') {
+                if (getText().contains(".")) {
+                    evt.consume();
+                    JOptionPane.showMessageDialog(null, "Solo puede contener un símbolo de punto decimal.");
 
-        if ((charCap >= '0' && charCap <= '9')) {
-        } else {
+                }
+            }
+        }else{
+            
+            if( Character.isLetter( charCap ) ){
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Introduzca solo número decimal.");
+
+            }else
             evt.consume();
-            JOptionPane.showMessageDialog(null, "Introduzca solo números.");
+            
         }
-
     }
     
     @Override

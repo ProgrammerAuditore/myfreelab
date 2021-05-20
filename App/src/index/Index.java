@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
+import vista.ventanas.Testing;
 import vista.ventanas.VentanaPrincipal;
 
 public class Index {
@@ -16,8 +17,6 @@ public class Index {
         // * Inicializar el programa
         //System.out.println("Inicializando programa...");
         
-        
-
         // * Crear hilos
         HiloConexion hc = new HiloConexion();
         HiloPrincipal hp = new HiloPrincipal();
@@ -31,10 +30,6 @@ public class Index {
         ProyectoDao daoP = new ProyectoDao();
         EmpresaDao daoE = new EmpresaDao();
         CtrlPrincipal ctrl_p = new CtrlPrincipal(frame_p, daoP, daoE);
-        
-//        Testing probar = new Testing();
-//        probar.setLocationRelativeTo(null);
-//        probar.setVisible(true);
     
         // * Ejecutar hilos
         hs.start();
@@ -48,6 +43,13 @@ public class Index {
         }
         
         frame_p.setVisible(true);
+        
+        /*
+        // * Inicializar testeo
+        Testing probar = new Testing();
+        probar.setLocationRelativeTo(null);
+        probar.setVisible(true);
+        */
         
     }
 }

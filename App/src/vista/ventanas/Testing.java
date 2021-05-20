@@ -74,6 +74,9 @@ public class Testing extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        campoMoneda1 = new vista.componentes.campos.CampoMoneda();
+        campoCorreo1 = new vista.componentes.campos.CampoCorreo();
+        campoTexto1 = new vista.componentes.campos.CampoTexto();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -296,37 +299,29 @@ public class Testing extends javax.swing.JFrame {
         );
 
         button21.setEnabled(false);
-        button21.setImgButtonTheme("oval");
         button21.setImgButtonType("success");
         button21.setTexto("Aceptar");
 
-        button18.setImgButtonTheme("oval");
         button18.setImgButtonType("warning");
         button18.setTexto("Modificar");
 
         button24.setImgBackgroundIn_Ex(false);
-        button24.setImgButtonTheme("oval");
         button24.setImgButtonType("danger");
         button24.setTexto("Cancelar");
 
-        button17.setImgButtonTheme("oval");
         button17.setTexto("Generar reporte");
 
-        button20.setImgButtonTheme("oval");
         button20.setImgButtonType("danger");
         button20.setTexto("Eliminar");
 
-        button19.setImgButtonTheme("oval");
         button19.setImgButtonType("info");
         button19.setTexto("Ver proyecto");
 
         button23.setEnabled(false);
         button23.setImgBackgroundIn_Ex(false);
-        button23.setImgButtonTheme("oval");
         button23.setImgButtonType("danger");
         button23.setTexto("Cancelar");
 
-        button22.setImgButtonTheme("oval");
         button22.setImgButtonType("success");
         button22.setTexto("Aceptar");
 
@@ -426,37 +421,58 @@ public class Testing extends javax.swing.JFrame {
             }
         });
 
+        campoMoneda1.setText("campoMoneda1");
+
+        campoCorreo1.setText("campoCorreo1");
+
+        campoTexto1.setText("campoTexto1");
+
         javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
         jPanelBackground1.setLayout(jPanelBackground1Layout);
         jPanelBackground1Layout.setHorizontalGroup(
             jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBackground1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelBackground1Layout.createSequentialGroup()
                         .addComponent(panel_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(panel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panel_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(panel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelBackground1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(36, 36, 36)
                         .addComponent(jButton2)
                         .addGap(36, 36, 36)
                         .addComponent(jButton3)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(318, 318, 318)
+                        .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panel_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelBackground1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(campoMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(campoCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanelBackground1Layout.setVerticalGroup(
             jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackground1Layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(61, 61, 61)
+                .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackground1Layout.createSequentialGroup()
+                        .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackground1Layout.createSequentialGroup()
+                        .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campoMoneda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)))
                 .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panel_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -565,6 +581,9 @@ public class Testing extends javax.swing.JFrame {
     private vista.componentes.button.Button button7;
     private vista.componentes.button.Button button8;
     private vista.componentes.button.Button button9;
+    private vista.componentes.campos.CampoCorreo campoCorreo1;
+    private vista.componentes.campos.CampoMoneda campoMoneda1;
+    private vista.componentes.campos.CampoTexto campoTexto1;
     private vista.componentes.etiqueta.Enlace enlace1;
     private vista.componentes.etiqueta.Enlace enlace2;
     private vista.componentes.etiqueta.Enlace enlace3;

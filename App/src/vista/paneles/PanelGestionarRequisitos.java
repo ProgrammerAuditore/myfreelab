@@ -49,7 +49,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         etqMontoEstimado = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoEstimado = new vista.componentes.campos.CampoNumerico();
         etqCosto = new vista.componentes.etiqueta.Etiqueta();
-        cmpCosto = new vista.componentes.campos.CampoNumerico();
+        cmpCosto = new vista.componentes.campos.CampoMoneda();
 
         bkgAside.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -224,7 +224,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
     public vista.componentes.button.Button btnCrear;
     public vista.componentes.button.Button btnEliminar;
     public vista.componentes.button.Button btnModificar;
-    public vista.componentes.campos.CampoNumerico cmpCosto;
+    public vista.componentes.campos.CampoMoneda cmpCosto;
     public vista.componentes.campos.CampoNumerico cmpMontoEstimado;
     public vista.componentes.campos.CampoTexto cmpRequisito;
     private vista.componentes.etiqueta.Etiqueta etqCosto;

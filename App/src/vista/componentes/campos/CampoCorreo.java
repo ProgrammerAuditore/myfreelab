@@ -7,6 +7,7 @@ package vista.componentes.campos;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
@@ -16,13 +17,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import src.MyFont;
 import src.Source;
 
 /**
  *
  * @author victo
  */
-public class CampoNumerico extends JTextField implements FocusListener, KeyListener{
+public class CampoCorreo extends JTextField implements FocusListener, KeyListener{
+    
     
     // * Propiedadades
     public String Placeholder = "Establezca un placeholder";
@@ -35,7 +38,7 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
     private final Dimension tamahno = new Dimension(280, 27);
     public JLabel componenteDidireccional;
     
-    public CampoNumerico() {
+    public CampoCorreo() {
         super(14);
         this.iniciar_propiedades();
     }
@@ -130,8 +133,31 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
         setToolTip();
     }
     
+    private boolean comprobarCorreo(){
+        String campo = getText();
+        String nombre = null;
+        String dominio = null;
+        String extension = null;
+        
+        if( campo.contains("@") && campo.contains(".") ){
+            nombre = getText().substring(0, getText().indexOf("@"));
+            dominio = getText().substring(getText().indexOf("@") + 1, getText().indexOf("."));
+            extension = getText().substring(getText().indexOf(".") + 1, campo.length());
+            
+            if( nombre.length() > 3 && dominio.length() > 3 && extension.length() > 2 ){
+                //System.out.println("campo : " + campo);
+                //System.out.println("nombre : " + nombre);
+                //System.out.println("dominio : " + dominio);
+                //System.out.println("extension : " + extension);
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
     public boolean isAprobado(){
-        return !getText().equals( getPlaceholder() );          
+        return !getText().equals( getPlaceholder() ) && comprobarCorreo();          
     }
     
     @Override
@@ -149,7 +175,10 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
             setText(getPlaceholder());
             getEstiloTextEmpty();
         }else{
-            getEstiloAprobado();
+            if( comprobarCorreo() )
+                getEstiloAprobado();
+            else
+                getEstiloNoAprobado();
         }
     }
 
@@ -165,21 +194,19 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
     @Override
     public void keyTyped(KeyEvent evt) {
         char charCap = evt.getKeyChar();
-
-        if ((charCap >= '0' && charCap <= '9')) {
-        } else {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Introduzca solo números.");
+        
+        if (charCap == '@') {
+            if (getText().contains("@")) {
+                evt.consume();
+            }
         }
-
-    }
-    
-    @Override
-    public void keyPressed(KeyEvent e) {
+        
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-    }
+    public void keyPressed(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
     
 }

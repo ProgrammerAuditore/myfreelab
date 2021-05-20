@@ -47,7 +47,7 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
         etqTelMovil = new vista.componentes.etiqueta.Etiqueta();
         cmpTelMovil = new vista.componentes.campos.CampoTexto();
         etqEmail = new vista.componentes.etiqueta.Etiqueta();
-        cmpCorreo = new vista.componentes.campos.CampoTexto();
+        cmpCorreo = new vista.componentes.campos.CampoCorreo();
         btnAceptar = new vista.componentes.button.Button();
         btnCancelar = new vista.componentes.button.Button();
 
@@ -123,8 +123,8 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
                             .addComponent(etqNombres, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etqDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpNombres, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmpDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(etqApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etqTelMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,7 +205,7 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
     public vista.componentes.button.Button btnAceptar;
     public vista.componentes.button.Button btnCancelar;
     public vista.componentes.campos.CampoTexto cmpApellidos;
-    public vista.componentes.campos.CampoTexto cmpCorreo;
+    public vista.componentes.campos.CampoCorreo cmpCorreo;
     public vista.componentes.campos.CampoTexto cmpDireccion;
     public vista.componentes.campos.CampoTexto cmpNombres;
     public vista.componentes.campos.CampoTexto cmpTelMovil;
