@@ -5,24 +5,8 @@
  */
 package vista.paneles;
 
-import java.awt.Adjustable;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.awt.event.ContainerAdapter;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import javax.swing.JScrollBar;
-import javax.swing.border.LineBorder;
 import src.Info;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 
 /**
  *
@@ -37,14 +21,11 @@ public class PanelAcercaDe extends javax.swing.JPanel {
      */
     public PanelAcercaDe() {
         initComponents();
-    }
     
-    public void init(){
         // Establecer propiedades para el panel
-        Dimension tamahno = new Dimension(563, 502);
+        Dimension tamahno = new Dimension(660, 498);
         setSize(tamahno);
         setPreferredSize(tamahno);
-        setMaximumSize(tamahno);
         btnAceptar.setEnabled(false);
         
         // Establecer información para la licencia
@@ -59,27 +40,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         licencia = licencia.replace("<details>", Info.Detalle);
         txt_licencia.setText(licencia);
         txt_licencia.setCaretPosition(0);
-        
-        // Establecer evento para activar boton al leer la licencia
-        contendor_licencia.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener(){ 
-            @Override
-            public void adjustmentValueChanged(AdjustmentEvent e) {
-                // Check if user has done dragging the scroll bar
-                if(!e.getValueIsAdjusting()){
-                    JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
-                    int extent = scrollBar.getModel().getExtent();
-                    int maximum = scrollBar.getModel().getMaximum();
-                    if(extent + e.getValue() == maximum){
-                        contendor_licencia.setBorder(new LineBorder(Color.GREEN, 1));
-                        btnAceptar.setEnabled(true);
-                    }else{
-                        contendor_licencia.setBorder(new LineBorder(Color.RED, 1));
-                        btnAceptar.setEnabled(false);
-                    }
-                }
-            }
-        });
-            
+    
     }
 
     /**
@@ -91,13 +52,11 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_Software = new vista.componentes.etiqueta.Etiqueta();
         lbl_Licencia = new vista.componentes.etiqueta.Enlace();
         btnAceptar = new vista.componentes.button.Button();
         contendor_licencia = new javax.swing.JScrollPane();
         txt_licencia = new javax.swing.JTextArea();
-
-        lbl_Software.setText(" Nombre de software ");
+        lbl_Software = new vista.componentes.etiqueta.Titulo();
 
         lbl_Licencia.setText("Licencia");
 
@@ -130,26 +89,29 @@ public class PanelAcercaDe extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(contendor_licencia))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 224, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(268, 268, 268)
+                                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(94, 94, 94)
+                                .addComponent(lbl_Software, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_Licencia, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_Software, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(196, 196, 196))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(259, 259, 259)
+                .addComponent(lbl_Licencia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
                 .addComponent(lbl_Software, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(lbl_Licencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contendor_licencia, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(contendor_licencia, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -165,7 +127,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     public vista.componentes.button.Button btnAceptar;
     public javax.swing.JScrollPane contendor_licencia;
     private vista.componentes.etiqueta.Enlace lbl_Licencia;
-    private vista.componentes.etiqueta.Etiqueta lbl_Software;
+    private vista.componentes.etiqueta.Titulo lbl_Software;
     public javax.swing.JTextArea txt_licencia;
     // End of variables declaration//GEN-END:variables
 }

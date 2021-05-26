@@ -18,37 +18,42 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="contendor_licencia" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
-                      <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="224" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                              <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                              <Component id="lbl_Software" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lbl_Licencia" min="-2" pref="116" max="-2" attributes="0"/>
-                  <Component id="lbl_Software" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
+              <Component id="lbl_Licencia" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace pref="261" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Component id="lbl_Software" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="lbl_Licencia" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="contendor_licencia" pref="325" max="32767" attributes="0"/>
+              <Component id="lbl_Software" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Component id="lbl_Licencia" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="contendor_licencia" pref="319" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -57,11 +62,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_Software">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=" Nombre de software "/>
-      </Properties>
-    </Component>
     <Component class="vista.componentes.etiqueta.Enlace" name="lbl_Licencia">
       <Properties>
         <Property name="text" type="java.lang.String" value="Licencia"/>
@@ -111,5 +111,7 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="vista.componentes.etiqueta.Titulo" name="lbl_Software">
+    </Component>
   </SubComponents>
 </Form>

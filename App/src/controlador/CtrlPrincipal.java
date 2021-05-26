@@ -29,6 +29,7 @@ import modelo.dto.RequisitoDto;
 import modelo.dto.VinculacionDto;
 import src.Info;
 import src.Source;
+import vista.paneles.PanelAcercaDe;
 import vista.paneles.PanelCard;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatosPersonales;
@@ -78,6 +79,7 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.btnGestionarProyectos.addActionListener(this);
         laVista.btnGestionarEmpresas.addActionListener(this);
         laVista.btnVinculacion.addActionListener(this);
+        laVista.btnAcercaDe.addActionListener(this);
         
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -114,6 +116,9 @@ public class CtrlPrincipal implements  ActionListener{
         
         if( e.getSource() == laVista.btnVinculacion )
             modalVinculacion();
+        
+        if( e.getSource() == laVista.btnAcercaDe )
+            modalAcercaDe();
         
     }
     
@@ -261,6 +266,18 @@ public class CtrlPrincipal implements  ActionListener{
         VinculacionDao vinculacion_dao = new VinculacionDao();
         VinculacionDto vinculacion_dto = new VinculacionDto();
         CtrlVinculacion controlador = new  CtrlVinculacion(vista, proyecto_dao, empresa_dao, vinculacion_dao, vinculacion_dto);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
+        controlador.modal.setLocationRelativeTo(laVista);
+        controlador.modal.setVisible(true);
+        
+    }
+    
+    private void modalAcercaDe(){
+        
+        // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
+        PanelAcercaDe vista = new PanelAcercaDe();
+        CtrlAcercaDe controlador = new CtrlAcercaDe(vista);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);

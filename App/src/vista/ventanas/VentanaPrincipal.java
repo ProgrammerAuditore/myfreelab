@@ -74,6 +74,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnVinculacion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        btnAcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1204, 724));
@@ -192,6 +194,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(jMenu2);
 
+        jMenu3.setText("Ayuda");
+
+        btnAcercaDe.setText("Acerda de");
+        jMenu3.add(btnAcercaDe);
+
+        menuBar.add(jMenu3);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,6 +278,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenuItem bntSalir;
+    public javax.swing.JMenuItem btnAcercaDe;
     public javax.swing.JMenuItem btnConexion;
     public javax.swing.JMenuItem btnDatosPersonales;
     public javax.swing.JMenuItem btnGestionarEmpresas;
@@ -280,6 +290,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenuBar menuBar;
     public javax.swing.JMenu menuEditar;

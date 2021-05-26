@@ -35,7 +35,7 @@ public class Source {
     public static final Font fontLabelEnlace = new MyFont( fontName ).changeStyle( MyFont.ITALIC, 14);
     
     // Estilos
-    public static final String styleButtonDefault = "oval";
+    public static final String styleButtonDefault = "bulma";
     
     // Dimension de los paneles para el modal
     public static final Dimension tamDialog = new Dimension(850, 534);
