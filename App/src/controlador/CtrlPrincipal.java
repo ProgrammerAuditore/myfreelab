@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
@@ -353,6 +354,12 @@ public class CtrlPrincipal implements  ActionListener{
                     }
                 });
                 
+                tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        mtdEliminarProyecto( proyecto );
+                    }
+                });
                 
                 tarjeta_proyecto.etqTitulo.setText( proyectos.get(i).getCmpNombre() );
                 tarjeta_proyecto.cmpFechaInicial.setText( proyectos.get(i).getCmpFechaInicial() );
@@ -370,6 +377,16 @@ public class CtrlPrincipal implements  ActionListener{
                 c.fill = GridBagConstraints.BOTH; // El modo de estirar
                 laVista.pnlContenedor.add(tarjeta_proyecto, c);
         }
+    }
+    
+    private void mtdEliminarProyecto(ProyectoDto dto){
+        
+        ProyectoDao pro = new ProyectoDao();
+        if( pro.mtdEliminar(dto) ){
+            JOptionPane.showMessageDialog(null, "Proyecto eliminado");
+            mtdRellenarContenedor();
+        }
+        
     }
     
     private void mtdMensaje(String msg){
