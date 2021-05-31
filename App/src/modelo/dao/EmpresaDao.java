@@ -138,7 +138,7 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
                 filas++;
             }
             
-            System.out.println("Filas  : " + filas);
+            // System.out.println("Filas  : " + filas);
             if( filas > 0 )
             return true;
             

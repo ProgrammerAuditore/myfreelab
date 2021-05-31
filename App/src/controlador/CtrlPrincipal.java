@@ -383,7 +383,7 @@ public class CtrlPrincipal implements  ActionListener{
         
         ProyectoDao pro = new ProyectoDao();
         
-        System.out.println(" ddfd " + pro.mtdConsultar(dto) );
+        //System.out.println(" ddfd " + pro.mtdConsultar(dto) );
         if( pro.mtdComprobar(dto) ){
             String[] msg = new String[2];
             
