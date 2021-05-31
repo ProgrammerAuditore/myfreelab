@@ -382,9 +382,22 @@ public class CtrlPrincipal implements  ActionListener{
     private void mtdEliminarProyecto(ProyectoDto dto){
         
         ProyectoDao pro = new ProyectoDao();
-        if( pro.mtdEliminar(dto) ){
-            JOptionPane.showMessageDialog(null, "Proyecto eliminado");
-            mtdRellenarContenedor();
+        
+        System.out.println(" ddfd " + pro.mtdConsultar(dto) );
+        if( pro.mtdComprobar(dto) ){
+            String[] msg = new String[2];
+            
+            msg[0] = "Seguro que deseas eliminar el proyecto `" + dto.getCmpNombre() + "`.";
+            msg[1] = "Confirmar";            
+            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION );
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                if( pro.mtdEliminar(dto) ){
+                    JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                    mtdRellenarContenedor();
+                }
+            }
+            
         }
         
     }
