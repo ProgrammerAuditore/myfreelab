@@ -442,6 +442,8 @@ public class CtrlPrincipal implements  ActionListener{
             
                 Map<String, Object> map_param = new HashMap<String, Object>();
                 map_param.put("rpProyectoID", proyecto.getCmpID() );
+                map_param.put("rpNombreProyecto",  proyecto.getCmpNombre() );
+                map_param.put("rpTitulo",  Info.NombreSoftware );
                 //mapear.put("rpLogo1", "P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\panel_logo.png" );
 
                 JasperPrint jasperPrint = JasperFillManager.fillReport(masterReport, map_param, CtrlHiloConexion.getConexion() );
