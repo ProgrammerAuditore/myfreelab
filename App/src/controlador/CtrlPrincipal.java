@@ -10,8 +10,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +32,12 @@ import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
 import modelo.dto.VinculacionDto;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
 import src.Source;
 import vista.paneles.PanelAcercaDe;
@@ -361,6 +371,13 @@ public class CtrlPrincipal implements  ActionListener{
                     }
                 });
                 
+                tarjeta_proyecto.btnCotizar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        mtdCotizarProyecto( proyecto );
+                    }
+                });
+                
                 tarjeta_proyecto.etqTitulo.setText( proyectos.get(i).getCmpNombre() );
                 tarjeta_proyecto.cmpFechaInicial.setText( proyectos.get(i).getCmpFechaInicial() );
                 tarjeta_proyecto.cmpFechaFinal.setText( proyectos.get(i).getCmpFechaFinal() );
@@ -400,6 +417,43 @@ public class CtrlPrincipal implements  ActionListener{
             
         }
         
+    }
+    
+    private void mtdCotizarProyecto( ProyectoDto proyecto ){
+       
+            File master=null;
+            try {
+                master = new File(getClass().getResource("../storage/reporte/Cotizacion.jasper").toURI());
+            }
+            catch (URISyntaxException ex)
+            {
+                JOptionPane.showMessageDialog(null, "No se puede abrir el archivo ó No existe en esta ruta","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            
+            try{
+                JasperReport masterReport = null;
+                
+                try{
+                    masterReport = (JasperReport) JRLoader.loadObject(master);
+                }
+                catch (JRException e){
+                    System.out.println("Error al cargar el archivo de reporte maestro: " + e.getMessage());
+                }
+            
+                Map<String, Object> map_param = new HashMap<String, Object>();
+                map_param.put("rpProyectoID", proyecto.getCmpID() );
+                //mapear.put("rpLogo1", "P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\panel_logo.png" );
+
+                JasperPrint jasperPrint = JasperFillManager.fillReport(masterReport, map_param, CtrlHiloConexion.getConexion() );
+                JasperViewer jviewer = new JasperViewer( jasperPrint, false);
+                jviewer.setTitle( "Cotizar : " +  proyecto.getCmpNombre() );
+                jviewer.setVisible(true);
+            
+            }
+            catch (JRException j){
+                System.out.println("Mensaje de Error:" + j.getMessage());
+            }
+            
     }
     
     private void mtdMensaje(String msg){
