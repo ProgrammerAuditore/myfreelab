@@ -1,5 +1,6 @@
 package controlador;
 
+import com.mysql.jdbc.Connection;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -12,10 +13,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,6 +37,7 @@ import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
 import modelo.dto.VinculacionDto;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -420,7 +425,8 @@ public class CtrlPrincipal implements  ActionListener{
     }
     
     private void mtdCotizarProyecto( ProyectoDto proyecto ){
-       
+        
+        /*
             File master=null;
             try {
                 master = new File(getClass().getResource("../storage/reporte/Cotizacion.jasper").toURI());
@@ -455,6 +461,27 @@ public class CtrlPrincipal implements  ActionListener{
             catch (JRException j){
                 System.out.println("Mensaje de Error:" + j.getMessage());
             }
+        */
+        
+        try {
+            
+            Map<String, Object> map_param = new HashMap<String, Object>();
+                map_param.put("rpProyectoID", proyecto.getCmpID() );
+                map_param.put("rpNombreProyecto",  proyecto.getCmpNombre() );
+                map_param.put("rpTitulo",  Info.NombreSoftware );
+                //mapear.put("rpLogo1", "P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\panel_logo.png" );
+                
+            String master = getClass().getResource("../"+"storage/reporte/CotizacionOrg.jrxml").getFile();
+            JasperReport jr = JasperCompileManager.compileReport(master);
+            JasperPrint jp = JasperFillManager.fillReport(jr, map_param , CtrlHiloConexion.getConexion());
+            JasperViewer jviewer = new JasperViewer( jp, false);
+            jviewer.setTitle( "Cotizar : " +  proyecto.getCmpNombre() );
+            jviewer.setVisible(true);
+            //JasperViewer.viewReport(jp);
+            
+        } catch (JRException ex) {
+            Logger.getLogger(CtrlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
             
     }
     

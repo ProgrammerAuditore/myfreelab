@@ -1,251 +1,264 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="025eecbb-e774-4790-a703-426c100e11e7">
-	<property name="ireport.zoom" value="1.610510000000001"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee_Landscape_Table_Based" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="66519d71-4f27-4833-9a1d-c9b72e811f0c">
+	<property name="template.engine" value="tabular_template"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyFreeLab"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="41"/>
-	<parameter name="rpProyectoID" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="rpTitulo" class="java.lang.String"/>
-	<parameter name="rpNombreProyecto" class="java.lang.String"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" forecolor="#B89F7D" backcolor="#F2EBDF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Transparent" backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="tableDataset" uuid="3c97e63b-ffa7-403a-9bc2-a3f8361ba646">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MyFreeLab"/>
+		<queryString language="SQL">
+			<![CDATA[select * from tblrequisitos]]>
+		</queryString>
+		<field name="cmpID" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="cmpID"/>
+			<property name="com.jaspersoft.studio.field.label" value="cmpID"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tblrequisitos"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cmpProID" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="cmpProID"/>
+			<property name="com.jaspersoft.studio.field.label" value="cmpProID"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tblrequisitos"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cmpNombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="cmpNombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="cmpNombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tblrequisitos"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cmpCosto" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="cmpCosto"/>
+			<property name="com.jaspersoft.studio.field.label" value="cmpCosto"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tblrequisitos"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
 	<queryString>
-		<![CDATA[SELECT * FROM tblrequisitos tr, tbldatospersonales tdp WHERE tr.cmpProID = $P{rpProyectoID} AND tdp.cmpID = 1;]]>
+		<![CDATA[]]>
 	</queryString>
-	<field name="cmpID" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpProID" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpNombre" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpCosto" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpNombres" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpApellidos" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpDireccion" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpCorreo" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cmpTMovil" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<variable name="COSTO_TOTAL" class="java.lang.Integer" calculation="Sum">
-		<variableExpression><![CDATA[$F{cmpCosto}]]></variableExpression>
-	</variable>
-	<variable name="variable1" class="java.lang.Object"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
 	<title>
-		<band height="232" splitType="Stretch">
+		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement x="180" y="0" width="188" height="79" uuid="1f0a4170-c92b-4868-96bd-ab1622c16d3e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="30" isBold="true"/>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="a080d2ca-6207-4d8e-87c9-d3b61fb495a9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="0d849401-f944-4163-9df0-f69408a0618a"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
 				</textElement>
-				<text><![CDATA[COTIZACION]]></text>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="835b3545-d85c-44c2-abf6-160b7e7a589e"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="0" width="74" height="79" uuid="2002a029-7273-4ded-b1df-5a89c81a359e"/>
-				<imageExpression><![CDATA["P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\src\\storage\\shared\\img\\ms-icon-70x70.png"]]></imageExpression>
+				<reportElement x="18" y="13" width="143" height="102" uuid="8ef3d7cf-db90-489c-a4f3-9e67150514ec"/>
+				<imageExpression><![CDATA["P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\src\\storage\\reporte\\coffee.jpg"]]></imageExpression>
 			</image>
-			<staticText>
-				<reportElement x="0" y="118" width="136" height="20" uuid="d58cf3bf-748b-4c85-b734-e1b48ceeb440"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Datos Personales]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="278" y="118" width="121" height="20" uuid="8d243cf5-3fe9-468b-a190-ba3aef3a4cea"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cliente]]></text>
-			</staticText>
-			<textField pattern="">
-				<reportElement x="0" y="138" width="136" height="20" uuid="c58d1ae5-6b6f-49a7-bf30-383e816e2d61"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="false" isItalic="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cmpNombres}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="136" y="138" width="142" height="20" uuid="f4fda0e9-79d4-4416-9ba6-ab00881fb578"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="false" isItalic="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cmpApellidos}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="24" y="158" width="254" height="20" uuid="1430d98f-3558-48dd-a81f-b22fd52c8424"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cmpDireccion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="178" width="278" height="20" uuid="d0cc99e8-9209-4799-9700-424ee6b0f078"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cmpCorreo}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="24" y="198" width="254" height="20" uuid="195f5eb9-0426-4acd-b08f-7bf9d017b373"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cmpTMovil}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="1" y="198" width="23" height="20" uuid="6d50602e-801b-4eab-8de7-9cd1aef555a8"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tel.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="1" y="158" width="23" height="20" uuid="56e67b92-0992-41e7-a129-9dd1a5d4ade2"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Dir.]]></text>
-			</staticText>
-			<line>
-				<reportElement x="102" y="102" width="358" height="1" uuid="125a4e5e-a17d-4dc6-9028-0f353ec7bf3c"/>
-			</line>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="38" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="290" height="14" uuid="1c318deb-815b-4ca0-97a5-ca104c613123"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Este documento se presenta una cotización para el proyectos de ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="290" y="0" width="265" height="14" uuid="29b99652-45b4-48c7-ba5c-ee2cc8fbe5ed"/>
-				<textElement verticalAlignment="Middle">
-					<font size="10" isItalic="true" isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{rpNombreProyecto}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="14" width="555" height="14" uuid="5ae78a0f-4fdc-4338-9efd-88b4694fe3dc"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Todo los requisitos mostrados en este documento así como los costos y el costo total del proyecto son solamente un promedio.]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="20" splitType="Stretch">
-			<rectangle>
-				<reportElement x="0" y="0" width="555" height="20" backcolor="#009999" uuid="b2c0f4e5-3c70-408b-be2a-f17716b60926"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="338" y="0" width="217" height="20" uuid="b5ee8357-f499-4b04-a8e8-f8c935a7236d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Costo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="100" y="0" width="238" height="20" uuid="9b98c2f8-581b-455f-98f2-e32aeeb091e7"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nombre de requisito]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="0" width="100" height="20" uuid="019b8abe-f557-4f45-bf61-a00f183b485a"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ID requisito]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="43" splitType="Stretch">
-			<rectangle>
-				<reportElement x="0" y="0" width="100" height="20" backcolor="#CCCCCC" uuid="6aef80c7-e127-4bba-b3f8-898f9c6f79c9"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="100" y="0" width="238" height="20" backcolor="#CCCCCC" uuid="c7968d0b-a91b-4350-8dcc-d0549cf8f11c"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="338" y="0" width="217" height="20" backcolor="#CCCCCC" uuid="971c0bca-4eb3-4abc-92ae-8eecd8db0565"/>
-			</rectangle>
-			<textField>
-				<reportElement x="338" y="0" width="217" height="22" uuid="378ae77f-e568-45a5-9f68-7d08291b3956"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cmpCosto}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="0" width="238" height="22" uuid="99a40700-8a74-4d10-beb9-03f4e0b2231e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cmpNombre}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="0" width="100" height="22" uuid="0d8e8258-6a40-4184-a0c4-250dc2a188dc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="21" splitType="Stretch">
-			<textField>
-				<reportElement x="163" y="0" width="205" height="20" uuid="96772db4-cf8e-4f33-8c8e-e985e15d06c4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{rpTitulo}]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnFooter>
 	<pageFooter>
-		<band height="22" splitType="Stretch">
-			<staticText>
-				<reportElement x="121" y="2" width="300" height="20" uuid="992f55c7-cfa1-463d-9ed3-a001d630c4de"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Todos los derechos reservados para ProgrammerAuditore (c) 2021]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="484" y="2" width="71" height="20" uuid="95827ab2-c5d5-4759-b561-de41638ce226"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="460" y="2" width="24" height="20" uuid="84673e96-37c3-47ff-8b15-31db5d842cbc"/>
-				<text><![CDATA[Pag.]]></text>
-			</staticText>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="f2324113-3563-4f48-b688-ed82b3098434"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="9f676d3f-1486-4a48-96ce-fa0a2b7a1577"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="7415bd49-92ea-42ab-bbad-d370dba3cd03"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="8bf88488-fb5e-4676-a772-33cfbcf173cd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="20" splitType="Stretch">
-			<rectangle>
-				<reportElement x="100" y="0" width="238" height="20" backcolor="#00FF99" uuid="bb7a440a-9124-456f-82bd-2fd9602927e5"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="338" y="0" width="217" height="20" backcolor="#CCCCCC" uuid="16fd4765-d400-4426-836c-3dffb6f53e48"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="100" y="0" width="238" height="20" uuid="5669888e-3be6-475b-a0ec-89451e169206"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Costo Total]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="338" y="0" width="217" height="20" uuid="c57d70ae-04bb-4293-a751-1d73553647c4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{COSTO_TOTAL}]]></textFieldExpression>
-			</textField>
+		<band height="200" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<componentElement>
+				<reportElement x="0" y="0" width="802" height="200" uuid="4bd332d7-5b4b-4289-b229-3162b8aa2f91">
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tableDataset" uuid="23e04b21-1461-4cdb-aca5-b70bdcf207ef">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="200" uuid="55458124-3ef3-4e75-bccb-537e68898675">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement key="" style="SubTitle" x="0" y="0" width="200" height="30" forecolor="#736343" uuid="051901f2-2cfa-4c6c-b7ed-930d84e8b9b0"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[cmpID]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="200" height="30" uuid="bfab0b77-9623-40a1-bef6-d1413f4700b8"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cmpID}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="200" uuid="643bafaf-fb29-4e2a-a61e-da359cd439d8">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement key="" style="SubTitle" x="0" y="0" width="200" height="30" forecolor="#736343" uuid="161e74f9-9714-4c94-8562-134886606d18"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[cmpProID]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="200" height="30" uuid="e90e9aa1-14fb-4ed7-94ee-3873e66b67e5"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cmpProID}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="230" uuid="b3fea201-4447-433c-8062-b2e583df58f4">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement key="" style="SubTitle" x="0" y="0" width="230" height="30" forecolor="#736343" uuid="681d5be7-c83e-4645-b159-a4e8c7841f51"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[cmpNombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="230" height="30" uuid="db659ec6-ccc3-4fe9-aeae-e79b2c830efb"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cmpNombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="172" uuid="3a4d242d-921f-43bd-8063-97a458710ca0">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement key="" style="SubTitle" x="0" y="0" width="172" height="30" forecolor="#736343" uuid="39fcc3d6-6b1e-45bf-824e-b8e73fc5a575"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="18" isBold="true"/>
+								</textElement>
+								<text><![CDATA[cmpCosto]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="172" height="30" uuid="64bbd28d-d31f-47cc-b4a3-40f3244c4619"/>
+								<box leftPadding="2"/>
+								<textElement>
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cmpCosto}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
 		</band>
 	</summary>
 </jasperReport>
