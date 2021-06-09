@@ -55,15 +55,15 @@ import vista.paneles.PanelGestionarRequisitos;
 import vista.paneles.PanelVinculacion;
 import vista.ventanas.VentanaPrincipal;
 
-public class CtrlPrincipal implements  ActionListener{
-    
+public class CtrlPrincipal implements ActionListener {
+
     // * Vista
     private VentanaPrincipal laVista;
-    
+
     // * Modelos
     private ProyectoDao dao;
     private EmpresaDao daoE;
-    
+
     // * Atributos
     private int TestId;
     private List<ProyectoDto> proyectos;
@@ -72,21 +72,20 @@ public class CtrlPrincipal implements  ActionListener{
         this.laVista = laVista;
         this.dao = dao;
         this.daoE = daoE;
-        
+
         // * Definir datos
         this.laVista.setTitle(Info.NombreSoftware);
         this.laVista.setIconImage(Source.imgIconoDefault);
-        
-        
+
         // * Inicializar
         mtdInit();
     }
 
     private void mtdInit() {
         proyectos = new ArrayList<>();
-        laVista.pnlContenedor.setLayout( new GridBagLayout() );
+        laVista.pnlContenedor.setLayout(new GridBagLayout());
         mtdMensaje("Cargando ...");
-        
+
         // * Definir oyentes
         laVista.setLocationRelativeTo(null);
         laVista.bntSalir.addActionListener(this);
@@ -96,55 +95,62 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.btnGestionarEmpresas.addActionListener(this);
         laVista.btnVinculacion.addActionListener(this);
         laVista.btnAcercaDe.addActionListener(this);
-        
+
         laVista.addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
                 mtdAbriendoPrograma();
             }
-            
+
             @Override
             public void windowClosing(WindowEvent e) {
-               mtdCerrandoPrograma();
-                
+                mtdCerrandoPrograma();
+
             }
         });
-        
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if( e.getSource() == laVista.bntSalir )
+
+        if (e.getSource() == laVista.bntSalir) {
             mtdSalirDelPrograma();
-        
-        if( e.getSource() == laVista.btnConexion )
+        }
+
+        if (e.getSource() == laVista.btnConexion) {
             modalConfigurarConexion();
-        
-        if( e.getSource() == laVista.btnDatosPersonales )
+        }
+
+        if (e.getSource() == laVista.btnDatosPersonales) {
             modalDatosPersonales();
-        
-        if( e.getSource() == laVista.btnGestionarProyectos )
+        }
+
+        if (e.getSource() == laVista.btnGestionarProyectos) {
             modalGestionarProyectos();
-        
-        if( e.getSource() == laVista.btnGestionarEmpresas )
+        }
+
+        if (e.getSource() == laVista.btnGestionarEmpresas) {
             modalGestionarEmpresas();
-        
-        if( e.getSource() == laVista.btnVinculacion )
+        }
+
+        if (e.getSource() == laVista.btnVinculacion) {
             modalVinculacion();
-        
-        if( e.getSource() == laVista.btnAcercaDe )
+        }
+
+        if (e.getSource() == laVista.btnAcercaDe) {
             modalAcercaDe();
-        
+        }
+
     }
-    
-    private void mtdHabilitarMenus(){
+
+    private void mtdHabilitarMenus() {
         // * Habilitar las opciones de menu del menubar
         laVista.menuEditar.setEnabled(true);
         mtdRellenarContenedor();
     }
-    
-    private void mtdDesHabilitarMenus(){
+
+    private void mtdDesHabilitarMenus() {
         // * DesHabilitar las opciones de menu del menubar
         laVista.menuEditar.setEnabled(false);
         mtdVaciarProyectos();
@@ -152,49 +158,49 @@ public class CtrlPrincipal implements  ActionListener{
         laVista.cmpEmpresas.setText("Empresas : " + "#");
         mtdMensaje("Sin conexión a la base de datos.");
     }
-    
+
     private void mtdAbriendoPrograma() {
         ////System.out.println("Ventana abierto.");
 
         // Obtener los datos de la conexion antes de abrir el programa
-        if( CtrlHiloConexion.checkConexion() ){
+        if (CtrlHiloConexion.checkConexion()) {
             ////System.out.println("Iniciando el programa con exion establecida.");
             mtdHabilitarMenus();
             mtdCrearHilo();
             mtdRellenarContenedor();
-        } else{
+        } else {
             mtdDesHabilitarMenus();
         }
-        
+
     }
-    
+
     private void mtdCerrandoPrograma() {
         ////System.out.println("Finalizo el programa.");
 
         // Guardar los datos de la conexion antes de cerrar el programa
-        if( CtrlHiloConexion.checkConexion() ){
-            new ConexionDao().regitrar_conexion( CtrlHiloConexion.ctrlDatos );
+        if (CtrlHiloConexion.checkConexion()) {
+            new ConexionDao().regitrar_conexion(CtrlHiloConexion.ctrlDatos);
             ////System.out.println("Conexion guardada.");
-            
-            if(CtrlHiloConexion.mtdCerrar()){
+
+            if (CtrlHiloConexion.mtdCerrar()) {
                 mtdDesHabilitarMenus();
                 ////System.out.println("Conexion finalizada.");
             }
         }
-        
+
     }
-    
-    private void mtdSalirDelPrograma(){
+
+    private void mtdSalirDelPrograma() {
         // * Método para cerrar el programa
         laVista.setVisible(false);
         mtdCerrandoPrograma();
         laVista.dispose();
         //System.exit(0);
-        
+
     }
 
     private void modalConfigurarConexion() {
-        
+
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelConexion vista = new PanelConexion();
         ConexionDto dto = new ConexionDto();
@@ -202,21 +208,22 @@ public class CtrlPrincipal implements  ActionListener{
         CtrlConexion controlador = new CtrlConexion(vista, dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-        
-        if( CtrlHiloConexion.ctrlEstado ){
+
+        if (CtrlHiloConexion.ctrlEstado) {
             mtdHabilitarMenus();
             mtdCrearHilo();
             mtdRellenarContenedor();
 
-        }else
-        mtdDesHabilitarMenus();
-        
+        } else {
+            mtdDesHabilitarMenus();
+        }
+
     }
-    
+
     private void modalDatosPersonales() {
-        
+
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelDatosPersonales vista = new PanelDatosPersonales();
         DatosPersonalesDao dao = new DatosPersonalesDao();
@@ -224,42 +231,43 @@ public class CtrlPrincipal implements  ActionListener{
         CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-        
+
     }
-    
-    private void modalGestionarProyectos(){
-        
+
+    private void modalGestionarProyectos() {
+
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelGestionarProyectos vista = new PanelGestionarProyectos();
         ProyectoDao dao = new ProyectoDao();
         ProyectoDto dto = new ProyectoDto();
-        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos( vista, dto, dao);
+        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos(vista, dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
         mtdRellenarContenedor();
-        
+
     }
-    
-    private void modalGestionarRequisitos(ProyectoDto proyecto_dto){
-        
+
+    private void modalGestionarRequisitos(ProyectoDto proyecto_dto) {
+
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelGestionarRequisitos vista = new PanelGestionarRequisitos();
         RequisitoDao dao = new RequisitoDao();
         RequisitoDto dto = new RequisitoDto();
-        CtrlGestionarRequisitos controlador = new CtrlGestionarRequisitos( vista, proyecto_dto , dto, dao);
+        CtrlGestionarRequisitos controlador = new CtrlGestionarRequisitos(vista, proyecto_dto, dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo( laVista );
+        controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-        
+        mtdRellenarContenedor();
+
     }
-    
-    private void modalGestionarEmpresas(){
-        
+
+    private void modalGestionarEmpresas() {
+
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelGestionarEmpresas vista = new PanelGestionarEmpresas();
         EmpresaDao dao = new EmpresaDao();
@@ -270,27 +278,27 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
         mtdRellenarContenedor();
-        
+
     }
-    
-    private void modalVinculacion(){
-        
+
+    private void modalVinculacion() {
+
         // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
         PanelVinculacion vista = new PanelVinculacion();
         EmpresaDao empresa_dao = new EmpresaDao();
         ProyectoDao proyecto_dao = new ProyectoDao();
         VinculacionDao vinculacion_dao = new VinculacionDao();
         VinculacionDto vinculacion_dto = new VinculacionDto();
-        CtrlVinculacion controlador = new  CtrlVinculacion(vista, proyecto_dao, empresa_dao, vinculacion_dao, vinculacion_dto);
+        CtrlVinculacion controlador = new CtrlVinculacion(vista, proyecto_dao, empresa_dao, vinculacion_dao, vinculacion_dto);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-        
+
     }
-    
-    private void modalAcercaDe(){
-        
+
+    private void modalAcercaDe() {
+
         // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
         PanelAcercaDe vista = new PanelAcercaDe();
         CtrlAcercaDe controlador = new CtrlAcercaDe(vista);
@@ -298,217 +306,211 @@ public class CtrlPrincipal implements  ActionListener{
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-        
+
     }
-    
-    private void mtdCrearHilo(){
+
+    private void mtdCrearHilo() {
         Runnable watcher = () -> {
             //System.out.println("CtrlPrincipal ::: Hilo Creado [!]");
             boolean estado = true;
-            
-            while( estado ){
-                synchronized( CtrlHiloConexion.ctrlHiloC ){
-                    
-                    if( CtrlHiloConexion.ctrlEstado == false ){
+
+            while (estado) {
+                synchronized (CtrlHiloConexion.ctrlHiloC) {
+
+                    if (CtrlHiloConexion.ctrlEstado == false) {
                         mtdDesHabilitarMenus();
                         estado = false;
                     }
-                    
+
                 }
             }
-            
+
             //System.out.println("CtrlPrincipal ::: Hilo Terminado [!]");
         };
-        
+
         Thread hilo = new Thread(watcher);
         hilo.setDaemon(true);
         hilo.start();
-        
+
     }
-    
-    private void mtdRellenarContenedor(){
+
+    private void mtdRellenarContenedor() {
         mtdVaciarProyectos();
         proyectos = dao.mtdListar();
         int tam = proyectos.size();
-        
+
         //System.out.println("[!] proyectos : " + tam);
-        if( tam > 0 ){
+        if (tam > 0) {
             mtdAgregarProyectos();
-        } else{
+        } else {
             mtdMensaje("No hay proyectos creados.");
         }
-        
+
         mtdEstablecerCamposBar();
         laVista.pnlContenedor.validate();
         laVista.pnlContenedor.revalidate();
         laVista.pnlContenedor.repaint();
         proyectos.clear();
     }
-    
-    private void mtdVaciarProyectos(){
+
+    private void mtdVaciarProyectos() {
         proyectos.clear();
         laVista.pnlContenedor.removeAll();
         laVista.pnlContenedor.validate();
         laVista.pnlContenedor.revalidate();
         laVista.pnlContenedor.repaint();
     }
-    
-    private void mtdAgregarProyectos(){
+
+    private void mtdAgregarProyectos() {
         int tam = proyectos.size();
-        
+
         for (int i = 0; i < tam; i++) {
-                PanelCard tarjeta_proyecto = new PanelCard();
-                ProyectoDto proyecto = proyectos.get(i);
-                GridBagConstraints c = new GridBagConstraints();
-                tarjeta_proyecto.setVisible(true);
-                
-                tarjeta_proyecto.btnModificar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        modalGestionarRequisitos( proyecto );
-                    }
-                });
-                
-                tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        mtdEliminarProyecto( proyecto );
-                    }
-                });
-                
+            PanelCard tarjeta_proyecto = new PanelCard();
+            ProyectoDto proyecto = proyectos.get(i);
+            GridBagConstraints c = new GridBagConstraints();
+            tarjeta_proyecto.setVisible(true);
+            
+            // Definir el evento para el boton Modificar
+            tarjeta_proyecto.btnModificar.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    modalGestionarRequisitos(proyecto);
+                }
+            });
+
+            // Definir el evento para el boton Eliminar
+            tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    mtdEliminarProyecto(proyecto);
+                }
+            });
+
+            JasperPrint jp = mtdGenerarReporte(proyecto);
+            
+            // Verificar si es posible cotizar
+            if ( jp.getPages().isEmpty() ) {
+                // Deshabilitar el boton de Cotizar
+                tarjeta_proyecto.btnCotizar.setEnabled(false);
+
+            } else {
+                // Habilitar el boton de Cotizar
                 tarjeta_proyecto.btnCotizar.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseReleased(MouseEvent e) {
-                        mtdCotizarProyecto( proyecto );
+                        mtdCotizarProyecto(proyecto);
                     }
                 });
-                
-                tarjeta_proyecto.etqTitulo.setText( proyectos.get(i).getCmpNombre() );
-                tarjeta_proyecto.cmpFechaInicial.setText( proyectos.get(i).getCmpFechaInicial() );
-                tarjeta_proyecto.cmpFechaFinal.setText( proyectos.get(i).getCmpFechaFinal() );
-                tarjeta_proyecto.cmpCostoEstimado.setText("" + proyectos.get(i).getCmpCostoEstimado());
-                tarjeta_proyecto.cmpMontoInicial.setText("" + proyectos.get(i).getCmpMontoAdelantado());
-                
-                c.gridx = 0; // Columna 
-                c.gridy = i; // Fila
-                c.gridheight = 1; // Cantidad de columnas a ocupar
-                c.gridwidth = 1; // Cantidad de filas a ocupar
-                c.weightx = 0.0; // Estirar en ancho
-                c.weighty = 0.0;// Estirar en alto
-                c.insets = new Insets(30, 0, 30, 0);  //top padding
-                c.fill = GridBagConstraints.BOTH; // El modo de estirar
-                laVista.pnlContenedor.add(tarjeta_proyecto, c);
+
+            }
+            
+            // Definir los datos de cada tarjeta de presentación
+            tarjeta_proyecto.etqTitulo.setText(proyectos.get(i).getCmpNombre());
+            tarjeta_proyecto.cmpFechaInicial.setText(proyectos.get(i).getCmpFechaInicial());
+            tarjeta_proyecto.cmpFechaFinal.setText(proyectos.get(i).getCmpFechaFinal());
+            tarjeta_proyecto.cmpCostoEstimado.setText("" + proyectos.get(i).getCmpCostoEstimado());
+            tarjeta_proyecto.cmpMontoInicial.setText("" + proyectos.get(i).getCmpMontoAdelantado());
+
+            c.gridx = 0; // Columna 
+            c.gridy = i; // Fila
+            c.gridheight = 1; // Cantidad de columnas a ocupar
+            c.gridwidth = 1; // Cantidad de filas a ocupar
+            c.weightx = 0.0; // Estirar en ancho
+            c.weighty = 0.0;// Estirar en alto
+            c.insets = new Insets(30, 0, 30, 0);  //top padding
+            c.fill = GridBagConstraints.BOTH; // El modo de estirar
+            laVista.pnlContenedor.add(tarjeta_proyecto, c);
         }
     }
-    
-    private void mtdEliminarProyecto(ProyectoDto dto){
-        
+
+    private void mtdCotizarProyecto(ProyectoDto proyecto) {
+
+        // Imprimir o mostrar el reporte generado
+        JasperPrint jp = mtdGenerarReporte(proyecto);
+
+        if (jp.getPages().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Lo siento, el reporte no tiene paginas que mostrar.");
+
+        } else {
+            // Mostar el reporte de Cotización
+            JasperViewer jviewer = new JasperViewer(jp, false);
+            jviewer.setTitle("Cotizar : " + proyecto.getCmpNombre());
+            jviewer.setVisible(true);
+            //JasperViewer.viewReport(jp);
+
+        }
+
+    }
+
+    private JasperPrint mtdGenerarReporte(ProyectoDto proyecto) {
+        JasperPrint jp = null;
+
+        try {
+            String pathReporteCotizacion = getClass().getResource("../" + "storage/reporte/CotizacionOrg.jrxml").getFile();
+
+            Map<String, Object> parametros = new HashMap<String, Object>();
+            parametros.put("rpProyectoID", proyecto.getCmpID());
+            parametros.put("rpNombreProyecto", proyecto.getCmpNombre());
+            parametros.put("rpTitulo", Info.NombreSoftware);
+
+            JasperReport jr = JasperCompileManager.compileReport(pathReporteCotizacion);
+
+            jp = JasperFillManager.fillReport(jr, parametros, CtrlHiloConexion.getConexion());
+
+        } catch (JRException ex) {
+            Logger.getLogger(CtrlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return jp;
+    }
+
+    private void mtdEliminarProyecto(ProyectoDto dto) {
+
         ProyectoDao pro = new ProyectoDao();
-        
+
         //System.out.println(" ddfd " + pro.mtdConsultar(dto) );
-        if( pro.mtdComprobar(dto) ){
+        if (pro.mtdComprobar(dto)) {
             String[] msg = new String[2];
-            
+
             msg[0] = "Seguro que deseas eliminar el proyecto `" + dto.getCmpNombre() + "`.";
-            msg[1] = "Confirmar";            
-            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION );
-            
-            if( opc == JOptionPane.YES_OPTION ){
-                if( pro.mtdEliminar(dto) ){
+            msg[1] = "Confirmar";
+            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
+
+            if (opc == JOptionPane.YES_OPTION) {
+                if (pro.mtdEliminar(dto)) {
                     JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
                     mtdRellenarContenedor();
                 }
             }
-            
-        }
-        
-    }
-    
-    private void mtdCotizarProyecto( ProyectoDto proyecto ){
-        
-        /*
-            File master=null;
-            try {
-                master = new File(getClass().getResource("../storage/reporte/Cotizacion.jasper").toURI());
-            }
-            catch (URISyntaxException ex)
-            {
-                JOptionPane.showMessageDialog(null, "No se puede abrir el archivo ó No existe en esta ruta","Error",JOptionPane.ERROR_MESSAGE);
-            }
-            
-            try{
-                JasperReport masterReport = null;
-                
-                try{
-                    masterReport = (JasperReport) JRLoader.loadObject(master);
-                }
-                catch (JRException e){
-                    System.out.println("Error al cargar el archivo de reporte maestro: " + e.getMessage());
-                }
-            
-                Map<String, Object> map_param = new HashMap<String, Object>();
-                map_param.put("rpProyectoID", proyecto.getCmpID() );
-                map_param.put("rpNombreProyecto",  proyecto.getCmpNombre() );
-                map_param.put("rpTitulo",  Info.NombreSoftware );
-                //mapear.put("rpLogo1", "P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\panel_logo.png" );
 
-                JasperPrint jasperPrint = JasperFillManager.fillReport(masterReport, map_param, CtrlHiloConexion.getConexion() );
-                JasperViewer jviewer = new JasperViewer( jasperPrint, false);
-                jviewer.setTitle( "Cotizar : " +  proyecto.getCmpNombre() );
-                jviewer.setVisible(true);
-            
-            }
-            catch (JRException j){
-                System.out.println("Mensaje de Error:" + j.getMessage());
-            }
-        */
-        
-        try {
-            
-            Map<String, Object> map_param = new HashMap<String, Object>();
-                map_param.put("rpProyectoID", proyecto.getCmpID() );
-                map_param.put("rpNombreProyecto",  proyecto.getCmpNombre() );
-                map_param.put("rpTitulo",  Info.NombreSoftware );
-                //mapear.put("rpLogo1", "P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\panel_logo.png" );
-                
-            String master = getClass().getResource("../"+"storage/reporte/CotizacionOrg.jrxml").getFile();
-            JasperReport jr = JasperCompileManager.compileReport(master);
-            JasperPrint jp = JasperFillManager.fillReport(jr, map_param , CtrlHiloConexion.getConexion());
-            JasperViewer jviewer = new JasperViewer( jp, false);
-            jviewer.setTitle( "Cotizar : " +  proyecto.getCmpNombre() );
-            jviewer.setVisible(true);
-            //JasperViewer.viewReport(jp);
-            
-        } catch (JRException ex) {
-            Logger.getLogger(CtrlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-            
+        }
+
     }
-    
-    private void mtdMensaje(String msg){
+
+    private void mtdMensaje(String msg) {
         JPanel mensaje = new JPanel();
         JLabel titulo = new JLabel();
-            
+
         titulo.setText(msg);
         titulo.setFont(new Font("Arial ", Font.PLAIN, 24));
         mensaje.add(titulo);
         laVista.pnlContenedor.add(mensaje);
-        
+
         laVista.pnlContenedor.validate();
         laVista.pnlContenedor.repaint();
     }
-    
-    private void mtdEstablecerCamposBar(){
+
+    private void mtdEstablecerCamposBar() {
         int empresas_c = daoE.mtdListar().size();
         int proyectos_c = proyectos.size();
-        
+
         laVista.cmpProyectos.setText("Proyectos : " + proyectos_c);
         laVista.cmpEmpresas.setText("Empresas : " + empresas_c);
     }
-    
-    private void mtdTesting(String msg){
+
+    private void mtdTesting(String msg) {
         //System.out.println("ctrlPrincipal ::: " + msg + " ::: id [" + TestId + "]" );
         TestId++;
     }
-    
+
 }
