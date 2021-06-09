@@ -2,12 +2,15 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="025eecbb-e774-4790-a703-426c100e11e7">
 	<property name="ireport.zoom" value="1.610510000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="41"/>
+	<property name="ireport.y" value="203"/>
 	<parameter name="rpProyectoID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="rpTitulo" class="java.lang.String"/>
 	<parameter name="rpNombreProyecto" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\src\\storage\\reporte\\"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT * FROM tblrequisitos tr, tbldatospersonales tdp WHERE tr.cmpProID = $P{rpProyectoID} AND tdp.cmpID = 1;]]>
 	</queryString>
@@ -66,7 +69,7 @@
 				<text><![CDATA[Datos Personales]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="118" width="121" height="20" uuid="8d243cf5-3fe9-468b-a190-ba3aef3a4cea"/>
+				<reportElement x="290" y="118" width="265" height="20" uuid="8d243cf5-3fe9-468b-a190-ba3aef3a4cea"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -118,6 +121,14 @@
 			<line>
 				<reportElement x="102" y="102" width="358" height="1" uuid="125a4e5e-a17d-4dc6-9028-0f353ec7bf3c"/>
 			</line>
+			<subreport>
+				<reportElement x="290" y="138" width="265" height="94" uuid="9691f746-c870-4f82-b925-3f7cc4833309"/>
+				<subreportParameter name="rpProyectoID">
+					<subreportParameterExpression><![CDATA[$P{rpProyectoID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CotizacionOrg_Clientes.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</title>
 	<pageHeader>
@@ -130,7 +141,7 @@
 			<textField>
 				<reportElement x="290" y="0" width="265" height="14" uuid="29b99652-45b4-48c7-ba5c-ee2cc8fbe5ed"/>
 				<textElement verticalAlignment="Middle">
-					<font size="10" isItalic="true" isUnderline="true"/>
+					<font size="10" isBold="true" isItalic="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{rpNombreProyecto}]]></textFieldExpression>
 			</textField>
@@ -216,12 +227,13 @@
 				<text><![CDATA[Todos los derechos reservados para ProgrammerAuditore (c) 2021]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="484" y="2" width="71" height="20" uuid="95827ab2-c5d5-4759-b561-de41638ce226"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="530" y="2" width="25" height="20" uuid="95827ab2-c5d5-4759-b561-de41638ce226"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="460" y="2" width="24" height="20" uuid="84673e96-37c3-47ff-8b15-31db5d842cbc"/>
+				<reportElement x="506" y="2" width="24" height="20" uuid="84673e96-37c3-47ff-8b15-31db5d842cbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Pag.]]></text>
 			</staticText>
 		</band>
