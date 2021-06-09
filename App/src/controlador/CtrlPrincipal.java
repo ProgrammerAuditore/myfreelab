@@ -165,7 +165,7 @@ public class CtrlPrincipal implements ActionListener {
         if (CtrlHiloConexion.checkConexion()) {
             ////System.out.println("Iniciando el programa con exion establecida.");
             mtdHabilitarMenus();
-            mtdCrearHilo();
+            mtdCrearHiloDesconexion();
             
         } else {
             mtdDesHabilitarMenus();
@@ -200,7 +200,7 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void modalConfigurarConexion() {
-
+        
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelConexion vista = new PanelConexion();
         ConexionDto dto = new ConexionDto();
@@ -210,16 +210,17 @@ public class CtrlPrincipal implements ActionListener {
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-
+        
+        
+        /*
         if (CtrlHiloConexion.ctrlEstado) {
-            mtdCrearHilo();
-            
-            if( !laVista.menuEditar.isEnabled() )
-                mtdHabilitarMenus();
-
+            mtdCrearHiloDesconexion();
+            //if( !laVista.menuEditar.isEnabled() )
+                //mtdHabilitarMenus();
         } else {
             mtdDesHabilitarMenus();
         }
+        */
 
     }
 
@@ -321,9 +322,9 @@ public class CtrlPrincipal implements ActionListener {
 
     }
 
-    private void mtdCrearHilo() {
+    private void mtdCrearHiloDesconexion() {
         Runnable watcher = () -> {
-            //System.out.println("CtrlPrincipal ::: Hilo Creado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Creado [!]");
             boolean estado = true;
 
             while (estado) {
@@ -331,13 +332,42 @@ public class CtrlPrincipal implements ActionListener {
 
                     if (CtrlHiloConexion.ctrlEstado == false) {
                         mtdDesHabilitarMenus();
+                        mtdCrearHiloConexion();
                         estado = false;
                     }
 
                 }
             }
 
-            //System.out.println("CtrlPrincipal ::: Hilo Terminado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Terminado [!]");
+        }; 
+
+        Thread hilo = new Thread(watcher);
+        hilo.setDaemon(true);
+        hilo.start();
+
+    }
+    
+    private void mtdCrearHiloConexion() {
+        Runnable watcher = () -> {
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Creado [!]");
+            boolean estado = true;
+
+            while (estado) {
+                synchronized (CtrlHiloConexion.ctrlHiloC) {
+
+                    //System.out.println("CtrlPrincipal ::: mtdCrearHiloConexion Run");
+                    if (CtrlHiloConexion.ctrlEstado == true) {
+                        //System.out.println("CtrlPrincipal ::: mtdCrearHiloConexion checkConexion");
+                        mtdHabilitarMenus();
+                        mtdCrearHiloDesconexion();
+                        estado = false;
+                    }
+
+                }
+            }
+
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Terminado [!]");
         };
 
         Thread hilo = new Thread(watcher);
@@ -345,7 +375,7 @@ public class CtrlPrincipal implements ActionListener {
         hilo.start();
 
     }
-
+    
     private void mtdRellenarContenedor() {
         mtdVaciarProyectos();
         proyectos = dao.mtdListar();

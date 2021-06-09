@@ -18,7 +18,9 @@ public class HiloSplash extends Thread{
     public void run() {
         
         // * Splash de bienvenida
+        this.setName("HiloSplash");
         splash = new Bienvenida();
+        splash.setIconImage(Source.imgIconoDefault);
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
         src = 8; avance = 0; pause = src;
