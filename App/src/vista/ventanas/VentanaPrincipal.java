@@ -31,6 +31,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.scpContenedor.setBorder(null);
         this.scpContenedor.getViewport().setBorder(null);
         
+        // * Establecer la velocidad del scroll
+        this.scpContenedor.getVerticalScrollBar().setUnitIncrement(16);
+        
         // * Establece logo
         this.pnlLogo.setImgBackgroundEnabled(true);
         this.pnlLogo.setImgRutaInternoActivo(true);
@@ -94,8 +97,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         cmpEmpresas.setText("Empresa : #");
         jToolBar1.add(cmpEmpresas);
-
-        pnlContenedor.setBackground(new java.awt.Color(153, 255, 204));
 
         javax.swing.GroupLayout pnlContenedorLayout = new javax.swing.GroupLayout(pnlContenedor);
         pnlContenedor.setLayout(pnlContenedorLayout);
