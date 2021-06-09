@@ -131,6 +131,14 @@ public class Boton extends JPanelBackground implements MouseListener{
             titulo.setForeground(new Color(255,255,255));
             super.setImgRutaInterno( imgButtonActivado );
             super.setImgOpacidad(1.0f);
+            
+        } else{
+            setTemaButton();
+            titulo.setForeground(new Color(220,220,220));
+            super.setImgRutaInterno( imgButtonHover );
+            super.setImgOpacidad(0.6f);
+            addMouseListener(null);
+            
         }
     }
 
@@ -138,6 +146,7 @@ public class Boton extends JPanelBackground implements MouseListener{
     public void paint(Graphics g) {
         // Este se comporta como si fuera un hilo
         super.paint(g);
+        
         
         // Verificar, si boton esta deshabilitado
         if( !isEnabled() ){
@@ -147,6 +156,7 @@ public class Boton extends JPanelBackground implements MouseListener{
             super.setImgOpacidad(0.6f);
             addMouseListener(null);
         }
+        
         
         //System.out.println("paint");
     }
