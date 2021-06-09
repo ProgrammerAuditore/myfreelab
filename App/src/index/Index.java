@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
+import modelo.dao.RequisitoDao;
 import vista.ventanas.Testing;
 import vista.ventanas.VentanaPrincipal;
 
@@ -29,7 +30,8 @@ public class Index {
         VentanaPrincipal frame_p = new VentanaPrincipal();
         ProyectoDao daoP = new ProyectoDao();
         EmpresaDao daoE = new EmpresaDao();
-        CtrlPrincipal ctrl_p = new CtrlPrincipal(frame_p, daoP, daoE);
+        RequisitoDao daoR = new RequisitoDao();
+        CtrlPrincipal ctrl_p = new CtrlPrincipal(frame_p, daoP, daoE, daoR);
     
         // * Ejecutar hilos
         hs.start();

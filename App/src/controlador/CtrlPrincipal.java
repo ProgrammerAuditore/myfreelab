@@ -1,6 +1,5 @@
 package controlador;
 
-import com.mysql.jdbc.Connection;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,9 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +37,6 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
 import src.Source;
@@ -63,15 +58,19 @@ public class CtrlPrincipal implements ActionListener {
     // * Modelos
     private ProyectoDao dao;
     private EmpresaDao daoE;
+    private RequisitoDao daoR;
 
     // * Atributos
     private int TestId;
     private List<ProyectoDto> proyectos;
+    private int canBefore;
+    private int canAfter;
 
-    public CtrlPrincipal(VentanaPrincipal laVista, ProyectoDao dao, EmpresaDao daoE) {
+    public CtrlPrincipal(VentanaPrincipal laVista, ProyectoDao dao, EmpresaDao daoE, RequisitoDao daoR) {
         this.laVista = laVista;
         this.dao = dao;
         this.daoE = daoE;
+        this.daoR = daoR;
 
         // * Definir datos
         this.laVista.setTitle(Info.NombreSoftware);
@@ -167,9 +166,10 @@ public class CtrlPrincipal implements ActionListener {
             ////System.out.println("Iniciando el programa con exion establecida.");
             mtdHabilitarMenus();
             mtdCrearHilo();
-            mtdRellenarContenedor();
+            
         } else {
             mtdDesHabilitarMenus();
+        
         }
 
     }
@@ -212,9 +212,10 @@ public class CtrlPrincipal implements ActionListener {
         controlador.modal.setVisible(true);
 
         if (CtrlHiloConexion.ctrlEstado) {
-            mtdHabilitarMenus();
             mtdCrearHilo();
-            mtdRellenarContenedor();
+            
+            if( !laVista.menuEditar.isEnabled() )
+                mtdHabilitarMenus();
 
         } else {
             mtdDesHabilitarMenus();
@@ -237,7 +238,9 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void modalGestionarProyectos() {
-
+        
+        canBefore = dao.mtdListar().size();
+        
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelGestionarProyectos vista = new PanelGestionarProyectos();
         ProyectoDao dao = new ProyectoDao();
@@ -247,12 +250,18 @@ public class CtrlPrincipal implements ActionListener {
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
+        
+        canAfter = dao.mtdListar().size();
+        
+        if( canAfter != canBefore  )
         mtdRellenarContenedor();
 
     }
 
     private void modalGestionarRequisitos(ProyectoDto proyecto_dto) {
-
+        
+        canBefore = daoR.mtdListar().size();
+        
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelGestionarRequisitos vista = new PanelGestionarRequisitos();
         RequisitoDao dao = new RequisitoDao();
@@ -262,6 +271,10 @@ public class CtrlPrincipal implements ActionListener {
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
+        
+        canAfter = daoR.mtdListar().size();
+        
+        if( canAfter != canBefore )
         mtdRellenarContenedor();
 
     }
@@ -277,7 +290,6 @@ public class CtrlPrincipal implements ActionListener {
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-        mtdRellenarContenedor();
 
     }
 
@@ -341,7 +353,7 @@ public class CtrlPrincipal implements ActionListener {
 
         //System.out.println("[!] proyectos : " + tam);
         if (tam > 0) {
-            mtdAgregarProyectos();
+            mtdPintarProyectos(tam);
         } else {
             mtdMensaje("No hay proyectos creados.");
         }
@@ -361,8 +373,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.pnlContenedor.repaint();
     }
 
-    private void mtdAgregarProyectos() {
-        int tam = proyectos.size();
+    private void mtdPintarProyectos(int tam) {
 
         for (int i = 0; i < tam; i++) {
             PanelCard tarjeta_proyecto = new PanelCard();
@@ -386,10 +397,10 @@ public class CtrlPrincipal implements ActionListener {
                 }
             });
 
-            JasperPrint jp = mtdGenerarReporte(proyecto);
-            
+            int cantidad = daoR.mtdCantidadReq( proyecto.getCmpID() );
+            //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
             // Verificar si es posible cotizar
-            if ( jp.getPages().isEmpty() ) {
+            if ( cantidad == 0 ) {
                 // Deshabilitar el boton de Cotizar
                 tarjeta_proyecto.btnCotizar.setEnabled(false);
 

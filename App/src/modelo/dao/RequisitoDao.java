@@ -117,7 +117,29 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
 
     @Override
     public List<RequisitoDto> mtdListar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<RequisitoDto> requisitos = new ArrayList<>();
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblrequisitos ; ";
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while( rs.next() ){
+                RequisitoDto requisito = new RequisitoDto();
+                requisito.setCmpID( rs.getInt( "cmpID" ) );
+                requisito.setCmpNombre(rs.getString( "cmpNombre" ) );
+                requisito.setCmpCosto( rs.getDouble( "cmpCosto" ) );
+                
+                requisitos.add(requisito);
+            }
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return requisitos;
     }
     
     public List<RequisitoDto> mtdListar(RequisitoDto dto) {
@@ -145,6 +167,29 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         }
         
         return requisitos;
+    }
+    
+    public int mtdCantidadReq( int id ){
+        int totalReq = 0;
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblrequisitos WHERE cmpProID = ? ; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while( rs.next() ){
+                totalReq++;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
+        return totalReq;
     }
 
 }
