@@ -57,7 +57,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
         etqEliminar = new vista.componentes.etiqueta.Enlace();
         etqEmpresas = new vista.componentes.etiqueta.Etiqueta();
         jLabel2 = new javax.swing.JLabel();
-        btnCancelar = new vista.componentes.button.Button();
+        btnCancelar = new vista.componentes.boton.Boton();
 
         bkgAside.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -217,7 +217,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
-    public vista.componentes.button.Button btnCancelar;
+    public vista.componentes.boton.Boton btnCancelar;
     public javax.swing.JComboBox<String> cmbProyectos;
     private vista.componentes.etiqueta.Enlace enlace1;
     public vista.componentes.etiqueta.Enlace etqAsociar;

@@ -43,9 +43,9 @@ public class PanelCard extends javax.swing.JPanel {
         etqFechaFinal = new vista.componentes.etiqueta.Etiqueta();
         cmpFechaInicial = new vista.componentes.campos.CampoTexto();
         jPanel2 = new javax.swing.JPanel();
-        btnCotizar = new vista.componentes.button.Button();
-        btnModificar = new vista.componentes.button.Button();
-        btnEliminar = new vista.componentes.button.Button();
+        btnCotizar = new vista.componentes.boton.Boton();
+        btnModificar = new vista.componentes.boton.Boton();
+        btnEliminar = new vista.componentes.boton.Boton();
         cmpFechaFinal = new vista.componentes.campos.CampoTexto();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -188,9 +188,9 @@ public class PanelCard extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public vista.componentes.button.Button btnCotizar;
-    public vista.componentes.button.Button btnEliminar;
-    public vista.componentes.button.Button btnModificar;
+    public vista.componentes.boton.Boton btnCotizar;
+    public vista.componentes.boton.Boton btnEliminar;
+    public vista.componentes.boton.Boton btnModificar;
     public vista.componentes.campos.CampoTexto cmpCostoEstimado;
     public vista.componentes.campos.CampoTexto cmpFechaFinal;
     public vista.componentes.campos.CampoTexto cmpFechaInicial;

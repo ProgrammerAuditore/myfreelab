@@ -6,6 +6,8 @@
 package vista.ventanas;
 
 import java.awt.Color;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import src.Source;
 
 /**
@@ -92,6 +94,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         cmpEmpresas.setText("Empresa : #");
         jToolBar1.add(cmpEmpresas);
+
+        pnlContenedor.setBackground(new java.awt.Color(153, 255, 204));
 
         javax.swing.GroupLayout pnlContenedorLayout = new javax.swing.GroupLayout(pnlContenedor);
         pnlContenedor.setLayout(pnlContenedorLayout);

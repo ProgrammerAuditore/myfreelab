@@ -53,7 +53,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     private void initComponents() {
 
         lbl_Licencia = new vista.componentes.etiqueta.Enlace();
-        btnAceptar = new vista.componentes.button.Button();
+        btnAceptar = new vista.componentes.boton.Boton();
         contendor_licencia = new javax.swing.JScrollPane();
         txt_licencia = new javax.swing.JTextArea();
         lbl_Software = new vista.componentes.etiqueta.Titulo();
@@ -124,7 +124,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public vista.componentes.button.Button btnAceptar;
+    public vista.componentes.boton.Boton btnAceptar;
     public javax.swing.JScrollPane contendor_licencia;
     private vista.componentes.etiqueta.Enlace lbl_Licencia;
     private vista.componentes.etiqueta.Titulo lbl_Software;

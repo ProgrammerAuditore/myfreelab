@@ -211,26 +211,26 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="vista.componentes.button.Button" name="button1">
+            <Component class="vista.componentes.boton.Boton" name="button1">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="success"/>
                 <Property name="texto" type="java.lang.String" value="Aceptar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button4">
+            <Component class="vista.componentes.boton.Boton" name="button4">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button5">
+            <Component class="vista.componentes.boton.Boton" name="button5">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="imgButtonType" type="java.lang.String" value="success"/>
                 <Property name="texto" type="java.lang.String" value="Aceptar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button6">
+            <Component class="vista.componentes.boton.Boton" name="button6">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
@@ -246,36 +246,36 @@
             </Component>
             <Component class="vista.componentes.etiqueta.Enlace" name="enlace1">
             </Component>
-            <Component class="vista.componentes.button.Button" name="button2">
+            <Component class="vista.componentes.boton.Boton" name="button2">
               <Properties>
                 <Property name="texto" type="java.lang.String" value="Generar reporte"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button3">
+            <Component class="vista.componentes.boton.Boton" name="button3">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="warning"/>
                 <Property name="texto" type="java.lang.String" value="Modificar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button7">
+            <Component class="vista.componentes.boton.Boton" name="button7">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="info"/>
                 <Property name="texto" type="java.lang.String" value="Ver proyecto"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button8">
+            <Component class="vista.componentes.boton.Boton" name="button8">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Eliminar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button25">
+            <Component class="vista.componentes.boton.Boton" name="button25">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="dark"/>
                 <Property name="texto" type="java.lang.String" value="Verficar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button26">
+            <Component class="vista.componentes.boton.Boton" name="button26">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="peace"/>
               </Properties>
@@ -375,7 +375,7 @@
           <SubComponents>
             <Component class="vista.componentes.etiqueta.Enlace" name="enlace2">
             </Component>
-            <Component class="vista.componentes.button.Button" name="button16">
+            <Component class="vista.componentes.boton.Boton" name="button16">
               <Properties>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
                 <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
@@ -383,7 +383,7 @@
                 <Property name="texto" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button15">
+            <Component class="vista.componentes.boton.Boton" name="button15">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
@@ -394,7 +394,7 @@
             </Component>
             <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta2">
             </Component>
-            <Component class="vista.componentes.button.Button" name="button13">
+            <Component class="vista.componentes.boton.Boton" name="button13">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
@@ -404,21 +404,21 @@
             </Component>
             <Component class="vista.componentes.etiqueta.Titulo" name="titulo2">
             </Component>
-            <Component class="vista.componentes.button.Button" name="button14">
+            <Component class="vista.componentes.boton.Boton" name="button14">
               <Properties>
                 <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
                 <Property name="imgButtonType" type="java.lang.String" value="success"/>
                 <Property name="texto" type="java.lang.String" value="Aceptar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button10">
+            <Component class="vista.componentes.boton.Boton" name="button10">
               <Properties>
                 <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
                 <Property name="imgButtonType" type="java.lang.String" value="warning"/>
                 <Property name="texto" type="java.lang.String" value="Modificar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button12">
+            <Component class="vista.componentes.boton.Boton" name="button12">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Eliminar"/>
@@ -426,14 +426,14 @@
             </Component>
             <Component class="vista.componentes.etiqueta.SubTitulo" name="subTitulo2">
             </Component>
-            <Component class="vista.componentes.button.Button" name="button9">
+            <Component class="vista.componentes.boton.Boton" name="button9">
               <Properties>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
                 <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
                 <Property name="texto" type="java.lang.String" value="Generar reporte"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button11">
+            <Component class="vista.componentes.boton.Boton" name="button11">
               <Properties>
                 <Property name="imgButtonTheme" type="java.lang.String" value="bootstrap"/>
                 <Property name="imgButtonType" type="java.lang.String" value="info"/>
@@ -539,44 +539,44 @@
             </Component>
             <Component class="vista.componentes.etiqueta.Enlace" name="enlace3">
             </Component>
-            <Component class="vista.componentes.button.Button" name="button21">
+            <Component class="vista.componentes.boton.Boton" name="button21">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="imgButtonType" type="java.lang.String" value="success"/>
                 <Property name="texto" type="java.lang.String" value="Aceptar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button18">
+            <Component class="vista.componentes.boton.Boton" name="button18">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="warning"/>
                 <Property name="texto" type="java.lang.String" value="Modificar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button24">
+            <Component class="vista.componentes.boton.Boton" name="button24">
               <Properties>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button17">
+            <Component class="vista.componentes.boton.Boton" name="button17">
               <Properties>
                 <Property name="texto" type="java.lang.String" value="Generar reporte"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button20">
+            <Component class="vista.componentes.boton.Boton" name="button20">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="danger"/>
                 <Property name="texto" type="java.lang.String" value="Eliminar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button19">
+            <Component class="vista.componentes.boton.Boton" name="button19">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="info"/>
                 <Property name="texto" type="java.lang.String" value="Ver proyecto"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button23">
+            <Component class="vista.componentes.boton.Boton" name="button23">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
@@ -584,7 +584,7 @@
                 <Property name="texto" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.button.Button" name="button22">
+            <Component class="vista.componentes.boton.Boton" name="button22">
               <Properties>
                 <Property name="imgButtonType" type="java.lang.String" value="success"/>
                 <Property name="texto" type="java.lang.String" value="Aceptar"/>

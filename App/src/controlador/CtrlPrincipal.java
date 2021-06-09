@@ -396,7 +396,7 @@ public class CtrlPrincipal implements ActionListener {
                     mtdEliminarProyecto(proyecto);
                 }
             });
-
+            
             int cantidad = daoR.mtdCantidadReq( proyecto.getCmpID() );
             //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
             // Verificar si es posible cotizar
@@ -431,6 +431,8 @@ public class CtrlPrincipal implements ActionListener {
             c.insets = new Insets(30, 0, 30, 0);  //top padding
             c.fill = GridBagConstraints.BOTH; // El modo de estirar
             laVista.pnlContenedor.add(tarjeta_proyecto, c);
+            
+            //System.out.println("Testin :: Tarjeta agregado #" + i);
         }
     }
 

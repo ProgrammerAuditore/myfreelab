@@ -83,8 +83,8 @@ public class PanelConexion extends javax.swing.JPanel {
         cmpNull = new javax.swing.JCheckBox();
         cmpContrasenha = new vista.componentes.campos.CampoPassword();
         cmpPuerto = new vista.componentes.campos.CampoNumerico();
-        btnEstablecerConexion = new vista.componentes.button.Button();
-        btnCerrarConexion = new vista.componentes.button.Button();
+        btnEstablecerConexion = new vista.componentes.boton.Boton();
+        btnCerrarConexion = new vista.componentes.boton.Boton();
 
         bkgAside.setBackground(new java.awt.Color(102, 102, 102));
         bkgAside.setImgBackgroundEnabled(true);
@@ -281,8 +281,8 @@ public class PanelConexion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public vista.componentes.jpanelbackground.JPanelBackground bkgAside;
-    public vista.componentes.button.Button btnCerrarConexion;
-    public vista.componentes.button.Button btnEstablecerConexion;
+    public vista.componentes.boton.Boton btnCerrarConexion;
+    public vista.componentes.boton.Boton btnEstablecerConexion;
     public vista.componentes.campos.CampoPassword cmpContrasenha;
     public vista.componentes.campos.CampoTexto cmpDatabase;
     public vista.componentes.campos.CampoTexto cmpHost;

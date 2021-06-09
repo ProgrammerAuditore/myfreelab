@@ -48,8 +48,8 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
         cmpTelMovil = new vista.componentes.campos.CampoTexto();
         etqEmail = new vista.componentes.etiqueta.Etiqueta();
         cmpCorreo = new vista.componentes.campos.CampoCorreo();
-        btnAceptar = new vista.componentes.button.Button();
-        btnCancelar = new vista.componentes.button.Button();
+        btnAceptar = new vista.componentes.boton.Boton();
+        btnCancelar = new vista.componentes.boton.Boton();
 
         bkgAside.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -202,8 +202,8 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
-    public vista.componentes.button.Button btnAceptar;
-    public vista.componentes.button.Button btnCancelar;
+    public vista.componentes.boton.Boton btnAceptar;
+    public vista.componentes.boton.Boton btnCancelar;
     public vista.componentes.campos.CampoTexto cmpApellidos;
     public vista.componentes.campos.CampoCorreo cmpCorreo;
     public vista.componentes.campos.CampoTexto cmpDireccion;

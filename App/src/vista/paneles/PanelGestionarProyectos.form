@@ -174,7 +174,7 @@
             <Property name="text" type="java.lang.String" value="Nombre del proyecto"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.button.Button" name="btnModificar">
+        <Component class="vista.componentes.boton.Boton" name="btnModificar">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="warning"/>
             <Property name="texto" type="java.lang.String" value="Modificar"/>
@@ -183,7 +183,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.button.Button" name="btnBuscar">
+        <Component class="vista.componentes.boton.Boton" name="btnBuscar">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="info"/>
             <Property name="texto" type="java.lang.String" value="Buscar"/>
@@ -192,7 +192,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.button.Button" name="btnCrear">
+        <Component class="vista.componentes.boton.Boton" name="btnCrear">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="success"/>
             <Property name="texto" type="java.lang.String" value="Crear"/>
@@ -255,7 +255,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.button.Button" name="btnEliminar">
+        <Component class="vista.componentes.boton.Boton" name="btnEliminar">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="danger"/>
             <Property name="texto" type="java.lang.String" value="Eliminar"/>

@@ -326,7 +326,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="vista.componentes.button.Button" name="btnAceptar">
+    <Component class="vista.componentes.boton.Boton" name="btnAceptar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="success"/>
         <Property name="texto" type="java.lang.String" value="Aceptar"/>
@@ -335,7 +335,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="vista.componentes.button.Button" name="btnCancelar">
+    <Component class="vista.componentes.boton.Boton" name="btnCancelar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="secondary"/>
         <Property name="texto" type="java.lang.String" value="Cancelar"/>

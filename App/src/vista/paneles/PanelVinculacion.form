@@ -289,7 +289,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="vista.componentes.button.Button" name="btnCancelar">
+    <Component class="vista.componentes.boton.Boton" name="btnCancelar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="secondary"/>
         <Property name="texto" type="java.lang.String" value="Cancelar"/>

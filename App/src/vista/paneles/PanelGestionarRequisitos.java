@@ -39,13 +39,13 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         titulo1 = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
         lbl_empresa = new vista.componentes.etiqueta.Etiqueta();
-        btnModificar = new vista.componentes.button.Button();
-        btnBuscar = new vista.componentes.button.Button();
-        btnCrear = new vista.componentes.button.Button();
+        btnModificar = new vista.componentes.boton.Boton();
+        btnBuscar = new vista.componentes.boton.Boton();
+        btnCrear = new vista.componentes.boton.Boton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRequisitos = new javax.swing.JTable();
         cmpRequisito = new vista.componentes.campos.CampoTexto();
-        btnEliminar = new vista.componentes.button.Button();
+        btnEliminar = new vista.componentes.boton.Boton();
         etqMontoEstimado = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoEstimado = new vista.componentes.campos.CampoNumerico();
         etqCosto = new vista.componentes.etiqueta.Etiqueta();
@@ -220,10 +220,10 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
-    public vista.componentes.button.Button btnBuscar;
-    public vista.componentes.button.Button btnCrear;
-    public vista.componentes.button.Button btnEliminar;
-    public vista.componentes.button.Button btnModificar;
+    public vista.componentes.boton.Boton btnBuscar;
+    public vista.componentes.boton.Boton btnCrear;
+    public vista.componentes.boton.Boton btnEliminar;
+    public vista.componentes.boton.Boton btnModificar;
     public vista.componentes.campos.CampoMoneda cmpCosto;
     public vista.componentes.campos.CampoNumerico cmpMontoEstimado;
     public vista.componentes.campos.CampoTexto cmpRequisito;

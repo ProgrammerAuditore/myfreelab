@@ -1,4 +1,4 @@
-package vista.componentes.button;
+package vista.componentes.boton;
 
 
 import java.awt.Color;
@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import src.Source;
 
-public class Button extends JPanelBackground implements MouseListener{
+public class Boton extends JPanelBackground implements MouseListener{
     
     // Propiedades del componente
     private String texto;
@@ -29,7 +29,7 @@ public class Button extends JPanelBackground implements MouseListener{
     private String imgButtonHover = null;
     
     
-    public Button() {
+    public Boton() {
         this.init();
     }
     
@@ -49,7 +49,7 @@ public class Button extends JPanelBackground implements MouseListener{
         // Establecer propiedades del JPanel
         setBackground(new Color(0, 0, 0));
         setOpaque(false);
-        setLayout(new GridBagLayout()); 
+        //setLayout(new GridBagLayout()); 
         addMouseListener(this);
         setSize( tamahoDefult );
         setPreferredSize( tamahoDefult );
@@ -97,7 +97,9 @@ public class Button extends JPanelBackground implements MouseListener{
     private void setBackgroundButton(String estado_button){
         super.setImgOpacidad(1.0f);
         super.setImgRutaInterno( estado_button );
-        repaint();
+        
+        //System.out.println("Repintando en  Boton :: setBackgroundButton");
+        //repaint();
     }
     
     private void setCambiarEstado(){
@@ -115,7 +117,8 @@ public class Button extends JPanelBackground implements MouseListener{
             }
         }
         
-        repaint();
+        //System.out.println("Repintando en  Boton :: setCambiarEstado");
+        //repaint();
     }
     
     @Override
@@ -133,6 +136,7 @@ public class Button extends JPanelBackground implements MouseListener{
 
     @Override
     public void paint(Graphics g) {
+        // Este se comporta como si fuera un hilo
         super.paint(g);
         
         // Verificar, si boton esta deshabilitado
@@ -143,6 +147,8 @@ public class Button extends JPanelBackground implements MouseListener{
             super.setImgOpacidad(0.6f);
             addMouseListener(null);
         }
+        
+        //System.out.println("paint");
     }
     
     @Override
@@ -159,7 +165,8 @@ public class Button extends JPanelBackground implements MouseListener{
 
             }else{  }
         }
-       
+        
+        //System.out.println("mouseClicked");
     }
 
     @Override
@@ -175,6 +182,8 @@ public class Button extends JPanelBackground implements MouseListener{
 
             }else{  }
         }
+        
+        //System.out.println("mousePressed");
     }
 
     @Override
@@ -190,6 +199,8 @@ public class Button extends JPanelBackground implements MouseListener{
 
             }else{ setCambiarEstado(); }
         }
+        
+        //System.out.println("mouseReleased");
     }
 
     @Override
@@ -213,6 +224,7 @@ public class Button extends JPanelBackground implements MouseListener{
             }
         }
         
+        //System.out.println("mouseEntered");
     }
 
     @Override
@@ -241,6 +253,8 @@ public class Button extends JPanelBackground implements MouseListener{
                 
             }
         }
+        
+        //System.out.println("mouseExited");
     }
 
     public String getTexto() {

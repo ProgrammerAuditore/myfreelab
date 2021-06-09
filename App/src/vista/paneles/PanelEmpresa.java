@@ -49,8 +49,8 @@ public class PanelEmpresa extends javax.swing.JPanel {
         etqEliminar = new vista.componentes.etiqueta.Enlace();
         cmbProyectoAsociados = new javax.swing.JComboBox<>();
         etqAsociar = new vista.componentes.etiqueta.Enlace();
-        btnAceptar = new vista.componentes.button.Button();
-        btnCancelar = new vista.componentes.button.Button();
+        btnAceptar = new vista.componentes.boton.Boton();
+        btnCancelar = new vista.componentes.boton.Boton();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -246,8 +246,8 @@ public class PanelEmpresa extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public vista.componentes.button.Button btnAceptar;
-    public vista.componentes.button.Button btnCancelar;
+    public vista.componentes.boton.Boton btnAceptar;
+    public vista.componentes.boton.Boton btnCancelar;
     public javax.swing.JComboBox<String> cmbProyectoAsociados;
     public javax.swing.JComboBox<String> cmbProyectos;
     public vista.componentes.campos.CampoTexto cmpCEO;

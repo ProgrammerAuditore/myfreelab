@@ -46,8 +46,8 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         enlace1 = new vista.componentes.etiqueta.Enlace();
         enlace2 = new vista.componentes.etiqueta.Enlace();
-        btnCancelar = new vista.componentes.button.Button();
-        btnAceptar = new vista.componentes.button.Button();
+        btnCancelar = new vista.componentes.boton.Boton();
+        btnAceptar = new vista.componentes.boton.Boton();
 
         jPanelBackground1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -245,8 +245,8 @@ public class PanelGenerarCotizacion extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public vista.componentes.button.Button btnAceptar;
-    public vista.componentes.button.Button btnCancelar;
+    public vista.componentes.boton.Boton btnAceptar;
+    public vista.componentes.boton.Boton btnCancelar;
     public vista.componentes.campos.CampoTexto cmpFechaFinal;
     public vista.componentes.campos.CampoTexto cmpFechaInicial;
     public vista.componentes.campos.CampoTexto cmpIdProyecto;

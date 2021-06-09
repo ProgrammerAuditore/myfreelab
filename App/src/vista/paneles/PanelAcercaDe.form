@@ -67,7 +67,7 @@
         <Property name="text" type="java.lang.String" value="Licencia"/>
       </Properties>
     </Component>
-    <Component class="vista.componentes.button.Button" name="btnAceptar">
+    <Component class="vista.componentes.boton.Boton" name="btnAceptar">
       <Properties>
         <Property name="imgButtonType" type="java.lang.String" value="dark"/>
         <Property name="texto" type="java.lang.String" value="Aceptar"/>
