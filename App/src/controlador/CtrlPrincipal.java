@@ -103,7 +103,7 @@ public class CtrlPrincipal implements ActionListener {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                mtdCerrandoPrograma();
+                mtdSalirDelPrograma();
 
             }
         });
@@ -142,20 +142,45 @@ public class CtrlPrincipal implements ActionListener {
         }
 
     }
+    
+    private void mtdDesHabSubMenus(boolean param){
+        laVista.menuArchivo.setEnabled(param);
+        laVista.menuAyuda.setEnabled(param);
+        laVista.menuConfigurar.setEnabled(param);
+        laVista.menuEditar.setEnabled(param);
+    }
 
     private void mtdHabilitarMenus() {
-        // * Habilitar las opciones de menu del menubar
-        laVista.menuEditar.setEnabled(true);
+        laVista.setTitle( laVista.getTitle() + " - [Estableciendo conexion]");
+        laVista.setTitle( Info.NombreSoftware );
+        
+        // * Obtener y Crear tarjetas de presentacion para todos los proyecto creados
         mtdRellenarContenedor();
+        
+        // * Habilitar las opciones de menu del menubar
+        mtdDesHabSubMenus(true);
+        laVista.menuEditar.setEnabled(true);
+        
+        laVista.setTitle( laVista.getTitle() + " - [conexion establecida]");
     }
 
     private void mtdDesHabilitarMenus() {
+        laVista.setTitle( laVista.getTitle() + " - [Cerrando conexion]");
+        laVista.setTitle( Info.NombreSoftware );
+        
+        // * Vaciar y Borrar tarjetas de presentacion para todos los proyecto creados
+        proyectos.clear();
+        mtdVaciarContenedor();
+        
         // * DesHabilitar las opciones de menu del menubar
+        mtdDesHabSubMenus(true);
         laVista.menuEditar.setEnabled(false);
-        mtdVaciarProyectos();
+        
         laVista.cmpProyectos.setText("Proyectos : " + "#");
         laVista.cmpEmpresas.setText("Empresas : " + "#");
         mtdMensaje("Sin conexión a la base de datos.");
+        
+        laVista.setTitle( laVista.getTitle() + " - [conexion cerrada]");
     }
 
     private void mtdAbriendoPrograma() {
@@ -195,8 +220,8 @@ public class CtrlPrincipal implements ActionListener {
         laVista.setVisible(false);
         mtdCerrandoPrograma();
         laVista.dispose();
-        //System.exit(0);
-
+        System.exit(0);
+        
     }
 
     private void modalConfigurarConexion() {
@@ -210,18 +235,16 @@ public class CtrlPrincipal implements ActionListener {
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
+        mtdDesHabSubMenus(false);
         
-        
-        /*
-        if (CtrlHiloConexion.ctrlEstado) {
-            mtdCrearHiloDesconexion();
-            //if( !laVista.menuEditar.isEnabled() )
-                //mtdHabilitarMenus();
+        if( CtrlHiloConexion.checkConexion() ){
+            laVista.setTitle( Info.NombreSoftware + " - [Estableciendo conexion, espere por favor]");
+            mtdMensaje("Estableciendo conexion, espere por favor");
         } else {
-            mtdDesHabilitarMenus();
+            laVista.setTitle( Info.NombreSoftware + " - [Cerrando conexion, espere por favor]");
+            mtdMensaje("Cerrando conexion, espere por favor");
         }
-        */
-
+        
     }
 
     private void modalDatosPersonales() {
@@ -323,8 +346,10 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdCrearHiloDesconexion() {
+        // * Este hilo monitorea si esta en Desconexion
+        
         Runnable watcher = () -> {
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Creado [!]");
+            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Creado [!]");
             boolean estado = true;
 
             while (estado) {
@@ -339,18 +364,22 @@ public class CtrlPrincipal implements ActionListener {
                 }
             }
 
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Terminado [!]");
+            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Terminado [!]");
         }; 
 
-        Thread hilo = new Thread(watcher);
-        hilo.setDaemon(true);
-        hilo.start();
+        Thread HiloDesconexion = new Thread(watcher);
+        HiloDesconexion.setName("HiloDesconexion");
+        HiloDesconexion.setPriority(9);
+        //HiloDesconexion.setDaemon(true);
+        HiloDesconexion.start();
 
     }
     
     private void mtdCrearHiloConexion() {
+        // * Este hilo monitorea si esta en Conexion
+        
         Runnable watcher = () -> {
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Creado [!]");
+            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Creado [!]");
             boolean estado = true;
 
             while (estado) {
@@ -367,17 +396,20 @@ public class CtrlPrincipal implements ActionListener {
                 }
             }
 
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Terminado [!]");
+            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Terminado [!]");
         };
 
-        Thread hilo = new Thread(watcher);
-        hilo.setDaemon(true);
-        hilo.start();
+        Thread HiloConexion = new Thread(watcher);
+        HiloConexion.setName("HiloConexion");
+        HiloConexion.setPriority(9);
+        //HiloConexion.setDaemon(true);
+        HiloConexion.start();
 
     }
     
     private void mtdRellenarContenedor() {
-        mtdVaciarProyectos();
+        proyectos.clear();
+        mtdVaciarContenedor();
         proyectos = dao.mtdListar();
         int tam = proyectos.size();
 
@@ -395,8 +427,7 @@ public class CtrlPrincipal implements ActionListener {
         proyectos.clear();
     }
 
-    private void mtdVaciarProyectos() {
-        proyectos.clear();
+    private void mtdVaciarContenedor() {
         laVista.pnlContenedor.removeAll();
         laVista.pnlContenedor.validate();
         laVista.pnlContenedor.revalidate();
@@ -404,7 +435,8 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdPintarProyectos(int tam) {
-
+        String puntos = "";
+        
         for (int i = 0; i < tam; i++) {
             PanelCard tarjeta_proyecto = new PanelCard();
             ProyectoDto proyecto = proyectos.get(i);
@@ -462,8 +494,19 @@ public class CtrlPrincipal implements ActionListener {
             c.fill = GridBagConstraints.BOTH; // El modo de estirar
             laVista.pnlContenedor.add(tarjeta_proyecto, c);
             
+            if( i%4 == 0 ){
+                laVista.setTitle( Info.NombreSoftware );
+                puntos = "";
+            }else{
+                puntos += ".";
+                laVista.setTitle( Info.NombreSoftware + " [Cargando " + puntos  + "]");
+            }
+            
             //System.out.println("Testin :: Tarjeta agregado #" + i);
+            try { Thread.sleep(100); } catch (InterruptedException ex) { }
         }
+        
+        laVista.setTitle( Info.NombreSoftware );
     }
 
     private void mtdCotizarProyecto(ProyectoDto proyecto) {
@@ -531,6 +574,7 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdMensaje(String msg) {
+        mtdVaciarContenedor();
         JPanel mensaje = new JPanel();
         JLabel titulo = new JLabel();
 

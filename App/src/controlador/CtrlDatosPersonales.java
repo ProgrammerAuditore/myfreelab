@@ -4,6 +4,8 @@ import java.awt.Dialog;
 import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.dao.DatosPersonalesDao;
@@ -53,6 +55,14 @@ public class CtrlDatosPersonales implements MouseListener{
             }
             
         }
+        
+        modal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                modal.setVisible(false);
+                modal.dispose();
+            }
+        });
         
     }
     

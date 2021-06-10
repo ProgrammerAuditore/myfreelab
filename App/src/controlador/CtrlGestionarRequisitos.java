@@ -4,6 +4,8 @@ import java.awt.Dialog;
 import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
@@ -71,6 +73,14 @@ public class CtrlGestionarRequisitos implements MouseListener{
             // * Rellenar tablas
             mtdRellenarTabla();
         }
+        
+        modal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                modal.setVisible(false);
+                modal.dispose();
+            }
+        });
         
     }
     

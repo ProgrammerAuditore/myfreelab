@@ -5,7 +5,11 @@ import java.awt.Dialog;
 import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.dao.ConexionDao;
@@ -58,7 +62,16 @@ public class CtrlConexion implements MouseListener{
             
             if( dto != null )
                 mtdEstablecerDatos();
-        }
+        }        
+        
+        modal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                modal.setVisible(false);
+                modal.dispose();
+            }
+        });
+        
     }
     
     
@@ -82,18 +95,16 @@ public class CtrlConexion implements MouseListener{
         if( mtdCapturarDatos() ){
             CtrlHiloConexion.ctrlDatos = dto;
             if(CtrlHiloConexion.mtdEstablecer()){
-                estilosConexionAbierto();
-                
                 if( !MyFreeLabDao.mtdChecarTablas() ){
                     int opc = JOptionPane.showConfirmDialog(null,"Se detecto que la base de datos\n"
                             + "No cuenta con las tablas necesarios\n"
                             + "¿Deseas crearlos?", "Crear tablas", JOptionPane.YES_OPTION);
                     
                     if( JOptionPane.YES_OPTION == opc ){
-                        
                         MyFreeLabDao.mtdCrearTablaDatosPersonales();
                         MyFreeLabDao.mtdCrearTablaProyectos();
                         JOptionPane.showMessageDialog(null, "Creando tablas...");
+                        
                     }else{
                         
                         mtdCerrarConexion();
@@ -101,6 +112,13 @@ public class CtrlConexion implements MouseListener{
                     }
                     
                 }
+                
+                if(CtrlHiloConexion.checkConexion() == true){
+                    estilosConexionAbierto();
+                    modal.setVisible(false);
+                    modal.dispose();
+                }
+                
                 
             }else 
                 JOptionPane.showMessageDialog(null, "Conexion no establecida\n"
@@ -113,7 +131,11 @@ public class CtrlConexion implements MouseListener{
         ////System.out.println("Cerrar conexión");
         
         if( CtrlHiloConexion.mtdCerrar() ){
-            estilosConexionCerrada();
+            if( CtrlHiloConexion.checkConexion() == false ){
+                estilosConexionCerrada();
+                modal.setVisible(false);
+                modal.dispose();
+            }
         }
         
     }

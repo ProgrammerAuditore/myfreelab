@@ -70,16 +70,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlPortada = new vista.componentes.jpanelbackground.JPanelBackground();
         titulo1 = new vista.componentes.etiqueta.Titulo();
         menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuArchivo = new javax.swing.JMenu();
         bntSalir = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
         btnDatosPersonales = new javax.swing.JMenuItem();
         btnGestionarProyectos = new javax.swing.JMenuItem();
         btnGestionarEmpresas = new javax.swing.JMenuItem();
         btnVinculacion = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuConfigurar = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        menuAyuda = new javax.swing.JMenu();
         btnAcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -163,7 +163,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("Archivo");
+        menuArchivo.setText("Archivo");
 
         bntSalir.setText("Sallir");
         bntSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -171,9 +171,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 bntSalirActionPerformed(evt);
             }
         });
-        jMenu1.add(bntSalir);
+        menuArchivo.add(bntSalir);
 
-        menuBar.add(jMenu1);
+        menuBar.add(menuArchivo);
 
         menuEditar.setText("Editar");
         menuEditar.setEnabled(false);
@@ -192,19 +192,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(menuEditar);
 
-        jMenu2.setText("Configurar");
+        menuConfigurar.setText("Configurar");
 
         btnConexion.setText("Conexion");
-        jMenu2.add(btnConexion);
+        menuConfigurar.add(btnConexion);
 
-        menuBar.add(jMenu2);
+        menuBar.add(menuConfigurar);
 
-        jMenu3.setText("Ayuda");
+        menuAyuda.setText("Ayuda");
 
         btnAcercaDe.setText("Acerda de");
-        jMenu3.add(btnAcercaDe);
+        menuAyuda.add(btnAcercaDe);
 
-        menuBar.add(jMenu3);
+        menuBar.add(menuAyuda);
 
         setJMenuBar(menuBar);
 
@@ -293,11 +293,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JLabel cmpProyectos;
     private vista.componentes.campos.CampoTexto etqBusqueda;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JToolBar jToolBar1;
+    public javax.swing.JMenu menuArchivo;
+    public javax.swing.JMenu menuAyuda;
     public javax.swing.JMenuBar menuBar;
+    public javax.swing.JMenu menuConfigurar;
     public javax.swing.JMenu menuEditar;
     public javax.swing.JPanel pnlContenedor;
     private vista.componentes.jpanelbackground.JPanelBackground pnlLogo;
