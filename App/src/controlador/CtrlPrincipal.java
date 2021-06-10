@@ -235,14 +235,17 @@ public class CtrlPrincipal implements ActionListener {
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
-        mtdDesHabSubMenus(false);
         
-        if( CtrlHiloConexion.checkConexion() ){
-            laVista.setTitle( Info.NombreSoftware + " - [Estableciendo conexion, espere por favor]");
-            mtdMensaje("Estableciendo conexion, espere por favor");
-        } else {
-            laVista.setTitle( Info.NombreSoftware + " - [Cerrando conexion, espere por favor]");
-            mtdMensaje("Cerrando conexion, espere por favor");
+        if( !controlador.btnXClickeado  ){
+            mtdDesHabSubMenus(false);
+
+            if( CtrlHiloConexion.checkConexion() ){
+                laVista.setTitle( Info.NombreSoftware + " - [Estableciendo conexion, espere por favor...]");
+                mtdMensaje("Estableciendo conexion, espere por favor...");
+            } else {
+                laVista.setTitle( Info.NombreSoftware + " - [Cerrando conexion, espere por favor...]");
+                mtdMensaje("Cerrando conexion, espere por favor...");
+            }
         }
         
     }
@@ -349,7 +352,7 @@ public class CtrlPrincipal implements ActionListener {
         // * Este hilo monitorea si esta en Desconexion
         
         Runnable watcher = () -> {
-            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Creado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Creado [!]");
             boolean estado = true;
 
             while (estado) {
@@ -364,7 +367,7 @@ public class CtrlPrincipal implements ActionListener {
                 }
             }
 
-            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Terminado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Terminado [!]");
         }; 
 
         Thread HiloDesconexion = new Thread(watcher);
@@ -379,7 +382,7 @@ public class CtrlPrincipal implements ActionListener {
         // * Este hilo monitorea si esta en Conexion
         
         Runnable watcher = () -> {
-            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Creado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Creado [!]");
             boolean estado = true;
 
             while (estado) {
@@ -396,7 +399,7 @@ public class CtrlPrincipal implements ActionListener {
                 }
             }
 
-            System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Terminado [!]");
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Terminado [!]");
         };
 
         Thread HiloConexion = new Thread(watcher);
@@ -503,7 +506,7 @@ public class CtrlPrincipal implements ActionListener {
             }
             
             //System.out.println("Testin :: Tarjeta agregado #" + i);
-            try { Thread.sleep(100); } catch (InterruptedException ex) { }
+            try { Thread.sleep(60); } catch (InterruptedException ex) { }
         }
         
         laVista.setTitle( Info.NombreSoftware );

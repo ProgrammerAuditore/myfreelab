@@ -15,6 +15,7 @@ public class CtrlHiloConexion{
     public static Connection ctrlConexion;
     public static boolean ctrlEstado = false;
     public static String ctrlHiloC = new String();
+    private static int ctrlTime = 250;
     
     public static boolean mtdEstablecer(){
         
@@ -25,7 +26,7 @@ public class CtrlHiloConexion{
             ctrlConn.mtdEstablecerConexion();
             ctrlConexion = ctrlConn.getConexion();
             
-            if( ctrlConexion.isValid(550) ){
+            if( ctrlConexion.isValid( CtrlHiloConexion.ctrlTime ) ){
                 
                 ////System.out.println("Conexion establecida.");
                 //ctrlEstado = true;
@@ -50,7 +51,7 @@ public class CtrlHiloConexion{
         if( ctrlConn != null && ctrlConexion != null ){
             
             try {
-                if( ctrlConexion.isValid(550) ){
+                if( ctrlConexion.isValid( CtrlHiloConexion.ctrlTime  ) ){
                     ctrlConexion.close();
                     ctrlConn = null;
                     ctrlConexion = null;
@@ -73,7 +74,7 @@ public class CtrlHiloConexion{
          if( ctrlConn != null && ctrlConexion != null ){
             
             try {
-                if( ctrlConexion.isValid(550) ) return true;
+                if( ctrlConexion.isValid( CtrlHiloConexion.ctrlTime ) ) return true;
             } catch (SQLException ex) {
                 //Logger.getLogger(CtrlHiloConexion.class.getName()).log(Level.SEVERE, null, ex);
             }

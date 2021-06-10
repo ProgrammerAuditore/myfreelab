@@ -99,7 +99,7 @@ public class Boton extends JPanelBackground implements MouseListener{
         super.setImgRutaInterno( estado_button );
         
         //System.out.println("Repintando en  Boton :: setBackgroundButton");
-        //repaint();
+        repaint();
     }
     
     private void setCambiarEstado(){
@@ -118,7 +118,7 @@ public class Boton extends JPanelBackground implements MouseListener{
         }
         
         //System.out.println("Repintando en  Boton :: setCambiarEstado");
-        //repaint();
+        repaint();
     }
     
     @Override
@@ -150,7 +150,7 @@ public class Boton extends JPanelBackground implements MouseListener{
         
         // Verificar, si boton esta deshabilitado
         if( !isEnabled() ){
-            setTemaButton();
+            //setTemaButton();
             titulo.setForeground(new Color(220,220,220));
             super.setImgRutaInterno( imgButtonHover );
             super.setImgOpacidad(0.6f);

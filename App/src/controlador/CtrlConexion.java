@@ -26,6 +26,9 @@ public class CtrlConexion implements MouseListener{
     // * Modelos
     private ConexionDto dto;
     private ConexionDao dao;
+    
+    // * Atributos
+    public boolean btnXClickeado;
 
     public CtrlConexion(PanelConexion laVista, ConexionDto dto, ConexionDao dao) {
         this.laVista = laVista;
@@ -42,6 +45,7 @@ public class CtrlConexion implements MouseListener{
     
     public void mtdInit(){
         //modal = new JDialog();
+        btnXClickeado = false;
         
         //modal.setModal(true);
         //modal.setType(Window.Type.UTILITY);
@@ -69,6 +73,7 @@ public class CtrlConexion implements MouseListener{
             public void windowClosing(WindowEvent e) {
                 modal.setVisible(false);
                 modal.dispose();
+                btnXClickeado = true;
             }
         });
         
