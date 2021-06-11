@@ -101,7 +101,7 @@ public class CtrlPrincipal implements ActionListener {
             public void windowOpened(WindowEvent e) {
                 mtdAbriendoPrograma();
             }
-
+            
             @Override
             public void windowClosing(WindowEvent e) {
                 mtdSalirDelPrograma();
@@ -152,8 +152,7 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdHabilitarMenus() {
-        laVista.setTitle( laVista.getTitle() + " - [Estableciendo conexion]");
-        laVista.setTitle( Info.NombreSoftware );
+        laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion]");
         
         // * Obtener y Crear tarjetas de presentacion para todos los proyecto creados
         mtdRellenarContenedor();
@@ -162,12 +161,11 @@ public class CtrlPrincipal implements ActionListener {
         mtdDesHabSubMenus(true);
         laVista.menuEditar.setEnabled(true);
         
-        laVista.setTitle( laVista.getTitle() + " - [conexion establecida]");
+        laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
     }
 
     private void mtdDesHabilitarMenus() {
-        laVista.setTitle( laVista.getTitle() + " - [Cerrando conexion]");
-        laVista.setTitle( Info.NombreSoftware );
+        laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion]");
         
         // * Vaciar y Borrar tarjetas de presentacion para todos los proyecto creados
         proyectos.clear();
@@ -181,7 +179,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.cmpEmpresas.setText("Empresas : " + "#");
         mtdMensaje("Sin conexión a la base de datos.");
         
-        laVista.setTitle( laVista.getTitle() + " - [conexion cerrada]");
+        laVista.setTitle(Info.NombreSoftware + " - [conexion cerrada]");
     }
 
     private void mtdAbriendoPrograma() {
@@ -190,12 +188,21 @@ public class CtrlPrincipal implements ActionListener {
         // Obtener los datos de la conexion antes de abrir el programa
         if (CtrlHiloConexion.checkConexion()) {
             ////System.out.println("Iniciando el programa con exion establecida.");
-            mtdHabilitarMenus();
+            Runnable carga = () -> {
+                //mtdRellenarContenedor();
+                mtdHabilitarMenus();
+            };
+            
+            //mtdDesHabSubMenus(true);
             mtdCrearHiloDesconexion();
+            Thread HiloCargandoProyectos = new Thread(carga);
+            HiloCargandoProyectos.setName("HiloDeCarga");
+            HiloCargandoProyectos.setPriority(9);
+            HiloCargandoProyectos.start();
             
         } else {
             mtdDesHabilitarMenus();
-             mtdCrearHiloConexion();
+            mtdCrearHiloConexion();
         
         }
 
@@ -242,10 +249,10 @@ public class CtrlPrincipal implements ActionListener {
             mtdDesHabSubMenus(false);
 
             if( CtrlHiloConexion.checkConexion() ){
-                laVista.setTitle( Info.NombreSoftware + " - [Estableciendo conexion, espere por favor...]");
+                laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion, espere por favor...]");
                 mtdMensaje("Estableciendo conexion, espere por favor...");
             } else {
-                laVista.setTitle( Info.NombreSoftware + " - [Cerrando conexion, espere por favor...]");
+                laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion, espere por favor...]");
                 mtdMensaje("Cerrando conexion, espere por favor...");
             }
         }
@@ -500,18 +507,18 @@ public class CtrlPrincipal implements ActionListener {
             laVista.pnlContenedor.add(tarjeta_proyecto, c);
             
             if( i%4 == 0 ){
-                laVista.setTitle( Info.NombreSoftware );
+                laVista.setTitle(Info.NombreSoftware);
                 puntos = "";
             }else{
                 puntos += ".";
-                laVista.setTitle( Info.NombreSoftware + " [Cargando " + puntos  + "]");
+                laVista.setTitle(Info.NombreSoftware + " - [Cargando " + puntos  + "]");
             }
             
             //System.out.println("Testin :: Tarjeta agregado #" + i);
             try { Thread.sleep(60); } catch (InterruptedException ex) { }
         }
         
-        laVista.setTitle( Info.NombreSoftware );
+        laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
     }
 
     private void mtdCotizarProyecto(ProyectoDto proyecto) {
