@@ -56,15 +56,7 @@ public class CtrlAcercaDe implements MouseListener{
                 }
             }
         });
-        
-        modal.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                modal.setVisible(false);
-                modal.dispose();
-            }
-        });
-        
+
     }
     
     @Override

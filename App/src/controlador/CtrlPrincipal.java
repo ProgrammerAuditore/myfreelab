@@ -153,6 +153,7 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdHabilitarMenus() {
         laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion]");
+        laVista.etqMensaje.setText("[Estableciendo conexion]");
         
         // * Obtener y Crear tarjetas de presentacion para todos los proyecto creados
         mtdRellenarContenedor();
@@ -162,10 +163,12 @@ public class CtrlPrincipal implements ActionListener {
         laVista.menuEditar.setEnabled(true);
         
         laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
+        laVista.etqMensaje.setText("[conexion establecida]");
     }
 
     private void mtdDesHabilitarMenus() {
         laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion]");
+        laVista.etqMensaje.setText("[Cerrando conexion]");
         
         // * Vaciar y Borrar tarjetas de presentacion para todos los proyecto creados
         proyectos.clear();
@@ -180,6 +183,7 @@ public class CtrlPrincipal implements ActionListener {
         mtdMensaje("Sin conexión a la base de datos.");
         
         laVista.setTitle(Info.NombreSoftware + " - [conexion cerrada]");
+        laVista.etqMensaje.setText("[conexion cerrada]");
     }
 
     private void mtdAbriendoPrograma() {
@@ -250,10 +254,14 @@ public class CtrlPrincipal implements ActionListener {
 
             if( CtrlHiloConexion.checkConexion() ){
                 laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion, espere por favor...]");
+                laVista.etqMensaje.setText("[Estableciendo conexion, espere por favor...]");
                 mtdMensaje("Estableciendo conexion, espere por favor...");
+                
             } else {
                 laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion, espere por favor...]");
+                laVista.etqMensaje.setText("[Cerrando conexion, espere por favor...]");
                 mtdMensaje("Cerrando conexion, espere por favor...");
+            
             }
         }
         
@@ -512,6 +520,7 @@ public class CtrlPrincipal implements ActionListener {
             }else{
                 puntos += ".";
                 laVista.setTitle(Info.NombreSoftware + " - [Cargando " + puntos  + "]");
+                laVista.etqMensaje.setText("[Cargando " + puntos  + "]");
             }
             
             //System.out.println("Testin :: Tarjeta agregado #" + i);
@@ -519,6 +528,7 @@ public class CtrlPrincipal implements ActionListener {
         }
         
         laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
+        laVista.etqMensaje.setText("[conexion establecida]");
     }
 
     private void mtdCotizarProyecto(ProyectoDto proyecto) {
