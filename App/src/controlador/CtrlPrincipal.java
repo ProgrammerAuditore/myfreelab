@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -194,6 +195,7 @@ public class CtrlPrincipal implements ActionListener {
             
         } else {
             mtdDesHabilitarMenus();
+             mtdCrearHiloConexion();
         
         }
 
@@ -535,9 +537,10 @@ public class CtrlPrincipal implements ActionListener {
         JasperPrint jp = null;
 
         try {
-            String pathReporteCotizacion = getClass().getResource("../" + "storage/reporte/CotizacionOrg.jrxml").getFile();
+            String pathReporteCotizacion = new File("shared/CotizacionOrg.jrxml").getAbsolutePath();
 
             Map<String, Object> parametros = new HashMap<String, Object>();
+            parametros.put("SubReportDir", "shared/");
             parametros.put("rpProyectoID", proyecto.getCmpID());
             parametros.put("rpNombreProyecto", proyecto.getCmpNombre());
             parametros.put("rpTitulo", Info.NombreSoftware);
