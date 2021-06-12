@@ -85,7 +85,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Empresas"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Requisitos"));
 
         lbl_empresa.setText("Requisito");
 

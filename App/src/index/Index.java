@@ -14,7 +14,7 @@ import vista.ventanas.VentanaPrincipal;
 
 public class Index {
     public static void main(String[] args) {
-        
+
         // * Inicializar el programa
         //System.out.println("Inicializando programa...");
         

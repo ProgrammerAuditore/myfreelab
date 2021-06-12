@@ -124,7 +124,7 @@ public class PanelConexion extends javax.swing.JPanel {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Establecer datos"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurar conexion"));
 
         etqHost.setText("Introduzca el host");
 

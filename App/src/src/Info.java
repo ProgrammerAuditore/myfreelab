@@ -14,4 +14,6 @@ public class Info {
     public static final String sVersion = "v0.9.3";
     public static final String sProduccion = "Alpha";
     public static final String NombreSoftware = sNombre + " " + sVersion + sProduccion;
+    
+    public static final String dirTemp = System.getProperty("java.io.tmpdir");
 }

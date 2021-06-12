@@ -83,6 +83,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuConfigurar = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
         menuAyuda = new javax.swing.JMenu();
+        btnActualizarPrograma = new javax.swing.JMenuItem();
         btnAcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -243,6 +244,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuAyuda.setText("Ayuda");
 
+        btnActualizarPrograma.setText("Buscar actualizacion");
+        menuAyuda.add(btnActualizarPrograma);
+
         btnAcercaDe.setText("Acerda de");
         menuAyuda.add(btnAcercaDe);
 
@@ -266,7 +270,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(pnlPortada, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
+                            .addComponent(pnlPortada, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE))
                         .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
@@ -337,6 +341,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenuItem bntSalir;
     public javax.swing.JMenuItem btnAcercaDe;
+    public javax.swing.JMenuItem btnActualizarPrograma;
     public javax.swing.JMenuItem btnConexion;
     public javax.swing.JMenuItem btnDatosPersonales;
     public javax.swing.JMenuItem btnGestionarEmpresas;

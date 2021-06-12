@@ -21,6 +21,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import modelo.ObjXml;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
@@ -42,6 +43,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
 import src.Source;
 import vista.paneles.PanelAcercaDe;
+import vista.paneles.PanelActualizacion;
 import vista.paneles.PanelCard;
 import vista.paneles.PanelConexion;
 import vista.paneles.PanelDatosPersonales;
@@ -95,6 +97,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.btnGestionarEmpresas.addActionListener(this);
         laVista.btnVinculacion.addActionListener(this);
         laVista.btnAcercaDe.addActionListener(this);
+        laVista.btnActualizarPrograma.addActionListener(this);
 
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -141,7 +144,10 @@ public class CtrlPrincipal implements ActionListener {
         if (e.getSource() == laVista.btnAcercaDe) {
             modalAcercaDe();
         }
-
+        
+        if (e.getSource() == laVista.btnActualizarPrograma )
+            modalActualizarPrograma();
+ 
     }
     
     private void mtdDesHabSubMenus(boolean param){
@@ -363,6 +369,19 @@ public class CtrlPrincipal implements ActionListener {
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
 
+    }
+    
+    private void modalActualizarPrograma(){
+        
+        // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
+        PanelActualizacion vista = new PanelActualizacion();
+        ObjXml modelo = new ObjXml();
+        ctrlBuscarActualizacion controlador = new ctrlBuscarActualizacion(vista, modelo);
+        controlador.modal = new JDialog(laVista);
+        controlador.init();
+        controlador.modal.setLocationRelativeTo(null);
+        controlador.modal.setVisible(true);
+        
     }
 
     private void mtdCrearHiloDesconexion() {
