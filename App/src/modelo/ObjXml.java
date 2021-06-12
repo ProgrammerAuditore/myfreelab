@@ -69,7 +69,8 @@ public class ObjXml {
             info.add( campo.getChildTextTrim("app_contacto") );
             info.add( campo.getChildTextTrim("app_version") );
             info.add( campo.getChildTextTrim("app_novedades") );
-            info.add( campo.getChildTextTrim("app_link_descarga") );
+            info.add( campo.getChildTextTrim("app_link_exe") );
+            info.add( campo.getChildTextTrim("app_link_deb") );
             
         } catch (JDOMException ex) {
             Logger.getLogger(ObjXml.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +107,8 @@ public class ObjXml {
             info.put("app_contacto", campo.getChildTextTrim("app_contacto") );
             info.put("app_version", campo.getChildTextTrim("app_version") );
             info.put("app_novedades", campo.getChildTextTrim("app_novedades") );
-            info.put("app_link_descarga", campo.getChildTextTrim("app_link_descarga") );
+            info.put("app_link_exe", campo.getChildTextTrim("app_link_exe") );
+            info.put("app_link_deb", campo.getChildTextTrim("app_link_deb") );
             
         } catch (JDOMException ex) {
             Logger.getLogger(ObjXml.class.getName()).log(Level.SEVERE, null, ex);
