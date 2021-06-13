@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import modelo.ObjXml;
 import src.Info;
@@ -39,16 +42,38 @@ public class ctrlBuscarActualizacion implements MouseListener {
     }
 
     public void init() {
+        mtdEstablecerDatos();
 
         // * Establecer propiedades para la modal
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Buscar actualizacion");
-        modal.setSize(laVista.getSize());
-        modal.setPreferredSize(laVista.getPreferredSize());
         modal.setResizable(false);
+        modal.setSize( laVista.getSize() );
+        modal.setPreferredSize( laVista.getSize() );
         modal.setContentPane(laVista);
+        modal.setAutoRequestFocus(true);
+        
+        modal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                modal.setVisible(false);
+                modal.dispose();
+                //System.out.println("Cerrando PanelActualizacion");
+            }
 
-        mtdEstablecerDatos();
+            @Override
+            public void windowOpened(WindowEvent e) {
+                modal.setVisible(false);
+                laVista.validate();
+                laVista.repaint();
+                modal.validate();
+                modal.repaint();
+                modal.pack();
+                SwingUtilities.updateComponentTreeUI(modal);
+                modal.setVisible(true);
+            }
+
+        });
 
     }
 
@@ -87,7 +112,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         fileName += "myfreelab-" + time + ".mfl";
         String url = "https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab.mfl?inline=false";
         objDocXml.setPath_archivo(fileName);
-        System.out.println("Archivo :: " + fileName);
+        //System.out.println("Archivo :: " + fileName);
 
         if (mtdDescargaURL(url, fileName)) {
             File archivo = new File(fileName);
@@ -143,7 +168,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         time = time.replaceAll("-", "");
 
         fileName = Info.dirTemp + "/" + "myfreelab-" + time + ".deb";
-        System.out.println("Ejecutable deb :: " + fileName);
+        //System.out.println("Ejecutable deb :: " + fileName);
 
         if (mtdDescargaURL(url, fileName)) {
             File archivo = new File(fileName);
@@ -172,7 +197,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         time = time.replaceAll("-", "");
 
         fileName = Info.dirTemp + "myfreelab-" + time + ".exe";
-        System.out.println("Ejecutable exe :: " + fileName);
+        //System.out.println("Ejecutable exe :: " + fileName);
 
         if (mtdDescargaURL(url, fileName)) {
             File archivo = new File(fileName);
@@ -203,7 +228,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         } catch (IOException e) {
             // handle exception
             JOptionPane.showMessageDialog(null, "No se pudo acceder al sitio oficial, error 404.");
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
 
         try {
