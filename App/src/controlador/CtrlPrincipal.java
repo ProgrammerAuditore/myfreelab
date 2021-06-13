@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -379,7 +380,7 @@ public class CtrlPrincipal implements ActionListener {
         ctrlBuscarActualizacion controlador = new ctrlBuscarActualizacion(vista, modelo);
         controlador.modal = new JDialog(laVista);
         controlador.init();
-        controlador.modal.setLocationRelativeTo(null);
+        controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
         
     }
@@ -573,10 +574,10 @@ public class CtrlPrincipal implements ActionListener {
         JasperPrint jp = null;
 
         try {
-            String pathReporteCotizacion = new File("shared/CotizacionOrg.jrxml").getAbsolutePath();
+            String pathReporteCotizacion = new File( Source.docReporte.get("jrxml_file") ).getAbsolutePath();
 
             Map<String, Object> parametros = new HashMap<String, Object>();
-            parametros.put("SubReportDir", "shared/");
+            parametros.put("SubReportDir", Source.docReporte.get("root_dir"));
             parametros.put("rpProyectoID", proyecto.getCmpID());
             parametros.put("rpNombreProyecto", proyecto.getCmpNombre());
             parametros.put("rpTitulo", Info.NombreSoftware);

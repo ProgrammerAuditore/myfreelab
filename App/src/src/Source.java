@@ -1,10 +1,12 @@
 package src;
 
+import com.sun.glass.ui.SystemClipboard;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.HashMap;
 import modelo.Conexion;
 
 public class Source {
@@ -21,8 +23,6 @@ public class Source {
     public static final String iconDefault = Rutas.pathIconDefault;
     public static final String temasContenedor = Rutas.pahtContenedorThemes;
     public static final String fuentesContenedor = Rutas.pathContenedorFuentes;
-    public static Conexion conn;
-    public static Thread pEjecucion;
     
     // * Recursos del sistema
     // Fuentes
@@ -40,4 +40,5 @@ public class Source {
     // Dimension de los paneles para el modal
     public static final Dimension tamDialog = new Dimension(850, 534);
     
+    public static final HashMap<String, String> docReporte = new Resource().docJasper();
 }
