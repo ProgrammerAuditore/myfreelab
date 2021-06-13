@@ -11,30 +11,21 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import modelo.ObjXml;
+import modelo.FabricarModal;
 import modelo.dao.ConexionDao;
-import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
-import modelo.dao.VinculacionDao;
-import modelo.dto.ConexionDto;
-import modelo.dto.DatosPersonalesDto;
-import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
-import modelo.dto.RequisitoDto;
-import modelo.dto.VinculacionDto;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -43,15 +34,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
 import src.Source;
-import vista.paneles.PanelAcercaDe;
-import vista.paneles.PanelActualizacion;
 import vista.paneles.PanelCard;
-import vista.paneles.PanelConexion;
-import vista.paneles.PanelDatosPersonales;
-import vista.paneles.PanelGestionarEmpresas;
-import vista.paneles.PanelGestionarProyectos;
-import vista.paneles.PanelGestionarRequisitos;
-import vista.paneles.PanelVinculacion;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements ActionListener {
@@ -63,18 +46,23 @@ public class CtrlPrincipal implements ActionListener {
     private ProyectoDao dao;
     private EmpresaDao daoE;
     private RequisitoDao daoR;
+    private FabricarModal fabrica;
 
     // * Atributos
     private int TestId;
     private List<ProyectoDto> proyectos;
     private int canBefore;
     private int canAfter;
+    
+    // * Catcher
+    public static boolean updateModalBuscarActualizacion;
 
-    public CtrlPrincipal(VentanaPrincipal laVista, ProyectoDao dao, EmpresaDao daoE, RequisitoDao daoR) {
+    public CtrlPrincipal(VentanaPrincipal laVista, FabricarModal fabrica, ProyectoDao dao, EmpresaDao daoE, RequisitoDao daoR) {
         this.laVista = laVista;
         this.dao = dao;
         this.daoE = daoE;
         this.daoR = daoR;
+        this.fabrica = fabrica;
 
         // * Definir datos
         this.laVista.setTitle(Info.NombreSoftware);
@@ -126,28 +114,28 @@ public class CtrlPrincipal implements ActionListener {
             modalConfigurarConexion();
         }
 
-        if (e.getSource() == laVista.btnDatosPersonales) {
-            modalDatosPersonales();
-        }
-
         if (e.getSource() == laVista.btnGestionarProyectos) {
             modalGestionarProyectos();
         }
+        
+        if (e.getSource() == laVista.btnDatosPersonales) {
+            fabrica.construir("DatosPersonales");
+        }
 
         if (e.getSource() == laVista.btnGestionarEmpresas) {
-            modalGestionarEmpresas();
+            fabrica.construir("GestionarEmpresas");
         }
 
         if (e.getSource() == laVista.btnVinculacion) {
-            modalVinculacion();
+            fabrica.construir("Vinculacion");
         }
 
         if (e.getSource() == laVista.btnAcercaDe) {
-            modalAcercaDe();
+            fabrica.construir("AcercaDe");
         }
         
         if (e.getSource() == laVista.btnActualizarPrograma )
-            modalActualizarPrograma();
+            fabrica.construir("BuscarActualizacion");
  
     }
     
@@ -247,16 +235,9 @@ public class CtrlPrincipal implements ActionListener {
     private void modalConfigurarConexion() {
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        PanelConexion vista = new PanelConexion();
-        ConexionDto dto = new ConexionDto();
-        ConexionDao dao = new ConexionDao();
-        CtrlConexion controlador = new CtrlConexion(vista, dto, dao);
-        controlador.modal = new JDialog(laVista);
-        controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
+        fabrica.construir("ConfigurarConexion");
         
-        if( !controlador.btnXClickeado  ){
+        if( !updateModalBuscarActualizacion ){
             mtdDesHabSubMenus(false);
 
             if( CtrlHiloConexion.checkConexion() ){
@@ -274,33 +255,12 @@ public class CtrlPrincipal implements ActionListener {
         
     }
 
-    private void modalDatosPersonales() {
-
-        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        PanelDatosPersonales vista = new PanelDatosPersonales();
-        DatosPersonalesDao dao = new DatosPersonalesDao();
-        DatosPersonalesDto dto = new DatosPersonalesDto();
-        CtrlDatosPersonales controlador = new CtrlDatosPersonales(vista, dto, dao);
-        controlador.modal = new JDialog(laVista);
-        controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
-
-    }
-
     private void modalGestionarProyectos() {
         
         canBefore = dao.mtdListar().size();
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        PanelGestionarProyectos vista = new PanelGestionarProyectos();
-        ProyectoDao dao = new ProyectoDao();
-        ProyectoDto dto = new ProyectoDto();
-        CtrlGestionarProyectos controlador = new CtrlGestionarProyectos(vista, dto, dao);
-        controlador.modal = new JDialog(laVista);
-        controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
+        fabrica.construir("GestionarProyectos");
         
         canAfter = dao.mtdListar().size();
         
@@ -314,75 +274,14 @@ public class CtrlPrincipal implements ActionListener {
         canBefore = daoR.mtdListar().size();
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        PanelGestionarRequisitos vista = new PanelGestionarRequisitos();
-        RequisitoDao dao = new RequisitoDao();
-        RequisitoDto dto = new RequisitoDto();
-        CtrlGestionarRequisitos controlador = new CtrlGestionarRequisitos(vista, proyecto_dto, dto, dao);
-        controlador.modal = new JDialog(laVista);
-        controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
+        fabrica.setProyecto(proyecto_dto);
+        fabrica.construir("GestionarRequisitos");
         
         canAfter = daoR.mtdListar().size();
         
         if( canAfter != canBefore )
         mtdRellenarContenedor();
 
-    }
-
-    private void modalGestionarEmpresas() {
-
-        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        PanelGestionarEmpresas vista = new PanelGestionarEmpresas();
-        EmpresaDao dao = new EmpresaDao();
-        EmpresaDto dto = new EmpresaDto();
-        CtrlGestionarEmpresas controlador = new CtrlGestionarEmpresas(vista, dao, dto);
-        controlador.modal = new JDialog(laVista);
-        controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
-
-    }
-
-    private void modalVinculacion() {
-
-        // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
-        PanelVinculacion vista = new PanelVinculacion();
-        EmpresaDao empresa_dao = new EmpresaDao();
-        ProyectoDao proyecto_dao = new ProyectoDao();
-        VinculacionDao vinculacion_dao = new VinculacionDao();
-        VinculacionDto vinculacion_dto = new VinculacionDto();
-        CtrlVinculacion controlador = new CtrlVinculacion(vista, proyecto_dao, empresa_dao, vinculacion_dao, vinculacion_dto);
-        controlador.modal = new JDialog(laVista);
-        controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
-
-    }
-
-    private void modalAcercaDe() {
-
-        // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
-        PanelAcercaDe vista = new PanelAcercaDe();
-        CtrlAcercaDe controlador = new CtrlAcercaDe(vista);
-        controlador.modal = new JDialog(laVista);
-        controlador.mtdInit();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
-
-    }
-    
-    private void modalActualizarPrograma(){
-        
-        // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
-        PanelActualizacion vista = new PanelActualizacion();
-        ObjXml modelo = new ObjXml();
-        ctrlBuscarActualizacion controlador = new ctrlBuscarActualizacion(vista, modelo);
-        controlador.modal = new JDialog(laVista);
-        controlador.init();
-        controlador.modal.setLocationRelativeTo(laVista);
-        controlador.modal.setVisible(true);
-        
     }
 
     private void mtdCrearHiloDesconexion() {

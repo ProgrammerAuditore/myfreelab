@@ -6,6 +6,7 @@ import hilos.HiloPrincipal;
 import hilos.HiloSplash;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.FabricarModal;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
@@ -31,7 +32,8 @@ public class Index {
         ProyectoDao daoP = new ProyectoDao();
         EmpresaDao daoE = new EmpresaDao();
         RequisitoDao daoR = new RequisitoDao();
-        CtrlPrincipal ctrl_p = new CtrlPrincipal(frame_p, daoP, daoE, daoR);
+        FabricarModal fabrica = new FabricarModal(frame_p);
+        CtrlPrincipal ctrl_p = new CtrlPrincipal(frame_p, fabrica, daoP, daoE, daoR);
     
         // * Ejecutar hilos
         hs.start();

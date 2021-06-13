@@ -17,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import modelo.ObjXml;
 import src.Info;
@@ -26,11 +25,11 @@ import vista.paneles.PanelActualizacion;
 public class ctrlBuscarActualizacion implements MouseListener {
 
     // * Vista
-    JDialog modal;
-    PanelActualizacion laVista;
+    public JDialog modal;
+    private PanelActualizacion laVista;
 
     // * Modelo
-    ObjXml objDocXml;
+    private ObjXml objDocXml;
 
     public ctrlBuscarActualizacion(PanelActualizacion laVista, ObjXml modelo) {
         this.laVista = laVista;
