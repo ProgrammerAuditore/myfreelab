@@ -168,14 +168,8 @@ public class CampoNumerico extends JTextField implements FocusListener, KeyListe
 
         if ((charCap >= '0' && charCap <= '9')) {
         } else {
-            
-            if( Character.isLetter( charCap ) ){
-                evt.consume();
-                JOptionPane.showMessageDialog(null, "Introduzca solo números.");
-
-            }else
             evt.consume();
-            
+            JOptionPane.showMessageDialog(null, "Introduzca solo números.");
         }
 
     }
