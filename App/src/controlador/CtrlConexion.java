@@ -2,14 +2,11 @@ package controlador;
 
 import java.awt.Color;
 import java.awt.Dialog;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.dao.ConexionDao;
@@ -108,6 +105,9 @@ public class CtrlConexion implements MouseListener{
                     if( JOptionPane.YES_OPTION == opc ){
                         MyFreeLabDao.mtdCrearTablaDatosPersonales();
                         MyFreeLabDao.mtdCrearTablaProyectos();
+                        MyFreeLabDao.mtdCrearTablaEmpresas();
+                        MyFreeLabDao.mtdCrearTablaRequisitos();
+                        MyFreeLabDao.mtdCrearTablaAsociados();
                         JOptionPane.showMessageDialog(null, "Creando tablas...");
                         
                     }else{
