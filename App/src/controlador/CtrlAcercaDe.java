@@ -32,7 +32,7 @@ public class CtrlAcercaDe implements MouseListener{
         modal.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Acerca de");
-        modal.setResizable(true);
+        modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
         modal.setContentPane(laVista);

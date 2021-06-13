@@ -51,7 +51,6 @@ public class ctrlBuscarActualizacion implements MouseListener {
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
         modal.setContentPane(laVista);
-        modal.setAutoRequestFocus(true);
         
         modal.addWindowListener(new WindowAdapter() {
             @Override
@@ -63,14 +62,19 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
             @Override
             public void windowOpened(WindowEvent e) {
-                modal.setVisible(false);
-                laVista.validate();
-                laVista.repaint();
-                modal.validate();
-                modal.repaint();
-                modal.pack();
-                SwingUtilities.updateComponentTreeUI(modal);
-                modal.setVisible(true);
+                
+                Runnable verificar = () -> {
+                    
+                    try { Thread.sleep(450); } catch (InterruptedException ex) {}
+                    mtdBuscarActualizacion();
+                    
+                };
+                
+                Thread HiloBuscarActualizacion =  new Thread(verificar);
+                HiloBuscarActualizacion.setName("HiloBuscarActualizacion");
+                HiloBuscarActualizacion.setPriority(9);
+                HiloBuscarActualizacion.run();
+                
             }
 
         });
