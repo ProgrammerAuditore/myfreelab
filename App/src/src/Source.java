@@ -23,6 +23,7 @@ public class Source {
     public static final String iconDefault = Rutas.pathIconDefault;
     public static final String temasContenedor = Rutas.pahtContenedorThemes;
     public static final String fuentesContenedor = Rutas.pathContenedorFuentes;
+    public static final String docVersionesXml = Rutas.pathDocumentoVersionesXml;
     
     // * Recursos del sistema
     // Fuentes

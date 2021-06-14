@@ -18,5 +18,6 @@ class Rutas {
     public static String pathBkgPortada = "/storage/shared/img/portada_1.png";
     public static String pathIconoDefultMs = "/storage/shared/img/ms-icon-70x70.png";
     public static String pathIconoDefultApple = "/storage/shared/img/apple-icon-60x60.png";
+    public static String pathDocumentoVersionesXml = "/storage/etc/MyFreeLab_Versions.xml";
     
 }

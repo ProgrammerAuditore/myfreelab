@@ -58,11 +58,11 @@ public class JPanelBackground extends JPanel{
         }
     }
     
-    public void setImgBackgroundIn_Ex(boolean ex_in){
+    public void setImgBackgroundIn_Ex(boolean in_ex){
         Image icOrigina;
         try {
             
-            if( ex_in ){
+            if( in_ex ){
                 icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ) );
             }else{
                 icOrigina = Toolkit.getDefaultToolkit().getImage( imgBackground.getImgRutaExterno().getAbsolutePath() );

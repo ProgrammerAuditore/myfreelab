@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<AppJar>
+    <MyFreeLab>
+        <Version>
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_version>v0.9.3Alpha</app_version>
+            <!-- Links de descarga -->
+            <app_link_exe>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab%20v0.7.04.exe?inline=false</app_link_exe>
+            <app_link_deb>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/myfreelab_0.9.3_all.deb?inline=false</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedad>* Ya disponible .deb para linux desde la pagina oficial</novedad>
+                <novedad>* Ya disponible .exe para windows desde la pagina oficial</novedad>
+                <novedad>* Nuevo diseño para el menu principal</novedad>
+                <novedad>* Se agrego un nuevo barra de estado</novedad>
+                <novedad>* Se agrego la funcionalidad de generar cotizacion</novedad>
+                <novedad>* Se agrego la libreria de jdom 2.0.6 para manipular archivos xml</novedad>
+                <novedad>* Se agrego el menu de actualizacion</novedad>
+                <novedad>* Se corrigio bug al iniciar el programa</novedad>
+                <novedad>* Se corrigio bug para la conexio al servidor</novedad>
+                <novedad>* etc.</novedad>
+            </app_novedades>
+        </Version>
+        <Version>
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_version>v0.8.43Alpha</app_version>
+            <!-- Links de descarga -->
+            <app_link_exe>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab%20v0.7.04.exe?inline=false</app_link_exe>
+            <app_link_deb>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/myfreelab_0.9.3_all.deb?inline=false</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedad>* Nuevo diseño para el menu principal</novedad>
+                <novedad>* Se agrego la libreria de jdom 2.0.6 para manipular archivos xml</novedad>
+                <novedad>* Se corrigio bug al iniciar el programa</novedad>
+                <novedad>* Se corrigio bug para la conexio al servidor</novedad>
+                <novedad>* etc.</novedad>
+            </app_novedades>
+        </Version>
+    </MyFreeLab>
+</AppJar>

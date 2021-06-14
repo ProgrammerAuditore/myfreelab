@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import static java.lang.System.in;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -42,7 +43,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
     }
 
     public void init() {
-        mtdEstablecerDatos();
+        mtdEstablecerDatosDelProgramaActual();
 
         // * Establecer propiedades para la modal
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
@@ -81,11 +82,6 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
     }
 
-    private void mtdEstablecerDatos() {
-        laVista.cmpVersionActual.setText(Info.sVersion + Info.sProduccion);
-        laVista.cmpNovedades.setText(Info.Descripcion);
-    }
-
     @Override
     public void mouseReleased(MouseEvent e) {
 
@@ -111,7 +107,8 @@ public class ctrlBuscarActualizacion implements MouseListener {
         String url = "https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab.mfl?inline=false";
         objDocXml.setPath_archivo(fileName);
         //System.out.println("Archivo :: " + fileName);
-
+        
+        // * Descargar el archivo XML
         if (mtdDescargaURL(url, fileName)) {
             File archivo = new File(fileName);
 
@@ -121,6 +118,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
                 if (doc.get("app_version").equals(Info.sVersion + Info.sProduccion)) {
                     JOptionPane.showMessageDialog(null, "El programa esta en la ultima version");
+                    mtdEstablecerDatosDelProgramaActual();
 
                 } else {
                     
@@ -149,7 +147,8 @@ public class ctrlBuscarActualizacion implements MouseListener {
                             
                         }
 
-                    }
+                    } else
+                        mtdEstablecerDatosDelProgramaActual();
 
                 }
 
@@ -173,7 +172,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
                     System.exit(0);
 
                 } catch (IOException ex) {
-                    Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -224,6 +223,30 @@ public class ctrlBuscarActualizacion implements MouseListener {
         }
 
         return (new File(FILE_NAME).exists());
+    }
+    
+    private void mtdEstablecerDatosDelProgramaActual(){
+        
+        // * Cambiar estilo de los campos
+        laVista.etqVersionActual.setText("Version actualmente");
+        laVista.cmpVersionActual.setBorder(null);
+        laVista.cmpNovedades.setBorder(null);
+        
+        try {
+            
+            File xml = new File( getClass().getResource("../" + Source.docVersionesXml).toURI() );
+            objDocXml.setArchivoXml( xml );
+            HashMap<String, String> info = objDocXml.mtdMapearUltimaVersionInterno();
+            
+            // * Establecer los datos
+            laVista.cmpVersionActual.setText( info.get("app_version") );
+            laVista.cmpNovedades.setText( info.get("app_novedades") );
+        
+        } catch (URISyntaxException ex) {
+            //Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     @Override

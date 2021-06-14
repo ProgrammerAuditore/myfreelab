@@ -1,9 +1,5 @@
 package index;
 
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
 import src.Source;
 
 public class Index {
@@ -16,7 +12,7 @@ public class Index {
         switch (args.length) {
             case 0:
                 if( !Source.SistemaOs.contains("win") )
-                programa.mtdVerificarPIDLinux();
+                    programa.mtdVerificarPIDLinux();
                 
                 programa.mtdInit();
                 break;
