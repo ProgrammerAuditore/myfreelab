@@ -16,4 +16,5 @@ public class Info {
     public static final String NombreSoftware = sNombre + " " + sVersion + sProduccion;
     
     public static final String dirTemp = System.getProperty("java.io.tmpdir");
+    public static final String Homepage = "https://www.myfreelab.com";
 }

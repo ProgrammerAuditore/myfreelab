@@ -4,6 +4,7 @@ import controlador.CtrlHiloConexion;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;
+import src.Info;
 import src.Source;
 import vista.splash.Bienvenida;
 
@@ -21,6 +22,8 @@ public class HiloSplash extends Thread{
         this.setName("HiloSplash");
         splash = new Bienvenida();
         splash.setIconImage(Source.imgIconoDefault);
+        splash.setTitle(Info.NombreSoftware);
+        splash.setEnabled(false);
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
         src = 8; avance = 0; pause = src;

@@ -1,13 +1,11 @@
 package src;
 
-import com.sun.glass.ui.SystemClipboard;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.File;
+import java.lang.management.ManagementFactory;
 import java.util.HashMap;
-import modelo.Conexion;
 
 public class Source {
     
@@ -41,4 +39,6 @@ public class Source {
     public static final Dimension tamDialog = new Dimension(850, 534);
     
     public static final HashMap<String, String> docReporte = new Resource().docJasper();
+    public static final String SistemaOs = ManagementFactory.getOperatingSystemMXBean().getName();
+    public static final int PID = new Resource().getPID();
 }

@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 class Resource {
@@ -88,5 +90,16 @@ class Resource {
         return docJasper;
     }
 
+    int getPID() {
+        String vmName = ManagementFactory.getRuntimeMXBean().getName();
+        int pid_a = vmName.indexOf("@");
+        String pid = vmName.substring(0, pid_a);
+        
+        return Integer.parseInt(pid);
+    }
     
+    void getTime(){
+        LocalDateTime myDateObj = LocalDateTime.now();
+    }
+        
 }
