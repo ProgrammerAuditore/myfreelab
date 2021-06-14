@@ -18,8 +18,9 @@ import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
-import modelo.ObjXml;
+import modelo.ObjVersionesXml;
 import src.Info;
+import src.Source;
 import vista.paneles.PanelActualizacion;
 
 public class ctrlBuscarActualizacion implements MouseListener {
@@ -29,9 +30,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
     private PanelActualizacion laVista;
 
     // * Modelo
-    private ObjXml objDocXml;
+    private ObjVersionesXml objDocXml;
 
-    public ctrlBuscarActualizacion(PanelActualizacion laVista, ObjXml modelo) {
+    public ctrlBuscarActualizacion(PanelActualizacion laVista, ObjVersionesXml modelo) {
         this.laVista = laVista;
         this.objDocXml = modelo;
 
@@ -99,20 +100,14 @@ public class ctrlBuscarActualizacion implements MouseListener {
     private void mtdBuscarActualizacion() {
 
         String fileName;
-        String OS = System.getProperty("os.name").toLowerCase();
-        String time = java.time.LocalDateTime.now().toString();
-        time = time.replace(':', '-');
-        time = time.replace('.', '-');
-        time = time.replaceAll("-", "");
-
         // Verificar el sistema operativo
-        if (OS.indexOf("win") >= 0) {
+        if ( Source.OsWin ) {
             fileName = Info.dirTemp;
         } else {
             fileName = Info.dirTemp + "/";
         }
 
-        fileName += "myfreelab-" + time + ".mfl";
+        fileName += "myfreelab-" + Source.timeTmp + ".mfl";
         String url = "https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab.mfl?inline=false";
         objDocXml.setPath_archivo(fileName);
         //System.out.println("Archivo :: " + fileName);
@@ -144,11 +139,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
                     if (resp == JOptionPane.YES_OPTION) {
                         
                         // Verificar el sistema operativo
-                        if (OS.indexOf("win") >= 0) {
+                        if ( Source.OsWin ) {
                             System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
                             mtdInstalarActualizacionExe( doc.get("app_link_exe") );
                             
-                        } else if (OS.contains("nix") || OS.contains("nux") || OS.contains("aix")) {
+                        } else if ( Source.OsLinuxDeb ) {
                             System.out.println("Link de descargar :: " + doc.get("app_link_deb"));
                             mtdInstalarActualizacionDeb( doc.get("app_link_deb") );
                             
@@ -164,13 +159,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
     private void mtdInstalarActualizacionDeb(String url) {
         String fileName;
-        String OS = System.getProperty("os.name").toLowerCase();
-        String time = java.time.LocalDateTime.now().toString();
-        time = time.replace(':', '-');
-        time = time.replace('.', '-');
-        time = time.replaceAll("-", "");
-
-        fileName = Info.dirTemp + "/" + "myfreelab-" + time + ".deb";
+        fileName = Info.dirTemp + "/" + "myfreelab-" + Source.timeTmp + ".deb";
         //System.out.println("Ejecutable deb :: " + fileName);
 
         if (mtdDescargaURL(url, fileName)) {
@@ -193,13 +182,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
     
     private void mtdInstalarActualizacionExe(String url) {
         String fileName;
-        String OS = System.getProperty("os.name").toLowerCase();
-        String time = java.time.LocalDateTime.now().toString();
-        time = time.replace(':', '-');
-        time = time.replace('.', '-');
-        time = time.replaceAll("-", "");
-
-        fileName = Info.dirTemp + "myfreelab-" + time + ".exe";
+        fileName = Info.dirTemp + "myfreelab-" + Source.timeTmp + ".exe";
         //System.out.println("Ejecutable exe :: " + fileName);
 
         if (mtdDescargaURL(url, fileName)) {

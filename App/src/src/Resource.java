@@ -4,12 +4,14 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.management.ManagementFactory;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Scanner;
 
 class Resource {
-
+    
     public File dataConexion() {
         String OS = System.getProperty("os.name").toLowerCase();
         File data = null;
@@ -36,6 +38,27 @@ class Resource {
             //System.out.println("Resource :: Archivo conn no localizado...");
         }
         
+        return data;
+    }
+    
+    public File dataRun() {
+        String OS = System.getProperty("os.name").toLowerCase();
+        File data = null;
+        String dir = "";
+        
+        // Verificar el sistema operativo
+        if ( !(OS.indexOf("win") >= 0) )
+            dir = "/var/tmp/myfreelab-cache-";
+
+        // Crear la carpeta config
+        new File( dir + "config").mkdir();
+
+        //  * Generar la ruta del archivo
+        File  archivoRun = new File( dir + Rutas.pathDataEjecucion ); 
+
+        // Obtener el archivo
+        data = archivoRun;
+            
         return data;
     }
     
@@ -97,9 +120,24 @@ class Resource {
         
         return Integer.parseInt(pid);
     }
+
+    boolean getLinux() {
+        String OS = System.getProperty("os.name").toLowerCase();
+        return OS.contains("nix") || OS.contains("nux") || OS.contains("aix");
+    }
     
-    void getTime(){
-        LocalDateTime myDateObj = LocalDateTime.now();
+    boolean getWin() {
+        String OS = System.getProperty("os.name").toLowerCase();
+        return OS.contains("win");
+    }
+    
+    String getTimeTmp(){
+        String time = java.time.LocalDateTime.now().toString();
+        time = time.replace(':', '-');
+        time = time.replace('.', '-');
+        time = time.replaceAll("-", "");
+        
+        return time;
     }
         
 }

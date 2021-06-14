@@ -158,7 +158,7 @@ public class FabricarModal {
         
         // * Crear el modal Vinculación con su respectivo patrón de diseño MVC
         PanelActualizacion vista = new PanelActualizacion();
-        ObjXml modelo = new ObjXml();
+        ObjVersionesXml modelo = new ObjVersionesXml();
         ctrlBuscarActualizacion controlador = new ctrlBuscarActualizacion(vista, modelo);
         controlador.modal = new JDialog(laVista);
         controlador.init();

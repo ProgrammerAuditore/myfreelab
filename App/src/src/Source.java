@@ -10,8 +10,10 @@ import java.util.HashMap;
 public class Source {
     
     // * Recursos externos
+    public static final File dataRun = new Resource().dataRun();
     public static final File dataConexion = new Resource().dataConexion();
     public static final Image imgIconoDefault = new Resource().iconoDefault();
+    public static final HashMap<String, String> docReporte = new Resource().docJasper();
     
     // * Recursos internos
     public static final String bkgDefault = Rutas.pathBkgDefault;
@@ -38,7 +40,10 @@ public class Source {
     // Dimension de los paneles para el modal
     public static final Dimension tamDialog = new Dimension(850, 534);
     
-    public static final HashMap<String, String> docReporte = new Resource().docJasper();
     public static final String SistemaOs = ManagementFactory.getOperatingSystemMXBean().getName();
     public static final int PID = new Resource().getPID();
+    public static final boolean OsLinuxDeb = new Resource().getLinux();
+    public static final boolean OsWin = new Resource().getWin();
+    public static final String timeTmp = new Resource().getTimeTmp();
+            
 }
