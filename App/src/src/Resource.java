@@ -14,6 +14,7 @@ class Resource {
     
     public File dataConexion() {
         String OS = System.getProperty("os.name").toLowerCase();
+        String WinTemp = System.getProperty("java.io.tmpdir");
         File data = null;
         String dir = "";
         
@@ -22,6 +23,8 @@ class Resource {
             // Verificar el sistema operativo
             if ( !(OS.indexOf("win") >= 0) ) {
                 dir = "/var/tmp/myfreelab-cache-";
+            } else { 
+                dir = WinTemp+"myfreelab-cache-";
             }
             
             // Crear la carpeta config
@@ -43,12 +46,15 @@ class Resource {
     
     public File dataRun() {
         String OS = System.getProperty("os.name").toLowerCase();
+        String WinTemp = System.getProperty("java.io.tmpdir");
         File data = null;
         String dir = "";
         
         // Verificar el sistema operativo
         if ( !(OS.indexOf("win") >= 0) )
             dir = "/var/tmp/myfreelab-cache-";
+        else
+            dir = WinTemp + "myfreelab-cache-";
 
         // Crear la carpeta config
         new File( dir + "config").mkdir();
