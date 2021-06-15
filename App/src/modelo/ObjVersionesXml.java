@@ -24,7 +24,7 @@ public class ObjVersionesXml {
         try {
             
             SAXBuilder builder = new SAXBuilder();
-            File xml =  new File( path_archivo );
+            File xml = archivoXml;
             
             Document documento = builder.build(xml);
             Element root = documento.getRootElement();
@@ -42,14 +42,15 @@ public class ObjVersionesXml {
 
             info.put("app_autor" , campo.getChildTextTrim("app_autor") );
             info.put("app_contacto", campo.getChildTextTrim("app_contacto") );
-            info.put("app_version", campo.getChildTextTrim("app_version") );
+            info.put("app_name_version", campo.getChildTextTrim("app_name_version") );
+            info.put("app_num_version", campo.getChildTextTrim("app_num_version") );
             info.put("app_link_exe", campo.getChildTextTrim("app_link_exe") );
             info.put("app_link_deb", campo.getChildTextTrim("app_link_deb") );
             
             // Cargar los nodos de app_novedades
             List<Element> listar_app_novedades = campo.getChildren("app_novedades");
             
-            // Capturar la etiqueta app_novedades ytodos los nodos dentro
+            // Capturar la etiqueta app_novedades y todos los nodos dentro
             Element app_novedades = listar_app_novedades.get(0);
             //System.out.println("etiqueta :: " + app_novedades.getName());
             
@@ -98,14 +99,15 @@ public class ObjVersionesXml {
 
             info.put("app_autor" , campo.getChildTextTrim("app_autor") );
             info.put("app_contacto", campo.getChildTextTrim("app_contacto") );
-            info.put("app_version", campo.getChildTextTrim("app_version") );
+            info.put("app_name_version", campo.getChildTextTrim("app_name_version") );
+            info.put("app_num_version", campo.getChildTextTrim("app_num_version") );
             info.put("app_link_exe", campo.getChildTextTrim("app_link_exe") );
             info.put("app_link_deb", campo.getChildTextTrim("app_link_deb") );
             
             // Cargar los nodos de app_novedades
             List<Element> listar_app_novedades = campo.getChildren("app_novedades");
             
-            // Capturar la etiqueta app_novedades ytodos los nodos dentro
+            // Capturar la etiqueta app_novedades y todos los nodos dentro
             Element app_novedades = listar_app_novedades.get(0);
             //System.out.println("etiqueta :: " + app_novedades.getName());
             

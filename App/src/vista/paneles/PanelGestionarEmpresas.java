@@ -18,8 +18,8 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
      */
     public PanelGestionarEmpresas() {
         initComponents();
-        this.setSize( Source.tamDialog );
-        this.setPreferredSize( Source.tamDialog );
+        this.setSize(Source.tamDialogModal );
+        this.setPreferredSize(Source.tamDialogModal );
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);
         bkgAside.setImgRutaInterno( Source.bkgAside );

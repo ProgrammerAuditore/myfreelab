@@ -23,8 +23,8 @@ public class PanelConexion extends javax.swing.JPanel {
      */
     public PanelConexion() {
         initComponents();
-        this.setSize( Source.tamDialog );
-        this.setPreferredSize( Source.tamDialog );
+        this.setSize(Source.tamDialogModal );
+        this.setPreferredSize(Source.tamDialogModal );
         panelEstado.setBackground(Color.red);
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);

@@ -11,9 +11,20 @@ public class Info {
             "Tiene la funcionalidad de conexion a una base de datos MYSQL local o remoto para registrar los datos.";
     public static final String Licencia="Licencia GPL.";
     public static final String sNombre = "MyFreeLab";
-    public static final String sVersion = "v0.9.3";
+    public static final String sVersionNum = "093";
+    public static final String sVersionName = "v0.9.3";
     public static final String sProduccion = "Alpha";
-    public static final String NombreSoftware = sNombre + " " + sVersion + sProduccion;
+    public static final String NombreSoftware = sNombre + " " + sVersionName + sProduccion;
+    public static final String Novedades = 
+            "* Ya disponible .deb para linux desde la pagina oficial" + "\n" +
+            "* Ya disponible .exe para windows desde la pagina oficial" + "\n" +
+            "* Nuevo diseño para el menu principal" + "\n" +
+            "* Se agrego un nuevo barra de estado" + "\n" +
+            "* Se agrego la funcionalidad de generar cotizacion" + "\n" +
+            "* Se agrego la libreria de jdom 2.0.6 para manipular archivos xml" + "\n" +
+            "* Se agrego el menu de actualizacion" + "\n" +
+            "* Se corrigio bug para la conexio al servidor" + "\n" +
+            "* etc." + "\n";
     
     public static final String dirTemp = System.getProperty("java.io.tmpdir");
     public static final String Homepage = "https://www.myfreelab.com";

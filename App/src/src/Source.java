@@ -39,7 +39,8 @@ public class Source {
     public static final String styleButtonDefault = "bulma";
     
     // Dimension de los paneles para el modal
-    public static final Dimension tamDialog = new Dimension(850, 534);
+    public static final Dimension tamDialogModal = new Dimension(850, 534);
+    public static final Dimension tamDialogInfo = new Dimension(460, 444);
     
     public static final String SistemaOs = ManagementFactory.getOperatingSystemMXBean().getName();
     public static final int PID = new Resource().getPID();

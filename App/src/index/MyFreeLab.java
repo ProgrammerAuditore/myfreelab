@@ -4,19 +4,22 @@ import controlador.CtrlPrincipal;
 import hilos.HiloConexion;
 import hilos.HiloPrincipal;
 import hilos.HiloSplash;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.FabricarModal;
 import modelo.ObjEjecucionXml;
+import modelo.ObjVersionesXml;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
 import src.Info;
 import src.Source;
-import vista.ventanas.Testing;
 import vista.ventanas.VentanaPrincipal;
 
 public class MyFreeLab {
@@ -90,11 +93,28 @@ public class MyFreeLab {
     
     // * Inicializar el programa de pruebas
     public void mtdTesting(){
+        
+        try {
+            ObjVersionesXml objDocXml = new ObjVersionesXml();
+            File xml = new File( getClass().getResource("../" + Source.docVersionesXml).toURI() );
+            objDocXml.setArchivoXml( xml );
+            HashMap<String, String> info = objDocXml.mtdMapearUltimaVersionInterno();
+            
+            // * Establecer los datos
+            System.out.println("" + info.get("app_name_version"));
+            System.out.println("" + info.get("app_num_version"));
+            System.out.println("" + info.get("app_novedades"));
+        
+        } catch (URISyntaxException ex) {
+            //Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        /*
         // * Inicializar testeo
         Testing probar = new Testing();
         probar.setLocationRelativeTo(null);
         probar.setVisible(true);
-        
+        */
     }
     
     // * Obtener el PID del programa

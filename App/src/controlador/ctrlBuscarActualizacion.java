@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import static java.lang.System.in;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -95,36 +94,32 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
     private void mtdBuscarActualizacion() {
 
-        String fileName;
+        String path;
         // Verificar el sistema operativo
         if ( Source.OsWin ) {
-            fileName = Info.dirTemp;
+            path = Info.dirTemp;
         } else {
-            fileName = Info.dirTemp + "/";
+            path = Info.dirTemp + "/";
         }
 
-        fileName += "myfreelab-" + Source.timeTmp + ".mfl";
+        path += "myfreelab-" + Source.timeTmp + ".mfl";
         String url = "https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab.mfl?inline=false";
-        objDocXml.setPath_archivo(fileName);
-        //System.out.println("Archivo :: " + fileName);
+        File archivo = new File(path);
+        objDocXml.setArchivoXml(archivo);
         
         // * Descargar el archivo XML
-        if (mtdDescargaURL(url, fileName)) {
-            File archivo = new File(fileName);
+        if (mtdDescargaURL(url, path)) {
 
             if (archivo.exists()) {
-                objDocXml.setPath_archivo(fileName);
+                objDocXml.setPath_archivo(path);
                 HashMap<String, String> doc = objDocXml.mtdMapearUltimaVersion();
-
-                if (doc.get("app_version").equals(Info.sVersion + Info.sProduccion)) {
-                    JOptionPane.showMessageDialog(null, "El programa esta en la ultima version");
-                    mtdEstablecerDatosDelProgramaActual();
-
-                } else {
+                
+                int versionNum = Integer.parseInt( doc.get("app_num_version") );
+                if ( versionNum > Integer.parseInt(Info.sVersionNum) ) {
                     
                     // * Establecer informacion de la nueva version
                     laVista.etqVersionActual.setText("Nueva version");
-                    laVista.cmpVersionActual.setText(doc.get("app_version"));
+                    laVista.cmpVersionActual.setText(doc.get("app_name_version"));
                     laVista.cmpNovedades.setText(doc.get("app_novedades"));
 
                     laVista.cmpVersionActual.setBorder(new LineBorder(Color.green));
@@ -146,12 +141,10 @@ public class ctrlBuscarActualizacion implements MouseListener {
                             mtdInstalarActualizacionDeb( doc.get("app_link_deb") );
                             
                         }
-
-                    } else
-                        mtdEstablecerDatosDelProgramaActual();
-
+                        
+                    } else mtdEstablecerDatosDelProgramaActual();
                 }
-
+                
             }
         }
     }
@@ -159,7 +152,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
     private void mtdInstalarActualizacionDeb(String url) {
         String fileName;
         fileName = Info.dirTemp + "/" + "myfreelab-" + Source.timeTmp + ".deb";
-        //System.out.println("Ejecutable deb :: " + fileName);
+        //System.out.println("Ejecutable deb :: " + path);
 
         if (mtdDescargaURL(url, fileName)) {
             File archivo = new File(fileName);
@@ -182,7 +175,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
     private void mtdInstalarActualizacionExe(String url) {
         String fileName;
         fileName = Info.dirTemp + "myfreelab-" + Source.timeTmp + ".exe";
-        //System.out.println("Ejecutable exe :: " + fileName);
+        //System.out.println("Ejecutable exe :: " + path);
 
         if (mtdDescargaURL(url, fileName)) {
             File archivo = new File(fileName);
@@ -232,20 +225,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
         laVista.cmpVersionActual.setBorder(null);
         laVista.cmpNovedades.setBorder(null);
         
-        try {
-            
-            File xml = new File( getClass().getResource("../" + Source.docVersionesXml).toURI() );
-            objDocXml.setArchivoXml( xml );
-            HashMap<String, String> info = objDocXml.mtdMapearUltimaVersionInterno();
-            
-            // * Establecer los datos
-            laVista.cmpVersionActual.setText( info.get("app_version") );
-            laVista.cmpNovedades.setText( info.get("app_novedades") );
-        
-        } catch (URISyntaxException ex) {
-            //Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        // * Establecer los datos
+        laVista.cmpVersionActual.setText(Info.sVersionName + Info.sProduccion);
+        laVista.cmpNovedades.setText(Info.Novedades);
         
     }
 

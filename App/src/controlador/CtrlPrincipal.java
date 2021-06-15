@@ -11,7 +11,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -228,9 +227,7 @@ public class CtrlPrincipal implements ActionListener {
         // * Método para cerrar el programa
         laVista.setVisible(false);
         mtdCerrandoPrograma();
-        
-        System.out.println("Path ejecucion eliminado : " + Source.dataRun.getAbsoluteFile().delete());
-        
+        Source.dataRun.getAbsoluteFile().delete();
         laVista.dispose();
         System.exit(0);
         

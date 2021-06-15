@@ -21,8 +21,8 @@ public class PanelVinculacion extends javax.swing.JPanel {
         initComponents();
         
         // * Definir tamaños por defecto 
-        this.setSize( Source.tamDialog );
-        this.setPreferredSize( Source.tamDialog );
+        this.setSize(Source.tamDialogModal );
+        this.setPreferredSize(Source.tamDialogModal );
         
         // * Definir el background
         bkgAside.setImgBackgroundEnabled(true);

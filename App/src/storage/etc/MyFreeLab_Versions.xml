@@ -2,9 +2,11 @@
 <AppJar>
     <MyFreeLab>
         <Version>
+            <!-- Información del software -->
             <app_autor>ProgrammerAuditore</app_autor>
             <app_contacto>victorvj098@gmail.com</app_contacto>
-            <app_version>v0.9.3Alpha</app_version>
+            <app_name_version>v0.9.3Alpha</app_name_version>
+            <app_num_version>093</app_num_version>
             <!-- Links de descarga -->
             <app_link_exe>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab%20v0.7.04.exe?inline=false</app_link_exe>
             <app_link_deb>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/myfreelab_0.9.3_all.deb?inline=false</app_link_deb>

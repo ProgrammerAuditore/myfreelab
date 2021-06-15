@@ -7,6 +7,7 @@ package vista.paneles;
 
 import java.awt.Dimension;
 import src.Info;
+import src.Source;
 
 /**
  *
@@ -23,23 +24,24 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         initComponents();
     
         // Establecer propiedades para el panel
-        Dimension tamahno = new Dimension(660, 498);
+        Dimension tamahno = new Dimension(Source.tamDialogInfo);
         setSize(tamahno);
         setPreferredSize(tamahno);
         btnAceptar.setEnabled(false);
         
         // Establecer información para la licencia
-        String licencia = txt_licencia.getText();
-        lbl_Software.setText( Info.NombreSoftware );
-        lbl_Licencia.setText( Info.Licencia );
+        String licencia = cmpLicencia.getText();
+        etqSoftware.setText( Info.NombreSoftware );
+        etqLicencia.setText( Info.Licencia );
+        msgAutor.setText( Info.Autor );
         licencia = licencia.replace("<name of author>", Info.Autor );
         licencia = licencia.replace("<name of program>", Info.sNombre );
-        licencia = licencia.replace("<version of program>", Info.sVersion );
+        licencia = licencia.replace("<version of program>", Info.sVersionNum );
         licencia = licencia.replace("<year>", Info.Anho );
         licencia = licencia.replace("<description>", Info.Descripcion );
         licencia = licencia.replace("<details>", Info.Detalle);
-        txt_licencia.setText(licencia);
-        txt_licencia.setCaretPosition(0);
+        cmpLicencia.setText(licencia);
+        cmpLicencia.setCaretPosition(0);
     
     }
 
@@ -52,13 +54,12 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_Licencia = new vista.componentes.etiqueta.Enlace();
         btnAceptar = new vista.componentes.boton.Boton();
         contendor_licencia = new javax.swing.JScrollPane();
-        txt_licencia = new javax.swing.JTextArea();
-        lbl_Software = new vista.componentes.etiqueta.Titulo();
-
-        lbl_Licencia.setText("Licencia");
+        cmpLicencia = new javax.swing.JTextArea();
+        etqSoftware = new vista.componentes.etiqueta.Etiqueta();
+        etqLicencia = new vista.componentes.etiqueta.Enlace();
+        msgAutor = new vista.componentes.etiqueta.Mensaje();
 
         btnAceptar.setImgButtonType("dark");
         btnAceptar.setTexto("Aceptar");
@@ -68,16 +69,16 @@ public class PanelAcercaDe extends javax.swing.JPanel {
             }
         });
 
-        txt_licencia.setEditable(false);
-        txt_licencia.setColumns(20);
-        txt_licencia.setFont(new java.awt.Font("Consolas", 0, 13)); // NOI18N
-        txt_licencia.setLineWrap(true);
-        txt_licencia.setRows(5);
-        txt_licencia.setText("Copyright (C) <year>  <name of author>\n\n<name of program> <version of program>\n\n<description>\n<details>\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.");
-        txt_licencia.setWrapStyleWord(true);
-        txt_licencia.setCaretPosition(0);
-        txt_licencia.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        contendor_licencia.setViewportView(txt_licencia);
+        cmpLicencia.setEditable(false);
+        cmpLicencia.setColumns(20);
+        cmpLicencia.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
+        cmpLicencia.setLineWrap(true);
+        cmpLicencia.setRows(5);
+        cmpLicencia.setText("Copyright (C) <year>  <name of author>\n\n<name of program> <version of program>\n\n<description>\n<details>\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.");
+        cmpLicencia.setWrapStyleWord(true);
+        cmpLicencia.setCaretPosition(0);
+        cmpLicencia.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        contendor_licencia.setViewportView(cmpLicencia);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,34 +88,39 @@ public class PanelAcercaDe extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(contendor_licencia))
+                        .addComponent(etqSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(268, 268, 268)
-                                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(lbl_Software, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(msgAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 247, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contendor_licencia)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 172, Short.MAX_VALUE)
+                        .addComponent(etqLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(lbl_Licencia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(150, 150, 150)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_Software, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(lbl_Licencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(contendor_licencia, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(etqSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(msgAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(etqLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contendor_licencia, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,9 +131,10 @@ public class PanelAcercaDe extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public vista.componentes.boton.Boton btnAceptar;
+    public javax.swing.JTextArea cmpLicencia;
     public javax.swing.JScrollPane contendor_licencia;
-    private vista.componentes.etiqueta.Enlace lbl_Licencia;
-    private vista.componentes.etiqueta.Titulo lbl_Software;
-    public javax.swing.JTextArea txt_licencia;
+    private vista.componentes.etiqueta.Enlace etqLicencia;
+    private vista.componentes.etiqueta.Etiqueta etqSoftware;
+    private vista.componentes.etiqueta.Mensaje msgAutor;
     // End of variables declaration//GEN-END:variables
 }
