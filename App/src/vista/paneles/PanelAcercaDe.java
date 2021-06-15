@@ -74,7 +74,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         cmpLicencia.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
         cmpLicencia.setLineWrap(true);
         cmpLicencia.setRows(5);
-        cmpLicencia.setText("Copyright (C) <year>  <name of author>\n\n<name of program> <version of program>\n\n<description>\n<details>\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.");
+        cmpLicencia.setText("Copyright (C) <year>  <name of author>\n\n<name of program> <version of program>\n\n<description>\n<details>\n\nEste programa es software libre: puede redistribuirlo y/o modificarlo bajo los términos de la \nLicencia General Pública de GNU publicada por la Free Software Foundation, \nya sea la versión 3 de la Licencia, o (a su elección) cualquier versión posterior.\n\nEste programa se distribuye con la esperanza de que sea útil pero SIN\nNINGUNA GARANTÍA; incluso sin la garantía implícita de MERCANTIBILIDAD o\nCALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública\nde GNU para más detalles.\n\nUsted ha debido de recibir una copia de la Licencia General Pública\nde GNU junto con este programa. Si no, vea <http://www.gnu.org/licenses/>.");
         cmpLicencia.setWrapStyleWord(true);
         cmpLicencia.setCaretPosition(0);
         cmpLicencia.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -85,13 +85,10 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(etqSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(msgAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(etqSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(msgAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 247, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()

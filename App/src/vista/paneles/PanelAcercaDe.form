@@ -17,15 +17,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="etqSoftware" min="-2" pref="200" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="msgAutor" min="-2" pref="201" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="etqSoftware" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="msgAutor" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="247" max="32767" attributes="0"/>
           </Group>
@@ -96,7 +91,7 @@
             </Property>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Copyright (C) &lt;year&gt;  &lt;name of author&gt;&#xa;&#xa;&lt;name of program&gt; &lt;version of program&gt;&#xa;&#xa;&lt;description&gt;&#xa;&lt;details&gt;&#xa;&#xa;This program is free software: you can redistribute it and/or modify&#xa;it under the terms of the GNU General Public License as published by&#xa;the Free Software Foundation, either version 3 of the License, or&#xa;(at your option) any later version.&#xa;&#xa;This program is distributed in the hope that it will be useful,&#xa;but WITHOUT ANY WARRANTY; without even the implied warranty of&#xa;MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xa;GNU General Public License for more details.&#xa;&#xa;You should have received a copy of the GNU General Public License&#xa;along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;."/>
+            <Property name="text" type="java.lang.String" value="Copyright (C) &lt;year&gt;  &lt;name of author&gt;&#xa;&#xa;&lt;name of program&gt; &lt;version of program&gt;&#xa;&#xa;&lt;description&gt;&#xa;&lt;details&gt;&#xa;&#xa;Este programa es software libre: puede redistribuirlo y/o modificarlo bajo los t&#xe9;rminos de la &#xa;Licencia General P&#xfa;blica de GNU publicada por la Free Software Foundation, &#xa;ya sea la versi&#xf3;n 3 de la Licencia, o (a su elecci&#xf3;n) cualquier versi&#xf3;n posterior.&#xa;&#xa;Este programa se distribuye con la esperanza de que sea &#xfa;til pero SIN&#xa;NINGUNA GARANT&#xcd;A; incluso sin la garant&#xed;a impl&#xed;cita de MERCANTIBILIDAD o&#xa;CALIFICADA PARA UN PROP&#xd3;SITO EN PARTICULAR. Vea la Licencia General P&#xfa;blica&#xa;de GNU para m&#xe1;s detalles.&#xa;&#xa;Usted ha debido de recibir una copia de la Licencia General P&#xfa;blica&#xa;de GNU junto con este programa. Si no, vea &lt;http://www.gnu.org/licenses/&gt;."/>
             <Property name="wrapStyleWord" type="boolean" value="true"/>
             <Property name="caretPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="0" type="code"/>

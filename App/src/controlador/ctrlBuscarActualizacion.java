@@ -114,9 +114,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
                 objDocXml.setPath_archivo(path);
                 HashMap<String, String> doc = objDocXml.mtdMapearUltimaVersion();
                 
+                // * Verificar versiones
                 int versionNum = Integer.parseInt( doc.get("app_num_version") );
                 if ( versionNum > Integer.parseInt(Info.sVersionNum) ) {
                     
+                    // * Actualizar el programa
                     // * Establecer informacion de la nueva version
                     laVista.etqVersionActual.setText("Nueva version");
                     laVista.cmpVersionActual.setText(doc.get("app_name_version"));
@@ -143,6 +145,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
                         }
                         
                     } else mtdEstablecerDatosDelProgramaActual();
+                    
+                
+                // * Verificar si la version es identico
+                } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
+                    JOptionPane.showMessageDialog(null, Info.NombreSoftware + " es la versión más reciente.");
                 }
                 
             }

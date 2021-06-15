@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.FabricarModal;
+import modelo.ObjEjecucionXml;
 import modelo.dao.ConexionDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
@@ -92,6 +93,13 @@ public class CtrlPrincipal implements ActionListener {
             @Override
             public void windowOpened(WindowEvent e) {
                 mtdAbriendoPrograma();
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+                archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+                archivoRun.mtdGenerarXmlRun();
             }
             
             @Override

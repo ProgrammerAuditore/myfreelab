@@ -11,9 +11,11 @@ public class Index {
         
         switch (args.length) {
             case 0:
-                if( !Source.SistemaOs.contains("win") )
+                if( Source.OsLinuxDeb )
                     programa.mtdVerificarPIDLinux();
-                
+                else if ( Source.OsWin )
+                    programa.mtdVerificarPIDWin();
+                    
                 programa.mtdInit();
                 break;
             case 1:
