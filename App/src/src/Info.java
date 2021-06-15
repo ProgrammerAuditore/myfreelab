@@ -11,8 +11,8 @@ public class Info {
             "Tiene la funcionalidad de conexion a una base de datos MYSQL local o remoto para registrar los datos.";
     public static final String Licencia="Licencia GPL.";
     public static final String sNombre = "MyFreeLab";
-    public static final String sVersionNum = "093";
-    public static final String sVersionName = "v0.9.3";
+    public static final String sVersionNum = "0930";
+    public static final String sVersionName = "v0.9.30";
     public static final String sProduccion = "Alpha";
     public static final String NombreSoftware = sNombre + " " + sVersionName + sProduccion;
     public static final String Novedades = 
