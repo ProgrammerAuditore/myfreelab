@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -106,53 +107,57 @@ public class ctrlBuscarActualizacion implements MouseListener {
         String url = "https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab.mfl?inline=false";
         File archivo = new File(path);
         objDocXml.setArchivoXml(archivo);
+        objDocXml.setPath_archivo(path);
         
         // * Descargar el archivo XML
         if (mtdDescargaURL(url, path)) {
 
-            if (archivo.exists()) {
-                objDocXml.setPath_archivo(path);
-                HashMap<String, String> doc = objDocXml.mtdMapearUltimaVersion();
-                
-                // * Verificar versiones
-                int versionNum = Integer.parseInt( doc.get("app_num_version") );
-                if ( versionNum > Integer.parseInt(Info.sVersionNum) ) {
-                    
-                    // * Actualizar el programa
-                    // * Establecer informacion de la nueva version
-                    laVista.etqVersionActual.setText("Nueva version");
-                    laVista.cmpVersionActual.setText(doc.get("app_name_version"));
-                    laVista.cmpNovedades.setText(doc.get("app_novedades"));
+            if (archivo.exists())
+                ProcesoDeActualizacion();
+            
+        }
+        
+    }
+    
+    private void ProcesoDeActualizacion(){
+        HashMap<String, String> doc = objDocXml.mtdMapearUltimaVersion();
 
-                    laVista.cmpVersionActual.setBorder(new LineBorder(Color.green));
-                    laVista.cmpNovedades.setBorder(new LineBorder(Color.green));
+        // * Verificar versiones
+        int versionNum = Integer.parseInt( doc.get("app_num_version") );
+        if ( versionNum > Integer.parseInt(Info.sVersionNum) ) {
 
-                    int resp = JOptionPane.showConfirmDialog(null,
-                            "Existe una nueva version del programa\n¿Deseas descargarlo e instalarlo?",
-                            "Descargar e instalar", JOptionPane.YES_NO_OPTION);
+            // * Actualizar el programa
+            // * Establecer informacion de la nueva version
+            laVista.etqVersionActual.setText("Nueva version");
+            laVista.cmpVersionActual.setText(doc.get("app_name_version"));
+            laVista.cmpNovedades.setText(doc.get("app_novedades"));
 
-                    if (resp == JOptionPane.YES_OPTION) {
-                        
-                        // Verificar el sistema operativo
-                        if ( Source.OsWin ) {
-                            System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
-                            mtdInstalarActualizacionExe( doc.get("app_link_exe") );
-                            
-                        } else if ( Source.OsLinuxDeb ) {
-                            System.out.println("Link de descargar :: " + doc.get("app_link_deb"));
-                            mtdInstalarActualizacionDeb( doc.get("app_link_deb") );
-                            
-                        }
-                        
-                    } else mtdEstablecerDatosDelProgramaActual();
-                    
-                
-                // * Verificar si la version es identico
-                } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
-                    JOptionPane.showMessageDialog(null, Info.NombreSoftware + " es la versión más reciente.");
+            laVista.cmpVersionActual.setBorder(new LineBorder(Color.green));
+            laVista.cmpNovedades.setBorder(new LineBorder(Color.green));
+
+            int resp = JOptionPane.showConfirmDialog(null,
+                    "Existe una nueva version del programa\n¿Deseas descargarlo e instalarlo?",
+                    "Descargar e instalar", JOptionPane.YES_NO_OPTION);
+
+            if (resp == JOptionPane.YES_OPTION) {
+
+                // Verificar el sistema operativo
+                if ( Source.OsWin ) {
+                    System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
+                    mtdInstalarActualizacionExe( doc.get("app_link_exe") );
+
+                } else if ( Source.OsLinuxDeb ) {
+                    System.out.println("Link de descargar :: " + doc.get("app_link_deb"));
+                    mtdInstalarActualizacionDeb( doc.get("app_link_deb") );
+
                 }
-                
-            }
+
+            } else mtdEstablecerDatosDelProgramaActual();
+
+
+        // * Verificar si la version es identico
+        } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
+            JOptionPane.showMessageDialog(null, Info.NombreSoftware + " es la versión más reciente.");
         }
     }
 
@@ -186,20 +191,47 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         if (mtdDescargaURL(url, fileName)) {
             File archivo = new File(fileName);
-            if (archivo.exists()) {
-                try {
-                    String dir = archivo.getCanonicalPath();
-                    String cmd = "cmd /c start " + fileName + "";
-                    Runtime run = Runtime.getRuntime();
-                    Process pr = run.exec(cmd);
-                    System.exit(0);
+            modal.getParent().setVisible(false);
+            
+            // * Desinstalar la version actual
+            if( mtdProcesoDeDesInstalacionWin() ){
+            
+                // Instalar la version actual
+                if (archivo.exists()) {
+                    try {
+                        String dir = archivo.getCanonicalPath();
+                        String cmd = "cmd /c start " + fileName + "";
+                        Runtime run = Runtime.getRuntime();
+                        Process pr = run.exec(cmd);
+                        System.exit(0);
 
-                } catch (IOException ex) {
-                    Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                
             }
         }
 
+    }
+    
+    public boolean mtdProcesoDeDesInstalacionWin(){
+        try {
+            
+            String dir = new File(".").getAbsolutePath().replace(".", "");
+            String desinstalador_path = dir + "unins000.exe";
+            File desinstalador = new File(desinstalador_path);
+            if( desinstalador.exists() ){
+                Desktop desktop = Desktop.getDesktop();
+                desktop.open(new File(desinstalador.toURI()));
+            }
+            
+            return true;
+        } catch (IOException ex) {
+                Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 
     public boolean mtdDescargaURL(String FILE_URL, String FILE_NAME) {
