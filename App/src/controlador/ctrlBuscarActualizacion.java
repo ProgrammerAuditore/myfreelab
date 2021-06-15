@@ -95,14 +95,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
     private void mtdBuscarActualizacion() {
 
-        String path;
+        String path = Source.dirTemp;
         // Verificar el sistema operativo
-        if ( Source.OsWin ) {
-            path = Info.dirTemp;
-        } else {
-            path = Info.dirTemp + "/";
-        }
-
+        path += Source.OsWin ? "" : "/" ;
         path += "myfreelab-" + Source.timeTmp + ".mfl";
         String url = "https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab.mfl?inline=false";
         File archivo = new File(path);
@@ -144,11 +139,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
                 // Verificar el sistema operativo
                 if ( Source.OsWin ) {
                     System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
-                    mtdInstalarActualizacionExe( doc.get("app_link_exe") );
+                    mtdInstalarActualizacionExe( doc.get("app_link_exe") , versionNum );
 
-                } else if ( Source.OsLinuxDeb ) {
+                } else  {
                     System.out.println("Link de descargar :: " + doc.get("app_link_deb"));
-                    mtdInstalarActualizacionDeb( doc.get("app_link_deb") );
+                    mtdInstalarActualizacionDeb( doc.get("app_link_deb"), versionNum );
 
                 }
 
@@ -161,69 +156,79 @@ public class ctrlBuscarActualizacion implements MouseListener {
         }
     }
 
-    private void mtdInstalarActualizacionDeb(String url) {
+    private void mtdInstalarActualizacionDeb(String url, int versionNum) {
         String fileName;
-        fileName = Info.dirTemp + "/" + "myfreelab-" + Source.timeTmp + ".deb";
+        fileName = Source.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
+        File archivo = new File(fileName);
         //System.out.println("Ejecutable deb :: " + path);
 
-        if (mtdDescargaURL(url, fileName)) {
-            File archivo = new File(fileName);
-            if (archivo.exists()) {
-                try {
-                    String dir = archivo.getCanonicalPath();
-                    String cmd = "qapt-deb-installer " + fileName;
-                    Runtime run = Runtime.getRuntime();
-                    Process pr = run.exec(cmd);
-                    System.exit(0);
-
-                } catch (IOException ex) {
-                    //Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        if( !archivo.exists() ){
+            if (mtdDescargaURL(url, fileName)) {
+                System.out.println("#Paquete descargado : " + fileName );
             }
         }
+        
+        try {
+            // Se procede su instalacion
+            String dir = archivo.getCanonicalPath();
+            String cmd = "qapt-deb-installer " + fileName;
+            Runtime run = Runtime.getRuntime();
+            Process pr = run.exec(cmd);
 
+        } catch (IOException ex) {}
+
+        System.exit(0);
     }
     
-    private void mtdInstalarActualizacionExe(String url) {
+    private void mtdInstalarActualizacionExe(String url, int versionNum) {
         String fileName;
-        fileName = Info.dirTemp + "myfreelab-" + Source.timeTmp + ".exe";
+        fileName = Source.dirTemp + "myfreelab-" + versionNum + ".exe";
+        File archivo = new File(fileName);
         //System.out.println("Ejecutable exe :: " + path);
 
-        if (mtdDescargaURL(url, fileName)) {
-            File archivo = new File(fileName);
-            modal.getParent().setVisible(false);
-            
-            // * Desinstalar la version actual
-            if( mtdProcesoDeDesInstalacionWin() ){
-            
-                // Instalar la version actual
-                if (archivo.exists()) {
-                    try {
-                        String dir = archivo.getCanonicalPath();
-                        String cmd = "cmd /c start " + fileName + "";
-                        Runtime run = Runtime.getRuntime();
-                        Process pr = run.exec(cmd);
-                        System.exit(0);
-
-                    } catch (IOException ex) {
-                        Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                
+        if( !archivo.exists() ){
+            if (mtdDescargaURL(url, fileName)){
+                System.out.println("#Ejecutable descargado : " + fileName );
             }
         }
+        
+        // * Procede a instalarlo
+        // * Obtener el path de desinstalador  
+        modal.getParent().setVisible(false);
+        String directorioActual = new File(".").getAbsolutePath().replace(".", "");
+        String desinstalador_path = directorioActual + "unins000.exe";
+        File desinstalador = new File(desinstalador_path);
 
+        // * Desinstalar la version actual
+        //if( mtdProcesoDeDesInstalacionWin(desinstalador) ){
+            // Instalar la version nueva
+            if ( archivo.exists()  ) {
+                try {
+                    String dir = archivo.getCanonicalPath();
+                    String cmd = "cmd /c start " + fileName + "";
+                    Runtime run = Runtime.getRuntime();
+                    Process pr = run.exec(cmd);
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } 
+
+        //}
+            
+        System.exit(0);
     }
     
-    public boolean mtdProcesoDeDesInstalacionWin(){
+    public boolean mtdProcesoDeDesInstalacionWin(File desinstalador){
         try {
             
-            String dir = new File(".").getAbsolutePath().replace(".", "");
-            String desinstalador_path = dir + "unins000.exe";
-            File desinstalador = new File(desinstalador_path);
             if( desinstalador.exists() ){
-                Desktop desktop = Desktop.getDesktop();
-                desktop.open(new File(desinstalador.toURI()));
+                //Desktop desktop = Desktop.getDesktop();
+                //Desktop.open(new File(desinstalador.toURI()));
+                ProcessBuilder p = new ProcessBuilder(desinstalador.getAbsolutePath());
+                p.start();
+                //Runtime run = Runtime.getRuntime();
+                //Process pr = run.exec(desinstalador.getAbsolutePath());
             }
             
             return true;

@@ -26,6 +26,5 @@ public class Info {
             "* Se corrigio bug para la conexio al servidor" + "\n" +
             "* etc." + "\n";
     
-    public static final String dirTemp = System.getProperty("java.io.tmpdir");
     public static final String Homepage = "https://www.myfreelab.com";
 }

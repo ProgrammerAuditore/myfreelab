@@ -23,7 +23,6 @@ public class HiloSplash extends Thread{
         splash = new Bienvenida();
         splash.setIconImage(Source.imgIconoDefault);
         splash.setTitle(Info.NombreSoftware);
-        splash.setEnabled(false);
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
         src = 8; avance = 0; pause = src;

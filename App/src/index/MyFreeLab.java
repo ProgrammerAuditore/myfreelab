@@ -162,7 +162,14 @@ public class MyFreeLab {
 
             // * Obtener todos los procesos PID de java
             String result = null;
-            String cmd = "ps -C java -o pid=";
+            String cmd = "";
+            
+            // * Verificar el sistema operativo
+            if( Source.OsLinuxDeb )
+                cmd = "ps -C java -o pid=";
+            if ( Source.OsWin )
+                cmd = "tasklist /fi \"imagename eq java*\" ";
+            
             try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
                     Scanner s = new Scanner(inputStream).useDelimiter("\\A")) {
                 result = s.hasNext() ? s.next() : null;

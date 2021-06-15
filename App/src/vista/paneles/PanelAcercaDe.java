@@ -36,7 +36,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         msgAutor.setText( Info.Autor );
         licencia = licencia.replace("<name of author>", Info.Autor );
         licencia = licencia.replace("<name of program>", Info.sNombre );
-        licencia = licencia.replace("<version of program>", Info.sVersionNum );
+        licencia = licencia.replace("<version of program>", Info.sVersionName + Info.sProduccion );
         licencia = licencia.replace("<year>", Info.Anho );
         licencia = licencia.replace("<description>", Info.Descripcion );
         licencia = licencia.replace("<details>", Info.Detalle);
