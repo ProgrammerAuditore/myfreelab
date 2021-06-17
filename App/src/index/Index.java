@@ -11,23 +11,19 @@ public class Index {
         
         switch (args.length) {
             case 0:
-                if( Source.OsLinuxDeb )
-                    programa.mtdVerificarPIDLinux();
-                else if ( Source.OsWin )
-                    programa.mtdVerificarPIDWin();
-                    
-                programa.mtdInit();
+                programa.mtdTagInit();
                 break;
             case 1:
                 switch( args[0] ){
-                    case "--pid" : programa.mtdObtenerPID(); break;
-                    case "--test" : programa.mtdTesting();  break;
+                    case "--init" : programa.mtdTagInit(); break;
+                    case "--pid" : programa.mtdTagPID(); break;
+                    case "--test" : programa.mtdTagTest();  break;
                     case "-h" :
-                    case "--help" : programa.mtdAyuda();  break;
-                    default: programa.mtdAyuda(); break;
+                    case "--help" : programa.mtdTagHelp();  break;
+                    default: programa.mtdTagHelp(); break;
                 }   break;
             default:
-                programa.mtdAyuda();
+                programa.mtdTagHelp();
                 break;
         }
         

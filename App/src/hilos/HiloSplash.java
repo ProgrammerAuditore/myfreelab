@@ -1,6 +1,7 @@
 package hilos;
 
 import controlador.CtrlHiloConexion;
+import javax.swing.JFrame;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;

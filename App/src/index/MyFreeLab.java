@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import modelo.FabricarModal;
 import modelo.ObjEjecucionXml;
 import modelo.dao.EmpresaDao;
@@ -23,7 +24,12 @@ public class MyFreeLab {
     
     private VentanaPrincipal ventana;
     
-    public void mtdInit() {
+    public void mtdTagInit() {
+        
+        if( Source.OsLinuxDeb )
+            mtdVerificarPIDLinux();
+        else if ( Source.OsWin )
+            mtdVerificarPIDWin();
         
         HiloConexion hc = new HiloConexion();
         HiloPrincipal hp = new HiloPrincipal();
@@ -51,6 +57,11 @@ public class MyFreeLab {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        ventana.setState(JFrame.ICONIFIED);
+        ventana.setVisible(true);
+        ventana.setAutoRequestFocus(true);
+        ventana.requestFocus();
+        ventana.setExtendedState(JFrame.NORMAL);
         ventana.setVisible(true);
         
     }
@@ -124,7 +135,7 @@ public class MyFreeLab {
     }
     
     // * Inicializar el programa de pruebas
-    public void mtdTesting(){
+    public void mtdTagTest(){
         mtdVerInformacionDelSoftware();
         
         /*
@@ -153,7 +164,7 @@ public class MyFreeLab {
     }
     
     // * Obtener el PID del programa
-    public void mtdObtenerPID(){
+    public void mtdTagPID(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
         if( Source.dataRun.getAbsoluteFile().exists() ){
@@ -192,11 +203,14 @@ public class MyFreeLab {
     }
     
     // * Mostrar mensaje de ayuda en la terminal
-    public void mtdAyuda(){
+    public void mtdTagHelp(){
         System.out.println(Info.NombreSoftware);
         System.out.println(Info.Autor);
         System.out.println("");
         System.out.println("flags: ");
+        
+        System.out.print("  --init       ");
+        System.out.println("Iniciar " + Info.NombreSoftware);
         
         System.out.print("  --pid       ");
         System.out.println("Ver el PID del programa");
@@ -210,8 +224,9 @@ public class MyFreeLab {
     }
 
     private void mtdVerInformacionDelSoftware() {
+        System.out.println("#docReporte : " + Source.dirHome );
         System.out.println("#Path Actual : " + new File(".").getAbsolutePath());
-        System.out.println("#PID : " + Source.PID );
+        System.out.println("#PID : " + mtdObtenerPID() );
         System.out.println("#SO : " + Source.SistemaOs);
         System.out.println("#TimeTmp : " + Source.timeTmp);
         System.out.println("#bkgAside : " + Source.bkgAside);
@@ -221,6 +236,45 @@ public class MyFreeLab {
         System.out.println("#docVersionesXml : " + Source.docVersionesXml);
         System.out.println("#docReporte : " + Source.docReporte);
         System.out.println("#\n");
+    }
+    
+    private int mtdObtenerPID(){
+        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+
+        if( Source.dataRun.getAbsoluteFile().exists() ){
+                archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+                String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
+
+                // * Obtener todos los procesos PID de java
+                String result = null;
+                String cmd = "";
+
+                // * Verificar el sistema operativo
+                if( Source.OsLinuxDeb ){
+                    cmd = "ps -C java -o pid=";
+                }if ( Source.OsWin ){
+                    cmd = "tasklist /fi \"imagename eq java*\" ";
+                }
+
+                // * Obtener todo los procesos PID de java
+                try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
+                        Scanner s = new Scanner(inputStream).useDelimiter("\\A")) {
+                    result = s.hasNext() ? s.next() : null;
+                    //System.out.println( result );
+                } catch (IOException e) {
+                    // e.printStackTrace();
+                }
+
+                // * Si el pid almacenado en el archivo .run
+                // esta en ejecución devuelve el pid 
+                if( result.contains(pid) )
+                    return Integer.parseInt(pid);        
+                
+            }
+        
+        // * Si el pid almacenado en el archivo .run
+        // no está en ejecución devuelve una nueva PID 
+        return Source.PID;
     }
     
 }

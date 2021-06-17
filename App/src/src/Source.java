@@ -48,5 +48,6 @@ public class Source {
     public static final boolean OsWin = new Resource().getWin();
     public static final String timeTmp = new Resource().getTimeTmp();
     public static final String dirTemp = System.getProperty("java.io.tmpdir");
+    public static final String dirHome = System.getProperty("user.home");
             
 }

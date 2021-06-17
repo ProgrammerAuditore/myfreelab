@@ -152,7 +152,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Verificar si la version es identico
         } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
-            JOptionPane.showMessageDialog(null, Info.NombreSoftware + " es la versión más reciente.");
+            JOptionPane.showMessageDialog(null, Info.NombreSoftware + " es la última versión.");
         }
     }
 
