@@ -9,8 +9,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.border.LineBorder;
+import src.Info;
 import vista.paneles.PanelAcercaDe;
 
 public class CtrlAcercaDe implements MouseListener{
@@ -55,6 +57,25 @@ public class CtrlAcercaDe implements MouseListener{
                     }
                 }
             }
+        });
+        
+        modal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                
+                Runnable mostarMensaje = () -> {
+                    
+                    try { Thread.sleep(450); } catch (InterruptedException ex) {}
+                    JOptionPane.showMessageDialog(laVista, "Leé la licencia " + Info.NombreSoftware);
+                    
+                };
+                
+                Thread HiloMostrarMensaje =  new Thread(mostarMensaje);
+                HiloMostrarMensaje.setName("HiloMostrarMensaje");
+                HiloMostrarMensaje.setPriority(9);
+                HiloMostrarMensaje.run();
+            }
+            
         });
 
     }
