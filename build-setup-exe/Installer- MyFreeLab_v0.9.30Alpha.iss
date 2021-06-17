@@ -11,7 +11,7 @@
 #define AppCopyright "Copyright ProgrammerAuditore (c) 2021"
 
 ; Variables para compilar y crear la instalacion
-#define MyAppExeName MyAppNameFull + ".jar"
+#define MyAppExeName MyAppName + ".jar"
 #define MyAppIconoDefault "icons/default.ico"
 #define MyAppIconoDesinstall "icons/uninstall.ico"
 
@@ -108,16 +108,16 @@ end;
 
 procedure InstalandoEjecutable();
 begin
-  MsgBox('Se est· instalando {#MyAppNameFull} ...' #13#13 ''+
-  + 'Es recomendable tener el software {#MyAppName} cerrado durante la instalaciÛn.',
+  MsgBox('Se est√° instalando {#MyAppNameFull} ...' #13#13 ''+
+  + 'Es recomendable tener el software {#MyAppName} cerrado durante la instalaci√≥n.',
   mbInformation, MB_OK);
 end;
 
 [Run]
-; Nota: Esto se ejecuta al momento de la instalaciÛn de nuestro programa
+; Nota: Esto se ejecuta al momento de la instalaci√≥n de nuestro programa
 
 ; Instalamos MySQL
-; (AquÌ tenemos que poner el nombre de nuestro motor de base de datos que se encuentra en nuestra carpeta complementos)
+; (Aqu√≠ tenemos que poner el nombre de nuestro motor de base de datos que se encuentra en nuestra carpeta complementos)
 ; Filename: {src}\complementos\wampserver.exe; Parameters: "/q:a /C:""install /q"""; WorkingDir: {src}\complementos;
 
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: shellexec postinstall skipifsilent
