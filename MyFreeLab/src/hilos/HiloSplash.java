@@ -1,17 +1,16 @@
 package hilos;
 
 import controlador.CtrlHiloConexion;
-import javax.swing.JFrame;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;
 import src.Info;
 import src.Source;
-import vista.splash.Bienvenida;
+import vista.splash.Splash;
 
 public class HiloSplash extends Thread{
     
-    private Bienvenida splash;
+    private Splash splash;
     private int src;
     private int avance;
     private int pause;
@@ -21,7 +20,7 @@ public class HiloSplash extends Thread{
         
         // * Splash de bienvenida
         this.setName("HiloSplash");
-        splash = new Bienvenida();
+        splash = new Splash();
         splash.setIconImage(Source.imgIconoDefault);
         splash.setTitle(Info.NombreSoftware);
         splash.setLocationRelativeTo(null);

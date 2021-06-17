@@ -56,6 +56,7 @@ public class JPanelBackground extends JPanel{
                 g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
             }
         }
+        
     }
     
     public void setImgBackgroundIn_Ex(boolean in_ex){
@@ -63,8 +64,10 @@ public class JPanelBackground extends JPanel{
         try {
             
             if( in_ex ){
+                // * Establecer imagen de fondo desde una ruta interna
                 icOrigina = Toolkit.getDefaultToolkit().getImage( getClass().getResource( imgBackground.getImgRutaInterno() ) );
             }else{
+                // * Establecer imagen de fondo desde una ruta externo
                 icOrigina = Toolkit.getDefaultToolkit().getImage( imgBackground.getImgRutaExterno().getAbsolutePath() );
             }
             
@@ -90,10 +93,10 @@ public class JPanelBackground extends JPanel{
     
     public void setImgRutaInternoActivo(boolean imgRutaInternoActivo) {
         this.imgRutaInternoActivo = imgRutaInternoActivo;
-        setImgBackgroundIn_Ex( getImgRutaInternoActivo() );
+        setImgBackgroundIn_Ex( isImgRutaInternoActivo() );
     }
     
-    public boolean getImgRutaInternoActivo(){
+    public boolean isImgRutaInternoActivo(){
         return this.imgRutaInternoActivo;
     }
 

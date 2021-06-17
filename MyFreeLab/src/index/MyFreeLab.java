@@ -57,8 +57,12 @@ public class MyFreeLab {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        // * Abrir la ventana del programa
         ventana.setState(JFrame.ICONIFIED);
         ventana.setVisible(true);
+        try {
+            Thread.sleep(600);
+        } catch (InterruptedException ex) {}
         ventana.setAutoRequestFocus(true);
         ventana.requestFocus();
         ventana.setExtendedState(JFrame.NORMAL);
