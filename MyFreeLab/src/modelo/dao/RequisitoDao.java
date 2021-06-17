@@ -169,7 +169,7 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         return requisitos;
     }
     
-    public int mtdCantidadReq( int id ){
+    public int mtdObtenerCantidadReq( int id ){
         int totalReq = 0;
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
@@ -190,6 +190,29 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
         }
         
         return totalReq;
+    }
+    
+    public double mtdObtenerCostoEstimado( int id ){
+        double costo = 0;
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblrequisitos WHERE cmpProID = ? ; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while( rs.next() ){
+                costo += rs.getDouble("cmpCosto");
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
+        return costo;
     }
 
 }

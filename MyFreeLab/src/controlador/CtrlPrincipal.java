@@ -11,6 +11,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import static jdk.nashorn.tools.ShellFunctions.input;
 import modelo.FabricarModal;
 import modelo.ObjEjecucionXml;
 import modelo.dao.ConexionDao;
@@ -44,7 +48,7 @@ public class CtrlPrincipal implements ActionListener {
     private VentanaPrincipal laVista;
 
     // * Modelos
-    private ProyectoDao dao;
+    private ProyectoDao daoP;
     private EmpresaDao daoE;
     private RequisitoDao daoR;
     private FabricarModal fabrica;
@@ -60,7 +64,7 @@ public class CtrlPrincipal implements ActionListener {
 
     public CtrlPrincipal(VentanaPrincipal laVista, FabricarModal fabrica, ProyectoDao dao, EmpresaDao daoE, RequisitoDao daoR) {
         this.laVista = laVista;
-        this.dao = dao;
+        this.daoP = dao;
         this.daoE = daoE;
         this.daoR = daoR;
         this.fabrica = fabrica;
@@ -266,12 +270,12 @@ public class CtrlPrincipal implements ActionListener {
 
     private void modalGestionarProyectos() {
         
-        canBefore = dao.mtdListar().size();
+        canBefore = daoP.mtdListar().size();
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         fabrica.construir("GestionarProyectos");
         
-        canAfter = dao.mtdListar().size();
+        canAfter = daoP.mtdListar().size();
         
         if( canAfter != canBefore  )
         mtdRellenarContenedor();
@@ -358,7 +362,7 @@ public class CtrlPrincipal implements ActionListener {
     private void mtdRellenarContenedor() {
         proyectos.clear();
         mtdVaciarContenedor();
-        proyectos = dao.mtdListar();
+        proyectos = daoP.mtdListar();
         int tam = proyectos.size();
 
         //System.out.println("[!] proyectos : " + tam);
@@ -386,10 +390,18 @@ public class CtrlPrincipal implements ActionListener {
         String puntos = "";
         
         for (int i = 0; i < tam; i++) {
+            DecimalFormat costoFormato = new DecimalFormat("#.###");
             PanelCard tarjeta_proyecto = new PanelCard();
             ProyectoDto proyecto = proyectos.get(i);
             GridBagConstraints c = new GridBagConstraints();
             tarjeta_proyecto.setVisible(true);
+            
+            
+            // * Calcular el costo estimado
+            double costoEstimado = daoR.mtdObtenerCostoEstimado( proyecto.getCmpID() );
+            BigDecimal bd = new BigDecimal(costoEstimado).setScale(2, RoundingMode.HALF_EVEN);
+            proyecto.setCmpCostoEstimado( bd.doubleValue() );
+            daoP.mtdActualizar(proyecto);
             
             // Definir el evento para el boton Modificar
             tarjeta_proyecto.btnModificar.addMouseListener(new MouseAdapter() {
@@ -407,7 +419,7 @@ public class CtrlPrincipal implements ActionListener {
                 }
             });
             
-            int cantidad = daoR.mtdCantidadReq( proyecto.getCmpID() );
+            int cantidad = daoR.mtdObtenerCantidadReq( proyecto.getCmpID() );
             //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
             // Verificar si es posible cotizar
             if ( cantidad == 0 ) {
@@ -486,6 +498,7 @@ public class CtrlPrincipal implements ActionListener {
 
             Map<String, Object> parametros = new HashMap<String, Object>();
             parametros.put("SubReportDir", Source.docReporte.get("root_dir"));
+            parametros.put("rpCostoEstimado", "" + proyecto.getCmpCostoEstimado());
             parametros.put("rpProyectoID", proyecto.getCmpID());
             parametros.put("rpNombreProyecto", proyecto.getCmpNombre());
             parametros.put("rpTitulo", Info.NombreSoftware);

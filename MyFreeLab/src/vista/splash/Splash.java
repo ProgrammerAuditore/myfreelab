@@ -62,6 +62,7 @@ public class Splash extends javax.swing.JFrame {
 
         jPanelBackground1.setImgBackgroundEnabled(true);
         jPanelBackground1.setImgBackgroundIn_Ex(false);
+        jPanelBackground1.setImgOpacidad(0.8F);
         jPanelBackground1.setImgRutaInterno(src.Source.bkgSplash);
 
         etqMensaje.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N

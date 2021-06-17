@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="025eecbb-e774-4790-a703-426c100e11e7">
 	<property name="ireport.zoom" value="1.610510000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="93"/>
 	<parameter name="rpProyectoID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -12,6 +12,7 @@
 		<defaultValueExpression><![CDATA["P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\src\\storage\\reporte\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SubReportDir" class="java.lang.String"/>
+	<parameter name="rpCostoEstimado" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM tblrequisitos tr, tbldatospersonales tdp WHERE tr.cmpProID = $P{rpProyectoID} AND tdp.cmpID = 1;]]>
 	</queryString>
@@ -257,7 +258,7 @@
 			<textField>
 				<reportElement x="338" y="0" width="217" height="20" uuid="c57d70ae-04bb-4293-a751-1d73553647c4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{COSTO_TOTAL}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{rpCostoEstimado}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
