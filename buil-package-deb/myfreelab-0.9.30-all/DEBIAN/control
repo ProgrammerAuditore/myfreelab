@@ -1,0 +1,21 @@
+Package: myfreelab
+Version: 0.9.30-1
+Standards-Version: 0.9.30
+Homepage: https://gitlab.com/ProgrammerAuditore/storege-mfl
+Maintainer: ProgrammerAuditore <victorvj098@gmail.com>
+Description: El programa sirve para gestionar proyectos para freelance.
+ El programa sirve para poder crear, modificar, eliminar y registrar
+ proyectos desarrollados para una empresa en particular.
+ Asi tambien, para poder generar una cotizacion para cada empresa en particular
+ y calcular el costo del proyecto, entre otras cosas.
+ Tiene la funcionalidad de conexion a una base de datos MYSQL local o remoto.
+Pre-Depends: apt, dpkg (>= 1.14.0) | dpkg-deb, qapt-deb-installer 
+Depends: default-jre, openjdk-8-jre-zero | openjdk-8-jre
+Source: java
+Architecture: all
+Installed-Size: 60418
+Priority: optional
+Essential: no
+Section: java, education, base
+Vendor: Debian
+Origin: Kubuntu

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Acceder al directorio actual del script
+cd "$(dirname "$0")"
+
+# Add enviroment to MyFreeLab
+MYFREELAB_LIB="./usr/lib/myfreelab"
+MYFREELAB_JAR="./MyFreeLab-v0.9.3Alpha.jar"
+PATH=$PATH:$MYFREELAB_LIB/bin
+
+# Mostrar informacion (testing) 
+#echo .
+#echo MYFREELAB_LIB : $MYFREELAB_LIB;
+#echo MYFREELAB_JAR : $MYFREELAB_JAR;
+#echo Ruta actual : $(pwd);
+#echo "Ejecutar : " $MYFREELAB_LIB/bin/java -Xrs -jar $MYFREELAB_JAR
+#echo .
+
+# Run MyFreeLab Jar
+$MYFREELAB_LIB/bin/java -Xrs -jar $MYFREELAB_JAR
+cd $(pwd)
