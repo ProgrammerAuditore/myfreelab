@@ -10,8 +10,11 @@
 #define MyAppPublisherURL "https://gitlab.com/ProgrammerAuditore/storege-mfl"
 #define AppCopyright "Copyright ProgrammerAuditore (c) 2021"
 
-; Variables para compilar y crear la instalacion
-#define MyAppExeName MyAppName + ".jar"
+; Variables para compilar y crear la instalacion (Modificar)
+;#define MyAppExeName MyAppName + ".jar" ; Sin JRE
+#define MyAppExeName "run.bat" ; Con JRE
+;#define MyAppDir MyAppName ; Sin JRE
+#define MyAppDir "MyFreeLab_JRE" ; Con JRE
 #define MyAppIconoDefault "icons/default.ico"
 #define MyAppIconoDesinstall "icons/uninstall.ico"
 
@@ -32,7 +35,8 @@ RestartApplications=yes
 UsePreviousAppDir=yes
 DirExistsWarning=yes
 AllowNoIcons=no
-LicenseFile=C:\Users\victo\Desktop\Setup MyFreeLab\MyFreeLab\gpl-3.0.txt
+;; (Modificar)
+LicenseFile=C:\Users\victo\Desktop\Setup MyFreeLab\{#MyAppDir}\gpl-3.0.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 PrivilegesRequired=admin
 ;PrivilegesRequiredOverridesAllowed=dialog
@@ -58,9 +62,9 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Seleccionar el ejecutable (Programa)
-Source: "C:\Users\victo\Desktop\Setup MyFreeLab\MyFreeLab\{#MyAppExeName}"; DestDir: "{app}"; BeforeInstall: InstalandoEjecutable; Flags: ignoreversion replacesameversion restartreplace 
-Source: "C:\Users\victo\Desktop\Setup MyFreeLab\MyFreeLab\*"; DestDir: "{app}"; Flags: ignoreversion replacesameversion restartreplace recursesubdirs createallsubdirs
+; Seleccionar el ejecutable (Programa) (Modificar)
+Source: "C:\Users\victo\Desktop\Setup MyFreeLab\{#MyAppDir}\{#MyAppExeName}"; DestDir: "{app}"; BeforeInstall: InstalandoEjecutable; Flags: ignoreversion replacesameversion restartreplace 
+Source: "C:\Users\victo\Desktop\Setup MyFreeLab\{#MyAppDir}\*"; DestDir: "{app}"; Flags: ignoreversion replacesameversion restartreplace recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -97,7 +101,9 @@ Root: HKLM; Subkey: "Software\ProgrammerAuditore\MyFreeLab\Settings"; ValueType:
 Root: HKCU; Subkey: "Software\ProgrammerAuditore\MyFreeLab\Settings"; ValueType: string; ValueName: "UserName"; ValueData: "{userinfoname}"; Check: not IsAdminInstallMode
 Root: HKCU; Subkey: "Software\ProgrammerAuditore\MyFreeLab\Settings"; ValueType: string; ValueName: "UserOrganization"; ValueData: "{userinfoorg}"; Check: not IsAdminInstallMode
 ; Se establece un variable de entorno para el path de la instalacion del software
-;Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"MFL_INSTALL_PATH"; ValueData:"{app}"; Flags: preservestringtype
+; Solo para ejectuable EXE con JRE 
+Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"MFL_INSTALL_PATH"; ValueData:"{app}"; Flags: deletekey deletevalue preservestringtype; Check: IsAdminInstallMode
+Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName:"MFL_JRE_PATH"; ValueData:"{app}\lib\jre\bin"; Flags: deletekey deletevalue preservestringtype; Check: IsAdminInstallMode
 
 [Code]
 function ShouldSkipPage(PageID: Integer): Boolean;
