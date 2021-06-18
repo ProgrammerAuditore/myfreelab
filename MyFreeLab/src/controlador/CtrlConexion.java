@@ -97,10 +97,10 @@ public class CtrlConexion implements MouseListener{
         if( mtdCapturarDatos() ){
             CtrlHiloConexion.ctrlDatos = dto;
             if(CtrlHiloConexion.mtdEstablecer()){
-                if( !MyFreeLabDao.mtdChecarTablas() ){
+                if( !MyFreeLabDao.mtdChecarTablas() ){  
                     int opc = JOptionPane.showConfirmDialog(null,"Se detecto que la base de datos\n"
                             + "No cuenta con las tablas necesarios\n"
-                            + "¿Deseas crearlos?", "Crear tablas", JOptionPane.YES_OPTION);
+                            + "¿Deseas crearlos?", "Construyendo base de datos", JOptionPane.YES_OPTION);
                     
                     if( JOptionPane.YES_OPTION == opc ){
                         MyFreeLabDao.mtdCrearTablaDatosPersonales();
@@ -108,7 +108,7 @@ public class CtrlConexion implements MouseListener{
                         MyFreeLabDao.mtdCrearTablaEmpresas();
                         MyFreeLabDao.mtdCrearTablaRequisitos();
                         MyFreeLabDao.mtdCrearTablaAsociados();
-                        JOptionPane.showMessageDialog(null, "Creando tablas...");
+                        JOptionPane.showMessageDialog(null, "Base da datos construido...");
                         
                     }else{
                         

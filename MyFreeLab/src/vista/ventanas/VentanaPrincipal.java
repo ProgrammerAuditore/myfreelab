@@ -252,7 +252,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnActualizarPrograma.setText("Buscar actualizacion");
         menuAyuda.add(btnActualizarPrograma);
 
-        btnAcercaDe.setText("Acerda de");
+        btnAcercaDe.setText("Acerca de");
         menuAyuda.add(btnAcercaDe);
 
         menuBar.add(menuAyuda);

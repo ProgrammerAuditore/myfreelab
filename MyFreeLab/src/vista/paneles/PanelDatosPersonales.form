@@ -136,15 +136,15 @@
                               <Component id="cmpCorreo" max="32767" attributes="0"/>
                               <Component id="etqNombres" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="etqDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpNombres" alignment="0" max="32767" attributes="0"/>
                               <Component id="cmpDireccion" alignment="1" pref="280" max="32767" attributes="0"/>
+                              <Component id="cmpNombres" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="59" max="32767" attributes="0"/>
+                          <EmptySpace pref="61" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="etqApellidos" min="-2" max="-2" attributes="0"/>
                               <Component id="etqTelMovil" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmpApellidos" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmpTelMovil" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="cmpApellidos" alignment="0" pref="280" max="32767" attributes="0"/>
+                              <Component id="cmpTelMovil" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -159,18 +159,18 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="etqApellidos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="cmpApellidos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="etqTelMovil" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cmpTelMovil" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="etqNombres" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="cmpNombres" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="etqDireccion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cmpDireccion" min="-2" max="-2" attributes="0"/>
@@ -191,30 +191,10 @@
             <Property name="text" type="java.lang.String" value="Introduzca nombre (s)"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpNombres">
-          <Properties>
-            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="etqNombres"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqApellidos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca apellido (s)"/>
           </Properties>
-        </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpApellidos">
-          <Properties>
-            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="etqApellidos"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
         </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqDireccion">
           <Properties>
@@ -236,16 +216,6 @@
             <Property name="text" type="java.lang.String" value="Introduzca Tel&#xe9;fono / M&#xf3;vil"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.campos.CampoTexto" name="cmpTelMovil">
-          <Properties>
-            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="etqTelMovil"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
         <Component class="vista.componentes.etiqueta.Etiqueta" name="etqEmail">
           <Properties>
             <Property name="text" type="java.lang.String" value="Introduzca correo electr&#xf3;nico"/>
@@ -255,6 +225,36 @@
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="etqEmail"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="vista.componentes.campos.CampoDatos" name="cmpNombres">
+          <Properties>
+            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="etqNombres"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="vista.componentes.campos.CampoDatos" name="cmpApellidos">
+          <Properties>
+            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="etqApellidos"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="vista.componentes.campos.CampoTMovil" name="cmpTelMovil">
+          <Properties>
+            <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="etqTelMovil"/>
             </Property>
           </Properties>
           <AuxValues>

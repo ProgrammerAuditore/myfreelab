@@ -39,15 +39,15 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
         etqTitulo = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
         etqNombres = new vista.componentes.etiqueta.Etiqueta();
-        cmpNombres = new vista.componentes.campos.CampoTexto();
         etqApellidos = new vista.componentes.etiqueta.Etiqueta();
-        cmpApellidos = new vista.componentes.campos.CampoTexto();
         etqDireccion = new vista.componentes.etiqueta.Etiqueta();
         cmpDireccion = new vista.componentes.campos.CampoTexto();
         etqTelMovil = new vista.componentes.etiqueta.Etiqueta();
-        cmpTelMovil = new vista.componentes.campos.CampoTexto();
         etqEmail = new vista.componentes.etiqueta.Etiqueta();
         cmpCorreo = new vista.componentes.campos.CampoCorreo();
+        cmpNombres = new vista.componentes.campos.CampoDatos();
+        cmpApellidos = new vista.componentes.campos.CampoDatos();
+        cmpTelMovil = new vista.componentes.campos.CampoTMovil();
         btnAceptar = new vista.componentes.boton.Boton();
         btnCancelar = new vista.componentes.boton.Boton();
 
@@ -89,11 +89,7 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
 
         etqNombres.setText("Introduzca nombre (s)");
 
-        cmpNombres.setComponenteDidireccional(etqNombres);
-
         etqApellidos.setText("Introduzca apellido (s)");
-
-        cmpApellidos.setComponenteDidireccional(etqApellidos);
 
         etqDireccion.setText("Introduzca dirección");
 
@@ -101,11 +97,15 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
 
         etqTelMovil.setText("Introduzca Teléfono / Móvil");
 
-        cmpTelMovil.setComponenteDidireccional(etqTelMovil);
-
         etqEmail.setText("Introduzca correo electrónico");
 
         cmpCorreo.setComponenteDidireccional(etqEmail);
+
+        cmpNombres.setComponenteDidireccional(etqNombres);
+
+        cmpApellidos.setComponenteDidireccional(etqApellidos);
+
+        cmpTelMovil.setComponenteDidireccional(etqTelMovil);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -122,14 +122,14 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
                             .addComponent(cmpCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(etqNombres, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etqDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpNombres, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                            .addComponent(cmpDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(cmpNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(etqApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etqTelMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmpTelMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cmpApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(cmpTelMovil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -139,17 +139,17 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(etqApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmpApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
                         .addComponent(etqTelMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmpTelMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(etqNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(cmpNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(etqDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmpDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -204,11 +204,11 @@ public class PanelDatosPersonales extends javax.swing.JPanel {
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnAceptar;
     public vista.componentes.boton.Boton btnCancelar;
-    public vista.componentes.campos.CampoTexto cmpApellidos;
+    public vista.componentes.campos.CampoDatos cmpApellidos;
     public vista.componentes.campos.CampoCorreo cmpCorreo;
     public vista.componentes.campos.CampoTexto cmpDireccion;
-    public vista.componentes.campos.CampoTexto cmpNombres;
-    public vista.componentes.campos.CampoTexto cmpTelMovil;
+    public vista.componentes.campos.CampoDatos cmpNombres;
+    public vista.componentes.campos.CampoTMovil cmpTelMovil;
     private vista.componentes.etiqueta.Etiqueta etqApellidos;
     private vista.componentes.etiqueta.Etiqueta etqDireccion;
     private vista.componentes.etiqueta.Etiqueta etqEmail;

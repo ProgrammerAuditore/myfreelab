@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import static jdk.nashorn.tools.ShellFunctions.input;
 import modelo.FabricarModal;
 import modelo.ObjEjecucionXml;
 import modelo.dao.ConexionDao;
