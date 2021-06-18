@@ -1,0 +1,2 @@
+# Copyrigth
+ProgrammerAuditore (c)
