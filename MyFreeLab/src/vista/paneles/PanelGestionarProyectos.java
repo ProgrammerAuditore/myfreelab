@@ -100,15 +100,22 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
                 { new Integer(2), "Nuevo", null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Fecha incial", "Fecha final", "Costo estimado", "Monto adelantado"
+                "Id", "Nombre", "Fecha incial", "Fecha final", "Monto adelantado", "Costo estimado"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblProyectos);

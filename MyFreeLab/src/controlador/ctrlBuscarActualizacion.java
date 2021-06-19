@@ -23,6 +23,7 @@ import modelo.ObjVersionesXml;
 import src.Info;
 import src.Source;
 import vista.paneles.PanelActualizacion;
+import vista.ventanas.VentanaPrincipal;
 
 public class ctrlBuscarActualizacion implements MouseListener {
 
@@ -32,6 +33,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
     // * Modelo
     private ObjVersionesXml objDocXml;
+    
+    // * Atributos
+    private String msgPrevia;
 
     public ctrlBuscarActualizacion(PanelActualizacion laVista, ObjVersionesXml modelo) {
         this.laVista = laVista;
@@ -43,6 +47,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
     }
 
     public void init() {
+        msgPrevia = VentanaPrincipal.etqMensaje.getText();
         mtdEstablecerDatosDelProgramaActual();
 
         // * Establecer propiedades para la modal
@@ -94,7 +99,8 @@ public class ctrlBuscarActualizacion implements MouseListener {
     }
 
     private void mtdBuscarActualizacion() {
-
+        
+        VentanaPrincipal.etqMensaje.setText("[Buscando actualización]");
         String path = Source.dirTemp;
         // Verificar el sistema operativo
         path += Source.OsWin ? "" : "/" ;
@@ -112,6 +118,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             
         }
         
+        VentanaPrincipal.etqMensaje.setText( msgPrevia );
     }
     
     private void ProcesoDeActualizacion(){
@@ -122,6 +129,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         if ( versionNum > Integer.parseInt(Info.sVersionNum) ) {
 
             // * Actualizar el programa
+            VentanaPrincipal.etqMensaje.setText("[Nueva versión encontrada]");
             // * Establecer informacion de la nueva version
             laVista.etqVersionActual.setText("Nueva version");
             laVista.cmpVersionActual.setText(doc.get("app_name_version"));
@@ -137,17 +145,18 @@ public class ctrlBuscarActualizacion implements MouseListener {
             if (resp == JOptionPane.YES_OPTION) {
 
                 // Verificar el sistema operativo
+                VentanaPrincipal.etqMensaje.setText("[Instalando la versión " + doc.get("app_name_version") + "]");
                 if ( Source.OsWin ) {
-                    System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
+                    //System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
                     mtdInstalarActualizacionExe( doc.get("app_link_exe") , versionNum );
 
                 } else  {
-                    System.out.println("Link de descargar :: " + doc.get("app_link_deb"));
+                    //System.out.println("Link de descargar :: " + doc.get("app_link_deb"));
                     mtdInstalarActualizacionDeb( doc.get("app_link_deb"), versionNum );
 
                 }
 
-            } else mtdEstablecerDatosDelProgramaActual();
+            }
 
 
         // * Verificar si la version es identico
@@ -155,32 +164,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
             JOptionPane.showMessageDialog(null, Info.NombreSoftware + " es la última versión.");
         }
     }
-
-    private void mtdInstalarActualizacionDeb(String url, int versionNum) {
-        String fileName;
-        fileName = Source.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
-        File archivo = new File(fileName);
-        //System.out.println("Ejecutable deb :: " + path);
-
-        if( !archivo.exists() ){
-            if (mtdDescargaURL(url, fileName)) {
-                System.out.println("#Paquete descargado : " + fileName );
-            }
-        }
-        
-        try {
-            // Se procede su instalacion
-            String dir = archivo.getCanonicalPath();
-            String cmd = "qapt-deb-installer " + fileName;
-            Runtime run = Runtime.getRuntime();
-            Process pr = run.exec(cmd);
-
-        } catch (IOException ex) {}
-
-        System.exit(0);
-    }
     
-    private void mtdInstalarActualizacionExe(String url, int versionNum) {
+    private boolean mtdInstalarActualizacionExe(String url, int versionNum) {
+        VentanaPrincipal.etqMensaje.setText("[Instalando la nueva versión]");
         String fileName;
         fileName = Source.dirTemp + "myfreelab-" + versionNum + ".exe";
         File archivo = new File(fileName);
@@ -193,52 +179,66 @@ public class ctrlBuscarActualizacion implements MouseListener {
         }
         
         // * Procede a instalarlo
-        // * Obtener el path de desinstalador  
-        modal.getParent().setVisible(false);
-        String directorioActual = new File(".").getAbsolutePath().replace(".", "");
-        String desinstalador_path = directorioActual + "unins000.exe";
-        File desinstalador = new File(desinstalador_path);
+        // Instalar la version nueva
+        if ( archivo.exists()  ) {
+            modal.getParent().setVisible(false);
+            try {
+                String dir = archivo.getCanonicalPath();
+                String cmd = "cmd /c start " + fileName + "";
+                Runtime run = Runtime.getRuntime();
+                Process pr = run.exec(cmd);
 
-        // * Desinstalar la version actual
-        //if( mtdProcesoDeDesInstalacionWin(desinstalador) ){
-            // Instalar la version nueva
-            if ( archivo.exists()  ) {
-                try {
-                    String dir = archivo.getCanonicalPath();
-                    String cmd = "cmd /c start " + fileName + "";
-                    Runtime run = Runtime.getRuntime();
-                    Process pr = run.exec(cmd);
-
-                } catch (IOException ex) {
-                    Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } 
-
-        //}
-            
-        System.exit(0);
-    }
-    
-    public boolean mtdProcesoDeDesInstalacionWin(File desinstalador){
-        try {
-            
-            if( desinstalador.exists() ){
-                //Desktop desktop = Desktop.getDesktop();
-                //Desktop.open(new File(desinstalador.toURI()));
-                ProcessBuilder p = new ProcessBuilder(desinstalador.getAbsolutePath());
-                p.start();
-                //Runtime run = Runtime.getRuntime();
-                //Process pr = run.exec(desinstalador.getAbsolutePath());
-            }
-            
-            return true;
-        } catch (IOException ex) {
+            } catch (IOException ex) {
                 Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(null, "Instalador ejecutado");
+            System.exit(0);
+            return true;
+        } else{
+            JOptionPane.showMessageDialog(null, "Fallo la instalación");
         }
         
         return false;
     }
 
+
+    private boolean mtdInstalarActualizacionDeb(String url, int versionNum) {
+        VentanaPrincipal.etqMensaje.setText("[Instalando la nueva versión]");
+        String fileName;
+        fileName = Source.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
+        File archivo = new File(fileName);
+        //System.out.println("Ejecutable deb :: " + path);
+
+        if( !archivo.exists() ){
+            if (mtdDescargaURL(url, fileName)) {
+                System.out.println("#Paquete descargado : " + fileName );
+            }
+        }
+        
+        // * Procede a instalarlo
+        // Instalar la version nueva
+        if ( archivo.exists()  ) {
+            modal.getParent().setVisible(false);
+            try {
+                // Se procede su instalacion
+                String dir = archivo.getCanonicalPath();
+                String cmd = "qapt-deb-installer " + fileName;
+                Runtime run = Runtime.getRuntime();
+                Process pr = run.exec(cmd);
+
+            } catch (IOException ex) {}
+
+            JOptionPane.showMessageDialog(null, "Paquete de instalación ejecutado");
+            System.exit(0);
+            return true;
+        } else{
+            JOptionPane.showMessageDialog(null, "Fallo la instalación");
+        }
+        
+        return false;
+    }
+    
     public boolean mtdDescargaURL(String FILE_URL, String FILE_NAME) {
         try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
                 FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
@@ -246,10 +246,12 @@ public class ctrlBuscarActualizacion implements MouseListener {
             int bytesRead;
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
+                VentanaPrincipal.etqMensaje.setText("[Buscando actualización "+ ((1024/bytesRead)* 100) +"%]");
             }
         } catch (IOException e) {
             // handle exception
-            JOptionPane.showMessageDialog(null, "No se pudo acceder al sitio oficial, error 404.");
+            VentanaPrincipal.etqMensaje.setText("[Error 404 en el sitio oficial]");
+            //JOptionPane.showMessageDialog(null, "No se pudo acceder al sitio oficial, error 404.");
             //System.out.println("" + e.getMessage());
         }
 

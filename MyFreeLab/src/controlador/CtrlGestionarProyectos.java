@@ -1,12 +1,12 @@
 package controlador;
 
 import java.awt.Dialog;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -54,6 +54,7 @@ public class CtrlGestionarProyectos implements MouseListener{
 
     public void mtdInit() {
         //modal = new JDialog();
+        CtrlPrincipal.cambiosModalGestionarProyectos = false;
         
         modal.setTitle("Gestionar proyectos");
         //modal.setType(Window.Type.UTILITY);
@@ -125,10 +126,14 @@ public class CtrlGestionarProyectos implements MouseListener{
         if( mtdValidarCampo() ){
             ////System.out.println("Crear proyectos");
             dto.setCmpNombre( cmpProyecto );
+            dto.setCmpFechaInicial( fncObtenerFechayHora(0) );
+            dto.setCmpFechaFinal( fncObtenerFechayHora(6) );
             
             if( !dao.mtdComprobar(dto) ){
             
                 if(dao.mtdInsetar(dto)){
+                    // * Notificar al controlador principal
+                    CtrlPrincipal.cambiosModalGestionarProyectos = true;
                     mtdRellenarTabla();
                     JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se creo exitosamente.");
                 }
@@ -158,6 +163,8 @@ public class CtrlGestionarProyectos implements MouseListener{
                 if( opc == JOptionPane.YES_OPTION){
 
                     if(dao.mtdActualizar(dto)){
+                        // * Notificar al controlador principal
+                        CtrlPrincipal.cambiosModalGestionarProyectos = true;
                         mtdRellenarTabla();
                         JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se modifico exitosamente.");
                     }
@@ -185,6 +192,8 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdEliminar(dto) ){
+                    // * Notificar al controlador principal
+                    CtrlPrincipal.cambiosModalGestionarProyectos = true;
                     modeloTabla.removeRow(seleccionado);
                     JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
                 }
@@ -202,8 +211,8 @@ public class CtrlGestionarProyectos implements MouseListener{
         p.setCmpNombre( String.valueOf( laVista.tblProyectos.getValueAt(fila, 1)) );
         p.setCmpFechaInicial(String.valueOf( laVista.tblProyectos.getValueAt(fila, 2)) );
         p.setCmpFechaFinal(String.valueOf( laVista.tblProyectos.getValueAt(fila, 3)) );
-        p.setCmpCostoEstimado( Double.parseDouble( laVista.tblProyectos.getValueAt(fila, 4).toString() ) );
-        p.setCmpMontoAdelantado(Double.parseDouble( laVista.tblProyectos.getValueAt(fila, 5).toString() ) );
+        p.setCmpMontoAdelantado(Double.parseDouble( laVista.tblProyectos.getValueAt(fila, 4).toString() ) );
+        p.setCmpCostoEstimado( Double.parseDouble( laVista.tblProyectos.getValueAt(fila, 5).toString() ) );
         
         return p;
     }
@@ -238,8 +247,8 @@ public class CtrlGestionarProyectos implements MouseListener{
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpNombre(), fila, 1);
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpFechaInicial(), fila, 2);
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpFechaFinal(), fila, 3);
-        laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpCostoEstimado(), fila, 4);
-        laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpMontoAdelantado(), fila, 5);
+        laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpMontoAdelantado(), fila, 4);
+        laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpCostoEstimado(), fila, 5);
     }
     
     private boolean mtdValidarCampo(){
@@ -280,6 +289,23 @@ public class CtrlGestionarProyectos implements MouseListener{
             
         ////System.out.println("Resultado :" + formato + " : " + entero + " :: " + cmpFecha.length());
         return ( (formato + entero) == cmpFecha.length()  );
+    }
+    
+    private String fncObtenerFechayHora(int N){
+        Calendar fechaActual = Calendar.getInstance();
+        String cadenaFecha = String.format("%02d/%02d/%04d",
+          fechaActual.get(Calendar.DAY_OF_MONTH),
+          fechaActual.get(Calendar.MONTH)+(1+ N),
+          fechaActual.get(Calendar.YEAR));
+        
+        Calendar a = Calendar.getInstance();
+        String horaActual = String.format("%02d:%02d:%02d",
+          fechaActual.get(Calendar.HOUR_OF_DAY),
+          fechaActual.get(Calendar.MINUTE),
+          fechaActual.get(Calendar.SECOND));
+        
+        //return cadenaFecha+" "+horaActual+"";
+        return cadenaFecha;
     }
     
     @Override

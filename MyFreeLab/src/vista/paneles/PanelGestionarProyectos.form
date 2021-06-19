@@ -228,11 +228,11 @@
                       <Data value="15/03/2021"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="Costo estimado" type="java.lang.String">
+                    <Column editable="true" title="Monto adelantado" type="java.lang.String">
                       <Data value="0000"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="Monto adelantado" type="java.lang.String">
+                    <Column editable="false" title="Costo estimado" type="java.lang.String">
                       <Data value="0000"/>
                       <Data value="null"/>
                     </Column>

@@ -42,7 +42,7 @@ public class CtrlConexion implements MouseListener{
     
     public void mtdInit(){
         //modal = new JDialog();
-        CtrlPrincipal.updateModalBuscarActualizacion = false;
+        CtrlPrincipal.estadoModalConfigurarConexion = false;
         
         //modal.setModal(true);
         //modal.setType(Window.Type.UTILITY);
@@ -70,7 +70,7 @@ public class CtrlConexion implements MouseListener{
             public void windowClosing(WindowEvent e) {
                 modal.setVisible(false);
                 modal.dispose();
-                CtrlPrincipal.updateModalBuscarActualizacion = true;
+                CtrlPrincipal.estadoModalConfigurarConexion = true;
             }
         });
         

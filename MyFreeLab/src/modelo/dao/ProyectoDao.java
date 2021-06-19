@@ -17,12 +17,14 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
         
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "INSERT INTO tblproyectos ( cmpNombre, cmpFechaInicial, cmpFechaFinal ) VALUES ( ?, 'Desconocido', 'Desconodio' );";
+        String sql = "INSERT INTO tblproyectos ( cmpNombre, cmpFechaInicial, cmpFechaFinal ) VALUES ( ?, ?, ? );";
         
         try {
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, proyecto_dto.getCmpNombre());
+            ps.setString(2, proyecto_dto.getCmpFechaInicial());
+            ps.setString(3, proyecto_dto.getCmpFechaFinal());
             ps.execute();
             
             return true;

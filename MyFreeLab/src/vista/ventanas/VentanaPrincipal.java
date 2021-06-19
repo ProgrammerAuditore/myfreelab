@@ -355,7 +355,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JLabel cmpEmpresas;
     public javax.swing.JLabel cmpProyectos;
     private vista.componentes.campos.CampoTexto etqBusqueda;
-    public vista.componentes.etiqueta.Mensaje etqMensaje;
+    public static vista.componentes.etiqueta.Mensaje etqMensaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

@@ -99,7 +99,9 @@ public class CtrlDatosPersonales implements MouseListener{
                 
                 // Registrarlo a la base de datos...
                 ////System.out.println("Registrarlo a la base de datos");
-                dao.mtdInsertar(dto);
+                if(dao.mtdInsertar(dto)){
+                    JOptionPane.showMessageDialog(null, "Datos personales se registro exitosamente.");
+                }
             
             } else{
                 

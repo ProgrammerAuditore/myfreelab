@@ -93,11 +93,12 @@ public class RequisitoDao implements keyword_query<RequisitoDto>{
     public boolean mtdComprobar(RequisitoDto requisito_dto) {
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "SELECT * FROM tblrequisitos WHERE cmpNombre = ? ; ";
+        String sql = "SELECT * FROM tblrequisitos WHERE cmpNombre = ? and cmpProID = ?; ";
         
         try {
             ps = conn.prepareStatement(sql);
             ps.setString( 1, requisito_dto.getCmpNombre());
+            ps.setInt(2, requisito_dto.getCmpProID() );
             ResultSet rs = ps.executeQuery();
             int filas = 0;
             
