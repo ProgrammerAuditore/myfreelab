@@ -100,7 +100,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
     private void mtdBuscarActualizacion() {
         
-        VentanaPrincipal.etqMensaje.setText("[Buscando actualización]");
+        CtrlPrincipal.mensajeCtrlPrincipal("Buscando actualización...");
         String path = Source.dirTemp;
         // Verificar el sistema operativo
         path += Source.OsWin ? "" : "/" ;
@@ -118,7 +118,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             
         }
         
-        VentanaPrincipal.etqMensaje.setText( msgPrevia );
+        CtrlPrincipal.mensajeCtrlPrincipal( msgPrevia );
     }
     
     private void ProcesoDeActualizacion(){
@@ -129,7 +129,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         if ( versionNum > Integer.parseInt(Info.sVersionNum) ) {
 
             // * Actualizar el programa
-            VentanaPrincipal.etqMensaje.setText("[Nueva versión encontrada]");
+            CtrlPrincipal.mensajeCtrlPrincipal("Nueva versión encontrada");
             // * Establecer informacion de la nueva version
             laVista.etqVersionActual.setText("Nueva version");
             laVista.cmpVersionActual.setText(doc.get("app_name_version"));
@@ -145,7 +145,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             if (resp == JOptionPane.YES_OPTION) {
 
                 // Verificar el sistema operativo
-                VentanaPrincipal.etqMensaje.setText("[Instalando la versión " + doc.get("app_name_version") + "]");
+                CtrlPrincipal.mensajeCtrlPrincipal("Instalando la versión " + doc.get("app_name_version"));
                 if ( Source.OsWin ) {
                     //System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
                     mtdInstalarActualizacionExe( doc.get("app_link_exe") , versionNum );
@@ -166,7 +166,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
     }
     
     private boolean mtdInstalarActualizacionExe(String url, int versionNum) {
-        VentanaPrincipal.etqMensaje.setText("[Instalando la nueva versión]");
+        CtrlPrincipal.mensajeCtrlPrincipal("Instalando la nueva versión...");
         String fileName;
         fileName = Source.dirTemp + "myfreelab-" + versionNum + ".exe";
         File archivo = new File(fileName);
@@ -204,7 +204,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
 
     private boolean mtdInstalarActualizacionDeb(String url, int versionNum) {
-        VentanaPrincipal.etqMensaje.setText("[Instalando la nueva versión]");
+        CtrlPrincipal.mensajeCtrlPrincipal("Instalando la nueva versión...");
         String fileName;
         fileName = Source.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
         File archivo = new File(fileName);
@@ -246,11 +246,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
             int bytesRead;
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
-                VentanaPrincipal.etqMensaje.setText("[Buscando actualización "+ ((1024/bytesRead)* 100) +"%]");
+                CtrlPrincipal.mensajeCtrlPrincipal("Buscando actualización "+ ((1024/bytesRead)* 100) +"%");
             }
         } catch (IOException e) {
             // handle exception
-            VentanaPrincipal.etqMensaje.setText("[Error 404 en el sitio oficial]");
+            CtrlPrincipal.mensajeCtrlPrincipal("Error 404 sobre el sitio web oficial");
             //JOptionPane.showMessageDialog(null, "No se pudo acceder al sitio oficial, error 404.");
             //System.out.println("" + e.getMessage());
         }
