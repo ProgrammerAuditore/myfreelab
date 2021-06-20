@@ -11,9 +11,11 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import static java.lang.System.in;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
@@ -223,7 +225,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             try {
                 // Se procede su instalacion
                 String dir = archivo.getCanonicalPath();
-                String cmd = "qapt-deb-installer " + fileName;
+                String cmd = mtdInstaladorDeb() + " " + fileName;
                 Runtime run = Runtime.getRuntime();
                 Process pr = run.exec(cmd);
 
@@ -277,6 +279,28 @@ public class ctrlBuscarActualizacion implements MouseListener {
         
     }
 
+    private String mtdInstaladorDeb() {
+        String instalador="";
+        String comandoLinux = "apt list --installed qapt-deb-installer gdebi";
+        // * Obtener todo los procesos PID de java
+        try (InputStream inputStream = Runtime.getRuntime().exec(comandoLinux).getInputStream();
+                Scanner s = new Scanner(inputStream).useDelimiter("\\A")) {
+            instalador = s.hasNext() ? s.next() : null;
+            //System.out.println( result );
+        } catch (IOException e) {
+            // e.printStackTrace();
+        }
+        if( comandoLinux.contains("qapt-deb-installer") ){
+            return "qapt-deb-installer";
+        } else if ( comandoLinux.contains("gdebi") ){        
+            return "gdebi";
+        } else {
+            JOptionPane.showMessageDialog(null, "Instalador de paquetes no encontrado.");
+            return "echo";
+        }
+        
+    }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
     }
@@ -292,5 +316,6 @@ public class ctrlBuscarActualizacion implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
 
 }
