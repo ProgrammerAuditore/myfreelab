@@ -344,7 +344,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="etqBusqueda" pref="385" max="32767" attributes="0"/>
+                  <Component id="cmpBusqueda" pref="385" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -353,17 +353,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="190" max="32767" attributes="0"/>
-                  <Component id="etqBusqueda" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmpBusqueda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.campos.CampoTexto" name="etqBusqueda">
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpBusqueda">
           <Properties>
             <Property name="text" type="java.lang.String" value="campoTexto1"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

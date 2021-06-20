@@ -45,7 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.pnlPortada.setImgRutaInterno(Source.bkgPortada);
         
         // * Establecer placeholder
-        this.etqBusqueda.setPlaceholder("Buscar empresa o proyecto.");
+        this.cmpBusqueda.setPlaceholder("Buscar empresa o proyecto.");
         
     }
 
@@ -67,7 +67,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlContenedor = new javax.swing.JPanel();
         pnlOpciones = new javax.swing.JPanel();
         pnlLogo = new vista.componentes.jpanelbackground.JPanelBackground();
-        etqBusqueda = new vista.componentes.campos.CampoTexto();
+        cmpBusqueda = new vista.componentes.campos.CampoTexto();
         pnlPortada = new vista.componentes.jpanelbackground.JPanelBackground();
         titulo1 = new vista.componentes.etiqueta.Titulo();
         jPanel3 = new javax.swing.JPanel();
@@ -154,7 +154,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 378, Short.MAX_VALUE)
         );
 
-        etqBusqueda.setText("campoTexto1");
+        cmpBusqueda.setText("campoTexto1");
 
         javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
         pnlLogo.setLayout(pnlLogoLayout);
@@ -162,14 +162,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(etqBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(cmpBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
                 .addContainerGap(190, Short.MAX_VALUE)
-                .addComponent(etqBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmpBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -357,9 +357,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
     public javax.swing.JMenuItem btnVinculacion;
+    public vista.componentes.campos.CampoTexto cmpBusqueda;
     public javax.swing.JLabel cmpEmpresas;
     public javax.swing.JLabel cmpProyectos;
-    private vista.componentes.campos.CampoTexto etqBusqueda;
     public static vista.componentes.etiqueta.Mensaje etqMensaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
