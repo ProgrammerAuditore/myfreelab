@@ -93,6 +93,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jToolBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jToolBar1.setFloatable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         cmpEmpresas.setText("Empresa : #");
 
         cmpProyectos.setText("Proyectos : #");
@@ -190,6 +192,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         etqMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -205,6 +208,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(etqMensaje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        menuBar.setBackground(new java.awt.Color(255, 255, 255));
 
         menuArchivo.setText("Archivo");
 
