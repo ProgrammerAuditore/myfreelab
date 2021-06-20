@@ -76,12 +76,18 @@ public class MyFreeLabDao{
                sql += " cmpApellidos varchar(60) null default 'Desconocido',";
                sql += " cmpDireccion varchar(200) null default 'Desconocido',";
                sql += " cmpCorreo varchar(200) null default 'Desconocido',";
-               sql += " cmpTMovil varchar(20) null default '000-0000-000'";
+               sql += " cmpTMovil varchar(20) null default '0000000000'";
                sql += " ); ";
+               
+        String sql2 = "Insert Into "+dbname+".tbldatospersonales (cmpID, cmpNombres, cmpApellidos) ";
+               sql2 += "Values (" + "1, 'Desconocido', 'Desconocido'" + "); ";
         
         try {
             
             ps = conn.prepareStatement(sql);
+            ps.execute();
+            
+            ps = conn.prepareStatement(sql2);
             ps.execute();
             
             return true; 

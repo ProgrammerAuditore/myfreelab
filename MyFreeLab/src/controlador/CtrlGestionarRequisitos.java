@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
@@ -129,7 +131,8 @@ public class CtrlGestionarRequisitos implements MouseListener{
         if( mtdValidarCampoCosto() && mtdValidarCampoRequisito() ){
             dto.setCmpProID( proyecto_dto.getCmpID() );
             dto.setCmpNombre( cmpRequisito );
-            dto.setCmpCosto( cmpCosto );
+            BigDecimal campoCosto =  new BigDecimal(cmpCosto).setScale(2, RoundingMode.HALF_EVEN);
+            dto.setCmpCosto( campoCosto.doubleValue() );
             
             if( !dao.mtdComprobar(dto) ){
                 
@@ -250,9 +253,10 @@ public class CtrlGestionarRequisitos implements MouseListener{
         dto.setCmpProID( proyecto_dto.getCmpID()  );
         requisitos = dao.mtdListar(dto);
         
-        if( requisitos.size() > 0)
+        if( requisitos.size() > 0){
             mtdAgregarRequisitos();
             mtdCalcularMonto();
+        }
         
     }
 
@@ -265,11 +269,11 @@ public class CtrlGestionarRequisitos implements MouseListener{
     private void mtdAgregarRequisitos() {
         int tam = requisitos.size();
         for (int i = 0; i < tam; i++) {
-            mtdAgregarRequisito();
+            mtdRellenarRequisito();
         }
     }
 
-    private void mtdAgregarRequisito() {
+    private void mtdRellenarRequisito() {
         int fila = modeloTabla.getRowCount();
         modeloTabla.setNumRows( fila + 1 );
         
@@ -287,7 +291,8 @@ public class CtrlGestionarRequisitos implements MouseListener{
             cmpMonto += Double.parseDouble( laVista.tblRequisitos.getValueAt(i, 2).toString() );
         }
         
-        laVista.cmpMontoEstimado.setText("" + cmpMonto);
+        BigDecimal cmpMonto = new BigDecimal(this.cmpMonto).setScale(2, RoundingMode.HALF_EVEN);
+        laVista.cmpMontoEstimado.setText("" + cmpMonto.doubleValue());
     }
    
 }

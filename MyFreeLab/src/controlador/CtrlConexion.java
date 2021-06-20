@@ -109,6 +109,7 @@ public class CtrlConexion implements MouseListener{
                         MyFreeLabDao.mtdCrearTablaRequisitos();
                         MyFreeLabDao.mtdCrearTablaAsociados();
                         JOptionPane.showMessageDialog(null, "Base da datos construido...");
+                        CtrlHiloConexion.checkConexion();
                         
                     }else{
                         

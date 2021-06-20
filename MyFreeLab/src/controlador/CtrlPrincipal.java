@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -176,8 +174,8 @@ public class CtrlPrincipal implements ActionListener {
     }
     
     private void mtdDesHabSubMenus(boolean param){
-        laVista.menuArchivo.setEnabled(param);
-        laVista.menuAyuda.setEnabled(param);
+        //laVista.menuArchivo.setEnabled(param);
+        //laVista.menuAyuda.setEnabled(param);
         laVista.menuConfigurar.setEnabled(param);
         laVista.menuEditar.setEnabled(param);
     }
@@ -495,20 +493,26 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdCotizarProyecto(ProyectoDto proyecto) {
+        
+        try {
+            // Imprimir o mostrar el reporte generado
+            JasperPrint jp = mtdGenerarReporte(proyecto);
 
-        // Imprimir o mostrar el reporte generado
-        JasperPrint jp = mtdGenerarReporte(proyecto);
+            if (jp.getPages().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Lo siento, el reporte no tiene paginas que mostrar.");
 
-        if (jp.getPages().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Lo siento, el reporte no tiene paginas que mostrar.");
+            } else {
+                // Mostar el reporte de Cotización
+                JasperViewer jviewer = new JasperViewer(jp, false);
+                jviewer.setTitle("Cotizar : " + proyecto.getCmpNombre());
+                jviewer.setVisible(true);
+                //JasperViewer.viewReport(jp);
 
-        } else {
-            // Mostar el reporte de Cotización
-            JasperViewer jviewer = new JasperViewer(jp, false);
-            jviewer.setTitle("Cotizar : " + proyecto.getCmpNombre());
-            jviewer.setVisible(true);
-            //JasperViewer.viewReport(jp);
-
+            }
+        } catch (Exception e) {
+            // El archivo no existe
+            //System.out.println("" + e.getMessage());
+            CtrlPrincipal.mensajeCtrlPrincipal("Error al generar la cotización");
         }
 
     }
@@ -521,6 +525,7 @@ public class CtrlPrincipal implements ActionListener {
 
             Map<String, Object> parametros = new HashMap<String, Object>();
             parametros.put("SubReportDir", Source.docReporte.get("root_dir"));
+            parametros.put("rpCopyright", Info.Copyright );
             parametros.put("rpCostoEstimado", "" + proyecto.getCmpCostoEstimado());
             parametros.put("rpProyectoID", proyecto.getCmpID());
             parametros.put("rpNombreProyecto", proyecto.getCmpNombre());
@@ -531,7 +536,9 @@ public class CtrlPrincipal implements ActionListener {
             jp = JasperFillManager.fillReport(jr, parametros, CtrlHiloConexion.getConexion());
 
         } catch (JRException ex) {
-            Logger.getLogger(CtrlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            // Error en la base de datos
+            //Logger.getLogger(CtrlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            CtrlPrincipal.mensajeCtrlPrincipal("Error al generar la cotización");
         }
 
         return jp;

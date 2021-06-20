@@ -4,6 +4,7 @@ package src;
 public class Info {
     public static final String Autor = "ProgrammerAuditore";
     public static final String Anho = "2021";
+    public static final String Copyright = Info.Autor + " (c) " + Info.Anho;
     public static final String Descripcion = "Gestión de proyectos para freelancer.";
     public static final String Detalle = 
             "El programa sirve para poder crear, modificar, eliminar y registrar proyectos desarrollados para una empresa en particular." +"\n"+

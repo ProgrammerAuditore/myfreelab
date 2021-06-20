@@ -36,7 +36,7 @@ public class Splash extends javax.swing.JFrame {
         this.jPanelBackground1.setImgBackgroundIn_Ex(true);
         this.jPanelBackground1.setImgRutaInterno( Source.bkgSplash );
         this.etqAppNombre.setText(Info.NombreSoftware + "  ");
-        this.etqVendor.setText(Info.Autor + " (c) "+ Info.Anho + "  ");
+        this.etqVendor.setText(Info.Copyright + "  ");
         pack();
         revalidate();
         repaint();
