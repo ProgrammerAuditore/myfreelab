@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 
 # Add enviroment to MyFreeLab
 MYFREELAB_LIB="./usr/lib/myfreelab"
-MYFREELAB_JAR="./MyFreeLab-v0.9.3Alpha.jar"
+MYFREELAB_JAR="./MyFreeLab.jar"
 PATH=$PATH:$MYFREELAB_LIB/bin
 
 # Mostrar informacion (testing) 

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# PATH run MyFreeLab
+MFL_RUN=/opt/myfreelab/run.sh
+
+# PATH MyFreeLab BIN
+MFL_BIN=/usr/bin/myfreelab
+
+# Create MyFreeLab BIN
+if [ -f "$MFL_RUN" ]; then
+    cp $MFL_RUN $MFL_BIN
+    
+    # Remove run MyFreeLab
+    if [ -f "$MFL_BIN" ]; then
+            rm $MFL_RUN
+    fi
+    
+    echo "myfreelab bin created success"
+fi
+
+

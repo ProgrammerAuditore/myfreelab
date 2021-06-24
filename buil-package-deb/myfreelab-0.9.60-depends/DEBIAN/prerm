@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# PATH run MyFreeLab
+MFL_BIN=/usr/bin/myfreelab
+
+# Delete myfreelab BIN
+if [ -f "$MFL_BIN" ]; then
+    rm -f $MFL_BIN 
+    echo "myfreelab removed success"
+fi
