@@ -209,7 +209,7 @@ public class MyFreeLab {
     // * Mostrar mensaje de ayuda en la terminal
     public void mtdTagHelp(){
         System.out.println(Info.NombreSoftware);
-        System.out.println(Info.Autor);
+        System.out.println(Info.Avatar);
         System.out.println("");
         System.out.println("flags: ");
         

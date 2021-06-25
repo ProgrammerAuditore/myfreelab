@@ -2,7 +2,8 @@ package src;
 
 // Aquí se incluye la información del softwares
 public class Info {
-    public static final String Autor = "ProgrammerAuditore";
+    public static final String Autor = "Victor J. Maximo";
+    public static final String Avatar = "ProgrammerAuditore";
     public static final String Mantenedor = "<victorvj098@gmail.com>";
     public static final String Anho = "2021";
     public static final String Copyright = Info.Autor + " (c) " + Info.Anho;

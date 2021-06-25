@@ -65,6 +65,7 @@ public class CtrlAcercaDe implements MouseListener{
         acercaDe = acercaDe.replace("<Descripcion>", Info.Descripcion);
         acercaDe = acercaDe.replace("<Detalles>", Info.Detalle );
         acercaDe = acercaDe.replace("<Copyright>", Info.Copyright);
+        acercaDe = acercaDe.replace("<Avatar>", Info.Avatar);
         acercaDe = acercaDe.replace("<Mantenedor>", Info.Mantenedor);
         acercaDe = acercaDe.replace("<SitioWeb>", Info.Homepage);
         this.laVista.cmpDescripcion.setText(acercaDe);
