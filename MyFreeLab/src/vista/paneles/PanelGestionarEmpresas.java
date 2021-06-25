@@ -99,7 +99,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                 { new Integer(1), "Mario Molina", "Desconocido", "example@example.com", "000000000"}
             },
             new String [] {
-                "Id", "Nombre", "Direccion", "Correo", "Telefono"
+                "Id", "Nombre", "Dirección", "Correo", "Teléfono"
             }
         ) {
             Class[] types = new Class [] {

@@ -124,7 +124,7 @@ public class PanelConexion extends javax.swing.JPanel {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurar conexion"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Configurar conexión"));
 
         etqHost.setText("Introduzca el host");
 
@@ -263,7 +263,7 @@ public class PanelConexion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bkgAside, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(bkgAside, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

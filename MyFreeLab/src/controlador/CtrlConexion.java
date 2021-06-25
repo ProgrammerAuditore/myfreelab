@@ -110,12 +110,12 @@ public class CtrlConexion implements MouseListener{
                             MyFreeLabDao.mtdCrearTablaEmpresas();
                             MyFreeLabDao.mtdCrearTablaRequisitos();
                             MyFreeLabDao.mtdCrearTablaAsociados();
-                            JOptionPane.showMessageDialog(laVista, "Base da datos construido...");
+                            JOptionPane.showMessageDialog(laVista, "Base de datos construido...");
                             
                     }else{
                         
                         mtdCerrarConexion();
-                        JOptionPane.showMessageDialog(laVista, "Se cerro la conexion, tablas insuficientes.");
+                        JOptionPane.showMessageDialog(laVista, "Se cerro la conexión, tablas insuficientes.");
                     }
                     
                 }
@@ -135,7 +135,7 @@ public class CtrlConexion implements MouseListener{
                 + "* El servidor esté en estado de ejecución. \n"
                 + "* Que tenga acceso a la base de datos. \n"
                 + "* Que la base de datos capturado sea correcto y existente. \n"
-                + "* Aseguresé que la base de datos sea `utf8_general_ci`.");
+                + "* Asegúrese que la base de datos sea `utf8_general_ci`.");
             }
             
         }

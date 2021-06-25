@@ -188,7 +188,7 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
                 mtdDefinirEmpresasAsociados();
                 mtdReEstablecerEmpresas();
                 JOptionPane.showMessageDialog(laVista, "La empresa `" + vinculacion_dto.getCmpEmpNombre() + "` \n"
-                        + "fue desviculado al proyecto `" + vinculacion_dto.getCmpProNombre() + "` \n"
+                        + "fue desvinculado al proyecto `" + vinculacion_dto.getCmpProNombre() + "` \n"
                         + "exitosamente.");
             }
         } else

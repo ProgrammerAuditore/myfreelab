@@ -220,7 +220,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuEditar.add(btnGestionarEmpresas);
 
         btnVinculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/icono_pvinculacion.png"))); // NOI18N
-        btnVinculacion.setText("Vinculacion");
+        btnVinculacion.setText("Vinculación");
         menuEditar.add(btnVinculacion);
 
         menuBar.add(menuEditar);
@@ -228,7 +228,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuConfigurar.setText("Configurar");
 
         btnConexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/icono_cbasededatos.png"))); // NOI18N
-        btnConexion.setText("Conexion");
+        btnConexion.setText("Conexión");
         menuConfigurar.add(btnConexion);
 
         menuBar.add(menuConfigurar);

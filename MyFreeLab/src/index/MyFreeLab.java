@@ -223,7 +223,7 @@ public class MyFreeLab {
         System.out.println("Obtener ayuda del programa");
         
         System.out.println("");
-        System.out.println(Info.Homepage);
+        System.out.println(Info.SitioWeb);
    
     }
 

@@ -10,9 +10,9 @@ public class Info {
     public static final String Descripcion = "Gestión de proyectos para freelancer.";
     public static final String Detalle = 
             "El programa sirve para poder crear, modificar, eliminar y registrar proyectos desarrollados para una empresa en particular." +"\n"+
-            "Asi también, para poder generar una cotizacion para cada empresa en particular y calcular el costo del proyecto, , entre otras cosas." +"\n"+
-            "Tiene la funcionalidad de conexion a una base de datos MYSQL local o remoto para registrar los datos.";
-    public static final String Licencia="Licencia GPL.";
+            "Así también, para poder generar una cotización para cada empresa en particular y calcular el costo del proyecto, entre otras cosas." +"\n"+
+            "Tiene la funcionalidad de conexión a una base de datos MYSQL local o remoto para registrar los datos.";
+    public static final String Licencia="Todos los derechos reservados.";
     public static final String sNombre = "MyFreeLab";
     public static final String sVersionNum = "0960";
     public static final String sVersionName = "v0.9.60";
@@ -20,7 +20,7 @@ public class Info {
     public static final String NombreSoftware = sNombre + " " + sVersionName + sProduccion;
     public static final String Novedades = 
             "* Se creo un nuevo splash" + "\n" +
-            "* Se modifico el color de la barra de menu y estados" + "\n" +
+            "* Se modifico el color de la barra de menú y estados" + "\n" +
             "* Se modifico el diseño de las ventanas principales" + "\n" +
             "* Se modifico el diseño de la ventana principal" + "\n" +
             "* Se modifico el reporte de cotización" + "\n" +
@@ -30,13 +30,13 @@ public class Info {
             "~ solo para funciones principales en algunas ventanas" + "\n" +
             "* Se modifico el reporte de cotización" + "\n" +
             "* Se agrego nuevos componentes para capturar datos:" + "\n" +
-            "+ Componenten Teléfono de 10 dígitos" + "\n" +
-            "+ Componenten Datos Personales solo acepta caracteres" + "\n" +
-            "* Se elimino mensajes de estado en la barra de titulo" + "\n" +
-            "* Se corrigio bugs" + "\n" +
+            "+ Componente Teléfono de 10 dígitos" + "\n" +
+            "+ Componente Datos Personales solo acepta caracteres" + "\n" +
+            "* Se elimino mensajes de estado en la barra de título" + "\n" +
+            "* Se corrigió bugs" + "\n" +
             "* etc." + "\n";
     
-    public static final String Homepage = "https://programmerauditore.gitlab.io/myfreelab";
-    public static final String Helppage = "https://programmerauditore.gitlab.io/myfreelab/#/obtener-ayuda";
+    public static final String SitioWeb = "https://programmerauditore.gitlab.io/myfreelab";
+    public static final String PaginaAyuda = "https://programmerauditore.gitlab.io/myfreelab/#/obtener-ayuda";
     public static final String LinkVersiones = "https://download1335.mediafire.com/cdq3d07n1vpg/skes3twpi7tbrqq/MyFreeLab.mfl";
 }

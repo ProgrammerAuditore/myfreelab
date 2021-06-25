@@ -67,13 +67,13 @@ public class CtrlAcercaDe implements MouseListener{
         acercaDe = acercaDe.replace("<Copyright>", Info.Copyright);
         acercaDe = acercaDe.replace("<Avatar>", Info.Avatar);
         acercaDe = acercaDe.replace("<Mantenedor>", Info.Mantenedor);
-        acercaDe = acercaDe.replace("<SitioWeb>", Info.Homepage);
+        acercaDe = acercaDe.replace("<SitioWeb>", Info.SitioWeb);
         this.laVista.cmpDescripcion.setText(acercaDe);
         
     }
     
     private void mtdVisitarSitioWeb(){
-        String url = Info.Homepage;
+        String url = Info.SitioWeb;
 
         if(Desktop.isDesktopSupported()){
             Desktop desktop = Desktop.getDesktop();

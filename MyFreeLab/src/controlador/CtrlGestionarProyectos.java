@@ -114,7 +114,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
             if( !encontrado )
-            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpProyecto +"` no existe  .");
+            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpProyecto +"` no existe.");
             
         }
         
@@ -134,7 +134,7 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.cambiosModalGestionarProyectos = true;
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se creo exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se creó exitosamente.");
                 }
                 
             } else
@@ -164,7 +164,7 @@ public class CtrlGestionarProyectos implements MouseListener{
                         // * Notificar al controlador principal
                         CtrlPrincipal.cambiosModalGestionarProyectos = true;
                         mtdRellenarTabla();
-                        JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se modifico exitosamente.");
+                        JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se modificó exitosamente.");
                     }
 
                 }
@@ -193,7 +193,7 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.cambiosModalGestionarProyectos = true;
                     modeloTabla.removeRow(seleccionado);
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                 }
             }
             

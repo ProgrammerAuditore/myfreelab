@@ -1,7 +1,6 @@
 package controlador;
 
 import java.awt.Dialog;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
@@ -147,7 +146,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             }
             
             if( !resultado )
-            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpEmpresa +"` no existe  .");
+            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpEmpresa +"` no existe.");
             
         }
         
@@ -163,7 +162,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
                 
                 if( dao.mtdInsetar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "La empresa `"+ dto.getCmpNombre() +"` se creo exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "La empresa `"+ dto.getCmpNombre() +"` se creó exitosamente.");
                 }
                 
             }else 
@@ -188,7 +187,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdActualizar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se modifico exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se modificó exitosamente.");
                 }
             }
             
@@ -211,7 +210,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdEliminar(dto) ){
                     modeloTabla.removeRow(seleccionado);
-                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                 }
             }
             

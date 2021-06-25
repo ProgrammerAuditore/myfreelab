@@ -54,7 +54,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Establecer propiedades para la modal
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        modal.setTitle("Buscar actualizacion");
+        modal.setTitle("Buscar actualización");
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
@@ -133,7 +133,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             // * Actualizar el programa
             CtrlPrincipal.mensajeCtrlPrincipal("Nueva versión encontrada");
             // * Establecer informacion de la nueva version
-            laVista.etqVersionActual.setText("Nueva version");
+            laVista.etqVersionActual.setText("Nueva versión");
             laVista.cmpVersionActual.setText(doc.get("app_name_version"));
             laVista.cmpNovedades.setText(doc.get("app_novedades"));
 
@@ -141,7 +141,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             laVista.cmpNovedades.setBorder(new LineBorder(Color.green));
 
             int resp = JOptionPane.showConfirmDialog(laVista,
-                    "Existe una nueva version del programa\n¿Deseas descargarlo e instalarlo?",
+                    "Existe una nueva versión del programa\n¿Deseas descargarlo e instalarlo?",
                     "Descargar e instalar", JOptionPane.YES_NO_OPTION);
 
             if (resp == JOptionPane.YES_OPTION) {
@@ -269,7 +269,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
     private void mtdEstablecerDatosDelProgramaActual(){
         
         // * Cambiar estilo de los campos
-        laVista.etqVersionActual.setText("Version actualmente");
+        laVista.etqVersionActual.setText("Versión actualmente");
         laVista.cmpVersionActual.setBorder(null);
         laVista.cmpNovedades.setBorder(null);
         

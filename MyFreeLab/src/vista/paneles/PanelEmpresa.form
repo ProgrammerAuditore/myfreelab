@@ -132,11 +132,11 @@
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="cmbProyectos" alignment="0" max="32767" attributes="0"/>
                                   <Component id="cmpCorreo" max="32767" attributes="0"/>
-                                  <Component id="etqCEO" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmpCEO" alignment="0" pref="260" max="32767" attributes="0"/>
-                                  <Component id="etqCorreo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etqNombreEmpresa" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmpNombreEmpresa" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="etqCEO" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="etqNombreEmpresa" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="etqCorreo" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <Component id="etqAsociarEmpresa" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>

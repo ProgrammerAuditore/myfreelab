@@ -190,7 +190,7 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdHabilitarMenus() {
         //laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion]");
-        CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexion");
+        CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexión");
         
         // * Obtener y Crear tarjetas de presentacion para todos los proyecto creados
         mtdRellenarContenedor();
@@ -200,12 +200,12 @@ public class CtrlPrincipal implements ActionListener {
         laVista.menuEditar.setEnabled(true);
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
-        CtrlPrincipal.mensajeCtrlPrincipal("conexion establecida");
+        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
     }
 
     private void mtdDesHabilitarMenus() {
         //laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion]");
-        CtrlPrincipal.mensajeCtrlPrincipal("Cerrando conexion");
+        CtrlPrincipal.mensajeCtrlPrincipal("Cerrando conexión");
         
         // * Vaciar y Borrar tarjetas de presentacion para todos los proyecto creados
         proyectos.clear();
@@ -220,7 +220,7 @@ public class CtrlPrincipal implements ActionListener {
         mtdMensaje("Sin conexión a la base de datos.");
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion cerrada]");
-        CtrlPrincipal.mensajeCtrlPrincipal("conexion cerrada");
+        CtrlPrincipal.mensajeCtrlPrincipal("conexión cerrada");
     }
 
     private void mtdAbriendoPrograma() {
@@ -276,7 +276,7 @@ public class CtrlPrincipal implements ActionListener {
     }
     
     private void mtdObtenerAyuda(){
-        String url = Info.Helppage;
+        String url = Info.PaginaAyuda;
 
         if(Desktop.isDesktopSupported()){
             Desktop desktop = Desktop.getDesktop();
@@ -307,8 +307,8 @@ public class CtrlPrincipal implements ActionListener {
 
             if( CtrlHiloConexion.checkConexion() ){
                 //laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion, espere por favor...]");
-                CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexion, espere por favor...");
-                mtdMensaje("Estableciendo conexion, espere por favor...");
+                CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexión, espere por favor...");
+                mtdMensaje("Estableciendo conexión, espere por favor...");
                 
                 if( CtrlHiloConexion.ctrlEstado == true ){
                     mtdHabilitarMenus();
@@ -316,8 +316,8 @@ public class CtrlPrincipal implements ActionListener {
                 
             } else {
                 //laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion, espere por favor...]");
-                CtrlPrincipal.mensajeCtrlPrincipal("Cerrando conexion, espere por favor...");
-                mtdMensaje("Cerrando conexion, espere por favor...");
+                CtrlPrincipal.mensajeCtrlPrincipal("Cerrando conexión, espere por favor...");
+                mtdMensaje("Cerrando conexión, espere por favor...");
                 
                 if( CtrlHiloConexion.ctrlEstado == false ){
                     mtdDesHabilitarMenus();
@@ -528,7 +528,7 @@ public class CtrlPrincipal implements ActionListener {
         }
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
-        CtrlPrincipal.mensajeCtrlPrincipal("conexion establecida");
+        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
     }
 
     private void mtdCotizarProyecto(ProyectoDto proyecto) {
@@ -538,7 +538,7 @@ public class CtrlPrincipal implements ActionListener {
             JasperPrint jp = mtdGenerarReporte(proyecto);
 
             if (jp.getPages().isEmpty()) {
-                JOptionPane.showMessageDialog(laVista, "Lo siento, el reporte no tiene paginas que mostrar.");
+                JOptionPane.showMessageDialog(laVista, "Lo siento, el reporte no tiene páginas que mostrar.");
 
             } else {
                 // Mostar el reporte de Cotización
@@ -597,7 +597,7 @@ public class CtrlPrincipal implements ActionListener {
 
             if (opc == JOptionPane.YES_OPTION) {
                 if (pro.mtdEliminar(dto)) {
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                     mtdRellenarContenedor();
                 }
             }

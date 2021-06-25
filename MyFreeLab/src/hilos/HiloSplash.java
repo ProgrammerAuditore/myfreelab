@@ -54,7 +54,7 @@ public class HiloSplash extends Thread{
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga
-            splash.etqMensaje.setText("Cargando datos de conexion ...");
+            splash.etqMensaje.setText("Cargando datos de conexión ...");
             try {
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
@@ -85,16 +85,16 @@ public class HiloSplash extends Thread{
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga
-            splash.etqMensaje.setText("Estableciendo conexion ...");
+            splash.etqMensaje.setText("Estableciendo conexión ...");
             try {
                 Thread.sleep( avance * pause );
             } catch (Exception e) {}
             
             // Proceso de carga
             if(CtrlHiloConexion.mtdEstablecer())
-                splash.etqMensaje.setText("Conexion establecienda.");
+                splash.etqMensaje.setText("Conexión establecienda.");
             else
-                splash.etqMensaje.setText("Conexion no establecida.");
+                splash.etqMensaje.setText("Conexión no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -122,7 +122,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Base de datos creado.");
             } else
-            splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexión no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -151,7 +151,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Tabla datos personales creado.");
             } else
-            splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexión no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -179,7 +179,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Tabla proyectos creado.");
             } else
-            splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexión no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -207,7 +207,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Tabla empresas creado.");
             } else
-            splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexión no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -235,7 +235,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Tabla requisitos creado.");
             } else
-            splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexión no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);
@@ -263,7 +263,7 @@ public class HiloSplash extends Thread{
                 else
                     splash.etqMensaje.setText("Tabla asociados creado.");
             } else
-            splash.etqMensaje.setText("Conexion no establecida.");
+            splash.etqMensaje.setText("Conexión no establecida.");
             
             avance += (100 / src);
             splash.pbProgreso.setValue(avance);

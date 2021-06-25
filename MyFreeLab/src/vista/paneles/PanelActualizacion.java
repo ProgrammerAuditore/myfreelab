@@ -44,7 +44,7 @@ public class PanelActualizacion extends javax.swing.JPanel {
         cmpVersionActual = new vista.componentes.campos.CampoTexto();
         btnBuscar = new vista.componentes.boton.Boton();
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizacion"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualización"));
 
         etqNovedades.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqNovedades.setText("Novedades");
@@ -56,10 +56,11 @@ public class PanelActualizacion extends javax.swing.JPanel {
         jScrollPane1.setViewportView(cmpNovedades);
 
         etqVersionActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etqVersionActual.setText("Version actualmente");
+        etqVersionActual.setText("Versión actualmente");
 
         cmpVersionActual.setEditable(false);
         cmpVersionActual.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cmpVersionActual.setText("");
         cmpVersionActual.setComponenteDidireccional(etqVersionActual);
         cmpVersionActual.setFocusable(false);
 
@@ -93,7 +94,7 @@ public class PanelActualizacion extends javax.swing.JPanel {
         );
 
         btnBuscar.setImgButtonType("info");
-        btnBuscar.setTexto("Buscar actualizacion");
+        btnBuscar.setTexto("Buscar actualización");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

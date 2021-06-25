@@ -1,7 +1,6 @@
 package controlador;
 
 import java.awt.Dialog;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
@@ -189,7 +188,7 @@ public class CtrlDatosPersonales implements MouseListener{
         
         if( laVista.cmpCorreo.getText().trim().length() >= 60 ){
             gAceptado = false;
-            msg += "* Campo corréo \n";
+            msg += "* Campo correo \n";
         }
         
         if( !gAceptado ){

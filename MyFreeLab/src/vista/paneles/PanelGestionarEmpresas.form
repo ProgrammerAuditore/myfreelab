@@ -208,13 +208,13 @@
                     <Column editable="true" title="Nombre" type="java.lang.String">
                       <Data value="Mario Molina"/>
                     </Column>
-                    <Column editable="true" title="Direccion" type="java.lang.String">
+                    <Column editable="true" title="Direcci&#xf3;n" type="java.lang.String">
                       <Data value="Desconocido"/>
                     </Column>
                     <Column editable="true" title="Correo" type="java.lang.String">
                       <Data value="example@example.com"/>
                     </Column>
-                    <Column editable="true" title="Telefono" type="java.lang.String">
+                    <Column editable="true" title="Tel&#xe9;fono" type="java.lang.String">
                       <Data value="000000000"/>
                     </Column>
                   </Table>

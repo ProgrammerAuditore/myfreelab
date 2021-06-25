@@ -1,7 +1,6 @@
 package controlador;
 
 import java.awt.Dialog;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
@@ -137,7 +136,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
                 
                 if( dao.mtdInsetar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre() + "` se agrego exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre() + "` se agregó exitosamente.");
                 }
                 
             }else
@@ -161,7 +160,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdActualizar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se modifico exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se modificó exitosamente.");
                 }
             }
             
@@ -185,7 +184,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
                 if( dao.mtdEliminar(dto) ){
                     modeloTabla.removeRow(seleccionado);
                     mtdCalcularMonto();
-                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se eliminó exitosamente.");
                 }
             }
             
