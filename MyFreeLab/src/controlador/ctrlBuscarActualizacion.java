@@ -107,7 +107,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         // Verificar el sistema operativo
         path += Source.OsWin ? "" : "/" ;
         path += "myfreelab-" + Source.timeTmp + ".mfl";
-        String url = "https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/MyFreeLab.mfl?inline=false";
+        String url = Info.LinkVersiones;
         File archivo = new File(path);
         objDocXml.setArchivoXml(archivo);
         objDocXml.setPath_archivo(path);
@@ -140,7 +140,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             laVista.cmpVersionActual.setBorder(new LineBorder(Color.green));
             laVista.cmpNovedades.setBorder(new LineBorder(Color.green));
 
-            int resp = JOptionPane.showConfirmDialog(null,
+            int resp = JOptionPane.showConfirmDialog(laVista,
                     "Existe una nueva version del programa\n¿Deseas descargarlo e instalarlo?",
                     "Descargar e instalar", JOptionPane.YES_NO_OPTION);
 
@@ -163,7 +163,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Verificar si la version es identico
         } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
-            JOptionPane.showMessageDialog(null, Info.NombreSoftware + " es la última versión.");
+            JOptionPane.showMessageDialog(laVista, Info.NombreSoftware + " es la última versión.");
         }
     }
     
@@ -194,11 +194,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
                 Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            JOptionPane.showMessageDialog(null, "Instalador ejecutado");
+            JOptionPane.showMessageDialog(laVista, "Instalador ejecutado");
             System.exit(0);
             return true;
         } else{
-            JOptionPane.showMessageDialog(null, "Fallo la instalación");
+            JOptionPane.showMessageDialog(laVista, "Fallo la instalación");
         }
         
         return false;
@@ -231,11 +231,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
             } catch (IOException ex) {}
 
-            JOptionPane.showMessageDialog(null, "Paquete de instalación ejecutado");
+            JOptionPane.showMessageDialog(laVista, "Paquete de instalación ejecutado");
             System.exit(0);
             return true;
         } else{
-            JOptionPane.showMessageDialog(null, "Fallo la instalación");
+            JOptionPane.showMessageDialog(laVista, "Fallo la instalación");
         }
         
         return false;
@@ -295,7 +295,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         } else if ( comandoLinux.contains("gdebi") ){        
             return "gdebi";
         } else {
-            JOptionPane.showMessageDialog(null, "Instalador de paquetes no encontrado.");
+            JOptionPane.showMessageDialog(laVista, "Instalador de paquetes no encontrado.");
             return "echo";
         }
         

@@ -37,4 +37,5 @@ public class Info {
     
     public static final String Homepage = "https://programmerauditore.gitlab.io/myfreelab";
     public static final String Helppage = "https://programmerauditore.gitlab.io/myfreelab/#/obtener-ayuda";
+    public static final String LinkVersiones = "https://download1335.mediafire.com/cdq3d07n1vpg/skes3twpi7tbrqq/MyFreeLab.mfl";
 }
