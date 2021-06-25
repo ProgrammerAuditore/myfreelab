@@ -116,8 +116,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             if( !encontrado )
             JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpProyecto +"` no existe  .");
             
-        } else 
-        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        }
         
     }
     
@@ -141,8 +140,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             } else
             JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` ya existe.");
             
-        } else 
-        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        }
         
     }
     
@@ -255,9 +253,10 @@ public class CtrlGestionarProyectos implements MouseListener{
         String cmp = laVista.cmpProyecto.getText().trim();
 
         if( laVista.cmpProyecto.isAprobado() == false || cmp.isEmpty() ){
+            JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
             return false;
-        } else if( cmp.length() > 20 ) {
-            JOptionPane.showMessageDialog(null, "El campo tiene que ser menor a 20 caracteres.");
+        } else if( cmp.length() > 30 ) {
+            JOptionPane.showMessageDialog(null, "El campo tiene que ser menor a 30 caracteres.");
             return false;
         }
         

@@ -121,14 +121,13 @@ public class CtrlGestionarRequisitos implements MouseListener{
             if( !encontrado )
             JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpRequisito +"` no existe.");
             
-        } else 
-        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        }
         
     }
     
     private void mtdCrearRequisito(){
      
-        if( mtdValidarCampoCosto() && mtdValidarCampoRequisito() ){
+        if( mtdValidarCampoRequisito() && mtdValidarCampoCosto() ){
             dto.setCmpProID( proyecto_dto.getCmpID() );
             dto.setCmpNombre( cmpRequisito );
             BigDecimal campoCosto =  new BigDecimal(cmpCosto).setScale(2, RoundingMode.HALF_EVEN);
@@ -144,8 +143,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
             }else
             JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre() + "` ya existe.");   
 
-        }else 
-        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        }
         
     }
     
@@ -210,9 +208,10 @@ public class CtrlGestionarRequisitos implements MouseListener{
         String campo = laVista.cmpRequisito.getText();
         
         if( campo.isEmpty() || !laVista.cmpRequisito.isAprobado() ){
+            JOptionPane.showMessageDialog(null, "Verifica que el campo requisito sea un dato valido.");
             return false;
-        }else if ( campo.length() > 20 ){
-            JOptionPane.showMessageDialog(null, "El campo debe ser menor a 20 caracteres.");
+        }else if ( campo.length() > 30 ){
+            JOptionPane.showMessageDialog(null, "El campo debe ser menor a 30 caracteres.");
             return false;
         }
         
@@ -225,6 +224,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
         String campo = laVista.cmpCosto.getText();
         
         if( campo.isEmpty() || !laVista.cmpCosto.isAprobado() ){
+            JOptionPane.showMessageDialog(null, "Verifica que el campo costo sea un dato valido.");
             return false;
         } else if( campo.equals("0") || campo.equals("0.0") ){
             JOptionPane.showMessageDialog(null, "El campo debe tener un costo mayor a 0.");

@@ -149,8 +149,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             if( !resultado )
             JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpEmpresa +"` no existe  .");
             
-        } else 
-        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        }
         
     }
     
@@ -170,8 +169,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             }else 
             JOptionPane.showMessageDialog(null,  "La empresa `"+ dto.getCmpNombre() +"` ya existe.");
             
-        } else
-        JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+        }
         
     }
     
@@ -194,8 +192,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
                 }
             }
             
-        }else
-        JOptionPane.showMessageDialog(null, "Selecciona una fila para modificar una empresa.");
+        }
         
     }
     
@@ -218,9 +215,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
                 }
             }
             
-        }else
-        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar una empresa.");
-        
+        }
         
     }
     
@@ -240,9 +235,10 @@ public class CtrlGestionarEmpresas implements MouseListener {
         String campo = laVista.cmpEmpresa.getText().trim();
         
         if( campo.isEmpty() || !laVista.cmpEmpresa.isAprobado() ){
+            JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
             return false;
-        } else if( campo.length() > 20 ){
-            JOptionPane.showMessageDialog(null, "El campo debe ser menor a 20 caracteres.");
+        } else if( campo.length() > 30 ){
+            JOptionPane.showMessageDialog(null, "El campo debe ser menor a 30 caracteres.");
             return false;
         }
         
