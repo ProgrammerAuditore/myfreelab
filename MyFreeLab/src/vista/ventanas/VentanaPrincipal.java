@@ -81,7 +81,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuConfigurar = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
         menuAyuda = new javax.swing.JMenu();
-        btnComoUsar = new javax.swing.JMenuItem();
+        btnObtenerAyuda = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         btnActualizarPrograma = new javax.swing.JMenuItem();
         btnAcercaDe = new javax.swing.JMenuItem();
@@ -235,8 +235,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuAyuda.setText("Ayuda");
 
-        btnComoUsar.setText("Como usar");
-        menuAyuda.add(btnComoUsar);
+        btnObtenerAyuda.setText("Obtener ayuda");
+        menuAyuda.add(btnObtenerAyuda);
         menuAyuda.add(jSeparator1);
 
         btnActualizarPrograma.setText("Buscar actualizacion");
@@ -333,11 +333,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenuItem btnAcercaDe;
     public javax.swing.JMenuItem btnActualizarPrograma;
-    public javax.swing.JMenuItem btnComoUsar;
     public javax.swing.JMenuItem btnConexion;
     public javax.swing.JMenuItem btnDatosPersonales;
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
+    public javax.swing.JMenuItem btnObtenerAyuda;
     public javax.swing.JMenuItem btnSalir;
     public javax.swing.JMenuItem btnVinculacion;
     public vista.componentes.campos.CampoTexto cmpBusqueda;

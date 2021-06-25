@@ -98,7 +98,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.btnVinculacion.addActionListener(this);
         laVista.btnAcercaDe.addActionListener(this);
         laVista.btnActualizarPrograma.addActionListener(this);
-        laVista.btnComoUsar.addActionListener(this);
+        laVista.btnObtenerAyuda.addActionListener(this);
 
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -176,7 +176,7 @@ public class CtrlPrincipal implements ActionListener {
         if (e.getSource() == laVista.btnActualizarPrograma )
             fabrica.construir("BuscarActualizacion");
         
-        if( e.getSource() == laVista.btnComoUsar )
+        if( e.getSource() == laVista.btnObtenerAyuda )
             mtdObtenerAyuda();
  
     }

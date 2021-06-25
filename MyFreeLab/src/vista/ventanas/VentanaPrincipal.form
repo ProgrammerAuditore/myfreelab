@@ -117,9 +117,9 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="btnComoUsar">
+            <MenuItem class="javax.swing.JMenuItem" name="btnObtenerAyuda">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Como usar"/>
+                <Property name="text" type="java.lang.String" value="Obtener ayuda"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
