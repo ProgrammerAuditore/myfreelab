@@ -1,17 +1,13 @@
 package controlador;
 
-import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dialog;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollBar;
-import javax.swing.border.LineBorder;
 import src.Info;
 import vista.paneles.PanelAcercaDe;
 
@@ -26,57 +22,18 @@ public class CtrlAcercaDe implements MouseListener{
         
         // Definir oyentes
         laVista.btnAceptar.addMouseListener(this);
+        laVista.etqLink.addMouseListener(this);
         
     }
     
     public void mtdInit(){
-        
-        modal.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        mtdEstablecerDatos();
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle("Acerca de");
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
         modal.setContentPane(laVista);
-        
-        // Establecer evento para activar boton al leer la licencia
-        laVista.contendor_licencia.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener(){ 
-            @Override
-            public void adjustmentValueChanged(AdjustmentEvent e) {
-                // Check if user has done dragging the scroll bar
-                if(!e.getValueIsAdjusting()){
-                    JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
-                    int extent = scrollBar.getModel().getExtent();
-                    int maximum = scrollBar.getModel().getMaximum();
-                    if(extent + e.getValue() == maximum){
-                        laVista.contendor_licencia.setBorder(new LineBorder(Color.GREEN, 1));
-                        laVista.btnAceptar.setEnabled(true);
-                    }else{
-                        laVista.contendor_licencia.setBorder(new LineBorder(Color.RED, 1));
-                        laVista.btnAceptar.setEnabled(false);
-                    }
-                }
-            }
-        });
-        
-        modal.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-                
-                Runnable mostarMensaje = () -> {
-                    
-                    try { Thread.sleep(450); } catch (InterruptedException ex) {}
-                    JOptionPane.showMessageDialog(laVista, "Leé la licencia " + Info.NombreSoftware);
-                    
-                };
-                
-                Thread HiloMostrarMensaje =  new Thread(mostarMensaje);
-                HiloMostrarMensaje.setName("HiloMostrarMensaje");
-                HiloMostrarMensaje.setPriority(9);
-                HiloMostrarMensaje.run();
-            }
-            
-        });
 
     }
     
@@ -87,12 +44,53 @@ public class CtrlAcercaDe implements MouseListener{
             if( laVista.btnAceptar.isEnabled() )
                 mtdBtnAceptar();
         
+        if( e.getSource() == laVista.etqLink )
+            mtdVisitarSitioWeb();
+        
     }
     
     private void mtdBtnAceptar(){
         // * Cerrar el modal
         modal.setVisible(false);
         modal.dispose();
+    }
+    
+    private void mtdEstablecerDatos(){
+        this.laVista.etqTitulo.setText( Info.NombreSoftware );
+        
+        this.laVista.cmpDescripcion.setLineWrap(true);
+        this.laVista.cmpDescripcion.setEditable(false);
+        
+        String acercaDe = this.laVista.cmpDescripcion.getText();
+        acercaDe = acercaDe.replace("<Descripcion>", Info.Descripcion);
+        acercaDe = acercaDe.replace("<Detalles>", Info.Detalle );
+        acercaDe = acercaDe.replace("<Copyright>", Info.Copyright);
+        acercaDe = acercaDe.replace("<Mantenedor>", Info.Mantenedor);
+        acercaDe = acercaDe.replace("<SitioWeb>", Info.Homepage);
+        this.laVista.cmpDescripcion.setText(acercaDe);
+        
+    }
+    
+    private void mtdVisitarSitioWeb(){
+        String url = Info.Homepage;
+
+        if(Desktop.isDesktopSupported()){
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(url));
+            } catch (IOException | URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }else{
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("xdg-open " + url);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
     
     @Override

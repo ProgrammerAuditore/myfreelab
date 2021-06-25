@@ -27,21 +27,6 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         Dimension tamahno = new Dimension(Source.tamDialogInfo);
         setSize(tamahno);
         setPreferredSize(tamahno);
-        btnAceptar.setEnabled(false);
-        
-        // Establecer información para la licencia
-        String licencia = cmpLicencia.getText();
-        etqSoftware.setText( Info.NombreSoftware );
-        etqLicencia.setText( Info.Licencia );
-        msgAutor.setText( Info.Autor );
-        licencia = licencia.replace("<name of author>", Info.Autor );
-        licencia = licencia.replace("<name of program>", Info.sNombre );
-        licencia = licencia.replace("<version of program>", Info.sVersionName + Info.sProduccion );
-        licencia = licencia.replace("<year>", Info.Anho );
-        licencia = licencia.replace("<description>", Info.Descripcion );
-        licencia = licencia.replace("<details>", Info.Detalle);
-        cmpLicencia.setText(licencia);
-        cmpLicencia.setCaretPosition(0);
     
     }
 
@@ -55,11 +40,12 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     private void initComponents() {
 
         btnAceptar = new vista.componentes.boton.Boton();
-        contendor_licencia = new javax.swing.JScrollPane();
-        cmpLicencia = new javax.swing.JTextArea();
-        etqSoftware = new vista.componentes.etiqueta.Etiqueta();
-        etqLicencia = new vista.componentes.etiqueta.Enlace();
-        msgAutor = new vista.componentes.etiqueta.Mensaje();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cmpDescripcion = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        etqTitulo = new vista.componentes.etiqueta.Etiqueta();
+        etqLink = new vista.componentes.etiqueta.Enlace();
 
         btnAceptar.setImgButtonType("danger");
         btnAceptar.setTexto("Aceptar");
@@ -69,53 +55,76 @@ public class PanelAcercaDe extends javax.swing.JPanel {
             }
         });
 
-        cmpLicencia.setEditable(false);
-        cmpLicencia.setColumns(20);
-        cmpLicencia.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
-        cmpLicencia.setLineWrap(true);
-        cmpLicencia.setRows(5);
-        cmpLicencia.setText("Copyright (C) <year>  <name of author>\n\n<name of program> <version of program>\n\n<description>\n<details>\n\nEste programa es software libre: puede redistribuirlo y/o modificarlo bajo los términos de la \nLicencia General Pública de GNU publicada por la Free Software Foundation, \nya sea la versión 3 de la Licencia, o (a su elección) cualquier versión posterior.\n\nEste programa se distribuye con la esperanza de que sea útil pero SIN\nNINGUNA GARANTÍA; incluso sin la garantía implícita de MERCANTIBILIDAD o\nCALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública\nde GNU para más detalles.\n\nUsted ha debido de recibir una copia de la Licencia General Pública\nde GNU junto con este programa. Si no, vea <http://www.gnu.org/licenses/>.");
-        cmpLicencia.setWrapStyleWord(true);
-        cmpLicencia.setCaretPosition(0);
-        cmpLicencia.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        contendor_licencia.setViewportView(cmpLicencia);
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Acerca de"));
+
+        cmpDescripcion.setColumns(20);
+        cmpDescripcion.setLineWrap(true);
+        cmpDescripcion.setRows(5);
+        cmpDescripcion.setText("<Descripcion>\n\n<Detalles>\n\n<Copyright>\n<Mantenedor>\n");
+        jScrollPane1.setViewportView(cmpDescripcion);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/apple-icon-60x60.png"))); // NOI18N
+
+        etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etqTitulo.setText("MyFreeLab vx.x.x");
+
+        etqLink.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etqLink.setText("Sitio web");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etqSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(msgAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 247, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contendor_licencia)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 172, Short.MAX_VALUE)
-                                .addComponent(etqLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)))
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(118, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(194, 194, 194))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(etqLink, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69)))
+                        .addGap(109, 109, 109))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etqSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(msgAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(etqLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(etqLink, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contendor_licencia, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -129,10 +138,11 @@ public class PanelAcercaDe extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public vista.componentes.boton.Boton btnAceptar;
-    public javax.swing.JTextArea cmpLicencia;
-    public javax.swing.JScrollPane contendor_licencia;
-    private vista.componentes.etiqueta.Enlace etqLicencia;
-    private vista.componentes.etiqueta.Etiqueta etqSoftware;
-    private vista.componentes.etiqueta.Mensaje msgAutor;
+    public javax.swing.JTextArea cmpDescripcion;
+    public vista.componentes.etiqueta.Enlace etqLink;
+    public vista.componentes.etiqueta.Etiqueta etqTitulo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

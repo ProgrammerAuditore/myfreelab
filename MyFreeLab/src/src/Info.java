@@ -3,6 +3,7 @@ package src;
 // Aquí se incluye la información del softwares
 public class Info {
     public static final String Autor = "ProgrammerAuditore";
+    public static final String Mantenedor = "<victorvj098@gmail.com>";
     public static final String Anho = "2021";
     public static final String Copyright = Info.Autor + " (c) " + Info.Anho;
     public static final String Descripcion = "Gestión de proyectos para freelancer.";
@@ -34,5 +35,5 @@ public class Info {
             "* Se corrigio bugs" + "\n" +
             "* etc." + "\n";
     
-    public static final String Homepage = "https://www.myfreelab.com";
+    public static final String Homepage = "https://programmerauditore.gitlab.io/myfreelab";
 }
