@@ -134,7 +134,7 @@ public class CtrlPrincipal implements ActionListener {
                             mtdDesHabilitarMenus();
                         }
                     } else
-                    mtdPintarFiltroProyectos( laVista.cmpBusqueda.getText() );
+                        mtdPintarFiltroProyectos( laVista.cmpBusqueda.getText() );
                     
                 }
             }            
@@ -310,10 +310,18 @@ public class CtrlPrincipal implements ActionListener {
                 CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexion, espere por favor...");
                 mtdMensaje("Estableciendo conexion, espere por favor...");
                 
+                if( CtrlHiloConexion.ctrlEstado == true ){
+                    mtdHabilitarMenus();
+                }
+                
             } else {
                 //laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion, espere por favor...]");
                 CtrlPrincipal.mensajeCtrlPrincipal("Cerrando conexion, espere por favor...");
                 mtdMensaje("Cerrando conexion, espere por favor...");
+                
+                if( CtrlHiloConexion.ctrlEstado == false ){
+                    mtdDesHabilitarMenus();
+                }
             
             }
         }
@@ -369,7 +377,7 @@ public class CtrlPrincipal implements ActionListener {
         }; 
 
         Thread HiloDesconexion = new Thread(watcher);
-        HiloDesconexion.setName("HiloDesconexion");
+        HiloDesconexion.setName("HiloDesconexionPrincipal");
         HiloDesconexion.setPriority(9);
         //HiloDesconexion.setDaemon(true);
         HiloDesconexion.start();
@@ -401,7 +409,7 @@ public class CtrlPrincipal implements ActionListener {
         };
 
         Thread HiloConexion = new Thread(watcher);
-        HiloConexion.setName("HiloConexion");
+        HiloConexion.setName("HiloConexionPrincipal");
         HiloConexion.setPriority(9);
         //HiloConexion.setDaemon(true);
         HiloConexion.start();
@@ -505,6 +513,7 @@ public class CtrlPrincipal implements ActionListener {
             laVista.pnlContenedor.add(tarjeta_proyecto, c);
             tarjetas.add(tarjeta_proyecto);
             
+            // * Mostrar progreso con puntos
             if( i%4 == 0 ){
                 //laVista.setTitle(Info.NombreSoftware);
                 puntos = "";
@@ -603,7 +612,8 @@ public class CtrlPrincipal implements ActionListener {
         int itemFila =0;
         
         if( tarjetas.size() > 0 ){
-            CtrlPrincipal.mensajeCtrlPrincipal(tarjetas.size() + " resultados para `" + nombreProyecto + "`");
+            
+            // * Pintar tarjetas de presentación
             for (PanelCard tarjeta : tarjetas) {
 
                 //System.out.println("Tarjeta : "  + tarjeta.etqTitulo.getText());
@@ -620,6 +630,8 @@ public class CtrlPrincipal implements ActionListener {
                 itemFila++;
                 
             }
+            
+            CtrlPrincipal.mensajeCtrlPrincipal(tarjetas.size() + " resultados para `" + nombreProyecto + "`");
         } else {
             mtdMensaje("No hay resultados para `" + nombreProyecto + "`");
         }

@@ -25,9 +25,9 @@ public class ObjConexion {
             conn = DriverManager.getConnection(dm, datos.getUsuario(), datos.getPass());
             
         } catch (SQLException ex) {
-            throw new SQLException(ex);
+            //throw new SQLException(ex);
         } catch (ClassNotFoundException ex) {
-            throw new ClassCastException(ex.getMessage());
+            //throw new ClassCastException(ex.getMessage());
         }
             
     }

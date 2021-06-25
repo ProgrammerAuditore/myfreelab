@@ -98,23 +98,24 @@ public class CtrlConexion implements MouseListener{
             CtrlHiloConexion.ctrlDatos = dto;
             if(CtrlHiloConexion.mtdEstablecer()){
                 if( !MyFreeLabDao.mtdChecarTablas() ){  
-                    int opc = JOptionPane.showConfirmDialog(null,"Se detecto que la base de datos\n"
+                    int opc = JOptionPane.showConfirmDialog(laVista,"Se detecto que la base de datos\n"
                             + "No cuenta con las tablas necesarios\n"
                             + "¿Deseas crearlos?", "Construyendo base de datos", JOptionPane.YES_OPTION);
                     
                     if( JOptionPane.YES_OPTION == opc ){
-                        MyFreeLabDao.mtdCrearTablaDatosPersonales();
-                        MyFreeLabDao.mtdCrearTablaProyectos();
-                        MyFreeLabDao.mtdCrearTablaEmpresas();
-                        MyFreeLabDao.mtdCrearTablaRequisitos();
-                        MyFreeLabDao.mtdCrearTablaAsociados();
-                        JOptionPane.showMessageDialog(null, "Base da datos construido...");
-                        CtrlHiloConexion.checkConexion();
-                        
+                            // * Creando tablas en la base de datos
+                            // El orden es importante...
+                            MyFreeLabDao.mtdCrearTablaDatosPersonales();
+                            MyFreeLabDao.mtdCrearTablaProyectos();
+                            MyFreeLabDao.mtdCrearTablaEmpresas();
+                            MyFreeLabDao.mtdCrearTablaRequisitos();
+                            MyFreeLabDao.mtdCrearTablaAsociados();
+                            JOptionPane.showMessageDialog(laVista, "Base da datos construido...");
+                            
                     }else{
                         
                         mtdCerrarConexion();
-                        JOptionPane.showMessageDialog(null, "Se cerro la conexion, tablas insuficientes.");
+                        JOptionPane.showMessageDialog(laVista, "Se cerro la conexion, tablas insuficientes.");
                     }
                     
                 }
@@ -126,9 +127,17 @@ public class CtrlConexion implements MouseListener{
                 }
                 
                 
-            }else 
-                JOptionPane.showMessageDialog(null, "Conexion no establecida\n"
-                + "Por favor, verifique los datos y el servidor en estado de ejecución.");
+            }else{ 
+                // * Error al establecer la conexión
+                JOptionPane.showMessageDialog(laVista, "Fallo al establecer la conexión.\n"
+                + "Posibles errores, por favor de verificar lo siguiente:\n"
+                + "* Los datos capturados sean correctos. \n"
+                + "* El servidor esté en estado de ejecución. \n"
+                + "* Que tenga acceso a la base de datos. \n"
+                + "* Que la base de datos capturado sea correcto y existente. \n"
+                + "* Aseguresé que la base de datos sea `utf8_general_ci`.");
+            }
+            
         }
         
     }
@@ -155,10 +164,10 @@ public class CtrlConexion implements MouseListener{
             laVista.cmpDatabase.isAprobado() ){
             
             // Obtener todo los dto validados
-            dto.setDatabase( laVista.cmpDatabase.getText() );
-            dto.setHost( laVista.cmpHost.getText() );
-            dto.setPuerto( laVista.cmpPuerto.getText() );
-            dto.setUsuario( laVista.cmpUsuario.getText() );
+            dto.setDatabase( laVista.cmpDatabase.getText().trim() );
+            dto.setHost( laVista.cmpHost.getText().trim() );
+            dto.setPuerto( laVista.cmpPuerto.getText().trim() );
+            dto.setUsuario( laVista.cmpUsuario.getText().trim() );
             
             if( laVista.cmpNull.isSelected() ){
                 dto.setPass("");

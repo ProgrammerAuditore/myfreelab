@@ -76,7 +76,7 @@ public class MyFreeLabDao{
                sql += " cmpApellidos varchar(30) null default 'Desconocido',";
                sql += " cmpDireccion varchar(60) null default 'Desconocido',";
                sql += " cmpCorreo varchar(60) null default 'Desconocido',";
-               sql += " cmpTMovil varchar(10) null default '0000000000'";
+               sql += " cmpTMovil varchar(12) null default '0000000000'";
                sql += " ); ";
                
         String sql2 = "Insert Into "+dbname+".tbldatospersonales (cmpID, cmpNombres, cmpApellidos) ";
@@ -106,8 +106,8 @@ public class MyFreeLabDao{
         String sql = "Create Table "+dbname+".tblproyectos ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
                sql += " cmpNombre varchar(30) not null,";
-               sql += " cmpFechaInicial varchar(10) null default 'Desconocido',";
-               sql += " cmpFechaFinal varchar(10) null default 'Desconocido',";
+               sql += " cmpFechaInicial varchar(12) null default 'Desconocido',";
+               sql += " cmpFechaFinal varchar(12) null default 'Desconocido',";
                sql += " cmpCostoEstimado double null default 0.0,";
                sql += " cmpMontoAdelantado double null default 0.0";
                sql += " ); ";
@@ -135,7 +135,7 @@ public class MyFreeLabDao{
                sql += " cmpNombre varchar(30) not null,";
                sql += " cmpDireccion varchar(60) null default 'Desconocido',";
                sql += " cmpCorreo varchar(60) null default 'Desconocido',";
-               sql += " cmpTMovil varchar(10) null default 'Desconocido'";
+               sql += " cmpTMovil varchar(12) null default 'Desconocido'";
                sql += " ); ";
         
         try {
