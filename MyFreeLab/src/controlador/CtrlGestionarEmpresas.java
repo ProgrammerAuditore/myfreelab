@@ -147,7 +147,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             }
             
             if( !resultado )
-            JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpEmpresa +"` no existe  .");
+            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpEmpresa +"` no existe  .");
             
         }
         
@@ -163,11 +163,11 @@ public class CtrlGestionarEmpresas implements MouseListener {
                 
                 if( dao.mtdInsetar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(null, "La empresa `"+ dto.getCmpNombre() +"` se creo exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "La empresa `"+ dto.getCmpNombre() +"` se creo exitosamente.");
                 }
                 
             }else 
-            JOptionPane.showMessageDialog(null,  "La empresa `"+ dto.getCmpNombre() +"` ya existe.");
+            JOptionPane.showMessageDialog(laVista,  "La empresa `"+ dto.getCmpNombre() +"` ya existe.");
             
         }
         
@@ -183,12 +183,12 @@ public class CtrlGestionarEmpresas implements MouseListener {
             
             msg[1] = "Modificar empresa";
             msg[0] = "¿Seguro que deseas modificar la empresa seleccionado?";
-            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_OPTION);
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdActualizar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(null, "La empresa `" + dto.getCmpNombre() + "` se modifico exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se modifico exitosamente.");
                 }
             }
             
@@ -206,12 +206,12 @@ public class CtrlGestionarEmpresas implements MouseListener {
             
             msg[1] = "Eliminar empresa";
             msg[0] = "¿Seguro que deseas eliminar la empresa seleccionado?";
-            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION );
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION );
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdEliminar(dto) ){
                     modeloTabla.removeRow(seleccionado);
-                    JOptionPane.showMessageDialog(null, "La empresa `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se elimino exitosamente.");
                 }
             }
             
@@ -235,10 +235,10 @@ public class CtrlGestionarEmpresas implements MouseListener {
         String campo = laVista.cmpEmpresa.getText().trim();
         
         if( campo.isEmpty() || !laVista.cmpEmpresa.isAprobado() ){
-            JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, "Verifica que el campo sea un dato valido.");
             return false;
         } else if( campo.length() > 30 ){
-            JOptionPane.showMessageDialog(null, "El campo debe ser menor a 30 caracteres.");
+            JOptionPane.showMessageDialog(laVista, "El campo debe ser menor a 30 caracteres.");
             return false;
         }
         

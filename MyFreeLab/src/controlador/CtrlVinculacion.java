@@ -163,13 +163,13 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
                 mtdCargarEmpresas();
                 mtdDefinirEmpresasAsociados();
                 mtdReEstablecerEmpresas();
-                JOptionPane.showMessageDialog(null, "La empresa `"+ vinculacion_dto.getCmpEmpNombre() +"` \n"
+                JOptionPane.showMessageDialog(laVista, "La empresa `"+ vinculacion_dto.getCmpEmpNombre() +"` \n"
                        + "fue asociada con el proyecto `"+ vinculacion_dto.getCmpProNombre()+"` \n"
                        + "exitosamente.");
             }
         
         }else 
-        JOptionPane.showMessageDialog(null, "Selecciona una empresa para vincular al proyecto actual.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una empresa para vincular al proyecto actual.");
         
     }
     
@@ -187,12 +187,12 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
                 mtdCargarEmpresas();
                 mtdDefinirEmpresasAsociados();
                 mtdReEstablecerEmpresas();
-                JOptionPane.showMessageDialog(null, "La empresa `" + vinculacion_dto.getCmpEmpNombre() + "` \n"
+                JOptionPane.showMessageDialog(laVista, "La empresa `" + vinculacion_dto.getCmpEmpNombre() + "` \n"
                         + "fue desviculado al proyecto `" + vinculacion_dto.getCmpProNombre() + "` \n"
                         + "exitosamente.");
             }
         } else
-        JOptionPane.showMessageDialog(null, "Selecciona una empresa asociada para desvincular del proyecto actual.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una empresa asociada para desvincular del proyecto actual.");
         
     }
     

@@ -102,7 +102,7 @@ public class CtrlDatosPersonales implements MouseListener{
                     // Registrarlo a la base de datos...
                     ////System.out.println("Registrarlo a la base de datos");
                     if(dao.mtdInsertar(dto)){
-                        JOptionPane.showMessageDialog(null, "Datos personales se registro exitosamente.");
+                        JOptionPane.showMessageDialog(laVista, "Datos personales se registro exitosamente.");
                     }
 
                 } else{
@@ -113,12 +113,12 @@ public class CtrlDatosPersonales implements MouseListener{
                     msg[0] = "Modificar datos personales";
                     // Pregunta
                     msg[1] = "Los datos personales, ya están definidos\n¿Deseas actualizarlo?"; 
-                    int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+                    int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
                     mtdCapturarDatos();
 
                     if( opc ==  JOptionPane.YES_OPTION ){
                         if(dao.mtdActualizarDatos(dto))
-                            JOptionPane.showMessageDialog(null, "Datos personales actualizados.");
+                            JOptionPane.showMessageDialog(laVista, "Datos personales actualizados.");
                     }
 
                 }
@@ -147,7 +147,7 @@ public class CtrlDatosPersonales implements MouseListener{
             
                 return true;
         }else{
-            JOptionPane.showMessageDialog(null, "Verifica los campos, para datos personales.");
+            JOptionPane.showMessageDialog(laVista, "Verifica los campos, para datos personales.");
         }
             
         return false;

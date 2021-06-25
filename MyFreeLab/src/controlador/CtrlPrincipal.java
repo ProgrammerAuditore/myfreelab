@@ -538,7 +538,7 @@ public class CtrlPrincipal implements ActionListener {
             JasperPrint jp = mtdGenerarReporte(proyecto);
 
             if (jp.getPages().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Lo siento, el reporte no tiene paginas que mostrar.");
+                JOptionPane.showMessageDialog(laVista, "Lo siento, el reporte no tiene paginas que mostrar.");
 
             } else {
                 // Mostar el reporte de Cotización
@@ -593,11 +593,11 @@ public class CtrlPrincipal implements ActionListener {
 
             msg[0] = "Seguro que deseas eliminar el proyecto `" + dto.getCmpNombre() + "`.";
             msg[1] = "Confirmar";
-            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
 
             if (opc == JOptionPane.YES_OPTION) {
                 if (pro.mtdEliminar(dto)) {
-                    JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
                     mtdRellenarContenedor();
                 }
             }

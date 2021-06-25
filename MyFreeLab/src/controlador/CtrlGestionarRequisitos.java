@@ -119,7 +119,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
             }
             
             if( !encontrado )
-            JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpRequisito +"` no existe.");
+            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpRequisito +"` no existe.");
             
         }
         
@@ -137,11 +137,11 @@ public class CtrlGestionarRequisitos implements MouseListener{
                 
                 if( dao.mtdInsetar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre() + "` se agrego exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre() + "` se agrego exitosamente.");
                 }
                 
             }else
-            JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre() + "` ya existe.");   
+            JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre() + "` ya existe.");   
 
         }
         
@@ -156,17 +156,17 @@ public class CtrlGestionarRequisitos implements MouseListener{
             
             msg[0] = "Modificar requisito";
             msg[1] = "¿Seguro que deseas modificar el requisito seleccionado?";
-            int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdActualizar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre()+ "` se modifico exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se modifico exitosamente.");
                 }
             }
             
         }else 
-        JOptionPane.showMessageDialog(null, "Selecciona una fila para modificar un requisito.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para modificar un requisito.");
             
     }
     
@@ -179,18 +179,18 @@ public class CtrlGestionarRequisitos implements MouseListener{
             
             msg[0] = "Eliminar requisito";
             msg[1] = "¿Seguro que deseas eliminar el requisito seleccionado?";
-            int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdEliminar(dto) ){
                     modeloTabla.removeRow(seleccionado);
                     mtdCalcularMonto();
-                    JOptionPane.showMessageDialog(null, "El requisito `" + dto.getCmpNombre()+ "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se elimino exitosamente.");
                 }
             }
             
         } else
-        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar un requisito.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un requisito.");
     
     }
     
@@ -208,10 +208,10 @@ public class CtrlGestionarRequisitos implements MouseListener{
         String campo = laVista.cmpRequisito.getText();
         
         if( campo.isEmpty() || !laVista.cmpRequisito.isAprobado() ){
-            JOptionPane.showMessageDialog(null, "Verifica que el campo requisito sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, "Verifica que el campo requisito sea un dato valido.");
             return false;
         }else if ( campo.length() > 30 ){
-            JOptionPane.showMessageDialog(null, "El campo debe ser menor a 30 caracteres.");
+            JOptionPane.showMessageDialog(laVista, "El campo debe ser menor a 30 caracteres.");
             return false;
         }
         
@@ -224,10 +224,10 @@ public class CtrlGestionarRequisitos implements MouseListener{
         String campo = laVista.cmpCosto.getText();
         
         if( campo.isEmpty() || !laVista.cmpCosto.isAprobado() ){
-            JOptionPane.showMessageDialog(null, "Verifica que el campo costo sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, "Verifica que el campo costo sea un dato valido.");
             return false;
         } else if( campo.equals("0") || campo.equals("0.0") ){
-            JOptionPane.showMessageDialog(null, "El campo debe tener un costo mayor a 0.");
+            JOptionPane.showMessageDialog(laVista, "El campo debe tener un costo mayor a 0.");
             return false;
         }
         

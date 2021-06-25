@@ -114,7 +114,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
             if( !encontrado )
-            JOptionPane.showMessageDialog(null, "El proyecto `"+ cmpProyecto +"` no existe  .");
+            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpProyecto +"` no existe  .");
             
         }
         
@@ -134,11 +134,11 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.cambiosModalGestionarProyectos = true;
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se creo exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se creo exitosamente.");
                 }
                 
             } else
-            JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` ya existe.");
+            JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` ya existe.");
             
         }
         
@@ -156,7 +156,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             if( mtdFormatoFecha(dto.getCmpFechaInicial()) && mtdFormatoFecha(dto.getCmpFechaFinal())  ){
                 msg[1] = "Modificar proyecto";
                 msg[0] = "¿Seguro que deseas modificar el proyecto seleccionado?";
-                int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
+                int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
 
                 if( opc == JOptionPane.YES_OPTION){
 
@@ -164,15 +164,15 @@ public class CtrlGestionarProyectos implements MouseListener{
                         // * Notificar al controlador principal
                         CtrlPrincipal.cambiosModalGestionarProyectos = true;
                         mtdRellenarTabla();
-                        JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se modifico exitosamente.");
+                        JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se modifico exitosamente.");
                     }
 
                 }
             } else
-            JOptionPane.showMessageDialog(null, "El formato de fecha es incorrecto, debe ser dd-mm-aaaa o dd/mm/aaaa.");
+            JOptionPane.showMessageDialog(laVista, "El formato de fecha es incorrecto, debe ser dd-mm-aaaa o dd/mm/aaaa.");
                 
         } else
-        JOptionPane.showMessageDialog(null, "Selecciona una fila para modificar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para modificar un proyecto.");
         
     }
     
@@ -186,19 +186,19 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             msg[0] = "Eliminar proyecto";
             msg[1] = "¿Seguro que deseas eliminar el proyecto seleccionado?";
-            int opc = JOptionPane.showConfirmDialog(null, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdEliminar(dto) ){
                     // * Notificar al controlador principal
                     CtrlPrincipal.cambiosModalGestionarProyectos = true;
                     modeloTabla.removeRow(seleccionado);
-                    JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se elimino exitosamente.");
                 }
             }
             
         } else
-        JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
         
     }
     
@@ -253,10 +253,10 @@ public class CtrlGestionarProyectos implements MouseListener{
         String cmp = laVista.cmpProyecto.getText().trim();
 
         if( laVista.cmpProyecto.isAprobado() == false || cmp.isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Verifica que el campo sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, "Verifica que el campo sea un dato valido.");
             return false;
         } else if( cmp.length() > 30 ) {
-            JOptionPane.showMessageDialog(null, "El campo tiene que ser menor a 30 caracteres.");
+            JOptionPane.showMessageDialog(laVista, "El campo tiene que ser menor a 30 caracteres.");
             return false;
         }
         
