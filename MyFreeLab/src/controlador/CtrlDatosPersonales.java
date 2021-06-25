@@ -92,35 +92,38 @@ public class CtrlDatosPersonales implements MouseListener{
     
     private void mtdEstablecerDatos(){
         ////System.out.println("Establecer datos personales [!DP]");
-        
-        if( mtdCapturarDatos() ){
-            
-            if( dao.mtdConsultar(dto) == false ){
-                
-                // Registrarlo a la base de datos...
-                ////System.out.println("Registrarlo a la base de datos");
-                if(dao.mtdInsertar(dto)){
-                    JOptionPane.showMessageDialog(null, "Datos personales se registro exitosamente.");
+       
+        // * Verificar la restricción de los campos
+        if( mtdRtnNombreApellido() && mtdRtnCorreoDireccion() && mtdRtnTMovil() ){
+            if( mtdCapturarDatos()){
+
+                if( dao.mtdConsultar(dto) == false ){
+
+                    // Registrarlo a la base de datos...
+                    ////System.out.println("Registrarlo a la base de datos");
+                    if(dao.mtdInsertar(dto)){
+                        JOptionPane.showMessageDialog(null, "Datos personales se registro exitosamente.");
+                    }
+
+                } else{
+
+                    // Actualizar los datos personales en la base de datos
+                    String[] msg = new String[2];
+                    // Titulo
+                    msg[0] = "Modificar datos personales";
+                    // Pregunta
+                    msg[1] = "Los datos personales, ya están definidos\n¿Deseas actualizarlo?"; 
+                    int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+                    mtdCapturarDatos();
+
+                    if( opc ==  JOptionPane.YES_OPTION ){
+                        if(dao.mtdActualizarDatos(dto))
+                            JOptionPane.showMessageDialog(null, "Datos personales actualizados.");
+                    }
+
                 }
-            
-            } else{
-                
-                // Actualizar los datos personales en la base de datos
-                String[] msg = new String[2];
-                // Titulo
-                msg[0] = "Modificar datos personales";
-                // Pregunta
-                msg[1] = "Los datos personales, ya están definidos\n¿Deseas actualizarlo?"; 
-                int opc = JOptionPane.showConfirmDialog(null, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
-                mtdCapturarDatos();
-                
-                if( opc ==  JOptionPane.YES_OPTION ){
-                    if(dao.mtdActualizarDatos(dto))
-                        JOptionPane.showMessageDialog(null, "Datos personales actualizados.");
-                }
-                
+
             }
-            
         }
         
     }
@@ -136,11 +139,11 @@ public class CtrlDatosPersonales implements MouseListener{
             
                 // Definir los datos
                 dto.setCmpID(1);
-                dto.setCmpNombres(laVista.cmpNombres.getText() );
-                dto.setCmpApellidos( laVista.cmpApellidos.getText() );
-                dto.setCmpDireccion(laVista.cmpDireccion.getText() );
-                dto.setCmpCorreo(laVista.cmpCorreo.getText() );
-                dto.setCmpTMovil(laVista.cmpTelMovil.getText() );
+                dto.setCmpNombres(laVista.cmpNombres.getText().trim() );
+                dto.setCmpApellidos( laVista.cmpApellidos.getText().trim() );
+                dto.setCmpDireccion(laVista.cmpDireccion.getText().trim() );
+                dto.setCmpCorreo(laVista.cmpCorreo.getText().trim() );
+                dto.setCmpTMovil(laVista.cmpTelMovil.getText().trim() );
             
                 return true;
         }else{
@@ -148,6 +151,76 @@ public class CtrlDatosPersonales implements MouseListener{
         }
             
         return false;
+    }
+    
+    private boolean mtdRtnNombreApellido(){
+        boolean gAceptado = true;
+        String msg="Error en los campos: \n";
+        
+        if( laVista.cmpNombres.getText().trim().length() >= 30 ){
+            gAceptado = false;
+            msg += "* Campo nombre(s) \n";
+        }
+        
+        if( laVista.cmpApellidos.getText().trim().length() >= 30 ){
+            gAceptado = false;
+            msg += "* Campo apellido(s) \n";
+        }
+        
+        if( !gAceptado ){
+            msg = msg + "\n";
+            msg += "Los datos no aceptados o admitidos son: \n";
+            msg += "* Datos nulos (es decir, vacíos). \n";
+            msg += "* Deben ser menor a 30 caracteres. \n";
+            JOptionPane.showMessageDialog(laVista, msg);
+        }
+        
+        return gAceptado;
+    }
+    
+    private boolean mtdRtnCorreoDireccion(){
+        boolean gAceptado = true;
+        String msg="Error en los campos: \n";
+        
+        if( laVista.cmpDireccion.getText().trim().length() >= 60 ){
+            gAceptado = false;
+            msg += "* Campo dirección \n";
+        }
+        
+        if( laVista.cmpCorreo.getText().trim().length() >= 60 ){
+            gAceptado = false;
+            msg += "* Campo corréo \n";
+        }
+        
+        if( !gAceptado ){
+            msg = msg + "\n";
+            msg += "Los datos no aceptados o admitidos son: \n";
+            msg += "* Datos nulos (es decir, vacíos). \n";
+            msg += "* Deben ser menor a 60 caracteres. \n";
+            JOptionPane.showMessageDialog(laVista, msg);
+        }
+        
+        return gAceptado;
+    }
+    
+    private boolean mtdRtnTMovil(){
+        boolean gAceptado = true;
+        String msg="Error en los campos: \n";
+        
+        if( laVista.cmpTelMovil.getText().trim().length() < 10 || laVista.cmpTelMovil.getText().trim().length() > 10 ){
+            gAceptado = false;
+            msg += "* Campo telefóno o movíl \n";
+        }
+        
+        if( !gAceptado ){
+            msg = msg + "\n";
+            msg += "Los datos no aceptados o admitidos son: \n";
+            msg += "* Datos nulos (es decir, vacíos). \n";
+            msg += "* Deben ser 10 digítos. \n";
+            JOptionPane.showMessageDialog(laVista, msg);
+        }
+        
+        return gAceptado;
     }
     
 
