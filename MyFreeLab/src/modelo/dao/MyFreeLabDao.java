@@ -72,11 +72,11 @@ public class MyFreeLabDao{
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "Create Table "+dbname+".tbldatospersonales ( ";
                sql += " cmpID int not null, Primary Key(cmpID), ";
-               sql += " cmpNombres varchar(60) null default 'Desconocido',";
-               sql += " cmpApellidos varchar(60) null default 'Desconocido',";
-               sql += " cmpDireccion varchar(200) null default 'Desconocido',";
-               sql += " cmpCorreo varchar(200) null default 'Desconocido',";
-               sql += " cmpTMovil varchar(20) null default '0000000000'";
+               sql += " cmpNombres varchar(30) null default 'Desconocido',";
+               sql += " cmpApellidos varchar(30) null default 'Desconocido',";
+               sql += " cmpDireccion varchar(60) null default 'Desconocido',";
+               sql += " cmpCorreo varchar(60) null default 'Desconocido',";
+               sql += " cmpTMovil varchar(10) null default '0000000000'";
                sql += " ); ";
                
         String sql2 = "Insert Into "+dbname+".tbldatospersonales (cmpID, cmpNombres, cmpApellidos) ";
@@ -105,9 +105,9 @@ public class MyFreeLabDao{
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "Create Table "+dbname+".tblproyectos ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
-               sql += " cmpNombre varchar(20) not null,";
-               sql += " cmpFechaInicial varchar(20) null default 'Desconocido',";
-               sql += " cmpFechaFinal varchar(20) null default 'Desconocido',";
+               sql += " cmpNombre varchar(30) not null,";
+               sql += " cmpFechaInicial varchar(10) null default 'Desconocido',";
+               sql += " cmpFechaFinal varchar(10) null default 'Desconocido',";
                sql += " cmpCostoEstimado double null default 0.0,";
                sql += " cmpMontoAdelantado double null default 0.0";
                sql += " ); ";
@@ -132,10 +132,10 @@ public class MyFreeLabDao{
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "Create Table "+dbname+".tblempresas ( ";
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
-               sql += " cmpNombre varchar(20) not null,";
-               sql += " cmpDireccion varchar(20) null default 'Desconocido',";
-               sql += " cmpCorreo varchar(20) null default 'Desconocido',";
-               sql += " cmpTMovil varchar(20) null default 'Desconocido'";
+               sql += " cmpNombre varchar(30) not null,";
+               sql += " cmpDireccion varchar(60) null default 'Desconocido',";
+               sql += " cmpCorreo varchar(60) null default 'Desconocido',";
+               sql += " cmpTMovil varchar(10) null default 'Desconocido'";
                sql += " ); ";
         
         try {
@@ -160,7 +160,7 @@ public class MyFreeLabDao{
                sql += " cmpID int not null auto_increment, Primary Key(cmpID), ";
                sql += " cmpProID int not null, ";
                sql += " Foreign Key(cmpProID) References tblproyectos(cmpID) ON DELETE CASCADE, ";
-               sql += " cmpNombre varchar(20) not null, ";
+               sql += " cmpNombre varchar(30) not null, ";
                sql += " cmpCosto double not null ";
                sql += " ); ";
         
@@ -188,8 +188,8 @@ public class MyFreeLabDao{
                sql += " Foreign Key(cmpProID) References tblproyectos(cmpID) ON DELETE CASCADE, ";
                sql += " cmpEmpID int not null, ";
                sql += " Foreign Key(cmpEmpID) References tblempresas(cmpID) ON DELETE CASCADE, ";
-               sql += " cmpProNombre varchar(20) not null, ";
-               sql += " cmpEmpNombre varchar(20) not null ";
+               sql += " cmpProNombre varchar(30) not null, ";
+               sql += " cmpEmpNombre varchar(30) not null ";
                sql += " ); ";
         
         try {
