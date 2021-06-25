@@ -20,12 +20,12 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="bntSalir">
+            <MenuItem class="javax.swing.JMenuItem" name="btnSalir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sallir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntSalirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -117,6 +117,16 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="btnComoUsar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Como usar"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btnActualizarPrograma">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar actualizacion"/>
@@ -174,7 +184,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToolBar1" pref="767" max="32767" attributes="0"/>
+                  <Component id="jToolBar1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="scpContenedor" pref="0" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -348,7 +358,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="191" max="32767" attributes="0"/>
+                  <EmptySpace pref="190" max="32767" attributes="0"/>
                   <Component id="cmpBusqueda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

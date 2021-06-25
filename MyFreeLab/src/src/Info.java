@@ -36,4 +36,5 @@ public class Info {
             "* etc." + "\n";
     
     public static final String Homepage = "https://programmerauditore.gitlab.io/myfreelab";
+    public static final String Helppage = "https://programmerauditore.gitlab.io/myfreelab/#/obtener-ayuda";
 }

@@ -45,7 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //this.pnlPortada.setImgRutaInterno(Source.bkgPortada);
         
         // * Establecer placeholder
-        this.cmpBusqueda.setPlaceholder("Buscar empresa o proyecto.");
+        this.cmpBusqueda.setPlaceholder("Buscar proyectos.");
         
     }
 
@@ -72,7 +72,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         etqMensaje = new vista.componentes.etiqueta.Mensaje();
         menuBar = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
-        bntSalir = new javax.swing.JMenuItem();
+        btnSalir = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
         btnDatosPersonales = new javax.swing.JMenuItem();
         btnGestionarProyectos = new javax.swing.JMenuItem();
@@ -81,6 +81,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuConfigurar = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
         menuAyuda = new javax.swing.JMenu();
+        btnComoUsar = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         btnActualizarPrograma = new javax.swing.JMenuItem();
         btnAcercaDe = new javax.swing.JMenuItem();
 
@@ -166,7 +168,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
-                .addContainerGap(191, Short.MAX_VALUE)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addComponent(cmpBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -192,13 +194,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuArchivo.setText("Archivo");
 
-        bntSalir.setText("Sallir");
-        bntSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setText("Sallir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntSalirActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
-        menuArchivo.add(bntSalir);
+        menuArchivo.add(btnSalir);
 
         menuBar.add(menuArchivo);
 
@@ -233,6 +235,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuAyuda.setText("Ayuda");
 
+        btnComoUsar.setText("Como usar");
+        menuAyuda.add(btnComoUsar);
+        menuAyuda.add(jSeparator1);
+
         btnActualizarPrograma.setText("Buscar actualizacion");
         menuAyuda.add(btnActualizarPrograma);
 
@@ -255,7 +261,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(scpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(30, 30, 30))))
@@ -279,8 +285,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalirActionPerformed
-    }//GEN-LAST:event_bntSalirActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,13 +331,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JMenuItem bntSalir;
     public javax.swing.JMenuItem btnAcercaDe;
     public javax.swing.JMenuItem btnActualizarPrograma;
+    public javax.swing.JMenuItem btnComoUsar;
     public javax.swing.JMenuItem btnConexion;
     public javax.swing.JMenuItem btnDatosPersonales;
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
+    public javax.swing.JMenuItem btnSalir;
     public javax.swing.JMenuItem btnVinculacion;
     public vista.componentes.campos.CampoTexto cmpBusqueda;
     public javax.swing.JLabel cmpEmpresas;
@@ -340,6 +347,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenu menuArchivo;
     public javax.swing.JMenu menuAyuda;

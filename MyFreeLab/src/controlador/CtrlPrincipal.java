@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,8 +14,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,7 +90,7 @@ public class CtrlPrincipal implements ActionListener {
 
         // * Definir oyentes
         laVista.setLocationRelativeTo(null);
-        laVista.bntSalir.addActionListener(this);
+        laVista.btnSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
         laVista.btnDatosPersonales.addActionListener(this);
         laVista.btnGestionarProyectos.addActionListener(this);
@@ -94,6 +98,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.btnVinculacion.addActionListener(this);
         laVista.btnAcercaDe.addActionListener(this);
         laVista.btnActualizarPrograma.addActionListener(this);
+        laVista.btnComoUsar.addActionListener(this);
 
         laVista.addWindowListener(new WindowAdapter() {
             @Override
@@ -140,7 +145,7 @@ public class CtrlPrincipal implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == laVista.bntSalir) {
+        if (e.getSource() == laVista.btnSalir) {
             mtdSalirDelPrograma();
         }
 
@@ -170,6 +175,9 @@ public class CtrlPrincipal implements ActionListener {
         
         if (e.getSource() == laVista.btnActualizarPrograma )
             fabrica.construir("BuscarActualizacion");
+        
+        if( e.getSource() == laVista.btnComoUsar )
+            mtdObtenerAyuda();
  
     }
     
@@ -265,6 +273,28 @@ public class CtrlPrincipal implements ActionListener {
         laVista.dispose();
         System.exit(0);
         
+    }
+    
+    private void mtdObtenerAyuda(){
+        String url = Info.Helppage;
+
+        if(Desktop.isDesktopSupported()){
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(url));
+            } catch (IOException | URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }else{
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("xdg-open " + url);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
     private void modalConfigurarConexion() {
