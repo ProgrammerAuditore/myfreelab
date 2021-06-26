@@ -34,5 +34,5 @@ public class Info {
     
     public static final String SitioWeb = "https://programmerauditore.gitlab.io/myfreelab";
     public static final String PaginaAyuda = "https://programmerauditore.gitlab.io/myfreelab/#/obtener-ayuda";
-    public static final String LinkVersiones = "https://download1335.mediafire.com/cdq3d07n1vpg/skes3twpi7tbrqq/MyFreeLab.mfl";
+    public static final String LinkVersiones = "https://raw.githubusercontent.com/ProgrammerAuditore/netbeans-freelancer-software/master/source/MyFreeLab.mfl";
 }

@@ -129,7 +129,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btnActualizarPrograma">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar actualizacion"/>
+                <Property name="text" type="java.lang.String" value="Buscar actualizaci&#xf3;n"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -356,7 +356,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="190" max="32767" attributes="0"/>
+                  <EmptySpace pref="191" max="32767" attributes="0"/>
                   <Component id="cmpBusqueda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

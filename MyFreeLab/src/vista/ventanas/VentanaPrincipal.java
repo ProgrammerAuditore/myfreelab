@@ -168,7 +168,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addComponent(cmpBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -239,7 +239,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuAyuda.add(btnObtenerAyuda);
         menuAyuda.add(jSeparator1);
 
-        btnActualizarPrograma.setText("Buscar actualizacion");
+        btnActualizarPrograma.setText("Buscar actualización");
         menuAyuda.add(btnActualizarPrograma);
 
         btnAcercaDe.setText("Acerca de");

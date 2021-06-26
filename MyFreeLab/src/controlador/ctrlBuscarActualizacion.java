@@ -253,7 +253,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         } catch (IOException e) {
             // handle exception
             CtrlPrincipal.mensajeCtrlPrincipal("Error 404 sobre el sitio web oficial");
-            //JOptionPane.showMessageDialog(null, "No se pudo acceder al sitio oficial, error 404.");
+            JOptionPane.showMessageDialog(laVista, "Error 404 sobre el sitio web oficial");
             //System.out.println("" + e.getMessage());
         }
 
