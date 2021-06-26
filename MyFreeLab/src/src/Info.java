@@ -14,26 +14,22 @@ public class Info {
             "Tiene la funcionalidad de conexión a una base de datos MYSQL local o remoto para registrar los datos.";
     public static final String Licencia="Todos los derechos reservados.";
     public static final String sNombre = "MyFreeLab";
-    public static final String sVersionNum = "0960";
-    public static final String sVersionName = "v0.9.60";
+    public static final String sVersionName = "v0.9.80";
+    public static final String sVersionNum = "0980";
     public static final String sProduccion = "Alpha";
     public static final String NombreSoftware = sNombre + " " + sVersionName + sProduccion;
     public static final String Novedades = 
             "* Se creo un nuevo splash" + "\n" +
-            "* Se modifico el color de la barra de menú y estados" + "\n" +
-            "* Se modifico el diseño de las ventanas principales" + "\n" +
-            "* Se modifico el diseño de la ventana principal" + "\n" +
+            "* Se modifico la barra de estados" + "\n" +
+            "* Se modifico la ventana principal" + "\n" +
+            "* Se modifico los mensajes de estados" + "\n" +
             "* Se modifico el reporte de cotización" + "\n" +
-            "* Se agrego iconos a los menús principales" + "\n" +
-            "* Se modifico la tabla de gestionar proyectos" + "\n" +
-            "* Se agrego mensajes de estado durante el proceso " + "\n" +
-            "~ solo para funciones principales en algunas ventanas" + "\n" +
-            "* Se modifico el reporte de cotización" + "\n" +
-            "* Se agrego nuevos componentes para capturar datos:" + "\n" +
-            "+ Componente Teléfono de 10 dígitos" + "\n" +
-            "+ Componente Datos Personales solo acepta caracteres" + "\n" +
-            "* Se elimino mensajes de estado en la barra de título" + "\n" +
+            "* Se rediseño el panel de acerca de" + "\n" +
+            "* Se creo el submenú para obtener ayuda" + "\n" +
             "* Se corrigió bugs" + "\n" +
+            "* Se corrió un bug al establecer conexión en el panel configurar conexión" + "\n" +
+            "* Se corrigió las restricciones de cada dato a capturar" + "\n" +
+            "* Se corrigió los mensajes de estado y diálogos" + "\n" +
             "* etc." + "\n";
     
     public static final String SitioWeb = "https://programmerauditore.gitlab.io/myfreelab";

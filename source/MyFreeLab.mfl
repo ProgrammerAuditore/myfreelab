@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<AppJar>
+    <MyFreeLab>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v0.9.80Alpha</app_name_version>
+            <app_num_version>0980</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>####</app_link_exe>
+            <app_link_deb>####</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedad>* Se creo un nuevo splash</novedad>
+                <novedad>* Se modifico la barra de estados</novedad>
+                <novedad>* Se modifico la ventana principal</novedad>
+                <novedad>* Se modifico los mensajes de estados</novedad>
+                <novedad>* Se modifico el reporte de cotización</novedad>
+                <novedad>* Se rediseño el panel de acerca de</novedad>
+                <novedad>* Se creo el submenú para obtener ayuda</novedad>
+                <novedad>* Se corrigió bugs</novedad>
+                <novedad>* Se corrió un bug al establecer conexión en el panel configurar conexión</novedad>
+                <novedad>* Se corrigió las restricciones de cada dato a capturar</novedad>
+                <novedad>* Se corrigió los mensajes de estado y diálogos</novedad>
+                <novedad>* etc.</novedad>
+            </app_novedades>
+        </Version>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v0.9.60Alpha</app_name_version>
+            <app_num_version>0960</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/Setup_-_MyFreeLab_v0.9.60Alpha.exe?inline=false</app_link_exe>
+            <app_link_deb>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/myfreelab-0.9.60-all.deb?inline=false</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedad>* Se creo un nuevo splash</novedad>
+                <novedad>* Se modifico el color de la barra de menú y estados</novedad>
+                <novedad>* Se modifico el diseño de las ventanas principales</novedad>
+                <novedad>* Se modifico el diseño de la ventana principal</novedad>
+                <novedad>* Se modifico el reporte de cotización</novedad>
+                <novedad>* Se agrego iconos a los menús principales</novedad>
+                <novedad>* Se modifico la tabla de gestionar proyectos</novedad>
+                <novedad>* Se completa la información de cada tarjeta de presentación</novedad>
+                <novedad>* Se agrego mensajes de estado durante el proceso </novedad>
+                <novedad>~ solo para funciones principales en algunas ventanas</novedad>
+                <novedad>* Se modifico el reporte de cotización</novedad>
+                <novedad>* Se agrego nuevos componentes para capturar datos:</novedad>
+                <novedad>+ Componente Teléfono de 10 dígitos</novedad>
+                <novedad>+ Componente Datos Personales solo acepta caracteres</novedad>
+                <novedad>* Se elimino mensajes de estado en la barra de título</novedad>
+                <novedad>* Se corrigió bugs</novedad>
+                <novedad>* etc.</novedad>
+            </app_novedades>
+        </Version>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v0.9.30Alpha</app_name_version>
+            <app_num_version>0930</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/Setup_-_MyFreeLab_v0.9.30Alpha.exe?inline=false</app_link_exe>
+            <app_link_deb>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/myfreelab-0.9.30-all.deb?inline=false</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedad>* Compatibilidad con windows</novedad>
+                <novedad>* Se agrego un mensaje al buscar actualizacion</novedad>
+                <novedad>* Se cambia la licencia en acerca de Ingles > Español</novedad>
+                <novedad>* Se corrigio bug al iniciar el programa</novedad>
+                <novedad>* etc.</novedad>
+            </app_novedades>
+        </Version>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v0.9.3Alpha</app_name_version>
+            <app_num_version>093</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/Setup_-_MyFreeLab_v0.9.3Alpha.exe?inline=false</app_link_exe>
+            <app_link_deb>https://gitlab.com/ProgrammerAuditore/storege-mfl/-/raw/master/myfreelab_0.9.3_all.deb?inline=false</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedad>* Ya disponible .deb para linux desde la pagina oficial</novedad>
+                <novedad>* Ya disponible .exe para windows desde la pagina oficial</novedad>
+                <novedad>* Nuevo diseño para el menu principal</novedad>
+                <novedad>* Se agrego un nuevo barra de estado</novedad>
+                <novedad>* Se agrego la funcionalidad de generar cotizacion</novedad>
+                <novedad>* Se agrego la libreria de jdom 2.0.6 para manipular archivos xml</novedad>
+                <novedad>* Se agrego el menu de actualizacion</novedad>
+                <novedad>* Se corrigio bug al iniciar el programa</novedad>
+                <novedad>* Se corrigio bug para la conexio al servidor</novedad>
+                <novedad>* etc.</novedad>
+            </app_novedades>
+        </Version>
+    </MyFreeLab>
+</AppJar>
