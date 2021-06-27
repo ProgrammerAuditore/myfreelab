@@ -1,0 +1,22 @@
+Package: myfreelab
+Version: 0.9.80
+Standards-Version: 0.9.80Alpha
+Package-Type: deb
+Architecture: all
+Essential: no
+Priority: optional
+Installed-Size: 296888
+Section: java, education, base
+Homepage: https://programmerauditore.gitlab.io/myfreelab
+Maintainer: ProgrammerAuditore <victorvj098@gmail.com>
+Description: Gestion de proyectos para freelancer.
+ El programa sirve para poder crear, modificar, eliminar y registrar
+ proyectos desarrollados para una empresa en particular.
+ Asi tambien, para poder generar una cotizacion para cada empresa en particular
+ y calcular el costo del proyecto, entre otras cosas.
+ Tiene la funcionalidad de conexion a una base de datos MYSQL local o remoto.
+Recommends: qapt-deb-installer | gdebi
+Suggests: apt, dpkg (>= 1.14.0) | dpkg-deb
+Source: java
+Vendor: Debian
+Origin: Kubuntu

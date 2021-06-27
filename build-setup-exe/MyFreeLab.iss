@@ -3,16 +3,17 @@
 
 ; Variables para el proceso de instalacion
 #define MyAppName "MyFreeLab"
-#define MyAppVersion "v0.9.30"
+#define MyAppVersion "v0.9.80"
 #define MyAppProduccion "Alpha"
 #define MyAppNameFull MyAppName + " " + MyAppVersion + MyAppProduccion
 #define MyAppPublisher "ProgrammerAuditore <victorvj098@gmail.com>"
-#define MyAppPublisherURL "https://gitlab.com/ProgrammerAuditore/storege-mfl"
-#define AppCopyright "Copyright ProgrammerAuditore (c) 2021"
+#define MyAppPublisherURL "https://programmerauditore.gitlab.io/myfreelab"
+#define AppCopyright "Copyright Victor J. Maximo (c) 2021"
 
 ; Variables para compilar y crear la instalacion (Modificar)
+#define MyAppRunName MyAppName + ".jar" ; Sin JRE
 #define MyAppExeName MyAppName + ".jar" ; Sin JRE
-#define MyAppDir MyAppName ; Sin JRE
+#define MyAppDir "MyFreeLab" ; Sin JRE
 #define MyAppIconoDefault "icons/default.ico"
 #define MyAppIconoDesinstall "icons/uninstall.ico"
 
@@ -34,11 +35,11 @@ UsePreviousAppDir=yes
 DirExistsWarning=yes
 AllowNoIcons=no
 ;; (Modificar)
-LicenseFile=C:\Users\victo\Desktop\Setup MyFreeLab\{#MyAppDir}\gpl-3.0.txt
+;;LicenseFile={#MyAppDir}\gpl-3.0.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 PrivilegesRequired=admin
 ;PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=C:\Users\victo\Desktop\Setup MyFreeLab
+OutputDir=Setup MyFreeLab
 OutputBaseFilename=Setup - {#MyAppNameFull}
 ;SetupIconFile=
 Compression=lzma
@@ -58,23 +59,25 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 [Tasks]
 ; Se crea un icono en el escritorio
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-; Agregar un variable de entorno
-Name: envPath; Description: "Add to PATH variable" 
 
 [Files]
+; Seleccionar el archivo de arranque (Programa) (Modificar)
+Source: "{#MyAppDir}\{#MyAppRunName}"; DestDir: "{app}"; BeforeInstall: InstalandoEjecutable; Flags: ignoreversion replacesameversion restartreplace
 ; Seleccionar el ejecutable (Programa) (Modificar)
-Source: "C:\Users\victo\Desktop\Setup MyFreeLab\{#MyAppDir}\{#MyAppExeName}"; DestDir: "{app}"; BeforeInstall: InstalandoEjecutable; Flags: ignoreversion replacesameversion restartreplace 
-Source: "C:\Users\victo\Desktop\Setup MyFreeLab\{#MyAppDir}\*"; DestDir: "{app}"; Flags: ignoreversion replacesameversion restartreplace recursesubdirs createallsubdirs
+Source: "{#MyAppDir}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion replacesameversion restartreplace 
+Source: "{#MyAppDir}\*"; DestDir: "{app}"; Flags: ignoreversion replacesameversion restartreplace recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 ; ### Se crean iconos en la barra de inicio de windows o busqueda de archivos
-; El ejecutable .jar
-Name: "{group}\{#MyAppNameFull}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: {app}; IconFilename: "{app}\{#MyAppIconoDefault}"
-; El desinstalador 
-Name: "{group}\{cm:UninstallProgram,{#MyAppNameFull}}"; Filename: "{uninstallexe}"; WorkingDir: {app}; IconFilename: "{app}\{#MyAppIconoDesinstall}"
+;; Seleccionar el archivo de arranque (Programa) (Modificar)
+; Se instala el gropus de Inicio
+Name: "{group}\{#MyAppNameFull}"; Filename: "{app}\{#MyAppRunName}"; WorkingDir: {app}; IconFilename: "{app}\{#MyAppIconoDefault}"
 ; El enlace en el escritorio
-Name: "{autodesktop}\{#MyAppNameFull}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\{#MyAppIconoDefault}"; Tasks: desktopicon
+Name: "{autodesktop}\{#MyAppNameFull}"; Filename: "{app}\{#MyAppRunName}"; IconFilename: "{app}\{#MyAppIconoDefault}"; Tasks: desktopicon
+;;
+; Se creo el desinstalador 
+Name: "{group}\{cm:UninstallProgram,{#MyAppNameFull}}"; Filename: "{uninstallexe}"; WorkingDir: {app}; IconFilename: "{app}\{#MyAppIconoDesinstall}"
 
 [Registry]
 ; Create "Software\ProgrammerAuditore\MyFreeLab" keys under CURRENT_USER or
@@ -110,9 +113,18 @@ end;
 
 procedure InstalandoEjecutable();
 begin
-  MsgBox('Se está instalando {#MyAppNameFull} ...' #13#13 ''+
-  + 'Es recomendable tener el software {#MyAppName} cerrado durante la instalación.',
-  mbInformation, MB_OK);
+  if (FileExists(ExpandConstant('{app}\{#MyAppExeName}'))) then
+    begin
+      MsgBox('Se está instalando {#MyAppNameFull} ...' #13#13 ''+
+      + 'Es recomendable tener el software {#MyAppName} cerrado durante la instalación.',
+      mbInformation, MB_OK); 
+    end
+  else
+    begin
+      MsgBox('Se está instalando {#MyAppNameFull} ...' #13#13 ''+
+      + 'Aseguresé de instalar y configurar Java JRE para iniciar a utilizar {#MyAppName}.',
+      mbInformation, MB_OK);     
+    end;
 end;
 
 [Run]
@@ -122,5 +134,5 @@ end;
 ; (AquÃ­ tenemos que poner el nombre de nuestro motor de base de datos que se encuentra en nuestra carpeta complementos)
 ; Filename: {src}\complementos\wampserver.exe; Parameters: "/q:a /C:""install /q"""; WorkingDir: {src}\complementos;
 
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: shellexec postinstall waituntilterminated skipifsilent
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: shellexec postinstall nowait skipifsilent
 

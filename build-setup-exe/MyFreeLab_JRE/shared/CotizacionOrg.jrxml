@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="025eecbb-e774-4790-a703-426c100e11e7">
 	<property name="ireport.zoom" value="1.610510000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="245"/>
 	<parameter name="rpProyectoID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -12,6 +12,8 @@
 		<defaultValueExpression><![CDATA["P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\src\\storage\\reporte\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SubReportDir" class="java.lang.String"/>
+	<parameter name="rpCostoEstimado" class="java.lang.String"/>
+	<parameter name="rpCopyright" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM tblrequisitos tr, tbldatospersonales tdp WHERE tr.cmpProID = $P{rpProyectoID} AND tdp.cmpID = 1;]]>
 	</queryString>
@@ -52,7 +54,7 @@
 	<title>
 		<band height="232" splitType="Stretch">
 			<staticText>
-				<reportElement x="180" y="0" width="188" height="79" uuid="1f0a4170-c92b-4868-96bd-ab1622c16d3e"/>
+				<reportElement x="102" y="0" width="358" height="79" uuid="1f0a4170-c92b-4868-96bd-ab1622c16d3e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="30" isBold="true"/>
 				</textElement>
@@ -214,29 +216,34 @@
 	<columnFooter>
 		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement x="163" y="0" width="205" height="20" uuid="96772db4-cf8e-4f33-8c8e-e985e15d06c4"/>
+				<reportElement x="136" y="0" width="300" height="20" uuid="96772db4-cf8e-4f33-8c8e-e985e15d06c4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{rpTitulo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="22" splitType="Stretch">
+		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="121" y="2" width="300" height="20" uuid="992f55c7-cfa1-463d-9ed3-a001d630c4de"/>
+				<reportElement x="136" y="22" width="300" height="20" uuid="992f55c7-cfa1-463d-9ed3-a001d630c4de"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Todos los derechos reservados para ProgrammerAuditore (c) 2021]]></text>
+				<text><![CDATA[Todos los derechos reservados]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="530" y="2" width="25" height="20" uuid="95827ab2-c5d5-4759-b561-de41638ce226"/>
+				<reportElement x="530" y="22" width="25" height="20" uuid="95827ab2-c5d5-4759-b561-de41638ce226"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="506" y="2" width="24" height="20" uuid="84673e96-37c3-47ff-8b15-31db5d842cbc"/>
+				<reportElement x="506" y="22" width="24" height="20" uuid="84673e96-37c3-47ff-8b15-31db5d842cbc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Pag.]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="136" y="2" width="300" height="20" uuid="7ecd7c90-066d-41f8-b555-c9998ae91494"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{rpCopyright}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>
@@ -257,7 +264,7 @@
 			<textField>
 				<reportElement x="338" y="0" width="217" height="20" uuid="c57d70ae-04bb-4293-a751-1d73553647c4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{COSTO_TOTAL}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{rpCostoEstimado}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
