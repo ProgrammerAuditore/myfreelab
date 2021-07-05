@@ -123,9 +123,16 @@ public class CtrlPrincipal implements ActionListener {
         laVista.cmpBusqueda.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                mtdVaciarContenedor();
+                CtrlPrincipal.mensajeCtrlPrincipal("Escribe algo para buscar...");
+                mtdMensaje("Borrar todo para mostrar todos los resultados...");
+            }
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
                 char caracter = e.getKeyChar();
                 
-                if( e.getKeyCode() == KeyEvent.VK_ENTER ){
+                //if( e.getKeyCode() == KeyEvent.VK_ENTER ){
                     
                     if( laVista.cmpBusqueda.getText().isEmpty() ){
                         if( CtrlHiloConexion.ctrlEstado ){
@@ -133,11 +140,13 @@ public class CtrlPrincipal implements ActionListener {
                         } else {
                             mtdDesHabilitarMenus();
                         }
-                    } else
+                    } else{
+                        mtdVaciarContenedor();
                         mtdPintarFiltroProyectos( laVista.cmpBusqueda.getText() );
-                    
-                }
-            }            
+                    }
+                //}
+                
+            }           
         });
 
     }
@@ -648,7 +657,7 @@ public class CtrlPrincipal implements ActionListener {
         
         for (int i = 0; i < cantidad; i++) {
             String titulo = this.tarjetas.get(i).etqTitulo.getText();
-            if( titulo.contains(busqueda) ){
+            if( titulo.trim().toLowerCase().contains(busqueda.trim().toLowerCase()) ){
                 tarjetas.add( this.tarjetas.get(i) );
             }
         }
