@@ -109,7 +109,10 @@ public class MyFreeLabDao{
                sql += " cmpFechaInicial varchar(12) null default 'Desconocido',";
                sql += " cmpFechaFinal varchar(12) null default 'Desconocido',";
                sql += " cmpCostoEstimado double null default 0.0,";
-               sql += " cmpMontoAdelantado double null default 0.0";
+               sql += " cmpMontoAdelantado double null default 0.0,";
+               sql += " cmpCreadoEn datetime not null default '1000-01-01 00:00:00',";
+               sql += " cmpActualizadoEn datetime not null default '1000-01-01 00:00:00',";
+               sql += " cmpCtrlEstado int not null default 1";
                sql += " ); ";
         
         try {
@@ -135,7 +138,10 @@ public class MyFreeLabDao{
                sql += " cmpNombre varchar(30) not null,";
                sql += " cmpDireccion varchar(60) null default 'Desconocido',";
                sql += " cmpCorreo varchar(60) null default 'Desconocido',";
-               sql += " cmpTMovil varchar(12) null default 'Desconocido'";
+               sql += " cmpTMovil varchar(12) null default 'Desconocido',";
+               sql += " cmpCreadoEn datetime not null default '1000-01-01 00:00:00',";
+               sql += " cmpActualizadoEn datetime not null default '1000-01-01 00:00:00',";
+               sql += " cmpCtrlEstado int not null default 1";
                sql += " ); ";
         
         try {

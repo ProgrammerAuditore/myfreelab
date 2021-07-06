@@ -189,7 +189,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
-                if( dao.mtdEliminar(dto) ){
+                if( dao.mtdRemover(dto) ){
                     // * Notificar al controlador principal
                     CtrlPrincipal.cambiosModalGestionarProyectos = true;
                     modeloTabla.removeRow(seleccionado);
@@ -217,7 +217,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     
     private void mtdRellenarTabla() {
         mtdVaciarTabla();
-        proyectos = dao.mtdListar();
+        proyectos = dao.mtdListarProyectoEnProceso();
             
         if( proyectos.size() > 0 )
             mtdAgregarProyectos();

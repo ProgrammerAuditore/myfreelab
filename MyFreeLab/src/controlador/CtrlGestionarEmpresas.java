@@ -208,7 +208,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION );
             
             if( opc == JOptionPane.YES_OPTION ){
-                if( dao.mtdEliminar(dto) ){
+                if( dao.mtdRemover(dto) ){
                     modeloTabla.removeRow(seleccionado);
                     JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                 }

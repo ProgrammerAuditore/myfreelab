@@ -262,7 +262,7 @@
         <Component class="vista.componentes.boton.Boton" name="btnEliminar">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="danger"/>
-            <Property name="texto" type="java.lang.String" value="Eliminar"/>
+            <Property name="texto" type="java.lang.String" value="Remover"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

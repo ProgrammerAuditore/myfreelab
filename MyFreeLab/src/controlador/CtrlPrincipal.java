@@ -42,7 +42,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
 import src.Source;
-import vista.paneles.PanelCard;
+import vista.paneles.PanelCardProyectos;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements ActionListener {
@@ -61,7 +61,7 @@ public class CtrlPrincipal implements ActionListener {
     private List<ProyectoDto> proyectos;
     private int canBefore;
     private int canAfter;
-    private List<PanelCard> tarjetas;
+    private List<PanelCardProyectos> tarjetas;
     
     // * Catcher
     public static boolean estadoModalConfigurarConexion;
@@ -458,7 +458,7 @@ public class CtrlPrincipal implements ActionListener {
         
         for (int i = 0; i < tam; i++) {
             DecimalFormat costoFormato = new DecimalFormat("#.###");
-            PanelCard tarjeta_proyecto = new PanelCard();
+            PanelCardProyectos tarjeta_proyecto = new PanelCardProyectos();
             ProyectoDto proyecto = proyectos.get(i);
             GridBagConstraints c = new GridBagConstraints();
             tarjeta_proyecto.setVisible(true);
@@ -616,14 +616,14 @@ public class CtrlPrincipal implements ActionListener {
     }
     
     private void mtdPintarFiltroProyectos(String nombreProyecto){
-        List<PanelCard> tarjetas = mtdFiltroProyectos(nombreProyecto);
+        List<PanelCardProyectos> tarjetas = mtdFiltroProyectos(nombreProyecto);
         mtdVaciarContenedor();
         int itemFila =0;
         
         if( tarjetas.size() > 0 ){
             
             // * Pintar tarjetas de presentación
-            for (PanelCard tarjeta : tarjetas) {
+            for (PanelCardProyectos tarjeta : tarjetas) {
 
                 //System.out.println("Tarjeta : "  + tarjeta.etqTitulo.getText());
                 GridBagConstraints c = new GridBagConstraints();
@@ -650,8 +650,8 @@ public class CtrlPrincipal implements ActionListener {
         laVista.pnlContenedor.repaint();   
     }
     
-    private List<PanelCard> mtdFiltroProyectos(String busqueda){
-        List<PanelCard> tarjetas = new ArrayList<>();
+    private List<PanelCardProyectos> mtdFiltroProyectos(String busqueda){
+        List<PanelCardProyectos> tarjetas = new ArrayList<>();
         
         int cantidad = this.tarjetas.size();
         

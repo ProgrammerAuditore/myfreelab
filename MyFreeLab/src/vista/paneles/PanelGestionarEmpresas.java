@@ -122,7 +122,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
         cmpEmpresa.setComponenteDidireccional(lbl_empresa);
 
         btnEliminar.setImgButtonType("danger");
-        btnEliminar.setTexto("Eliminar");
+        btnEliminar.setTexto("Remover");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

@@ -181,7 +181,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
-                if( dao.mtdEliminar(dto) ){
+                if( dao.mtdRemover(dto) ){
                     modeloTabla.removeRow(seleccionado);
                     mtdCalcularMonto();
                     JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se eliminó exitosamente.");

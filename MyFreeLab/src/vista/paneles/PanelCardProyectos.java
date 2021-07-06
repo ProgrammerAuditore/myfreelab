@@ -11,12 +11,12 @@ import java.awt.Dimension;
  *
  * @author victo
  */
-public class PanelCard extends javax.swing.JPanel {
+public class PanelCardProyectos extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelCard
      */
-    public PanelCard() {
+    public PanelCardProyectos() {
         initComponents();
         Dimension tam = new Dimension(676, 229);
         this.setPreferredSize( tam );

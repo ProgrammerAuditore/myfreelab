@@ -8,9 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.dto.ProyectoDto;
+import modelo.interfaces.keyword_listar_proyectos;
 import modelo.interfaces.keyword_query;
 
-public class ProyectoDao implements keyword_query<ProyectoDto>{
+public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_proyectos<ProyectoDto>{
 
     @Override
     public boolean mtdInsetar(ProyectoDto proyecto_dto) {
@@ -71,7 +72,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
         List<ProyectoDto> proyectos = new ArrayList<>();
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "SELECT * FROM tblproyectos ;";
+        String sql = "SELECT * FROM tblproyectos WHERE cmpCtrlEstado BETWEEN 0 AND 100 ;";
         
         try {
             
@@ -126,28 +127,6 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
     }
 
     @Override
-    public boolean mtdEliminar(ProyectoDto proyecto_dto) {
-        
-        PreparedStatement ps = null;
-        Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "DELETE FROM tblproyectos WHERE cmpID = ?; ";
-        
-        try {
-            
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, proyecto_dto.getCmpID());
-            int resp = ps.executeUpdate();
-            
-            if( resp > 0 )
-                return true;
-            
-        } catch (Exception e) {
-            //System.out.println("" + e.getMessage());
-        }
-        return false;
-    }
-
-    @Override
     public boolean mtdConsultar(ProyectoDto proyecto_dto) {
         
         PreparedStatement ps = null;
@@ -181,6 +160,143 @@ public class ProyectoDao implements keyword_query<ProyectoDto>{
     @Override
     public List<ProyectoDto> mtdListar(ProyectoDto dto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<ProyectoDto> mtdListarProyectoEnProceso() {
+        List<ProyectoDto> proyectos = new ArrayList<>();
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblproyectos WHERE cmpCtrlEstado BETWEEN 1 AND 50 ;";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                ProyectoDto proyecto = new ProyectoDto();
+                
+                System.out.println("" + rs.getInt("cmpID" ));
+                proyecto.setCmpID(rs.getInt("cmpID" ) );
+                proyecto.setCmpNombre( rs.getString( "cmpNombre" ) );
+                proyecto.setCmpFechaInicial( rs.getString( "cmpFechaInicial" ) );
+                proyecto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
+                proyecto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
+                proyecto.setCmpMontoAdelantado( rs.getDouble( "cmpMontoAdelantado" ) );
+                
+                proyectos.add(proyecto);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+        }
+        
+        return proyectos;
+    }
+
+    @Override
+    public List<ProyectoDto> mtdListarProyectoEliminados() {
+        List<ProyectoDto> proyectos = new ArrayList<>();
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblproyectos WHERE cmpCtrlEstado = 1  ;";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                ProyectoDto proyecto = new ProyectoDto();
+                
+                proyecto.setCmpID(rs.getInt("cmpID" ) );
+                proyecto.setCmpNombre( rs.getString( "cmpNombre" ) );
+                proyecto.setCmpFechaInicial( rs.getString( "cmpFechaInicial" ) );
+                proyecto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
+                proyecto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
+                proyecto.setCmpMontoAdelantado( rs.getDouble( "cmpMontoAdelantado" ) );
+                
+                proyectos.add(proyecto);
+            }
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return proyectos;
+    }
+
+    @Override
+    public List<ProyectoDto> mtdListarProyectoRealizados() {
+        List<ProyectoDto> proyectos = new ArrayList<>();
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblproyectos WHERE cmpCtrlEstado = 1  ;";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                ProyectoDto proyecto = new ProyectoDto();
+                
+                proyecto.setCmpID(rs.getInt("cmpID" ) );
+                proyecto.setCmpNombre( rs.getString( "cmpNombre" ) );
+                proyecto.setCmpFechaInicial( rs.getString( "cmpFechaInicial" ) );
+                proyecto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
+                proyecto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
+                proyecto.setCmpMontoAdelantado( rs.getDouble( "cmpMontoAdelantado" ) );
+                
+                proyectos.add(proyecto);
+            }
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return proyectos;
+    }
+
+    @Override
+    public boolean mtdRemover(ProyectoDto proyecto_dto) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "DELETE FROM tblproyectos WHERE cmpID = ?; "; 
+        try {                        
+                ps = conn.prepareStatement(sql);            
+                ps.setInt(1, proyecto_dto.getCmpID());            
+                int resp = ps.executeUpdate();                        
+
+                if( resp > 0 )            
+                    return true;                    
+        } catch (Exception e) {            
+                //System.out.println("" + e.getMessage());        
+        }
+            
+        return false;
+    }
+    
+    @Override
+    public boolean mtdEliminar(ProyectoDto proyecto_dto) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "UPDATE tblproyectos SET cmpCtrlEstado = 0 WHERE cmpID = ?; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, proyecto_dto.getCmpID());
+            int resp = ps.executeUpdate();
+            
+            if( resp > 0 )
+            return true;
+            
+        } catch (Exception e) {
+            //System.out.println("" + e.getMessage());
+        }
+        return false;
     }
 
 }

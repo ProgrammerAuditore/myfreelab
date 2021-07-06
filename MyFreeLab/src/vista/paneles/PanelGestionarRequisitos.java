@@ -126,7 +126,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         cmpRequisito.setComponenteDidireccional(lbl_empresa);
 
         btnEliminar.setImgButtonType("danger");
-        btnEliminar.setTexto("Eliminar");
+        btnEliminar.setTexto("Remover");
 
         etqMontoEstimado.setText("Monto estimado");
 
