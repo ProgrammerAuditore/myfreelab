@@ -134,7 +134,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             
                 if(dao.mtdInsetar(dto)){
                     // * Notificar al controlador principal
-                    CtrlPrincipal.cambiosModalGestionarProyectos = true;
+                    CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
                     JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se creó exitosamente.");
                 }
@@ -165,7 +165,7 @@ public class CtrlGestionarProyectos implements MouseListener{
 
                     if(dao.mtdActualizar(dto)){
                         // * Notificar al controlador principal
-                        CtrlPrincipal.cambiosModalGestionarProyectos = true;
+                        CtrlPrincipal.modificacionesCard = true;
                         mtdRellenarTabla();
                         JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se modificó exitosamente.");
                     }
@@ -194,7 +194,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdRemover(dto) ){
                     // * Notificar al controlador principal
-                    CtrlPrincipal.cambiosModalGestionarProyectos = true;
+                    CtrlPrincipal.modificacionesCard = true;
                     modeloTabla.removeRow(seleccionado);
                     JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                 }

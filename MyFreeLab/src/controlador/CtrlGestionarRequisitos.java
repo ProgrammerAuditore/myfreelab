@@ -35,6 +35,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
     private double cmpCosto;
     private double cmpMonto;
     private List<RequisitoDto> requisitos;
+    public static BigDecimal proyectoMonto;
     
     public CtrlGestionarRequisitos(PanelGestionarRequisitos laVista, ProyectoDto proyecto_dto,  RequisitoDto dto, RequisitoDao dao) {
         this.laVista = laVista;
@@ -292,6 +293,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
         
         BigDecimal cmpMonto = new BigDecimal(this.cmpMonto).setScale(2, RoundingMode.HALF_EVEN);
         laVista.cmpMontoEstimado.setText("" + cmpMonto.doubleValue());
+        proyectoMonto = cmpMonto;
     }
    
 }

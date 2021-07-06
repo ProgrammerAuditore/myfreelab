@@ -9,21 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,12 +28,6 @@ import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
 import modelo.dto.ProyectoDto;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
 import src.Source;
 import vista.paneles.PanelCardProyectos;
@@ -66,6 +54,7 @@ public class CtrlPrincipal implements ActionListener {
     // * Catcher
     public static boolean estadoModalConfigurarConexion;
     public static boolean cambiosModalGestionarProyectos;
+    public static Boolean modificacionesCard;
 
     public CtrlPrincipal(VentanaPrincipal laVista, FabricarModal fabrica, ProyectoDao dao, EmpresaDao daoE, RequisitoDao daoR) {
         this.laVista = laVista;
@@ -83,6 +72,7 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdInit() {
+        CtrlPrincipal.modificacionesCard = false;
         tarjetas = new ArrayList<>();
         proyectos = new ArrayList<>();
         laVista.pnlContenedor.setLayout(new GridBagLayout());
@@ -245,6 +235,7 @@ public class CtrlPrincipal implements ActionListener {
             
             //mtdDesHabSubMenus(true);
             mtdCrearHiloDesconexion();
+            mtdCrearHiloModificaciones();
             Thread HiloCargandoProyectos = new Thread(carga);
             HiloCargandoProyectos.setName("HiloDeCarga");
             HiloCargandoProyectos.setPriority(9);
@@ -348,83 +339,6 @@ public class CtrlPrincipal implements ActionListener {
 
     }
 
-    private void modalGestionarRequisitos(ProyectoDto proyecto_dto) {
-        
-        canBefore = daoR.mtdListar().size();
-        
-        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        fabrica.setProyecto(proyecto_dto);
-        fabrica.construir("GestionarRequisitos");
-        
-        canAfter = daoR.mtdListar().size();
-        
-        if( canAfter != canBefore )
-        mtdRellenarContenedor();
-
-    }
-
-    private void mtdCrearHiloDesconexion() {
-        // * Este hilo monitorea si esta en Desconexion
-        
-        Runnable watcher = () -> {
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Creado [!]");
-            boolean estado = true;
-
-            while (estado) {
-                synchronized (CtrlHiloConexion.ctrlHiloC) {
-
-                    if (CtrlHiloConexion.ctrlEstado == false) {
-                        mtdDesHabilitarMenus();
-                        mtdCrearHiloConexion();
-                        estado = false;
-                    }
-
-                }
-            }
-
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Terminado [!]");
-        }; 
-
-        Thread HiloDesconexion = new Thread(watcher);
-        HiloDesconexion.setName("HiloDesconexionPrincipal");
-        HiloDesconexion.setPriority(9);
-        //HiloDesconexion.setDaemon(true);
-        HiloDesconexion.start();
-
-    }
-    
-    private void mtdCrearHiloConexion() {
-        // * Este hilo monitorea si esta en Conexion
-        
-        Runnable watcher = () -> {
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Creado [!]");
-            boolean estado = true;
-
-            while (estado) {
-                synchronized (CtrlHiloConexion.ctrlHiloC) {
-
-                    //System.out.println("CtrlPrincipal ::: mtdCrearHiloConexion Run");
-                    if (CtrlHiloConexion.ctrlEstado == true) {
-                        //System.out.println("CtrlPrincipal ::: mtdCrearHiloConexion checkConexion");
-                        mtdHabilitarMenus();
-                        mtdCrearHiloDesconexion();
-                        estado = false;
-                    }
-
-                }
-            }
-
-            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Terminado [!]");
-        };
-
-        Thread HiloConexion = new Thread(watcher);
-        HiloConexion.setName("HiloConexionPrincipal");
-        HiloConexion.setPriority(9);
-        //HiloConexion.setDaemon(true);
-        HiloConexion.start();
-
-    }
-    
     private void mtdRellenarContenedor() {
         proyectos.clear();
         tarjetas.clear();
@@ -457,10 +371,7 @@ public class CtrlPrincipal implements ActionListener {
         String puntos = "";
         
         for (int i = 0; i < tam; i++) {
-            DecimalFormat costoFormato = new DecimalFormat("#.###");
-            PanelCardProyectos tarjeta_proyecto = new PanelCardProyectos();
             ProyectoDto proyecto = proyectos.get(i);
-            GridBagConstraints c = new GridBagConstraints();
             
             // * Calcular el costo estimado
             double costoEstimado = daoR.mtdObtenerCostoEstimado( proyecto.getCmpID() );
@@ -468,106 +379,14 @@ public class CtrlPrincipal implements ActionListener {
             proyecto.setCmpCostoEstimado( bd.doubleValue() );
             daoP.mtdActualizar(proyecto);
             
-            // Definir los datos de cada tarjeta de presentación
-            tarjeta_proyecto.etqTitulo.setText(proyectos.get(i).getCmpNombre());
-            tarjeta_proyecto.cmpFechaInicial.setText(proyectos.get(i).getCmpFechaInicial());
-            tarjeta_proyecto.cmpFechaFinal.setText(proyectos.get(i).getCmpFechaFinal());
-            tarjeta_proyecto.cmpCostoEstimado.setText("" + proyectos.get(i).getCmpCostoEstimado());
-            tarjeta_proyecto.cmpMontoInicial.setText("" + proyectos.get(i).getCmpMontoAdelantado());
+            CtrlTarjetaProyectos tarjeta = new CtrlTarjetaProyectos(proyecto, daoP, fabrica, i);
 
-            c.gridx = 0; // Columna 
-            c.gridy = i; // Fila
-            c.gridheight = 1; // Cantidad de columnas a ocupar
-            c.gridwidth = 1; // Cantidad de filas a ocupar
-            c.weightx = 0.0; // Estirar en ancho
-            c.weighty = 0.0;// Estirar en alto
-            c.insets = new Insets(30, 0, 30, 0);  //top padding
-            c.fill = GridBagConstraints.BOTH; // El modo de estirar
-            laVista.pnlContenedor.add(tarjeta_proyecto, c);
-            tarjetas.add(tarjeta_proyecto);
-            tarjeta_proyecto.setVisible(true);
-            
-            // System.out.println(proyecto.toString());
-            if( proyecto.getCmpCtrlEstado() == 0 ){
-                tarjeta_proyecto.mtdCardRecuperarProyecto();
-            
-            }else if( proyecto.getCmpCtrlEstado() == 100 ){
-                tarjeta_proyecto.mtdCardRealizadoProyecto();
-                
-                // Definir el evento para el boton Eliminar
-                tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        mtdEliminarProyecto(proyecto);
-                    }
-                });
-
-                int cantidad = daoR.mtdObtenerCantidadReq( proyecto.getCmpID() );
-                //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
-                // Verificar si es posible cotizar
-                if ( cantidad == 0 ) {
-                    // Deshabilitar el boton de Cotizar
-                    tarjeta_proyecto.btnCotizar.setEnabled(false);
-
-                } else {
-                    // Habilitar el boton de Cotizar
-                    tarjeta_proyecto.btnCotizar.addMouseListener(new MouseAdapter() {
-                        @Override
-                        public void mouseReleased(MouseEvent e) {
-                            mtdCotizarProyecto(proyecto);
-                        }
-                    });
-
-                }
-                
-            }else{
-                tarjeta_proyecto.mtdCardActivoProyecto();
-                
-                // Definir el evento para el boton Modificar
-                tarjeta_proyecto.btnModificar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        modalGestionarRequisitos(proyecto);
-                    }
-                });
-
-                // Definir el evento para el boton Eliminar
-                tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        mtdEliminarProyecto(proyecto);
-                    }
-                });
-
-                int cantidad = daoR.mtdObtenerCantidadReq( proyecto.getCmpID() );
-                //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
-                // Verificar si es posible cotizar
-                if ( cantidad == 0 ) {
-                    // Deshabilitar el boton de Cotizar
-                    tarjeta_proyecto.btnCotizar.setEnabled(false);
-
-                } else {
-                    // Habilitar el boton de Cotizar
-                    tarjeta_proyecto.btnCotizar.addMouseListener(new MouseAdapter() {
-                        @Override
-                        public void mouseReleased(MouseEvent e) {
-                            mtdCotizarProyecto(proyecto);
-                        }
-                    });
-
-                }
-                
-            }
+            laVista.pnlContenedor.add(tarjeta.getTarjeta(), tarjeta.getTarjeta_dimensiones());
+            tarjetas.add(tarjeta.getTarjeta());
             
             // * Mostrar progreso con puntos
-            if( i%4 == 0 ){
-                //laVista.setTitle(Info.NombreSoftware);
-                puntos = "";
-            }else{
-                puntos += ".";
-                //laVista.setTitle(Info.NombreSoftware + " - [Cargando " + puntos  + "]");
-                CtrlPrincipal.mensajeCtrlPrincipal("Cargando " + puntos);
-            }
+            puntos = ( i%4 == 0 ) ? "" : puntos + ".";
+            CtrlPrincipal.mensajeCtrlPrincipal("Cargando " + puntos);
             
             //System.out.println("Testin :: Tarjeta agregado #" + itemFila);
             try { Thread.sleep(60); } catch (InterruptedException ex) { }
@@ -575,58 +394,6 @@ public class CtrlPrincipal implements ActionListener {
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
         CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
-    }
-
-    private void mtdCotizarProyecto(ProyectoDto proyecto) {
-        
-        try {
-            // Imprimir o mostrar el reporte generado
-            JasperPrint jp = mtdGenerarReporte(proyecto);
-
-            if (jp.getPages().isEmpty()) {
-                JOptionPane.showMessageDialog(laVista, "Lo siento, el reporte no tiene páginas que mostrar.");
-
-            } else {
-                // Mostar el reporte de Cotización
-                JasperViewer jviewer = new JasperViewer(jp, false);
-                jviewer.setTitle("Cotizar : " + proyecto.getCmpNombre());
-                jviewer.setVisible(true);
-                //JasperViewer.viewReport(jp);
-
-            }
-        } catch (Exception e) {
-            // El archivo no existe
-            //System.out.println("" + e.getMessage());
-            CtrlPrincipal.mensajeCtrlPrincipal("Error al generar la cotización");
-        }
-
-    }
-
-    private JasperPrint mtdGenerarReporte(ProyectoDto proyecto) {
-        JasperPrint jp = null;
-
-        try {
-            String pathReporteCotizacion = new File( Source.docReporte.get("jrxml_file") ).getAbsolutePath();
-
-            Map<String, Object> parametros = new HashMap<String, Object>();
-            parametros.put("SubReportDir", Source.docReporte.get("root_dir"));
-            parametros.put("rpCopyright", Info.Copyright );
-            parametros.put("rpCostoEstimado", "" + proyecto.getCmpCostoEstimado());
-            parametros.put("rpProyectoID", proyecto.getCmpID());
-            parametros.put("rpNombreProyecto", proyecto.getCmpNombre());
-            parametros.put("rpTitulo", Info.NombreSoftware);
-
-            JasperReport jr = JasperCompileManager.compileReport(pathReporteCotizacion);
-
-            jp = JasperFillManager.fillReport(jr, parametros, CtrlHiloConexion.getConexion());
-
-        } catch (JRException ex) {
-            // Error en la base de datos
-            //Logger.getLogger(CtrlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            CtrlPrincipal.mensajeCtrlPrincipal("Error al generar la cotización");
-        }
-
-        return jp;
     }
 
     private void mtdEliminarProyecto(ProyectoDto dto) {
@@ -736,6 +503,86 @@ public class CtrlPrincipal implements ActionListener {
         msg = msg.replace("[", "");
         msg = msg.replace("]", "");
         VentanaPrincipal.etqMensaje.setText("["+msg+"]");
+    }
+    
+    private void mtdCrearHiloModificaciones(){
+        // * Este hilo monitorea si hay modificaciones en el proyectos
+        Runnable watcher = () -> {
+            while (true) {                
+                synchronized(CtrlPrincipal.modificacionesCard){
+                    //System.out.println("Monitoreando cambios... ");
+                    if(CtrlPrincipal.modificacionesCard){
+                        CtrlPrincipal.modificacionesCard = false;
+                        mtdRellenarContenedor();
+                    }
+                }
+            }
+        };
+        
+        Thread HiloCambios = new Thread(watcher);
+        HiloCambios.setName("HiloCambiosPrincipal");
+        HiloCambios.setPriority(9);
+        HiloCambios.start();
+    }
+    
+    private void mtdCrearHiloDesconexion() {
+        // * Este hilo monitorea si esta en Desconexion
+        
+        Runnable watcher = () -> {
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Creado [!]");
+            boolean estado = true;
+
+            while (estado) {
+                synchronized (CtrlHiloConexion.ctrlHiloC) {
+
+                    if (CtrlHiloConexion.ctrlEstado == false) {
+                        mtdDesHabilitarMenus();
+                        mtdCrearHiloConexion();
+                        estado = false;
+                    }
+
+                }
+            }
+
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloDesconexion Terminado [!]");
+        }; 
+
+        Thread HiloDesconexion = new Thread(watcher);
+        HiloDesconexion.setName("HiloDesconexionPrincipal");
+        HiloDesconexion.setPriority(9);
+        HiloDesconexion.start();
+
+    }
+    
+    private void mtdCrearHiloConexion() {
+        // * Este hilo monitorea si esta en Conexion
+        
+        Runnable watcher = () -> {
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Creado [!]");
+            boolean estado = true;
+
+            while (estado) {
+                synchronized (CtrlHiloConexion.ctrlHiloC) {
+
+                    //System.out.println("CtrlPrincipal ::: mtdCrearHiloConexion Run");
+                    if (CtrlHiloConexion.ctrlEstado == true) {
+                        //System.out.println("CtrlPrincipal ::: mtdCrearHiloConexion checkConexion");
+                        mtdHabilitarMenus();
+                        mtdCrearHiloDesconexion();
+                        estado = false;
+                    }
+
+                }
+            }
+
+            //System.out.println("CtrlPrincipal ::: Hilo mtdCrearHiloConexion Terminado [!]");
+        };
+
+        Thread HiloConexion = new Thread(watcher);
+        HiloConexion.setName("HiloConexionPrincipal");
+        HiloConexion.setPriority(9);
+        HiloConexion.start();
+
     }
     
 }

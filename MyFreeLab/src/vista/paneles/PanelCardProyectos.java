@@ -47,7 +47,7 @@ public class PanelCardProyectos extends javax.swing.JPanel {
     }
     
     public void mtdCardRealizadoProyecto(){
-        panelAcciones.setBackground(new Color(123, 201, 80));
+        panelAcciones.setBackground(new Color(20, 89, 29));
         btnModificar.setVisible(false);
         
         btnCotizar.setVisible(true);
