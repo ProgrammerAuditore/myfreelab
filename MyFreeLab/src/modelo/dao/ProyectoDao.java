@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.dto.ProyectoDto;
-import modelo.interfaces.keyword_listar_proyectos;
 import modelo.interfaces.keyword_query;
+import modelo.interfaces.keyword_proyectos;
 
-public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_proyectos<ProyectoDto>{
+public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_proyectos<ProyectoDto>{
 
     @Override
     public boolean mtdInsetar(ProyectoDto proyecto_dto) {
@@ -36,7 +36,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -48,8 +48,9 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "UPDATE tblproyectos "
-                + "SET cmpNombre = ?, cmpFechaInicial = ?, cmpFechaFinal = ?, cmpCostoEstimado = ?, cmpMontoAdelantado = ?, cmpActualizadoEn = ? "
-                + "  WHERE cmpID = ? ; ";
+                + "SET cmpNombre = ?, cmpFechaInicial = ?, cmpFechaFinal = ?, cmpCostoEstimado = ?, "
+                + "cmpMontoAdelantado = ?, cmpCtrlEstado = ?, cmpCreadoEn = ?, cmpActualizadoEn = ? "
+                + "WHERE cmpID = ? ; ";
         
         try {
             
@@ -59,8 +60,10 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
             ps.setString(3, proyecto_dto.getCmpFechaFinal());
             ps.setDouble(4, proyecto_dto.getCmpCostoEstimado());
             ps.setDouble(5, proyecto_dto.getCmpMontoAdelantado());
-            ps.setString(6, proyecto_dto.getCmpActualizadoEn());
-            ps.setInt(7, proyecto_dto.getCmpID());
+            ps.setInt(6, proyecto_dto.getCmpCtrlEstado());
+            ps.setString(7, proyecto_dto.getCmpCreadoEn());
+            ps.setString(8, proyecto_dto.getCmpActualizadoEn());
+            ps.setInt(9, proyecto_dto.getCmpID());
             int rs = ps.executeUpdate();
             
             if( rs > 0 )
@@ -129,14 +132,14 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
             return true;
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return false;
     }
 
     @Override
-    public boolean mtdConsultar(ProyectoDto proyecto_dto) {
+    public boolean mtdConsultar(ProyectoDto proyecto) {
         
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
@@ -145,16 +148,20 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
         try {
             
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, proyecto_dto.getCmpID());
+            ps.setInt(1, proyecto.getCmpID());
             ResultSet rs = ps.executeQuery();
             
             while ( rs.next() ) {                
-                proyecto_dto.setCmpID( rs.getInt( "cmpID" ) );
-                proyecto_dto.setCmpNombre(rs.getString( "cmpNombre" ) );
-                proyecto_dto.setCmpFechaInicial( rs.getString( "cmpFechaInicial" ) );
-                proyecto_dto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
-                proyecto_dto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
-                proyecto_dto.setCmpMontoAdelantado( rs.getDouble( "cmpCostoAdelantado" ) );
+                proyecto.setCmpID(rs.getInt("cmpID" ) );
+                proyecto.setCmpNombre( rs.getString( "cmpNombre" ) );
+                proyecto.setCmpFechaInicial( rs.getString( "cmpFechaInicial" ) );
+                proyecto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
+                proyecto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
+                proyecto.setCmpMontoAdelantado( rs.getDouble( "cmpMontoAdelantado" ) );
+                proyecto.setCmpCtrlEstado(rs.getInt("cmpCtrlEstado") );
+                proyecto.setCmpActualizadoEn(rs.getString("cmpActualizadoEn") );
+                proyecto.setCmpCreadoEn(rs.getString("cmpCreadoEn") );
+                
             }
             
             return true;
@@ -192,6 +199,9 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
                 proyecto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
                 proyecto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
                 proyecto.setCmpMontoAdelantado( rs.getDouble( "cmpMontoAdelantado" ) );
+                proyecto.setCmpCtrlEstado(rs.getInt("cmpCtrlEstado") );
+                proyecto.setCmpActualizadoEn(rs.getString("cmpActualizadoEn") );
+                proyecto.setCmpCreadoEn(rs.getString("cmpCreadoEn") );
                 
                 proyectos.add(proyecto);
             }

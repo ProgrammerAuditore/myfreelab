@@ -379,7 +379,7 @@ public class CtrlPrincipal implements ActionListener {
             proyecto.setCmpCostoEstimado( bd.doubleValue() );
             daoP.mtdActualizar(proyecto);
             
-            CtrlTarjetaProyectos tarjeta = new CtrlTarjetaProyectos(proyecto, daoP, fabrica, i);
+            CtrlTarjetaProyectos tarjeta = new CtrlTarjetaProyectos(laVista, proyecto, daoP, fabrica, i);
 
             laVista.pnlContenedor.add(tarjeta.getTarjeta(), tarjeta.getTarjeta_dimensiones());
             tarjetas.add(tarjeta.getTarjeta());

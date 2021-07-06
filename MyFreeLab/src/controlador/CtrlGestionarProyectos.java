@@ -206,7 +206,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     }
     
     private ProyectoDto mtdObtenerProyecto(int fila){
-        ProyectoDto p = new ProyectoDto();
+        ProyectoDto p = proyectos.get(fila);
         
         p.setCmpID( Integer.parseInt( laVista.tblProyectos.getValueAt(fila, 0).toString() ) );
         p.setCmpNombre( String.valueOf( laVista.tblProyectos.getValueAt(fila, 1)) );

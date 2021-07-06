@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
 import src.Source;
 import vista.paneles.PanelCardProyectos;
+import vista.ventanas.VentanaPrincipal;
 
 public class CtrlTarjetaProyectos extends InterfaceCard {
     
@@ -35,9 +37,24 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
     
     // * Atributo
     GridBagConstraints tarjeta_dimensiones;
+    private VentanaPrincipal laVista;
     Integer item;
     
-    public CtrlTarjetaProyectos(ProyectoDto dto, ProyectoDao dao, FabricarModal fabrica, Integer item) {
+    // * Evenetos
+    MouseListener eventoEliminar;
+    MouseListener eventoRemover;
+    MouseListener eventoRecuperar;
+    MouseListener eventoCotizar;
+    MouseListener eventoModificar;
+    
+    public CtrlTarjetaProyectos(
+            VentanaPrincipal laVista,
+            ProyectoDto dto, 
+            ProyectoDao dao, 
+            FabricarModal fabrica, 
+            Integer item ) {
+        
+        this.laVista = laVista;
         this.dto = dto;
         this.dao = dao;
         this.fabrica = fabrica;
@@ -50,8 +67,46 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
     
     private void mtdInit(){
         mtdEstablecerDatos();
+        mtdCrearEventos();
         mtdEstablecerDimensiones();
         mtdEstablecerTipoDeTarjeta();
+    }
+    
+    private void mtdCrearEventos(){
+        eventoCotizar = new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mtdCotizarProyecto();
+            }
+        };
+        
+        eventoEliminar = new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mtdEliminarProyecto();
+            }
+        };
+        
+        eventoModificar = new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mtdModificarProyecto();
+            }
+        };
+        
+        eventoRecuperar = new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mtdRecuperarProyecto();
+            }
+        };
+        
+        eventoRemover = new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mtdRemoverProyecto();
+            }
+        };
     }
     
     private void mtdEstablecerDatos(){
@@ -77,6 +132,11 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
     
     private void mtdEstablecerTipoDeTarjeta(){
         int gctrlEstado = dto.getCmpCtrlEstado();
+        tarjeta.btnCotizar.removeMouseListener(eventoCotizar);
+        tarjeta.btnEliminar.removeMouseListener(eventoEliminar);
+        tarjeta.btnEliminar.removeMouseListener(eventoRemover);
+        tarjeta.btnModificar.removeMouseListener(eventoModificar);
+        tarjeta.btnRecuperar.removeMouseListener(eventoRecuperar);
         
         // * Establecer el estilo de diseño de la tarjeta
         if( gctrlEstado == 0 ){
@@ -94,54 +154,30 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         if( dto.getCmpCtrlEstado() > 0 ){
 
             // Definir el evento para el boton Eliminar
-            tarjeta.btnEliminar.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    mtdEliminarProyecto();
-                }
-            });
+            tarjeta.btnEliminar.addMouseListener(eventoEliminar);
             
             // Definir el evento para el boton Cotizar
             if( dto.getCmpCostoEstimado() == 0 ){
                 tarjeta.btnCotizar.setEnabled(false);
             }else{
-                tarjeta.btnCotizar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        mtdCotizarProyecto();
-                    }
-                });
+                tarjeta.btnCotizar.setEnabled(true);
+                tarjeta.btnCotizar.addMouseListener(eventoCotizar);
             }
             
             if( dto.getCmpCtrlEstado() == 1 || dto.getCmpCtrlEstado() == 50 ){
 
                 // Definir el evento para el boton Modificar
-                tarjeta.btnModificar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        mtdModificarProyecto();
-                    }
-                });
+                tarjeta.btnModificar.addMouseListener(eventoModificar);
             
             }
 
         }else{
             
             // Definir el evento para el boton Recuperar
-            tarjeta.btnEliminar.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    mtdRecuperarProyecto();
-                }
-            });
+            tarjeta.btnRecuperar.addMouseListener(eventoRecuperar);
             
             // Definir el evento para el boton Remover
-            tarjeta.btnEliminar.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    mtdRemoverProyecto();
-                }
-            });
+            tarjeta.btnEliminar.addMouseListener(eventoRemover);
         
         }
         
@@ -156,13 +192,13 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             dto.setCmpCtrlEstado(0);
             dto.setCmpActualizadoEn(Source.fechayHora);
 
-            msg[0] = "Seguro que deseas eliminar el proyecto `" + dto.getCmpNombre() + "`.";
             msg[1] = "Confirmar";
-            int opc = JOptionPane.showConfirmDialog(null, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
+            msg[0] = "¿Seguro que deseas eliminar el proyecto \n `" + dto.getCmpNombre() + "`?";
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
 
             if (opc == JOptionPane.YES_OPTION) {
                 if (pro.mtdEliminar(dto)) {
-                    JOptionPane.showMessageDialog(null, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                     CtrlPrincipal.modificacionesCard = true;
                 }
             }
@@ -177,7 +213,7 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             JasperPrint jp = mtdGenerarReporte();
 
             if (jp.getPages().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Lo siento, el reporte no tiene páginas que mostrar.");
+                JOptionPane.showMessageDialog(laVista, "Lo siento, el reporte no tiene páginas que mostrar.");
 
             } else {
                 // Mostar el reporte de Cotización
@@ -237,17 +273,55 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             // * Actualizar el costo estimado en la base de datos
             dto.setCmpCostoEstimado( montoDespues.doubleValue() );
             dto.setCmpActualizadoEn( Source.fechayHora );
-            dao.mtdActualizar(dto);
-            
-            // * Actualizar el costo estimado en la tarjeta
-            tarjeta.cmpCostoEstimado.setText( "" + dto.getCmpCostoEstimado() );
-        
+            if(dao.mtdActualizar(dto)){
+
+                // * Actualizar el costo estimado en la tarjeta
+                tarjeta.cmpCostoEstimado.setText( "" + dto.getCmpCostoEstimado() );
+                mtdEstablecerTipoDeTarjeta();
+                
+            }
         }
         
     }
     
-    private void mtdRecuperarProyecto(){}
-    private void mtdRemoverProyecto(){}
+    private void mtdRecuperarProyecto(){
+    
+        if ( dao.mtdComprobar(dto) ) {
+            String[] msg = new String[2];
+            msg[0] = "Confirmar";
+            msg[1] = "¿Seguro que desear recuperar el proyecto \n `" + dto.getCmpNombre() + "`?";
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+
+            if( opc == JOptionPane.YES_OPTION){
+                dto.setCmpActualizadoEn(Source.fechayHora);
+                dto.setCmpCtrlEstado(50);
+
+                if( dao.mtdActualizar(dto) )
+                    CtrlPrincipal.modificacionesCard = true;
+
+            }
+        }
+        
+    }
+    
+    private void mtdRemoverProyecto(){
+        
+        if ( dao.mtdComprobar(dto) ) {
+            String[] msg = new String[2];
+            msg[0] = "Confirmar";
+            msg[1] = "¿Seguro que desear eliminar de forma permanente el  proyecto \n `" + dto.getCmpNombre() + "`?";
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+
+            if( opc == JOptionPane.YES_OPTION){
+                dto.setCmpActualizadoEn(Source.fechayHora);
+
+                if( dao.mtdRemover(dto) )
+                    CtrlPrincipal.modificacionesCard = true;
+
+            }
+        }
+        
+    }
 
     public PanelCardProyectos getTarjeta() {
         return tarjeta;
