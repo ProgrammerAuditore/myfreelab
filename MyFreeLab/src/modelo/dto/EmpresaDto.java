@@ -2,17 +2,20 @@ package modelo.dto;
 
 public class EmpresaDto {
     
-    private int cmpID;
+    private Integer cmpID;
     private String cmpNombre;
     private String cmpDireccion;
     private String cmpCorreo;
     private String cmpTMovil;
+    private Integer cmpCtrlEstado;
+    private String cmpCreadoEn;
+    private String cmpActualizadoEn;
 
-    public int getCmpID() {
+    public Integer getCmpID() {
         return cmpID;
     }
 
-    public void setCmpID(int cmpID) {
+    public void setCmpID(Integer cmpID) {
         this.cmpID = cmpID;
     }
 
@@ -46,6 +49,30 @@ public class EmpresaDto {
 
     public void setCmpTMovil(String cmpTMovil) {
         this.cmpTMovil = cmpTMovil;
+    }
+
+    public Integer getCmpCtrlEstado() {
+        return cmpCtrlEstado;
+    }
+
+    public void setCmpCtrlEstado(Integer cmpCtrlEstado) {
+        this.cmpCtrlEstado = cmpCtrlEstado;
+    }
+
+    public String getCmpCreadoEn() {
+        return cmpCreadoEn;
+    }
+
+    public void setCmpCreadoEn(String cmpCreadoEn) {
+        this.cmpCreadoEn = cmpCreadoEn;
+    }
+
+    public String getCmpActualizadoEn() {
+        return cmpActualizadoEn;
+    }
+
+    public void setCmpActualizadoEn(String cmpActualizadoEn) {
+        this.cmpActualizadoEn = cmpActualizadoEn;
     }
     
 }

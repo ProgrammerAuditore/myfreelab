@@ -461,48 +461,12 @@ public class CtrlPrincipal implements ActionListener {
             PanelCardProyectos tarjeta_proyecto = new PanelCardProyectos();
             ProyectoDto proyecto = proyectos.get(i);
             GridBagConstraints c = new GridBagConstraints();
-            tarjeta_proyecto.setVisible(true);
-            
             
             // * Calcular el costo estimado
             double costoEstimado = daoR.mtdObtenerCostoEstimado( proyecto.getCmpID() );
             BigDecimal bd = new BigDecimal(costoEstimado).setScale(2, RoundingMode.HALF_EVEN);
             proyecto.setCmpCostoEstimado( bd.doubleValue() );
             daoP.mtdActualizar(proyecto);
-            
-            // Definir el evento para el boton Modificar
-            tarjeta_proyecto.btnModificar.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    modalGestionarRequisitos(proyecto);
-                }
-            });
-
-            // Definir el evento para el boton Eliminar
-            tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    mtdEliminarProyecto(proyecto);
-                }
-            });
-            
-            int cantidad = daoR.mtdObtenerCantidadReq( proyecto.getCmpID() );
-            //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
-            // Verificar si es posible cotizar
-            if ( cantidad == 0 ) {
-                // Deshabilitar el boton de Cotizar
-                tarjeta_proyecto.btnCotizar.setEnabled(false);
-
-            } else {
-                // Habilitar el boton de Cotizar
-                tarjeta_proyecto.btnCotizar.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                        mtdCotizarProyecto(proyecto);
-                    }
-                });
-
-            }
             
             // Definir los datos de cada tarjeta de presentación
             tarjeta_proyecto.etqTitulo.setText(proyectos.get(i).getCmpNombre());
@@ -521,6 +485,79 @@ public class CtrlPrincipal implements ActionListener {
             c.fill = GridBagConstraints.BOTH; // El modo de estirar
             laVista.pnlContenedor.add(tarjeta_proyecto, c);
             tarjetas.add(tarjeta_proyecto);
+            tarjeta_proyecto.setVisible(true);
+            
+            // System.out.println(proyecto.toString());
+            if( proyecto.getCmpCtrlEstado() == 0 ){
+                tarjeta_proyecto.mtdCardRecuperarProyecto();
+            
+            }else if( proyecto.getCmpCtrlEstado() == 100 ){
+                tarjeta_proyecto.mtdCardRealizadoProyecto();
+                
+                // Definir el evento para el boton Eliminar
+                tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        mtdEliminarProyecto(proyecto);
+                    }
+                });
+
+                int cantidad = daoR.mtdObtenerCantidadReq( proyecto.getCmpID() );
+                //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
+                // Verificar si es posible cotizar
+                if ( cantidad == 0 ) {
+                    // Deshabilitar el boton de Cotizar
+                    tarjeta_proyecto.btnCotizar.setEnabled(false);
+
+                } else {
+                    // Habilitar el boton de Cotizar
+                    tarjeta_proyecto.btnCotizar.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            mtdCotizarProyecto(proyecto);
+                        }
+                    });
+
+                }
+                
+            }else{
+                tarjeta_proyecto.mtdCardActivoProyecto();
+                
+                // Definir el evento para el boton Modificar
+                tarjeta_proyecto.btnModificar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        modalGestionarRequisitos(proyecto);
+                    }
+                });
+
+                // Definir el evento para el boton Eliminar
+                tarjeta_proyecto.btnEliminar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        mtdEliminarProyecto(proyecto);
+                    }
+                });
+
+                int cantidad = daoR.mtdObtenerCantidadReq( proyecto.getCmpID() );
+                //System.out.println("TEST ::"+ proyecto.getCmpNombre() +" - req : " + cantidad );
+                // Verificar si es posible cotizar
+                if ( cantidad == 0 ) {
+                    // Deshabilitar el boton de Cotizar
+                    tarjeta_proyecto.btnCotizar.setEnabled(false);
+
+                } else {
+                    // Habilitar el boton de Cotizar
+                    tarjeta_proyecto.btnCotizar.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            mtdCotizarProyecto(proyecto);
+                        }
+                    });
+
+                }
+                
+            }
             
             // * Mostrar progreso con puntos
             if( i%4 == 0 ){
@@ -599,6 +636,8 @@ public class CtrlPrincipal implements ActionListener {
         //System.out.println(" ddfd " + pro.mtdConsultar(dto) );
         if (pro.mtdComprobar(dto)) {
             String[] msg = new String[2];
+            dto.setCmpCtrlEstado(0);
+            dto.setCmpActualizadoEn(Source.fechayHora);
 
             msg[0] = "Seguro que deseas eliminar el proyecto `" + dto.getCmpNombre() + "`.";
             msg[1] = "Confirmar";

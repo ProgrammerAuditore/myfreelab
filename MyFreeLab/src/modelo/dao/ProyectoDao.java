@@ -18,7 +18,9 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
         
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "INSERT INTO tblproyectos ( cmpNombre, cmpFechaInicial, cmpFechaFinal ) VALUES ( ?, ?, ? );";
+        String sql = "INSERT INTO tblproyectos"
+                + " ( cmpNombre, cmpFechaInicial, cmpFechaFinal, cmpCtrlEstado, cmpCreadoEn, cmpActualizadoEn  ) "
+                + " VALUES ( ?, ?, ?, ?, ?, ? ); ";
         
         try {
             
@@ -26,12 +28,15 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
             ps.setString(1, proyecto_dto.getCmpNombre());
             ps.setString(2, proyecto_dto.getCmpFechaInicial());
             ps.setString(3, proyecto_dto.getCmpFechaFinal());
+            ps.setInt(4, proyecto_dto.getCmpCtrlEstado());
+            ps.setString(5, proyecto_dto.getCmpCreadoEn());
+            ps.setString(6, proyecto_dto.getCmpCreadoEn());
             ps.execute();
             
             return true;
             
         } catch (SQLException e) {
-            //System.out.println("" + e.getMessage());
+            System.out.println("" + e.getMessage());
         }
         
         return false;
@@ -43,7 +48,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
         String sql = "UPDATE tblproyectos "
-                + "SET cmpNombre = ?, cmpFechaInicial = ?, cmpFechaFinal = ?, cmpCostoEstimado = ?, cmpMontoAdelantado = ? "
+                + "SET cmpNombre = ?, cmpFechaInicial = ?, cmpFechaFinal = ?, cmpCostoEstimado = ?, cmpMontoAdelantado = ?, cmpActualizadoEn = ? "
                 + "  WHERE cmpID = ? ; ";
         
         try {
@@ -54,7 +59,8 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
             ps.setString(3, proyecto_dto.getCmpFechaFinal());
             ps.setDouble(4, proyecto_dto.getCmpCostoEstimado());
             ps.setDouble(5, proyecto_dto.getCmpMontoAdelantado());
-            ps.setInt(6, proyecto_dto.getCmpID());
+            ps.setString(6, proyecto_dto.getCmpActualizadoEn());
+            ps.setInt(7, proyecto_dto.getCmpID());
             int rs = ps.executeUpdate();
             
             if( rs > 0 )
@@ -72,7 +78,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
         List<ProyectoDto> proyectos = new ArrayList<>();
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "SELECT * FROM tblproyectos WHERE cmpCtrlEstado BETWEEN 0 AND 100 ;";
+        String sql = "SELECT * FROM tblproyectos WHERE cmpCtrlEstado BETWEEN 0 AND 100 ORDER BY cmpActualizadoEn DESC, cmpCtrlEstado DESC; ";
         
         try {
             
@@ -88,6 +94,9 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
                 proyecto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
                 proyecto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
                 proyecto.setCmpMontoAdelantado( rs.getDouble( "cmpMontoAdelantado" ) );
+                proyecto.setCmpCtrlEstado(rs.getInt("cmpCtrlEstado") );
+                proyecto.setCmpActualizadoEn(rs.getString("cmpActualizadoEn") );
+                proyecto.setCmpCreadoEn(rs.getString("cmpCreadoEn") );
                 
                 proyectos.add(proyecto);
             }
@@ -177,7 +186,6 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
             while(rs.next()){
                 ProyectoDto proyecto = new ProyectoDto();
                 
-                System.out.println("" + rs.getInt("cmpID" ));
                 proyecto.setCmpID(rs.getInt("cmpID" ) );
                 proyecto.setCmpNombre( rs.getString( "cmpNombre" ) );
                 proyecto.setCmpFechaInicial( rs.getString( "cmpFechaInicial" ) );
@@ -189,7 +197,7 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
             }
             
         } catch (SQLException e) {
-            System.out.println("" + e.getMessage());
+            //System.out.println("" + e.getMessage());
         }
         
         return proyectos;
@@ -282,12 +290,16 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_listar_p
     public boolean mtdEliminar(ProyectoDto proyecto_dto) {
         PreparedStatement ps = null;
         Connection conn = CtrlHiloConexion.getConexion();
-        String sql = "UPDATE tblproyectos SET cmpCtrlEstado = 0 WHERE cmpID = ?; ";
+        String sql = "UPDATE tblproyectos "
+                + "SET cmpCtrlEstado = ?, cmpActualizadoEn = ? "
+                + "WHERE cmpID = ?; ";
         
         try {
             
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, proyecto_dto.getCmpID());
+            ps.setInt(1, proyecto_dto.getCmpCtrlEstado());
+            ps.setString(2, proyecto_dto.getCmpActualizadoEn());
+            ps.setInt(3, proyecto_dto.getCmpID());
             int resp = ps.executeUpdate();
             
             if( resp > 0 )

@@ -5,6 +5,7 @@
  */
 package vista.paneles;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 /**
@@ -21,8 +22,42 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         Dimension tam = new Dimension(676, 229);
         this.setPreferredSize( tam );
         this.setSize( tam );
+        this.btnRecuperar.setVisible(false);
+        this.btnEliminar.setEnabled(true);
     }
-
+    
+    public void mtdCardRecuperarProyecto(){
+        panelAcciones.setBackground(new Color(186,39,74));
+        btnModificar.setVisible(false);
+        
+        btnCotizar.setVisible(false);
+        
+        btnRecuperar.setVisible(true);
+        btnEliminar.setTexto("Remover");
+    }
+    
+    public void mtdCardActivoProyecto(){
+        panelAcciones.setBackground(new Color(25,100,126));
+        btnModificar.setVisible(true);
+        
+        btnCotizar.setVisible(true);
+        
+        btnEliminar.setTexto("Eliminar");
+        btnEliminar.setImgButtonType("danger");
+    }
+    
+    public void mtdCardRealizadoProyecto(){
+        panelAcciones.setBackground(new Color(123, 201, 80));
+        btnModificar.setVisible(false);
+        
+        btnCotizar.setVisible(true);
+        btnCotizar.setEnabled(true);
+        btnCotizar.setTexto("Ver info.");
+        
+        btnEliminar.setTexto("Eliminar");
+        btnEliminar.setImgButtonType("danger");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,10 +77,11 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         etqFechaFinal = new vista.componentes.etiqueta.Etiqueta();
         cmpFechaInicial = new vista.componentes.campos.CampoTexto();
-        jPanel2 = new javax.swing.JPanel();
+        panelAcciones = new javax.swing.JPanel();
         btnCotizar = new vista.componentes.boton.Boton();
         btnModificar = new vista.componentes.boton.Boton();
         btnEliminar = new vista.componentes.boton.Boton();
+        btnRecuperar = new vista.componentes.boton.Boton();
         cmpFechaFinal = new vista.componentes.campos.CampoTexto();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -86,7 +122,7 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         cmpFechaInicial.setComponenteDidireccional(etqFechaInicial);
         cmpFechaInicial.setFocusable(false);
 
-        jPanel2.setBackground(new java.awt.Color(25, 100, 126));
+        panelAcciones.setBackground(new java.awt.Color(25, 100, 126));
 
         btnCotizar.setTexto("Cotizar");
 
@@ -97,27 +133,34 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         btnEliminar.setImgButtonType("danger");
         btnEliminar.setTexto("Eliminar");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        btnRecuperar.setImgButtonType("dark");
+        btnRecuperar.setTexto("Recuperar");
+
+        javax.swing.GroupLayout panelAccionesLayout = new javax.swing.GroupLayout(panelAcciones);
+        panelAcciones.setLayout(panelAccionesLayout);
+        panelAccionesLayout.setHorizontalGroup(
+            panelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAccionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnCotizar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelAccionesLayout.setVerticalGroup(
+            panelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAccionesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCotizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCotizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -152,14 +195,14 @@ public class PanelCardProyectos extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(etqCostoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmpCostoEstimado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(panelAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -191,6 +234,7 @@ public class PanelCardProyectos extends javax.swing.JPanel {
     public vista.componentes.boton.Boton btnCotizar;
     public vista.componentes.boton.Boton btnEliminar;
     public vista.componentes.boton.Boton btnModificar;
+    public vista.componentes.boton.Boton btnRecuperar;
     public vista.componentes.campos.CampoTexto cmpCostoEstimado;
     public vista.componentes.campos.CampoTexto cmpFechaFinal;
     public vista.componentes.campos.CampoTexto cmpFechaInicial;
@@ -201,7 +245,7 @@ public class PanelCardProyectos extends javax.swing.JPanel {
     private vista.componentes.etiqueta.Etiqueta etqMontoInicial;
     public vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel panelAcciones;
     // End of variables declaration//GEN-END:variables
 }

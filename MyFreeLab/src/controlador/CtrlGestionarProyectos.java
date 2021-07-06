@@ -125,8 +125,10 @@ public class CtrlGestionarProyectos implements MouseListener{
         if( mtdValidarCampo() ){
             ////System.out.println("Crear proyectos");
             dto.setCmpNombre( cmpProyecto );
-            dto.setCmpFechaInicial( fncObtenerFechayHora(0) );
-            dto.setCmpFechaFinal( fncObtenerFechayHora(6) );
+            dto.setCmpFechaInicial( fncObtenerFecha(0) );
+            dto.setCmpFechaFinal( fncObtenerFecha(6) );
+            dto.setCmpCreadoEn( fncObtenerFechaYHora(0) );
+            dto.setCmpCtrlEstado(1);
             
             if( !dao.mtdComprobar(dto) ){
             
@@ -151,6 +153,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             ////System.out.println("Modificar proyectos");
             String[] msg = new String[2];
             dto = mtdObtenerProyecto(seleccionado);
+            dto.setCmpActualizadoEn( fncObtenerFechaYHora(0) );
             
             ////System.out.println("FF = " + dto.getCmpFechaFinal() + " FI = " + dto.getCmpFechaInicial());
             if( mtdFormatoFecha(dto.getCmpFechaInicial()) && mtdFormatoFecha(dto.getCmpFechaFinal())  ){
@@ -290,12 +293,22 @@ public class CtrlGestionarProyectos implements MouseListener{
         return ( (formato + entero) == cmpFecha.length()  );
     }
     
-    private String fncObtenerFechayHora(int N){
+    private String fncObtenerFecha(int N){
         Calendar fechaActual = Calendar.getInstance();
         String cadenaFecha = String.format("%02d/%02d/%04d",
           fechaActual.get(Calendar.DAY_OF_MONTH),
           fechaActual.get(Calendar.MONTH)+(1+ N),
           fechaActual.get(Calendar.YEAR));
+        
+        return cadenaFecha;
+    }
+    
+    private String fncObtenerFechaYHora(int N){
+        Calendar fechaActual = Calendar.getInstance();
+        String cadenaFecha = String.format("%02d/%02d/%04d",
+          fechaActual.get(Calendar.YEAR),
+          fechaActual.get(Calendar.MONTH)+(1+ N),
+          fechaActual.get(Calendar.DAY_OF_MONTH));
         
         Calendar a = Calendar.getInstance();
         String horaActual = String.format("%02d:%02d:%02d",
@@ -303,8 +316,7 @@ public class CtrlGestionarProyectos implements MouseListener{
           fechaActual.get(Calendar.MINUTE),
           fechaActual.get(Calendar.SECOND));
         
-        //return cadenaFecha+" "+horaActual+"";
-        return cadenaFecha;
+        return cadenaFecha+" "+horaActual+"";
     }
     
     @Override

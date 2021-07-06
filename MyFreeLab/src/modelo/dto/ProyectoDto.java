@@ -2,18 +2,21 @@ package modelo.dto;
 
 public class ProyectoDto {
     
-    private int cmpID;
+    private Integer cmpID;
     private String cmpNombre;
     private String cmpFechaInicial;
     private String cmpFechaFinal;
-    private double cmpCostoEstimado;
-    private double cmpMontoAdelantado;
+    private Double cmpCostoEstimado;
+    private Double cmpMontoAdelantado;
+    private Integer cmpCtrlEstado;
+    private String cmpCreadoEn;
+    private String cmpActualizadoEn;
 
-    public int getCmpID() {
+    public Integer getCmpID() {
         return cmpID;
     }
 
-    public void setCmpID(int cmpID) {
+    public void setCmpID(Integer cmpID) {
         this.cmpID = cmpID;
     }
 
@@ -41,20 +44,58 @@ public class ProyectoDto {
         this.cmpFechaFinal = cmpFechaFinal;
     }
 
-    public double getCmpCostoEstimado() {
+    public Double getCmpCostoEstimado() {
         return cmpCostoEstimado;
     }
 
-    public void setCmpCostoEstimado(double cmpCostoEstimado) {
+    public void setCmpCostoEstimado(Double cmpCostoEstimado) {
         this.cmpCostoEstimado = cmpCostoEstimado;
     }
 
-    public double getCmpMontoAdelantado() {
+    public Double getCmpMontoAdelantado() {
         return cmpMontoAdelantado;
     }
 
-    public void setCmpMontoAdelantado(double cmpMontoAdelantado) {
+    public void setCmpMontoAdelantado(Double cmpMontoAdelantado) {
         this.cmpMontoAdelantado = cmpMontoAdelantado;
+    }
+
+    public Integer getCmpCtrlEstado() {
+        return cmpCtrlEstado;
+    }
+
+    public void setCmpCtrlEstado(Integer cmpCtrlEstado) {
+        this.cmpCtrlEstado = cmpCtrlEstado;
+    }
+
+    public String getCmpCreadoEn() {
+        return cmpCreadoEn;
+    }
+
+    public void setCmpCreadoEn(String cmpCreadoEn) {
+        this.cmpCreadoEn = cmpCreadoEn;
+    }
+
+    public String getCmpActualizadoEn() {
+        return cmpActualizadoEn;
+    }
+
+    public void setCmpActualizadoEn(String cmpActualizadoEn) {
+        this.cmpActualizadoEn = cmpActualizadoEn;
+    }
+
+    @Override
+    public String toString() {
+        String info = "\n"
+                + "cmpID : " + cmpID + "\n"
+                + "cmpNombre : " + cmpNombre + "\n"
+                + "cmpCostoEstimado : " + cmpCostoEstimado + "\n"
+                + "cmpFechaFinal : " + cmpFechaFinal + "\n"
+                + "cmpFechaInicial : " + cmpFechaInicial + "\n"
+                + "cmpCtrlEstado : " + cmpCtrlEstado + "\n"
+                + "cmpActualizadoEn : " + cmpActualizadoEn + "\n"
+                + "cmpCreadoEn : " + cmpCreadoEn + "\n";
+        return info;
     }
     
 }

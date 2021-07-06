@@ -100,7 +100,7 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     }
     
     private void mtdCargarProyectos(){
-        lista_proyectos = proyecto_dao.mtdListar();
+        lista_proyectos = proyecto_dao.mtdListarProyectoEnProceso();
         int tam = lista_proyectos.size();
         
         for (int i = 0; i < tam; i++) {

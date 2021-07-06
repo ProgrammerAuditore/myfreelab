@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.management.ManagementFactory;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -144,6 +145,22 @@ class Resource {
         time = time.replaceAll("-", "");
         
         return time;
+    }
+    
+    String fncObtenerFechaYHora(int N){
+        Calendar fechaActual = Calendar.getInstance();
+        String cadenaFecha = String.format("%02d/%02d/%04d",
+          fechaActual.get(Calendar.YEAR),
+          fechaActual.get(Calendar.MONTH)+(1+ N),
+          fechaActual.get(Calendar.DAY_OF_MONTH));
+        
+        Calendar a = Calendar.getInstance();
+        String horaActual = String.format("%02d:%02d:%02d",
+          fechaActual.get(Calendar.HOUR_OF_DAY),
+          fechaActual.get(Calendar.MINUTE),
+          fechaActual.get(Calendar.SECOND));
+        
+        return cadenaFecha+" "+horaActual+"";
     }
         
 }
