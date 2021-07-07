@@ -1,6 +1,7 @@
 package controlador;
 
-import controlador.interfaces.InterfaceCard;
+import modelo.InterfaceCard;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import modelo.FabricarModal;
 import modelo.dao.ProyectoDao;
 import modelo.dto.ProyectoDto;
@@ -66,6 +68,10 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
     }
     
     private void mtdInit(){
+        tituloTarjeta = dto.getCmpNombre();
+        tipoTarjeta = "PanelCardProyectos";
+        estadoTarjeta = dto.getCmpCtrlEstado();
+        
         mtdEstablecerDatos();
         mtdCrearEventos();
         mtdEstablecerDimensiones();
@@ -332,13 +338,28 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
     }
     
     @Override
-    protected String mtdObtenerTipo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String mtdObtenerTituloTarjeta() {
+        return tituloTarjeta;
     }
 
     @Override
-    protected String mtdObtenerTitulo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String mtdObtenerTipoTarjeta() {
+        return tipoTarjeta;
+    }
+
+    @Override
+    public Integer mtdObtenerEstadoTarjeta() {
+        return estadoTarjeta;
+    }
+    
+    @Override
+    public GridBagConstraints mtdObtenerDimensionesTarjetas() {
+        return tarjeta_dimensiones;
+    }
+
+    @Override
+    public PanelCardProyectos mtdTarjetaDeProyecto() {
+        return tarjeta;
     }
     
 }

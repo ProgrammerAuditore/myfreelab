@@ -1,10 +1,9 @@
 package controlador;
 
+import modelo.InterfaceCard;
 import java.awt.Desktop;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -19,7 +18,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.FabricarModal;
 import modelo.ObjEjecucionXml;
@@ -30,7 +28,6 @@ import modelo.dao.RequisitoDao;
 import modelo.dto.ProyectoDto;
 import src.Info;
 import src.Source;
-import vista.paneles.PanelCardProyectos;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements ActionListener {
@@ -49,7 +46,7 @@ public class CtrlPrincipal implements ActionListener {
     private List<ProyectoDto> proyectos;
     private int canBefore;
     private int canAfter;
-    private List<PanelCardProyectos> tarjetas;
+    private List<InterfaceCard> lista;
     
     // * Catcher
     public static boolean estadoModalConfigurarConexion;
@@ -73,8 +70,8 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdInit() {
         CtrlPrincipal.modificacionesCard = false;
-        tarjetas = new ArrayList<>();
         proyectos = new ArrayList<>();
+        lista = new ArrayList<>();
         laVista.pnlContenedor.setLayout(new GridBagLayout());
         mtdMensaje("Cargando ...");
 
@@ -113,9 +110,13 @@ public class CtrlPrincipal implements ActionListener {
         laVista.cmpBusqueda.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                mtdVaciarContenedor();
-                CtrlPrincipal.mensajeCtrlPrincipal("Escribe algo para buscar...");
-                mtdMensaje("Borrar todo para mostrar todos los resultados...");
+                char letra = e.getKeyChar();
+                
+                if( Character.isAlphabetic(letra) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE  ){
+                    mtdVaciarContenedor();
+                    CtrlPrincipal.mensajeCtrlPrincipal("Escribe algo para buscar...");
+                    mtdMensaje("Borrar todo para mostrar todos los resultados...");
+                }
             }
             
             @Override
@@ -132,7 +133,7 @@ public class CtrlPrincipal implements ActionListener {
                         }
                     } else{
                         mtdVaciarContenedor();
-                        mtdPintarFiltroProyectos( laVista.cmpBusqueda.getText() );
+                        mtdFiltrarBusqueda( laVista.cmpBusqueda.getText() );
                     }
                 //}
                 
@@ -339,16 +340,85 @@ public class CtrlPrincipal implements ActionListener {
 
     }
 
-    private void mtdRellenarContenedor() {
+    private void mtdObtenerListaProyectos() {
         proyectos.clear();
-        tarjetas.clear();
-        mtdVaciarContenedor();
         proyectos = daoP.mtdListar();
         int tam = proyectos.size();
+        String puntos = "";
+        
+        for (int i = 0; i < tam; i++) {
+            ProyectoDto proyecto = proyectos.get(i);
+            
+            // * Calcular el costo estimado
+            double costoEstimado = daoR.mtdObtenerCostoEstimado( proyecto.getCmpID() );
+            BigDecimal bd = new BigDecimal(costoEstimado).setScale(2, RoundingMode.HALF_EVEN);
+            proyecto.setCmpCostoEstimado( bd.doubleValue() );
+            daoP.mtdActualizar(proyecto);
+            
+            CtrlTarjetaProyectos tarjeta = new CtrlTarjetaProyectos(laVista, proyecto, daoP, fabrica, i);
+            System.out.println("" + tarjeta.mtdObtenerTituloTarjeta());
+            lista.add(tarjeta);
+            
+            // * Mostrar progreso con puntos
+            puntos = ( i%4 == 0 ) ? "" : puntos + ".";
+            CtrlPrincipal.mensajeCtrlPrincipal("Cargando " + puntos);
+            
+            //System.out.println("Testin :: Tarjeta agregado #" + itemFila);
+            try { Thread.sleep(60); } catch (InterruptedException ex) { }
+        }
+        
+        //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
+        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+    }
+    
+    private void mtdFiltrarBusqueda(String busqueda){
+        mtdVaciarContenedor();
+        int tam = this.lista.size();
+        
+        for (int i = 0; i < tam; i++) {
+            if( lista.get(i).mtdObtenerTituloTarjeta().trim().toLowerCase().contains(busqueda.trim().toLowerCase()) ){
+                if( lista.get(i).mtdObtenerTipoTarjeta().equals("PanelCardProyectos") ){
+                        laVista.pnlContenedor.add( 
+                            lista.get(i).mtdTarjetaDeProyecto(), 
+                            lista.get(i).mtdObtenerDimensionesTarjetas()
+                        );
+                }
+            }
+        }
+        
+        int res = laVista.pnlContenedor.getComponentCount();
+        if(  res == 0 ){
+            mtdMensaje("No hay resultados para `"+ busqueda +"` ...");
+        } else{
+            CtrlPrincipal.mensajeCtrlPrincipal( res + " resultados... ");
+        }
+        
+        laVista.pnlContenedor.validate();
+        laVista.pnlContenedor.revalidate();
+        laVista.pnlContenedor.repaint();
+    }
+    
+    private void mtdRellenarContenedor() {
+        lista.clear();
+        mtdVaciarContenedor();
 
         //System.out.println("[!] proyectos : " + tam);
-        if (tam > 0) {
-            mtdPintarProyectos(tam);
+        mtdObtenerListaProyectos();
+        if (lista.size() > 0) {
+            
+            // * Rellenar proyectos
+            int tam = lista.size();
+            
+            System.out.println("Proyectos : " + tam);
+            for (int i = 0; i < tam; i++) {
+                if( lista.get(i).mtdObtenerTipoTarjeta().equals("PanelCardProyectos") ){
+                    laVista.pnlContenedor.add( 
+                        lista.get(i).mtdTarjetaDeProyecto(), 
+                        lista.get(i).mtdObtenerDimensionesTarjetas()
+                    );
+                }
+            }
+            
         } else {
             mtdMensaje("No hay proyectos creados.");
         }
@@ -367,111 +437,6 @@ public class CtrlPrincipal implements ActionListener {
         laVista.pnlContenedor.repaint();
     }
 
-    private void mtdPintarProyectos(int tam) {
-        String puntos = "";
-        
-        for (int i = 0; i < tam; i++) {
-            ProyectoDto proyecto = proyectos.get(i);
-            
-            // * Calcular el costo estimado
-            double costoEstimado = daoR.mtdObtenerCostoEstimado( proyecto.getCmpID() );
-            BigDecimal bd = new BigDecimal(costoEstimado).setScale(2, RoundingMode.HALF_EVEN);
-            proyecto.setCmpCostoEstimado( bd.doubleValue() );
-            daoP.mtdActualizar(proyecto);
-            
-            CtrlTarjetaProyectos tarjeta = new CtrlTarjetaProyectos(laVista, proyecto, daoP, fabrica, i);
-
-            laVista.pnlContenedor.add(tarjeta.getTarjeta(), tarjeta.getTarjeta_dimensiones());
-            tarjetas.add(tarjeta.getTarjeta());
-            
-            // * Mostrar progreso con puntos
-            puntos = ( i%4 == 0 ) ? "" : puntos + ".";
-            CtrlPrincipal.mensajeCtrlPrincipal("Cargando " + puntos);
-            
-            //System.out.println("Testin :: Tarjeta agregado #" + itemFila);
-            try { Thread.sleep(60); } catch (InterruptedException ex) { }
-        }
-        
-        //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
-        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
-    }
-
-    private void mtdEliminarProyecto(ProyectoDto dto) {
-
-        ProyectoDao pro = new ProyectoDao();
-
-        //System.out.println(" ddfd " + pro.mtdConsultar(dto) );
-        if (pro.mtdComprobar(dto)) {
-            String[] msg = new String[2];
-            dto.setCmpCtrlEstado(0);
-            dto.setCmpActualizadoEn(Source.fechayHora);
-
-            msg[0] = "Seguro que deseas eliminar el proyecto `" + dto.getCmpNombre() + "`.";
-            msg[1] = "Confirmar";
-            int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
-
-            if (opc == JOptionPane.YES_OPTION) {
-                if (pro.mtdEliminar(dto)) {
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
-                    mtdRellenarContenedor();
-                }
-            }
-
-        }
-
-    }
-    
-    private void mtdPintarFiltroProyectos(String nombreProyecto){
-        List<PanelCardProyectos> tarjetas = mtdFiltroProyectos(nombreProyecto);
-        mtdVaciarContenedor();
-        int itemFila =0;
-        
-        if( tarjetas.size() > 0 ){
-            
-            // * Pintar tarjetas de presentación
-            for (PanelCardProyectos tarjeta : tarjetas) {
-
-                //System.out.println("Tarjeta : "  + tarjeta.etqTitulo.getText());
-                GridBagConstraints c = new GridBagConstraints();
-                c.gridx = 0; // Columna 
-                c.gridy = itemFila; // Fila
-                c.gridheight = 1; // Cantidad de columnas a ocupar
-                c.gridwidth = 1; // Cantidad de filas a ocupar
-                c.weightx = 0.0; // Estirar en ancho
-                c.weighty = 0.0;// Estirar en alto
-                c.insets = new Insets(30, 0, 30, 0);  //top padding
-                c.fill = GridBagConstraints.BOTH; // El modo de estirar
-                laVista.pnlContenedor.add(tarjeta, c);
-                itemFila++;
-                
-            }
-            
-            CtrlPrincipal.mensajeCtrlPrincipal(tarjetas.size() + " resultados para `" + nombreProyecto + "`");
-        } else {
-            mtdMensaje("No hay resultados para `" + nombreProyecto + "`");
-        }
-        
-        laVista.pnlContenedor.validate();
-        laVista.pnlContenedor.revalidate();
-        laVista.pnlContenedor.repaint();   
-    }
-    
-    private List<PanelCardProyectos> mtdFiltroProyectos(String busqueda){
-        List<PanelCardProyectos> tarjetas = new ArrayList<>();
-        
-        int cantidad = this.tarjetas.size();
-        
-        for (int i = 0; i < cantidad; i++) {
-            String titulo = this.tarjetas.get(i).etqTitulo.getText();
-            if( titulo.trim().toLowerCase().contains(busqueda.trim().toLowerCase()) ){
-                tarjetas.add( this.tarjetas.get(i) );
-            }
-        }
-        
-        return tarjetas;
-    }
-
-    
     private void mtdMensaje(String msg) {
         mtdVaciarContenedor();
         JPanel mensaje = new JPanel();

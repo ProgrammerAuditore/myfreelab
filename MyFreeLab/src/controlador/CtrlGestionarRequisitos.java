@@ -60,6 +60,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
     }
     
     public void mtdInit(){
+        CtrlGestionarRequisitos.proyectoMonto = new BigDecimal(0);
         requisitos = new ArrayList<RequisitoDto>();
         //modal = new JDialog();
         
