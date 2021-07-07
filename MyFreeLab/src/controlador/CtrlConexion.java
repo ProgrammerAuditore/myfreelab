@@ -121,7 +121,6 @@ public class CtrlConexion implements MouseListener{
                 }
                 
                 if(CtrlHiloConexion.checkConexion() == true){
-                    CtrlPrincipal.modificacionesCard = true;
                     estilosConexionAbierto();
                     modal.setVisible(false);
                     modal.dispose();

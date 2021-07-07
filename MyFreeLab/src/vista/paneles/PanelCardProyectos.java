@@ -42,6 +42,10 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         
         btnCotizar.setVisible(true);
         
+        btnRecuperar.setVisible(true);
+        btnRecuperar.setTexto("Realizado");
+        btnRecuperar.setImgButtonType("success");
+        
         btnEliminar.setTexto("Eliminar");
         btnEliminar.setImgButtonType("danger");
     }

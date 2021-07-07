@@ -48,6 +48,7 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
     MouseListener eventoRecuperar;
     MouseListener eventoCotizar;
     MouseListener eventoModificar;
+    MouseListener eventoRealizado;
     
     public CtrlTarjetaProyectos(
             VentanaPrincipal laVista,
@@ -113,6 +114,13 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
                 mtdRemoverProyecto();
             }
         };
+        
+        eventoRealizado = new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                mtdRealizadoProyecto();
+            }
+        };
     }
     
     private void mtdEstablecerDatos(){
@@ -143,6 +151,7 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         tarjeta.btnEliminar.removeMouseListener(eventoRemover);
         tarjeta.btnModificar.removeMouseListener(eventoModificar);
         tarjeta.btnRecuperar.removeMouseListener(eventoRecuperar);
+        tarjeta.btnRecuperar.removeMouseListener(eventoRealizado);
         
         // * Establecer el estilo de diseño de la tarjeta
         if( gctrlEstado == 0 ){
@@ -162,12 +171,18 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             // Definir el evento para el boton Eliminar
             tarjeta.btnEliminar.addMouseListener(eventoEliminar);
             
-            // Definir el evento para el boton Cotizar
+            // * Verificar el costo estimado
             if( dto.getCmpCostoEstimado() == 0 ){
                 tarjeta.btnCotizar.setEnabled(false);
+                tarjeta.btnRecuperar.setEnabled(false);
             }else{
+                // Definir el evento para el boton Cotizar
                 tarjeta.btnCotizar.setEnabled(true);
                 tarjeta.btnCotizar.addMouseListener(eventoCotizar);
+                
+                // Definir el evento para el boton Realizado
+                tarjeta.btnRecuperar.setEnabled(true);
+                tarjeta.btnRecuperar.addMouseListener(eventoRealizado);
             }
             
             if( dto.getCmpCtrlEstado() == 1 || dto.getCmpCtrlEstado() == 50 ){
@@ -322,6 +337,25 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
                 dto.setCmpActualizadoEn(Source.fechayHora);
 
                 if( dao.mtdRemover(dto) )
+                    CtrlPrincipal.modificacionesCard = true;
+
+            }
+        }
+        
+    }
+    
+    private void mtdRealizadoProyecto(){
+        if( dao.mtdComprobar(dto) ){
+            String[] msg = new String[2];
+            msg[0] = "Confirmar";
+            msg[1] = "¿Seguro que desear finalizar el  proyecto \n `" + dto.getCmpNombre() + "`?";
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION){
+                dto.setCmpActualizadoEn(Source.fechayHora);
+                dto.setCmpCtrlEstado(100);
+
+                if( dao.mtdActualizar(dto) )
                     CtrlPrincipal.modificacionesCard = true;
 
             }

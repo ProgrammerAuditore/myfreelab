@@ -131,7 +131,7 @@ public class CtrlPrincipal implements ActionListener {
                     
                     if( laVista.cmpBusqueda.getText().isEmpty() ){
                         if( CtrlHiloConexion.ctrlEstado ){
-                            mtdHabilitarMenus();
+                            mtdFiltrarListas("proyectos", 0, 100);
                         } else {
                             mtdDesHabilitarMenus();
                         }
@@ -226,6 +226,10 @@ public class CtrlPrincipal implements ActionListener {
         CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexión");
         
         // * Obtener y Crear tarjetas de presentacion para todos los proyecto creados
+        proyectos.clear();
+        lista.clear();
+        mtdObtenerListaProyectos();
+        mtdEstablecerCamposBar();
         mtdFiltrarListas("proyectos", 0, 100);
         
         // * Habilitar las opciones de menu del menubar
@@ -259,20 +263,20 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdAbriendoPrograma() {
         ////System.out.println("Ventana abierto.");
+         mtdCrearHiloModificaciones();
 
         // Obtener los datos de la conexion antes de abrir el programa
         if (CtrlHiloConexion.checkConexion()) {
             ////System.out.println("Iniciando el programa con exion establecida.");
             Runnable carga = () -> {
-                mtdObtenerListaProyectos();
-                mtdEstablecerCamposBar();
-                mtdFiltrarListas("proyectos", 0, 100);
+                //mtdObtenerListaProyectos();
+                //mtdEstablecerCamposBar();
+                //mtdFiltrarListas("proyectos", 0, 100);
                 mtdHabilitarMenus();
             };
             
             //mtdDesHabSubMenus(true);
             mtdCrearHiloDesconexion();
-            mtdCrearHiloModificaciones();
             Thread HiloCargandoProyectos = new Thread(carga);
             HiloCargandoProyectos.setName("HiloDeCarga");
             HiloCargandoProyectos.setPriority(9);
@@ -576,14 +580,12 @@ public class CtrlPrincipal implements ActionListener {
         Runnable watcher = () -> {
             while (true) {                
                 synchronized(CtrlPrincipal.modificacionesCard){
-                    //System.out.println("Monitoreando cambios... ");
                     if(CtrlPrincipal.modificacionesCard){
                         CtrlPrincipal.modificacionesCard = false;
                         lista.clear();
                         mtdObtenerListaProyectos();
                         mtdEstablecerCamposBar();
                         mtdFiltrarListas("proyectos", 0, 100);
-                        mtdHabilitarMenus();
                     }
                 }
             }
