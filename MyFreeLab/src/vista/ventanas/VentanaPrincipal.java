@@ -66,6 +66,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         scpContenedor = new javax.swing.JScrollPane();
         pnlContenedor = new javax.swing.JPanel();
         pnlOpciones = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        checkProEliminados = new javax.swing.JCheckBox();
+        etiqueta1 = new vista.componentes.etiqueta.Etiqueta();
+        jPanel4 = new javax.swing.JPanel();
+        checkProRealizados = new javax.swing.JCheckBox();
+        etiqueta2 = new vista.componentes.etiqueta.Etiqueta();
+        jPanel5 = new javax.swing.JPanel();
+        checkProEnProceso = new javax.swing.JCheckBox();
+        etiqueta3 = new vista.componentes.etiqueta.Etiqueta();
         pnlLogo = new vista.componentes.jpanelbackground.JPanelBackground();
         cmpBusqueda = new vista.componentes.campos.CampoTexto();
         jPanel3 = new javax.swing.JPanel();
@@ -143,15 +152,108 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlOpciones.setBackground(new java.awt.Color(211, 211, 211));
         pnlOpciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jPanel2.setBackground(new java.awt.Color(131, 145, 165));
+
+        checkProEliminados.setBackground(new java.awt.Color(131, 145, 165));
+        checkProEliminados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkProEliminadosActionPerformed(evt);
+            }
+        });
+
+        etiqueta1.setForeground(new java.awt.Color(255, 255, 255));
+        etiqueta1.setText(" Proyectos eleminados");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(checkProEliminados)
+                .addGap(18, 18, 18)
+                .addComponent(etiqueta1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(140, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(checkProEliminados, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(etiqueta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(131, 145, 165));
+
+        checkProRealizados.setBackground(new java.awt.Color(131, 145, 165));
+
+        etiqueta2.setForeground(new java.awt.Color(255, 255, 255));
+        etiqueta2.setText(" Proyectos realizados");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(checkProRealizados)
+                .addGap(18, 18, 18)
+                .addComponent(etiqueta2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(checkProRealizados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(etiqueta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel5.setBackground(new java.awt.Color(131, 145, 165));
+
+        checkProEnProceso.setBackground(new java.awt.Color(131, 145, 165));
+
+        etiqueta3.setForeground(new java.awt.Color(255, 255, 255));
+        etiqueta3.setText(" Proyectos en proceso");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(checkProEnProceso)
+                .addGap(18, 18, 18)
+                .addComponent(etiqueta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(checkProEnProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(etiqueta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);
         pnlOpciones.setLayout(pnlOpcionesLayout);
         pnlOpcionesLayout.setHorizontalGroup(
             pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnlOpcionesLayout.setVerticalGroup(
             pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOpcionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cmpBusqueda.setText("campoTexto1");
@@ -168,7 +270,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
-                .addContainerGap(191, Short.MAX_VALUE)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addComponent(cmpBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -274,7 +376,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(pnlLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(scpContenedor))
+                    .addComponent(scpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,6 +389,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void checkProEliminadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkProEliminadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkProEliminadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,13 +446,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnObtenerAyuda;
     public javax.swing.JMenuItem btnSalir;
     public javax.swing.JMenuItem btnVinculacion;
+    public javax.swing.JCheckBox checkProEliminados;
+    public javax.swing.JCheckBox checkProEnProceso;
+    public javax.swing.JCheckBox checkProRealizados;
     public vista.componentes.campos.CampoTexto cmpBusqueda;
     public javax.swing.JLabel cmpEmpresas;
     public javax.swing.JLabel cmpProyectos;
+    private vista.componentes.etiqueta.Etiqueta etiqueta1;
+    private vista.componentes.etiqueta.Etiqueta etiqueta2;
+    private vista.componentes.etiqueta.Etiqueta etiqueta3;
     public static vista.componentes.etiqueta.Mensaje etqMensaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenu menuArchivo;
