@@ -214,7 +214,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para remover un proyecto.");
         
     }
     
@@ -283,7 +283,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para recuperar un proyecto.");
     
     }
     
@@ -323,7 +323,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para finalizar un proyecto.");
     }
     
     private ProyectoDto mtdObtenerProyecto(int fila){
