@@ -14,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ProyectoDao;
 import modelo.dto.ProyectoDto;
+import src.Source;
 import vista.paneles.PanelGestionarProyectos;
 
 public class CtrlGestionarProyectos implements MouseListener{
@@ -41,6 +42,9 @@ public class CtrlGestionarProyectos implements MouseListener{
         this.laVista.btnCrear.addMouseListener(this);
         this.laVista.btnRemover.addMouseListener(this);
         this.laVista.btnModificar.addMouseListener(this);
+        this.laVista.btnRealizado.addMouseListener(this);
+        this.laVista.btnRecuperar.addMouseListener(this);
+        this.laVista.btnEliminar.addMouseListener(this);
         
         // * Definir el modelo para la tabla
         modeloTabla = (DefaultTableModel) this.laVista.tblProyectos.getModel();
@@ -92,7 +96,16 @@ public class CtrlGestionarProyectos implements MouseListener{
             mtdModificarProyecto();
         
         if( e.getSource() == laVista.btnRemover )
+            mtdRemoverProyecto();
+        
+        if( e.getSource() == laVista.btnEliminar )
             mtdEliminarProyecto();
+         
+        if( e.getSource() == laVista.btnRealizado )
+            mtdFinalizarProyecto();
+        
+        if( e.getSource() == laVista.btnRecuperar )
+            mtdRecuperarProyecto();
     
     }
     
@@ -179,16 +192,16 @@ public class CtrlGestionarProyectos implements MouseListener{
         
     }
     
-    private void mtdEliminarProyecto(){
+    private void mtdRemoverProyecto(){
         int seleccionado = laVista.tblProyectos.getSelectedRow();
         
         if( seleccionado >= 0 ){
             dto = mtdObtenerProyecto(seleccionado);
             String[] msg =  new String[2];
-            ////System.out.println("Eliminar proyectos");
+            ////System.out.println("Remover proyectos");
             
-            msg[0] = "Eliminar proyecto";
-            msg[1] = "¿Seguro que deseas eliminar el proyecto seleccionado?";
+            msg[0] = "Remover proyecto";
+            msg[1] = "¿Seguro que deseas remover el proyecto seleccionado?";
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
@@ -196,13 +209,121 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
                     modeloTabla.removeRow(seleccionado);
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se removió exitosamente.");
                 }
             }
             
         } else
         JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
         
+    }
+    
+    private void mtdEliminarProyecto(){
+        int seleccionado = laVista.tblProyectos.getSelectedRow();
+        
+        if( seleccionado >= 0 ){
+            dto = mtdObtenerProyecto(seleccionado);
+            String[] msg =  new String[2];
+            msg[0] = "Eliminar proyecto";
+            msg[1] = "¿Seguro que deseas eliminar el proyecto seleccionado?";
+            
+            // * Verificar si el proyecto está eliminado
+            if( dto.getCmpCtrlEstado() == 0 ){
+                JOptionPane.showMessageDialog(null, "El proyecto seleccionado está eliminado.");
+                return;
+            }
+            
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                dto.setCmpCtrlEstado(0);
+                dto.setCmpActualizadoEn(Source.fechayHora);
+                
+                if( dao.mtdActualizar(dto) ){
+                    // * Notificar al controlador principal
+                    CtrlPrincipal.modificacionesCard = true;
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
+                }
+            }
+            
+        } else
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
+    
+    }
+    
+    private void mtdRecuperarProyecto(){
+        int seleccionado = laVista.tblProyectos.getSelectedRow();
+        
+        if( seleccionado >= 0 ){
+            dto = mtdObtenerProyecto(seleccionado);
+            
+            String[] msg =  new String[2];
+            msg[0] = "Recuperar proyecto";
+            msg[1] = "¿Seguro que deseas recuperar el proyecto seleccionado?";
+            
+            // * Verificar si el proyecto está en proceso
+            if( dto.getCmpCtrlEstado() > 0 && dto.getCmpCtrlEstado() <= 50 ){
+                JOptionPane.showMessageDialog(laVista, "El proyecto seleccionado está en proceso.");
+                return;
+            }
+            
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                dto.setCmpCtrlEstado(50);
+                dto.setCmpActualizadoEn(Source.fechayHora);
+                
+                if( dao.mtdActualizar(dto) ){
+                    // * Notificar al controlador principal
+                    CtrlPrincipal.modificacionesCard = true;
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se recupero exitosamente.");
+                }
+            }
+            
+        } else
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
+    
+    }
+    
+    private void mtdFinalizarProyecto(){
+        int seleccionado = laVista.tblProyectos.getSelectedRow();
+        
+        if( seleccionado >= 0 ){
+            dto = mtdObtenerProyecto(seleccionado);
+            
+            String[] msg =  new String[3];
+            msg[0] = "Finalizar proyecto";
+            msg[1] = "¿El proyecto no tiene un costo estimado\nseguro que deseas continuar?";
+            msg[2] = "¿Seguro que deseas finalizar el proyecto seleccionado?";
+            
+            // * Verificar si se puede finalizar
+            if(dto.getCmpCtrlEstado() > 50){
+                JOptionPane.showMessageDialog(laVista, "El proyecto seleccionado está finalizado.");
+                return;
+            }else
+            if(dto.getCmpCostoEstimado() == 0){
+                int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
+                if( opc == JOptionPane.NO_OPTION) return;
+            }
+            
+            int opc = JOptionPane.showConfirmDialog(laVista, msg[2] , msg[0], JOptionPane.YES_NO_OPTION);
+            
+            if( opc == JOptionPane.YES_OPTION ){
+                dto.setCmpCtrlEstado(100);
+                dto.setCmpActualizadoEn(Source.fechayHora);
+                
+                if( dao.mtdActualizar(dto) ){
+                    // * Notificar al controlador principal
+                    CtrlPrincipal.modificacionesCard = true;
+                    mtdRellenarTabla();
+                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` finalizó exitosamente.");
+                }
+            }
+            
+        } else
+        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
     }
     
     private ProyectoDto mtdObtenerProyecto(int fila){
@@ -220,7 +341,7 @@ public class CtrlGestionarProyectos implements MouseListener{
     
     private void mtdRellenarTabla() {
         mtdVaciarTabla();
-        proyectos = dao.mtdListarProyectoEnProceso();
+        proyectos = dao.mtdListar();
             
         if( proyectos.size() > 0 )
             mtdAgregarProyectos();
@@ -250,6 +371,8 @@ public class CtrlGestionarProyectos implements MouseListener{
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpFechaFinal(), fila, 3);
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpMontoAdelantado(), fila, 4);
         laVista.tblProyectos.setValueAt(proyectos.get(fila).getCmpCostoEstimado(), fila, 5);
+        laVista.tblProyectos.setValueAt(mtdObtenerEstado(proyectos.get(fila).getCmpCtrlEstado()), fila, 6);
+        
     }
     
     private boolean mtdValidarCampo(){
@@ -317,6 +440,16 @@ public class CtrlGestionarProyectos implements MouseListener{
           fechaActual.get(Calendar.SECOND));
         
         return cadenaFecha+" "+horaActual+"";
+    }
+    
+    private String mtdObtenerEstado(int estado){
+        if( estado <= 0 ){
+            return "Eliminado";
+        }else
+        if( estado >= 100 ){
+            return "Realizado";
+        }else
+        return "En Proceso";
     }
     
     @Override
