@@ -1,7 +1,6 @@
 package controlador;
 
 import modelo.InterfaceCard;
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
@@ -12,7 +11,6 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import modelo.FabricarModal;
 import modelo.dao.ProyectoDao;
 import modelo.dto.ProyectoDto;
