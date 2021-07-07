@@ -39,7 +39,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         // * Establecer oyentes
         this.laVista.btnBuscar.addMouseListener(this);
         this.laVista.btnCrear.addMouseListener(this);
-        this.laVista.btnEliminar.addMouseListener(this);
+        this.laVista.btnRemover.addMouseListener(this);
         this.laVista.btnModificar.addMouseListener(this);
         
         // * Definir el modelo para la tabla
@@ -91,7 +91,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         if( e.getSource() == laVista.btnModificar )
             mtdModificarProyecto();
         
-        if( e.getSource() == laVista.btnEliminar )
+        if( e.getSource() == laVista.btnRemover )
             mtdEliminarProyecto();
     
     }
