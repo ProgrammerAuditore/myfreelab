@@ -152,9 +152,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlOpciones.setBackground(new java.awt.Color(211, 211, 211));
         pnlOpciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel2.setBackground(new java.awt.Color(131, 145, 165));
+        jPanel2.setBackground(new java.awt.Color(45, 52, 93));
 
-        checkProEliminados.setBackground(new java.awt.Color(131, 145, 165));
+        checkProEliminados.setBackground(new java.awt.Color(255, 255, 255));
+        checkProEliminados.setAutoscrolls(true);
         checkProEliminados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkProEliminadosActionPerformed(evt);
@@ -169,11 +170,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(checkProEliminados)
-                .addGap(18, 18, 18)
-                .addComponent(etiqueta1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(etiqueta1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,9 +181,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addComponent(etiqueta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel4.setBackground(new java.awt.Color(131, 145, 165));
+        jPanel4.setBackground(new java.awt.Color(45, 52, 93));
 
-        checkProRealizados.setBackground(new java.awt.Color(131, 145, 165));
+        checkProRealizados.setBackground(new java.awt.Color(255, 255, 255));
+        checkProRealizados.setAutoscrolls(true);
 
         etiqueta2.setForeground(new java.awt.Color(255, 255, 255));
         etiqueta2.setText(" Proyectos realizados");
@@ -193,10 +194,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(checkProRealizados)
-                .addGap(18, 18, 18)
-                .addComponent(etiqueta2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(etiqueta2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -205,9 +205,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addComponent(etiqueta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel5.setBackground(new java.awt.Color(131, 145, 165));
+        jPanel5.setBackground(new java.awt.Color(45, 52, 93));
 
-        checkProEnProceso.setBackground(new java.awt.Color(131, 145, 165));
+        checkProEnProceso.setBackground(new java.awt.Color(255, 255, 255));
+        checkProEnProceso.setAutoscrolls(true);
 
         etiqueta3.setForeground(new java.awt.Color(255, 255, 255));
         etiqueta3.setText(" Proyectos en proceso");
@@ -217,19 +218,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(checkProEnProceso)
-                .addGap(18, 18, 18)
-                .addComponent(etiqueta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(etiqueta3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(checkProEnProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etiqueta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(etiqueta3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkProEnProceso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);

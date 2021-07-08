@@ -123,6 +123,10 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblProyectos);
+        if (tblProyectos.getColumnModel().getColumnCount() > 0) {
+            tblProyectos.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblProyectos.getColumnModel().getColumn(1).setPreferredWidth(220);
+        }
 
         cmpProyecto.setComponenteDidireccional(lbl_empresa);
 

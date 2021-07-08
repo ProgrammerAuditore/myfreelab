@@ -118,6 +118,10 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblEmpresas);
+        if (tblEmpresas.getColumnModel().getColumnCount() > 0) {
+            tblEmpresas.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblEmpresas.getColumnModel().getColumn(1).setPreferredWidth(220);
+        }
 
         cmpEmpresa.setComponenteDidireccional(lbl_empresa);
 
