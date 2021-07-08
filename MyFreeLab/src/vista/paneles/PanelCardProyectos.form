@@ -77,11 +77,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelAcciones" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="8" max="32767" attributes="0"/>
                   <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="panelInformacion" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -175,15 +175,15 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmpFechaFinal" max="32767" attributes="0"/>
+                          <Component id="cmpFechaFinal" pref="165" max="32767" attributes="0"/>
                           <Component id="lblFechaFinal" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblMontoInicial" max="32767" attributes="0"/>
-                          <Component id="cmpMontoInicial" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="cmpMontoInicial" pref="167" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblMontoEstimado" max="32767" attributes="0"/>
                           <Component id="cmpCostoEstimado" pref="160" max="32767" attributes="0"/>

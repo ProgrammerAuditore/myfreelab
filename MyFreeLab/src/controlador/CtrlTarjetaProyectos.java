@@ -73,6 +73,22 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         mtdEstablecerTipoDeTarjeta();
     }
     
+    private void mtdEstablecerDatos(){
+        // Definir los datos de cada tarjeta de presentación
+        tarjeta.etqTitulo.setText(dto.getCmpNombre());
+        tarjeta.cmpFechaInicial.setText(dto.getCmpFechaInicial());
+        tarjeta.cmpFechaInicial.setToolTipText(null);
+        
+        tarjeta.cmpFechaFinal.setText(dto.getCmpFechaFinal());
+        tarjeta.cmpFechaFinal.setToolTipText(null);
+        
+        tarjeta.cmpCostoEstimado.setText("" + dto.getCmpCostoEstimado());
+        tarjeta.cmpCostoEstimado.setToolTipText(null);
+        
+        tarjeta.cmpMontoInicial.setText("" + dto.getCmpMontoAdelantado());
+        tarjeta.cmpMontoInicial.setToolTipText(null);
+    }
+    
     private void mtdCrearEventos(){
         eventoCotizar = new MouseAdapter() {
             @Override
@@ -88,15 +104,6 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             }
         };
         
-    }
-    
-    private void mtdEstablecerDatos(){
-        // Definir los datos de cada tarjeta de presentación
-        tarjeta.etqTitulo.setText(dto.getCmpNombre());
-        tarjeta.cmpFechaInicial.setText(dto.getCmpFechaInicial());
-        tarjeta.cmpFechaFinal.setText(dto.getCmpFechaFinal());
-        tarjeta.cmpCostoEstimado.setText("" + dto.getCmpCostoEstimado());
-        tarjeta.cmpMontoInicial.setText("" + dto.getCmpMontoAdelantado());
     }
     
     private void mtdEstablecerDimensiones(){
