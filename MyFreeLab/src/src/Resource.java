@@ -149,12 +149,13 @@ class Resource {
     
     String fncObtenerFechaYHora(int N){
         Calendar fechaActual = Calendar.getInstance();
-        String cadenaFecha = String.format("%02d/%02d/%04d",
+        if( N > 0 ) fechaActual.add(Calendar.MONTH, N);
+        
+        String cadenaFecha = String.format("%04d/%02d/%02d",
           fechaActual.get(Calendar.YEAR),
-          fechaActual.get(Calendar.MONTH)+(1+ N),
+          fechaActual.get(Calendar.MONTH) == 0 ? 12 : fechaActual.get(Calendar.MONTH),
           fechaActual.get(Calendar.DAY_OF_MONTH));
         
-        Calendar a = Calendar.getInstance();
         String horaActual = String.format("%02d:%02d:%02d",
           fechaActual.get(Calendar.HOUR_OF_DAY),
           fechaActual.get(Calendar.MINUTE),

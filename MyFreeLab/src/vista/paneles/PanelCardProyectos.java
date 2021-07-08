@@ -82,7 +82,7 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         btnCotizar = new vista.componentes.boton.Boton();
         btnModificar = new vista.componentes.boton.Boton();
         etqTitulo = new vista.componentes.etiqueta.Titulo();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        pgrProyecto = new javax.swing.JProgressBar();
         panelInformacion = new javax.swing.JPanel();
         lblFechaInicial = new vista.componentes.etiqueta.Etiqueta();
         cmpFechaInicial = new vista.componentes.campos.CampoTexto();
@@ -226,7 +226,7 @@ public class PanelCardProyectos extends javax.swing.JPanel {
                 .addGroup(panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pgrProyecto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(panelInformacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -238,7 +238,7 @@ public class PanelCardProyectos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pgrProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -265,7 +265,6 @@ public class PanelCardProyectos extends javax.swing.JPanel {
     public vista.componentes.campos.CampoTexto cmpMontoInicial;
     public vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
     public vista.componentes.etiqueta.Etiqueta lblFechaFinal;
     private vista.componentes.etiqueta.Etiqueta lblFechaInicial;
     private vista.componentes.etiqueta.Etiqueta lblMontoEstimado;
@@ -273,5 +272,6 @@ public class PanelCardProyectos extends javax.swing.JPanel {
     private javax.swing.JPanel panelAcciones;
     private vista.componentes.jpanelbackground.JPanelBackground panelBackground;
     public javax.swing.JPanel panelInformacion;
+    public javax.swing.JProgressBar pgrProyecto;
     // End of variables declaration//GEN-END:variables
 }

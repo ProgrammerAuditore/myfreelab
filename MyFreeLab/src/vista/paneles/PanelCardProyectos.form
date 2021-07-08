@@ -65,7 +65,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="panelAcciones" alignment="0" max="32767" attributes="0"/>
                       <Component id="etqTitulo" alignment="0" pref="652" max="32767" attributes="0"/>
-                      <Component id="jProgressBar1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="pgrProyecto" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -80,7 +80,7 @@
                   <EmptySpace pref="8" max="32767" attributes="0"/>
                   <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
+                  <Component id="pgrProyecto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="panelInformacion" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -152,7 +152,10 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+        <Component class="javax.swing.JProgressBar" name="pgrProyecto">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="panelInformacion">
           <Properties>

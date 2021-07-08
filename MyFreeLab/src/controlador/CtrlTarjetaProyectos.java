@@ -8,8 +8,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import modelo.FabricarModal;
 import modelo.dao.ProyectoDao;
@@ -87,6 +91,7 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         
         tarjeta.cmpMontoInicial.setText("" + dto.getCmpMontoAdelantado());
         tarjeta.cmpMontoInicial.setToolTipText(null);
+        mtdCalcularProgresoDelProyecto();
     }
     
     private void mtdCrearEventos(){
@@ -235,6 +240,82 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             }
         }
         
+    }
+    
+    private String mtdFormatearFechas(String fecha, boolean bd){
+        if(bd){
+            // 01/12/2022
+            String dia = fecha.substring(0, 2);
+            String mes = fecha.substring(3, 5);
+            String anho =  fecha.substring(6, 10);
+            String horario = "00:00:00";
+            return dia+"-"+mes+"-"+anho+" "+horario;
+        }else{
+            // 2021/07/07 22:36:39
+            String dia = fecha.substring(8, 10);
+            String mes = fecha.substring(5, 7);
+            String anho =  fecha.substring(0, 4);
+            String horario = "00:00:00";
+            return dia+"-"+mes+"-"+anho+" "+horario;
+        }
+    }
+    
+    private long obtenerDiferenciasEnDias(String fechaInicial, String fechaFinal){
+        long difference_In_Days = 0;
+        SimpleDateFormat sdf
+            = new SimpleDateFormat(
+                "dd-MM-yyyy HH:mm:ss");
+        
+        try {
+            Date d1 = sdf.parse(fechaInicial);
+            Date d2 = sdf.parse(fechaFinal);
+            
+            // * Calcular el tiempo en milisegundos
+            long difference_In_Time
+                = d2.getTime() - d1.getTime();
+            
+            //System.out.println("" + d1);
+            //System.out.println("" + d2);
+            //System.out.println(fechaInicial + " <-> " + fechaFinal + " ::: " + difference_In_Time );
+            
+            // * Calculadndo la diferencia en dias 
+            difference_In_Days
+                = TimeUnit
+                      .MILLISECONDS
+                      .toDays(difference_In_Time)
+                  % 365;
+            
+        } catch (ParseException e) {
+            System.out.println("Mensaje de Error \n****\n" + e.getMessage()+"***\n");
+        }
+        
+        return difference_In_Days;
+    }
+    
+    private boolean mtdCalcularProgresoDelProyecto(){
+        
+        String fechaInicial = mtdFormatearFechas(dto.getCmpFechaInicial(), true);
+        String fechaFinal = mtdFormatearFechas(dto.getCmpFechaFinal(), true);
+        String fechaActual = mtdFormatearFechas(Source.fechayHora, false);
+        //String fechaPrueba = mtdFormatearFechas("05/08/2021", true);
+        
+        try {
+            //System.out.println(dto.toString());
+            //System.out.println("Fecha formateado:: " + fechaInicial);
+            //System.out.println("Fecha formateado:: " + fechaFinal);
+            //System.out.println("Fecha formateado:: " + Source.fechayHora);
+            long diasTotal = obtenerDiferenciasEnDias(fechaInicial, fechaFinal);
+            //System.out.println("Dias Total: " + diasTotal);
+            long diasTranscurrido = obtenerDiferenciasEnDias(fechaInicial, fechaActual);
+            //System.out.println("Dias Transcurrido: " + obtenerDiferenciasEnDias(fechaInicial, fechaActual));
+            long porcentaje = (diasTranscurrido * 100) / diasTotal;
+            //System.out.println("Porcentaje del proyecto: " + ( (diasTranscurrido*100) / diasTotal ) );
+            tarjeta.pgrProyecto.setValue((int) porcentaje);
+            
+            return true;
+        } catch (Exception e) {}
+        
+        return false;
     }
     
     public PanelCardProyectos getTarjeta() {

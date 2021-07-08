@@ -137,13 +137,13 @@ public class CtrlGestionarProyectos implements MouseListener{
        
         if( mtdValidarCampo() ){
             ////System.out.println("Crear proyectos");
-            dto.setCmpNombre( cmpProyecto );
-            dto.setCmpFechaInicial( fncObtenerFecha(0) );
-            dto.setCmpFechaFinal( fncObtenerFecha(6) );
-            dto.setCmpCreadoEn( fncObtenerFechaYHora(0) );
-            dto.setCmpCtrlEstado(1);
             
             if( !dao.mtdComprobar(dto) ){
+                dto.setCmpNombre( cmpProyecto );
+                dto.setCmpFechaInicial( fncObtenerFechaYHora(0) );
+                dto.setCmpFechaFinal( fncObtenerFechaYHora(6) );
+                dto.setCmpCreadoEn( Source.fechayHora );
+                dto.setCmpCtrlEstado(1);
             
                 if(dao.mtdInsetar(dto)){
                     // * Notificar al controlador principal
@@ -166,7 +166,6 @@ public class CtrlGestionarProyectos implements MouseListener{
             ////System.out.println("Modificar proyectos");
             String[] msg = new String[2];
             dto = mtdObtenerProyecto(seleccionado);
-            dto.setCmpActualizadoEn( fncObtenerFechaYHora(0) );
             
             ////System.out.println("FF = " + dto.getCmpFechaFinal() + " FI = " + dto.getCmpFechaInicial());
             if( mtdFormatoFecha(dto.getCmpFechaInicial()) && mtdFormatoFecha(dto.getCmpFechaFinal())  ){
@@ -175,7 +174,8 @@ public class CtrlGestionarProyectos implements MouseListener{
                 int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
 
                 if( opc == JOptionPane.YES_OPTION){
-
+                    dto.setCmpActualizadoEn( Source.fechayHora );
+                    
                     if(dao.mtdActualizar(dto)){
                         // * Notificar al controlador principal
                         CtrlPrincipal.modificacionesCard = true;
@@ -415,31 +415,18 @@ public class CtrlGestionarProyectos implements MouseListener{
         ////System.out.println("Resultado :" + formato + " : " + entero + " :: " + cmpFecha.length());
         return ( (formato + entero) == cmpFecha.length()  );
     }
-    
-    private String fncObtenerFecha(int N){
-        Calendar fechaActual = Calendar.getInstance();
-        String cadenaFecha = String.format("%02d/%02d/%04d",
-          fechaActual.get(Calendar.DAY_OF_MONTH),
-          fechaActual.get(Calendar.MONTH)+(1+ N),
-          fechaActual.get(Calendar.YEAR));
-        
-        return cadenaFecha;
-    }
-    
+
     private String fncObtenerFechaYHora(int N){
         Calendar fechaActual = Calendar.getInstance();
+        if( N > 0 ) fechaActual.add(Calendar.MONTH, N);
+        
         String cadenaFecha = String.format("%02d/%02d/%04d",
-          fechaActual.get(Calendar.YEAR),
-          fechaActual.get(Calendar.MONTH)+(1+ N),
-          fechaActual.get(Calendar.DAY_OF_MONTH));
+          fechaActual.get(Calendar.DAY_OF_MONTH),
+          fechaActual.get(Calendar.MONTH) == 0 ? 12 : fechaActual.get(Calendar.MONTH),
+          fechaActual.get(Calendar.YEAR) );
         
-        Calendar a = Calendar.getInstance();
-        String horaActual = String.format("%02d:%02d:%02d",
-          fechaActual.get(Calendar.HOUR_OF_DAY),
-          fechaActual.get(Calendar.MINUTE),
-          fechaActual.get(Calendar.SECOND));
-        
-        return cadenaFecha+" "+horaActual+"";
+        // Formato : dd/MM/YYYY
+        return cadenaFecha;
     }
     
     private String mtdObtenerEstado(int estado){
