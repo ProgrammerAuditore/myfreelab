@@ -136,15 +136,14 @@ public class CtrlGestionarProyectos implements MouseListener{
     private void mtdCrearProyecto(){
        
         if( mtdValidarCampo() ){
-            ////System.out.println("Crear proyectos");
-            
+            dto.setCmpNombre( cmpProyecto );
+            dto.setCmpFechaInicial( fncObtenerFechaYHora(0) );
+            dto.setCmpFechaFinal( fncObtenerFechaYHora(6) );
+            dto.setCmpCreadoEn( Source.fechayHora );
+            dto.setCmpCtrlEstado(1);
+                
             if( !dao.mtdComprobar(dto) ){
-                dto.setCmpNombre( cmpProyecto );
-                dto.setCmpFechaInicial( fncObtenerFechaYHora(0) );
-                dto.setCmpFechaFinal( fncObtenerFechaYHora(6) );
-                dto.setCmpCreadoEn( Source.fechayHora );
-                dto.setCmpCtrlEstado(1);
-            
+
                 if(dao.mtdInsetar(dto)){
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
@@ -169,7 +168,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             ////System.out.println("FF = " + dto.getCmpFechaFinal() + " FI = " + dto.getCmpFechaInicial());
             if( mtdFormatoFecha(dto.getCmpFechaInicial()) && mtdFormatoFecha(dto.getCmpFechaFinal())  ){
-                msg[1] = "Modificar proyecto";
+                msg[1] = "Modificar proyecto | " + dto.getCmpNombre();
                 msg[0] = "¿Seguro que deseas modificar el proyecto seleccionado?";
                 int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
 
@@ -198,9 +197,8 @@ public class CtrlGestionarProyectos implements MouseListener{
         if( seleccionado >= 0 ){
             dto = mtdObtenerProyecto(seleccionado);
             String[] msg =  new String[2];
-            ////System.out.println("Remover proyectos");
             
-            msg[0] = "Remover proyecto";
+            msg[0] = "Remover proyecto | " + dto.getCmpNombre();
             msg[1] = "¿Seguro que deseas remover el proyecto seleccionado?";
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
             
@@ -224,7 +222,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         if( seleccionado >= 0 ){
             dto = mtdObtenerProyecto(seleccionado);
             String[] msg =  new String[2];
-            msg[0] = "Eliminar proyecto";
+            msg[0] = "Eliminar proyecto | " + dto.getCmpNombre();
             msg[1] = "¿Seguro que deseas eliminar el proyecto seleccionado?";
             
             // * Verificar si el proyecto está eliminado
@@ -259,7 +257,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             dto = mtdObtenerProyecto(seleccionado);
             
             String[] msg =  new String[2];
-            msg[0] = "Recuperar proyecto";
+            msg[0] = "Recuperar proyecto | " + dto.getCmpNombre();
             msg[1] = "¿Seguro que deseas recuperar el proyecto seleccionado?";
             
             // * Verificar si el proyecto está en proceso
@@ -294,7 +292,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             dto = mtdObtenerProyecto(seleccionado);
             
             String[] msg =  new String[3];
-            msg[0] = "Finalizar proyecto";
+            msg[0] = "Finalizar proyecto | " + dto.getCmpNombre();
             msg[1] = "¿El proyecto no tiene un costo estimado\nseguro que deseas continuar?";
             msg[2] = "¿Seguro que deseas finalizar el proyecto seleccionado?";
             
