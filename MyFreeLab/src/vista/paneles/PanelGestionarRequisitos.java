@@ -45,7 +45,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRequisitos = new javax.swing.JTable();
         cmpRequisito = new vista.componentes.campos.CampoTexto();
-        btnEliminar = new vista.componentes.boton.Boton();
+        btnRemover = new vista.componentes.boton.Boton();
         etqMontoEstimado = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoEstimado = new vista.componentes.campos.CampoNumerico();
         etqCosto = new vista.componentes.etiqueta.Etiqueta();
@@ -130,8 +130,8 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
 
         cmpRequisito.setComponenteDidireccional(lbl_empresa);
 
-        btnEliminar.setImgButtonType("danger");
-        btnEliminar.setTexto("Remover");
+        btnRemover.setImgButtonType("danger");
+        btnRemover.setTexto("Remover");
 
         etqMontoEstimado.setText("Monto estimado");
 
@@ -172,7 +172,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(etqCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(237, 237, 237))
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(cmpMontoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -193,7 +193,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -234,8 +234,8 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnBuscar;
     public vista.componentes.boton.Boton btnCrear;
-    public vista.componentes.boton.Boton btnEliminar;
     public vista.componentes.boton.Boton btnModificar;
+    public vista.componentes.boton.Boton btnRemover;
     public vista.componentes.campos.CampoMoneda cmpCosto;
     public vista.componentes.campos.CampoNumerico cmpMontoEstimado;
     public vista.componentes.campos.CampoTexto cmpRequisito;

@@ -42,7 +42,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
         // * Definir oyentes
         this.laVista.btnBuscar.addMouseListener(this);
         this.laVista.btnCrear.addMouseListener(this);
-        this.laVista.btnEliminar.addMouseListener(this);
+        this.laVista.btnRemover.addMouseListener(this);
         this.laVista.btnModificar.addMouseListener(this);
         
         // * Definir modelo para la tabla
@@ -124,8 +124,8 @@ public class CtrlGestionarEmpresas implements MouseListener {
         if( e.getSource() == laVista.btnModificar )
             mtdModificarEmpresa();
         
-        if( e.getSource() == laVista.btnEliminar )
-            mtdEliminarEmpresa();
+        if( e.getSource() == laVista.btnRemover )
+            mtdRemoverEmpresa();
         
     }
     
@@ -161,6 +161,8 @@ public class CtrlGestionarEmpresas implements MouseListener {
             if( !dao.mtdComprobar(dto) ){
                 
                 if( dao.mtdInsetar(dto) ){
+                    // * Notificar al controlador principal
+                    CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
                     JOptionPane.showMessageDialog(laVista, "La empresa `"+ dto.getCmpNombre() +"` se creó exitosamente.");
                 }
@@ -199,7 +201,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
         
     }
     
-    private void mtdEliminarEmpresa(){
+    private void mtdRemoverEmpresa(){
         int seleccionado = laVista.tblEmpresas.getSelectedRow();
         
         if( seleccionado >= 0 ){
@@ -213,6 +215,8 @@ public class CtrlGestionarEmpresas implements MouseListener {
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdRemover(dto) ){
+                    // * Notificar al controlador principal
+                    CtrlPrincipal.modificacionesCard = true;
                     modeloTabla.removeRow(seleccionado);
                     JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                 }

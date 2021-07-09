@@ -122,7 +122,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBuscar" min="-2" pref="90" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnEliminar" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="btnRemover" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
@@ -144,7 +144,7 @@
                   <Component id="cmpEmpresa" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRemover" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCrear" min="-2" max="-2" attributes="0"/>
@@ -266,7 +266,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.boton.Boton" name="btnEliminar">
+        <Component class="vista.componentes.boton.Boton" name="btnRemover">
           <Properties>
             <Property name="imgButtonType" type="java.lang.String" value="danger"/>
             <Property name="texto" type="java.lang.String" value="Remover"/>

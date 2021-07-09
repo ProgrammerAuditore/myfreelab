@@ -53,7 +53,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
         this.laVista.btnCrear.addMouseListener(this);
         this.laVista.btnBuscar.addMouseListener(this);
         this.laVista.btnModificar.addMouseListener(this);
-        this.laVista.btnEliminar.addMouseListener(this);
+        this.laVista.btnRemover.addMouseListener(this);
         
         // * Inicializar
         //mtdInit();
@@ -99,7 +99,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
         if( e.getSource() == laVista.btnModificar )
             mtdModificarRequisito();
         
-        if( e.getSource() == laVista.btnEliminar )
+        if( e.getSource() == laVista.btnRemover )
             mtdEliminarRequisito();
         
     }

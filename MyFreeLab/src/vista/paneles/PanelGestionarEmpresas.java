@@ -45,7 +45,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpresas = new javax.swing.JTable();
         cmpEmpresa = new vista.componentes.campos.CampoTexto();
-        btnEliminar = new vista.componentes.boton.Boton();
+        btnRemover = new vista.componentes.boton.Boton();
 
         bkgAside.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -128,8 +128,8 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
 
         cmpEmpresa.setComponenteDidireccional(lbl_empresa);
 
-        btnEliminar.setImgButtonType("danger");
-        btnEliminar.setTexto("Remover");
+        btnRemover.setImgButtonType("danger");
+        btnRemover.setTexto("Remover");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -147,7 +147,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(cmpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,7 +163,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                 .addComponent(cmpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -201,8 +201,8 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnBuscar;
     public vista.componentes.boton.Boton btnCrear;
-    public vista.componentes.boton.Boton btnEliminar;
     public vista.componentes.boton.Boton btnModificar;
+    public vista.componentes.boton.Boton btnRemover;
     public vista.componentes.campos.CampoTexto cmpEmpresa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
