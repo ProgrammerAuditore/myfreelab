@@ -26,6 +26,7 @@ import modelo.dao.ConexionDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
+import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import src.Info;
 import src.Source;
@@ -45,6 +46,7 @@ public class CtrlPrincipal implements ActionListener {
     // * Atributos
     private int TestId;
     private List<ProyectoDto> proyectos;
+    private List<EmpresaDto> empresas;
     private int canBefore;
     private int canAfter;
     private List<InterfaceCard> lista;
@@ -53,6 +55,8 @@ public class CtrlPrincipal implements ActionListener {
     public static boolean estadoModalConfigurarConexion;
     public static boolean cambiosModalGestionarProyectos;
     public static Boolean modificacionesCard;
+    public static Integer ctrlBarraEstadoNumProyectos;
+    public static Integer ctrlBarraEstadoNumEmpresas;
 
     public CtrlPrincipal(VentanaPrincipal laVista, FabricarModal fabrica, ProyectoDao dao, EmpresaDao daoE, RequisitoDao daoR) {
         this.laVista = laVista;
@@ -70,7 +74,10 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdInit() {
+        CtrlPrincipal.ctrlBarraEstadoNumEmpresas = 0;
+        CtrlPrincipal.ctrlBarraEstadoNumProyectos = 0;
         CtrlPrincipal.modificacionesCard = false;
+        empresas = new ArrayList<>();
         proyectos = new ArrayList<>();
         lista = new ArrayList<>();
         laVista.pnlContenedor.setLayout(new GridBagLayout());
@@ -229,7 +236,7 @@ public class CtrlPrincipal implements ActionListener {
         proyectos.clear();
         lista.clear();
         mtdObtenerListaProyectos();
-        mtdEstablecerCamposBar();
+        mtdObtenerListaEmpresas();
         mtdFiltrarListas("proyectos", 0, 100);
         
         // * Habilitar las opciones de menu del menubar
@@ -248,6 +255,7 @@ public class CtrlPrincipal implements ActionListener {
         proyectos.clear();
         lista.clear();
         mtdVaciarContenedor();
+        CtrlPrincipal.actualizarBarraEstado();
         
         // * DesHabilitar las opciones de menu del menubar
         mtdDesHabSubMenus(true);
@@ -374,6 +382,7 @@ public class CtrlPrincipal implements ActionListener {
         proyectos = daoP.mtdListar();
         int tam = proyectos.size();
         String puntos = "";
+        CtrlPrincipal.ctrlBarraEstadoNumProyectos = tam;
         
         for (int i = 0; i < tam; i++) {
             ProyectoDto proyecto = proyectos.get(i);
@@ -397,6 +406,16 @@ public class CtrlPrincipal implements ActionListener {
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
         CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+        CtrlPrincipal.actualizarBarraEstado();
+    }
+    
+    private void mtdObtenerListaEmpresas(){
+        empresas = daoE.mtdListar();
+        int tam = empresas.size();
+        CtrlPrincipal.ctrlBarraEstadoNumEmpresas = tam;
+        
+        
+        CtrlPrincipal.actualizarBarraEstado();
     }
     
     private void mtdFiltrarBusqueda(String busqueda){
@@ -432,48 +451,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.pnlContenedor.revalidate();
         laVista.pnlContenedor.repaint();
     }
-    
-    /*
-    private void mtdRellenarContenedor() {
-        
-        Runnable RellenarContenedor = () -> {
-            lista.clear();
-            mtdDeshabilitarFiltros();
-            mtdVaciarContenedor();
 
-            if (lista.size() > 0) {
-
-                // * Rellenar proyectos
-                int tam = lista.size();
-
-                for (int i = 0; i < tam; i++) {
-                    if( lista.get(i).mtdObtenerTipoTarjeta().equals("PanelCardProyectos") ){
-                        laVista.pnlContenedor.add( 
-                            lista.get(i).mtdTarjetaDeProyecto(), 
-                            lista.get(i).mtdObtenerDimensionesTarjetas()
-                        );
-                    }
-                }
-
-            } else {
-                mtdMensaje("No hay proyectos creados.");
-            }
-
-            mtdEstablecerCamposBar();
-            laVista.pnlContenedor.validate();
-            laVista.pnlContenedor.revalidate();
-            laVista.pnlContenedor.repaint();
-            proyectos.clear();
-        };
-        
-        Thread HiloRellenarContenedor = new Thread(RellenarContenedor);
-        HiloRellenarContenedor.setName("HiloRellenarContenedor");
-        HiloRellenarContenedor.setPriority(9);
-        HiloRellenarContenedor.start();
-        
-    }
-    */
-    
     private void mtdFiltrarListas(String msg, int min, int max){
         mtdDeshabilitarFiltros();
         
@@ -556,12 +534,14 @@ public class CtrlPrincipal implements ActionListener {
         laVista.pnlContenedor.repaint();
     }
 
-    private void mtdEstablecerCamposBar() {
-        int empresas_c = daoE.mtdListar().size();
-        int proyectos_c = proyectos.size();
-
-        laVista.cmpProyectos.setText("Proyectos : " + proyectos_c);
-        laVista.cmpEmpresas.setText("Empresas : " + empresas_c);
+    public static void actualizarBarraEstado(){
+        if( CtrlHiloConexion.ctrlEstado ){
+            VentanaPrincipal.cmpProyectos.setText("Proyectos : " + CtrlPrincipal.ctrlBarraEstadoNumProyectos);
+            VentanaPrincipal.cmpEmpresas.setText("Empresas : " + ctrlBarraEstadoNumEmpresas);
+        }else{
+            VentanaPrincipal.cmpProyectos.setText("Proyectos : #");
+            VentanaPrincipal.cmpEmpresas.setText("Empresas : #");
+        }
     }
 
     private void mtdTesting(String msg) {
@@ -584,7 +564,7 @@ public class CtrlPrincipal implements ActionListener {
                         CtrlPrincipal.modificacionesCard = false;
                         lista.clear();
                         mtdObtenerListaProyectos();
-                        mtdEstablecerCamposBar();
+                        mtdObtenerListaEmpresas();
                         mtdFiltrarListas("proyectos", 0, 100);
                     }
                 }

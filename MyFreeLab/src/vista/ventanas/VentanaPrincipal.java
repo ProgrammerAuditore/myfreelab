@@ -450,8 +450,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JCheckBox checkProEnProceso;
     public javax.swing.JCheckBox checkProRealizados;
     public vista.componentes.campos.CampoTexto cmpBusqueda;
-    public javax.swing.JLabel cmpEmpresas;
-    public javax.swing.JLabel cmpProyectos;
+    public static javax.swing.JLabel cmpEmpresas;
+    public static javax.swing.JLabel cmpProyectos;
     private vista.componentes.etiqueta.Etiqueta etiqueta1;
     private vista.componentes.etiqueta.Etiqueta etiqueta2;
     private vista.componentes.etiqueta.Etiqueta etiqueta3;

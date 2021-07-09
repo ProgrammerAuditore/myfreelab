@@ -162,8 +162,10 @@ public class CtrlGestionarEmpresas implements MouseListener {
                 
                 if( dao.mtdInsetar(dto) ){
                     // * Notificar al controlador principal
-                    CtrlPrincipal.modificacionesCard = true;
+                    //CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
+                    CtrlPrincipal.ctrlBarraEstadoNumEmpresas =  empresas.size();
+                    CtrlPrincipal.actualizarBarraEstado();
                     JOptionPane.showMessageDialog(laVista, "La empresa `"+ dto.getCmpNombre() +"` se creó exitosamente.");
                 }
                 
@@ -216,8 +218,10 @@ public class CtrlGestionarEmpresas implements MouseListener {
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdRemover(dto) ){
                     // * Notificar al controlador principal
-                    CtrlPrincipal.modificacionesCard = true;
+                    //CtrlPrincipal.modificacionesCard = true;
                     modeloTabla.removeRow(seleccionado);
+                    CtrlPrincipal.ctrlBarraEstadoNumEmpresas =  modeloTabla.getRowCount();
+                    CtrlPrincipal.actualizarBarraEstado();
                     JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
                 }
             }
