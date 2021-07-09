@@ -286,7 +286,7 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
                   % 365;
             
         } catch (ParseException e) {
-            System.out.println("Mensaje de Error \n****\n" + e.getMessage()+"***\n");
+            //System.out.println("Mensaje de Error \n****\n" + e.getMessage()+"***\n");
         }
         
         return difference_In_Days;

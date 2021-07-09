@@ -122,6 +122,11 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblRequisitos);
+        if (tblRequisitos.getColumnModel().getColumnCount() > 0) {
+            tblRequisitos.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblRequisitos.getColumnModel().getColumn(1).setPreferredWidth(220);
+            tblRequisitos.getColumnModel().getColumn(2).setPreferredWidth(220);
+        }
 
         cmpRequisito.setComponenteDidireccional(lbl_empresa);
 

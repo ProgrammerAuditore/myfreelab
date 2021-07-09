@@ -177,9 +177,13 @@ public class CtrlGestionarEmpresas implements MouseListener {
         
         if( seleccionado >= 0 ){
             ////System.out.println("CtrlGestionarEmpresas - Modificar empresa [!]");
-            String[] msg = new String[2];
             dto = mtdObtenerEmpresa(seleccionado);
             
+            if( !mtdValidarDatos(dto) ){
+                return;
+            }
+            
+            String[] msg = new String[2];
             msg[1] = "Modificar empresa";
             msg[0] = "¿Seguro que deseas modificar la empresa seleccionado?";
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_OPTION);
@@ -244,6 +248,91 @@ public class CtrlGestionarEmpresas implements MouseListener {
         cmpEmpresa = campo;
         laVista.cmpEmpresa.setText(null);
         return true;
+    }
+    
+    private boolean mtdValidarDatos(EmpresaDto empresa){
+        int errores = 0;
+        String msg = "Los siguientes datos son incorrectos: \n";
+        
+        if( empresa.getCmpNombre().isEmpty() ){
+            errores++;
+            msg += "* El campo nombre está vacío. \n";
+        } else if( empresa.getCmpNombre().length() > 30 ){
+            errores++;
+            msg += "* El campo nombre deber tener menor a 30 caracteres. \n";
+        }
+        
+        if( empresa.getCmpCorreo().isEmpty() ){
+            errores++;
+            msg += "* El campo correo está vacío. \n";
+        } else if( empresa.getCmpCorreo().length() > 60 ){
+            errores++;
+            msg += "* El campo correo deber tener menor a 60 caracteres. \n";
+        } else if( !mtdComprobarCorreo( empresa.getCmpCorreo() ) ){
+            errores++;
+            msg += "* El campo correo es incorrecto. \n";
+        }
+        
+        if( empresa.getCmpDireccion().isEmpty() ){
+            errores++;
+            msg += "* El campo dirección está vacío. \n";
+        } else if( empresa.getCmpDireccion().length() > 60 ){
+            errores++;
+            msg += "* El campo dirección deber tener menor a 60 caracteres. \n";
+        }
+        
+        if( !mtdComprobarTMovil(empresa.getCmpTMovil()) ){
+            errores++;
+            msg += "* El campo télefono debe ser de 10 digitos. \n";
+        }
+        
+        //System.out.println("Errores : "+ errores);
+        if( errores > 0 ){
+            JOptionPane.showMessageDialog(laVista, msg, 
+                    "Proyecto | " + empresa.getCmpNombre(),
+                    JOptionPane.YES_OPTION
+            );
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private boolean mtdComprobarTMovil(String tmovil){
+        int contador = 0;
+        
+        if( tmovil.length() == 10 ){
+            
+            for (int i = 0; i < tmovil.length(); i++) {
+                char letra = tmovil.charAt(i);
+                if( Character.isDigit(letra) )
+                    contador++;
+            }
+            
+            //System.out.println("Digitos : " + contador);
+            return (contador == 10);
+        }
+        
+        return false;
+    }
+    
+    private boolean mtdComprobarCorreo(String correo){
+        String campo = correo;
+        String nombre = null;
+        String dominio = null;
+        String extension = null;
+        
+        if( campo.contains("@") && campo.contains(".") ){
+            nombre = campo.substring(0, campo.indexOf("@"));
+            dominio = campo.substring(campo.indexOf("@") + 1, campo.indexOf("."));
+            extension = campo.substring(campo.indexOf(".") + 1, campo.length());
+            
+            if( nombre.length() > 3 && dominio.length() > 3 && extension.length() > 2 ){
+                return true;
+            }
+        }
+        
+        return false;
     }
     
     @Override

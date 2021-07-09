@@ -152,9 +152,13 @@ public class CtrlGestionarRequisitos implements MouseListener{
         int seleccionado = laVista.tblRequisitos.getSelectedRow();
         
         if( seleccionado >= 0 ){
-            String[] msg = new String[2];
             dto = mtdObtenerRequisito(seleccionado);
             
+            if( !mtdValidarDatos(dto) ){
+                return;
+            }
+            
+            String[] msg = new String[2];
             msg[0] = "Modificar requisito";
             msg[1] = "¿Seguro que deseas modificar el requisito seleccionado?";
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
@@ -198,9 +202,13 @@ public class CtrlGestionarRequisitos implements MouseListener{
     private RequisitoDto mtdObtenerRequisito(int fila){
         RequisitoDto requisito = new RequisitoDto();
         
-        requisito.setCmpID( Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()) );
-        requisito.setCmpNombre( modeloTabla.getValueAt(fila, 1).toString() );
-        requisito.setCmpCosto( Double.parseDouble(modeloTabla.getValueAt(fila, 2).toString())  );
+        try {
+            requisito.setCmpID( Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()) );
+            requisito.setCmpNombre( modeloTabla.getValueAt(fila, 1).toString() );
+            requisito.setCmpCosto( Double.parseDouble(modeloTabla.getValueAt(fila, 2).toString())  );
+        } catch (NumberFormatException e) {
+            requisito.setCmpCosto(0);
+        }
         
         return requisito;
     }
@@ -295,6 +303,35 @@ public class CtrlGestionarRequisitos implements MouseListener{
         BigDecimal cmpMonto = new BigDecimal(this.cmpMonto).setScale(2, RoundingMode.HALF_EVEN);
         laVista.cmpMontoEstimado.setText("" + cmpMonto.doubleValue());
         proyectoMonto = cmpMonto;
+    }
+
+    private boolean mtdValidarDatos(RequisitoDto requisito) {
+        int errores = 0;
+        String msg = "Los siguientes datos son incorrectos: \n";
+        
+        if(requisito.getCmpNombre().isEmpty()){
+            errores++;
+            msg += "* El campo nombre está vacío.  \n";
+        }else
+        if (requisito.getCmpNombre().length() > 30){
+            errores++;
+            msg += "* El campo nombre debe ser menor a 30 caracteres.  \n";
+        }
+       
+        if (requisito.getCmpCosto() < 0){
+            errores++;
+            msg += "* El campo costo debe ser mayor a cero.  \n";
+        }
+        
+        //System.out.println("Errores: " + errores);
+        if( errores > 0 ){
+            JOptionPane.showMessageDialog(laVista, msg, 
+                    "Requisito | " + requisito.getCmpNombre(),
+                    JOptionPane.YES_OPTION);
+            return false;
+        }
+        
+        return true;
     }
    
 }
