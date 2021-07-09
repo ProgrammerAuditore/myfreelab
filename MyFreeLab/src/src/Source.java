@@ -50,6 +50,5 @@ public class Source {
     public static final String timeTmp = new Resource().getTimeTmp();
     public static final String dirTemp = System.getProperty("java.io.tmpdir");
     public static final String dirHome = System.getProperty("user.home");
-    public static final String fechayHora = new Resource().fncObtenerFechaYHora(0);
             
 }

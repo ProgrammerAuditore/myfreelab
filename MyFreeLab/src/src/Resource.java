@@ -4,12 +4,11 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.management.ManagementFactory;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Scanner;
 
 class Resource {
     
@@ -145,23 +144,6 @@ class Resource {
         time = time.replaceAll("-", "");
         
         return time;
-    }
-    
-    String fncObtenerFechaYHora(int N){
-        Calendar fechaActual = Calendar.getInstance();
-        if( N > 0 ) fechaActual.add(Calendar.MONTH, N);
-        
-        String cadenaFecha = String.format("%04d/%02d/%02d",
-          fechaActual.get(Calendar.YEAR),
-          fechaActual.get(Calendar.MONTH) == 0 ? 12 : fechaActual.get(Calendar.MONTH),
-          fechaActual.get(Calendar.DAY_OF_MONTH));
-        
-        String horaActual = String.format("%02d:%02d:%02d",
-          fechaActual.get(Calendar.HOUR_OF_DAY),
-          fechaActual.get(Calendar.MINUTE),
-          fechaActual.get(Calendar.SECOND));
-        
-        return cadenaFecha+" "+horaActual+"";
     }
         
 }

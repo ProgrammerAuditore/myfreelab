@@ -10,6 +10,8 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -230,7 +232,7 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             
             // * Actualizar el costo estimado en la base de datos
             dto.setCmpCostoEstimado( montoDespues.doubleValue() );
-            dto.setCmpActualizadoEn( Source.fechayHora );
+            dto.setCmpActualizadoEn( fncObtenerFechaYHoraActual() );
             if(dao.mtdActualizar(dto)){
 
                 // * Actualizar el costo estimado en la tarjeta
@@ -296,14 +298,14 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         
         String fechaInicial = mtdFormatearFechas(dto.getCmpFechaInicial(), true);
         String fechaFinal = mtdFormatearFechas(dto.getCmpFechaFinal(), true);
-        String fechaActual = mtdFormatearFechas(Source.fechayHora, false);
+        String fechaActual = mtdFormatearFechas(fncObtenerFechaYHoraActual(), false);
         //String fechaPrueba = mtdFormatearFechas("05/08/2021", true);
         
         try {
-            //System.out.println(dto.toString());
+            //System.out.println(dto.getCmpNombre());
             //System.out.println("Fecha formateado:: " + fechaInicial);
             //System.out.println("Fecha formateado:: " + fechaFinal);
-            //System.out.println("Fecha formateado:: " + Source.fechayHora);
+            //System.out.println("Fecha formateado:: " + Source.fechayHoraActual);
             long diasTotal = obtenerDiferenciasEnDias(fechaInicial, fechaFinal);
             //System.out.println("Dias Total: " + diasTotal);
             long diasTranscurrido = obtenerDiferenciasEnDias(fechaInicial, fechaActual);
@@ -316,6 +318,13 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         } catch (Exception e) {}
         
         return false;
+    }
+    
+    private String fncObtenerFechaYHoraActual(){
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+        return formattedDate;
     }
     
     public PanelCardProyectos getTarjeta() {

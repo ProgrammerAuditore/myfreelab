@@ -7,6 +7,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,7 +21,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ProyectoDao;
 import modelo.dto.ProyectoDto;
-import src.Source;
 import vista.paneles.PanelGestionarProyectos;
 
 public class CtrlGestionarProyectos implements MouseListener{
@@ -143,7 +145,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             dto.setCmpNombre( cmpProyecto );
             dto.setCmpFechaInicial( fncObtenerFechaYHora(0) );
             dto.setCmpFechaFinal( fncObtenerFechaYHora(6) );
-            dto.setCmpCreadoEn( Source.fechayHora );
+            dto.setCmpCreadoEn( fncObtenerFechaYHoraActual() );
             dto.setCmpCtrlEstado(1);
                 
             if( !dao.mtdComprobar(dto) ){
@@ -180,7 +182,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
 
             if( opc == JOptionPane.YES_OPTION){
-                dto.setCmpActualizadoEn( Source.fechayHora );
+                dto.setCmpActualizadoEn( fncObtenerFechaYHoraActual() );
 
                 if(dao.mtdActualizar(dto)){
                     // * Notificar al controlador principal
@@ -249,7 +251,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             if( opc == JOptionPane.YES_OPTION ){
                 dto.setCmpCtrlEstado(0);
-                dto.setCmpActualizadoEn(Source.fechayHora);
+                dto.setCmpActualizadoEn( fncObtenerFechaYHoraActual() );
                 
                 if( dao.mtdActualizar(dto) ){
                     // * Notificar al controlador principal
@@ -288,7 +290,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             if( opc == JOptionPane.YES_OPTION ){
                 dto.setCmpCtrlEstado(50);
-                dto.setCmpActualizadoEn(Source.fechayHora);
+                dto.setCmpActualizadoEn( fncObtenerFechaYHoraActual() );
                 
                 if( dao.mtdActualizar(dto) ){
                     // * Notificar al controlador principal
@@ -332,7 +334,7 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             if( opc == JOptionPane.YES_OPTION ){
                 dto.setCmpCtrlEstado(100);
-                dto.setCmpActualizadoEn(Source.fechayHora);
+                dto.setCmpActualizadoEn( fncObtenerFechaYHoraActual() );
                 
                 if( dao.mtdActualizar(dto) ){
                     // * Notificar al controlador principal
@@ -437,16 +439,12 @@ public class CtrlGestionarProyectos implements MouseListener{
     }
 
     private String fncObtenerFechaYHora(int N){
-        Calendar fechaActual = Calendar.getInstance();
-        if( N > 0 ) fechaActual.add(Calendar.MONTH, N);
-        
-        String cadenaFecha = String.format("%02d/%02d/%04d",
-          fechaActual.get(Calendar.DAY_OF_MONTH),
-          fechaActual.get(Calendar.MONTH) == 0 ? 12 : fechaActual.get(Calendar.MONTH),
-          fechaActual.get(Calendar.YEAR) );
+        LocalDate fecha = LocalDate.now().plusMonths(N);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaFormateado = fecha.format(formato);
         
         // Formato : dd/MM/YYYY
-        return cadenaFecha;
+        return fechaFormateado;
     }
     
     private String mtdObtenerEstado(int estado){
@@ -560,6 +558,13 @@ public class CtrlGestionarProyectos implements MouseListener{
         String anho =  fecha.substring(6, 10);
         String horario = "00:00:00";
         return dia+"-"+mes+"-"+anho+" "+horario;
+    }
+    
+    private String fncObtenerFechaYHoraActual(){
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+        return formattedDate;
     }
         
     @Override
