@@ -320,5 +320,25 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_proyecto
         }
         return false;
     }
+    
+    public long mtdRowCount() {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT COUNT(*) FROM tblproyectos; ";
+        long filas = 0;
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            filas = rs.getInt(1);
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return filas;
+    }
 
 }

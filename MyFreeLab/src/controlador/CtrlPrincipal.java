@@ -383,6 +383,7 @@ public class CtrlPrincipal implements ActionListener {
         int tam = proyectos.size();
         String puntos = "";
         CtrlPrincipal.ctrlBarraEstadoNumProyectos = tam;
+        System.out.println("" + daoP.mtdRowCount());
         
         for (int i = 0; i < tam; i++) {
             ProyectoDto proyecto = proyectos.get(i);
