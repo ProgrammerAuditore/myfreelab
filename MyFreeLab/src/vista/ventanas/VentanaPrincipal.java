@@ -80,7 +80,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         etqMensaje = new vista.componentes.etiqueta.Mensaje();
         panelPaginacion = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
         btnSalir = new javax.swing.JMenuItem();
@@ -294,21 +293,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addComponent(etqMensaje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
-        jButton1.setText("1");
-
         javax.swing.GroupLayout panelPaginacionLayout = new javax.swing.GroupLayout(panelPaginacion);
         panelPaginacion.setLayout(panelPaginacionLayout);
         panelPaginacionLayout.setHorizontalGroup(
             panelPaginacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPaginacionLayout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelPaginacionLayout.setVerticalGroup(
             panelPaginacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPaginacionLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1))
+            .addGap(0, 25, Short.MAX_VALUE)
         );
 
         menuBar.setBackground(new java.awt.Color(255, 255, 255));
@@ -479,7 +472,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private vista.componentes.etiqueta.Etiqueta etiqueta2;
     private vista.componentes.etiqueta.Etiqueta etiqueta3;
     public static vista.componentes.etiqueta.Mensaje etqMensaje;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

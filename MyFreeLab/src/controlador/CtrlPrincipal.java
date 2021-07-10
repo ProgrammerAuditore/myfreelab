@@ -2,12 +2,15 @@ package controlador;
 
 import modelo.InterfaceCard;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -17,6 +20,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -47,9 +53,12 @@ public class CtrlPrincipal implements ActionListener {
     private int TestId;
     private List<ProyectoDto> proyectos;
     private List<EmpresaDto> empresas;
-    private int canBefore;
-    private int canAfter;
     private List<InterfaceCard> lista;
+    private int numTotalRegistros;
+    private int numMostrarTotalRegistros;
+    private int numMostrarRegistroInicial;
+    private int numMostrarRegistroFin;
+    private boolean cargarRegistros;
     
     // * Catcher
     public static boolean estadoModalConfigurarConexion;
@@ -74,6 +83,9 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdInit() {
+        cargarRegistros  = false;
+        numTotalRegistros = 0;
+        numMostrarTotalRegistros = 10;
         CtrlPrincipal.ctrlBarraEstadoNumEmpresas = 0;
         CtrlPrincipal.ctrlBarraEstadoNumProyectos = 0;
         CtrlPrincipal.modificacionesCard = false;
@@ -235,6 +247,7 @@ public class CtrlPrincipal implements ActionListener {
         // * Obtener y Crear tarjetas de presentacion para todos los proyecto creados
         proyectos.clear();
         lista.clear();
+        mtdCrearPaginacion();
         mtdObtenerListaProyectos();
         mtdObtenerListaEmpresas();
         mtdFiltrarListas("proyectos", 0, 100);
@@ -377,13 +390,12 @@ public class CtrlPrincipal implements ActionListener {
         
     }
 
-    private void mtdObtenerListaProyectos() {
+    private synchronized void mtdObtenerListaProyectos() {
         proyectos.clear();
-        proyectos = daoP.mtdListar();
+        proyectos = daoP.mtdListar(numMostrarTotalRegistros, numMostrarRegistroFin);
         int tam = proyectos.size();
         String puntos = "";
         CtrlPrincipal.ctrlBarraEstadoNumProyectos = tam;
-        System.out.println("" + daoP.mtdRowCount());
         
         for (int i = 0; i < tam; i++) {
             ProyectoDto proyecto = proyectos.get(i);
@@ -410,16 +422,98 @@ public class CtrlPrincipal implements ActionListener {
         CtrlPrincipal.actualizarBarraEstado();
     }
     
-    private void mtdObtenerListaEmpresas(){
+    private synchronized void mtdObtenerListaEmpresas(){
+        /*
         empresas = daoE.mtdListar();
         int tam = empresas.size();
-        CtrlPrincipal.ctrlBarraEstadoNumEmpresas = tam;
         
         
+        */
         CtrlPrincipal.actualizarBarraEstado();
     }
     
-    private void mtdFiltrarBusqueda(String busqueda){
+    private synchronized void mtdCrearPaginacion(){
+        CtrlPrincipal.ctrlBarraEstadoNumEmpresas = (int) daoE.mtdRowCount();
+        numTotalRegistros += CtrlPrincipal.ctrlBarraEstadoNumEmpresas;
+        
+        CtrlPrincipal.ctrlBarraEstadoNumProyectos = (int) daoP.mtdRowCount();
+        numTotalRegistros += CtrlPrincipal.ctrlBarraEstadoNumProyectos;
+        
+        // Registros 160 <-> 15 botones 
+        int cantidad = (int) (numTotalRegistros / numMostrarTotalRegistros);
+        
+        if( cantidad > 0 ){
+            cantidad++;
+        }
+        
+        for (int i = 0; i < cantidad; i++) {
+            JButton btn = new JButton("" + i);
+            numMostrarRegistroInicial = i;
+            
+            if( i == 0){
+                numMostrarRegistroFin = (int) (i * numMostrarTotalRegistros);
+            }
+            
+            btn.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    proyectos.clear();
+                    lista.clear();
+                    mtdVaciarContenedor();
+                    mtdMensaje("Cargando proyectos..");
+                }
+                
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    synchronized( e ){
+                        while ( cargarRegistros ){
+                            try {
+                                e.wait();
+                            } catch (InterruptedException ex) {}
+                        }
+                        
+                        if( cargarRegistros == false ){
+                            cargarRegistros = true;
+                            int item = Integer.parseInt( btn.getText() );
+                            numMostrarRegistroFin = (int) (item * numMostrarTotalRegistros);
+
+                            Runnable paginacion = () -> {
+                                mtdObtenerListaProyectos();
+                                mtdObtenerListaEmpresas();
+                                mtdFiltrarListas("proyectos", 0, 100);
+                                e.notify();
+                            };
+
+
+                            Thread HiloPaginacion = new Thread(paginacion);
+                            HiloPaginacion.setName("HiloPaginacion");
+                            HiloPaginacion.setPriority(9);
+                            HiloPaginacion.run();
+
+                            try {
+                                HiloPaginacion.join();
+                            } catch (InterruptedException ex) {}
+                            cargarRegistros = false;
+                            e.notify();
+                        } 
+                    }
+                }
+            });
+            
+            Dimension tam = new Dimension(50, 25);
+            btn.setSize(tam);
+            btn.setPreferredSize(tam);
+            btn.setLocation(i*45, 0);
+            btn.setVisible(true);
+            laVista.panelPaginacion.add(btn);
+        }
+        laVista.panelPaginacion.revalidate();
+        laVista.panelPaginacion.repaint();
+        laVista.panelPaginacion.setVisible(true);
+        
+    }
+    
+    private synchronized void mtdFiltrarBusqueda(String busqueda){
         mtdVaciarContenedor();
         int tam = this.lista.size();
         
@@ -453,7 +547,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.pnlContenedor.repaint();
     }
 
-    private void mtdFiltrarListas(String msg, int min, int max){
+    private synchronized void mtdFiltrarListas(String msg, int min, int max){
         mtdDeshabilitarFiltros();
         
         // * Verificar la conexion a la base de datos
@@ -462,43 +556,47 @@ public class CtrlPrincipal implements ActionListener {
         }else mtdVaciarContenedor();
             
         Runnable FiltrarListas = () -> {
-            int contador = 0;
-            if (lista.size() > 0) {
+            try {
+                int contador = 0;
+                if (lista.size() > 0) {
 
-                // * Rellenar proyectos
-                int tam = lista.size();
-                
-                for (int i = 0; i < tam; i++) {
-                    if( lista.get(i).mtdObtenerTipoTarjeta().equals("PanelCardProyectos") ){
-                        if( lista.get(i).mtdObtenerEstadoTarjeta() >= min && lista.get(i).mtdObtenerEstadoTarjeta() <= max  ){
-                            laVista.pnlContenedor.add( 
-                                lista.get(i).mtdTarjetaDeProyecto(), 
-                                lista.get(i).mtdObtenerDimensionesTarjetas()
-                            );
-                            contador++;
+                    // * Rellenar proyectos
+                    int tam = lista.size();
+
+                    for (int i = 0; i < tam; i++) {
+                        if( lista.get(i).mtdObtenerTipoTarjeta().equals("PanelCardProyectos") ){
+                            if( lista.get(i).mtdObtenerEstadoTarjeta() >= min && lista.get(i).mtdObtenerEstadoTarjeta() <= max  ){
+                                laVista.pnlContenedor.add( 
+                                    lista.get(i).mtdTarjetaDeProyecto(), 
+                                    lista.get(i).mtdObtenerDimensionesTarjetas()
+                                );
+                                contador++;
+                            }
                         }
                     }
-                }
-                
-                if(0 >= min && 100 <= max){
-                    CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
-                }else
-                if( contador == 0 ){
-                    mtdMensaje("No hay " + msg + " para mostrar.");
-                    CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
-                    
-                } else if( contador > 0){
-                    CtrlPrincipal.mensajeCtrlPrincipal(contador +" "+ msg +" obtenidos");
-                    
+
+                    if(0 >= min && 100 <= max){
+                        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+                    }else
+                    if( contador == 0 ){
+                        mtdMensaje("No hay " + msg + " para mostrar.");
+                        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+
+                    } else if( contador > 0){
+                        CtrlPrincipal.mensajeCtrlPrincipal(contador +" "+ msg +" obtenidos");
+
+                    }
+
+                } else {
+                    mtdMensaje("No hay proyectos creados.");
                 }
 
-            } else {
-                mtdMensaje("No hay proyectos creados.");
+                laVista.pnlContenedor.validate();
+                laVista.pnlContenedor.revalidate();
+                laVista.pnlContenedor.repaint();
+            } catch (Exception e) {
+                //System.out.println("" + e.getMessage());
             }
-
-            laVista.pnlContenedor.validate();
-            laVista.pnlContenedor.revalidate();
-            laVista.pnlContenedor.repaint();
         };
         
         Thread HiloFiltrarListas = new Thread(FiltrarListas);

@@ -340,5 +340,45 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_proyecto
         
         return filas;
     }
+    
+    public List<ProyectoDto> mtdListar(int inicio, int fin) {
+        List<ProyectoDto> proyectos = new ArrayList<>();
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT * FROM tblproyectos WHERE cmpCtrlEstado "
+                + "BETWEEN 0 AND 100 "
+                + "ORDER BY cmpActualizadoEn DESC, cmpCtrlEstado DESC "
+                + "LIMIT ? OFFSET ?; ";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, inicio);
+            ps.setInt(2, fin);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                ProyectoDto proyecto = new ProyectoDto();
+                
+                //System.out.println("" + rs.getString( "cmpNombre" ));
+                proyecto.setCmpID(rs.getInt("cmpID" ) );
+                proyecto.setCmpNombre( rs.getString( "cmpNombre" ) );
+                proyecto.setCmpFechaInicial( rs.getString( "cmpFechaInicial" ) );
+                proyecto.setCmpFechaFinal( rs.getString( "cmpFechaFinal" ) );
+                proyecto.setCmpCostoEstimado( rs.getDouble( "cmpCostoEstimado" ) );
+                proyecto.setCmpMontoAdelantado( rs.getDouble( "cmpMontoAdelantado" ) );
+                proyecto.setCmpCtrlEstado(rs.getInt("cmpCtrlEstado") );
+                proyecto.setCmpActualizadoEn(rs.getString("cmpActualizadoEn") );
+                proyecto.setCmpCreadoEn(rs.getString("cmpCreadoEn") );
+                
+                proyectos.add(proyecto);
+            }
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return proyectos;
+    }
 
 }

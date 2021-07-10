@@ -159,4 +159,24 @@ public class EmpresaDao implements keyword_query<EmpresaDto>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public long mtdRowCount() {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT COUNT(*) FROM tblempresas; ";
+        long filas = 0;
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            filas = rs.getInt(1);
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return filas;
+    }
+    
 }
