@@ -56,7 +56,7 @@ public class CtrlPrincipal implements ActionListener {
     private List<InterfaceCard> lista;
     private int numTotalRegistros;
     private int numMostrarTotalRegistros;
-    private int numMostrarRegistroInicial;
+    private int numPaginacionActual;
     private int numMostrarRegistroFin;
     private boolean cargarRegistros;
     
@@ -83,7 +83,7 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdInit() {
-        cargarRegistros  = false;
+        cargarRegistros = true;
         numTotalRegistros = 0;
         numMostrarTotalRegistros = 10;
         CtrlPrincipal.ctrlBarraEstadoNumEmpresas = 0;
@@ -440,40 +440,48 @@ public class CtrlPrincipal implements ActionListener {
         numTotalRegistros += CtrlPrincipal.ctrlBarraEstadoNumProyectos;
         
         // Registros 160 <-> 15 botones 
-        int cantidad = (int) (numTotalRegistros / numMostrarTotalRegistros);
+        //int cantidad = (int) (numTotalRegistros / numMostrarTotalRegistros);
+        int cantidad = 160;
         
         if( cantidad > 0 ){
             cantidad++;
         }
         
         for (int i = 0; i < cantidad; i++) {
-            JButton btn = new JButton("" + i);
-            numMostrarRegistroInicial = i;
             
+            String numeracion = (i == 9 ) ? ".." : ""+i ; 
+            JButton btn = new JButton(numeracion);
+
             if( i == 0){
+                numPaginacionActual = i;
                 numMostrarRegistroFin = (int) (i * numMostrarTotalRegistros);
             }
             
             btn.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
+                    if( Integer.parseInt(btn.getText()) == numPaginacionActual ){
+                            e.consume();
+                            return;
+                    }
+                    
                     proyectos.clear();
                     lista.clear();
                     mtdVaciarContenedor();
                     mtdMensaje("Cargando proyectos..");
+                    cargarRegistros = (cargarRegistros) ? false : true;
                 }
                 
                 @Override
-                public void mouseReleased(MouseEvent e) {
+                public synchronized void mouseReleased(MouseEvent e) {
                     synchronized( e ){
-                        while ( cargarRegistros ){
-                            try {
-                                e.wait();
-                            } catch (InterruptedException ex) {}
+                        System.out.println("" + cargarRegistros);
+                        if( Integer.parseInt(btn.getText()) == numPaginacionActual ){
+                            e.consume();
+                            return;
                         }
                         
                         if( cargarRegistros == false ){
-                            cargarRegistros = true;
                             int item = Integer.parseInt( btn.getText() );
                             numMostrarRegistroFin = (int) (item * numMostrarTotalRegistros);
 
@@ -481,6 +489,9 @@ public class CtrlPrincipal implements ActionListener {
                                 mtdObtenerListaProyectos();
                                 mtdObtenerListaEmpresas();
                                 mtdFiltrarListas("proyectos", 0, 100);
+                                
+                                cargarRegistros = true;
+                                numPaginacionActual = item;
                                 e.notify();
                             };
 
@@ -489,12 +500,7 @@ public class CtrlPrincipal implements ActionListener {
                             HiloPaginacion.setName("HiloPaginacion");
                             HiloPaginacion.setPriority(9);
                             HiloPaginacion.run();
-
-                            try {
-                                HiloPaginacion.join();
-                            } catch (InterruptedException ex) {}
-                            cargarRegistros = false;
-                            e.notify();
+                            
                         } 
                     }
                 }
