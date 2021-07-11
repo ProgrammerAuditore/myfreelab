@@ -439,6 +439,12 @@ public class CtrlPrincipal implements ActionListener {
     }
     
     private void mtdCrearPaginacion(){
+        mtdVaciarPaginacion();
+        numTotalRegistros = 0;
+        ctrlPaginacionInicio = 0;
+        ctrlPaginacionFin = 0;
+        ctrlPaginacionSeleccion = 0;
+        
         CtrlPrincipal.ctrlBarraEstadoNumEmpresas = (int) daoE.mtdRowCount();
         numTotalRegistros += CtrlPrincipal.ctrlBarraEstadoNumEmpresas;
         
@@ -874,6 +880,7 @@ public class CtrlPrincipal implements ActionListener {
                     if(CtrlPrincipal.modificacionesCard){
                         CtrlPrincipal.modificacionesCard = false;
                         lista.clear();
+                        mtdCrearPaginacion();
                         mtdObtenerListaProyectos();
                         mtdObtenerListaEmpresas();
                         mtdFiltrarListas("proyectos", 0, 100);
