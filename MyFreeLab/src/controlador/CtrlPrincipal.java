@@ -401,7 +401,6 @@ public class CtrlPrincipal implements ActionListener {
         proyectos = daoP.mtdListar(numMostrarTotalRegistros, numMostrarRegistroFin);
         int tam = proyectos.size();
         String puntos = "";
-        CtrlPrincipal.ctrlBarraEstadoNumProyectos = tam;
         
         for (int i = 0; i < tam; i++) {
             ProyectoDto proyecto = proyectos.get(i);
@@ -453,11 +452,7 @@ public class CtrlPrincipal implements ActionListener {
         
         // Registros 150 <-> 15 botones 
         ctrlPaginacionFin = numTotalRegistros / numMostrarTotalRegistros;
-        //ctrlPaginacionFin = 20;
         
-        System.out.println("numTotalRegistros: " + numTotalRegistros);
-        System.out.println("ctrlPaginacionFin: " + ctrlPaginacionFin);
-        System.out.println("Residou: " + (ctrlPaginacionFin%10));
         if( (numTotalRegistros%10) > 0 ){
             ctrlPaginacionFin = ctrlPaginacionFin + 1;
         }
@@ -485,7 +480,7 @@ public class CtrlPrincipal implements ActionListener {
             }
             
             if( i > 11 ){
-                System.out.println("Pagina "+i+" omitido");
+                //System.out.println("Pagina "+i+" omitido");
                 continue;
             }
             
@@ -516,46 +511,25 @@ public class CtrlPrincipal implements ActionListener {
                     lista.clear();
                     mtdVaciarContenedor();
                     mtdMensaje("Cargando proyectos...");
-                    //cargarRegistros = (cargarRegistros) ? false : true;
                 }
                 
                 @Override
                 public void mouseReleased(MouseEvent e) {
                     synchronized( e ){
-                        System.out.println("Cargar registros: " + cargarRegistros);
-                        
-                        /*
-                        if( btn.getTexto().equals("<<")){
-                            ctrlPaginacionSeleccion = numPaginacionActual - 1;
-                            mtdActualizarPaginacion();
-                        }else
-                        if( btn.getTexto().equals(">>")){
-                            ctrlPaginacionSeleccion = numPaginacionActual + 1;
-                            mtdActualizarPaginacion();
-                        }else
-                        if( btn.getTexto().equals("Home")){
-                            ctrlPaginacionSeleccion = 0;
-                            mtdActualizarPaginacion();
-                        }else if( btn.getTexto().equals("End") ){
-                            ctrlPaginacionSeleccion = ctrlPaginacionFin;
-                            mtdActualizarPaginacion();
-                        }else {
-                            ctrlPaginacionSeleccion = Integer.parseInt(btn.getTexto());
-                            mtdActualizarPaginacion();
-                        }
-                        */
+                        //System.out.println("Cargar registros: " + cargarRegistros);
                         
                         if( ctrlPaginacionSeleccion == numPaginacionActual || ctrlPaginacionSeleccion < 0  ){
                             e.consume();
                             return;
                         }
                         
-                        System.out.println("Cargando registros...");
                         mtdActualizarPaginacion();
                         numMostrarRegistroFin = (int) (ctrlPaginacionSeleccion * numMostrarTotalRegistros);
+                        //System.out.println("Cargando registros = " + numMostrarTotalRegistros +
+                        //" : " + numMostrarRegistroFin);
 
                         Runnable paginacion = () -> {
-                            System.out.println("Paginar: " + ctrlPaginacionSeleccion);
+                            //System.out.println("Paginar: " + ctrlPaginacionSeleccion);
                             
                             if( ctrlPaginacionFin > 11 ){
                                 if( ctrlPaginacionSeleccion == ctrlPaginacionFin ){
@@ -605,7 +579,7 @@ public class CtrlPrincipal implements ActionListener {
             int contador = ctrlPaginacionSeleccion;
             for (int i = botones.length; i > 0; i--) {
                 Boton a = (Boton) botones[i-1];
-                System.out.println(a.getTexto());
+                //System.out.println(a.getTexto());
 
                 if( a.getTexto().equals("End") ){
                     a.setTexto(">>");
@@ -640,89 +614,6 @@ public class CtrlPrincipal implements ActionListener {
         }
     
     }
-    
-    
-    /*
-    private void mtdActualizarPaginacionSiguiente(){
-        
-        System.out.println("Cargando : Siguiente");
-        if( ctrlPaginacionSeleccion > 10 ){
-            System.out.println("Ejecutando : Siguiente");
-            Component[] botones = laVista.panelPaginacion.getComponents();
-
-            for( Component link : botones ){
-                Boton a = (Boton) link;
-                //System.out.println("RL : " + a.getTexto());
-                if( a.getTexto().equals("Home") )
-                    a.setTexto("<<");
-                
-                if( a.getTexto().equals( ""+ctrlPaginacionSeleccion )){
-                    a.setImgButtonType("dark");
-                }else{
-                    a.setImgButtonType("peace");
-                }
-            }
-
-            System.out.println("Tam: " + botones.length);
-            int contador = ctrlPaginacionSeleccion;
-            for (int i = botones.length; i > 0; i--) {
-                Boton a = (Boton) botones[i-1];
-                //System.out.println(a.getTexto());
-                if(a.getTexto().equals("<<") || a.getTexto().equals(">>") ){
-                    continue;
-                }
-
-                a.setTexto("" + (contador));
-                contador--;
-            }
-        }
-        
-    }
-    
-    private void mtdActualizarPaginacionPreview(){
-        
-        System.out.println("Cargando : Preview");
-        if( ctrlPaginacionSeleccion >= 0 ){
-            System.out.println("Cargando : Preview");
-            Component[] botones = laVista.panelPaginacion.getComponents();
-            
-            for( Component link : botones ){
-                Boton a = (Boton) link;
-                //System.out.println("RL : " + a.getTexto());
-                if( a.getTexto().equals( ""+ctrlPaginacionSeleccion )){
-                    a.setImgButtonType("dark");
-                }else{
-                    a.setImgButtonType("peace");
-                }
-            }
-            
-            int contador = ctrlPaginacionSeleccion;
-            System.out.println("Tam: " + botones.length);
-            System.out.println("Contador: " + contador);
-            
-            if( contador > 9 ){
-                for (int i = botones.length; i > 0; i--) {
-                    Boton a = (Boton) botones[i-1];
-                    System.out.println(a.getTexto());
-
-                    if( a.getTexto().equals("End") ){
-                        a.setTexto(">>");
-                    }else if( a.getTexto().equals("Home") ){
-                        a.setTexto("<<");
-                    }
-
-                    if(a.getTexto().equals("<<") || a.getTexto().equals(">>") ){
-                        continue;
-                    }
-
-                    a.setTexto("" + (contador));
-                    contador--;
-                }
-            }
-        }
-        
-    }
-    */
     
     private void mtdFiltrarBusqueda(String busqueda){
         mtdVaciarContenedor();
