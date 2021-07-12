@@ -513,7 +513,7 @@ public class CtrlPrincipal implements ActionListener {
                     proyectos.clear();
                     lista.clear();
                     mtdVaciarContenedor();
-                    mtdMensaje("" + ctrlPaginacionSeleccion * 10);
+                    mtdMensaje(" Proyectos " + ((ctrlPaginacionSeleccion+1) * 10) + " / "+ (numTotalRegistros));
                 }
                 
                 @Override
