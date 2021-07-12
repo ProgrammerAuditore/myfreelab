@@ -472,7 +472,13 @@ public class CtrlPrincipal implements ActionListener {
                     numPaginacionActual = i;
                     ctrlPaginacionInicio = 0;
                     numMostrarRegistroFin = (int) (i * numMostrarTotalRegistros);
-                    VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pag. "+(ctrlPaginacionFin-1) );
+                    
+                    if( (ctrlPaginacionFin-1) == 0 ){
+                        VentanaPrincipal.etqPaginacion.setText( null );
+                    }else{
+                        VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pag. "+(ctrlPaginacionFin-1) );
+                    }
+                    
             }
             
             if( ctrlPaginacionFin > 11 ){
