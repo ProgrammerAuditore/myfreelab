@@ -476,7 +476,7 @@ public class CtrlPrincipal implements ActionListener {
                     if( (ctrlPaginacionFin-1) == 0 ){
                         VentanaPrincipal.etqPaginacion.setText( null );
                     }else{
-                        VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pag. "+(ctrlPaginacionFin-1) );
+                        VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pág. "+(ctrlPaginacionFin-1) );
                     }
                     
             }
@@ -541,15 +541,15 @@ public class CtrlPrincipal implements ActionListener {
                             //System.out.println("Paginar: " + ctrlPaginacionSeleccion);
                             if( ctrlPaginacionSeleccion == 0 ){
                                     btn.setTexto("Home");
-                                    VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pag. "+(ctrlPaginacionFin-1) );
+                                    VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pág. "+(ctrlPaginacionFin-1) );
                             }else{
-                                VentanaPrincipal.etqPaginacion.setText( "Pag. "+ctrlPaginacionSeleccion+" / Pag. "+(ctrlPaginacionFin-1) );
+                                VentanaPrincipal.etqPaginacion.setText( "Pág. "+ctrlPaginacionSeleccion+" / Pág. "+(ctrlPaginacionFin-1) );
                             }
                             
                             if( ctrlPaginacionFin > 11 ){
                                 if( ctrlPaginacionSeleccion == ctrlPaginacionFin ){
                                     btn.setTexto("End");
-                                    VentanaPrincipal.etqPaginacion.setText( "End "+" / Pag. "+(ctrlPaginacionFin-1) );
+                                    VentanaPrincipal.etqPaginacion.setText( "End "+" / Pág. "+(ctrlPaginacionFin-1) );
                                 }
                             }
                             
