@@ -244,7 +244,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="497" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="etqPaginacion" min="-2" pref="190" max="-2" attributes="0"/>
+                      <EmptySpace pref="295" max="32767" attributes="0"/>
                       <Component id="cmpProyectos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -262,6 +264,7 @@
                           <Component id="cmpEmpresas" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmpProyectos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etqPaginacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -289,6 +292,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="  |  "/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etqPaginacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pag. 100 / Pag. 100"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

@@ -63,6 +63,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cmpEmpresas = new javax.swing.JLabel();
         cmpProyectos = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        etqPaginacion = new javax.swing.JLabel();
         scpContenedor = new javax.swing.JScrollPane();
         pnlContenedor = new javax.swing.JPanel();
         pnlOpciones = new javax.swing.JPanel();
@@ -111,12 +112,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("  |  ");
 
+        etqPaginacion.setText("Pag. 100 / Pag. 100");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(497, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(etqPaginacion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                 .addComponent(cmpProyectos)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
@@ -131,7 +136,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmpEmpresas)
                     .addComponent(cmpProyectos)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(etqPaginacion))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -472,6 +478,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private vista.componentes.etiqueta.Etiqueta etiqueta2;
     private vista.componentes.etiqueta.Etiqueta etiqueta3;
     public static vista.componentes.etiqueta.Mensaje etqMensaje;
+    public static javax.swing.JLabel etqPaginacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

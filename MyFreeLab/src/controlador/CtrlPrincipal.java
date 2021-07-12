@@ -452,10 +452,12 @@ public class CtrlPrincipal implements ActionListener {
         
         // Registros 150 <-> 15 botones 
         ctrlPaginacionFin = numTotalRegistros / numMostrarTotalRegistros;
+        //ctrlPaginacionFin = 20;
         
         if( (numTotalRegistros%10) > 0 ){
             ctrlPaginacionFin = ctrlPaginacionFin + 1;
         }
+        
         
         for (int i = 0; i < ctrlPaginacionFin; i++) {
             
@@ -470,6 +472,7 @@ public class CtrlPrincipal implements ActionListener {
                     numPaginacionActual = i;
                     ctrlPaginacionInicio = 0;
                     numMostrarRegistroFin = (int) (i * numMostrarTotalRegistros);
+                    VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pag. "+(ctrlPaginacionFin-1) );
             }
             
             if( ctrlPaginacionFin > 11 ){
@@ -510,7 +513,7 @@ public class CtrlPrincipal implements ActionListener {
                     proyectos.clear();
                     lista.clear();
                     mtdVaciarContenedor();
-                    mtdMensaje("Cargando proyectos...");
+                    mtdMensaje("" + ctrlPaginacionSeleccion * 10);
                 }
                 
                 @Override
@@ -530,15 +533,20 @@ public class CtrlPrincipal implements ActionListener {
 
                         Runnable paginacion = () -> {
                             //System.out.println("Paginar: " + ctrlPaginacionSeleccion);
+                            if( ctrlPaginacionSeleccion == 0 ){
+                                    btn.setTexto("Home");
+                                    VentanaPrincipal.etqPaginacion.setText( "Home "+" / Pag. "+(ctrlPaginacionFin-1) );
+                            }else{
+                                VentanaPrincipal.etqPaginacion.setText( "Pag. "+ctrlPaginacionSeleccion+" / Pag. "+(ctrlPaginacionFin-1) );
+                            }
                             
                             if( ctrlPaginacionFin > 11 ){
                                 if( ctrlPaginacionSeleccion == ctrlPaginacionFin ){
                                     btn.setTexto("End");
-                                }else if( ctrlPaginacionSeleccion == 0 ){
-                                    btn.setTexto("Home");
+                                    VentanaPrincipal.etqPaginacion.setText( "End "+" / Pag. "+(ctrlPaginacionFin-1) );
                                 }
                             }
-
+                            
                             mtdObtenerListaProyectos();
                             mtdObtenerListaEmpresas();
                             mtdFiltrarListas("proyectos", 0, 100);
@@ -716,6 +724,7 @@ public class CtrlPrincipal implements ActionListener {
     }
     
     private void mtdVaciarPaginacion(){
+        VentanaPrincipal.etqPaginacion.setText(null);
         laVista.panelPaginacion.removeAll();
         laVista.panelPaginacion.validate();
         laVista.panelPaginacion.revalidate();
