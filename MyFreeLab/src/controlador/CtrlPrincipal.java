@@ -61,6 +61,7 @@ public class CtrlPrincipal implements ActionListener {
     private int ctrlPaginacionFin;
     private int ctrlPaginacionInicio;
     private int ctrlPaginacionSeleccion;
+    private int ctrlPaginacionSobra;
     private int numMostrarRegistroFin;
     private boolean cargarRegistros;
     
@@ -88,6 +89,7 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdInit() {
         cargarRegistros = true;
+        ctrlPaginacionSobra = 0;
         numTotalRegistros = 0;
         numMostrarTotalRegistros = 10;
         CtrlPrincipal.ctrlBarraEstadoNumEmpresas = 0;
@@ -519,7 +521,7 @@ public class CtrlPrincipal implements ActionListener {
                     proyectos.clear();
                     lista.clear();
                     mtdVaciarContenedor();
-                    mtdMensaje(" Proyectos " + ((ctrlPaginacionSeleccion+1) * 10) + " / "+ (numTotalRegistros));
+                    mtdMensaje("Cargando proyectos... ");
                 }
                 
                 @Override
