@@ -5,11 +5,44 @@
             <!-- Información del software -->
             <app_autor>ProgrammerAuditore</app_autor>
             <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v0.9.90Alpha</app_name_version>
+            <app_num_version>0990</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>https://download1522.mediafire.com/167gzuo5677g/lynytarvtbkjrxd/Setup+-+MyFreeLab+v0.9.90Alpha.exe</app_link_exe>
+            <app_link_deb>https://download937.mediafire.com/kt24vewniwpg/mg62uz1lbcx3d9s/myfreelab-0.9.90-all.deb</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedad>* Se agrego estados para los proyectos </novedad>
+                <novedad>* Se agrego filtros en la ventana principal</novedad>
+                <novedad>+ Para mostrar proyectos en estado: </novedad>
+                <novedad>+ Realizado, En Proceso, Eliminado </novedad>
+                <novedad>* Se agrego nuevas acciones para gestionar proyecto</novedad>
+                <novedad>+ Se agrego botones para: </novedad>
+                <novedad>+ Eliminar, Remover, Realizado, Recuperar</novedad>
+                <novedad>* Se agrego paginación para mostrar proyectos</novedad>
+                <novedad>* Se modifico la barra de estados</novedad>
+                <novedad>* Se modifico la ventana principal</novedad>
+                <novedad>* Se modifico los mensajes de estados</novedad>
+                <novedad>* Se modifico la tarjeta de presentación de los proyectos</novedad>
+                <novedad>+ Se rediseño los estilos</novedad>
+                <novedad>+ Se agrego un barra de progreso</novedad>
+                <novedad>- Se elimino los botones de acciones</novedad>
+                <novedad>* Se modifico el sistema de busqueda en la ventana principal</novedad>
+                <novedad>* Se modifico los paneles de gestionar proyectos, empresas y requisitos</novedad>
+                <novedad>* Se corrigio bugs al ingresar datos</novedad>
+                <novedad>* Se corrigio bugs</novedad>
+                <novedad>* etc.</novedad>
+            </app_novedades>
+        </Version>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
             <app_name_version>v0.9.80Alpha</app_name_version>
             <app_num_version>0980</app_num_version>
             <!-- Links de descarga -->
-            <app_link_exe>####</app_link_exe>
-            <app_link_deb>####</app_link_deb>
+            <app_link_exe>https://download1501.mediafire.com/9qld93fb4xkg/emgpw3hk21w6euf/Setup+-+MyFreeLab+v0.9.80Alpha.exe</app_link_exe>
+            <app_link_deb>https://download849.mediafire.com/nxv33siklorg/em4q46dkrbcnvq4/myfreelab-0.9.80-all.deb</app_link_deb>
             <!-- Lista de novedades -->
             <app_novedades>
                 <novedad>* Se creo un nuevo splash</novedad>

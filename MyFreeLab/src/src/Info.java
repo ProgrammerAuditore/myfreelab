@@ -14,22 +14,30 @@ public class Info {
             "Tiene la funcionalidad de conexión a una base de datos MYSQL local o remoto para registrar los datos.";
     public static final String Licencia="Todos los derechos reservados.";
     public static final String sNombre = "MyFreeLab";
-    public static final String sVersionName = "v0.9.80";
-    public static final String sVersionNum = "0980";
+    public static final String sVersionName = "v0.9.90";
+    public static final String sVersionNum = "0990";
     public static final String sProduccion = "Alpha";
     public static final String NombreSoftware = sNombre + " " + sVersionName + sProduccion;
     public static final String Novedades = 
-            "* Se creo un nuevo splash" + "\n" +
+            "* Se agrego estados para los proyectos " + "\n" +
+            "* Se agrego filtros en la ventana principal" + "\n" +
+            "+ Para mostrar proyectos en estado: " + "\n" +
+            "+ Realizado, En Proceso, Eliminado " + "\n" +
+            "* Se agrego nuevas acciones para gestionar proyecto" + "\n" +
+            "+ Se agrego botones para: " + "\n" +
+            "+ Eliminar, Remover, Realizado, Recuperar" + "\n" +
+            "* Se agrego paginación para mostrar proyectos" + "\n" +
             "* Se modifico la barra de estados" + "\n" +
             "* Se modifico la ventana principal" + "\n" +
             "* Se modifico los mensajes de estados" + "\n" +
-            "* Se modifico el reporte de cotización" + "\n" +
-            "* Se rediseño el panel de acerca de" + "\n" +
-            "* Se creo el submenú para obtener ayuda" + "\n" +
+            "* Se modifico la tarjeta de presentación de los proyectos" + "\n" +
+            "+ Se rediseño los estilos" + "\n" +
+            "+ Se agrego una barra de progreso" + "\n" +
+            "- Se elimino los botones de acciones" + "\n" +
+            "* Se modifico el sistema de búsqueda en la ventana principal" + "\n" +
+            "* Se modifico los paneles de gestionar proyectos, empresas y requisitos" + "\n" +
+            "* Se corrigió bugs al ingresar datos" + "\n" +
             "* Se corrigió bugs" + "\n" +
-            "* Se corrió un bug al establecer conexión en el panel configurar conexión" + "\n" +
-            "* Se corrigió las restricciones de cada dato a capturar" + "\n" +
-            "* Se corrigió los mensajes de estado y diálogos" + "\n" +
             "* etc." + "\n";
     
     public static final String SitioWeb = "https://programmerauditore.gitlab.io/myfreelab";
