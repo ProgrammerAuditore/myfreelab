@@ -170,7 +170,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         etiqueta1.setForeground(new java.awt.Color(255, 255, 255));
-        etiqueta1.setText(" Proyectos eleminados");
+        etiqueta1.setText(" Proyectos eliminados");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -277,7 +277,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addComponent(cmpBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
