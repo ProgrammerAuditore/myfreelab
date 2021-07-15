@@ -5,30 +5,23 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.HashMap;
 
 class Resource {
     
     public File dataConexion() {
         String OS = System.getProperty("os.name").toLowerCase();
-        String WinTemp = System.getProperty("java.io.tmpdir");
+        String UserHome = System.getProperty("user.home");
         File data = null;
         String dir = "";
         
         try {
             
             // Verificar el sistema operativo
-            if ( !(OS.indexOf("win") >= 0) ) {
-                dir = "/var/tmp/myfreelab-cache-";
-            } else { 
-                dir = WinTemp+"myfreelab-cache-";
-            }
+            dir = UserHome + "/.local/";
             
-            // Crear la carpeta config
-            new File( dir + "config").mkdir();
+            // Crear la carpeta myfreelab
+            new File( dir + "myfreelab").mkdir();
             
             // Crear el archivo conn dentro de la carpeta etc 
             new File( dir + Rutas.pathDataConexion ).createNewFile(); 
@@ -46,18 +39,15 @@ class Resource {
     
     public File dataRun() {
         String OS = System.getProperty("os.name").toLowerCase();
-        String WinTemp = System.getProperty("java.io.tmpdir");
+        String UserHome = System.getProperty("user.home");
         File data = null;
         String dir = "";
         
         // Verificar el sistema operativo
-        if ( !(OS.indexOf("win") >= 0) )
-            dir = "/var/tmp/myfreelab-cache-";
-        else
-            dir = WinTemp + "myfreelab-cache-";
+        dir = UserHome + "/.local/";
 
-        // Crear la carpeta config
-        new File( dir + "config").mkdir();
+        // Crear la carpeta myfreelab
+        new File( dir + "myfreelab").mkdir();
 
         //  * Generar la ruta del archivo
         File  archivoRun = new File( dir + Rutas.pathDataEjecucion ); 

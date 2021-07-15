@@ -26,11 +26,9 @@ import modelo.dao.ConexionDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
-import modelo.dto.EmpresaDto;
 import modelo.dto.ProyectoDto;
 import src.Info;
 import src.Source;
-import vista.componentes.boton.Boton;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements ActionListener {
@@ -334,7 +332,7 @@ public class CtrlPrincipal implements ActionListener {
                 desktop.browse(new URI(url));
             } catch (IOException | URISyntaxException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }else{
             Runtime runtime = Runtime.getRuntime();
@@ -342,9 +340,10 @@ public class CtrlPrincipal implements ActionListener {
                 runtime.exec("xdg-open " + url);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
+        
     }
 
     private void modalConfigurarConexion() {
@@ -584,11 +583,12 @@ public class CtrlPrincipal implements ActionListener {
                 synchronized(CtrlPrincipal.modificacionesCard){
                     if(CtrlPrincipal.modificacionesCard){
                         CtrlPrincipal.modificacionesCard = false;
-                        lista.clear();
-                        mtdCrearPaginacion();
-                        mtdObtenerListaProyectos();
-                        mtdObtenerListaEmpresas();
-                        mtdFiltrarListas("proyectos", 0, 100);
+                        //lista.clear();
+                        //mtdCrearPaginacion();
+                        //mtdObtenerListaProyectos();
+                        //mtdObtenerListaEmpresas();
+                        //mtdFiltrarListas("proyectos", 0, 100);
+                        mtdHabilitarMenus();
                     }
                 }
             }

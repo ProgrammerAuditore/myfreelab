@@ -3,8 +3,8 @@ package src;
 class Rutas {
     
     // * Obtener recursos desde la raíz el ejecutable .jar (Recursos Externo)
-    public static String pathDataConexion = "config/conn";
-    public static String pathDataEjecucion = "config/.run";
+    public static String pathDataConexion = "myfreelab/conn";
+    public static String pathDataEjecucion = "myfreelab/.run";
     public static String pathSharedLinux = "/opt/myfreelab/shared";
     public static String pathSharedWin = "shared";
     

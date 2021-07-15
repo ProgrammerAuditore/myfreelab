@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
@@ -50,7 +49,7 @@ public class CtrlPaginacion {
     
     public void mtdCrearPaginacion(){
         mtdVaciarPaginacion();
-        ctrlRegistrosPorPagina = 10;
+        ctrlRegistrosPorPagina = 25;
         ctrlNumTotalDeRegistros = 0;
         ctrlPaginacionInicio = 1;
         ctrlPaginacionFin = 0;
@@ -65,16 +64,16 @@ public class CtrlPaginacion {
         // Registros 150 <-> 15 botones 
         ctrlPaginacionFin = ctrlNumTotalDeRegistros / ctrlRegistrosPorPagina;
         
-        System.out.println("Total de registros: " + ctrlNumTotalDeRegistros);
-        System.out.println("SubTotal de paginas: " + ctrlPaginacionFin);
-        System.out.println("Registros de sobra: " + (ctrlNumTotalDeRegistros%10));
+        //System.out.println("Total de registros: " + ctrlNumTotalDeRegistros);
+        //System.out.println("SubTotal de paginas: " + ctrlPaginacionFin);
+        //System.out.println("Registros de sobra: " + (ctrlNumTotalDeRegistros%10));
         
-        if( (ctrlNumTotalDeRegistros%10) > 0 ){
+        if( (ctrlNumTotalDeRegistros%ctrlRegistrosPorPagina) > 0 ){
             ctrlPaginacionFin = ctrlPaginacionFin + 1;
         }
         
-        ctrlPaginacionFin = 20;
-        System.out.println("Total de paginas: " + ctrlPaginacionFin);
+        //ctrlPaginacionFin = 20;
+        //System.out.println("Total de paginas: " + ctrlPaginacionFin);
         for (int i = 0; i < ctrlPaginacionFin; i++) {
             
             String numeracion = "" + i;
