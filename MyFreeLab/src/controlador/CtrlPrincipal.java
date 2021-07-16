@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import modelo.InterfaceCard;
 import java.awt.Desktop;
 import java.awt.Font;
@@ -71,13 +72,14 @@ public class CtrlPrincipal implements ActionListener {
     }
 
     private void mtdInit() {
+        actualizarBarraEstado();
+        mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdInit.msg1"));
         CtrlPrincipal.ctrlBarraEstadoNumEmpresas = 0;
         CtrlPrincipal.ctrlBarraEstadoNumProyectos = 0;
         CtrlPrincipal.modificacionesCard = false;
         proyectos = new ArrayList<>();
         lista = new ArrayList<>();
         laVista.pnlContenedor.setLayout(new GridBagLayout());
-        mtdMensaje("Cargando ...");
 
         // * Definir oyentes
         laVista.setLocationRelativeTo(null);
@@ -121,8 +123,8 @@ public class CtrlPrincipal implements ActionListener {
                 
                 if( Character.isAlphabetic(letra) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE  ){
                     mtdVaciarContenedor();
-                    CtrlPrincipal.mensajeCtrlPrincipal("Escribe algo para buscar...");
-                    mtdMensaje("Borrar todo para mostrar todos los resultados...");
+                    CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.cmpBusqueda.msg1"));
+                    mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.cmpBusqueda.msg2"));
                 }
             }
             
@@ -142,7 +144,7 @@ public class CtrlPrincipal implements ActionListener {
                         mtdVaciarContenedor();
                         mtdFiltrarBusqueda( laVista.cmpBusqueda.getText() );
                     } else {
-                        JOptionPane.showMessageDialog(laVista, "La busqueda debe ser menor o igual a 30 caracteres.");
+                        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.getProperty("ctrlPrincipal.cmpBusqueda.msg3"));
                     }
                 //}
                 
@@ -156,28 +158,28 @@ public class CtrlPrincipal implements ActionListener {
         
         if(e.getSource() == laVista.checkProEliminados){
             if(laVista.checkProEliminados.isSelected()){
-                mtdFiltrarListas("proyectos eliminados", 0, 0);
+                mtdFiltrarListas(MyFreeLab.idioma.getProperty("ctrlPrincipal.actionPerformed.msg01"), 0, 0);
                 laVista.checkProEliminados.setSelected(true);
             }else{
-                mtdFiltrarListas("proyectos", 0, 100);
+                mtdFiltrarListas(MyFreeLab.idioma.getProperty("ctrlPrincipal.actionPerformed.msg00"), 0, 100);
             }
         }
         
         if(e.getSource() == laVista.checkProRealizados){
             if(laVista.checkProRealizados.isSelected()){
-                mtdFiltrarListas("proyectos realizados", 100, 100);
+                mtdFiltrarListas(MyFreeLab.idioma.getProperty("ctrlPrincipal.actionPerformed.msg02"), 100, 100);
                 laVista.checkProRealizados.setSelected(true);
             }else{
-                mtdFiltrarListas("proyectos", 0, 100);
+                mtdFiltrarListas(MyFreeLab.idioma.getProperty("ctrlPrincipal.actionPerformed.msg00"), 0, 100);
             }
         }
         
         if(e.getSource() == laVista.checkProEnProceso){
             if(laVista.checkProEnProceso.isSelected()){
-                mtdFiltrarListas("proyectos en proceso", 1, 50);
+                mtdFiltrarListas(MyFreeLab.idioma.getProperty("ctrlPrincipal.actionPerformed.msg03"), 1, 50);
                 laVista.checkProEnProceso.setSelected(true);
             }else{
-                mtdFiltrarListas("proyectos", 0, 100);
+                mtdFiltrarListas(MyFreeLab.idioma.getProperty("ctrlPrincipal.actionPerformed.msg00"), 0, 100);
             }
         }
 
@@ -226,7 +228,7 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdHabilitarMenus() {
         //laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion]");
-        CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexión");
+        CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg1"));
         
         // * Obtener y Crear tarjetas de presentacion para todos los proyecto creados
         proyectos.clear();
@@ -242,12 +244,12 @@ public class CtrlPrincipal implements ActionListener {
         laVista.menuEditar.setEnabled(true);
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
-        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+        CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
     }
 
     private void mtdDesHabilitarMenus() {
         //laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion]");
-        CtrlPrincipal.mensajeCtrlPrincipal("Cerrando conexión");
+        CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.off.msg1"));
         
         // * Vaciar y Borrar tarjetas de presentacion para todos los proyecto creados
         proyectos.clear();
@@ -260,12 +262,10 @@ public class CtrlPrincipal implements ActionListener {
         mtdDesHabSubMenus(true);
         laVista.menuEditar.setEnabled(false);
         
-        laVista.cmpProyectos.setText("Proyectos : " + "#");
-        laVista.cmpEmpresas.setText("Empresas : " + "#");
-        mtdMensaje("Sin conexión a la base de datos.");
+        mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdDesHabilitarMenus.msg1"));
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion cerrada]");
-        CtrlPrincipal.mensajeCtrlPrincipal("conexión cerrada");
+        CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.off.msg2"));
     }
 
     private void mtdAbriendoPrograma() {
@@ -356,8 +356,8 @@ public class CtrlPrincipal implements ActionListener {
 
             if( CtrlHiloConexion.checkConexion() ){
                 //laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion, espere por favor...]");
-                CtrlPrincipal.mensajeCtrlPrincipal("Estableciendo conexión, espere por favor...");
-                mtdMensaje("Estableciendo conexión, espere por favor...");
+                CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.modalConfigurarConexion.msg1"));
+                mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.modalConfigurarConexion.msg1"));
                 
                 if( CtrlHiloConexion.ctrlEstado == true ){
                     mtdHabilitarMenus();
@@ -365,8 +365,8 @@ public class CtrlPrincipal implements ActionListener {
                 
             } else {
                 //laVista.setTitle(Info.NombreSoftware + " - [Cerrando conexion, espere por favor...]");
-                CtrlPrincipal.mensajeCtrlPrincipal("Cerrando conexión, espere por favor...");
-                mtdMensaje("Cerrando conexión, espere por favor...");
+                CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.modalConfigurarConexion.msg2"));
+                mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.modalConfigurarConexion.msg2"));
                 
                 if( CtrlHiloConexion.ctrlEstado == false ){
                     mtdDesHabilitarMenus();
@@ -397,14 +397,14 @@ public class CtrlPrincipal implements ActionListener {
             
             // * Mostrar progreso con puntos
             puntos = ( i%4 == 0 ) ? "" : puntos + ".";
-            CtrlPrincipal.mensajeCtrlPrincipal("Cargando " + puntos);
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdObtenerListaProyectos.msg1")+" " + puntos);
             
             //System.out.println("Testin :: Tarjeta agregado #" + itemFila);
             try { Thread.sleep(60); } catch (InterruptedException ex) { }
         }
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
-        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+        CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
         CtrlPrincipal.actualizarBarraEstado();
     }
     
@@ -457,16 +457,16 @@ public class CtrlPrincipal implements ActionListener {
         
         int res = laVista.pnlContenedor.getComponentCount();
         if(  res == 0 ){
-            mtdMensaje("No hay resultados para `"+ busqueda +"` ...");
+            mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdFiltrarBusqueda.msg1")+" `"+ busqueda +"` ...");
         } else{
-            CtrlPrincipal.mensajeCtrlPrincipal( res + " resultados para `" + busqueda + "`");
+            CtrlPrincipal.mensajeCtrlPrincipal(res+MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdFiltrarBusqueda.msg1")+" `" + busqueda + "`");
         }
         
         // * Verificar la conexion a la base de datos
         if( CtrlHiloConexion.ctrlEstado == false ){
-            CtrlPrincipal.mensajeCtrlPrincipal("Conexión cerrada");
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.off.msg2"));
         }else{
-            CtrlPrincipal.mensajeCtrlPrincipal("Conexión establecida");
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
         }
         
         laVista.pnlContenedor.validate();
@@ -503,19 +503,23 @@ public class CtrlPrincipal implements ActionListener {
                     }
 
                     if(0 >= min && 100 <= max){
-                        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+                        CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
                     }else
                     if( contador == 0 ){
-                        mtdMensaje("No hay " + msg + " para mostrar.");
-                        CtrlPrincipal.mensajeCtrlPrincipal("conexión establecida");
+                        mtdMensaje(MyFreeLab.idioma
+                                .getProperty("ctrlPrincipal.mtdFiltrarListas.msg1")
+                                .replace("<MSG>", msg));
+                        
+                        CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
 
                     } else if( contador > 0){
-                        CtrlPrincipal.mensajeCtrlPrincipal(contador +" "+ msg +" obtenidos");
+                        CtrlPrincipal.mensajeCtrlPrincipal(contador +" "+ msg +" "+MyFreeLab.idioma
+                                .getProperty("ctrlPrincipal.mtdFiltrarListas.msg2"));
 
                     }
 
                 } else {
-                    mtdMensaje("No hay proyectos creados.");
+                    mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdFiltrarListas.msg3"));
                 }
 
                 laVista.pnlContenedor.validate();
@@ -562,11 +566,13 @@ public class CtrlPrincipal implements ActionListener {
 
     public static void actualizarBarraEstado(){
         if( CtrlHiloConexion.ctrlEstado ){
-            VentanaPrincipal.cmpProyectos.setText("Proyectos : " + CtrlPrincipal.ctrlBarraEstadoNumProyectos);
-            VentanaPrincipal.cmpEmpresas.setText("Empresas : " + ctrlBarraEstadoNumEmpresas);
+            VentanaPrincipal.cmpProyectos.setText(MyFreeLab.idioma.getProperty("ctrlPrincipal.actualizarBarraEstado.pro")
+                    +" : "+ CtrlPrincipal.ctrlBarraEstadoNumProyectos);
+            VentanaPrincipal.cmpEmpresas.setText(MyFreeLab.idioma.getProperty("ctrlPrincipal.actualizarBarraEstado.emp")
+                    +" : " + ctrlBarraEstadoNumEmpresas);
         }else{
-            VentanaPrincipal.cmpProyectos.setText("Proyectos : #");
-            VentanaPrincipal.cmpEmpresas.setText("Empresas : #");
+            VentanaPrincipal.cmpProyectos.setText(MyFreeLab.idioma.getProperty("ctrlPrincipal.actualizarBarraEstado.pro")+" : #");
+            VentanaPrincipal.cmpEmpresas.setText(MyFreeLab.idioma.getProperty("ctrlPrincipal.actualizarBarraEstado.emp")+" : #");
         }
     }
 
