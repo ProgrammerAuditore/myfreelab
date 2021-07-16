@@ -7,6 +7,7 @@ import hilos.HiloSplash;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,11 +19,13 @@ import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
 import src.Info;
 import src.Source;
+import src.idiomas.Idiomas;
 import vista.ventanas.VentanaPrincipal;
 
 public class MyFreeLab {
     
     private VentanaPrincipal ventana;
+    public static Properties idioma;
     
     public void mtdTagInit() {
         
@@ -31,6 +34,7 @@ public class MyFreeLab {
         else if ( Source.OsWin )
             mtdVerificarPIDWin();
         
+        idioma = new Idiomas("en");
         HiloConexion hc = new HiloConexion();
         HiloPrincipal hp = new HiloPrincipal();
         HiloSplash hs = new HiloSplash();

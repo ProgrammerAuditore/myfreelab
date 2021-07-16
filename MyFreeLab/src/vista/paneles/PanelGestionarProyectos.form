@@ -71,28 +71,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="138" max="32767" attributes="0"/>
-              </Group>
+              <Component id="etqTitulo" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
-              </Group>
+              <Component id="etqTitulo" alignment="0" pref="61" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Titulo" name="titulo1">
+        <Component class="vista.componentes.etiqueta.Titulo" name="etqTitulo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="GESTIONAR PROYECTOS"/>
           </Properties>
         </Component>
@@ -102,7 +96,9 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Proyectos"/>
+            <TitledBorder title="&lt;User Code&gt;">
+              <Connection PropertyName="titleX" code="MyFreeLab.idioma.getProperty(&quot;panelGestionarProyecto.etqTituloPanel&quot;)" type="code"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -123,10 +119,10 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnBuscar" min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lbl_empresa" min="-2" pref="198" max="-2" attributes="0"/>
                               <Component id="cmpProyecto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etqProyecto" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="148" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="btnEliminar" min="-2" pref="86" max="-2" attributes="0"/>
@@ -138,7 +134,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btnRecuperar" min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="etiqueta1" max="32767" attributes="0"/>
+                              <Component id="etqAcciones" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -155,8 +151,8 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lbl_empresa" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="etiqueta1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="etqProyecto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="etqAcciones" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="cmpProyecto" min="-2" max="-2" attributes="0"/>
@@ -184,14 +180,14 @@
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="246" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="253" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_empresa">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqProyecto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre del proyecto"/>
           </Properties>
@@ -316,7 +312,7 @@
         <Component class="vista.componentes.campos.CampoTexto" name="cmpProyecto">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_empresa"/>
+              <ComponentRef name="etqProyecto"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -358,7 +354,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqAcciones">
           <Properties>
             <Property name="text" type="java.lang.String" value="Acciones del proyecto"/>
           </Properties>

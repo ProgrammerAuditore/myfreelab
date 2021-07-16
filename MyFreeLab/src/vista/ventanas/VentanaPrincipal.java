@@ -5,9 +5,7 @@
  */
 package vista.ventanas;
 
-import java.awt.Color;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import index.MyFreeLab;
 import src.Source;
 
 /**
@@ -44,9 +42,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //this.pnlPortada.setImgRutaInternoActivo(true);
         //this.pnlPortada.setImgRutaInterno(Source.bkgPortada);
         
-        // * Establecer placeholder
-        this.cmpBusqueda.setPlaceholder("Buscar proyectos.");
+        mtdEstablecerIdioma();
+    }
+    
+    private void mtdEstablecerIdioma(){
+        // * Menus
+        this.menuArchivo.setText(MyFreeLab.idioma.getProperty("Archivo") );
+        this.menuAyuda.setText(MyFreeLab.idioma.getProperty("Ayuda"));
+        this.menuEditar.setText(MyFreeLab.idioma.getProperty("Editar"));
+        this.menuConfigurar.setText(MyFreeLab.idioma.getProperty("Configurar"));
         
+        // * Etiquetas
+        this.etqFiltroProEnProceso.setText(MyFreeLab.idioma.getProperty("etq.FiltroProEnProceso"));
+        this.etqFiltroProRealizados.setText(MyFreeLab.idioma.getProperty("etq.FiltroProRealizados"));
+        this.etqFiltroProEliminados.setText(MyFreeLab.idioma.getProperty("etq.FiltroProEliminados"));
+        
+        // * Botones
+        this.btnSalir.setText(MyFreeLab.idioma.getProperty("btn.Salir"));
+        
+        this.btnDatosPersonales.setText(MyFreeLab.idioma.getProperty("btn.DatosPersonales"));
+        this.btnGestionarProyectos.setText(MyFreeLab.idioma.getProperty("btn.GestionarProyectos"));
+        this.btnGestionarEmpresas.setText(MyFreeLab.idioma.getProperty("btn.GestionarEmpresas"));
+        this.btnVinculacion.setText(MyFreeLab.idioma.getProperty("btn.Vinculacion"));
+        
+        this.btnConexion.setText(MyFreeLab.idioma.getProperty("btn.Conexion"));
+        
+        this.btnObtenerAyuda.setText(MyFreeLab.idioma.getProperty("btn.ObtenerAyuda"));
+        this.btnActualizarPrograma.setText(MyFreeLab.idioma.getProperty("btn.ActualizarPrograma"));
+        this.btnAcercaDe.setText(MyFreeLab.idioma.getProperty("btn.AcercaDe"));
+        
+        // * Establecer placeholder
+        this.cmpBusqueda.setPlaceholder(MyFreeLab.idioma.getProperty("msg.CampoBusqueda"));
     }
 
     /**
@@ -69,13 +95,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlOpciones = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         checkProEliminados = new javax.swing.JCheckBox();
-        etiqueta1 = new vista.componentes.etiqueta.Etiqueta();
+        etqFiltroProEliminados = new vista.componentes.etiqueta.Etiqueta();
         jPanel4 = new javax.swing.JPanel();
         checkProRealizados = new javax.swing.JCheckBox();
-        etiqueta2 = new vista.componentes.etiqueta.Etiqueta();
+        etqFiltroProRealizados = new vista.componentes.etiqueta.Etiqueta();
         jPanel5 = new javax.swing.JPanel();
         checkProEnProceso = new javax.swing.JCheckBox();
-        etiqueta3 = new vista.componentes.etiqueta.Etiqueta();
+        etqFiltroProEnProceso = new vista.componentes.etiqueta.Etiqueta();
         pnlLogo = new vista.componentes.jpanelbackground.JPanelBackground();
         cmpBusqueda = new vista.componentes.campos.CampoTexto();
         jPanel3 = new javax.swing.JPanel();
@@ -169,8 +195,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        etiqueta1.setForeground(new java.awt.Color(255, 255, 255));
-        etiqueta1.setText(" Proyectos eliminados");
+        etqFiltroProEliminados.setForeground(new java.awt.Color(255, 255, 255));
+        etqFiltroProEliminados.setText(" Proyectos eliminados");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,13 +205,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(checkProEliminados)
                 .addGap(26, 26, 26)
-                .addComponent(etiqueta1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etqFiltroProEliminados, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(checkProEliminados, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-            .addComponent(etiqueta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(etqFiltroProEliminados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(45, 52, 93));
@@ -193,8 +219,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         checkProRealizados.setBackground(new java.awt.Color(255, 255, 255));
         checkProRealizados.setAutoscrolls(true);
 
-        etiqueta2.setForeground(new java.awt.Color(255, 255, 255));
-        etiqueta2.setText(" Proyectos realizados");
+        etqFiltroProRealizados.setForeground(new java.awt.Color(255, 255, 255));
+        etqFiltroProRealizados.setText(" Proyectos realizados");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -203,13 +229,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(checkProRealizados)
                 .addGap(26, 26, 26)
-                .addComponent(etiqueta2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etqFiltroProRealizados, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(checkProRealizados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-            .addComponent(etiqueta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(etqFiltroProRealizados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(45, 52, 93));
@@ -217,8 +243,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         checkProEnProceso.setBackground(new java.awt.Color(255, 255, 255));
         checkProEnProceso.setAutoscrolls(true);
 
-        etiqueta3.setForeground(new java.awt.Color(255, 255, 255));
-        etiqueta3.setText(" Proyectos en proceso");
+        etqFiltroProEnProceso.setForeground(new java.awt.Color(255, 255, 255));
+        etqFiltroProEnProceso.setText(" Proyectos en proceso");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -227,14 +253,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(checkProEnProceso)
                 .addGap(26, 26, 26)
-                .addComponent(etiqueta3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etqFiltroProEnProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(etiqueta3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqFiltroProEnProceso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(checkProEnProceso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -474,9 +500,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public vista.componentes.campos.CampoTexto cmpBusqueda;
     public static javax.swing.JLabel cmpEmpresas;
     public static javax.swing.JLabel cmpProyectos;
-    private vista.componentes.etiqueta.Etiqueta etiqueta1;
-    private vista.componentes.etiqueta.Etiqueta etiqueta2;
-    private vista.componentes.etiqueta.Etiqueta etiqueta3;
+    private vista.componentes.etiqueta.Etiqueta etqFiltroProEliminados;
+    private vista.componentes.etiqueta.Etiqueta etqFiltroProEnProceso;
+    private vista.componentes.etiqueta.Etiqueta etqFiltroProRealizados;
     public static vista.componentes.etiqueta.Mensaje etqMensaje;
     public static javax.swing.JLabel etqPaginacion;
     private javax.swing.JLabel jLabel1;

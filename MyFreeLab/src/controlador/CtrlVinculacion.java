@@ -53,7 +53,7 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         
         // * Definir oyentes
         this.laVista.etqAsociar.addMouseListener(this);
-        this.laVista.etqEliminar.addMouseListener(this);
+        this.laVista.etqDesvincular.addMouseListener(this);
         this.laVista.btnCancelar.addMouseListener(this);
         this.laVista.cmbProyectos.addItemListener(this);
         
@@ -117,8 +117,8 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
             if( laVista.etqAsociar.isEnabled() )
                 mtdAsociar();
         
-        if( e.getSource() == laVista.etqEliminar )
-            if( laVista.etqEliminar.isEnabled() )
+        if( e.getSource() == laVista.etqDesvincular )
+            if( laVista.etqDesvincular.isEnabled() )
                 mtdEliminar();
         
         if( e.getSource() == laVista.btnCancelar )
@@ -230,7 +230,7 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
             if( mtdDefinirEmpresasAsociados() ){
                 laVista.lstEmpresasAsociadas.setEnabled(true);
                 laVista.lstEmpresasAsociadas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-                laVista.etqEliminar.setEnabled(true);
+                laVista.etqDesvincular.setEnabled(true);
                 mtdReEstablecerEmpresas();
                 
             }
@@ -245,7 +245,7 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
        laVista.lstEmpresasAsociadas.setListData(ninguno);
        laVista.lstEmpresasAsociadas.setEnabled(false);
        laVista.etqAsociar.setEnabled(false);
-       laVista.etqEliminar.setEnabled(false);
+       laVista.etqDesvincular.setEnabled(false);
     }
     
     private boolean mtdDefinirEmpresasAsociados(){

@@ -86,19 +86,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
-                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+              <Component id="etqTitulo" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="etqTitulo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
-              </Group>
+              <Component id="etqTitulo" alignment="0" pref="61" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -108,6 +101,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="VINCULACION"/>
           </Properties>
         </Component>
@@ -117,7 +111,9 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Vinculaci&#xf3;n"/>
+            <TitledBorder title="&lt;User Code&gt;">
+              <Connection PropertyName="titleX" code="MyFreeLab.idioma.getProperty(&quot;panelVinculacion.etqTituloPanel&quot;)" type="code"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -129,26 +125,21 @@
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="cmbProyectos" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="etqAsociar" min="-2" max="-2" attributes="0"/>
-                          <Component id="etqProyectos" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="etqEmpresas" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="etqAsociar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqInstruccion1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="etqProyectos" alignment="0" max="32767" attributes="0"/>
+                      <Component id="etqEmpresas" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="etqEmpresasAsociadas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="jLabel2" pref="253" max="32767" attributes="0"/>
+                      <Component id="etqInstruccion2" pref="253" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="etqEliminar" min="-2" max="-2" attributes="0"/>
+                          <Component id="etqDesvincular" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="etqEmpresasAsociadas" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
@@ -168,8 +159,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqInstruccion1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqInstruccion2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -179,7 +170,7 @@
                   <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="etqAsociar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="etqEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etqDesvincular" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -233,7 +224,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="etqInstruccion1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Selecciona una empresa para asociar a un proyecto."/>
           </Properties>
@@ -269,7 +260,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="vista.componentes.etiqueta.Enlace" name="etqEliminar">
+        <Component class="vista.componentes.etiqueta.Enlace" name="etqDesvincular">
           <Properties>
             <Property name="text" type="java.lang.String" value="Desvincular"/>
           </Properties>
@@ -282,7 +273,7 @@
             <Property name="text" type="java.lang.String" value="Lista de empresas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="etqInstruccion2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Seleciona una empresa para desvincular."/>
           </Properties>

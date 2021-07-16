@@ -5,6 +5,7 @@
  */
 package vista.paneles;
 
+import index.MyFreeLab;
 import src.Source;
 
 /**
@@ -23,6 +24,28 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);
         bkgAside.setImgRutaInterno( Source.bkgAside );
+        mtdEstablecerIdioma();
+    }
+    
+    private void mtdEstablecerIdioma(){
+        
+        // * Etiquetas
+        this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelGestionarProyecto.etqTitulo"));
+        this.etqAcciones.setText(MyFreeLab.idioma.getProperty("panelGestionarProyecto.etqAcciones"));
+        this.etqProyecto.setText(MyFreeLab.idioma.getProperty("panelGestionarProyecto.etqProyecto"));
+        
+        // * Campos (Placeholder)
+        this.cmpProyecto.setPlaceholder(MyFreeLab.idioma.getProperty("panelGestionarProyecto.etqProyecto"));
+        
+        // * Botones
+        this.btnCrear.setTexto(MyFreeLab.idioma.getProperty("panelGestionarProyecto.btnCrear"));
+        this.btnBuscar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarProyecto.btnBuscar"));
+        this.btnModificar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarProyecto.btnModificar"));
+        this.btnEliminar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarProyecto.btnEliminar"));
+        this.btnRemover.setTexto(MyFreeLab.idioma.getProperty("panelGestionarProyecto.btnRemover"));
+        this.btnRealizado.setTexto(MyFreeLab.idioma.getProperty("panelGestionarProyecto.btnRealizado"));
+        this.btnRecuperar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarProyecto.btnRecuperar"));
+        
     }
 
     /**
@@ -36,9 +59,9 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
 
         bkgAside = new vista.componentes.jpanelbackground.JPanelBackground();
         jPanel1 = new javax.swing.JPanel();
-        titulo1 = new vista.componentes.etiqueta.Titulo();
+        etqTitulo = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
-        lbl_empresa = new vista.componentes.etiqueta.Etiqueta();
+        etqProyecto = new vista.componentes.etiqueta.Etiqueta();
         btnModificar = new vista.componentes.boton.Boton();
         btnBuscar = new vista.componentes.boton.Boton();
         btnCrear = new vista.componentes.boton.Boton();
@@ -49,7 +72,7 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
         btnEliminar = new vista.componentes.boton.Boton();
         btnRecuperar = new vista.componentes.boton.Boton();
         btnRealizado = new vista.componentes.boton.Boton();
-        etiqueta1 = new vista.componentes.etiqueta.Etiqueta();
+        etqAcciones = new vista.componentes.etiqueta.Etiqueta();
 
         bkgAside.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -66,28 +89,24 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
-        titulo1.setForeground(new java.awt.Color(255, 255, 255));
-        titulo1.setText("GESTIONAR PROYECTOS");
+        etqTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etqTitulo.setText("GESTIONAR PROYECTOS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+            .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Proyectos"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(MyFreeLab.idioma.getProperty("panelGestionarProyecto.etqTituloPanel")));
 
-        lbl_empresa.setText("Nombre del proyecto");
+        etqProyecto.setText("Nombre del proyecto");
 
         btnModificar.setImgButtonType("warning");
         btnModificar.setTexto("Modificar");
@@ -128,7 +147,7 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
             tblProyectos.getColumnModel().getColumn(1).setPreferredWidth(220);
         }
 
-        cmpProyecto.setComponenteDidireccional(lbl_empresa);
+        cmpProyecto.setComponenteDidireccional(etqProyecto);
 
         btnRemover.setImgButtonType("danger");
         btnRemover.setTexto("Remover");
@@ -141,7 +160,7 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
         btnRealizado.setImgButtonType("success");
         btnRealizado.setTexto("Realizado");
 
-        etiqueta1.setText("Acciones del proyecto");
+        etqAcciones.setText("Acciones del proyecto");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -159,9 +178,9 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
                                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpProyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmpProyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(etqProyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,7 +190,7 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
                                 .addComponent(btnRealizado, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnRecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(etiqueta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(etqAcciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
@@ -183,8 +202,8 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(etiqueta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(etqProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etqAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(10, 10, 10)
                                 .addComponent(cmpProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
@@ -203,7 +222,7 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -242,12 +261,12 @@ public class PanelGestionarProyectos extends javax.swing.JPanel {
     public vista.componentes.boton.Boton btnRecuperar;
     public vista.componentes.boton.Boton btnRemover;
     public vista.componentes.campos.CampoTexto cmpProyecto;
-    private vista.componentes.etiqueta.Etiqueta etiqueta1;
+    private vista.componentes.etiqueta.Etiqueta etqAcciones;
+    private vista.componentes.etiqueta.Etiqueta etqProyecto;
+    private vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private vista.componentes.etiqueta.Etiqueta lbl_empresa;
     public javax.swing.JTable tblProyectos;
-    private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package vista.paneles;
 
+import index.MyFreeLab;
 import src.Source;
 
 /**
@@ -23,6 +24,25 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);
         bkgAside.setImgRutaInterno( Source.bkgAside );
+        mtdEstablecerIdioma();
+    }
+    
+    private void mtdEstablecerIdioma(){
+        
+        // * Etiquetas
+        this.titulo1.setText(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.etqTitulo"));
+        this.eqtEmpresa.setText(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.eqtEmpresa") );
+        
+        // * Campos (Placeholder)
+        this.cmpEmpresa.setPlaceholder(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.eqtEmpresa") );
+        
+        // * Botones
+        this.btnCrear.setTexto(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.btnCrear") );
+        this.btnModificar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.btnModificar") );
+        this.btnBuscar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.btnBuscar") );
+        this.btnRemover.setTexto(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.btnRemover") );
+        
+        
     }
 
     /**
@@ -38,7 +58,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         titulo1 = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
-        lbl_empresa = new vista.componentes.etiqueta.Etiqueta();
+        eqtEmpresa = new vista.componentes.etiqueta.Etiqueta();
         btnModificar = new vista.componentes.boton.Boton();
         btnBuscar = new vista.componentes.boton.Boton();
         btnCrear = new vista.componentes.boton.Boton();
@@ -63,27 +83,23 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
         titulo1.setForeground(new java.awt.Color(255, 255, 255));
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo1.setText("GESTIONAR EMPRESAS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Empresas"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(MyFreeLab.idioma.getProperty("panelGestionarEmpresa.etqTituloPanel")));
 
-        lbl_empresa.setText("Nombre del empresa");
+        eqtEmpresa.setText("Nombre del empresa");
 
         btnModificar.setImgButtonType("warning");
         btnModificar.setTexto("Modificar");
@@ -126,7 +142,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
             tblEmpresas.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
-        cmpEmpresa.setComponenteDidireccional(lbl_empresa);
+        cmpEmpresa.setComponenteDidireccional(eqtEmpresa);
 
         btnRemover.setImgButtonType("danger");
         btnRemover.setTexto("Remover");
@@ -138,7 +154,6 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,14 +166,15 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                         .addComponent(jScrollPane1)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(cmpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(302, 302, 302))))
+                            .addGap(302, 302, 302)))
+                    .addComponent(eqtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eqtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(cmpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -168,7 +184,7 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -204,10 +220,10 @@ public class PanelGestionarEmpresas extends javax.swing.JPanel {
     public vista.componentes.boton.Boton btnModificar;
     public vista.componentes.boton.Boton btnRemover;
     public vista.componentes.campos.CampoTexto cmpEmpresa;
+    private vista.componentes.etiqueta.Etiqueta eqtEmpresa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private vista.componentes.etiqueta.Etiqueta lbl_empresa;
     public javax.swing.JTable tblEmpresas;
     private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,7 @@
  */
 package vista.paneles;
 
+import index.MyFreeLab;
 import java.awt.Color;
 import src.Source;
 
@@ -28,7 +29,24 @@ public class PanelVinculacion extends javax.swing.JPanel {
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgRutaInternoActivo(true);
         bkgAside.setImgRutaInterno( Source.bkgAside );
+        mtdEstablecerIdioma();
         
+    }
+    
+    private void mtdEstablecerIdioma(){
+        
+        // * Etiquetas
+        this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqTitulo"));
+        this.etqAsociar.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqAsociar"));
+        this.etqDesvincular.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqDesvincular"));
+        this.etqProyectos.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqProyectos"));
+        this.etqEmpresas.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqEmpresas"));
+        this.etqEmpresasAsociadas.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqEmpresasAsociadas"));
+        this.etqInstruccion1.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqInstruccion1"));
+        this.etqInstruccion2.setText(MyFreeLab.idioma.getProperty("panelVinculacion.etqInstruccion2"));
+        
+        // * Botones
+        this.btnCancelar.setTexto(MyFreeLab.idioma.getProperty("panelVinculacion.btnCancelar"));
     }
 
     /**
@@ -50,13 +68,13 @@ public class PanelVinculacion extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         lstEmpresas = new javax.swing.JList<>();
         cmbProyectos = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        etqInstruccion1 = new javax.swing.JLabel();
         etqAsociar = new vista.componentes.etiqueta.Enlace();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEmpresasAsociadas = new javax.swing.JList<>();
-        etqEliminar = new vista.componentes.etiqueta.Enlace();
+        etqDesvincular = new vista.componentes.etiqueta.Enlace();
         etqEmpresas = new vista.componentes.etiqueta.Etiqueta();
-        jLabel2 = new javax.swing.JLabel();
+        etqInstruccion2 = new javax.swing.JLabel();
         btnCancelar = new vista.componentes.boton.Boton();
 
         bkgAside.setBackground(new java.awt.Color(102, 102, 102));
@@ -75,25 +93,21 @@ public class PanelVinculacion extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
         etqTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqTitulo.setText("VINCULACION");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Vinculación"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(MyFreeLab.idioma.getProperty("panelVinculacion.etqTituloPanel")));
 
         etqProyectos.setText("Selecciona un proyecto");
 
@@ -109,7 +123,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
         cmbProyectos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno" }));
         cmbProyectos.setToolTipText("Lista de proyectos creados");
 
-        jLabel1.setText("Selecciona una empresa para asociar a un proyecto.");
+        etqInstruccion1.setText("Selecciona una empresa para asociar a un proyecto.");
 
         etqAsociar.setText("Asociar");
 
@@ -121,11 +135,11 @@ public class PanelVinculacion extends javax.swing.JPanel {
         lstEmpresasAsociadas.setFocusable(false);
         jScrollPane1.setViewportView(lstEmpresasAsociadas);
 
-        etqEliminar.setText("Desvincular");
+        etqDesvincular.setText("Desvincular");
 
         etqEmpresas.setText("Lista de empresas");
 
-        jLabel2.setText("Seleciona una empresa para desvincular.");
+        etqInstruccion2.setText("Seleciona una empresa para desvincular.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -135,22 +149,19 @@ public class PanelVinculacion extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(cmbProyectos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(etqAsociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(etqProyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(etqEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane3)))
+                    .addComponent(etqAsociar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etqInstruccion1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etqProyectos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqEmpresas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(etqEmpresasAsociadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(etqInstruccion2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(etqEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(etqDesvincular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(etqEmpresasAsociadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
         );
         jPanel2Layout.setVerticalGroup(
@@ -166,8 +177,8 @@ public class PanelVinculacion extends javax.swing.JPanel {
                     .addComponent(etqEmpresasAsociadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(etqInstruccion1)
+                    .addComponent(etqInstruccion2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,7 +186,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqAsociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etqEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(etqDesvincular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -221,13 +232,13 @@ public class PanelVinculacion extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> cmbProyectos;
     private vista.componentes.etiqueta.Enlace enlace1;
     public vista.componentes.etiqueta.Enlace etqAsociar;
-    public vista.componentes.etiqueta.Enlace etqEliminar;
+    public vista.componentes.etiqueta.Enlace etqDesvincular;
     private vista.componentes.etiqueta.Etiqueta etqEmpresas;
     private vista.componentes.etiqueta.Etiqueta etqEmpresasAsociadas;
+    private javax.swing.JLabel etqInstruccion1;
+    private javax.swing.JLabel etqInstruccion2;
     private vista.componentes.etiqueta.Etiqueta etqProyectos;
     private vista.componentes.etiqueta.Titulo etqTitulo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

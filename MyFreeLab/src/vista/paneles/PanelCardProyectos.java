@@ -5,6 +5,7 @@
  */
 package vista.paneles;
 
+import index.MyFreeLab;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -30,6 +31,8 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         this.cmpMontoInicial.getEstiloAprobado();
         this.cmpFechaFinal.getEstiloAprobado();
         this.cmpFechaInicial.getEstiloAprobado();
+        
+        mtdEstablecerIdioma();
     }
     
     public void mtdCardEliminadoProyecto(){
@@ -56,7 +59,8 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         
         btnCotizar.setVisible(true);
         btnCotizar.setEnabled(true);
-        btnCotizar.setTexto("Ver info.");
+        //btnCotizar.setTexto("Ver info.");
+        this.btnCotizar.setTexto(MyFreeLab.idioma.getProperty("panelCardProyecto.btnVerInfo"));
     }
     
     private void mtdBorrarInformacion(){
@@ -65,6 +69,21 @@ public class PanelCardProyectos extends javax.swing.JPanel {
         //Dimension tamTarjeta = new Dimension(676, 152);
         this.setPreferredSize(tamTarjeta );
         this.setSize(tamTarjeta );
+    }
+    
+    private void mtdEstablecerIdioma(){
+        
+        // * Etiquetas
+        this.lblFechaInicial.setText(MyFreeLab.idioma.getProperty("panelCardProyecto.lblFechaInicial"));
+        this.lblFechaFinal.setText(MyFreeLab.idioma.getProperty("panelCardProyecto.lblFechaFinal"));
+        this.lblMontoInicial.setText(MyFreeLab.idioma.getProperty("panelCardProyecto.lblMontoInicial"));
+        this.lblMontoEstimado.setText(MyFreeLab.idioma.getProperty("panelCardProyecto.lblMontoEstimado"));
+        
+        // * Botones
+        this.btnCotizar.setTexto(MyFreeLab.idioma.getProperty("panelCardProyecto.btnCotizar"));
+        this.btnModificar.setTexto(MyFreeLab.idioma.getProperty("panelCardProyecto.btnModificar"));
+        
+        
     }
     
     /**

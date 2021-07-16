@@ -5,6 +5,7 @@
  */
 package vista.paneles;
 
+import index.MyFreeLab;
 import src.Source;
 
 /**
@@ -23,8 +24,28 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);
         bkgAside.setImgRutaInterno( Source.bkgAside );
+        mtdEstablecerIdioma();
     }
 
+    private void mtdEstablecerIdioma(){
+        
+        // * Etiquetas
+        this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqTitulo"));
+        this.etqCosto.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqCosto"));
+        this.etqRequisito.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqEmpresa"));
+        this.etqMontoEstimado.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqMontoEstimado"));
+        
+        // * Campos (Placeholder)
+        this.cmpRequisito.setPlaceholder(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqEmpresa"));
+
+        // * Botones
+        this.btnCrear.setTexto(MyFreeLab.idioma.getProperty("panelGestionarRequisito.btnCrear"));
+        this.btnBuscar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarRequisito.btnBuscar"));
+        this.btnModificar.setTexto(MyFreeLab.idioma.getProperty("panelGestionarRequisito.btnModificar"));
+        this.btnRemover.setTexto(MyFreeLab.idioma.getProperty("panelGestionarRequisito.btnRemover"));
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,9 +57,9 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
 
         bkgAside = new vista.componentes.jpanelbackground.JPanelBackground();
         jPanel1 = new javax.swing.JPanel();
-        titulo1 = new vista.componentes.etiqueta.Titulo();
+        etqTitulo = new vista.componentes.etiqueta.Titulo();
         jPanel2 = new javax.swing.JPanel();
-        lbl_empresa = new vista.componentes.etiqueta.Etiqueta();
+        etqRequisito = new vista.componentes.etiqueta.Etiqueta();
         btnModificar = new vista.componentes.boton.Boton();
         btnBuscar = new vista.componentes.boton.Boton();
         btnCrear = new vista.componentes.boton.Boton();
@@ -66,28 +87,24 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
-        titulo1.setForeground(new java.awt.Color(255, 255, 255));
-        titulo1.setText("GESTIONAR REQUISITOS");
+        etqTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etqTitulo.setText("GESTIONAR REQUISITOS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+            .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Requisitos"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqTituloPanel")));
 
-        lbl_empresa.setText("Requisito");
+        etqRequisito.setText("Requisito");
 
         btnModificar.setImgButtonType("warning");
         btnModificar.setTexto("Modificar");
@@ -128,7 +145,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
             tblRequisitos.getColumnModel().getColumn(2).setPreferredWidth(220);
         }
 
-        cmpRequisito.setComponenteDidireccional(lbl_empresa);
+        cmpRequisito.setComponenteDidireccional(etqRequisito);
 
         btnRemover.setImgButtonType("danger");
         btnRemover.setTexto("Remover");
@@ -155,24 +172,21 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(255, 255, 255))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(cmpRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(8, 8, 8)
                                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(41, 41, 41)))
+                                    .addGap(41, 41, 41))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(etqRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmpRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(23, 23, 23)))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmpCosto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(etqCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(237, 237, 237))
-                                .addComponent(btnRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cmpCosto, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addComponent(btnRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(etqCosto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(cmpMontoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -182,7 +196,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbl_empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(etqRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(etqCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +216,7 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
                 .addComponent(etqMontoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmpMontoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -241,11 +255,11 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
     public vista.componentes.campos.CampoTexto cmpRequisito;
     private vista.componentes.etiqueta.Etiqueta etqCosto;
     private vista.componentes.etiqueta.Etiqueta etqMontoEstimado;
+    private vista.componentes.etiqueta.Etiqueta etqRequisito;
+    private vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private vista.componentes.etiqueta.Etiqueta lbl_empresa;
     public javax.swing.JTable tblRequisitos;
-    private vista.componentes.etiqueta.Titulo titulo1;
     // End of variables declaration//GEN-END:variables
 }

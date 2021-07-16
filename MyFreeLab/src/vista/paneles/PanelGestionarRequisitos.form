@@ -71,28 +71,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="122" max="32767" attributes="0"/>
-              </Group>
+              <Component id="etqTitulo" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="titulo1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
-              </Group>
+              <Component id="etqTitulo" alignment="0" pref="61" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Titulo" name="titulo1">
+        <Component class="vista.componentes.etiqueta.Titulo" name="etqTitulo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="GESTIONAR REQUISITOS"/>
           </Properties>
         </Component>
@@ -102,7 +96,9 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Requisitos"/>
+            <TitledBorder title="&lt;User Code&gt;">
+              <Connection PropertyName="titleX" code="MyFreeLab.idioma.getProperty(&quot;panelGestionarRequisito.etqTituloPanel&quot;)" type="code"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -119,14 +115,6 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lbl_empresa" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="cmpRequisito" min="-2" pref="301" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnCrear" min="-2" pref="90" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                       <Component id="btnModificar" min="-2" pref="90" max="-2" attributes="0"/>
@@ -134,14 +122,18 @@
                                       <Component id="btnBuscar" min="-2" pref="90" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="etqRequisito" alignment="1" min="-2" pref="301" max="-2" attributes="0"/>
+                                          <Component id="cmpRequisito" min="-2" pref="301" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cmpCosto" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="etqCosto" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="cmpCosto" pref="279" max="32767" attributes="0"/>
                                   <Component id="btnRemover" alignment="1" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <Component id="etqCosto" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -157,7 +149,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lbl_empresa" min="-2" max="-2" attributes="0"/>
+                          <Component id="etqRequisito" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -182,13 +174,13 @@
                   <Component id="etqMontoEstimado" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cmpMontoEstimado" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="lbl_empresa">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqRequisito">
           <Properties>
             <Property name="text" type="java.lang.String" value="Requisito"/>
           </Properties>
@@ -274,7 +266,7 @@
         <Component class="vista.componentes.campos.CampoTexto" name="cmpRequisito">
           <Properties>
             <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="lbl_empresa"/>
+              <ComponentRef name="etqRequisito"/>
             </Property>
           </Properties>
           <AuxValues>
