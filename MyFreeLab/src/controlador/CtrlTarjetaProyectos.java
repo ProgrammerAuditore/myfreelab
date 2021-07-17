@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import modelo.InterfaceCard;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -173,12 +174,15 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             JasperPrint jp = mtdGenerarReporte();
 
             if (jp.getPages().isEmpty()) {
-                JOptionPane.showMessageDialog(laVista, "Lo siento, el reporte no tiene páginas que mostrar.");
+                JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                        .getProperty("ctrlTarjetaProyecto.mtdCotizarProyecto.msg1"));
 
             } else {
                 // Mostar el reporte de Cotización
                 JasperViewer jviewer = new JasperViewer(jp, false);
-                jviewer.setTitle("Cotizar : " + dto.getCmpNombre());
+                jviewer.setTitle(MyFreeLab.idioma
+                        .getProperty("ctrlTarjetaProyecto.mtdCotizarProyecto.msg2")
+                        +" : " + dto.getCmpNombre());
                 jviewer.setVisible(true);
                 //JasperViewer.viewReport(jp);
 
@@ -186,7 +190,8 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         } catch (Exception e) {
             // El archivo no existe
             //System.out.println("" + e.getMessage());
-            CtrlPrincipal.mensajeCtrlPrincipal("Error al generar la cotización");
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma
+                        .getProperty("ctrlTarjetaProyecto.mtdCotizarProyecto.msg3"));
         }
 
     }
@@ -212,7 +217,8 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         } catch (JRException ex) {
             // Error en la base de datos
             //Logger.getLogger(CtrlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            CtrlPrincipal.mensajeCtrlPrincipal("Error al generar la cotización");
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma
+                        .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.msg1"));
         }
 
         return jp;
