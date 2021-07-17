@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import java.awt.Dialog;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -65,7 +66,8 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         lista_asociados = new ArrayList<>();
         
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        modal.setTitle("Vinculación");
+        modal.setTitle(MyFreeLab.idioma.
+                getProperty("ctrlVinculacion.mtdInit.titulo"));
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize(laVista.getSize() );
@@ -163,13 +165,16 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
                 mtdCargarEmpresas();
                 mtdDefinirEmpresasAsociados();
                 mtdReEstablecerEmpresas();
-                JOptionPane.showMessageDialog(laVista, "La empresa `"+ vinculacion_dto.getCmpEmpNombre() +"` \n"
-                       + "fue asociada con el proyecto `"+ vinculacion_dto.getCmpProNombre()+"` \n"
-                       + "exitosamente.");
+                JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                        .getProperty("ctrlVinculacion.mtdAsociar.msg1")
+                        .replace("<Empresa>", vinculacion_dto.getCmpEmpNombre())
+                        .replace("<Proyecto>", vinculacion_dto.getCmpProNombre())
+                );
             }
         
         }else 
-        JOptionPane.showMessageDialog(laVista, "Selecciona una empresa para vincular al proyecto actual.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
+                getProperty("ctrlVinculacion.mtdAsociar.msg2"));
         
     }
     
@@ -187,12 +192,15 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
                 mtdCargarEmpresas();
                 mtdDefinirEmpresasAsociados();
                 mtdReEstablecerEmpresas();
-                JOptionPane.showMessageDialog(laVista, "La empresa `" + vinculacion_dto.getCmpEmpNombre() + "` \n"
-                        + "fue desvinculado al proyecto `" + vinculacion_dto.getCmpProNombre() + "` \n"
-                        + "exitosamente.");
+                JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlVinculacion.mtdEliminar.msg1")
+                    .replace("<Empresa>", vinculacion_dto.getCmpEmpNombre())
+                    .replace("<Proyecto>", vinculacion_dto.getCmpProNombre())
+                );
             }
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una empresa asociada para desvincular del proyecto actual.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
+                getProperty("ctrlVinculacion.mtdEliminar.msg2"));
         
     }
     
@@ -224,7 +232,8 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         mtdVaciarEmpresas();
         mtdCargarEmpresas();
         
-        if( !nombre_empresa.equals("Ninguno") ){
+        if( !nombre_empresa.equals(MyFreeLab.idioma.
+                getProperty("ctrlVinculacion.mtdElegirProyecto.msg1")) ){
             laVista.etqAsociar.setEnabled(true);
             
             if( mtdDefinirEmpresasAsociados() ){
@@ -240,7 +249,8 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
     private void mtdVaciarEmpresas(){
        lista_empresas.clear();
        laVista.lstEmpresas.removeAll();
-       String[] ninguno = {"Ninguno"};
+       String[] ninguno = {MyFreeLab.idioma.
+                getProperty("ctrlVinculacion.mtdVaciarEmpresas.msg1")};
        
        laVista.lstEmpresasAsociadas.setListData(ninguno);
        laVista.lstEmpresasAsociadas.setEnabled(false);
