@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -64,7 +65,9 @@ public class CtrlGestionarRequisitos implements MouseListener{
         requisitos = new ArrayList<RequisitoDto>();
         //modal = new JDialog();
         
-        modal.setTitle("Gestionar requisitos | " + proyecto_dto.getCmpNombre() );
+        modal.setTitle(MyFreeLab.idioma
+                .getProperty("ctrlGestionarRequisitos.mtdInit.titulo")
+                +" | " + proyecto_dto.getCmpNombre() );
         //modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setResizable(false);
@@ -120,7 +123,10 @@ public class CtrlGestionarRequisitos implements MouseListener{
             }
             
             if( !encontrado )
-            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpRequisito +"` no existe.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdBuscarRequisito.msg1")
+                    .replace("<Proyecto>", cmpRequisito)
+            );
             
         }
         
@@ -138,11 +144,17 @@ public class CtrlGestionarRequisitos implements MouseListener{
                 
                 if( dao.mtdInsetar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre() + "` se agregó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                        .getProperty("ctrlGestionarRequisitos.mtdCrearRequisito.msg1")
+                        .replace("<Requisito>", dto.getCmpNombre())
+                    );
                 }
                 
             }else
-            JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre() + "` ya existe.");   
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdCrearRequisito.msg2")
+                    .replace("<Requisito>", dto.getCmpNombre())
+            );   
 
         }
         
@@ -159,19 +171,23 @@ public class CtrlGestionarRequisitos implements MouseListener{
             }
             
             String[] msg = new String[2];
-            msg[0] = "Modificar requisito";
-            msg[1] = "¿Seguro que deseas modificar el requisito seleccionado?";
+            msg[0] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdModificarRequisito.msg1");
+            msg[1] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdModificarRequisito.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdActualizar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se modificó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdModificarRequisito.msg3")
+                    .replace("<Requisito>", dto.getCmpNombre())
+                    );
                 }
             }
             
         }else 
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para modificar un requisito.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdModificarRequisito.msg4"));
             
     }
     
@@ -182,20 +198,24 @@ public class CtrlGestionarRequisitos implements MouseListener{
             String[] msg = new String[2];
             dto = mtdObtenerRequisito(seleccionado);
             
-            msg[0] = "Eliminar requisito";
-            msg[1] = "¿Seguro que deseas eliminar el requisito seleccionado?";
+            msg[0] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdEliminarRequisito.msg1");
+            msg[1] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdEliminarRequisito.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdRemover(dto) ){
                     modeloTabla.removeRow(seleccionado);
                     mtdCalcularMonto();
-                    JOptionPane.showMessageDialog(laVista, "El requisito `" + dto.getCmpNombre()+ "` se eliminó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdEliminarRequisito.msg3")
+                    .replace("<Requisito>", dto.getCmpNombre())
+                    );
                 }
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un requisito.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdEliminarRequisito.msg4"));
     
     }
     
@@ -217,10 +237,12 @@ public class CtrlGestionarRequisitos implements MouseListener{
         String campo = laVista.cmpRequisito.getText();
         
         if( campo.isEmpty() || !laVista.cmpRequisito.isAprobado() ){
-            JOptionPane.showMessageDialog(laVista, "Verifica que el campo requisito sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarCampoRequisito.msg1"));
             return false;
         }else if ( campo.length() > 30 ){
-            JOptionPane.showMessageDialog(laVista, "El campo debe ser menor a 30 caracteres.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarCampoRequisito.msg2"));
             return false;
         }
         
@@ -233,10 +255,12 @@ public class CtrlGestionarRequisitos implements MouseListener{
         String campo = laVista.cmpCosto.getText();
         
         if( campo.isEmpty() || !laVista.cmpCosto.isAprobado() ){
-            JOptionPane.showMessageDialog(laVista, "Verifica que el campo costo sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarCampoCosto.msg1"));
             return false;
         } else if( campo.equals("0") || campo.equals("0.0") ){
-            JOptionPane.showMessageDialog(laVista, "El campo debe tener un costo mayor a 0.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarCampoCosto.msg2"));
             return false;
         }
         
@@ -307,26 +331,32 @@ public class CtrlGestionarRequisitos implements MouseListener{
 
     private boolean mtdValidarDatos(RequisitoDto requisito) {
         int errores = 0;
-        String msg = "Los siguientes datos son incorrectos: \n";
+        String msg = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarDatos.msg1");
         
         if(requisito.getCmpNombre().isEmpty()){
             errores++;
-            msg += "* El campo nombre está vacío.  \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarDatos.msg2");
         }else
         if (requisito.getCmpNombre().length() > 30){
             errores++;
-            msg += "* El campo nombre debe ser menor a 30 caracteres.  \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarDatos.msg3");
         }
        
         if (requisito.getCmpCosto() < 0){
             errores++;
-            msg += "* El campo costo debe ser mayor a cero.  \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarDatos.msg4");
         }
         
         //System.out.println("Errores: " + errores);
         if( errores > 0 ){
-            JOptionPane.showMessageDialog(laVista, msg, 
-                    "Requisito | " + requisito.getCmpNombre(),
+            JOptionPane.showMessageDialog(laVista, msg,
+                    MyFreeLab.idioma
+                    .getProperty("ctrlGestionarRequisitos.mtdValidarDatos.msg5")
+                    +" | " + requisito.getCmpNombre(),
                     JOptionPane.YES_OPTION);
             return false;
         }

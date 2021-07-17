@@ -32,11 +32,13 @@ public class PanelGestionarRequisitos extends javax.swing.JPanel {
         // * Etiquetas
         this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqTitulo"));
         this.etqCosto.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqCosto"));
-        this.etqRequisito.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqEmpresa"));
+        this.etqRequisito.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqRequisito"));
         this.etqMontoEstimado.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqMontoEstimado"));
         
         // * Campos (Placeholder)
-        this.cmpRequisito.setPlaceholder(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqEmpresa"));
+        this.cmpRequisito.setPlaceholder(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqRequisito"));
+        this.cmpCosto.setPlaceholder(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqCosto"));
+        this.cmpMontoEstimado.setText(MyFreeLab.idioma.getProperty("panelGestionarRequisito.etqMontoEstimado"));
 
         // * Botones
         this.btnCrear.setTexto(MyFreeLab.idioma.getProperty("panelGestionarRequisito.btnCrear"));

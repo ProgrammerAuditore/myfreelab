@@ -1,3 +1,4 @@
+
 package controlador;
 
 import index.MyFreeLab;
@@ -432,7 +433,7 @@ public class CtrlPrincipal implements ActionListener {
                 proyectos.clear();
                 lista.clear();
                 mtdVaciarContenedor();
-                mtdMensaje("Cargando proyectos... ");
+                mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdCrearPaginacion.msg1"));
             }
         });
         
