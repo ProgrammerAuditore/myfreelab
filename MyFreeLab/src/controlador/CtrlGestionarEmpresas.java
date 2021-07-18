@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -58,7 +59,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
     public void mtdInit() {
         //modal = new JDialog();
         
-        modal.setTitle("Gestionar empresas");
+        modal.setTitle(MyFreeLab.idioma.getProperty("ctrlGestionarEmpresa.mtdInit.titulo"));
         //modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setResizable(false);
@@ -146,7 +147,10 @@ public class CtrlGestionarEmpresas implements MouseListener {
             }
             
             if( !resultado )
-            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpEmpresa +"` no existe.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdBuscarEmpresa.msg1")
+                    .replace("<Empresa>", cmpEmpresa)
+            );
             
         }
         
@@ -166,11 +170,17 @@ public class CtrlGestionarEmpresas implements MouseListener {
                     mtdRellenarTabla();
                     CtrlPrincipal.ctrlBarraEstadoNumEmpresas =  empresas.size();
                     CtrlPrincipal.actualizarBarraEstado();
-                    JOptionPane.showMessageDialog(laVista, "La empresa `"+ dto.getCmpNombre() +"` se creó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdCrearEmpresa.msg1")
+                    .replace("<Empresa>", dto.getCmpNombre())
+                    );
                 }
                 
             }else 
-            JOptionPane.showMessageDialog(laVista,  "La empresa `"+ dto.getCmpNombre() +"` ya existe.");
+            JOptionPane.showMessageDialog(laVista,  MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdCrearEmpresa.msg2")
+                    .replace("<Empresa>", dto.getCmpNombre())
+            );
             
         }
         
@@ -188,18 +198,25 @@ public class CtrlGestionarEmpresas implements MouseListener {
             }
             
             String[] msg = new String[2];
-            msg[1] = "Modificar empresa";
-            msg[0] = "¿Seguro que deseas modificar la empresa seleccionado?";
+            msg[1] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdModificarEmpresa.msg1");
+            msg[0] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdModificarEmpresa.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
                 if( dao.mtdActualizar(dto) ){
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se modificó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdModificarEmpresa.msg3")
+                    .replace("<Empresa>", dto.getCmpNombre())
+                    );
                 }
             }
             
-        }
+        } else
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdModificarEmpresa.msg4"));
         
     }
     
@@ -211,8 +228,10 @@ public class CtrlGestionarEmpresas implements MouseListener {
             String[] msg = new String[2];
             dto = mtdObtenerEmpresa(seleccionado);
             
-            msg[1] = "Eliminar empresa";
-            msg[0] = "¿Seguro que deseas eliminar la empresa seleccionado?";
+            msg[1] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdRemoverEmpresa.msg1");
+            msg[0] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdRemoverEmpresa.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION );
             
             if( opc == JOptionPane.YES_OPTION ){
@@ -222,11 +241,16 @@ public class CtrlGestionarEmpresas implements MouseListener {
                     modeloTabla.removeRow(seleccionado);
                     CtrlPrincipal.ctrlBarraEstadoNumEmpresas =  modeloTabla.getRowCount();
                     CtrlPrincipal.actualizarBarraEstado();
-                    JOptionPane.showMessageDialog(laVista, "La empresa `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdRemoverEmpresa.msg3")
+                    .replace("<Empresa>", dto.getCmpNombre())
+                    );
                 }
             }
             
-        }
+        } else
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdRemoverEmpresa.msg4"));
         
     }
     
@@ -246,10 +270,12 @@ public class CtrlGestionarEmpresas implements MouseListener {
         String campo = laVista.cmpEmpresa.getText().trim();
         
         if( campo.isEmpty() || !laVista.cmpEmpresa.isAprobado() ){
-            JOptionPane.showMessageDialog(laVista, "Verifica que el campo sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarCampo.msg1"));
             return false;
         } else if( campo.length() > 30 ){
-            JOptionPane.showMessageDialog(laVista, "El campo debe ser menor a 30 caracteres.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarCampo.msg2"));
             return false;
         }
         
@@ -260,44 +286,55 @@ public class CtrlGestionarEmpresas implements MouseListener {
     
     private boolean mtdValidarDatos(EmpresaDto empresa){
         int errores = 0;
-        String msg = "Los siguientes datos son incorrectos: \n";
+        String msg = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg1");
         
         if( empresa.getCmpNombre().isEmpty() ){
             errores++;
-            msg += "* El campo nombre está vacío. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg2");
         } else if( empresa.getCmpNombre().length() > 30 ){
             errores++;
-            msg += "* El campo nombre deber tener menor a 30 caracteres. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg3");
         }
         
         if( empresa.getCmpCorreo().isEmpty() ){
             errores++;
-            msg += "* El campo correo está vacío. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg4");
         } else if( empresa.getCmpCorreo().length() > 60 ){
             errores++;
-            msg += "* El campo correo deber tener menor a 60 caracteres. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg5");
         } else if( !mtdComprobarCorreo( empresa.getCmpCorreo() ) ){
             errores++;
-            msg += "* El campo correo es incorrecto. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg6");
         }
         
         if( empresa.getCmpDireccion().isEmpty() ){
             errores++;
-            msg += "* El campo dirección está vacío. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg7");
         } else if( empresa.getCmpDireccion().length() > 60 ){
             errores++;
-            msg += "* El campo dirección deber tener menor a 60 caracteres. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg8");
         }
         
         if( !mtdComprobarTMovil(empresa.getCmpTMovil()) ){
             errores++;
-            msg += "* El campo télefono debe ser de 10 digitos. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg9");
         }
         
         //System.out.println("Errores : "+ errores);
         if( errores > 0 ){
             JOptionPane.showMessageDialog(laVista, msg, 
-                    "Proyecto | " + empresa.getCmpNombre(),
+                    MyFreeLab.idioma
+                    .getProperty("ctrlGestionarEmpresa.mtdValidarDatos.msg10")
+                    + " | " + empresa.getCmpNombre(),
                     JOptionPane.YES_OPTION
             );
             return false;
