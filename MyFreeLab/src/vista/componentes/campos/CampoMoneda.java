@@ -5,6 +5,7 @@
  */
 package vista.componentes.campos;
 
+import index.MyFreeLab;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.FocusEvent;
@@ -106,7 +107,8 @@ public class CampoMoneda extends JTextField implements FocusListener, KeyListene
     }
     
     private void setToolTip(){
-        String EstiloToolTip = "<html><b><font color=white>" + getPlaceholder() + " aquí" + "</font></b></html>" ;
+        String aqui= MyFreeLab.idioma.getProperty("componente.setToolTip.aqui");
+        String EstiloToolTip = "<html><b><font color=white>" + getPlaceholder() + " "+aqui+ "</font></b></html>" ;
         setToolTipText( EstiloToolTip );
     }
     
@@ -170,7 +172,7 @@ public class CampoMoneda extends JTextField implements FocusListener, KeyListene
            if (charCap == '.') {
                 if (getText().contains(".")) {
                     evt.consume();
-                    JOptionPane.showMessageDialog(null, "Solo puede contener un símbolo de punto decimal.");
+                    JOptionPane.showMessageDialog(null, MyFreeLab.idioma.getProperty("campoMoneda.keyTyped.msg1"));
 
                 }
             }
@@ -178,7 +180,7 @@ public class CampoMoneda extends JTextField implements FocusListener, KeyListene
             
             if( Character.isLetter( charCap ) ){
                 evt.consume();
-                JOptionPane.showMessageDialog(null, "Introduzca solo número decimal.");
+                JOptionPane.showMessageDialog(null, MyFreeLab.idioma.getProperty("campoMoneda.keyTyped.msg2"));
 
             }else
             evt.consume();

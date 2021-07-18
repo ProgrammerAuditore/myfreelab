@@ -5,6 +5,7 @@
  */
 package vista.componentes.campos;
 
+import index.MyFreeLab;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.FocusEvent;
@@ -106,7 +107,8 @@ public class CampoTMovil extends JTextField implements FocusListener, KeyListene
     }
     
     private void setToolTip(){
-        String EstiloToolTip = "<html><b><font color=white>" + getPlaceholder() + " aquí" + "</font></b></html>" ;
+        String aqui= MyFreeLab.idioma.getProperty("componente.setToolTip.aqui");
+        String EstiloToolTip = "<html><b><font color=white>" + getPlaceholder() + " "+aqui + "</font></b></html>" ;
         setToolTipText( EstiloToolTip );
     }
     
@@ -169,7 +171,7 @@ public class CampoTMovil extends JTextField implements FocusListener, KeyListene
         // * Establecer maximo 10 digitos
         if ( this.getText().length() >= 10 ){
             evt.consume(); 
-            JOptionPane.showMessageDialog(null, "Introduzca solo 10 digitos.");
+            JOptionPane.showMessageDialog(null, MyFreeLab.idioma.getProperty("campoTMovil.keyTyped.msg1"));
             return;
         }
         
@@ -178,7 +180,7 @@ public class CampoTMovil extends JTextField implements FocusListener, KeyListene
             
             if( Character.isLetter( charCap ) ){
                 evt.consume();
-                JOptionPane.showMessageDialog(null, "Introduzca solo números.");
+                JOptionPane.showMessageDialog(null, MyFreeLab.idioma.getProperty("campoTMovil.keyTyped.msg2"));
 
             }else
             evt.consume();
