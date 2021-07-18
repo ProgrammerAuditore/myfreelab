@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -11,7 +12,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -66,7 +66,7 @@ public class CtrlGestionarProyectos implements MouseListener{
         //modal = new JDialog();
         CtrlPrincipal.cambiosModalGestionarProyectos = false;
         
-        modal.setTitle("Gestionar proyectos");
+        modal.setTitle(MyFreeLab.idioma.getProperty("ctrlGestionarProyecto.mtdInit.titulo"));
         //modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setResizable(false);
@@ -133,7 +133,8 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
             if( !encontrado )
-            JOptionPane.showMessageDialog(laVista, "El proyecto `"+ cmpProyecto +"` no existe.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdBuscarProyecto.msg1"));
             
         }
         
@@ -154,11 +155,17 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se creó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdCrearProyecto.msg1")
+                    .replace("<Proyecto>", dto.getCmpNombre())
+                    );
                 }
                 
             } else
-            JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` ya existe.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdCrearProyecto.msg2")
+                    .replace("<Proyecto>",  dto.getCmpNombre())
+            );
             
         }
         
@@ -177,8 +184,10 @@ public class CtrlGestionarProyectos implements MouseListener{
                 return;
             }
             
-            msg[1] = "Modificar proyecto | " + dto.getCmpNombre();
-            msg[0] = "¿Seguro que deseas modificar el proyecto seleccionado?";
+            msg[1] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdModificarProyecto.msg1") + " | " + dto.getCmpNombre();
+            msg[0] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdModificarProyecto.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION);
 
             if( opc == JOptionPane.YES_OPTION){
@@ -188,13 +197,17 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se modificó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdModificarProyecto.msg3")
+                    .replace("<Proyecto>", dto.getCmpNombre())
+                    );
                 }
 
             }
                 
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para modificar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdModificarProyecto.msg4"));
         
     }
     
@@ -209,8 +222,10 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
             String[] msg =  new String[2];
-            msg[0] = "Remover proyecto | " + dto.getCmpNombre();
-            msg[1] = "¿Seguro que deseas remover el proyecto seleccionado?";
+            msg[0] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRemoverProyecto.msg1")+" | "+ dto.getCmpNombre();
+            msg[1] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRemoverProyecto.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1] , msg[0], JOptionPane.YES_NO_OPTION);
             
             if( opc == JOptionPane.YES_OPTION ){
@@ -218,12 +233,16 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
                     modeloTabla.removeRow(seleccionado);
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se removió exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRemoverProyecto.msg3")
+                    .replace("<Proyecto>", dto.getCmpNombre())
+                    );
                 }
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para remover un proyecto.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRemoverProyecto.msg4"));
         
     }
     
@@ -238,12 +257,15 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
             String[] msg =  new String[2];
-            msg[0] = "Eliminar proyecto | " + dto.getCmpNombre();
-            msg[1] = "¿Seguro que deseas eliminar el proyecto seleccionado?";
+            msg[0] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdEliminarProyecto.msg1")+" | "+ dto.getCmpNombre();
+            msg[1] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdEliminarProyecto.msg2");
             
             // * Verificar si el proyecto está eliminado
             if( dto.getCmpCtrlEstado() == 0 ){
-                JOptionPane.showMessageDialog(null, "El proyecto seleccionado está eliminado.");
+                JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdEliminarProyecto.msg3"));
                 return;
             }
             
@@ -257,12 +279,16 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se eliminó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdEliminarProyecto.msg4")
+                    .replace("<Proyecto>", dto.getCmpNombre())
+                    );
                 }
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para eliminar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdEliminarProyecto.msg5"));
     
     }
     
@@ -277,12 +303,15 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
             String[] msg =  new String[2];
-            msg[0] = "Recuperar proyecto | " + dto.getCmpNombre();
-            msg[1] = "¿Seguro que deseas recuperar el proyecto seleccionado?";
+            msg[0] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRecuperarProyecto.msg1")+" | "+ dto.getCmpNombre();
+            msg[1] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRecuperarProyecto.msg2");
             
             // * Verificar si el proyecto está en proceso
             if( dto.getCmpCtrlEstado() > 0 && dto.getCmpCtrlEstado() <= 50 ){
-                JOptionPane.showMessageDialog(laVista, "El proyecto seleccionado está en proceso.");
+                JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRecuperarProyecto.msg3"));
                 return;
             }
             
@@ -296,12 +325,16 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` se recupero exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRecuperarProyecto.msg4")
+                    .replace("<Proyecto>", dto.getCmpNombre())
+                    );
                 }
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para recuperar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdRecuperarProyecto.msg5"));
     
     }
     
@@ -316,13 +349,17 @@ public class CtrlGestionarProyectos implements MouseListener{
             }
             
             String[] msg =  new String[3];
-            msg[0] = "Finalizar proyecto | " + dto.getCmpNombre();
-            msg[1] = "¿El proyecto no tiene un costo estimado\nseguro que deseas continuar?";
-            msg[2] = "¿Seguro que deseas finalizar el proyecto seleccionado?";
+            msg[0] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdFinalizarProyecto.msg1")+" | "+ dto.getCmpNombre();
+            msg[1] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdFinalizarProyecto.msg2");
+            msg[2] = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdFinalizarProyecto.msg3");
             
             // * Verificar si se puede finalizar
             if(dto.getCmpCtrlEstado() > 50){
-                JOptionPane.showMessageDialog(laVista, "El proyecto seleccionado está finalizado.");
+                JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdFinalizarProyecto.msg4"));
                 return;
             }else
             if(dto.getCmpCostoEstimado() == 0){
@@ -340,12 +377,16 @@ public class CtrlGestionarProyectos implements MouseListener{
                     // * Notificar al controlador principal
                     CtrlPrincipal.modificacionesCard = true;
                     mtdRellenarTabla();
-                    JOptionPane.showMessageDialog(laVista, "El proyecto `" + dto.getCmpNombre() + "` finalizó exitosamente.");
+                    JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdFinalizarProyecto.msg5")
+                    .replace("<Proyecto>", dto.getCmpNombre())
+                    );
                 }
             }
             
         } else
-        JOptionPane.showMessageDialog(laVista, "Selecciona una fila para finalizar un proyecto.");
+        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdFinalizarProyecto.msg6"));
     }
     
     private ProyectoDto mtdObtenerProyecto(int fila){
@@ -401,10 +442,12 @@ public class CtrlGestionarProyectos implements MouseListener{
         String cmp = laVista.cmpProyecto.getText().trim();
 
         if( laVista.cmpProyecto.isAprobado() == false || cmp.isEmpty() ){
-            JOptionPane.showMessageDialog(laVista, "Verifica que el campo sea un dato valido.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarCampo.msg1"));
             return false;
         } else if( cmp.length() > 30 ) {
-            JOptionPane.showMessageDialog(laVista, "El campo tiene que ser menor a 30 caracteres.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarCampo.msg2"));
             return false;
         }
         
@@ -459,20 +502,23 @@ public class CtrlGestionarProyectos implements MouseListener{
     
     private boolean mtdValidarDatos(ProyectoDto proyecto){  
         int errores = 0;
-        String msg = "Los siguientes campos son incorrectos: \n";
+        String msg = MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg1");
         
         //System.out.println("" + proyecto.toString());
         //System.out.println("" + mtdFormatoFecha(proyecto.getCmpFechaInicial()));
         if( mtdFormatoFecha(proyecto.getCmpFechaInicial()) == false ){
             errores++;
-            msg += "* La fecha incial es incorrecto. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg2");
             
         }
         
         //System.out.println("" + mtdFormatoFecha(proyecto.getCmpFechaFinal()));
         if( mtdFormatoFecha(proyecto.getCmpFechaFinal()) == false ){
             errores++;
-            msg += "* La fecha final es incorrecto. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg3");
         
         }
         
@@ -486,37 +532,44 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             if( diffDias < 0 ){
                 errores++;
-                msg += "* La fecha inicial es superior a la fecha final. \n";
+                msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg4");
             }
             
         }
         
         if( proyecto.getCmpNombre().isEmpty() ){
             errores++;
-            msg += "* El campo nombre está vacío. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg5");
             
         } else if( proyecto.getCmpNombre().length() > 30 ) {
             errores++;
-            msg += "* El campo nombre debe ser menor a 30 caracteres. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg6");
             
         }
         
         if( proyecto.getCmpMontoAdelantado() < 0 ){
             errores++;
-            msg += "* El campo costo estimado debe ser mayor a cero. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg7");
         
         }
         
         if( proyecto.getCmpMontoAdelantado() < 0 ){
             errores++;
-            msg += "* El campo costo estimado debe ser mayor a cero. \n";
+            msg += MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg8");
         
         }
         
         //System.out.println("Errores : " + errores );
         if( errores > 0 ){
             JOptionPane.showMessageDialog(laVista, msg, 
-                    "Proyecto | "+proyecto.getCmpNombre(), JOptionPane.YES_OPTION);
+                    MyFreeLab.idioma
+                    .getProperty("ctrlGestionarProyecto.mtdValidarDatos.msg9")
+                    + " | "+proyecto.getCmpNombre(), JOptionPane.YES_OPTION);
             return false;
         }
         
