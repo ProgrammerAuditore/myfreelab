@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
@@ -47,7 +48,7 @@ public class CtrlConexion implements MouseListener{
         //modal.setModal(true);
         //modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        modal.setTitle("Configurar conexión");
+        modal.setTitle(MyFreeLab.idioma.getProperty("ctrlConexion.mtdInit.titulo"));
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
         modal.setResizable(false);
@@ -98,9 +99,12 @@ public class CtrlConexion implements MouseListener{
             CtrlHiloConexion.ctrlDatos = dto;
             if(CtrlHiloConexion.mtdEstablecer()){
                 if( !MyFreeLabDao.mtdChecarTablas() ){  
-                    int opc = JOptionPane.showConfirmDialog(laVista,"Se detecto que la base de datos\n"
-                            + "No cuenta con las tablas necesarios\n"
-                            + "¿Deseas crearlos?", "Construyendo base de datos", JOptionPane.YES_OPTION);
+                    int opc = JOptionPane.showConfirmDialog(laVista,
+                            MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg1") +
+                            MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg2") +
+                            MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg3"),
+                            MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg4"), 
+                            JOptionPane.YES_OPTION);
                     
                     if( JOptionPane.YES_OPTION == opc ){
                             // * Creando tablas en la base de datos
@@ -110,12 +114,14 @@ public class CtrlConexion implements MouseListener{
                             MyFreeLabDao.mtdCrearTablaEmpresas();
                             MyFreeLabDao.mtdCrearTablaRequisitos();
                             MyFreeLabDao.mtdCrearTablaAsociados();
-                            JOptionPane.showMessageDialog(laVista, "Base de datos construido...");
+                            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                                    .getProperty("ctrlConexion.mtdEstablecerConexion.msg5"));
                             
                     }else{
                         
                         mtdCerrarConexion();
-                        JOptionPane.showMessageDialog(laVista, "Se cerro la conexión, tablas insuficientes.");
+                        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                                .getProperty("ctrlConexion.mtdEstablecerConexion.msg6"));
                     }
                     
                 }
@@ -130,13 +136,14 @@ public class CtrlConexion implements MouseListener{
                 
             }else{ 
                 // * Error al establecer la conexión
-                JOptionPane.showMessageDialog(laVista, "Fallo al establecer la conexión.\n"
-                + "Posibles errores, por favor de verificar lo siguiente:\n"
-                + "* Los datos capturados sean correctos. \n"
-                + "* El servidor esté en estado de ejecución. \n"
-                + "* Que tenga acceso a la base de datos. \n"
-                + "* Que la base de datos capturado sea correcto y existente. \n"
-                + "* Asegúrese que la base de datos sea `utf8_general_ci`.");
+                JOptionPane.showMessageDialog(laVista, 
+                MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg7") +
+                MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg8") +
+                MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg9") +
+                MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg10") +
+                MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg11") +
+                MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg12") +
+                MyFreeLab.idioma.getProperty("ctrlConexion.mtdEstablecerConexion.msg13"));
             }
             
         }
