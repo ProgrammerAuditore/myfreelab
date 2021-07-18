@@ -123,6 +123,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
         cmbProyectos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno" }));
         cmbProyectos.setToolTipText("Lista de proyectos creados");
 
+        etqInstruccion1.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         etqInstruccion1.setText("Selecciona una empresa para asociar a un proyecto.");
 
         etqAsociar.setText("Asociar");
@@ -139,6 +140,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
 
         etqEmpresas.setText("Lista de empresas");
 
+        etqInstruccion2.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         etqInstruccion2.setText("Seleciona una empresa para desvincular.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -157,7 +159,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(etqInstruccion2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(etqInstruccion2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(etqDesvincular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,7 +221,7 @@ public class PanelVinculacion extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
