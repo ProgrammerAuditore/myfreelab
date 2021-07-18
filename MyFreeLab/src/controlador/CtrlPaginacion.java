@@ -206,33 +206,35 @@ public class CtrlPaginacion {
     }
     
     private void mtdEventoPressed(Boton btn, MouseEvent e) {
-        if( btn.getTexto().equals("<<")){
-            ctrlPaginacionSeleccion = numPaginacionActual - 1;
-        }else
-        if( btn.getTexto().equals(">>")){
-            ctrlPaginacionSeleccion = numPaginacionActual + 1;
-        }else
-        if( btn.getTexto().equals("Home")){
-            ctrlPaginacionSeleccion = 0;
-        }else if( btn.getTexto().equals("End") ){
-            ctrlPaginacionSeleccion = ctrlPaginacionFin;
-        }else {
-            ctrlPaginacionSeleccion = Integer.parseInt(btn.getTexto());
+        synchronized( e ){
+            if( btn.getTexto().equals("<<")){
+                ctrlPaginacionSeleccion = numPaginacionActual - 1;
+            }else
+            if( btn.getTexto().equals(">>")){
+                ctrlPaginacionSeleccion = numPaginacionActual + 1;
+            }else
+            if( btn.getTexto().equals("Home")){
+                ctrlPaginacionSeleccion = 0;
+            }else if( btn.getTexto().equals("End") ){
+                ctrlPaginacionSeleccion = ctrlPaginacionFin;
+            }else {
+                ctrlPaginacionSeleccion = Integer.parseInt(btn.getTexto());
+            }
+
+            if( ctrlPaginacionSeleccion == numPaginacionActual || ctrlPaginacionSeleccion < 0  ){
+                    e.consume();
+                    return;
+            }
+
+            Runnable paginacionVaciar = () -> {
+                mtd.mtdBorrar();
+            };
+
+            Thread HiloPaginacionVaciar = new Thread(paginacionVaciar);
+            HiloPaginacionVaciar.setName("HiloPaginacionVaciar");
+            HiloPaginacionVaciar.setPriority(9);
+            HiloPaginacionVaciar.run();
         }
-
-        if( ctrlPaginacionSeleccion == numPaginacionActual || ctrlPaginacionSeleccion < 0  ){
-                e.consume();
-                return;
-        }
-
-        Runnable paginacionVaciar = () -> {
-            mtd.mtdBorrar();
-        };
-
-        Thread HiloPaginacionVaciar = new Thread(paginacionVaciar);
-        HiloPaginacionVaciar.setName("HiloPaginacionVaciar");
-        HiloPaginacionVaciar.setPriority(9);
-        HiloPaginacionVaciar.run();
     }
     
     private void mtdEventoReleased(Boton btn, MouseEvent e) {
