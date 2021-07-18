@@ -34,7 +34,7 @@ public class MyFreeLab {
         else if ( Source.OsWin )
             mtdVerificarPIDWin();
         
-        idioma = new Idiomas("en");
+        idioma = new Idiomas("es");
         HiloConexion hc = new HiloConexion();
         HiloPrincipal hp = new HiloPrincipal();
         HiloSplash hs = new HiloSplash();
