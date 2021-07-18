@@ -1,5 +1,6 @@
 package controlador;
 
+import index.MyFreeLab;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -36,7 +37,7 @@ public class CtrlDatosPersonales implements MouseListener{
         //modal.setModal(true);
         //modal.setType(Window.Type.UTILITY);
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        modal.setTitle("Datos personales");
+        modal.setTitle(MyFreeLab.idioma.getProperty("ctrlDatosPersonales.mtdInit.titulo"));
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize(laVista.getSize() );
@@ -101,7 +102,8 @@ public class CtrlDatosPersonales implements MouseListener{
                     // Registrarlo a la base de datos...
                     ////System.out.println("Registrarlo a la base de datos");
                     if(dao.mtdInsertar(dto)){
-                        JOptionPane.showMessageDialog(laVista, "Datos personales se registro exitosamente.");
+                        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg1"));
                     }
 
                 } else{
@@ -109,15 +111,18 @@ public class CtrlDatosPersonales implements MouseListener{
                     // Actualizar los datos personales en la base de datos
                     String[] msg = new String[2];
                     // Titulo
-                    msg[0] = "Modificar datos personales";
+                    msg[0] = MyFreeLab.idioma
+                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg2");
                     // Pregunta
-                    msg[1] = "Los datos personales, ya están definidos\n¿Deseas actualizarlo?"; 
+                    msg[1] = MyFreeLab.idioma
+                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg3"); 
                     int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
                     mtdCapturarDatos();
 
                     if( opc ==  JOptionPane.YES_OPTION ){
                         if(dao.mtdActualizarDatos(dto))
-                            JOptionPane.showMessageDialog(laVista, "Datos personales actualizados.");
+                            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg4"));
                     }
 
                 }
@@ -146,7 +151,8 @@ public class CtrlDatosPersonales implements MouseListener{
             
                 return true;
         }else{
-            JOptionPane.showMessageDialog(laVista, "Verifica los campos, para datos personales.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                                .getProperty("ctrlDatosPersonales.mtdCapturarDatos.msg1"));
         }
             
         return false;
@@ -154,23 +160,29 @@ public class CtrlDatosPersonales implements MouseListener{
     
     private boolean mtdRtnNombreApellido(){
         boolean gAceptado = true;
-        String msg="Error en los campos: \n";
+        String msg=MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnNombreApellido.msg1");
         
         if( laVista.cmpNombres.getText().trim().length() >= 30 ){
             gAceptado = false;
-            msg += "* Campo nombre(s) \n";
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnNombreApellido.msg2");
         }
         
         if( laVista.cmpApellidos.getText().trim().length() >= 30 ){
             gAceptado = false;
-            msg += "* Campo apellido(s) \n";
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnNombreApellido.msg3");
         }
         
         if( !gAceptado ){
             msg = msg + "\n";
-            msg += "Los datos no aceptados o admitidos son: \n";
-            msg += "* Datos nulos (es decir, vacíos). \n";
-            msg += "* Deben ser menor a 30 caracteres. \n";
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnNombreApellido.msg4");
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnNombreApellido.msg5");
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnNombreApellido.msg6");
             JOptionPane.showMessageDialog(laVista, msg);
         }
         
@@ -179,23 +191,29 @@ public class CtrlDatosPersonales implements MouseListener{
     
     private boolean mtdRtnCorreoDireccion(){
         boolean gAceptado = true;
-        String msg="Error en los campos: \n";
+        String msg=MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnCorreoDireccion.msg1");
         
         if( laVista.cmpDireccion.getText().trim().length() >= 60 ){
             gAceptado = false;
-            msg += "* Campo dirección \n";
+            msg +=MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnCorreoDireccion.msg2");
         }
         
         if( laVista.cmpCorreo.getText().trim().length() >= 60 ){
             gAceptado = false;
-            msg += "* Campo correo \n";
+            msg +=MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnCorreoDireccion.msg3");
         }
         
         if( !gAceptado ){
             msg = msg + "\n";
-            msg += "Los datos no aceptados o admitidos son: \n";
-            msg += "* Datos nulos (es decir, vacíos). \n";
-            msg += "* Deben ser menor a 60 caracteres. \n";
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnCorreoDireccion.msg4");
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnCorreoDireccion.msg5");
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnCorreoDireccion.msg6");
             JOptionPane.showMessageDialog(laVista, msg);
         }
         
@@ -204,18 +222,23 @@ public class CtrlDatosPersonales implements MouseListener{
     
     private boolean mtdRtnTMovil(){
         boolean gAceptado = true;
-        String msg="Error en los campos: \n";
+        String msg=MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnTMovil.msg1");
         
         if( laVista.cmpTelMovil.getText().trim().length() < 10 || laVista.cmpTelMovil.getText().trim().length() > 10 ){
             gAceptado = false;
-            msg += "* Campo telefóno o movíl \n";
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnTMovil.msg2");
         }
         
         if( !gAceptado ){
             msg = msg + "\n";
-            msg += "Los datos no aceptados o admitidos son: \n";
-            msg += "* Datos nulos (es decir, vacíos). \n";
-            msg += "* Deben ser 10 digítos. \n";
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnTMovil.msg3");
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnTMovil.msg4");
+            msg += MyFreeLab.idioma
+                   .getProperty("ctrlDatosPersonales.mtdRtnTMovil.msg5");
             JOptionPane.showMessageDialog(laVista, msg);
         }
         
