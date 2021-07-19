@@ -112,7 +112,7 @@ public class PanelPreferencias extends javax.swing.JPanel {
 
         etqFuente.setText("Selecciona tipo de fuentes");
 
-        cmboxFuentes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barlow", "Inter", "K2D", "Lato", "Montserrat", "Nunito", "Poppins", "Rubik" }));
+        cmboxFuentes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barlow", "Inter", "K2D", "Lato", "Nunito" }));
 
         etqEstilo.setText("Selecciona un tipo de estilo (Botones)");
 

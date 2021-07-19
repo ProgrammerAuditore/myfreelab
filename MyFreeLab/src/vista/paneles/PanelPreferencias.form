@@ -187,15 +187,12 @@
             <Component class="javax.swing.JComboBox" name="cmboxFuentes">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
+                  <StringArray count="5">
                     <StringItem index="0" value="Barlow"/>
                     <StringItem index="1" value="Inter"/>
                     <StringItem index="2" value="K2D"/>
                     <StringItem index="3" value="Lato"/>
-                    <StringItem index="4" value="Montserrat"/>
-                    <StringItem index="5" value="Nunito"/>
-                    <StringItem index="6" value="Poppins"/>
-                    <StringItem index="7" value="Rubik"/>
+                    <StringItem index="4" value="Nunito"/>
                   </StringArray>
                 </Property>
               </Properties>
