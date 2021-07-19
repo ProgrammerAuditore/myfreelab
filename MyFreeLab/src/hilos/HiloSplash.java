@@ -3,7 +3,9 @@ package hilos;
 import controlador.CtrlHiloConexion;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
+import modelo.dao.PreferenciaDao;
 import modelo.dto.ConexionDto;
+import modelo.dto.PreferenciaDto;
 import src.Info;
 import src.Source;
 import vista.splash.Splash;
@@ -27,6 +29,7 @@ public class HiloSplash extends Thread{
         splash.setVisible(true);
         src = 8; avance = 0; pause = src;
         
+        mtdCargarConfiguracion();
         mtdCargarDatosDeConexion();
         mtdEstablecerConexion();
         mtdCargarBaseDeDatos();
@@ -46,6 +49,37 @@ public class HiloSplash extends Thread{
         
         splash.setVisible(false);
         splash.dispose();
+    }
+    
+    private void mtdCargarConfiguracion(){
+        // * Cargar los datos de conexion..
+        Source.dataConexion.exists();
+        for (int i = 1; i > 0; i--) {
+            
+            // Titulo - Carga
+            splash.etqMensaje.setText("Cargando datos de configuración ...");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+            
+            // Proceso de carga
+            if( new PreferenciaDao().obtener_conexion() != null ){
+                splash.etqMensaje.setText("Datos de configuración cargado.");
+                //System.out.println("Datos de conexión cargado. [!]");
+            }else {
+                PreferenciaDto pre = new PreferenciaDto();
+                new PreferenciaDao().regitrar_conexion(pre);
+                splash.etqMensaje.setText("Datos de configuración creado.");
+                //System.out.println("Datos de conexión creado. [!]");
+            }
+            
+            avance += (100 / src);
+            splash.pbProgreso.setValue(avance);
+            splash.etqCarga.setText("" + avance + "%");
+            try {
+                Thread.sleep( avance * pause );
+            } catch (Exception e) {}
+        }
     }
     
     private void mtdCargarDatosDeConexion(){

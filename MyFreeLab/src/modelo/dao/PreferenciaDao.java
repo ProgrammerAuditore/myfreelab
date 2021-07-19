@@ -5,27 +5,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import modelo.dto.ConexionDto;
+import modelo.dto.PreferenciaDto;
 import src.Source;
 import modelo.interfaces.keyword_binario;
 
-public class ConexionDao implements keyword_binario<ConexionDto>{
+public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
 
     @Override
-    public ConexionDto obtener_conexion() {
-        ConexionDto db = null;
+    public PreferenciaDto obtener_conexion() {
+        PreferenciaDto db = null;
         
-        try(FileInputStream fis = new FileInputStream( Source.dataConexion )){
+        try(FileInputStream fis = new FileInputStream( Source.dataPreferencias )){
             ObjectInputStream ois;
             
             while(fis.available() > 0){
                 ois = new ObjectInputStream(fis);
-                db = (ConexionDto) ois.readObject();
-                
-                // Verificar si la contraseña es null
-                if(db.getPass().length() == 0){
-                    db.setPass("");
-                }
+                db = (PreferenciaDto) ois.readObject();
                 
                 //System.out.println("" + db);
             }
@@ -39,8 +34,8 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
     }
 
     @Override
-    public void actualizar_conexion(ConexionDto c) {
-        try (FileOutputStream fos = new FileOutputStream( Source.dataConexion )) {
+    public void actualizar_conexion(PreferenciaDto c) {
+        try (FileOutputStream fos = new FileOutputStream( Source.dataPreferencias )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
             oss.writeObject(c);
@@ -54,8 +49,8 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
     }
 
     @Override
-    public void regitrar_conexion(ConexionDto c) {
-        try (FileOutputStream fos = new FileOutputStream( Source.dataConexion )) {
+    public void regitrar_conexion(PreferenciaDto c) {
+        try (FileOutputStream fos = new FileOutputStream( Source.dataPreferencias )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
             oss.writeObject(c);

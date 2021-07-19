@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import javax.swing.JDialog;
+import modelo.dao.PreferenciaDao;
+import modelo.dto.PreferenciaDto;
 import src.Info;
 import vista.paneles.PanelAcercaDe;
 import vista.paneles.PanelPreferencias;
@@ -20,23 +22,30 @@ public class CtrlPreferencias implements MouseListener{
     // Vista
     public JDialog modal;
     private PanelPreferencias laVista;
+    
+    // Modelos
+    private PreferenciaDao dao;
+    private PreferenciaDto dto;
 
-    public CtrlPreferencias(PanelPreferencias laVista) {
+    public CtrlPreferencias(PanelPreferencias laVista, PreferenciaDto dto, PreferenciaDao dao) {
         this.laVista = laVista;
+        this.dao = dao;
+        this.dto = dto;
         
         // Definir oyentes
         laVista.btnAceptar.addMouseListener(this);
         laVista.btnCancelar.addMouseListener(this);
-        
     }
     
     public void mtdInit(){
+        mtdEstablecerDatos();
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         modal.setTitle(MyFreeLab.idioma.getProperty("ctrlPreferencias.mtdInit.titulo"));
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
         modal.setContentPane(laVista);
+        
         
         modal.addWindowListener(new WindowAdapter() {
             @Override
@@ -45,6 +54,7 @@ public class CtrlPreferencias implements MouseListener{
                 modal.dispose();
             }
         });
+        
         
     }
     
@@ -70,6 +80,18 @@ public class CtrlPreferencias implements MouseListener{
         // * Cerrar el modal
         modal.setVisible(false);
         modal.dispose();
+    }
+    
+    private void mtdEstablecerDatos(){
+        
+        // * Obtener los datos
+        if( dao.obtener_conexion() != null ){
+            dto = dao.obtener_conexion();
+        }else{
+            dto = new PreferenciaDto();
+        }
+        
+        
     }
     
     @Override

@@ -13,12 +13,14 @@ import javax.swing.JDialog;
 import modelo.dao.ConexionDao;
 import modelo.dao.DatosPersonalesDao;
 import modelo.dao.EmpresaDao;
+import modelo.dao.PreferenciaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
 import modelo.dao.VinculacionDao;
 import modelo.dto.ConexionDto;
 import modelo.dto.DatosPersonalesDto;
 import modelo.dto.EmpresaDto;
+import modelo.dto.PreferenciaDto;
 import modelo.dto.ProyectoDto;
 import modelo.dto.RequisitoDto;
 import modelo.dto.VinculacionDto;
@@ -63,7 +65,9 @@ public class FabricarModal {
 
         // * Crear el modal Preferencias con su respectivo patrón de diseño MVC
         PanelPreferencias vista = new PanelPreferencias();
-        CtrlPreferencias controlador = new CtrlPreferencias(vista);
+        PreferenciaDto dto = new PreferenciaDto();
+        PreferenciaDao dao = new PreferenciaDao();
+        CtrlPreferencias controlador = new CtrlPreferencias(vista, dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);

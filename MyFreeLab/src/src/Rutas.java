@@ -5,6 +5,7 @@ class Rutas {
     // * Obtener recursos desde la raíz el ejecutable .jar (Recursos Externo)
     public static String pathDataConexion = "myfreelab/conn";
     public static String pathDataEjecucion = "myfreelab/.run";
+    public static String pathDataPreferencias = "myfreelab/.pconfig";
     public static String pathSharedLinux = "/opt/myfreelab/shared";
     public static String pathSharedWin = "shared";
     

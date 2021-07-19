@@ -12,6 +12,7 @@ public class Source {
     // * Recursos externos
     public static final File dataRun = new Resource().dataRun();
     public static final File dataConexion = new Resource().dataConexion();
+    public static final File dataPreferencias = new Resource().dataPreferencias();
     public static final Image imgIconoDefault = new Resource().iconoDefault();
     public static final HashMap<String, String> docReporte = new Resource().docJasper();
     

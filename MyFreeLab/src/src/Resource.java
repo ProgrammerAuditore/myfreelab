@@ -10,7 +10,6 @@ import java.util.HashMap;
 class Resource {
     
     public File dataConexion() {
-        String OS = System.getProperty("os.name").toLowerCase();
         String UserHome = System.getProperty("user.home");
         File data = null;
         String dir = "";
@@ -38,7 +37,6 @@ class Resource {
     }
     
     public File dataRun() {
-        String OS = System.getProperty("os.name").toLowerCase();
         String UserHome = System.getProperty("user.home");
         File data = null;
         String dir = "";
@@ -55,6 +53,33 @@ class Resource {
         // Obtener el archivo
         data = archivoRun;
             
+        return data;
+    }
+    
+    public File dataPreferencias() {
+        String UserHome = System.getProperty("user.home");
+        File data = null;
+        String dir = "";
+        
+        try {
+            
+            // Verificar el sistema operativo
+            dir = UserHome + "/.local/";
+            
+            // Crear la carpeta myfreelab
+            new File( dir + "myfreelab").mkdir();
+            
+            // Crear el archivo pconfig dentro de la carpeta etc 
+            new File( dir + Rutas.pathDataPreferencias ).createNewFile();
+            
+            // Obtener el archivo conn
+            //System.out.println("Archivo conn :: " + dir + Rutas.pathDataPreferencias);
+            data = new File( dir + Rutas.pathDataPreferencias );
+            
+        } catch (IOException ex) {
+            //System.out.println("Resource :: Archivo conn no localizado...");
+        }
+        
         return data;
     }
     

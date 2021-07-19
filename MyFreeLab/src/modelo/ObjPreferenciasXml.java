@@ -14,7 +14,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 import src.Source;
 
-public class ObjConfigXml {
+public class ObjPreferenciasXml {
         
     private List<String> info = new ArrayList<>();
     private String path_archivo;

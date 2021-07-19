@@ -37,7 +37,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="bkgAside" pref="500" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -82,7 +82,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="etqTitulo" alignment="0" pref="655" max="32767" attributes="0"/>
+              <Component id="etqTitulo" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -110,7 +110,9 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Preferencias"/>
+            <TitledBorder title="&lt;User Code&gt;">
+              <Connection PropertyName="titleX" code="MyFreeLab.idioma.getProperty(&quot;panelPreferencias.panelTitulo&quot;)" type="code"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -118,13 +120,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="etiqueta1" pref="220" max="32767" attributes="0"/>
-                      <Component id="jComboBox1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="cmboxIdiomas" max="32767" attributes="0"/>
+                      <Component id="etqIdioma" max="32767" attributes="0"/>
+                      <Component id="etqFuente" max="32767" attributes="0"/>
+                      <Component id="etqEstilo" max="32767" attributes="0"/>
+                      <Component id="cmboxFuentes" max="32767" attributes="0"/>
+                      <Component id="cmboxEstilos" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="81" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="cmpSimboloMoneda" max="32767" attributes="0"/>
+                      <Component id="etqSimboloMoneda" pref="260" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,21 +143,35 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="etiqueta1" min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="etqIdioma" max="32767" attributes="0"/>
+                      <Component id="etqSimboloMoneda" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="265" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmboxIdiomas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmpSimboloMoneda" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="etqFuente" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cmboxFuentes" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="etqEstilo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cmboxEstilos" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="115" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqIdioma">
           <Properties>
             <Property name="text" type="java.lang.String" value="Selecciona una idioma"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cmboxIdiomas">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
@@ -155,9 +180,59 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmboxIdiomasActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqFuente">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Selecciona tipo de fuentes"/>
+          </Properties>
+        </Component>
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqEstilo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Selecciona un tipo de estilo (Botones)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmboxFuentes">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="KD2"/>
+                <StringItem index="1" value="etc."/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmboxEstilos">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="Bulma"/>
+                <StringItem index="1" value="Bootstrap"/>
+                <StringItem index="2" value="Oval"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="vista.componentes.campos.CampoTexto" name="cmpSimboloMoneda">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="campoTexto1"/>
+          </Properties>
+        </Component>
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqSimboloMoneda">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Escribe el simbolo de tu moneda"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
