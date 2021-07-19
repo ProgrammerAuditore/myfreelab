@@ -35,10 +35,10 @@ public class PanelPreferencias extends javax.swing.JPanel {
         this.etqEstilo.setText(MyFreeLab.idioma.getProperty("panelPreferencias.etqEstilo"));
         this.etqFuente.setText(MyFreeLab.idioma.getProperty("panelPreferencias.etqFuente"));
         this.etqIdioma.setText(MyFreeLab.idioma.getProperty("panelPreferencias.etqIdioma"));
-        this.etqSimboloMoneda.setText(MyFreeLab.idioma.getProperty("panelPreferencias.etqSimboloMoneda"));
+        //this.etqSimboloMoneda.setText(MyFreeLab.idioma.getProperty("panelPreferencias.etqSimboloMoneda"));
         
         // * Campos
-        this.cmpSimboloMoneda.setPlaceholder(MyFreeLab.idioma.getProperty("panelPreferencias.etqSimboloMoneda"));
+        //this.cmpSimboloMoneda.setPlaceholder(MyFreeLab.idioma.getProperty("panelPreferencias.etqSimboloMoneda"));
         
         // * Botones
         this.btnAceptar.setTexto(MyFreeLab.idioma.getProperty("panelPreferencias.btnAceptar"));
@@ -65,9 +65,6 @@ public class PanelPreferencias extends javax.swing.JPanel {
         cmboxFuentes = new javax.swing.JComboBox<>();
         etqEstilo = new vista.componentes.etiqueta.Etiqueta();
         cmboxEstilos = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        cmpSimboloMoneda = new vista.componentes.campos.CampoTexto();
-        etqSimboloMoneda = new vista.componentes.etiqueta.Etiqueta();
         btnAceptar = new vista.componentes.boton.Boton();
         btnCancelar = new vista.componentes.boton.Boton();
 
@@ -153,33 +150,6 @@ public class PanelPreferencias extends javax.swing.JPanel {
 
         tpanelOpciones.addTab("Configuración", panelConfiguracion);
 
-        cmpSimboloMoneda.setText("campoTexto1");
-
-        etqSimboloMoneda.setText("Escribe el simbolo de tu moneda");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(etqSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                    .addComponent(cmpSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(337, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etqSimboloMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmpSimboloMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(247, Short.MAX_VALUE))
-        );
-
-        tpanelOpciones.addTab("Moneda", jPanel2);
-
         btnAceptar.setImgButtonType("success");
         btnAceptar.setTexto("Aceptar");
 
@@ -231,14 +201,11 @@ public class PanelPreferencias extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> cmboxEstilos;
     public javax.swing.JComboBox<String> cmboxFuentes;
     public javax.swing.JComboBox<String> cmboxIdiomas;
-    public vista.componentes.campos.CampoTexto cmpSimboloMoneda;
     private vista.componentes.etiqueta.Etiqueta etqEstilo;
     private vista.componentes.etiqueta.Etiqueta etqFuente;
     private vista.componentes.etiqueta.Etiqueta etqIdioma;
-    private vista.componentes.etiqueta.Etiqueta etqSimboloMoneda;
     public vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel panelConfiguracion;
     private javax.swing.JTabbedPane tpanelOpciones;
     // End of variables declaration//GEN-END:variables
