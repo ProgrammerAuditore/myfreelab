@@ -6,6 +6,7 @@ import controlador.CtrlDatosPersonales;
 import controlador.CtrlGestionarEmpresas;
 import controlador.CtrlGestionarProyectos;
 import controlador.CtrlGestionarRequisitos;
+import controlador.CtrlPreferencias;
 import controlador.CtrlVinculacion;
 import controlador.ctrlBuscarActualizacion;
 import javax.swing.JDialog;
@@ -24,6 +25,7 @@ import modelo.dto.VinculacionDto;
 import vista.paneles.PanelAcercaDe;
 import vista.paneles.PanelActualizacion;
 import vista.paneles.PanelConexion;
+import vista.paneles.PanelPreferencias;
 import vista.paneles.PanelDatosPersonales;
 import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
@@ -43,6 +45,7 @@ public class FabricarModal {
     public boolean construir(String modal){
         
         switch(modal){
+            case "Preferencias" : modalPreferencias(); break;
             case "ConfigurarConexion" : modalConfigurarConexion(); break;
             case "DatosPersonales" : modalDatosPersonales(); break;
             case "GestionarProyectos" : modalGestionarProyectos(); break;
@@ -55,6 +58,18 @@ public class FabricarModal {
         
         return false;
     } 
+    
+    private void modalPreferencias() {
+
+        // * Crear el modal Preferencias con su respectivo patrón de diseño MVC
+        PanelPreferencias vista = new PanelPreferencias();
+        CtrlPreferencias controlador = new CtrlPreferencias(vista);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
+        controlador.modal.setLocationRelativeTo(laVista);
+        controlador.modal.setVisible(true);
+
+    }
     
     private void modalConfigurarConexion() {
         

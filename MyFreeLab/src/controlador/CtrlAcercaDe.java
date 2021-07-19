@@ -5,6 +5,8 @@ import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,6 +37,14 @@ public class CtrlAcercaDe implements MouseListener{
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize( laVista.getSize() );
         modal.setContentPane(laVista);
+        
+        modal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                modal.setVisible(false);
+                modal.dispose();
+            }
+        });
 
     }
     

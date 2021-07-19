@@ -109,6 +109,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPaginacion = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
+        btnPreferencias = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         btnSalir = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
         btnDatosPersonales = new javax.swing.JMenuItem();
@@ -340,6 +342,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuArchivo.setText("Archivo");
 
+        btnPreferencias.setText("Preferencias");
+        menuArchivo.add(btnPreferencias);
+        menuArchivo.add(jSeparator2);
+
         btnSalir.setText("Sallir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,6 +498,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
     public javax.swing.JMenuItem btnObtenerAyuda;
+    public javax.swing.JMenuItem btnPreferencias;
     public javax.swing.JMenuItem btnSalir;
     public javax.swing.JMenuItem btnVinculacion;
     public javax.swing.JCheckBox checkProEliminados;
@@ -512,6 +519,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenu menuArchivo;
     public javax.swing.JMenu menuAyuda;

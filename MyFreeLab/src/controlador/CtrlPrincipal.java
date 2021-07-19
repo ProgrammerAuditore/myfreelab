@@ -84,6 +84,7 @@ public class CtrlPrincipal implements ActionListener {
 
         // * Definir oyentes
         laVista.setLocationRelativeTo(null);
+        laVista.btnPreferencias.addActionListener(this);
         laVista.btnSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
         laVista.btnDatosPersonales.addActionListener(this);
@@ -184,6 +185,10 @@ public class CtrlPrincipal implements ActionListener {
             }
         }
 
+        if (e.getSource() == laVista.btnPreferencias) {
+            fabrica.construir("Preferencias");
+        }
+        
         if (e.getSource() == laVista.btnSalir) {
             mtdSalirDelPrograma();
         }
