@@ -1,6 +1,7 @@
 package hilos;
 
 import controlador.CtrlHiloConexion;
+import index.MyFreeLab;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dao.PreferenciaDao;
@@ -54,258 +55,255 @@ public class HiloSplash extends Thread{
     private void mtdCargarConfiguracion(){
         // * Cargar los datos de conexion..
         Source.dataConexion.exists();
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando datos de configuración ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-            
-            // Proceso de carga
-            if( new PreferenciaDao().obtener_datos() != null ){
-                splash.etqMensaje.setText("Datos de configuración cargado.");
-                //System.out.println("Datos de conexión cargado. [!]");
-            }else {
-                PreferenciaDto pre = new PreferenciaDto();
-                new PreferenciaDao().regitrar_datos(pre);
-                splash.etqMensaje.setText("Datos de configuración creado.");
-                //System.out.println("Datos de conexión creado. [!]");
-            }
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarConfiguracion.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( new PreferenciaDao().obtener_datos() != null ){
+            splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarConfiguracion.msg2"));
+            //System.out.println("Datos de conexión cargado. [!]");
+        }else {
+            PreferenciaDto pre = new PreferenciaDto();
+            new PreferenciaDao().regitrar_datos(pre);
+            splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarConfiguracion.msg3"));
+            //System.out.println("Datos de conexión creado. [!]");
         }
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+        
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+        
     }
     
     private void mtdCargarDatosDeConexion(){
         // * Cargar los datos de conexion..
         Source.dataConexion.exists();
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando datos de conexión ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-            
-            // Proceso de carga
-            if( new ConexionDao().obtener_datos() != null ){
-                splash.etqMensaje.setText("Datos de conexión cargado.");
-                //System.out.println("Datos de conexión cargado. [!]");
-            }else {
-                ConexionDto conec = new ConexionDto("0", "", "", "", "");
-                new ConexionDao().regitrar_datos(conec);
-                splash.etqMensaje.setText("Datos de conexión creado.");
-                //System.out.println("Datos de conexión creado. [!]");
-            }
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarDatosDeConexion.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( new ConexionDao().obtener_datos() != null ){
+            splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarDatosDeConexion.msg2"));
+            //System.out.println("Datos de conexión cargado. [!]");
+        }else {
+            ConexionDto conec = new ConexionDto("0", "", "", "", "");
+            new ConexionDao().regitrar_datos(conec);
+            splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarDatosDeConexion.msg3"));
+            //System.out.println("Datos de conexión creado. [!]");
         }
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
     }
     
     private void mtdEstablecerConexion(){
         // * Establecer conexion..
         CtrlHiloConexion.ctrlDatos = new ConexionDao().obtener_datos();
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Estableciendo conexión ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-            
-            // Proceso de carga
-            if(CtrlHiloConexion.mtdEstablecer())
-                splash.etqMensaje.setText("Conexión establecienda.");
-            else
-                splash.etqMensaje.setText("Conexión no establecida.");
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-        }
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdEstablecerConexion.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if(CtrlHiloConexion.mtdEstablecer())
+            splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.on"));
+        else
+            splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.off"));
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
     }
     
     private void mtdCargarBaseDeDatos() {
         // * Cargar tabla datos personales..
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando base de datos ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarBaseDeDatos.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( CtrlHiloConexion.checkConexion() ){
+            if( !MyFreeLabDao.mtdCrearBaseDeDatos())
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarBaseDeDatos.msg2"));
+            else
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarBaseDeDatos.msg3"));
+        } else
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.off"));
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
             
-            // Proceso de carga
-            if( CtrlHiloConexion.checkConexion() ){
-                if( !MyFreeLabDao.mtdCrearBaseDeDatos())
-                    splash.etqMensaje.setText("Base de datos cargado.");
-                else
-                    splash.etqMensaje.setText("Base de datos creado.");
-            } else
-            splash.etqMensaje.setText("Conexión no establecida.");
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-        }
     }
     
     
     private void mtdCargarTablaDatosPersonales(){
         // * Cargar tabla datos personales..
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla datos personales ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-            
-            // Proceso de carga
-            if( CtrlHiloConexion.checkConexion() ){
-                if( !MyFreeLabDao.mtdCrearTablaDatosPersonales() )
-                    splash.etqMensaje.setText("Tabla datos personales cargado.");
-                else
-                    splash.etqMensaje.setText("Tabla datos personales creado.");
-            } else
-            splash.etqMensaje.setText("Conexión no establecida.");
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-        }
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaDatosPersonales.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( CtrlHiloConexion.checkConexion() ){
+            if( !MyFreeLabDao.mtdCrearTablaDatosPersonales() )
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaDatosPersonales.msg2"));
+            else
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaDatosPersonales.msg3"));
+        } else
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.off"));
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+        
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+        
     }
     
     private void mtdCargarTablaProyectos(){
         // * Cargar tabla proyectos..
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla proyectos ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaProyectos.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( CtrlHiloConexion.checkConexion() ){
+            if( !MyFreeLabDao.mtdCrearTablaProyectos() )
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaProyectos.msg2"));
+            else
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaProyectos.msg3"));
+        } else
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.off"));
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
             
-            // Proceso de carga
-            if( CtrlHiloConexion.checkConexion() ){
-                if( !MyFreeLabDao.mtdCrearTablaProyectos() )
-                    splash.etqMensaje.setText("Tabla proyectos cargado.");
-                else
-                    splash.etqMensaje.setText("Tabla proyectos creado.");
-            } else
-            splash.etqMensaje.setText("Conexión no establecida.");
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-        }
     }
     
     private void mtdCargarTablaEmpresas() {
         // * Cargar tabla datos personales..
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla empresas ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-            
-            // Proceso de carga
-            if( CtrlHiloConexion.checkConexion() ){
-                if( !MyFreeLabDao.mtdCrearTablaEmpresas())
-                    splash.etqMensaje.setText("Tabla empresas cargado.");
-                else
-                    splash.etqMensaje.setText("Tabla empresas creado.");
-            } else
-            splash.etqMensaje.setText("Conexión no establecida.");
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-        }
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaEmpresas.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( CtrlHiloConexion.checkConexion() ){
+            if( !MyFreeLabDao.mtdCrearTablaEmpresas())
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaEmpresas.msg2"));
+            else
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaEmpresas.msg3"));
+        } else
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.off"));
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+        
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+        
     }
     
     private void mtdCargarTablaRequisitos() {
         // * Cargar tabla requisitos..
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla requisitos ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaRequisitos.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( CtrlHiloConexion.checkConexion() ){
+            if( !MyFreeLabDao.mtdCrearTablaRequisitos())
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaRequisitos.msg2"));
+            else
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaRequisitos.msg3"));
+        } else
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.off"));
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
             
-            // Proceso de carga
-            if( CtrlHiloConexion.checkConexion() ){
-                if( !MyFreeLabDao.mtdCrearTablaRequisitos())
-                    splash.etqMensaje.setText("Tabla requisitos cargado.");
-                else
-                    splash.etqMensaje.setText("Tabla requisitos creado.");
-            } else
-            splash.etqMensaje.setText("Conexión no establecida.");
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-        }
     }
     
     private void mtdCargarTablaAsociados() {
         // * Cargar tabla requisitos..
-        for (int i = 1; i > 0; i--) {
             
-            // Titulo - Carga
-            splash.etqMensaje.setText("Cargando tabla asociados ...");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-            
-            // Proceso de carga
-            if( CtrlHiloConexion.checkConexion() ){
-                if( !MyFreeLabDao.mtdCrearTablaAsociados())
-                    splash.etqMensaje.setText("Tabla asociados cargado.");
-                else
-                    splash.etqMensaje.setText("Tabla asociados creado.");
-            } else
-            splash.etqMensaje.setText("Conexión no establecida.");
-            
-            avance += (100 / src);
-            splash.pbProgreso.setValue(avance);
-            splash.etqCarga.setText("" + avance + "%");
-            try {
-                Thread.sleep( avance * pause );
-            } catch (Exception e) {}
-        }
+        // Titulo - Carga
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaAsociados.msg1"));
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+
+        // Proceso de carga
+        if( CtrlHiloConexion.checkConexion() ){
+            if( !MyFreeLabDao.mtdCrearTablaAsociados())
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaAsociados.msg2"));
+            else
+                splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.mtdCargarTablaAsociados.msg3"));
+        } else
+        splash.etqMensaje.setText(MyFreeLab.idioma
+                .getProperty("hiloSplash.conexion.off"));
+
+        avance += (100 / src);
+        splash.pbProgreso.setValue(avance);
+        splash.etqCarga.setText("" + avance + "%");
+
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+    
     }
     
 }
