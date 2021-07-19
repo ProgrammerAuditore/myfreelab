@@ -81,11 +81,15 @@ public class MyFreeLab {
         PreferenciaDao dao = new PreferenciaDao();
         PreferenciaDto dto;
         
-        if( dao.obtener_conexion() != null ){
-            dto = dao.obtener_conexion();
+        if( dao.obtener_datos() == null ){ 
+            dto = new PreferenciaDto();
+        } else{
+            dto = dao.obtener_datos();
+        }
+        
+            dto = dao.obtener_datos();
             
-            System.out.println("" + dto.toString());
-            if( dto.getIdioma().equals("Español") )
+            if( dto.getIdioma().trim().equals("Español") || dto.getIdioma().trim().equals("Spanish") )
                 idioma = new Idiomas("es");
             else
                 idioma = new Idiomas("en");
@@ -93,7 +97,6 @@ public class MyFreeLab {
             Source.mtdCambiarFuente( dto.getFuente() );
             Source.styleButtonDefault = dto.getEstilo();
             
-        }
     }
     
     public void mtdVerificarPIDLinux(){

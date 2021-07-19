@@ -15,7 +15,7 @@ public class Conexion {
     
     private Conexion(){
         try {
-            ConexionDto objConn = new ConexionDao().obtener_conexion();
+            ConexionDto objConn = new ConexionDao().obtener_datos();
             
             String url = "jdbc:mysql://" + objConn.getHost() + ":" + objConn.getPuerto() + "/" + objConn.getDatabase()+ "?useSSL=false";
             this.conn = (Connection) DriverManager.getConnection(url, objConn.getUsuario(), objConn.getPass());

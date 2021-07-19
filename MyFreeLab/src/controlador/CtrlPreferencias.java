@@ -1,21 +1,15 @@
 package controlador;
 
 import index.MyFreeLab;
-import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.dao.PreferenciaDao;
 import modelo.dto.PreferenciaDto;
-import src.Info;
-import vista.paneles.PanelAcercaDe;
 import vista.paneles.PanelPreferencias;
 
 public class CtrlPreferencias implements MouseListener{
@@ -76,12 +70,15 @@ public class CtrlPreferencias implements MouseListener{
             dto.setFuente( String.valueOf(laVista.cmboxFuentes.getSelectedItem()) );
             dto.setEstilo( String.valueOf(laVista.cmboxEstilos.getSelectedItem()) );
             
-            dao.regitrar_conexion(dto);
-            JOptionPane.showMessageDialog(laVista, "Preferencias, guardado.");
+            dao.regitrar_datos(dto);
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlPreferencias.mtdBtnAceptar.msg1"));
+            
             mtdBtnCancelar();
             
         }else
-            JOptionPane.showMessageDialog(laVista, "Lo siento, datos incorrectos.");
+            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                    .getProperty("ctrlPreferencias.mtdBtnAceptar.msg2"));
     }
     
     private void mtdBtnCancelar(){
@@ -93,16 +90,28 @@ public class CtrlPreferencias implements MouseListener{
     private void mtdEstablecerDatos(){
         
         // * Obtener los datos
-        if( dao.obtener_conexion() != null ){
-            dto = dao.obtener_conexion();
+        if( dao.obtener_datos() != null ){
+            dto = dao.obtener_datos();
         }else{
             dto = new PreferenciaDto();
         }
         
-        System.out.println(""+ dto.toString());
+        if( MyFreeLab.idioma.getProperty("lang").equals("English") ){
+            laVista.cmboxIdiomas.removeAllItems();
+            laVista.cmboxIdiomas.addItem(MyFreeLab.idioma
+                        .getProperty("ctrlPreferencias.mtdEstablecerDatos.msg1"));
+            laVista.cmboxIdiomas.addItem(MyFreeLab.idioma
+                        .getProperty("ctrlPreferencias.mtdEstablecerDatos.msg2"));
+        }
+        
         laVista.cmboxEstilos.setSelectedItem(dto.getEstilo().trim());
         laVista.cmboxFuentes.setSelectedItem(dto.getFuente().trim());
-        laVista.cmboxIdiomas.setSelectedItem(dto.getIdioma().trim());
+        
+        if( dto.getIdioma().trim().equals("Español") || dto.getIdioma().trim().equals("Spanish")  ){
+            laVista.cmboxIdiomas.setSelectedIndex(0);
+        }else{
+            laVista.cmboxIdiomas.setSelectedIndex(1);
+        }
         
     }
     

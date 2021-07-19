@@ -63,12 +63,12 @@ public class HiloSplash extends Thread{
             } catch (Exception e) {}
             
             // Proceso de carga
-            if( new PreferenciaDao().obtener_conexion() != null ){
+            if( new PreferenciaDao().obtener_datos() != null ){
                 splash.etqMensaje.setText("Datos de configuración cargado.");
                 //System.out.println("Datos de conexión cargado. [!]");
             }else {
                 PreferenciaDto pre = new PreferenciaDto();
-                new PreferenciaDao().regitrar_conexion(pre);
+                new PreferenciaDao().regitrar_datos(pre);
                 splash.etqMensaje.setText("Datos de configuración creado.");
                 //System.out.println("Datos de conexión creado. [!]");
             }
@@ -94,12 +94,12 @@ public class HiloSplash extends Thread{
             } catch (Exception e) {}
             
             // Proceso de carga
-            if( new ConexionDao().obtener_conexion() != null ){
+            if( new ConexionDao().obtener_datos() != null ){
                 splash.etqMensaje.setText("Datos de conexión cargado.");
                 //System.out.println("Datos de conexión cargado. [!]");
             }else {
                 ConexionDto conec = new ConexionDto("0", "", "", "", "");
-                new ConexionDao().regitrar_conexion(conec);
+                new ConexionDao().regitrar_datos(conec);
                 splash.etqMensaje.setText("Datos de conexión creado.");
                 //System.out.println("Datos de conexión creado. [!]");
             }
@@ -115,7 +115,7 @@ public class HiloSplash extends Thread{
     
     private void mtdEstablecerConexion(){
         // * Establecer conexion..
-        CtrlHiloConexion.ctrlDatos = new ConexionDao().obtener_conexion();
+        CtrlHiloConexion.ctrlDatos = new ConexionDao().obtener_datos();
         for (int i = 1; i > 0; i--) {
             
             // Titulo - Carga

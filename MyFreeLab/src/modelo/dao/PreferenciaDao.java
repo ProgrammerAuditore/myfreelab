@@ -12,7 +12,7 @@ import modelo.interfaces.keyword_binario;
 public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
 
     @Override
-    public PreferenciaDto obtener_conexion() {
+    public PreferenciaDto obtener_datos() {
         PreferenciaDto db = null;
         
         try(FileInputStream fis = new FileInputStream( Source.dataPreferencias )){
@@ -34,7 +34,7 @@ public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
     }
 
     @Override
-    public void actualizar_conexion(PreferenciaDto c) {
+    public void actualizar_datos(PreferenciaDto c) {
         try (FileOutputStream fos = new FileOutputStream( Source.dataPreferencias )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
@@ -49,7 +49,7 @@ public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
     }
 
     @Override
-    public void regitrar_conexion(PreferenciaDto c) {
+    public void regitrar_datos(PreferenciaDto c) {
         try (FileOutputStream fos = new FileOutputStream( Source.dataPreferencias )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);

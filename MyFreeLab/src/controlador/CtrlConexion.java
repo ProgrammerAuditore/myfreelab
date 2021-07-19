@@ -60,7 +60,7 @@ public class CtrlConexion implements MouseListener{
             estilosConexionAbierto();
         } else {
             estilosConexionCerrada();
-            dto = dao.obtener_conexion();
+            dto = dao.obtener_datos();
             
             if( dto != null )
                 mtdEstablecerDatos();

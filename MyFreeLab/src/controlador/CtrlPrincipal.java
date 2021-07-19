@@ -308,7 +308,7 @@ public class CtrlPrincipal implements ActionListener {
 
         // Guardar los datos de la conexion antes de cerrar el programa
         if (CtrlHiloConexion.checkConexion()) {
-            new ConexionDao().regitrar_conexion(CtrlHiloConexion.ctrlDatos);
+            new ConexionDao().regitrar_datos(CtrlHiloConexion.ctrlDatos);
             ////System.out.println("Conexion guardada.");
 
             if (CtrlHiloConexion.mtdCerrar()) {

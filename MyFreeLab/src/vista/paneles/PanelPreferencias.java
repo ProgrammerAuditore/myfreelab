@@ -103,7 +103,7 @@ public class PanelPreferencias extends javax.swing.JPanel {
 
         etqIdioma.setText("Selecciona una idioma");
 
-        cmboxIdiomas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles" }));
+        cmboxIdiomas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Inglés" }));
         cmboxIdiomas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmboxIdiomasActionPerformed(evt);

@@ -12,7 +12,7 @@ import modelo.interfaces.keyword_binario;
 public class ConexionDao implements keyword_binario<ConexionDto>{
 
     @Override
-    public ConexionDto obtener_conexion() {
+    public ConexionDto obtener_datos() {
         ConexionDto db = null;
         
         try(FileInputStream fis = new FileInputStream( Source.dataConexion )){
@@ -39,7 +39,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
     }
 
     @Override
-    public void actualizar_conexion(ConexionDto c) {
+    public void actualizar_datos(ConexionDto c) {
         try (FileOutputStream fos = new FileOutputStream( Source.dataConexion )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
@@ -54,7 +54,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
     }
 
     @Override
-    public void regitrar_conexion(ConexionDto c) {
+    public void regitrar_datos(ConexionDto c) {
         try (FileOutputStream fos = new FileOutputStream( Source.dataConexion )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
