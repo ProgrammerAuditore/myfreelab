@@ -25,7 +25,7 @@ import vista.ventanas.VentanaPrincipal;
 public class MyFreeLab {
     
     private VentanaPrincipal ventana;
-    public static Properties idioma;
+    public static Properties idioma = new Idiomas("es");
     
     public void mtdTagInit() {
         
