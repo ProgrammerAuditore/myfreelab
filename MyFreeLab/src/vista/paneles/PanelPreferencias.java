@@ -57,13 +57,15 @@ public class PanelPreferencias extends javax.swing.JPanel {
         bkgAside = new vista.componentes.jpanelbackground.JPanelBackground();
         jPanel1 = new javax.swing.JPanel();
         etqTitulo = new vista.componentes.etiqueta.Titulo();
-        jPanel2 = new javax.swing.JPanel();
+        tpanelOpciones = new javax.swing.JTabbedPane();
+        panelConfiguracion = new javax.swing.JPanel();
         etqIdioma = new vista.componentes.etiqueta.Etiqueta();
         cmboxIdiomas = new javax.swing.JComboBox<>();
         etqFuente = new vista.componentes.etiqueta.Etiqueta();
-        etqEstilo = new vista.componentes.etiqueta.Etiqueta();
         cmboxFuentes = new javax.swing.JComboBox<>();
+        etqEstilo = new vista.componentes.etiqueta.Etiqueta();
         cmboxEstilos = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
         cmpSimboloMoneda = new vista.componentes.campos.CampoTexto();
         etqSimboloMoneda = new vista.componentes.etiqueta.Etiqueta();
         btnAceptar = new vista.componentes.boton.Boton();
@@ -99,8 +101,6 @@ public class PanelPreferencias extends javax.swing.JPanel {
             .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(MyFreeLab.idioma.getProperty("panelPreferencias.panelTitulo")));
-
         etqIdioma.setText("Selecciona una idioma");
 
         cmboxIdiomas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles" }));
@@ -112,11 +112,46 @@ public class PanelPreferencias extends javax.swing.JPanel {
 
         etqFuente.setText("Selecciona tipo de fuentes");
 
+        cmboxFuentes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barlow", "Inter", "K2D", "Lato", "Montserrat", "Nunito", "Poppins", "Rubik" }));
+
         etqEstilo.setText("Selecciona un tipo de estilo (Botones)");
 
-        cmboxFuentes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KD2", "etc." }));
+        cmboxEstilos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bootstrap", "Bulma", "Oval" }));
 
-        cmboxEstilos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulma", "Bootstrap", "Oval" }));
+        javax.swing.GroupLayout panelConfiguracionLayout = new javax.swing.GroupLayout(panelConfiguracion);
+        panelConfiguracion.setLayout(panelConfiguracionLayout);
+        panelConfiguracionLayout.setHorizontalGroup(
+            panelConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConfiguracionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(etqIdioma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmboxIdiomas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(cmboxEstilos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmboxFuentes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqFuente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
+        );
+        panelConfiguracionLayout.setVerticalGroup(
+            panelConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConfiguracionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(etqIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmboxIdiomas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(etqFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmboxFuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(etqEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmboxEstilos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+
+        tpanelOpciones.addTab("Configuración", panelConfiguracion);
 
         cmpSimboloMoneda.setText("campoTexto1");
 
@@ -129,39 +164,21 @@ public class PanelPreferencias extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmboxIdiomas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqIdioma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqFuente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmboxFuentes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmboxEstilos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmpSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(etqSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                    .addComponent(cmpSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(etqIdioma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqSimboloMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(etqSimboloMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmboxIdiomas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmpSimboloMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(etqFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmboxFuentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(etqEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmboxEstilos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addComponent(cmpSimboloMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(247, Short.MAX_VALUE))
         );
+
+        tpanelOpciones.addTab("Moneda", jPanel2);
 
         btnAceptar.setImgButtonType("success");
         btnAceptar.setTexto("Aceptar");
@@ -183,7 +200,7 @@ public class PanelPreferencias extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tpanelOpciones))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -193,8 +210,8 @@ public class PanelPreferencias extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tpanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,10 +228,10 @@ public class PanelPreferencias extends javax.swing.JPanel {
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnAceptar;
     public vista.componentes.boton.Boton btnCancelar;
-    private javax.swing.JComboBox<String> cmboxEstilos;
-    private javax.swing.JComboBox<String> cmboxFuentes;
-    private javax.swing.JComboBox<String> cmboxIdiomas;
-    private vista.componentes.campos.CampoTexto cmpSimboloMoneda;
+    public javax.swing.JComboBox<String> cmboxEstilos;
+    public javax.swing.JComboBox<String> cmboxFuentes;
+    public javax.swing.JComboBox<String> cmboxIdiomas;
+    public vista.componentes.campos.CampoTexto cmpSimboloMoneda;
     private vista.componentes.etiqueta.Etiqueta etqEstilo;
     private vista.componentes.etiqueta.Etiqueta etqFuente;
     private vista.componentes.etiqueta.Etiqueta etqIdioma;
@@ -222,5 +239,7 @@ public class PanelPreferencias extends javax.swing.JPanel {
     public vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel panelConfiguracion;
+    private javax.swing.JTabbedPane tpanelOpciones;
     // End of variables declaration//GEN-END:variables
 }

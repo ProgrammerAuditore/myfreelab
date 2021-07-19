@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class PreferenciaDto implements Serializable {
     
     private String idioma;
-    private String fuentes;
-    private String estilos;
+    private String fuente;
+    private String estilo;
 
     public PreferenciaDto() {
-        this.idioma = "esp";
-        this.fuentes = "K2D";
-        this.estilos = "bulma";
+        this.idioma = "Español";
+        this.fuente = "K2D";
+        this.estilo = "Bulma";
     }
     
     public String getIdioma() {
@@ -22,20 +22,20 @@ public class PreferenciaDto implements Serializable {
         this.idioma = idioma;
     }
 
-    public String getFuentes() {
-        return fuentes;
+    public String getFuente() {
+        return fuente;
     }
 
-    public void setFuentes(String fuentes) {
-        this.fuentes = fuentes;
+    public void setFuente(String fuente) {
+        this.fuente = fuente;
     }
 
-    public String getEstilos() {
-        return estilos;
+    public String getEstilo() {
+        return estilo;
     }
 
-    public void setEstilos(String estilos) {
-        this.estilos = estilos;
+    public void setEstilo(String estilo) {
+        this.estilo = estilo;
     }
 
     @Override
@@ -43,8 +43,8 @@ public class PreferenciaDto implements Serializable {
         return 
         "PreferenciasDto{ \n"+
                 "Idioma: " + idioma + "\n" +
-                "Fuentes: " + fuentes + "\n" +
-                "Estilos: " + estilos + "\n" +
+                "Fuentes: " + fuente + "\n" +
+                "Estilos: " + estilo + "\n" +
         "}";
     }
     

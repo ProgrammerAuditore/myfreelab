@@ -15,8 +15,10 @@ import javax.swing.JFrame;
 import modelo.FabricarModal;
 import modelo.ObjEjecucionXml;
 import modelo.dao.EmpresaDao;
+import modelo.dao.PreferenciaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
+import modelo.dto.PreferenciaDto;
 import src.Info;
 import src.Source;
 import src.idiomas.Idiomas;
@@ -34,7 +36,8 @@ public class MyFreeLab {
         else if ( Source.OsWin )
             mtdVerificarPIDWin();
         
-        idioma = new Idiomas("es");
+        
+        mtdInit();
         HiloConexion hc = new HiloConexion();
         HiloPrincipal hp = new HiloPrincipal();
         HiloSplash hs = new HiloSplash();
@@ -72,6 +75,25 @@ public class MyFreeLab {
         ventana.setExtendedState(JFrame.NORMAL);
         ventana.setVisible(true);
         
+    }
+    
+    private void mtdInit(){
+        PreferenciaDao dao = new PreferenciaDao();
+        PreferenciaDto dto;
+        
+        if( dao.obtener_conexion() != null ){
+            dto = dao.obtener_conexion();
+            
+            System.out.println("" + dto.toString());
+            if( dto.getIdioma().equals("Español") )
+                idioma = new Idiomas("es");
+            else
+                idioma = new Idiomas("en");
+            
+            Source.mtdCambiarFuente( dto.getFuente() );
+            Source.styleButtonDefault = dto.getEstilo();
+            
+        }
     }
     
     public void mtdVerificarPIDLinux(){

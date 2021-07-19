@@ -30,15 +30,15 @@ public class Source {
     // * Recursos del sistema
     // Fuentes
     private static String fontName = "K2D";
-    public static final Font fontTextField = new MyFont( fontName ).changeStyle( MyFont.PLAIN, 12);
-    public static final Font fontButton = new MyFont( fontName ).changeStyle( MyFont.BOLD, 14);
-    public static final Font fontLabelEtiqueta = new MyFont( fontName ).changeStyle( MyFont.SEMI_BOLD, 14);
-    public static final Font fontLabelTitulo = new MyFont( fontName ).changeStyle( MyFont.BLACK, 36);
-    public static final Font fontLabelSubtitulo = new MyFont( fontName ).changeStyle( MyFont.LIGHT, 26);
-    public static final Font fontLabelEnlace = new MyFont( fontName ).changeStyle( MyFont.ITALIC, 14);
+    public static Font fontTextField = new MyFont( fontName ).changeStyle( MyFont.PLAIN, 12);
+    public static Font fontButton = new MyFont( fontName ).changeStyle( MyFont.BOLD, 14);
+    public static Font fontLabelEtiqueta = new MyFont( fontName ).changeStyle( MyFont.SEMI_BOLD, 14);
+    public static Font fontLabelTitulo = new MyFont( fontName ).changeStyle( MyFont.BLACK, 36);
+    public static Font fontLabelSubtitulo = new MyFont( fontName ).changeStyle( MyFont.LIGHT, 26);
+    public static Font fontLabelEnlace = new MyFont( fontName ).changeStyle( MyFont.ITALIC, 14);
     
     // Estilos
-    public static final String styleButtonDefault = "bulma";
+    public static String styleButtonDefault = "bulma";
     
     // Dimension de los paneles para el modal
     public static final Dimension tamDialogModal = new Dimension(850, 534);
@@ -51,5 +51,14 @@ public class Source {
     public static final String timeTmp = new Resource().getTimeTmp();
     public static final String dirTemp = System.getProperty("java.io.tmpdir");
     public static final String dirHome = System.getProperty("user.home");
+    
+    public static void mtdCambiarFuente(String fontName){
+        Source.fontTextField = new MyFont( fontName ).changeStyle( MyFont.PLAIN, 12);
+        Source.fontButton = new MyFont( fontName ).changeStyle( MyFont.BOLD, 14);
+        Source.fontLabelEtiqueta = new MyFont( fontName ).changeStyle( MyFont.SEMI_BOLD, 14);
+        Source.fontLabelTitulo = new MyFont( fontName ).changeStyle( MyFont.BLACK, 36);
+        Source.fontLabelSubtitulo = new MyFont( fontName ).changeStyle( MyFont.LIGHT, 26);
+        Source.fontLabelEnlace = new MyFont( fontName ).changeStyle( MyFont.ITALIC, 14);
+    }
             
 }

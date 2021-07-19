@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import modelo.dao.PreferenciaDao;
 import modelo.dto.PreferenciaDto;
 import src.Info;
@@ -55,7 +56,6 @@ public class CtrlPreferencias implements MouseListener{
             }
         });
         
-        
     }
     
     @Override
@@ -71,9 +71,17 @@ public class CtrlPreferencias implements MouseListener{
     }
     
     private void mtdBtnAceptar(){
-        // * Cerrar el modal
-        modal.setVisible(false);
-        modal.dispose();
+        if( mtdObtenerDatos() ){
+            dto.setIdioma( String.valueOf(laVista.cmboxIdiomas.getSelectedItem()) );
+            dto.setFuente( String.valueOf(laVista.cmboxFuentes.getSelectedItem()) );
+            dto.setEstilo( String.valueOf(laVista.cmboxEstilos.getSelectedItem()) );
+            
+            dao.regitrar_conexion(dto);
+            JOptionPane.showMessageDialog(laVista, "Preferencias, guardado.");
+            mtdBtnCancelar();
+            
+        }else
+            JOptionPane.showMessageDialog(laVista, "Lo siento, datos incorrectos.");
     }
     
     private void mtdBtnCancelar(){
@@ -91,7 +99,16 @@ public class CtrlPreferencias implements MouseListener{
             dto = new PreferenciaDto();
         }
         
+        System.out.println(""+ dto.toString());
+        laVista.cmboxEstilos.setSelectedItem(dto.getEstilo().trim());
+        laVista.cmboxFuentes.setSelectedItem(dto.getFuente().trim());
+        laVista.cmboxIdiomas.setSelectedItem(dto.getIdioma().trim());
         
+    }
+    
+    private boolean mtdObtenerDatos(){
+        int contador=1;
+        return (contador > 0);
     }
     
     @Override
