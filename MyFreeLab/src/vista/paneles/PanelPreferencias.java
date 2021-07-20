@@ -30,6 +30,10 @@ public class PanelPreferencias extends javax.swing.JPanel {
     }
     
     private void mtdEstablecerIdioma(){
+        
+        // * Paneles
+        tpanelOpciones.setTitleAt(0, MyFreeLab.idioma.getProperty("panelPreferencias.tpanelOpciones"));
+        
         // * Etiquetas
         this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelPreferencias.etqTitulo"));
         this.etqEstilo.setText(MyFreeLab.idioma.getProperty("panelPreferencias.etqEstilo"));

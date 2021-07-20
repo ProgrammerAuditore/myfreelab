@@ -86,8 +86,6 @@ public class MyFreeLab {
         } else{
             dto = dao.obtener_datos();
         }
-        
-            dto = dao.obtener_datos();
             
             if( dto.getIdioma().trim().equals("Español") || dto.getIdioma().trim().equals("Spanish") )
                 idioma = new Idiomas("es");
