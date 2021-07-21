@@ -10,16 +10,16 @@ class Rutas {
     public static String pathSharedWin = "shared";
     
     // * Obtener recursos desde el ejecutable .jar (Recursos Interno)
-    public static String pathBkgDefault =  "/storage/shared/img/background_main.png";
-    public static String pahtContenedorThemes = "/storage/shared/buttons/";
-    public static String pathContenedorFuentes = "/storage/shared/fonts/";
-    public static String pathIconDefault = "/storage/shared/img/ms-icon-215x215.png";
-    public static String pathBkgAside = "/storage/shared/img/background_aside.png";
-    public static String pathBkgLogo = "/storage/shared/img/panel_logo.png";
-    public static String pathBkgPortada = "/storage/shared/img/portada_1.png";
-    public static String pathIconoDefultMs = "/storage/shared/img/ms-icon-70x70.png";
-    public static String pathIconoDefultApple = "/storage/shared/img/apple-icon-60x60.png";
+    public static String pathBkgDefault =  "/storage/img/background_main.png";
+    public static String pahtContenedorThemes = "/storage/buttons/";
+    public static String pathContenedorFuentes = "/storage/fonts/";
+    public static String pathIconDefault = "/storage/img/ms-icon-215x215.png";
+    public static String pathBkgAside = "/storage/img/background_aside.png";
+    public static String pathBkgLogo = "/storage/img/panel_logo.png";
+    public static String pathBkgPortada = "/storage/img/portada_1.png";
+    public static String pathIconoDefultMs = "/storage/img/ms-icon-70x70.png";
+    public static String pathIconoDefultApple = "/storage/img/apple-icon-60x60.png";
     public static String pathDocumentoVersionesXml = "/storage/etc/MyFreeLab_Versions.xml";
-    public static String pathBkgSplash = "/storage/shared/img/banner.png";
+    public static String pathBkgSplash = "/storage/img/banner.png";
     
 }

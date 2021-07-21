@@ -360,19 +360,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuEditar.setText("Editar");
         menuEditar.setEnabled(false);
 
-        btnDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/icono_datospersonales.png"))); // NOI18N
+        btnDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_datospersonales.png"))); // NOI18N
         btnDatosPersonales.setText("Mis datos personales");
         menuEditar.add(btnDatosPersonales);
 
-        btnGestionarProyectos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/icono_gproyectos.png"))); // NOI18N
+        btnGestionarProyectos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_gproyectos.png"))); // NOI18N
         btnGestionarProyectos.setText("Gestionar proyectos");
         menuEditar.add(btnGestionarProyectos);
 
-        btnGestionarEmpresas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/icono_gempresas.png"))); // NOI18N
+        btnGestionarEmpresas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_gempresas.png"))); // NOI18N
         btnGestionarEmpresas.setText("Gestionar empresas");
         menuEditar.add(btnGestionarEmpresas);
 
-        btnVinculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/icono_pvinculacion.png"))); // NOI18N
+        btnVinculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_pvinculacion.png"))); // NOI18N
         btnVinculacion.setText("Vinculación");
         menuEditar.add(btnVinculacion);
 
@@ -380,7 +380,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuConfigurar.setText("Configurar");
 
-        btnConexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/icono_cbasededatos.png"))); // NOI18N
+        btnConexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_cbasededatos.png"))); // NOI18N
         btnConexion.setText("Conexión");
         menuConfigurar.add(btnConexion);
 
