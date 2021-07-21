@@ -123,7 +123,7 @@ public class CtrlPaginacion {
             Dimension tam = new Dimension(50, 25);
             btn.setSize(tam);
             btn.setPreferredSize(tam);
-            btn.setLocation(i*45, 0);
+            btn.setLocation(i*52, 0);
             btn.setVisible(true);
             laVista.add(btn);
             
