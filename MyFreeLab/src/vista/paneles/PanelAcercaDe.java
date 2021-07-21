@@ -27,7 +27,8 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         // Establecer propiedades para el panel
         Dimension tam = null;
         tam = new Dimension(Source.tamDialogInfo);
-        
+        etqLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource(Source.bkgLogo))); // NOI18N
+
         // * Establecer el tamaño del modal
         setSize(tam);
         setPreferredSize(tam);
@@ -56,7 +57,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cmpDescripcion = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        etqLogo = new javax.swing.JLabel();
         etqTitulo = new vista.componentes.etiqueta.Etiqueta();
         etqLink = new vista.componentes.etiqueta.Enlace();
 
@@ -89,11 +90,9 @@ public class PanelAcercaDe extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/shared/img/apple-icon-60x60.png"))); // NOI18N
 
         etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqTitulo.setText("MyFreeLab vx.x.x");
@@ -115,7 +114,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
                         .addGap(0, 106, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(etqLogo)
                                 .addGap(194, 194, 194))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -133,7 +132,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jLabel1)
+                .addComponent(etqLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
@@ -155,8 +154,8 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     public vista.componentes.boton.Boton btnAceptar;
     public javax.swing.JTextArea cmpDescripcion;
     public vista.componentes.etiqueta.Enlace etqLink;
+    private javax.swing.JLabel etqLogo;
     public vista.componentes.etiqueta.Etiqueta etqTitulo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

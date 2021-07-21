@@ -55,7 +55,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="btnDatosPersonales">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/storage/shared/img/icono_datospersonales.png"/>
+                  <Image iconType="3" name="/storage/icons/icono_datospersonales.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Mis datos personales"/>
               </Properties>
@@ -66,7 +66,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="btnGestionarProyectos">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/storage/shared/img/icono_gproyectos.png"/>
+                  <Image iconType="3" name="/storage/icons/icono_gproyectos.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gestionar proyectos"/>
               </Properties>
@@ -77,7 +77,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="btnGestionarEmpresas">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/storage/shared/img/icono_gempresas.png"/>
+                  <Image iconType="3" name="/storage/icons/icono_gempresas.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gestionar empresas"/>
               </Properties>
@@ -88,7 +88,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="btnVinculacion">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/storage/shared/img/icono_pvinculacion.png"/>
+                  <Image iconType="3" name="/storage/icons/icono_pvinculacion.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vinculaci&#xf3;n"/>
               </Properties>
@@ -109,7 +109,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="btnConexion">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/storage/shared/img/icono_cbasededatos.png"/>
+                  <Image iconType="3" name="/storage/icons/icono_cbasededatos.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Conexi&#xf3;n"/>
               </Properties>

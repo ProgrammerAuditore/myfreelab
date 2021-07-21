@@ -18,12 +18,14 @@ public class Source {
     
     // * Recursos internos
     public static final String bkgDefault = Rutas.pathBkgDefault;
-    public static final String bkgLogo = Rutas.pathBkgLogo;
+    public static final String bkgLogo = Rutas.pathIconoDefultApple;
     public static final String bkgPortada = Rutas.pathBkgPortada;
     public static final String bkgSplash = Rutas.pathBkgSplash;
     public static final String bkgAside = Rutas.pathBkgAside;
     public static final String iconDefault = Rutas.pathIconDefault;
-    public static final String temasContenedor = Rutas.pahtContenedorThemes;
+    public static final String imagenesContenedor = Rutas.pathContenedorImagenes;
+    public static final String botonesContenedor = Rutas.pahtContenedorBotones;
+    public static final String iconosContenedor = Rutas.pathContenedorIconos;
     public static final String fuentesContenedor = Rutas.pathContenedorFuentes;
     public static final String docVersionesXml = Rutas.pathDocumentoVersionesXml;
     

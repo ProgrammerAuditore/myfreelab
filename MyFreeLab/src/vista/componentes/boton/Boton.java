@@ -24,7 +24,7 @@ public class Boton extends JPanelBackground implements MouseListener{
     
     private String imgButtonType = "primary";
     private String imgButtonTheme = Source.styleButtonDefault;
-    private final String contenedor = Source.temasContenedor;
+    private final String contenedor = Source.botonesContenedor;
     private String imgButtonActivado = null;
     private String imgButtonHover = null;
     

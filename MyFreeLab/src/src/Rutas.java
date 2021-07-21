@@ -11,12 +11,13 @@ class Rutas {
     
     // * Obtener recursos desde el ejecutable .jar (Recursos Interno)
     public static String pathBkgDefault =  "/storage/img/background_main.png";
-    public static String pahtContenedorThemes = "/storage/buttons/";
+    public static String pahtContenedorBotones = "/storage/buttons/";
     public static String pathContenedorFuentes = "/storage/fonts/";
+    public static String pathContenedorImagenes = "/storage/img/";
+    public static String pathContenedorIconos = "/storage/icons/";
     public static String pathIconDefault = "/storage/img/ms-icon-215x215.png";
     public static String pathBkgAside = "/storage/img/background_aside.png";
-    public static String pathBkgLogo = "/storage/img/panel_logo.png";
-    public static String pathBkgPortada = "/storage/img/portada_1.png";
+    public static String pathBkgPortada = "/storage/img/panel_logo.png";
     public static String pathIconoDefultMs = "/storage/img/ms-icon-70x70.png";
     public static String pathIconoDefultApple = "/storage/img/apple-icon-60x60.png";
     public static String pathDocumentoVersionesXml = "/storage/etc/MyFreeLab_Versions.xml";
