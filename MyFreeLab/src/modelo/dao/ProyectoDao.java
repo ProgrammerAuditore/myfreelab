@@ -1,6 +1,8 @@
 package modelo.dao;
 
 import controlador.CtrlHiloConexion;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -339,6 +341,71 @@ public class ProyectoDao implements keyword_query<ProyectoDto>, keyword_proyecto
         }
         
         return filas;
+    }
+    
+    public long mtdRowCount(int estado) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT COUNT(*) FROM tblproyectos WHERE cmpCtrlEstado = ?; ";
+        long filas = 0;
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, estado);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            filas = rs.getInt(1);
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return filas;
+    }
+    
+    public BigDecimal mtdSumarCostoEstimado(int min, int max) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT SUM(cmpCostoEstimado) FROM tblproyectos WHERE cmpCtrlEstado BETWEEN ? AND ?; ";
+        BigDecimal monto = null;
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, min);
+            ps.setInt(2, max);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            monto = new BigDecimal(rs.getDouble(1)).setScale(2, RoundingMode.HALF_EVEN);
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return monto;
+    }
+    
+    public BigDecimal mtdSumarMontoAdelantado(int min, int max) {
+        PreparedStatement ps = null;
+        Connection conn = CtrlHiloConexion.getConexion();
+        String sql = "SELECT SUM(cmpMontoAdelantado) FROM tblproyectos WHERE cmpCtrlEstado BETWEEN ? AND ?; ";
+        BigDecimal monto = null;
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, min);
+            ps.setInt(2, max);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            monto = new BigDecimal(rs.getDouble(1)).setScale(2, RoundingMode.HALF_EVEN);
+            
+        } catch (SQLException e) {
+            //System.out.println("" + e.getMessage());
+        }
+        
+        return monto;
     }
     
     public List<ProyectoDto> mtdListar(int inicio, int fin) {

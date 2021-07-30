@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="025eecbb-e774-4790-a703-426c100e11e7">
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="rpTitulo" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\src\\storage\\reporte\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SubReportDir" class="java.lang.String"/>
+	<parameter name="rpCopyright" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM tbldatospersonales;]]>
+	</queryString>
+	<field name="cmpID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cmpNombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cmpApellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cmpDireccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cmpCorreo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cmpTMovil" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="232" splitType="Stretch">
+			<staticText>
+				<reportElement x="102" y="0" width="358" height="79" uuid="1f0a4170-c92b-4868-96bd-ab1622c16d3e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informe de proyectos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="74" height="79" uuid="2002a029-7273-4ded-b1df-5a89c81a359e"/>
+				<imageExpression><![CDATA[$P{SubReportDir} + "ms-icon-70x70.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="118" width="136" height="20" uuid="d58cf3bf-748b-4c85-b734-e1b48ceeb440"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos Personales]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="0" y="138" width="136" height="20" uuid="c58d1ae5-6b6f-49a7-bf30-383e816e2d61"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cmpNombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="138" width="142" height="20" uuid="f4fda0e9-79d4-4416-9ba6-ab00881fb578"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cmpApellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="158" width="254" height="20" uuid="1430d98f-3558-48dd-a81f-b22fd52c8424"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cmpDireccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="178" width="278" height="20" uuid="d0cc99e8-9209-4799-9700-424ee6b0f078"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cmpCorreo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="198" width="254" height="20" uuid="195f5eb9-0426-4acd-b08f-7bf9d017b373"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cmpTMovil}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="198" width="23" height="20" uuid="6d50602e-801b-4eab-8de7-9cd1aef555a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="158" width="23" height="20" uuid="56e67b92-0992-41e7-a129-9dd1a5d4ade2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dir.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="102" y="102" width="358" height="1" uuid="125a4e5e-a17d-4dc6-9028-0f353ec7bf3c"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="54" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="11" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="136" y="0" width="300" height="20" uuid="96772db4-cf8e-4f33-8c8e-e985e15d06c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{rpTitulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="136" y="22" width="300" height="20" uuid="992f55c7-cfa1-463d-9ed3-a001d630c4de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Todos los derechos reservados]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="530" y="22" width="25" height="20" uuid="95827ab2-c5d5-4759-b561-de41638ce226"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="506" y="22" width="24" height="20" uuid="84673e96-37c3-47ff-8b15-31db5d842cbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Pag.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="2" width="300" height="20" uuid="7ecd7c90-066d-41f8-b555-c9998ae91494"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{rpCopyright}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="6" splitType="Stretch"/>
+	</summary>
+</jasperReport>

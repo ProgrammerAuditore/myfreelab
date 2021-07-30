@@ -110,7 +110,9 @@ public class FabricarModal {
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
         PanelInforme vista = new PanelInforme();
-        CtrlGenerarInforme controlador = new CtrlGenerarInforme(vista);
+        ProyectoDto dto = new ProyectoDto();
+        ProyectoDao dao = new ProyectoDao();
+        CtrlGenerarInforme controlador = new CtrlGenerarInforme(vista, dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);

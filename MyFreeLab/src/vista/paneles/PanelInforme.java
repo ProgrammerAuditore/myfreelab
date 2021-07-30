@@ -124,19 +124,31 @@ public class PanelInforme extends javax.swing.JPanel {
 
         lblProEliminados.setText("Proyectos eliminados");
 
+        cmpProEliminados.setEditable(false);
         cmpProEliminados.setComponenteDidireccional(lblProEliminados);
+        cmpProEliminados.setEnabled(false);
+        cmpProEliminados.setFocusable(false);
 
         lblProFinalizados.setText("Proyectos finalizados");
 
         lblProEnProceso.setText("Proyectos en proceso");
 
+        cmpProEnProceso.setEditable(false);
         cmpProEnProceso.setComponenteDidireccional(lblProEnProceso);
+        cmpProEnProceso.setEnabled(false);
+        cmpProEnProceso.setFocusable(false);
 
+        cmpProFinalizados.setEditable(false);
         cmpProFinalizados.setComponenteDidireccional(lblProFinalizados);
+        cmpProFinalizados.setEnabled(false);
+        cmpProFinalizados.setFocusable(false);
 
         lblProTotales.setText("Proyectos en total");
 
+        cmpProTotales.setEditable(false);
         cmpProTotales.setComponenteDidireccional(lblProTotales);
+        cmpProTotales.setEnabled(false);
+        cmpProTotales.setFocusable(false);
 
         mensaje1.setText("Aquí se muestran un resumen de todo los proyectos en proceso, finalizados y eliminados.");
 
@@ -196,21 +208,29 @@ public class PanelInforme extends javax.swing.JPanel {
 
         cmpMontoEsperado.setEditable(false);
         cmpMontoEsperado.setComponenteDidireccional(lblMontoEsperado);
+        cmpMontoEsperado.setEnabled(false);
+        cmpMontoEsperado.setFocusable(false);
 
         lblMontoPerdidas.setText("Monto en perdidas");
 
         cmpMontoPerdidas.setEditable(false);
         cmpMontoPerdidas.setComponenteDidireccional(lblMontoPerdidas);
+        cmpMontoPerdidas.setEnabled(false);
+        cmpMontoPerdidas.setFocusable(false);
 
         lblMontoLibre.setText("Monto libre");
 
         cmpMontoLibre.setEditable(false);
         cmpMontoLibre.setComponenteDidireccional(lblMontoLibre);
+        cmpMontoLibre.setEnabled(false);
+        cmpMontoLibre.setFocusable(false);
 
         lblMontoObtenido.setText("Monto obtenido");
 
         cmpMontoObtenido.setEditable(false);
         cmpMontoObtenido.setComponenteDidireccional(lblMontoObtenido);
+        cmpMontoObtenido.setEnabled(false);
+        cmpMontoObtenido.setFocusable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -300,14 +320,14 @@ public class PanelInforme extends javax.swing.JPanel {
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnAceptar;
     public vista.componentes.boton.Boton btnCancelar;
-    private vista.componentes.campos.CampoTexto cmpMontoEsperado;
-    private vista.componentes.campos.CampoTexto cmpMontoLibre;
-    private vista.componentes.campos.CampoTexto cmpMontoObtenido;
-    private vista.componentes.campos.CampoTexto cmpMontoPerdidas;
+    public vista.componentes.campos.CampoTexto cmpMontoEsperado;
+    public vista.componentes.campos.CampoTexto cmpMontoLibre;
+    public vista.componentes.campos.CampoTexto cmpMontoObtenido;
+    public vista.componentes.campos.CampoTexto cmpMontoPerdidas;
     public vista.componentes.campos.CampoDatos cmpProEliminados;
-    private vista.componentes.campos.CampoTexto cmpProEnProceso;
-    private vista.componentes.campos.CampoTexto cmpProFinalizados;
-    private vista.componentes.campos.CampoTexto cmpProTotales;
+    public vista.componentes.campos.CampoTexto cmpProEnProceso;
+    public vista.componentes.campos.CampoTexto cmpProFinalizados;
+    public vista.componentes.campos.CampoTexto cmpProTotales;
     public vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

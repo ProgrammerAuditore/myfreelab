@@ -203,9 +203,12 @@
             </Component>
             <Component class="vista.componentes.campos.CampoDatos" name="cmpProEliminados">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblProEliminados"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -223,17 +226,29 @@
             </Component>
             <Component class="vista.componentes.campos.CampoTexto" name="cmpProEnProceso">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblProEnProceso"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="vista.componentes.campos.CampoTexto" name="cmpProFinalizados">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblProFinalizados"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="vista.componentes.etiqueta.Etiqueta" name="lblProTotales">
               <Properties>
@@ -242,10 +257,16 @@
             </Component>
             <Component class="vista.componentes.campos.CampoTexto" name="cmpProTotales">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblProTotales"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="vista.componentes.etiqueta.Mensaje" name="mensaje1">
               <Properties>
@@ -338,7 +359,12 @@
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblMontoEsperado"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="vista.componentes.etiqueta.Etiqueta" name="lblMontoPerdidas">
               <Properties>
@@ -351,7 +377,12 @@
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblMontoPerdidas"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="vista.componentes.etiqueta.Etiqueta" name="lblMontoLibre">
               <Properties>
@@ -364,7 +395,12 @@
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblMontoLibre"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="vista.componentes.etiqueta.Etiqueta" name="lblMontoObtenido">
               <Properties>
@@ -377,7 +413,12 @@
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblMontoObtenido"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
