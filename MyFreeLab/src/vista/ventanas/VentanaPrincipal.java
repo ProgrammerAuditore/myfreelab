@@ -60,6 +60,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // * Botones
         this.btnSalir.setText(MyFreeLab.idioma.getProperty("btn.Salir"));
         this.btnPreferencias.setText(MyFreeLab.idioma.getProperty("btn.Preferencia"));
+        this.btnGenerarInforme.setText(MyFreeLab.idioma.getProperty("btn.GenerarInforme"));
         
         this.btnDatosPersonales.setText(MyFreeLab.idioma.getProperty("btn.DatosPersonales"));
         this.btnGestionarProyectos.setText(MyFreeLab.idioma.getProperty("btn.GestionarProyectos"));

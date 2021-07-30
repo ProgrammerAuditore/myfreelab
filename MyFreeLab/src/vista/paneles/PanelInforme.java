@@ -18,18 +18,36 @@ public class PanelInforme extends javax.swing.JPanel {
     private void mtdEstablecerIdioma(){
         
         // * Paneles
-        tpanelInformativo.setTitleAt(0, MyFreeLab.idioma.getProperty("panelPreferencias.tpanelOpciones"));
+        tpanelInformativo.setTitleAt(0, MyFreeLab.idioma.getProperty("panelInforme.tpanelInformativo.tab1"));
+        tpanelInformativo.setTitleAt(1, MyFreeLab.idioma.getProperty("panelInforme.tpanelInformativo.tab2"));
         
         // * Etiquetas
-        this.lblProEliminados.setText(MyFreeLab.idioma.getProperty("panelDatosPersonales.etqNombres"));
-        this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelDatosPersonales.etqTitulo"));
+        this.lblProEnProceso.setText(MyFreeLab.idioma.getProperty("panelInforme.lblProEnProceso"));
+        this.lblProFinalizados.setText(MyFreeLab.idioma.getProperty("panelInforme.lblProFinalizados"));
+        this.lblProEliminados.setText(MyFreeLab.idioma.getProperty("panelInforme.lblProEliminados"));
+        this.lblProTotales.setText(MyFreeLab.idioma.getProperty("panelInforme.lblProTotales"));
+        
+        this.lblMontoEsperado.setText(MyFreeLab.idioma.getProperty("panelInforme.lblMontoEsperado"));
+        this.lblMontoPerdidas.setText(MyFreeLab.idioma.getProperty("panelInforme.lblMontoPerdidas"));
+        this.lblMontoLibre.setText(MyFreeLab.idioma.getProperty("panelInforme.lblMontoLibre"));
+        this.lblMontoObtenido.setText(MyFreeLab.idioma.getProperty("panelInforme.lblMontoObtenido"));
+        
+        this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelInforme.etqTitulo"));
         
         // * Campos (Placeholder)
-        this.cmpProEliminados.setPlaceholder(MyFreeLab.idioma.getProperty("panelDatosPersonales.etqNombres"));
+        this.cmpProEnProceso.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblProEnProceso"));
+        this.cmpProFinalizados.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblProFinalizados"));
+        this.cmpProEliminados.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblProEliminados"));
+        this.cmpProTotales.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblProTotales"));
+        
+        this.cmpMontoEsperado.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblMontoEsperado"));
+        this.cmpMontoPerdidas.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblMontoPerdidas"));
+        this.cmpMontoLibre.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblMontoLibre"));
+        this.cmpMontoObtenido.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblMontoObtenido"));
         
         // * Botones
-        this.btnAceptar.setTexto(MyFreeLab.idioma.getProperty("panelDatosPersonales.btnAceptar"));
-        this.btnCancelar.setTexto(MyFreeLab.idioma.getProperty("panelDatosPersonales.btnCancelar"));
+        this.btnAceptar.setTexto(MyFreeLab.idioma.getProperty("panelInforme.btnAceptar"));
+        this.btnCancelar.setTexto(MyFreeLab.idioma.getProperty("panelInforme.btnCancelar"));
     }
 
     /**
@@ -50,19 +68,19 @@ public class PanelInforme extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         lblProEliminados = new vista.componentes.etiqueta.Etiqueta();
         cmpProEliminados = new vista.componentes.campos.CampoDatos();
-        lblProFinalizado = new vista.componentes.etiqueta.Etiqueta();
+        lblProFinalizados = new vista.componentes.etiqueta.Etiqueta();
         lblProEnProceso = new vista.componentes.etiqueta.Etiqueta();
         cmpProEnProceso = new vista.componentes.campos.CampoTexto();
-        campoTexto1 = new vista.componentes.campos.CampoTexto();
+        cmpProFinalizados = new vista.componentes.campos.CampoTexto();
         lblProTotales = new vista.componentes.etiqueta.Etiqueta();
-        campoTexto2 = new vista.componentes.campos.CampoTexto();
+        cmpProTotales = new vista.componentes.campos.CampoTexto();
         mensaje1 = new vista.componentes.etiqueta.Mensaje();
         jPanel3 = new javax.swing.JPanel();
         mensaje2 = new vista.componentes.etiqueta.Mensaje();
         lblMontoEsperado = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoEsperado = new vista.componentes.campos.CampoTexto();
         lblMontoPerdidas = new vista.componentes.etiqueta.Etiqueta();
-        campoTexto3 = new vista.componentes.campos.CampoTexto();
+        cmpMontoPerdidas = new vista.componentes.campos.CampoTexto();
         lblMontoLibre = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoLibre = new vista.componentes.campos.CampoTexto();
         lblMontoObtenido = new vista.componentes.etiqueta.Etiqueta();
@@ -108,17 +126,17 @@ public class PanelInforme extends javax.swing.JPanel {
 
         cmpProEliminados.setComponenteDidireccional(lblProEliminados);
 
-        lblProFinalizado.setText("Proyectos finalizados");
+        lblProFinalizados.setText("Proyectos finalizados");
 
         lblProEnProceso.setText("Proyectos en proceso");
 
         cmpProEnProceso.setComponenteDidireccional(lblProEnProceso);
 
-        campoTexto1.setComponenteDidireccional(lblProFinalizado);
+        cmpProFinalizados.setComponenteDidireccional(lblProFinalizados);
 
         lblProTotales.setText("Proyectos en total");
 
-        campoTexto2.setComponenteDidireccional(lblProTotales);
+        cmpProTotales.setComponenteDidireccional(lblProTotales);
 
         mensaje1.setText("Aquí se muestran un resumen de todo los proyectos en proceso, finalizados y eliminados.");
 
@@ -132,8 +150,8 @@ public class PanelInforme extends javax.swing.JPanel {
                     .addComponent(mensaje1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoTexto1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(lblProFinalizado, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(cmpProFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(lblProFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                             .addComponent(cmpProEnProceso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmpProEliminados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblProEliminados, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
@@ -141,7 +159,7 @@ public class PanelInforme extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblProTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoTexto2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cmpProTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -158,11 +176,11 @@ public class PanelInforme extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblProTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campoTexto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmpProTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblProFinalizado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblProFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(campoTexto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmpProFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblProEliminados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -181,8 +199,8 @@ public class PanelInforme extends javax.swing.JPanel {
 
         lblMontoPerdidas.setText("Monto en perdidas");
 
-        campoTexto3.setEditable(false);
-        campoTexto3.setComponenteDidireccional(lblMontoPerdidas);
+        cmpMontoPerdidas.setEditable(false);
+        cmpMontoPerdidas.setComponenteDidireccional(lblMontoPerdidas);
 
         lblMontoLibre.setText("Monto libre");
 
@@ -207,7 +225,7 @@ public class PanelInforme extends javax.swing.JPanel {
                             .addComponent(lblMontoEsperado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmpMontoEsperado, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                             .addComponent(lblMontoPerdidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoTexto3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmpMontoPerdidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblMontoLibre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmpMontoLibre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -234,7 +252,7 @@ public class PanelInforme extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMontoPerdidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoTexto3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmpMontoPerdidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMontoLibre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -282,14 +300,14 @@ public class PanelInforme extends javax.swing.JPanel {
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnAceptar;
     public vista.componentes.boton.Boton btnCancelar;
-    private vista.componentes.campos.CampoTexto campoTexto1;
-    private vista.componentes.campos.CampoTexto campoTexto2;
-    private vista.componentes.campos.CampoTexto campoTexto3;
     private vista.componentes.campos.CampoTexto cmpMontoEsperado;
     private vista.componentes.campos.CampoTexto cmpMontoLibre;
     private vista.componentes.campos.CampoTexto cmpMontoObtenido;
+    private vista.componentes.campos.CampoTexto cmpMontoPerdidas;
     public vista.componentes.campos.CampoDatos cmpProEliminados;
     private vista.componentes.campos.CampoTexto cmpProEnProceso;
+    private vista.componentes.campos.CampoTexto cmpProFinalizados;
+    private vista.componentes.campos.CampoTexto cmpProTotales;
     public vista.componentes.etiqueta.Titulo etqTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -300,7 +318,7 @@ public class PanelInforme extends javax.swing.JPanel {
     private vista.componentes.etiqueta.Etiqueta lblMontoPerdidas;
     private vista.componentes.etiqueta.Etiqueta lblProEliminados;
     private vista.componentes.etiqueta.Etiqueta lblProEnProceso;
-    private vista.componentes.etiqueta.Etiqueta lblProFinalizado;
+    private vista.componentes.etiqueta.Etiqueta lblProFinalizados;
     private vista.componentes.etiqueta.Etiqueta lblProTotales;
     private vista.componentes.etiqueta.Mensaje mensaje1;
     private vista.componentes.etiqueta.Mensaje mensaje2;

@@ -146,8 +146,8 @@
                           <Component id="mensaje1" pref="628" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="campoTexto1" pref="280" max="32767" attributes="0"/>
-                                  <Component id="lblProFinalizado" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="cmpProFinalizados" pref="280" max="32767" attributes="0"/>
+                                  <Component id="lblProFinalizados" alignment="0" pref="280" max="32767" attributes="0"/>
                                   <Component id="cmpProEnProceso" alignment="1" max="32767" attributes="0"/>
                                   <Component id="cmpProEliminados" alignment="1" max="32767" attributes="0"/>
                                   <Component id="lblProEliminados" alignment="0" pref="280" max="32767" attributes="0"/>
@@ -156,7 +156,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblProTotales" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                  <Component id="campoTexto2" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                  <Component id="cmpProTotales" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -179,13 +179,13 @@
                           <Group type="102" attributes="0">
                               <Component id="lblProTotales" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="campoTexto2" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpProTotales" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblProFinalizado" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblProFinalizados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Component id="campoTexto1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmpProFinalizados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lblProEliminados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -211,7 +211,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="vista.componentes.etiqueta.Etiqueta" name="lblProFinalizado">
+            <Component class="vista.componentes.etiqueta.Etiqueta" name="lblProFinalizados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Proyectos finalizados"/>
               </Properties>
@@ -228,10 +228,10 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="vista.componentes.campos.CampoTexto" name="campoTexto1">
+            <Component class="vista.componentes.campos.CampoTexto" name="cmpProFinalizados">
               <Properties>
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="lblProFinalizado"/>
+                  <ComponentRef name="lblProFinalizados"/>
                 </Property>
               </Properties>
             </Component>
@@ -240,7 +240,7 @@
                 <Property name="text" type="java.lang.String" value="Proyectos en total"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.campos.CampoTexto" name="campoTexto2">
+            <Component class="vista.componentes.campos.CampoTexto" name="cmpProTotales">
               <Properties>
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="lblProTotales"/>
@@ -275,7 +275,7 @@
                                   <Component id="lblMontoEsperado" max="32767" attributes="0"/>
                                   <Component id="cmpMontoEsperado" pref="280" max="32767" attributes="0"/>
                                   <Component id="lblMontoPerdidas" max="32767" attributes="0"/>
-                                  <Component id="campoTexto3" max="32767" attributes="0"/>
+                                  <Component id="cmpMontoPerdidas" max="32767" attributes="0"/>
                                   <Component id="lblMontoLibre" max="32767" attributes="0"/>
                                   <Component id="cmpMontoLibre" max="32767" attributes="0"/>
                               </Group>
@@ -311,7 +311,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lblMontoPerdidas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="campoTexto3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmpMontoPerdidas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lblMontoLibre" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -345,7 +345,7 @@
                 <Property name="text" type="java.lang.String" value="Monto en perdidas"/>
               </Properties>
             </Component>
-            <Component class="vista.componentes.campos.CampoTexto" name="campoTexto3">
+            <Component class="vista.componentes.campos.CampoTexto" name="cmpMontoPerdidas">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="componenteDidireccional" type="javax.swing.JLabel" editor="org.netbeans.modules.form.ComponentChooserEditor">

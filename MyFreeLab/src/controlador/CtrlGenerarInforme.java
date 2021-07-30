@@ -27,7 +27,7 @@ public class CtrlGenerarInforme implements MouseListener{
     public void mtdInit(){
         
         modal.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        modal.setTitle(MyFreeLab.idioma.getProperty("ctrlDatosPersonales.mtdInit.titulo"));
+        modal.setTitle(MyFreeLab.idioma.getProperty("panelInforme.mtdInit.titulo"));
         modal.setResizable(false);
         modal.setSize( laVista.getSize() );
         modal.setPreferredSize(laVista.getSize() );
@@ -58,7 +58,14 @@ public class CtrlGenerarInforme implements MouseListener{
         }
         
         if( e.getSource() == laVista.btnAceptar ){
+            mtdGenerarInforme();
         }
+        
+    }
+    
+    private void mtdGenerarInforme(){
+        CtrlPrincipal.mensajeCtrlPrincipal("Generando informe");
+        
         
     }
 
