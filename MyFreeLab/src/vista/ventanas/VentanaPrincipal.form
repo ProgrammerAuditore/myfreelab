@@ -20,6 +20,14 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="btnGenerarInforme">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generar informe"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btnPreferencias">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Preferencias"/>

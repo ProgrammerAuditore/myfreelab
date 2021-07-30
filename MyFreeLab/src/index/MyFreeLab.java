@@ -265,7 +265,7 @@ public class MyFreeLab {
         System.out.println("#dataConexion : " + Source.dataConexion.getAbsolutePath());
         System.out.println("#dataRun : " + Source.dataRun.getAbsolutePath());
         System.out.println("#docVersionesXml : " + Source.docVersionesXml);
-        System.out.println("#docReporte : " + Source.docReporte);
+        System.out.println("#docReporte : " + Source.docCotizacionJasper);
         System.out.println("#\n");
     }
     

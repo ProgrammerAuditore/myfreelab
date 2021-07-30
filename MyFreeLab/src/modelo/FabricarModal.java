@@ -3,6 +3,7 @@ package modelo;
 import controlador.CtrlAcercaDe;
 import controlador.CtrlConexion;
 import controlador.CtrlDatosPersonales;
+import controlador.CtrlGenerarInforme;
 import controlador.CtrlGestionarEmpresas;
 import controlador.CtrlGestionarProyectos;
 import controlador.CtrlGestionarRequisitos;
@@ -32,6 +33,7 @@ import vista.paneles.PanelDatosPersonales;
 import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
 import vista.paneles.PanelGestionarRequisitos;
+import vista.paneles.PanelInforme;
 import vista.paneles.PanelVinculacion;
 import vista.ventanas.VentanaPrincipal;
 
@@ -49,6 +51,7 @@ public class FabricarModal {
         switch(modal){
             case "Preferencias" : modalPreferencias(); break;
             case "ConfigurarConexion" : modalConfigurarConexion(); break;
+            case "GenerarInforme" : modalGenerarInforme(); break;
             case "DatosPersonales" : modalDatosPersonales(); break;
             case "GestionarProyectos" : modalGestionarProyectos(); break;
             case "GestionarEmpresas" : modalGestionarEmpresas(); break;
@@ -101,6 +104,18 @@ public class FabricarModal {
         controlador.modal.setLocationRelativeTo(laVista);
         controlador.modal.setVisible(true);
 
+    }
+    
+    private void modalGenerarInforme(){
+        
+        // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
+        PanelInforme vista = new PanelInforme();
+        CtrlGenerarInforme controlador = new CtrlGenerarInforme(vista);
+        controlador.modal = new JDialog(laVista);
+        controlador.mtdInit();
+        controlador.modal.setLocationRelativeTo(laVista);
+        controlador.modal.setVisible(true);
+        
     }
 
     private void modalGestionarProyectos() {

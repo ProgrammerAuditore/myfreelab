@@ -200,10 +200,10 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         JasperPrint jp = null;
 
         try {
-            String pathReporteCotizacion = new File( Source.docReporte.get("jrxml_file") ).getAbsolutePath();
+            String pathReporteCotizacion = new File( Source.docCotizacionJasper.get("jrxml_file") ).getAbsolutePath();
 
             Map<String, Object> parametros = new HashMap<String, Object>();
-            parametros.put("SubReportDir", Source.docReporte.get("root_dir"));
+            parametros.put("SubReportDir", Source.docCotizacionJasper.get("root_dir"));
             parametros.put("rpCopyright", Info.Copyright );
             parametros.put("rpCostoEstimado", "" + dto.getCmpCostoEstimado());
             parametros.put("rpProyectoID", dto.getCmpID());

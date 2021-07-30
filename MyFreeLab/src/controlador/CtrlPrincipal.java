@@ -84,6 +84,7 @@ public class CtrlPrincipal implements ActionListener {
 
         // * Definir oyentes
         laVista.setLocationRelativeTo(null);
+        laVista.btnGenerarInforme.addActionListener(this);
         laVista.btnPreferencias.addActionListener(this);
         laVista.btnSalir.addActionListener(this);
         laVista.btnConexion.addActionListener(this);
@@ -184,6 +185,10 @@ public class CtrlPrincipal implements ActionListener {
                 mtdFiltrarListas(MyFreeLab.idioma.getProperty("ctrlPrincipal.actionPerformed.msg00"), 0, 100);
             }
         }
+        
+        if (e.getSource() == laVista.btnGenerarInforme){
+            fabrica.construir("GenerarInforme");
+        }
 
         if (e.getSource() == laVista.btnPreferencias) {
             fabrica.construir("Preferencias");
@@ -224,13 +229,6 @@ public class CtrlPrincipal implements ActionListener {
             mtdObtenerAyuda();
  
     }
-    
-    private void mtdDesHabSubMenus(boolean param){
-        //laVista.menuArchivo.setEnabled(param);
-        //laVista.menuAyuda.setEnabled(param);
-        laVista.menuConfigurar.setEnabled(param);
-        laVista.menuEditar.setEnabled(param);
-    }
 
     private void mtdHabilitarMenus() {
         //laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion]");
@@ -246,8 +244,8 @@ public class CtrlPrincipal implements ActionListener {
         mtdFiltrarListas("proyectos", 0, 100);
         
         // * Habilitar las opciones de menu del menubar
-        mtdDesHabSubMenus(true);
         laVista.menuEditar.setEnabled(true);
+        laVista.btnGenerarInforme.setEnabled(true);
         
         //laVista.setTitle(Info.NombreSoftware + " - [conexion establecida]");
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
@@ -265,8 +263,8 @@ public class CtrlPrincipal implements ActionListener {
         CtrlPrincipal.actualizarBarraEstado();
         
         // * DesHabilitar las opciones de menu del menubar
-        mtdDesHabSubMenus(true);
         laVista.menuEditar.setEnabled(false);
+        laVista.btnGenerarInforme.setEnabled(false);
         
         mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdDesHabilitarMenus.msg1"));
         
@@ -358,7 +356,7 @@ public class CtrlPrincipal implements ActionListener {
         fabrica.construir("ConfigurarConexion");
         
         if( !estadoModalConfigurarConexion ){
-            mtdDesHabSubMenus(false);
+            mtdDesHabilitarMenus();
 
             if( CtrlHiloConexion.checkConexion() ){
                 //laVista.setTitle(Info.NombreSoftware + " - [Estableciendo conexion, espere por favor...]");

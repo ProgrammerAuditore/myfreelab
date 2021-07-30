@@ -14,7 +14,8 @@ public class Source {
     public static final File dataConexion = new Resource().dataConexion();
     public static final File dataPreferencias = new Resource().dataPreferencias();
     public static final Image imgIconoDefault = new Resource().iconoDefault();
-    public static final HashMap<String, String> docReporte = new Resource().docJasper();
+    public static final HashMap<String, String> docCotizacionJasper = new Resource().docCotizacionJasper();
+    public static final HashMap<String, String> docInformeJasper = new Resource().docInformeJasper();
     
     // * Recursos internos
     public static final String bkgDefault = Rutas.pathBkgDefault;

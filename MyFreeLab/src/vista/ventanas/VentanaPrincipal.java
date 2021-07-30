@@ -110,6 +110,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPaginacion = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
+        btnGenerarInforme = new javax.swing.JMenuItem();
         btnPreferencias = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         btnSalir = new javax.swing.JMenuItem();
@@ -343,6 +344,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuArchivo.setText("Archivo");
 
+        btnGenerarInforme.setText("Generar informe");
+        menuArchivo.add(btnGenerarInforme);
+
         btnPreferencias.setText("Preferencias");
         menuArchivo.add(btnPreferencias);
         menuArchivo.add(jSeparator2);
@@ -360,19 +364,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuEditar.setText("Editar");
         menuEditar.setEnabled(false);
 
-        btnDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource(Source.iconosContenedor + "icono_datospersonales.png"))); // NOI18N
+        btnDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_datospersonales.png"))); // NOI18N
         btnDatosPersonales.setText("Mis datos personales");
         menuEditar.add(btnDatosPersonales);
 
-        btnGestionarProyectos.setIcon(new javax.swing.ImageIcon(getClass().getResource(Source.iconosContenedor +"icono_gproyectos.png"))); // NOI18N
+        btnGestionarProyectos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_gproyectos.png"))); // NOI18N
         btnGestionarProyectos.setText("Gestionar proyectos");
         menuEditar.add(btnGestionarProyectos);
 
-        btnGestionarEmpresas.setIcon(new javax.swing.ImageIcon(getClass().getResource(Source.iconosContenedor + "icono_gempresas.png"))); // NOI18N
+        btnGestionarEmpresas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_gempresas.png"))); // NOI18N
         btnGestionarEmpresas.setText("Gestionar empresas");
         menuEditar.add(btnGestionarEmpresas);
 
-        btnVinculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource(Source.iconosContenedor + "icono_pvinculacion.png"))); // NOI18N
+        btnVinculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_pvinculacion.png"))); // NOI18N
         btnVinculacion.setText("Vinculación");
         menuEditar.add(btnVinculacion);
 
@@ -380,7 +384,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuConfigurar.setText("Configurar");
 
-        btnConexion.setIcon(new javax.swing.ImageIcon(getClass().getResource(Source.iconosContenedor + "icono_cbasededatos.png"))); // NOI18N
+        btnConexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/icons/icono_cbasededatos.png"))); // NOI18N
         btnConexion.setText("Conexión");
         menuConfigurar.add(btnConexion);
 
@@ -496,6 +500,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnActualizarPrograma;
     public javax.swing.JMenuItem btnConexion;
     public javax.swing.JMenuItem btnDatosPersonales;
+    public javax.swing.JMenuItem btnGenerarInforme;
     public javax.swing.JMenuItem btnGestionarEmpresas;
     public javax.swing.JMenuItem btnGestionarProyectos;
     public javax.swing.JMenuItem btnObtenerAyuda;

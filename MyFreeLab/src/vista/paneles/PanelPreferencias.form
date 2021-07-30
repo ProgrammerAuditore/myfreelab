@@ -35,18 +35,18 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="bkgAside" pref="500" max="32767" attributes="0"/>
+          <Component id="bkgAside" pref="507" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="tpanelOpciones" min="-2" pref="340" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,7 +132,7 @@
                           <Component id="cmboxFuentes" alignment="0" max="32767" attributes="0"/>
                           <Component id="etqFuente" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="338" max="32767" attributes="0"/>
+                      <EmptySpace pref="340" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

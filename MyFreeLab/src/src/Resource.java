@@ -96,7 +96,7 @@ class Resource {
         
     }
     
-    public HashMap<String, String> docJasper(){
+    public HashMap<String, String> docCotizacionJasper(){
         String OS = System.getProperty("os.name").toLowerCase();
         HashMap<String, String> docJasper = new HashMap<String, String>();
         
@@ -125,6 +125,44 @@ class Resource {
                 docJasper.put("jasper_file", jasper.getAbsolutePath());
             
             File jrxml = new File(Rutas.pathSharedLinux+"/"+"CotizacionOrg.jrxml");
+            if( jrxml.exists() )
+                docJasper.put("jrxml_file", jrxml.getAbsolutePath());
+            
+        }
+        
+        
+        return docJasper;
+    }
+    
+    public HashMap<String, String> docInformeJasper(){
+        String OS = System.getProperty("os.name").toLowerCase();
+        HashMap<String, String> docJasper = new HashMap<String, String>();
+        
+        if( OS.contains("win") ){
+            
+            File shared = new File(Rutas.pathSharedWin);
+            if( shared.exists() && shared.isDirectory() )
+                docJasper.put("root_dir", shared.getAbsolutePath() + "\\");
+            
+            File jasper = new File(Rutas.pathSharedWin+"\\"+"InformeOrg.jasper");
+            if( jasper.exists() )
+                docJasper.put("jasper_file", jasper.getAbsolutePath());
+            
+            File jrxml = new File(Rutas.pathSharedWin+"\\"+"InformeOrg.jrxml");
+            if( jrxml.exists() )
+                docJasper.put("jrxml_file", jrxml.getAbsolutePath());
+            
+        }else{
+            
+            File shared = new File(Rutas.pathSharedLinux);
+            if( shared.exists() && shared.isDirectory() )
+                docJasper.put("root_dir", shared.getAbsolutePath() + "/");
+            
+            File jasper = new File(Rutas.pathSharedLinux+"/"+"InformeOrg.jasper");
+            if( jasper.exists() )
+                docJasper.put("jasper_file", jasper.getAbsolutePath());
+            
+            File jrxml = new File(Rutas.pathSharedLinux+"/"+"InformeOrg.jrxml");
             if( jrxml.exists() )
                 docJasper.put("jrxml_file", jrxml.getAbsolutePath());
             
