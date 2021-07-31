@@ -134,7 +134,8 @@ public class CtrlGestionarProyectos implements MouseListener{
             
             if( !encontrado )
             JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
-                    .getProperty("ctrlGestionarProyecto.mtdBuscarProyecto.msg1"));
+                    .getProperty("ctrlGestionarProyecto.mtdBuscarProyecto.msg1")
+                    .replace("<Proyecto>",  cmpProyecto));
             
         }
         

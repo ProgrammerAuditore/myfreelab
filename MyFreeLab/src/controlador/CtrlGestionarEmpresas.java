@@ -199,7 +199,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             
             String[] msg = new String[2];
             msg[1] = MyFreeLab.idioma
-                    .getProperty("ctrlGestionarEmpresa.mtdModificarEmpresa.msg1");
+                    .getProperty("ctrlGestionarEmpresa.mtdModificarEmpresa.msg1") + " | " + dto.getCmpNombre();
             msg[0] = MyFreeLab.idioma
                     .getProperty("ctrlGestionarEmpresa.mtdModificarEmpresa.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_OPTION);
@@ -229,7 +229,7 @@ public class CtrlGestionarEmpresas implements MouseListener {
             dto = mtdObtenerEmpresa(seleccionado);
             
             msg[1] = MyFreeLab.idioma
-                    .getProperty("ctrlGestionarEmpresa.mtdRemoverEmpresa.msg1");
+                    .getProperty("ctrlGestionarEmpresa.mtdRemoverEmpresa.msg1") + " | " + dto.getCmpNombre();
             msg[0] = MyFreeLab.idioma
                     .getProperty("ctrlGestionarEmpresa.mtdRemoverEmpresa.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[0], msg[1], JOptionPane.YES_NO_OPTION );

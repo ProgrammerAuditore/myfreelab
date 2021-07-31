@@ -125,7 +125,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
             if( !encontrado )
             JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
                     .getProperty("ctrlGestionarRequisitos.mtdBuscarRequisito.msg1")
-                    .replace("<Proyecto>", cmpRequisito)
+                    .replace("<Requisito>", cmpRequisito)
             );
             
         }
@@ -171,7 +171,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
             }
             
             String[] msg = new String[2];
-            msg[0] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdModificarRequisito.msg1");
+            msg[0] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdModificarRequisito.msg1") + " | " + dto.getCmpNombre();
             msg[1] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdModificarRequisito.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
             
@@ -198,7 +198,7 @@ public class CtrlGestionarRequisitos implements MouseListener{
             String[] msg = new String[2];
             dto = mtdObtenerRequisito(seleccionado);
             
-            msg[0] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdEliminarRequisito.msg1");
+            msg[0] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdEliminarRequisito.msg1") + " | " + dto.getCmpNombre();
             msg[1] = MyFreeLab.idioma.getProperty("ctrlGestionarRequisitos.mtdEliminarRequisito.msg2");
             int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
             
