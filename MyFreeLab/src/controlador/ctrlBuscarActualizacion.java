@@ -105,6 +105,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdBuscarActualizacion.msg1"));
+        
         String path = Source.dirTemp;
         // Verificar el sistema operativo
         path += Source.OsWin ? "" : "/" ;
@@ -130,7 +131,8 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Verificar versiones
         int versionNum = Integer.parseInt( doc.get("app_num_version") );
-        if ( versionNum > Integer.parseInt(Info.sVersionNum) ) {
+        if ( versionNum > Integer.parseInt(Info.sVersionNum) ||
+            !doc.get("app_name_version").contains(Info.sProduccion) ) {
 
             // * Actualizar el programa
             CtrlPrincipal.mensajeCtrlPrincipal("Nueva versión encontrada");

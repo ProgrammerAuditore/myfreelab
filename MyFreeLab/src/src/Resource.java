@@ -134,6 +134,7 @@ class Resource {
         return docJasper;
     }
     
+    /*
     public HashMap<String, String> docInformeJasper(){
         String OS = System.getProperty("os.name").toLowerCase();
         HashMap<String, String> docJasper = new HashMap<String, String>();
@@ -171,6 +172,7 @@ class Resource {
         
         return docJasper;
     }
+    */
 
     int getPID() {
         String vmName = ManagementFactory.getRuntimeMXBean().getName();
