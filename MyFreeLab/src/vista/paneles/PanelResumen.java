@@ -3,9 +3,9 @@ package vista.paneles;
 import index.MyFreeLab;
 import src.Source;
 
-public class PanelInforme extends javax.swing.JPanel {
+public class PanelResumen extends javax.swing.JPanel {
 
-    public PanelInforme() {
+    public PanelResumen() {
         initComponents();
         this.setSize(Source.tamDialogModal );
         this.setPreferredSize(Source.tamDialogModal );
@@ -47,7 +47,6 @@ public class PanelInforme extends javax.swing.JPanel {
         
         // * Botones
         this.btnAceptar.setTexto(MyFreeLab.idioma.getProperty("panelInforme.btnAceptar"));
-        this.btnCancelar.setTexto(MyFreeLab.idioma.getProperty("panelInforme.btnCancelar"));
     }
 
     /**
@@ -63,7 +62,6 @@ public class PanelInforme extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         etqTitulo = new vista.componentes.etiqueta.Titulo();
         btnAceptar = new vista.componentes.boton.Boton();
-        btnCancelar = new vista.componentes.boton.Boton();
         tpanelInformativo = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         lblProEliminados = new vista.componentes.etiqueta.Etiqueta();
@@ -103,7 +101,7 @@ public class PanelInforme extends javax.swing.JPanel {
 
         etqTitulo.setForeground(new java.awt.Color(255, 255, 255));
         etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etqTitulo.setText("GENERAR INFORME");
+        etqTitulo.setText("RESUMEN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,9 +116,6 @@ public class PanelInforme extends javax.swing.JPanel {
 
         btnAceptar.setImgButtonType("success");
         btnAceptar.setTexto("Aceptar");
-
-        btnCancelar.setImgButtonType("secondary");
-        btnCancelar.setTexto("Cancelar");
 
         lblProEliminados.setText("Proyectos eliminados");
 
@@ -293,8 +288,6 @@ public class PanelInforme extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(tpanelInformativo))
                 .addContainerGap())
@@ -306,11 +299,9 @@ public class PanelInforme extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tpanelInformativo)
+                .addComponent(tpanelInformativo, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -319,7 +310,6 @@ public class PanelInforme extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnAceptar;
-    public vista.componentes.boton.Boton btnCancelar;
     public vista.componentes.campos.CampoTexto cmpMontoEsperado;
     public vista.componentes.campos.CampoTexto cmpMontoLibre;
     public vista.componentes.campos.CampoTexto cmpMontoObtenido;

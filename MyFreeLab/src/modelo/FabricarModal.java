@@ -3,7 +3,7 @@ package modelo;
 import controlador.CtrlAcercaDe;
 import controlador.CtrlConexion;
 import controlador.CtrlDatosPersonales;
-import controlador.CtrlGenerarInforme;
+import controlador.CtrlResumen;
 import controlador.CtrlGestionarEmpresas;
 import controlador.CtrlGestionarProyectos;
 import controlador.CtrlGestionarRequisitos;
@@ -33,7 +33,7 @@ import vista.paneles.PanelDatosPersonales;
 import vista.paneles.PanelGestionarEmpresas;
 import vista.paneles.PanelGestionarProyectos;
 import vista.paneles.PanelGestionarRequisitos;
-import vista.paneles.PanelInforme;
+import vista.paneles.PanelResumen;
 import vista.paneles.PanelVinculacion;
 import vista.ventanas.VentanaPrincipal;
 
@@ -109,10 +109,10 @@ public class FabricarModal {
     private void modalGenerarInforme(){
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
-        PanelInforme vista = new PanelInforme();
+        PanelResumen vista = new PanelResumen();
         ProyectoDto dto = new ProyectoDto();
         ProyectoDao dao = new ProyectoDao();
-        CtrlGenerarInforme controlador = new CtrlGenerarInforme(vista, dto, dao);
+        CtrlResumen controlador = new CtrlResumen(vista, dto, dao);
         controlador.modal = new JDialog(laVista);
         controlador.mtdInit();
         controlador.modal.setLocationRelativeTo(laVista);

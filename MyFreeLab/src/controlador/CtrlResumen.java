@@ -22,13 +22,13 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
-import vista.paneles.PanelInforme;
+import vista.paneles.PanelResumen;
 import vista.ventanas.VentanaPrincipal;
 
-public class CtrlGenerarInforme implements MouseListener{
+public class CtrlResumen implements MouseListener{
     
     // * Vista
-    PanelInforme laVista;
+    PanelResumen laVista;
     public JDialog modal;
     
     // * Modelo
@@ -37,13 +37,12 @@ public class CtrlGenerarInforme implements MouseListener{
     
     // * Atributos
 
-    public CtrlGenerarInforme(PanelInforme laVista, ProyectoDto dto, ProyectoDao dao ) {
+    public CtrlResumen(PanelResumen laVista, ProyectoDto dto, ProyectoDao dao ) {
         this.laVista = laVista;
         this.dao = dao;
         this.dto = dto;
         
         this.laVista.btnAceptar.addMouseListener(this);
-        this.laVista.btnCancelar.addMouseListener(this);
         
     }
     
@@ -74,17 +73,14 @@ public class CtrlGenerarInforme implements MouseListener{
     @Override
     public void mouseReleased(MouseEvent e) {
         
-        if( e.getSource() == laVista.btnCancelar ){
+        if( e.getSource() == laVista.btnAceptar ){
             modal.setVisible(false);
             modal.dispose();
         }
         
-        if( e.getSource() == laVista.btnAceptar ){
-            mtdGenerarInforme();
-        }
-        
     }
     
+    /*
     private void mtdGenerarInforme(){
         String msg = VentanaPrincipal.etqMensaje.getText();
         CtrlPrincipal.mensajeCtrlPrincipal("Generando informe");
@@ -145,6 +141,7 @@ public class CtrlGenerarInforme implements MouseListener{
 
         return jp;
     }   
+    */
     
     private void mtdEstablecerDatos(){
         
