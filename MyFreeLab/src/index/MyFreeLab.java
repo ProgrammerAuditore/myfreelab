@@ -168,6 +168,10 @@ public class MyFreeLab {
     // * Inicializar el programa de pruebas
     public void mtdTagTest(){
         mtdVerInformacionDelSoftware();
+        TestReportes tr = new TestReportes();
+        //tr.mtdGenerarInforme();
+        //tr.mtdReporte1();
+        tr.mtdReporte2();
         
         /*
         try {
