@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;
+import src.Source;
 import vista.paneles.PanelConexion;
 
 public class CtrlConexion implements MouseListener{
@@ -213,7 +214,7 @@ public class CtrlConexion implements MouseListener{
     }
     
     private void estilosConexionAbierto(){
-        laVista.panelEstado.setBackground(Color.GREEN);
+        establecerImg(Source.bkgConexionOn);
         laVista.btnEstablecerConexion.setEnabled(false);
         
         laVista.btnCerrarConexion.setEnabled(true);
@@ -223,10 +224,11 @@ public class CtrlConexion implements MouseListener{
         laVista.cmpPuerto.setEnabled(false);
         laVista.cmpHost.setEnabled(false);
         laVista.cmpNull.setEnabled(false);
+        
     }
     
     private void estilosConexionCerrada(){
-        laVista.panelEstado.setBackground(Color.RED);
+        establecerImg(Source.bkgConexionOff);
         laVista.btnCerrarConexion.setEnabled(false);
         
         laVista.btnEstablecerConexion.setEnabled(true);
@@ -236,6 +238,12 @@ public class CtrlConexion implements MouseListener{
         laVista.cmpPuerto.setEnabled(true);
         laVista.cmpHost.setEnabled(true);
         laVista.cmpNull.setEnabled(true);
+    }
+    
+    private void establecerImg(String pathImg){
+        laVista.bckgPanel.setImgBackgroundEnabled(true);
+        laVista.bckgPanel.setImgBackgroundIn_Ex(true);
+        laVista.bckgPanel.setImgRutaInterno( pathImg );
     }
     
     @Override

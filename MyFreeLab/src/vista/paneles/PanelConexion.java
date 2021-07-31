@@ -26,7 +26,6 @@ public class PanelConexion extends javax.swing.JPanel {
         initComponents();
         this.setSize(Source.tamDialogModal );
         this.setPreferredSize(Source.tamDialogModal );
-        panelEstado.setBackground(Color.red);
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);
         bkgAside.setImgRutaInterno( Source.bkgAside );
@@ -63,7 +62,6 @@ public class PanelConexion extends javax.swing.JPanel {
         // * Etiquetas
         this.etqUsuario.setText(MyFreeLab.idioma.getProperty("panelConexion.etqUsuario"));
         this.etqContrasenha.setText(MyFreeLab.idioma.getProperty("panelConexion.etqContrasenha"));
-        this.etqEstado.setText(MyFreeLab.idioma.getProperty("panelConexion.etqEstado"));
         this.etqDatabase.setText(MyFreeLab.idioma.getProperty("panelConexion.etqDatabase"));
         this.etqHost.setText(MyFreeLab.idioma.getProperty("panelConexion.etqHost"));
         this.etqPuerto.setText(MyFreeLab.idioma.getProperty("panelConexion.etqPuerto"));
@@ -103,11 +101,10 @@ public class PanelConexion extends javax.swing.JPanel {
         etqContrasenha = new vista.componentes.etiqueta.Etiqueta();
         etqDatabase = new vista.componentes.etiqueta.Etiqueta();
         cmpDatabase = new vista.componentes.campos.CampoTexto();
-        etqEstado = new vista.componentes.etiqueta.Etiqueta();
-        panelEstado = new javax.swing.JPanel();
         cmpNull = new javax.swing.JCheckBox();
         cmpContrasenha = new vista.componentes.campos.CampoPassword();
         cmpPuerto = new vista.componentes.campos.CampoNumerico();
+        bckgPanel = new vista.componentes.jpanelbackground.JPanelBackground();
         btnEstablecerConexion = new vista.componentes.boton.Boton();
         btnCerrarConexion = new vista.componentes.boton.Boton();
 
@@ -163,41 +160,46 @@ public class PanelConexion extends javax.swing.JPanel {
 
         cmpDatabase.setComponenteDidireccional(etqDatabase);
 
-        etqEstado.setText("Estado");
-
-        panelEstado.setBackground(new java.awt.Color(153, 0, 0));
-        panelEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout panelEstadoLayout = new javax.swing.GroupLayout(panelEstado);
-        panelEstado.setLayout(panelEstadoLayout);
-        panelEstadoLayout.setHorizontalGroup(
-            panelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 56, Short.MAX_VALUE)
-        );
-        panelEstadoLayout.setVerticalGroup(
-            panelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
         cmpNull.setText("Null");
 
         cmpContrasenha.setComponenteDidireccional(etqContrasenha);
 
         cmpPuerto.setComponenteDidireccional(etqPuerto);
 
+        bckgPanel.setImgBackgroundEnabled(true);
+        bckgPanel.setImgBackgroundIn_Ex(true);
+
+        javax.swing.GroupLayout bckgPanelLayout = new javax.swing.GroupLayout(bckgPanel);
+        bckgPanel.setLayout(bckgPanelLayout);
+        bckgPanelLayout.setHorizontalGroup(
+            bckgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 145, Short.MAX_VALUE)
+        );
+        bckgPanelLayout.setVerticalGroup(
+            bckgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmpUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(cmpHost, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(etqHost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(etqUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bckgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmpUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                                .addComponent(cmpHost, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                                .addComponent(etqHost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(etqUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmpDatabase, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                                .addComponent(etqDatabase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -206,19 +208,7 @@ public class PanelConexion extends javax.swing.JPanel {
                                 .addComponent(cmpNull))
                             .addComponent(cmpContrasenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etqPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmpDatabase, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(etqDatabase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(etqEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7))
-                            .addComponent(panelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(etqPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -245,13 +235,15 @@ public class PanelConexion extends javax.swing.JPanel {
                         .addGap(9, 9, 9)
                         .addComponent(cmpContrasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(etqDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmpDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(panelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etqEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(etqDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmpDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 82, Short.MAX_VALUE)
+                        .addComponent(bckgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -282,7 +274,7 @@ public class PanelConexion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bkgAside, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+            .addComponent(bkgAside, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,6 +290,7 @@ public class PanelConexion extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public vista.componentes.jpanelbackground.JPanelBackground bckgPanel;
     public vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnCerrarConexion;
     public vista.componentes.boton.Boton btnEstablecerConexion;
@@ -309,13 +302,11 @@ public class PanelConexion extends javax.swing.JPanel {
     public vista.componentes.campos.CampoTexto cmpUsuario;
     public vista.componentes.etiqueta.Etiqueta etqContrasenha;
     public vista.componentes.etiqueta.Etiqueta etqDatabase;
-    public vista.componentes.etiqueta.Etiqueta etqEstado;
     public vista.componentes.etiqueta.Etiqueta etqHost;
     public vista.componentes.etiqueta.Etiqueta etqPuerto;
     private vista.componentes.etiqueta.Titulo etqTitulo;
     public vista.componentes.etiqueta.Etiqueta etqUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public javax.swing.JPanel panelEstado;
     // End of variables declaration//GEN-END:variables
 }

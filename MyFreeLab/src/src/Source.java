@@ -23,6 +23,8 @@ public class Source {
     public static final String bkgPortada = Rutas.pathBkgPortada;
     public static final String bkgSplash = Rutas.pathBkgSplash;
     public static final String bkgAside = Rutas.pathBkgAside;
+    public static final String bkgConexionOff = Rutas.pathBkgConexionOff;
+    public static final String bkgConexionOn = Rutas.pathBkgConexionOn;
     public static final String iconDefault = Rutas.pathIconDefault;
     public static final String imagenesContenedor = Rutas.pathContenedorImagenes;
     public static final String botonesContenedor = Rutas.pahtContenedorBotones;

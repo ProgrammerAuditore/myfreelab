@@ -17,6 +17,8 @@ class Rutas {
     public static String pathContenedorIconos = "/storage/icons/";
     public static String pathIconDefault = "/storage/img/ms-icon-215x215.png";
     public static String pathBkgAside = "/storage/img/background_aside.png";
+    public static String pathBkgConexionOff = "/storage/img/logo-mysql-off.png";
+    public static String pathBkgConexionOn = "/storage/img/logo-mysql-on.png";
     public static String pathBkgPortada = "/storage/img/panel_logo.png";
     public static String pathIconoDefultMs = "/storage/img/ms-icon-70x70.png";
     public static String pathIconoDefultApple = "/storage/img/apple-icon-60x60.png";
