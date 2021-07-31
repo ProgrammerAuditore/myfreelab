@@ -203,13 +203,41 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             String pathReporteCotizacion = new File( Source.docCotizacionJasper.get("jrxml_file") ).getAbsolutePath();
 
             Map<String, Object> parametros = new HashMap<String, Object>();
+            // * Atributos
             parametros.put("SubReportDir", Source.docCotizacionJasper.get("root_dir"));
-            parametros.put("rpCopyright", Info.Copyright );
             parametros.put("rpCostoEstimado", "" + dto.getCmpCostoEstimado());
-            parametros.put("rpProyectoID", dto.getCmpID());
             parametros.put("rpNombreProyecto", dto.getCmpNombre());
-            parametros.put("rpTitulo", Info.NombreSoftware);
-
+            parametros.put("rpProyectoID", dto.getCmpID());
+            
+            // * Información del software
+            parametros.put("rpNombreSoftware", Info.NombreSoftware);
+            parametros.put("rpCopyright", Info.Copyright );
+            parametros.put("rpEtqDerechosReservados", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpEtqDerechosReservados"));
+            
+            // Introducción
+            parametros.put("rpTitulo", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpTitulo"));
+            parametros.put("rpSeccion1", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpSeccion1")
+                    .replaceAll("<Proyecto>", dto.getCmpNombre() ));
+            parametros.put("rpSeccion2", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpSeccion2"));
+            
+            // Etiquetas
+            parametros.put("rpEtqClientes", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpEtqClientes"));
+            parametros.put("rpEtqDatosPersonales", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpEtqDatosPersonales"));
+            parametros.put("rpEtqRequisitoID", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpEtqRequisitoID"));
+            parametros.put("rpEtqNombreRequisito", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpEtqNombreRequisito"));
+            parametros.put("rpEtqCosto", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpEtqCosto"));
+            parametros.put("rpEtqCostoTotal", MyFreeLab.idioma
+                    .getProperty("ctrlTarjetaProyecto.mtdGenerarReporte.rpEtqCostoTotal"));
+            
             JasperReport jr = JasperCompileManager.compileReport(pathReporteCotizacion);
 
             jp = JasperFillManager.fillReport(jr, parametros, CtrlHiloConexion.getConexion());

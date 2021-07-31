@@ -2,18 +2,27 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="025eecbb-e774-4790-a703-426c100e11e7">
 	<property name="ireport.zoom" value="1.610510000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="245"/>
+	<property name="ireport.y" value="204"/>
 	<parameter name="rpProyectoID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="rpTitulo" class="java.lang.String"/>
-	<parameter name="rpNombreProyecto" class="java.lang.String"/>
+	<parameter name="rpNombreSoftware" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["P:\\Documents\\NetBeansProjects\\Proyectos\\netbeans-freelancer-software\\App\\src\\storage\\reporte\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SubReportDir" class="java.lang.String"/>
 	<parameter name="rpCostoEstimado" class="java.lang.String"/>
 	<parameter name="rpCopyright" class="java.lang.String"/>
+	<parameter name="rpSeccion1" class="java.lang.String"/>
+	<parameter name="rpSeccion2" class="java.lang.String"/>
+	<parameter name="rpEtqClientes" class="java.lang.String"/>
+	<parameter name="rpEtqDatosPersonales" class="java.lang.String"/>
+	<parameter name="rpEtqDerechosReservados" class="java.lang.String"/>
+	<parameter name="rpEtqCostoTotal" class="java.lang.String"/>
+	<parameter name="rpEtqRequisitoID" class="java.lang.String"/>
+	<parameter name="rpEtqNombreRequisito" class="java.lang.String"/>
+	<parameter name="rpEtqCosto" class="java.lang.String"/>
+	<parameter name="rpTitulo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM tblrequisitos tr, tbldatospersonales tdp WHERE tr.cmpProID = $P{rpProyectoID} AND tdp.cmpID = 1;]]>
 	</queryString>
@@ -53,31 +62,10 @@
 	</background>
 	<title>
 		<band height="232" splitType="Stretch">
-			<staticText>
-				<reportElement x="102" y="0" width="358" height="79" uuid="1f0a4170-c92b-4868-96bd-ab1622c16d3e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="30" isBold="true"/>
-				</textElement>
-				<text><![CDATA[COTIZACION]]></text>
-			</staticText>
 			<image>
 				<reportElement x="0" y="0" width="74" height="79" uuid="2002a029-7273-4ded-b1df-5a89c81a359e"/>
 				<imageExpression><![CDATA[$P{SubReportDir} + "ms-icon-70x70.png"]]></imageExpression>
 			</image>
-			<staticText>
-				<reportElement x="0" y="118" width="136" height="20" uuid="d58cf3bf-748b-4c85-b734-e1b48ceeb440"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Datos Personales]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="290" y="118" width="265" height="20" uuid="8d243cf5-3fe9-468b-a190-ba3aef3a4cea"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cliente]]></text>
-			</staticText>
 			<textField pattern="">
 				<reportElement x="0" y="138" width="136" height="20" uuid="c58d1ae5-6b6f-49a7-bf30-383e816e2d61"/>
 				<textElement verticalAlignment="Middle">
@@ -132,29 +120,45 @@
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SubReportDir} + "CotizacionOrg_Clientes.jasper"]]></subreportExpression>
 			</subreport>
+			<textField>
+				<reportElement x="2" y="118" width="134" height="20" uuid="7181ea8c-832a-42c9-9471-6ab1003cdd71"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rpEtqDatosPersonales}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="118" width="265" height="20" uuid="e6a60398-e687-4fdb-9599-8d2dd65ec06a"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rpEtqClientes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="358" height="79" uuid="63062be5-fcee-4730-b23a-8f873fbd8663"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rpTitulo}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="38" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="290" height="14" uuid="1c318deb-815b-4ca0-97a5-ca104c613123"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Este documento se presenta una cotización para el proyectos de ]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="290" y="0" width="265" height="14" uuid="29b99652-45b4-48c7-ba5c-ee2cc8fbe5ed"/>
-				<textElement verticalAlignment="Middle">
-					<font size="10" isBold="true" isItalic="true" isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{rpNombreProyecto}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="14" width="555" height="14" uuid="5ae78a0f-4fdc-4338-9efd-88b4694fe3dc"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="2" y="0" width="553" height="20" uuid="07b3baef-26d4-4c70-91b6-5683156c6f4f"/>
+				<textElement>
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Todo los requisitos mostrados en este documento así como los costos y el costo total del proyecto son solamente un promedio.]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{rpSeccion1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="18" width="553" height="20" uuid="a2bc95cf-aad9-4250-a846-5b232baa72df"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rpSeccion2}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -162,27 +166,27 @@
 			<rectangle>
 				<reportElement x="0" y="0" width="555" height="20" backcolor="#009999" uuid="b2c0f4e5-3c70-408b-be2a-f17716b60926"/>
 			</rectangle>
-			<staticText>
-				<reportElement x="338" y="0" width="217" height="20" uuid="b5ee8357-f499-4b04-a8e8-f8c935a7236d"/>
+			<textField>
+				<reportElement x="2" y="0" width="98" height="20" uuid="08e1ae42-7209-47ea-a68b-a48bf658aa0b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Costo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="100" y="0" width="238" height="20" uuid="9b98c2f8-581b-455f-98f2-e32aeeb091e7"/>
+				<textFieldExpression><![CDATA[$P{rpEtqRequisitoID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="236" height="20" uuid="9fd2d964-f1d2-42ef-9948-c5e5c96f772e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nombre de requisito]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="0" width="100" height="20" uuid="019b8abe-f557-4f45-bf61-a00f183b485a"/>
+				<textFieldExpression><![CDATA[$P{rpEtqNombreRequisito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="0" width="217" height="20" uuid="46c24ace-a133-4c34-bd17-3615e3a79f29"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[ID requisito]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{rpEtqCosto}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -218,17 +222,12 @@
 			<textField>
 				<reportElement x="136" y="0" width="300" height="20" uuid="96772db4-cf8e-4f33-8c8e-e985e15d06c4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{rpTitulo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{rpNombreSoftware}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="42" splitType="Stretch">
-			<staticText>
-				<reportElement x="136" y="22" width="300" height="20" uuid="992f55c7-cfa1-463d-9ed3-a001d630c4de"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Todos los derechos reservados]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="530" y="22" width="25" height="20" uuid="95827ab2-c5d5-4759-b561-de41638ce226"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
@@ -244,6 +243,11 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{rpCopyright}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="136" y="22" width="300" height="20" uuid="5df5e13d-11a9-4017-87f2-cb0d0d2a1a9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{rpEtqDerechosReservados}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>
@@ -254,17 +258,17 @@
 			<rectangle>
 				<reportElement x="338" y="0" width="217" height="20" backcolor="#CCCCCC" uuid="16fd4765-d400-4426-836c-3dffb6f53e48"/>
 			</rectangle>
-			<staticText>
-				<reportElement x="100" y="0" width="238" height="20" uuid="5669888e-3be6-475b-a0ec-89451e169206"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Costo Total]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="338" y="0" width="217" height="20" uuid="c57d70ae-04bb-4293-a751-1d73553647c4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{rpCostoEstimado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="236" height="20" uuid="af876be4-447f-4bf3-9b1c-207424a10e1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rpEtqCostoTotal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
