@@ -14,28 +14,19 @@ public class Info {
             "Tiene la funcionalidad de conexión a una base de datos MYSQL local o remoto para registrar los datos.";
     public static final String Licencia="Todos los derechos reservados.";
     public static final String sNombre = "MyFreeLab";
-    public static final String sVersionName = "v0.9.90";
-    public static final String sVersionNum = "0990";
-    public static final String sProduccion = "Alpha";
+    public static final String sVersionName = "v1.0";
+    public static final String sVersionNum = "1000";
+    public static final String sProduccion = "Beta";
     public static final String NombreSoftware = sNombre + " " + sVersionName + sProduccion;
     public static final String Novedades = 
-            "* Se agrego estados para los proyectos " + "\n" +
-            "* Se agrego filtros en la ventana principal" + "\n" +
-            "+ Para mostrar proyectos en estado: " + "\n" +
-            "+ Realizado, En Proceso, Eliminado " + "\n" +
-            "* Se agrego nuevas acciones para gestionar proyecto" + "\n" +
-            "+ Se agrego botones para: " + "\n" +
-            "+ Eliminar, Remover, Realizado, Recuperar" + "\n" +
-            "* Se agrego paginación para mostrar proyectos" + "\n" +
-            "* Se modifico la barra de estados" + "\n" +
-            "* Se modifico la ventana principal" + "\n" +
-            "* Se modifico los mensajes de estados" + "\n" +
-            "* Se modifico la tarjeta de presentación de los proyectos" + "\n" +
-            "+ Se rediseño los estilos" + "\n" +
-            "+ Se agrego una barra de progreso" + "\n" +
-            "- Se elimino los botones de acciones" + "\n" +
-            "* Se modifico el sistema de búsqueda en la ventana principal" + "\n" +
-            "* Se modifico los paneles de gestionar proyectos, empresas y requisitos" + "\n" +
+            "* Se agrego la ventana y opción de resumen" + "\n" +
+            "* Se agrego la ventana y opción de preferencias" + "\n" +
+            "+ para modificar botones, fuentes e idioma" + "\n" +
+            "* Se agrego soporte para inglés y español" + "\n" +
+            "* Se agrego nuevos estilos para los botones" + "\n" +
+            "* Se agrego nuevos estilos para las fuentes" + "\n" +
+            "* Se modifico el diseño del logotipo" + "\n" +
+            "* Se modifico la ventana de configurar la conexión" + "\n" +
             "* Se corrigió bugs al ingresar datos" + "\n" +
             "* Se corrigió bugs" + "\n" +
             "* etc." + "\n";
