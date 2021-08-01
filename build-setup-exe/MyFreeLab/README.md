@@ -1,4 +1,4 @@
-# MyFreeLab v0.9.80Alpha
+# MyFreeLab v1.0Beta
 ![logo myfreelab][logo_myfreelab]
 <br>
 Victor J. Maximo <br>
