@@ -14,10 +14,12 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import modelo.FabricarModal;
 import modelo.ObjEjecucionXml;
+import modelo.dao.ConexionDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.PreferenciaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
+import modelo.dto.ConexionDto;
 import modelo.dto.PreferenciaDto;
 import src.Info;
 import src.Source;
@@ -116,15 +118,22 @@ public class MyFreeLab {
             } catch (IOException e) {
                 // e.printStackTrace();
             }
-
-            if( result.contains(pid) ){
-                System.out.println(Info.NombreSoftware + " en ejecucion. ");
-                System.exit(0);
-            } else {
-                if( Source.dataRun.delete() ){
-                    // *WARNING* PID corrupto
-                    System.out.println("[!] " + pid);
+            
+            try{
+                if( result.contains(pid) ){
+                    System.out.println(Info.NombreSoftware + " en ejecucion. ");
+                    Source.dataRun.delete();
+                    System.exit(0);
+                } else {
+                    if( Source.dataRun.delete() ){
+                        // *WARNING* PID corrupto
+                        System.out.println("[!] " + pid);
+                    }
                 }
+            }catch(Exception ex){
+                System.out.println(Info.NombreSoftware + " suspendido. ");
+                archivoRun.mtdGenerarXmlRun();
+                System.exit(0);
             }
 
         }
@@ -154,14 +163,21 @@ public class MyFreeLab {
 
             //System.out.println("Respuesta CMD : " + result);
             //System.out.println("PID : " + pid);
-            if( result.contains(pid) ){
-                System.out.println(Info.NombreSoftware + " en ejecucion. ");
-                System.exit(0);
-            } else {
-                if( Source.dataRun.delete() ){
-                    // *WARNING* PID corrupto
-                    System.out.println("[!] " + pid);
+            try{
+                if( result.contains(pid) ){
+                    System.out.println(Info.NombreSoftware + " en ejecucion. ");
+                    Source.dataRun.delete();
+                    System.exit(0);
+                } else {
+                    if( Source.dataRun.delete() ){
+                        // *WARNING* PID corrupto
+                        System.out.println("[!] " + pid);
+                    }
                 }
+            }catch(Exception ex){
+                System.out.println(Info.NombreSoftware + " suspendido. ");
+                archivoRun.mtdGenerarXmlRun();
+                System.exit(0);
             }
 
         }
