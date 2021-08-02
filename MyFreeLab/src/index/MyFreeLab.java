@@ -152,8 +152,8 @@ public class MyFreeLab {
                 // e.printStackTrace();
             }
 
-            System.out.println("Respuesta CMD : " + result);
-            System.out.println("PID : " + pid);
+            //System.out.println("Respuesta CMD : " + result);
+            //System.out.println("PID : " + pid);
             if( result.contains(pid) ){
                 System.out.println(Info.NombreSoftware + " en ejecucion. ");
                 System.exit(0);
