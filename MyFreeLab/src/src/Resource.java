@@ -19,6 +19,9 @@ class Resource {
             // Verificar el sistema operativo
             dir = UserHome + "/.local/";
             
+            // Crear la carpteta .local
+            new File(dir).mkdir();
+            
             // Crear la carpeta myfreelab
             new File( dir + "myfreelab").mkdir();
             
@@ -43,6 +46,9 @@ class Resource {
         
         // Verificar el sistema operativo
         dir = UserHome + "/.local/";
+        
+        // Crear la carpteta .local
+        new File(dir).mkdir();
 
         // Crear la carpeta myfreelab
         new File( dir + "myfreelab").mkdir();
@@ -65,6 +71,9 @@ class Resource {
             
             // Verificar el sistema operativo
             dir = UserHome + "/.local/";
+            
+            // Crear la carpteta .local
+            new File(dir).mkdir();
             
             // Crear la carpeta myfreelab
             new File( dir + "myfreelab").mkdir();

@@ -31,11 +31,7 @@ public class MyFreeLab {
     
     public void mtdTagInit() {
         
-        if( Source.OsLinuxDeb )
-            mtdVerificarPIDLinux();
-        else if ( Source.OsWin )
-            mtdVerificarPIDWin();
-        
+        MyFreeLab.mtdVerificarArranque();
         
         mtdInit();
         HiloConexion hc = new HiloConexion();
@@ -77,6 +73,13 @@ public class MyFreeLab {
         
     }
     
+    public static void mtdVerificarArranque(){
+        if( Source.OsLinuxDeb )
+            MyFreeLab.mtdVerificarPIDLinux();
+        else if ( Source.OsWin )
+            MyFreeLab.mtdVerificarPIDWin();
+    }
+    
     private void mtdInit(){
         PreferenciaDao dao = new PreferenciaDao();
         PreferenciaDto dto;
@@ -97,7 +100,7 @@ public class MyFreeLab {
             
     }
     
-    public void mtdVerificarPIDLinux(){
+    public static void mtdVerificarPIDLinux(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
         if( Source.dataRun.getAbsoluteFile().exists() ){
@@ -118,9 +121,10 @@ public class MyFreeLab {
                 System.out.println(Info.NombreSoftware + " en ejecucion. ");
                 System.exit(0);
             } else {
-                Source.dataRun.delete();
-                // *WARNING* PID corrupto
-                System.out.println("[!] " + pid);
+                if( Source.dataRun.delete() ){
+                    // *WARNING* PID corrupto
+                    System.out.println("[!] " + pid);
+                }
             }
 
         }
@@ -130,7 +134,7 @@ public class MyFreeLab {
         
     }
     
-    public void mtdVerificarPIDWin(){
+    public static void mtdVerificarPIDWin(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
         if( Source.dataRun.getAbsoluteFile().exists() ){
@@ -148,14 +152,16 @@ public class MyFreeLab {
                 // e.printStackTrace();
             }
 
-            //System.out.println("RS : " + result);
+            System.out.println("Respuesta CMD : " + result);
+            System.out.println("PID : " + pid);
             if( result.contains(pid) ){
                 System.out.println(Info.NombreSoftware + " en ejecucion. ");
                 System.exit(0);
             } else {
-                Source.dataRun.delete();
-                // *WARNING* PID corrupto
-                System.out.println("[!] " + pid);
+                if( Source.dataRun.delete() ){
+                    // *WARNING* PID corrupto
+                    System.out.println("[!] " + pid);
+                }
             }
 
         }
@@ -262,6 +268,7 @@ public class MyFreeLab {
         System.out.println("#TimeTmp : " + Source.timeTmp);
         System.out.println("#bkgAside : " + Source.bkgAside);
         System.out.println("#bkgLogo : " + Source.bkgLogo);
+        System.out.println("#dataPreferencias : " + Source.dataPreferencias.getAbsolutePath());
         System.out.println("#dataConexion : " + Source.dataConexion.getAbsolutePath());
         System.out.println("#dataRun : " + Source.dataRun.getAbsolutePath());
         System.out.println("#docVersionesXml : " + Source.docVersionesXml);

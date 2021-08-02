@@ -274,7 +274,7 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdAbriendoPrograma() {
         ////System.out.println("Ventana abierto.");
-         mtdCrearHiloModificaciones();
+        mtdCrearHiloModificaciones();
 
         // Obtener los datos de la conexion antes de abrir el programa
         if (CtrlHiloConexion.checkConexion()) {
