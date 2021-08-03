@@ -122,7 +122,8 @@ public class MyFreeLab {
             
             try{
                 if( result.contains(pid) ){
-                    System.out.println(Info.NombreSoftware + " en ejecucion. ");
+                    // En ejecución
+                    System.out.println(Info.NombreSoftware + " in action. ");
                     System.exit(0);
                 } else {
                     if( Recursos.dataRun().delete() ){
@@ -131,7 +132,8 @@ public class MyFreeLab {
                     }
                 }
             }catch(Exception ex){
-                System.out.println(Info.NombreSoftware + " suspendido. ");
+                // Suspendido
+                System.out.println(Info.NombreSoftware + " suspended. ");
                 archivoRun.mtdGenerarXmlRun();
                 System.exit(0);
             }
@@ -165,7 +167,8 @@ public class MyFreeLab {
             //System.out.println("PID : " + pid);
             try{
                 if( result.contains(pid) ){
-                    System.out.println(Info.NombreSoftware + " en ejecucion. ");
+                    // En ejecución
+                    System.out.println(Info.NombreSoftware + " in action. ");
                     System.exit(0);
                 } else {
                     if( Recursos.dataRun().delete() ){
@@ -174,7 +177,8 @@ public class MyFreeLab {
                     }
                 }
             }catch(Exception ex){
-                System.out.println(Info.NombreSoftware + " suspendido. ");
+                // Suspendido
+                System.out.println(Info.NombreSoftware + " suspended. ");
                 archivoRun.mtdGenerarXmlRun();
                 System.exit(0);
             }
@@ -260,25 +264,25 @@ public class MyFreeLab {
         System.out.println(Info.NombreSoftware);
         System.out.println(Info.Avatar);
         System.out.println("");
-        System.out.println("flags: ");
+        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg1"));
         
         System.out.print("  --init              ");
-        System.out.println("Iniciar " + Info.NombreSoftware);
+        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg2") +" "+Info.NombreSoftware);
         
         System.out.print("  --mkrun, -mr        ");
-        System.out.println("Generar archivo de configuración .run");
+        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg3") + " .run");
         
         System.out.print("  --mkconn, -mc       ");
-        System.out.println("Generar archivo de configuración .run");
+        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg3") + " conn");
         
         System.out.print("  --mkpref, -mp       ");
-        System.out.println("Generar archivo de configuración .run");
+        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg3") + " .pconfig");
         
         System.out.print("  --pid               ");
-        System.out.println("Ver el PID del programa");
+        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg4"));
         
         System.out.print("  --help, -h          ");
-        System.out.println("Obtener ayuda del programa");
+        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg5"));
         
         System.out.println("");
         System.out.println(Info.SitioWeb);
