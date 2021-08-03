@@ -122,7 +122,6 @@ public class MyFreeLab {
             try{
                 if( result.contains(pid) ){
                     System.out.println(Info.NombreSoftware + " en ejecucion. ");
-                    Source.dataRun.delete();
                     System.exit(0);
                 } else {
                     if( Source.dataRun.delete() ){
@@ -166,7 +165,6 @@ public class MyFreeLab {
             try{
                 if( result.contains(pid) ){
                     System.out.println(Info.NombreSoftware + " en ejecucion. ");
-                    Source.dataRun.delete();
                     System.exit(0);
                 } else {
                     if( Source.dataRun.delete() ){
