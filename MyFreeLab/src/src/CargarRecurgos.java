@@ -10,6 +10,7 @@ import java.util.HashMap;
 class CargarRecurgos {
     
     public File dataConexion() {
+        //System.out.println("Método: dataConexion");
         String UserHome = System.getProperty("user.home");
         File data = null;
         String dir = "";
@@ -40,6 +41,7 @@ class CargarRecurgos {
     }
     
     public File dataRun() {
+        //System.out.println("Método: dataRun");
         String UserHome = System.getProperty("user.home");
         File data = null;
         String dir = "";
@@ -63,6 +65,7 @@ class CargarRecurgos {
     }
     
     public File dataPreferencias() {
+        //System.out.println("Método: dataPreferencias");
         String UserHome = System.getProperty("user.home");
         File data = null;
         String dir = "";

@@ -16,6 +16,9 @@ public class Index {
             case 1:
                 switch( args[0] ){
                     case "--init" : programa.mtdTagInit(); break;
+                    case "--mkrun" : programa.mtdTagMkRun(); break;
+                    case "--mkconn" : programa.mtdTagMkConn(); break;
+                    case "--mkpref" : programa.mtdTagMkPref(); break;
                     case "--pid" : programa.mtdTagPID(); break;
                     case "--test" : programa.mtdTagTest();  break;
                     case "-h" :

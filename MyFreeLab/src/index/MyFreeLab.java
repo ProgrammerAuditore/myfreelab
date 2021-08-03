@@ -263,6 +263,15 @@ public class MyFreeLab {
         System.out.print("  --init       ");
         System.out.println("Iniciar " + Info.NombreSoftware);
         
+        System.out.print("  --mkrun       ");
+        System.out.println("Generar archivo de configuración .run");
+        
+        System.out.print("  --mkconn       ");
+        System.out.println("Generar archivo de configuración .run");
+        
+        System.out.print("  --mkpref       ");
+        System.out.println("Generar archivo de configuración .run");
+        
         System.out.print("  --pid       ");
         System.out.println("Ver el PID del programa");
         
@@ -327,6 +336,50 @@ public class MyFreeLab {
         // * Si el pid almacenado en el archivo .run
         // no está en ejecución devuelve una nueva PID 
         return Recursos.PID;
+    }
+
+
+    void mtdTagMkRun() {
+        File run = Recursos.dataRun();
+        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+        archivoRun.setPath_archivo(run.getAbsolutePath() );
+        
+        if( run.exists() ) 
+            run.delete();
+        
+        if( archivoRun.mtdGenerarXmlRun() ){
+            System.out.println("" + run.getAbsolutePath());
+        }
+        
+    }
+    
+    void mtdTagMkConn() {
+        File conn = Recursos.dataRun();
+        
+        if( conn.exists() )
+            conn.delete();
+            
+        ConexionDto conec = new ConexionDto("0", "", "", "", "");
+        new ConexionDao().regitrar_datos(conec);
+        
+        if( conn.exists() ){
+            System.out.println("" + conn.getAbsolutePath());
+        }
+        
+    }
+
+    void mtdTagMkPref() {
+        File pconfig = Recursos.dataPreferencias();
+        
+        if( pconfig.exists() )
+            pconfig.delete();
+        
+        PreferenciaDto pref = new PreferenciaDto();
+        new PreferenciaDao().regitrar_datos(pref);
+        
+        if( pconfig.exists() ){
+            System.out.println("" + pconfig.getAbsolutePath());
+        }
     }
     
 }
