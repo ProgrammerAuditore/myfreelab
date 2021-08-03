@@ -9,7 +9,7 @@ public class PreferenciaDto implements Serializable {
     private String estilo;
 
     public PreferenciaDto() {
-        this.idioma = "Español";
+        this.idioma = "Ingles";
         this.fuente = "K2D";
         this.estilo = "Bulma";
     }

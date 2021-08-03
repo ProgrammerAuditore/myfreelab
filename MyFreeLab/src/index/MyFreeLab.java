@@ -29,13 +29,13 @@ import vista.ventanas.VentanaPrincipal;
 public class MyFreeLab {
     
     private VentanaPrincipal ventana;
-    public static Properties idioma = new Idiomas("es");
+    public static Properties idioma = new Idiomas("en");
     
     public void mtdTagInit() {
         
         MyFreeLab.mtdVerificarArranque();
         
-        mtdInit();
+        mtdCargarPreferencias();
         HiloConexion hc = new HiloConexion();
         HiloPrincipal hp = new HiloPrincipal();
         HiloSplash hs = new HiloSplash();
@@ -82,12 +82,13 @@ public class MyFreeLab {
             MyFreeLab.mtdVerificarPIDWin();
     }
     
-    private void mtdInit(){
+    private void mtdCargarPreferencias(){
         PreferenciaDao dao = new PreferenciaDao();
         PreferenciaDto dto;
         
         if( dao.obtener_datos() == null ){ 
             dto = new PreferenciaDto();
+            Recursos.dataPreferencias().delete();
         } else{
             dto = dao.obtener_datos();
         }
@@ -255,6 +256,7 @@ public class MyFreeLab {
     
     // * Mostrar mensaje de ayuda en la terminal
     public void mtdTagHelp(){
+        mtdCargarPreferencias();
         System.out.println(Info.NombreSoftware);
         System.out.println(Info.Avatar);
         System.out.println("");

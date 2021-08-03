@@ -9,8 +9,11 @@ public class Idiomas extends Properties{
 
     public Idiomas(String idioma) {
         switch(idioma){
-            case "es": mtdObtenerIdioma("messages_es.properties"); break;
-            case "en": mtdObtenerIdioma("messages_en.properties"); break;
+            case "esp" :
+            case "es"  : mtdObtenerIdioma("messages_es.properties"); break;
+            
+            case "eng" :
+            case "en"  : mtdObtenerIdioma("messages_en.properties"); break;
             default: mtdObtenerIdioma("messages_en.properties"); break;
         } 
     }
