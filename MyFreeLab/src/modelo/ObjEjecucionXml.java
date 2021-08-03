@@ -15,7 +15,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import src.Source;
+import src.Recursos;
 
 public class ObjEjecucionXml {
     
@@ -67,12 +67,12 @@ public class ObjEjecucionXml {
             root.addContent(app);
             
             Element pid = new Element("app_pid");
-            pid.setText(""+Source.PID);
+            pid.setText(""+Recursos.PID);
             app.addContent(pid);
             
             XMLOutputter xmlRun = new XMLOutputter();
             xmlRun.setFormat(Format.getPrettyFormat());
-            xmlRun.output(doc, new FileWriter( Source.dataRun.getAbsoluteFile() ));
+            xmlRun.output(doc, new FileWriter( Recursos.dataRun().getAbsoluteFile() ));
             
             return true;
         } catch (IOException ex) {

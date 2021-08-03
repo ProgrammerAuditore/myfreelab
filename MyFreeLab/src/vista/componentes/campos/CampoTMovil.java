@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -51,7 +51,7 @@ public class CampoTMovil extends JTextField implements FocusListener, KeyListene
         setToolTip();
         
         // Fuentes
-        setFont( Source.fontTextField );
+        setFont(Recursos.fontTextField );
         //setHorizontalAlignment(javax.swing.JTextField.CENTER);
         //setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 204, 255), new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153), null));
         setBorderMargin( borderColor );

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import modelo.dto.ConexionDto;
-import src.Source;
+import src.Recursos;
 import modelo.interfaces.keyword_binario;
 
 public class ConexionDao implements keyword_binario<ConexionDto>{
@@ -15,7 +15,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
     public ConexionDto obtener_datos() {
         ConexionDto db = null;
         
-        try(FileInputStream fis = new FileInputStream( Source.dataConexion )){
+        try(FileInputStream fis = new FileInputStream( Recursos.dataConexion() )){
             ObjectInputStream ois;
             
             while(fis.available() > 0){
@@ -40,7 +40,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
 
     @Override
     public void actualizar_datos(ConexionDto c) {
-        try (FileOutputStream fos = new FileOutputStream( Source.dataConexion )) {
+        try (FileOutputStream fos = new FileOutputStream( Recursos.dataConexion() )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
             oss.writeObject(c);
@@ -55,7 +55,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
 
     @Override
     public void regitrar_datos(ConexionDto c) {
-        try (FileOutputStream fos = new FileOutputStream( Source.dataConexion )) {
+        try (FileOutputStream fos = new FileOutputStream( Recursos.dataConexion() )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
             oss.writeObject(c);

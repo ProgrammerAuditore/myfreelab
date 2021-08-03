@@ -11,7 +11,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -35,13 +35,13 @@ public class Enlace extends JLabel implements MouseListener{
     private void init() {
         setText("Enlace");
         setForeground( colorNormal );
-        setFont( Source.fontLabelEnlace );
+        setFont(Recursos.fontLabelEnlace );
         addMouseListener(this);
     }
     
     public void reset(){
         setForeground( colorNormal );
-        setFont( Source.fontLabelEnlace );
+        setFont(Recursos.fontLabelEnlace );
         repaint();
     }
 
@@ -49,13 +49,13 @@ public class Enlace extends JLabel implements MouseListener{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //this.setFont( Source.fontLabelEtiqueta.deriveFont( getFont().getStyle() , getFont().getSize() ) );
+        //this.setFont( Recursos.fontLabelEtiqueta.deriveFont( getFont().getStyle() , getFont().getSize() ) );
         
     }
 
     @Override
     public void setFont(Font font) {
-        super.setFont( Source.fontLabelEtiqueta.deriveFont(font.getStyle(), font.getSize()) );
+        super.setFont(Recursos.fontLabelEtiqueta.deriveFont(font.getStyle(), font.getSize()) );
     }
 
     @Override

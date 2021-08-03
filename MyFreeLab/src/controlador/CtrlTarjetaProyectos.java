@@ -28,7 +28,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import src.Info;
-import src.Source;
+import src.Recursos;
 import vista.paneles.PanelCardProyectos;
 import vista.ventanas.VentanaPrincipal;
 
@@ -200,11 +200,11 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
         JasperPrint jp = null;
 
         try {
-            String pathReporteCotizacion = new File( Source.docCotizacionJasper.get("jrxml_file") ).getAbsolutePath();
+            String pathReporteCotizacion = new File( Recursos.docCotizacionJasper().get("jrxml_file") ).getAbsolutePath();
 
             Map<String, Object> parametros = new HashMap<String, Object>();
             // * Atributos
-            parametros.put("SubReportDir", Source.docCotizacionJasper.get("root_dir"));
+            parametros.put("SubReportDir", Recursos.docCotizacionJasper().get("root_dir"));
             parametros.put("rpCostoEstimado", "" + dto.getCmpCostoEstimado());
             parametros.put("rpNombreProyecto", dto.getCmpNombre());
             parametros.put("rpProyectoID", dto.getCmpID());
@@ -339,7 +339,7 @@ public class CtrlTarjetaProyectos extends InterfaceCard {
             //System.out.println(dto.getCmpNombre());
             //System.out.println("Fecha formateado:: " + fechaInicial);
             //System.out.println("Fecha formateado:: " + fechaFinal);
-            //System.out.println("Fecha formateado:: " + Source.fechayHoraActual);
+            //System.out.println("Fecha formateado:: " + Recursos.fechayHoraActual);
             long diasTotal = obtenerDiferenciasEnDias(fechaInicial, fechaFinal);
             //System.out.println("Dias Total: " + diasTotal);
             long diasTranscurrido = obtenerDiferenciasEnDias(fechaInicial, fechaActual);

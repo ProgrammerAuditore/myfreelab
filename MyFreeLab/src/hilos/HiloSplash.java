@@ -8,7 +8,7 @@ import modelo.dao.PreferenciaDao;
 import modelo.dto.ConexionDto;
 import modelo.dto.PreferenciaDto;
 import src.Info;
-import src.Source;
+import src.Recursos;
 import vista.splash.Splash;
 
 public class HiloSplash extends Thread{
@@ -24,7 +24,7 @@ public class HiloSplash extends Thread{
         // * Splash de bienvenida
         this.setName("HiloSplash");
         splash = new Splash();
-        splash.setIconImage(Source.imgIconoDefault);
+        splash.setIconImage(Recursos.imgIconoDefault());
         splash.setTitle(Info.NombreSoftware);
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
@@ -54,7 +54,7 @@ public class HiloSplash extends Thread{
     
     private void mtdCargarConfiguracion(){
         // * Cargar los datos de conexion..
-        Source.dataConexion.exists();
+        Recursos.dataConexion().exists();
             
         // Titulo - Carga
         splash.etqMensaje.setText(MyFreeLab.idioma
@@ -84,7 +84,7 @@ public class HiloSplash extends Thread{
     
     private void mtdCargarDatosDeConexion(){
         // * Cargar los datos de conexion..
-        Source.dataConexion.exists();
+        Recursos.dataConexion().exists();
             
         // Titulo - Carga
         splash.etqMensaje.setText(MyFreeLab.idioma

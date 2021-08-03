@@ -6,7 +6,7 @@
 package vista.ventanas;
 
 import index.MyFreeLab;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -35,12 +35,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // * Establece logo
         this.pnlLogo.setImgBackgroundEnabled(true);
         this.pnlLogo.setImgRutaInternoActivo(true);
-        this.pnlLogo.setImgRutaInterno(Source.bkgPortada);
+        this.pnlLogo.setImgRutaInterno(Recursos.bkgPortada);
         
         // * Establece portada
         //this.pnlPortada.setImgBackgroundEnabled(true);
         //this.pnlPortada.setImgRutaInternoActivo(true);
-        //this.pnlPortada.setImgRutaInterno(Source.bkgPortada);
+        //this.pnlPortada.setImgRutaInterno(Recursos.bkgPortada);
         
         mtdEstablecerIdioma();
     }

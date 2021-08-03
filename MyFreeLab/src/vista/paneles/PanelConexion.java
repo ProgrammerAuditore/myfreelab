@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputAdapter;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -24,11 +24,11 @@ public class PanelConexion extends javax.swing.JPanel {
      */
     public PanelConexion() {
         initComponents();
-        this.setSize(Source.tamDialogModal );
-        this.setPreferredSize(Source.tamDialogModal );
+        this.setSize(Recursos.tamDialogModal );
+        this.setPreferredSize(Recursos.tamDialogModal );
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);
-        bkgAside.setImgRutaInterno( Source.bkgAside );
+        bkgAside.setImgRutaInterno(Recursos.bkgAside );
         mtdEstablecerIdioma();
         
         // Establecer evento de teclado para el chechkbox

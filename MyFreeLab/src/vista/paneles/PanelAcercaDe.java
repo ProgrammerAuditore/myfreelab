@@ -8,7 +8,7 @@ package vista.paneles;
 import index.MyFreeLab;
 import java.awt.Dimension;
 import src.Info;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -26,8 +26,8 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     
         // Establecer propiedades para el panel
         Dimension tam = null;
-        tam = new Dimension(Source.tamDialogInfo);
-        etqLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource(Source.bkgLogo))); // NOI18N
+        tam = new Dimension(Recursos.tamDialogInfo);
+        etqLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource(Recursos.bkgLogo))); // NOI18N
 
         // * Establecer el tamaño del modal
         setSize(tam);

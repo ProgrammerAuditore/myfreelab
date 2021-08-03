@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 
-class Resource {
+class CargarRecurgos {
     
     public File dataConexion() {
         String UserHome = System.getProperty("user.home");
@@ -33,7 +33,7 @@ class Resource {
             data = new File( dir + Rutas.pathDataConexion );
             
         } catch (IOException ex) {
-            //System.out.println("Resource :: Archivo conn no localizado...");
+            //System.out.println("CargarRecurgos :: Archivo conn no localizado...");
         }
         
         return data;
@@ -86,7 +86,7 @@ class Resource {
             data = new File( dir + Rutas.pathDataPreferencias );
             
         } catch (IOException ex) {
-            //System.out.println("Resource :: Archivo conn no localizado...");
+            //System.out.println("CargarRecurgos :: Archivo conn no localizado...");
         }
         
         return data;

@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.border.Border;
-import src.Source;
+import src.Recursos;
 
 public class CampoPassword extends JPasswordField implements FocusListener{
     
@@ -40,7 +40,7 @@ public class CampoPassword extends JPasswordField implements FocusListener{
         setToolTip();
         
         // Fuentes
-        setFont( Source.fontTextField );
+        setFont(Recursos.fontTextField );
         //setHorizontalAlignment(javax.swing.JTextField.CENTER);
         //setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 204, 255), new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153), null));
         setBorderMargin( borderColor );

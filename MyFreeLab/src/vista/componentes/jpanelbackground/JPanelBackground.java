@@ -16,7 +16,7 @@ import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -39,7 +39,7 @@ public class JPanelBackground extends JPanel{
         setPreferredSize(new Dimension(200, 200));
         setImgBackgroundEnabled(false);
         setImgRutaInternoActivo(true);
-        setImgRutaInterno( Source.bkgDefault );
+        setImgRutaInterno(Recursos.bkgDefault );
     }
     
     @Override

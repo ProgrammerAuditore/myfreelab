@@ -17,7 +17,7 @@
 package vista.splash;
 
 import src.Info;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Splash extends javax.swing.JFrame {
         this.etqCarga.setVisible(false);
         this.jPanelBackground1.setImgBackgroundEnabled(true);
         this.jPanelBackground1.setImgBackgroundIn_Ex(true);
-        this.jPanelBackground1.setImgRutaInterno( Source.bkgSplash );
+        this.jPanelBackground1.setImgRutaInterno(Recursos.bkgSplash );
         this.etqAppNombre.setText(Info.NombreSoftware + "  ");
         this.etqMantenedor.setText( Info.Avatar + " " + Info.Mantenedor + "  ");
         this.etqVendor.setText(Info.Copyright + "  ");
@@ -66,7 +66,7 @@ public class Splash extends javax.swing.JFrame {
         jPanelBackground1.setImgBackgroundEnabled(true);
         jPanelBackground1.setImgBackgroundIn_Ex(false);
         jPanelBackground1.setImgOpacidad(0.8F);
-        jPanelBackground1.setImgRutaInterno(src.Source.bkgSplash);
+        jPanelBackground1.setImgRutaInterno(src.Recursos.bkgSplash);
 
         etqMensaje.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         etqMensaje.setForeground(new java.awt.Color(255, 255, 255));

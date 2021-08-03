@@ -7,15 +7,15 @@ import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 
-public class Source {
+public class Recursos {
     
     // * Recursos externos
-    public static final File dataRun = new Resource().dataRun();
-    public static final File dataConexion = new Resource().dataConexion();
-    public static final File dataPreferencias = new Resource().dataPreferencias();
-    public static final Image imgIconoDefault = new Resource().iconoDefault();
-    public static final HashMap<String, String> docCotizacionJasper = new Resource().docCotizacionJasper();
-    //public static final HashMap<String, String> docInformeJasper = new Resource().docInformeJasper();
+    public static final File dataRun(){ return new CargarRecurgos().dataRun(); }
+    public static final File dataConexion(){ return new CargarRecurgos().dataConexion(); }
+    public static final File dataPreferencias(){ return new CargarRecurgos().dataPreferencias(); }
+    public static final Image imgIconoDefault(){ return new CargarRecurgos().iconoDefault(); }
+    public static final HashMap<String, String> docCotizacionJasper(){ return new CargarRecurgos().docCotizacionJasper(); }
+    //public static final HashMap<String, String> docInformeJasper = new CargarRecurgos().docInformeJasper();
     
     // * Recursos internos
     public static final String bkgDefault = Rutas.pathBkgDefault;
@@ -48,21 +48,22 @@ public class Source {
     public static final Dimension tamDialogModal = new Dimension(850, 534);
     public static final Dimension tamDialogInfo = new Dimension(460, 444);
     
+    // Informacion del sistema
     public static final String SistemaOs = ManagementFactory.getOperatingSystemMXBean().getName();
-    public static final int PID = new Resource().getPID();
-    public static final boolean OsLinuxDeb = new Resource().getLinux();
-    public static final boolean OsWin = new Resource().getWin();
-    public static final String timeTmp = new Resource().getTimeTmp();
+    public static final int PID = new CargarRecurgos().getPID();
+    public static final boolean OsLinuxDeb = new CargarRecurgos().getLinux();
+    public static final boolean OsWin = new CargarRecurgos().getWin();
+    public static final String timeTmp = new CargarRecurgos().getTimeTmp();
     public static final String dirTemp = System.getProperty("java.io.tmpdir");
     public static final String dirHome = System.getProperty("user.home");
     
     public static void mtdCambiarFuente(String fontName){
-        Source.fontTextField = new MyFont( fontName ).changeStyle( MyFont.PLAIN, 12);
-        Source.fontButton = new MyFont( fontName ).changeStyle( MyFont.BOLD, 14);
-        Source.fontLabelEtiqueta = new MyFont( fontName ).changeStyle( MyFont.SEMI_BOLD, 14);
-        Source.fontLabelTitulo = new MyFont( fontName ).changeStyle( MyFont.BLACK, 36);
-        Source.fontLabelSubtitulo = new MyFont( fontName ).changeStyle( MyFont.LIGHT, 26);
-        Source.fontLabelEnlace = new MyFont( fontName ).changeStyle( MyFont.ITALIC, 14);
+        Recursos.fontTextField = new MyFont( fontName ).changeStyle( MyFont.PLAIN, 12);
+        Recursos.fontButton = new MyFont( fontName ).changeStyle( MyFont.BOLD, 14);
+        Recursos.fontLabelEtiqueta = new MyFont( fontName ).changeStyle( MyFont.SEMI_BOLD, 14);
+        Recursos.fontLabelTitulo = new MyFont( fontName ).changeStyle( MyFont.BLACK, 36);
+        Recursos.fontLabelSubtitulo = new MyFont( fontName ).changeStyle( MyFont.LIGHT, 26);
+        Recursos.fontLabelEnlace = new MyFont( fontName ).changeStyle( MyFont.ITALIC, 14);
     }
             
 }

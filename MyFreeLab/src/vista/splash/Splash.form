@@ -39,7 +39,7 @@
         <Property name="imgBackgroundIn_Ex" type="boolean" value="false"/>
         <Property name="imgOpacidad" type="float" value="0.8"/>
         <Property name="imgRutaInterno" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="src.Source.bkgSplash" type="code"/>
+          <Connection code="src.Recursos.bkgSplash" type="code"/>
         </Property>
       </Properties>
 

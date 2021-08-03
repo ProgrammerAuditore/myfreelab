@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dto.ConexionDto;
-import src.Source;
+import src.Recursos;
 import vista.paneles.PanelConexion;
 
 public class CtrlConexion implements MouseListener{
@@ -214,7 +214,7 @@ public class CtrlConexion implements MouseListener{
     }
     
     private void estilosConexionAbierto(){
-        establecerImg(Source.bkgConexionOn);
+        establecerImg(Recursos.bkgConexionOn);
         laVista.btnEstablecerConexion.setEnabled(false);
         
         laVista.btnCerrarConexion.setEnabled(true);
@@ -228,7 +228,7 @@ public class CtrlConexion implements MouseListener{
     }
     
     private void estilosConexionCerrada(){
-        establecerImg(Source.bkgConexionOff);
+        establecerImg(Recursos.bkgConexionOff);
         laVista.btnCerrarConexion.setEnabled(false);
         
         laVista.btnEstablecerConexion.setEnabled(true);

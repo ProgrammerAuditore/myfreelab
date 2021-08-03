@@ -7,7 +7,7 @@ package vista.paneles;
 
 import index.MyFreeLab;
 import java.awt.Color;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -22,13 +22,13 @@ public class PanelVinculacion extends javax.swing.JPanel {
         initComponents();
         
         // * Definir tamaños por defecto 
-        this.setSize(Source.tamDialogModal );
-        this.setPreferredSize(Source.tamDialogModal );
+        this.setSize(Recursos.tamDialogModal );
+        this.setPreferredSize(Recursos.tamDialogModal );
         
         // * Definir el background
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgRutaInternoActivo(true);
-        bkgAside.setImgRutaInterno( Source.bkgAside );
+        bkgAside.setImgRutaInterno(Recursos.bkgAside );
         mtdEstablecerIdioma();
         
     }

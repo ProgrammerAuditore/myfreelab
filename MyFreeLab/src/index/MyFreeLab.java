@@ -22,7 +22,7 @@ import modelo.dao.RequisitoDao;
 import modelo.dto.ConexionDto;
 import modelo.dto.PreferenciaDto;
 import src.Info;
-import src.Source;
+import src.Recursos;
 import src.idiomas.Idiomas;
 import vista.ventanas.VentanaPrincipal;
 
@@ -76,9 +76,9 @@ public class MyFreeLab {
     }
     
     public static void mtdVerificarArranque(){
-        if( Source.OsLinuxDeb )
+        if( Recursos.OsLinuxDeb )
             MyFreeLab.mtdVerificarPIDLinux();
-        else if ( Source.OsWin )
+        else if ( Recursos.OsWin )
             MyFreeLab.mtdVerificarPIDWin();
     }
     
@@ -97,16 +97,16 @@ public class MyFreeLab {
             else
                 idioma = new Idiomas("en");
             
-            Source.mtdCambiarFuente( dto.getFuente() );
-            Source.styleButtonDefault = dto.getEstilo();
+            Recursos.mtdCambiarFuente( dto.getFuente() );
+            Recursos.styleButtonDefault = dto.getEstilo();
             
     }
     
     public static void mtdVerificarPIDLinux(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
-        if( Source.dataRun.getAbsoluteFile().exists() ){
-            archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+        if( Recursos.dataRun().getAbsoluteFile().exists() ){
+            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
             String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
 
             // * Obtener todos los procesos PID de java
@@ -124,7 +124,7 @@ public class MyFreeLab {
                     System.out.println(Info.NombreSoftware + " en ejecucion. ");
                     System.exit(0);
                 } else {
-                    if( Source.dataRun.delete() ){
+                    if( Recursos.dataRun().delete() ){
                         // *WARNING* PID corrupto
                         System.out.println("[!] " + pid);
                     }
@@ -138,16 +138,16 @@ public class MyFreeLab {
         }
         
         if( archivoRun.mtdGenerarXmlRun() )
-                archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
         
     }
     
     public static void mtdVerificarPIDWin(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
-        if( Source.dataRun.getAbsoluteFile().exists() ){
-            archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
-            //System.out.println("XX " + Source.dataRun.getAbsolutePath());
+        if( Recursos.dataRun().getAbsoluteFile().exists() ){
+            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+            //System.out.println("XX " + Recursos.dataRun.getAbsolutePath());
             String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
 
             // * Obtener todos los procesos PID de java
@@ -167,7 +167,7 @@ public class MyFreeLab {
                     System.out.println(Info.NombreSoftware + " en ejecucion. ");
                     System.exit(0);
                 } else {
-                    if( Source.dataRun.delete() ){
+                    if( Recursos.dataRun().delete() ){
                         // *WARNING* PID corrupto
                         System.out.println("[!] " + pid);
                     }
@@ -181,7 +181,7 @@ public class MyFreeLab {
         }
         
         if( archivoRun.mtdGenerarXmlRun() )
-                archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
         
     }
     
@@ -192,7 +192,7 @@ public class MyFreeLab {
         /*
         try {
             ObjVersionesXml objDocXml = new ObjVersionesXml();
-            File xml = new File( getClass().getResource("../" + Source.docVersionesXml).toURI() );
+            File xml = new File( getClass().getResource("../" + Recursos.docVersionesXml).toURI() );
             objDocXml.setArchivoXml( xml );
             HashMap<String, String> info = objDocXml.mtdMapearUltimaVersionInterno();
             
@@ -218,8 +218,8 @@ public class MyFreeLab {
     public void mtdTagPID(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
-        if( Source.dataRun.getAbsoluteFile().exists() ){
-            archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+        if( Recursos.dataRun().getAbsoluteFile().exists() ){
+            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
             String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
 
             // * Obtener todos los procesos PID de java
@@ -227,9 +227,9 @@ public class MyFreeLab {
             String cmd = "";
             
             // * Verificar el sistema operativo
-            if( Source.OsLinuxDeb )
+            if( Recursos.OsLinuxDeb )
                 cmd = "ps -C java -o pid=";
-            if ( Source.OsWin )
+            if ( Recursos.OsWin )
                 cmd = "tasklist /fi \"imagename eq java*\" ";
             
             try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
@@ -244,12 +244,12 @@ public class MyFreeLab {
                 System.out.println("[¡] " + pid );
             }else{
                 // *WARNING* PID propia
-                System.out.println("[x] " + Source.PID);
+                System.out.println("[x] " + Recursos.PID);
             }
             
         } else{
             // *WARNING* PID propia
-            System.out.println("[x] " + Source.PID);
+            System.out.println("[x] " + Recursos.PID);
         }
     }
     
@@ -275,26 +275,26 @@ public class MyFreeLab {
     }
 
     private void mtdVerInformacionDelSoftware() {
-        System.out.println("#docReporte : " + Source.dirHome );
+        System.out.println("#DirHome : " + Recursos.dirHome );
         System.out.println("#Path Actual : " + new File(".").getAbsolutePath());
         System.out.println("#PID : " + mtdObtenerPID() );
-        System.out.println("#SO : " + Source.SistemaOs);
-        System.out.println("#TimeTmp : " + Source.timeTmp);
-        System.out.println("#bkgAside : " + Source.bkgAside);
-        System.out.println("#bkgLogo : " + Source.bkgLogo);
-        System.out.println("#dataPreferencias : " + Source.dataPreferencias.getAbsolutePath());
-        System.out.println("#dataConexion : " + Source.dataConexion.getAbsolutePath());
-        System.out.println("#dataRun : " + Source.dataRun.getAbsolutePath());
-        System.out.println("#docVersionesXml : " + Source.docVersionesXml);
-        System.out.println("#docReporte : " + Source.docCotizacionJasper);
+        System.out.println("#SO : " + Recursos.SistemaOs);
+        System.out.println("#TimeTmp : " + Recursos.timeTmp);
+        System.out.println("#bkgAside : " + Recursos.bkgAside);
+        System.out.println("#bkgLogo : " + Recursos.bkgLogo);
+        System.out.println("#dataPreferencias : " + Recursos.dataPreferencias().getAbsolutePath());
+        System.out.println("#dataConexion : " + Recursos.dataConexion().getAbsolutePath());
+        System.out.println("#dataRun : " + Recursos.dataRun().getAbsolutePath());
+        System.out.println("#docVersionesXml : " + Recursos.docVersionesXml);
+        System.out.println("#docReporte : " + Recursos.docCotizacionJasper());
         System.out.println("#\n");
     }
     
     private int mtdObtenerPID(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
 
-        if( Source.dataRun.getAbsoluteFile().exists() ){
-                archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+        if( Recursos.dataRun().getAbsoluteFile().exists() ){
+                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
                 String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
 
                 // * Obtener todos los procesos PID de java
@@ -302,9 +302,9 @@ public class MyFreeLab {
                 String cmd = "";
 
                 // * Verificar el sistema operativo
-                if( Source.OsLinuxDeb ){
+                if( Recursos.OsLinuxDeb ){
                     cmd = "ps -C java -o pid=";
-                }if ( Source.OsWin ){
+                }if ( Recursos.OsWin ){
                     cmd = "tasklist /fi \"imagename eq java*\" ";
                 }
 
@@ -326,7 +326,7 @@ public class MyFreeLab {
         
         // * Si el pid almacenado en el archivo .run
         // no está en ejecución devuelve una nueva PID 
-        return Source.PID;
+        return Recursos.PID;
     }
     
 }

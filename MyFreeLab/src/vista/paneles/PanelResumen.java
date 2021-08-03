@@ -1,17 +1,17 @@
 package vista.paneles;
 
 import index.MyFreeLab;
-import src.Source;
+import src.Recursos;
 
 public class PanelResumen extends javax.swing.JPanel {
 
     public PanelResumen() {
         initComponents();
-        this.setSize(Source.tamDialogModal );
-        this.setPreferredSize(Source.tamDialogModal );
+        this.setSize(Recursos.tamDialogModal );
+        this.setPreferredSize(Recursos.tamDialogModal );
         bkgAside.setImgBackgroundEnabled(true);
         bkgAside.setImgBackgroundIn_Ex(true);
-        bkgAside.setImgRutaInterno( Source.bkgAside );
+        bkgAside.setImgRutaInterno(Recursos.bkgAside );
         mtdEstablecerIdioma();
     }
     

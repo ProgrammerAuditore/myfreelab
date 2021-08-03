@@ -30,7 +30,7 @@ import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
 import modelo.dto.ProyectoDto;
 import src.Info;
-import src.Source;
+import src.Recursos;
 import vista.ventanas.VentanaPrincipal;
 
 public class CtrlPrincipal implements ActionListener {
@@ -65,7 +65,7 @@ public class CtrlPrincipal implements ActionListener {
 
         // * Definir datos
         this.laVista.setTitle(Info.NombreSoftware);
-        this.laVista.setIconImage(Source.imgIconoDefault);
+        this.laVista.setIconImage(Recursos.imgIconoDefault());
         this.ctrlPaginacion = new CtrlPaginacion(laVista.panelPaginacion, daoE, daoP);
 
         // * Inicializar
@@ -108,7 +108,7 @@ public class CtrlPrincipal implements ActionListener {
             @Override
             public void windowActivated(WindowEvent e) {
                 ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-                archivoRun.setPath_archivo( Source.dataRun.getAbsolutePath() );
+                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
                 archivoRun.mtdGenerarXmlRun();
             }
             
@@ -321,8 +321,8 @@ public class CtrlPrincipal implements ActionListener {
         // * Método para cerrar el programa
         laVista.setVisible(false);
         mtdCerrandoPrograma();
-        Source.dataRun.delete();
-        Source.dataRun.getAbsoluteFile().delete();
+        Recursos.dataRun().delete();
+        Recursos.dataRun().getAbsoluteFile().delete();
         laVista.dispose();
         System.exit(0);
         

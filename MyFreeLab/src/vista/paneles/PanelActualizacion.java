@@ -7,7 +7,7 @@ package vista.paneles;
 
 import index.MyFreeLab;
 import java.awt.Dimension;
-import src.Source;
+import src.Recursos;
 
 /**
  *
@@ -21,7 +21,7 @@ public class PanelActualizacion extends javax.swing.JPanel {
     public PanelActualizacion() {
         initComponents();
         Dimension tam = null;
-        tam = new Dimension(Source.tamDialogInfo);
+        tam = new Dimension(Recursos.tamDialogInfo);
         
         // * Establecer el tamaño del modal
         setSize(tam);

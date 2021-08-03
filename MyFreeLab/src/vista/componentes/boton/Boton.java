@@ -10,7 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
-import src.Source;
+import src.Recursos;
 
 public class Boton extends JPanelBackground implements MouseListener{
     
@@ -23,8 +23,8 @@ public class Boton extends JPanelBackground implements MouseListener{
     private String autoEstadoControl = "ModoNormal";
     
     private String imgButtonType = "primary";
-    private String imgButtonTheme = Source.styleButtonDefault;
-    private final String contenedor = Source.botonesContenedor;
+    private String imgButtonTheme = Recursos.styleButtonDefault;
+    private final String contenedor = Recursos.botonesContenedor;
     private String imgButtonActivado = null;
     private String imgButtonHover = null;
     
@@ -42,7 +42,7 @@ public class Boton extends JPanelBackground implements MouseListener{
         titulo = new JLabel("Titulo");
         texto = titulo.getText();
         //titulo.setFont( new Font("Arial Rounded MT Bold", 0, 16) );
-        titulo.setFont( Source.fontButton );
+        titulo.setFont(Recursos.fontButton );
         titulo.setForeground(new Color(255, 255, 255));
         titulo.setSize( getWidth() , getHeight() );
         

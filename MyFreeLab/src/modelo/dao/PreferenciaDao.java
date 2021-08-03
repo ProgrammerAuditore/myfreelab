@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import modelo.dto.PreferenciaDto;
-import src.Source;
+import src.Recursos;
 import modelo.interfaces.keyword_binario;
 
 public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
@@ -15,7 +15,7 @@ public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
     public PreferenciaDto obtener_datos() {
         PreferenciaDto db = null;
         
-        try(FileInputStream fis = new FileInputStream( Source.dataPreferencias )){
+        try(FileInputStream fis = new FileInputStream( Recursos.dataPreferencias() )){
             ObjectInputStream ois;
             
             while(fis.available() > 0){
@@ -35,7 +35,7 @@ public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
 
     @Override
     public void actualizar_datos(PreferenciaDto c) {
-        try (FileOutputStream fos = new FileOutputStream( Source.dataPreferencias )) {
+        try (FileOutputStream fos = new FileOutputStream( Recursos.dataPreferencias() )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
             oss.writeObject(c);
@@ -50,7 +50,7 @@ public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
 
     @Override
     public void regitrar_datos(PreferenciaDto c) {
-        try (FileOutputStream fos = new FileOutputStream( Source.dataPreferencias )) {
+        try (FileOutputStream fos = new FileOutputStream( Recursos.dataPreferencias() )) {
             
             ObjectOutputStream oss = new ObjectOutputStream(fos);
             oss.writeObject(c);

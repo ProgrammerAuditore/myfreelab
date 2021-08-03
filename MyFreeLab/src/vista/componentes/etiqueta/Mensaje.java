@@ -3,7 +3,7 @@ package vista.componentes.etiqueta;
 import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JLabel;
-import src.Source;
+import src.Recursos;
 
 public class Mensaje extends JLabel{
 
@@ -13,19 +13,19 @@ public class Mensaje extends JLabel{
 
     private void init() {
         setText("Mensaje");
-        setFont(Source.fontTextField);
+        setFont(Recursos.fontTextField);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //this.setFont( Source.fontLabelEtiqueta.deriveFont( getFont().getStyle() , getFont().getSize() ) );
+        //this.setFont( Recursos.fontLabelEtiqueta.deriveFont( getFont().getStyle() , getFont().getSize() ) );
         
     }
 
     @Override
     public void setFont(Font font) {
-        super.setFont( Source.fontLabelEtiqueta.deriveFont(font.getStyle(), font.getSize()) );
+        super.setFont(Recursos.fontLabelEtiqueta.deriveFont(font.getStyle(), font.getSize()) );
     }
  
 }

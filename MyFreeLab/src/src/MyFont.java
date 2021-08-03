@@ -39,7 +39,7 @@ public class MyFont {
 
     // Métodos
     private void initFuente() {
-        fuente_path = Source.fuentesContenedor + fuente_name + "/" +fuente_name+ "-"+fuente_style+".ttf";
+        fuente_path = Recursos.fuentesContenedor + fuente_name + "/" +fuente_name+ "-"+fuente_style+".ttf";
         ////System.out.println("fuente_path = " + fuente_path);
         try {
             

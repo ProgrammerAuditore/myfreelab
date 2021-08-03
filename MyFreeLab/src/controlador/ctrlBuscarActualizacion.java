@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import modelo.ObjVersionesXml;
 import src.Info;
-import src.Source;
+import src.Recursos;
 import vista.paneles.PanelActualizacion;
 import vista.ventanas.VentanaPrincipal;
 
@@ -106,10 +106,10 @@ public class ctrlBuscarActualizacion implements MouseListener {
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdBuscarActualizacion.msg1"));
         
-        String path = Source.dirTemp;
+        String path = Recursos.dirTemp;
         // Verificar el sistema operativo
-        path += Source.OsWin ? "" : "/" ;
-        path += "myfreelab-" + Source.timeTmp + ".mfl";
+        path += Recursos.OsWin ? "" : "/" ;
+        path += "myfreelab-" + Recursos.timeTmp + ".mfl";
         String url = Info.LinkVersiones;
         File archivo = new File(path);
         objDocXml.setArchivoXml(archivo);
@@ -155,7 +155,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
                 CtrlPrincipal.mensajeCtrlPrincipal(
                         MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg3")+
                         " " + doc.get("app_name_version"));
-                if ( Source.OsWin ) {
+                if ( Recursos.OsWin ) {
                     //System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
                     mtdInstalarActualizacionExe( doc.get("app_link_exe") , versionNum );
 
@@ -179,7 +179,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg1"));
         String fileName;
-        fileName = Source.dirTemp + "myfreelab-" + versionNum + ".exe";
+        fileName = Recursos.dirTemp + "myfreelab-" + versionNum + ".exe";
         File archivo = new File(fileName);
         //System.out.println("Ejecutable exe :: " + path);
 
@@ -220,7 +220,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg1"));
         String fileName;
-        fileName = Source.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
+        fileName = Recursos.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
         File archivo = new File(fileName);
         //System.out.println("Ejecutable deb :: " + path);
 
