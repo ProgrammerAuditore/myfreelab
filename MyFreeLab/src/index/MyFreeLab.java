@@ -260,22 +260,22 @@ public class MyFreeLab {
         System.out.println("");
         System.out.println("flags: ");
         
-        System.out.print("  --init       ");
+        System.out.print("  --init              ");
         System.out.println("Iniciar " + Info.NombreSoftware);
         
-        System.out.print("  --mkrun       ");
+        System.out.print("  --mkrun, -mr        ");
         System.out.println("Generar archivo de configuración .run");
         
-        System.out.print("  --mkconn       ");
+        System.out.print("  --mkconn, -mc       ");
         System.out.println("Generar archivo de configuración .run");
         
-        System.out.print("  --mkpref       ");
+        System.out.print("  --mkpref, -mp       ");
         System.out.println("Generar archivo de configuración .run");
         
-        System.out.print("  --pid       ");
+        System.out.print("  --pid               ");
         System.out.println("Ver el PID del programa");
         
-        System.out.print("  --help, -h  ");
+        System.out.print("  --help, -h          ");
         System.out.println("Obtener ayuda del programa");
         
         System.out.println("");
