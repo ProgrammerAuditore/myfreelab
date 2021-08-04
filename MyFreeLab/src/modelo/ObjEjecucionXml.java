@@ -19,8 +19,16 @@ import src.Recursos;
 
 public class ObjEjecucionXml {
 
-    private List<String> info = new ArrayList<>();
     private String path_archivo;
+    private long estado;
+    private boolean agregarTiempoInicial;
+    private boolean agregarTiempoFinal;
+
+    public ObjEjecucionXml() {
+        estado = 0;
+        agregarTiempoInicial=false;
+        agregarTiempoFinal=false;
+    }
 
     public HashMap<String, String> mtdMapearXmlRun() {
         HashMap<String, String> info = new HashMap<String, String>();
@@ -50,6 +58,9 @@ public class ObjEjecucionXml {
             Element campo = valores.get(0);
 
             info.put("app_pid", campo.getChildTextTrim("app_pid"));
+            info.put("app_estado", campo.getChildTextTrim("app_estado"));
+            info.put("tiempo_inicial", campo.getChildTextTrim("tiempo_inicial"));
+            info.put("tiempo_final", campo.getChildTextTrim("tiempo_final"));
             System.out.println("Archivo leido jajaj xD");
 
         } catch (JDOMException ex) {
@@ -82,6 +93,18 @@ public class ObjEjecucionXml {
             Element pid = new Element("app_pid");
             pid.setText("" + Recursos.PID);
             app.addContent(pid);
+            
+            Element estado = new Element("app_estado");
+            estado.setText("" + this.estado);
+            app.addContent(estado);
+            
+            Element tiempo_inicial = new Element("tiempo_inicial");
+            tiempo_inicial.setText("" + (agregarTiempoInicial ? System.nanoTime() : 0 ) );
+            app.addContent(tiempo_inicial);
+            
+            Element tiempo_final = new Element("tiempo_final");
+            tiempo_final.setText("" + (agregarTiempoFinal ? System.nanoTime() : 0 ) );
+            app.addContent(tiempo_final);
 
             XMLOutputter xmlRun = new XMLOutputter();
             xmlRun.setFormat(Format.getPrettyFormat());
@@ -102,6 +125,30 @@ public class ObjEjecucionXml {
 
     public void setPath_archivo(String path_archivo) {
         this.path_archivo = path_archivo;
+    }
+
+    public long getEstado() {
+        return estado;
+    }
+
+    public void setEstado(long estado) {
+        this.estado = estado;
+    }
+
+    public boolean isAgregarTiempoFinal() {
+        return agregarTiempoFinal;
+    }
+
+    public void setAgregarTiempoFinal(boolean agregarTiempoFinal) {
+        this.agregarTiempoFinal = agregarTiempoFinal;
+    }
+
+    public boolean isAgregarTiempoInicial() {
+        return agregarTiempoInicial;
+    }
+
+    public void setAgregarTiempoInicial(boolean agregarTiempoInicial) {
+        this.agregarTiempoInicial = agregarTiempoInicial;
     }
 
 }

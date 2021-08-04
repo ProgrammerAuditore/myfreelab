@@ -2,6 +2,7 @@ package hilos;
 
 import controlador.CtrlHiloConexion;
 import index.MyFreeLab;
+import modelo.ObjEjecucionXml;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dao.PreferenciaDao;
@@ -30,6 +31,7 @@ public class HiloSplash extends Thread{
         splash.setVisible(true);
         src = 8; avance = 0; pause = src;
         
+        mtdVerificarEstado();
         mtdCargarConfiguracion();
         mtdCargarDatosDeConexion();
         mtdEstablecerConexion();
@@ -50,6 +52,10 @@ public class HiloSplash extends Thread{
         
         splash.setVisible(false);
         splash.dispose();
+    }
+    
+    private void mtdVerificarEstado(){
+        MyFreeLab.mtdVerificarEstado(0, 2); 
     }
     
     private void mtdCargarConfiguracion(){

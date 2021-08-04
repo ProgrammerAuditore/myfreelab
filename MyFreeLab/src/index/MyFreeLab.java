@@ -76,6 +76,15 @@ public class MyFreeLab {
     }
     
     public static void mtdVerificarArranque(){
+        if( Recursos.dataRun().exists() ){
+            if( !Recursos.dataRun().delete() ){
+                //System.out.println("INICIO :: No se puede eliminar !! ");
+                System.exit(0);
+            }else{
+                //System.out.println("INICIO :: Eliminado");
+            }
+        }
+        
         if( Recursos.OsLinuxDeb )
             MyFreeLab.mtdVerificarPIDLinux();
         else if ( Recursos.OsWin )
@@ -182,12 +191,39 @@ public class MyFreeLab {
                 archivoRun.mtdGenerarXmlRun();
                 System.exit(0);
             }
-
+            
+            archivoRun.setAgregarTiempoInicial(true);
         }
         
         if( archivoRun.mtdGenerarXmlRun() )
                 archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
         
+    }
+    
+    public static void mtdVerificarEstado(long estadoA, long estadoC){
+         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+        
+        if( Recursos.dataRun().getAbsoluteFile().exists() ){
+            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+            String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
+            
+            System.out.println("HiloSplash <Estado> ::: " +estado);
+            try {
+                if( Long.parseLong(estado) == estadoA ){
+                    archivoRun.setEstado(estadoC);
+                    archivoRun.mtdGenerarXmlRun();
+                    System.out.println("Next");
+                }else{
+                    System.out.println("Salir");
+                    System.exit(0);
+                }
+            } catch (Exception e) {
+                System.exit(0);
+            }
+            
+        }else{
+            System.exit(0);
+        }
     }
     
     // * Inicializar el programa de pruebas
