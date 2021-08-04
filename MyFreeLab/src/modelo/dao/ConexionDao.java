@@ -16,7 +16,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
         ConexionDto db = null;
         
         try(FileInputStream fis = new FileInputStream( Recursos.dataConexion() )){
-            ObjectInputStream ois;
+            ObjectInputStream ois = null;
             
             while(fis.available() > 0){
                 ois = new ObjectInputStream(fis);
@@ -30,9 +30,12 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
                 //System.out.println("" + db);
             }
             
+            ois.close();
+            fis.close();
+            
         } catch(Exception e){
             //System.out.println("Error");
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         
         return db;
@@ -49,7 +52,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
             
             //System.out.println("Successfully actualizar data to the file");
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -64,7 +67,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
             
             //System.out.println("Successfully escribir data to the file");
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     

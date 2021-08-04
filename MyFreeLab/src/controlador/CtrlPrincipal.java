@@ -320,10 +320,10 @@ public class CtrlPrincipal implements ActionListener {
     private void mtdSalirDelPrograma() {
         // * Método para cerrar el programa
         laVista.setVisible(false);
+        laVista.dispose();
         mtdCerrandoPrograma();
         Recursos.dataRun().delete();
         Recursos.dataRun().getAbsoluteFile().delete();
-        laVista.dispose();
         System.exit(0);
         
     }

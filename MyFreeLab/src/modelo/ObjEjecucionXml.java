@@ -1,14 +1,14 @@
 package modelo;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -18,67 +18,81 @@ import org.jdom2.output.XMLOutputter;
 import src.Recursos;
 
 public class ObjEjecucionXml {
-    
+
     private List<String> info = new ArrayList<>();
     private String path_archivo;
-    
-    public HashMap<String, String> mtdMapearXmlRun(){
+
+    public HashMap<String, String> mtdMapearXmlRun() {
         HashMap<String, String> info = new HashMap<String, String>();
-        
+
+        File xml = new File(path_archivo);
+        InputStream is = null;
+        BufferedInputStream bis = null;
+        FileInputStream fis = null;
+
         try {
-            
+            fis = new FileInputStream(xml);
+            is = new BufferedInputStream(fis);
+
             SAXBuilder builder = new SAXBuilder();
-            File xml =  new File( path_archivo );
-            
-            Document documento = builder.build(xml);
+            Document documento = builder.build(is);
             Element root = documento.getRootElement();
-            
+
             List<Element> versiones = root.getChildren("MyFreeLab");
-            
+
             // * Obtener la primera etiqueta Versions
             Element version = versiones.get(0);
-                
+
             //  * Obtener los elementos dentro de la etiqueta Versions
             List<Element> valores = version.getChildren();
-                
+
             // * Obtener el primer nodo
             Element campo = valores.get(0);
 
-            info.put("app_pid" , campo.getChildTextTrim("app_pid") );
-            
+            info.put("app_pid", campo.getChildTextTrim("app_pid"));
+            System.out.println("Archivo leido jajaj xD");
+
         } catch (JDOMException ex) {
             //Logger.getLogger(ObjEjecucionXml.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             //Logger.getLogger(ObjEjecucionXml.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e1) {
+                }
+            }
         }
-        
+
         return info;
     }
-    
-    public boolean mtdGenerarXmlRun(){
+
+    public boolean mtdGenerarXmlRun() {
         try {
             Element application = new Element("RunTime");
-            Document doc = new  Document(application);
-            
+            Document doc = new Document(application);
+
             Element root = new Element("MyFreeLab");
             application.addContent(root);
-            
+
             Element app = new Element("App");
             root.addContent(app);
-            
+
             Element pid = new Element("app_pid");
-            pid.setText(""+Recursos.PID);
+            pid.setText("" + Recursos.PID);
             app.addContent(pid);
-            
+
             XMLOutputter xmlRun = new XMLOutputter();
             xmlRun.setFormat(Format.getPrettyFormat());
-            xmlRun.output(doc, new FileWriter( Recursos.dataRun().getAbsoluteFile() ));
+            xmlRun.output(doc, new FileWriter(Recursos.dataRun().getAbsoluteFile()));
             
+            System.out.println("Archivo creado ajajaja xD");
             return true;
         } catch (IOException ex) {
             System.out.println("Archivo .run no creado...\n\n" + ex.getMessage());
         }
-        
+
         return false;
     }
 
@@ -89,5 +103,5 @@ public class ObjEjecucionXml {
     public void setPath_archivo(String path_archivo) {
         this.path_archivo = path_archivo;
     }
-    
+
 }
