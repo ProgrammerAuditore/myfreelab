@@ -276,6 +276,7 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdAbriendoPrograma() {
         ////System.out.println("Ventana abierto.");
+        //MyFreeLab.mtdVerificarArranque();
         MyFreeLab.mtdVerificarEstado(2, 3);
         mtdCrearHiloModificaciones();
 

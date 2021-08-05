@@ -55,6 +55,7 @@ public class HiloSplash extends Thread{
     }
     
     private void mtdVerificarEstado(){
+        //MyFreeLab.mtdVerificarArranque();
         MyFreeLab.mtdVerificarEstado(0, 2); 
     }
     

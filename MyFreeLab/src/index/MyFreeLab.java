@@ -77,12 +77,31 @@ public class MyFreeLab {
     
     public static void mtdVerificarArranque(){
         if( Recursos.dataRun().exists() ){
-            if( !Recursos.dataRun().delete() ){
-                //System.out.println("INICIO :: No se puede eliminar !! ");
+            
+            // Si tiene un estado no valido
+            if( mtdObtenerEstado() < 0 ){
+                Recursos.dataRun().delete();
                 System.exit(0);
-            }else{
-                //System.out.println("INICIO :: Eliminado");
+                
             }
+            
+            // Si tiene un PID en ejecucion o estado mayor a 3
+            if( mtdVerificarPID() || mtdObtenerEstado() > 3 ){
+                
+                System.exit(0);
+            }
+            
+            // Si tiene un PID no en ejecucion
+            if( mtdVerificarPID() == false ){
+                Recursos.dataRun().delete();
+                System.exit(0);
+            }
+            
+            // Si no se puede eliminar el archivo .run
+            if( !Recursos.dataRun().delete() ){
+                System.exit(0);
+            }
+            
         }
         
         if( Recursos.OsLinuxDeb )
@@ -116,6 +135,7 @@ public class MyFreeLab {
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
         if( Recursos.dataRun().getAbsoluteFile().exists() ){
+            archivoRun.setAgregarTiempoInicial(true);
             archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
             String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
 
@@ -204,11 +224,12 @@ public class MyFreeLab {
          ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
         if( Recursos.dataRun().getAbsoluteFile().exists() ){
-            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-            String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
-            
-            System.out.println("HiloSplash <Estado> ::: " +estado);
             try {
+                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+                String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
+            
+                System.out.println("HiloSplash <Estado> ::: " +estado);
+                
                 if( Long.parseLong(estado) == estadoA ){
                     archivoRun.setEstado(estadoC);
                     archivoRun.mtdGenerarXmlRun();
@@ -225,6 +246,68 @@ public class MyFreeLab {
             System.exit(0);
         }
     }
+    
+    public static boolean mtdVerificarPID(){
+         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+         boolean runPID = false;
+        
+        if( Recursos.dataRun().getAbsoluteFile().exists() ){
+            try {
+                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+                String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
+
+                System.out.println("HiloSplash <Estado> ::: " + pid);
+                
+                // * Obtener todos los procesos PID de java
+                String result = null;
+                String cmd = null;
+            
+                if( Recursos.OsWin )
+                    cmd = "tasklist /fi \"imagename eq java*\" ";
+                else
+                    cmd = "ps -C java -o pid=";
+                
+                try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
+                        Scanner s = new Scanner(inputStream).useDelimiter("\\A")) {
+                    result = s.hasNext() ? s.next() : null;
+                } catch (IOException e) {
+                    // e.printStackTrace();
+                }
+                
+                if( result.contains(pid) ){
+                    return true;
+                }
+                
+            } catch (Exception e) {
+                System.exit(0);
+            }
+
+        }else{
+            System.exit(0);
+        }
+        
+        return runPID;
+    }
+    
+    public static long mtdObtenerEstado(){
+        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+        long runEstado = -1000;
+        
+        if( Recursos.dataRun().getAbsoluteFile().exists() ){
+            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+            //System.out.println("XX " + Recursos.dataRun.getAbsolutePath());
+            String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
+            runEstado = Long.parseLong(estado);
+            
+            return runEstado;
+        }else {
+            System.exit(0);
+        }
+        
+        return runEstado;
+    }
+    
+    
     
     // * Inicializar el programa de pruebas
     public void mtdTagTest(){
