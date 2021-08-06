@@ -109,7 +109,7 @@ public class CtrlPrincipal implements ActionListener {
             public void windowActivated(WindowEvent e) {
                 ObjEjecucionXml archivoRun = new ObjEjecucionXml();
                 archivoRun.setEstado(3);
-                archivoRun.setAgregarTiempoFinal(true);
+                archivoRun.setAgregarTiempoInicial(true);
                 archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
                 archivoRun.mtdGenerarXmlRun();
             }
@@ -307,6 +307,10 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdCerrandoPrograma() {
         ////System.out.println("Finalizo el programa.");
+        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+        archivoRun.setAgregarTiempoFinal(true);
+        archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+        archivoRun.mtdGenerarXmlRun();
 
         // Guardar los datos de la conexion antes de cerrar el programa
         if (CtrlHiloConexion.checkConexion()) {

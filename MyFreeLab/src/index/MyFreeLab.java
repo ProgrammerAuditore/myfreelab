@@ -81,24 +81,27 @@ public class MyFreeLab {
             // Si tiene un estado no valido
             if( mtdObtenerEstado() < 0 ){
                 Recursos.dataRun().delete();
+                System.out.println("Tienes un estado no validos");
                 System.exit(0);
                 
             }
             
             // Si tiene un PID en ejecucion o estado mayor a 3
             if( mtdVerificarPID() || mtdObtenerEstado() > 3 ){
-                
+                System.out.println("Tienes un estado no validos o un PID en ejecucion");
                 System.exit(0);
             }
             
             // Si tiene un PID no en ejecucion
             if( mtdVerificarPID() == false ){
                 Recursos.dataRun().delete();
+                System.out.println("Tienes un PID no valido");
                 System.exit(0);
             }
             
             // Si no se puede eliminar el archivo .run
             if( !Recursos.dataRun().delete() ){
+                System.out.println("El archivo .run no se puede eliminar, alguien esta usandolo.");
                 System.exit(0);
             }
             
@@ -221,23 +224,30 @@ public class MyFreeLab {
     }
     
     public static void mtdVerificarEstado(long estadoA, long estadoC){
-         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
         if( Recursos.dataRun().getAbsoluteFile().exists() ){
             try {
-                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-                String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
-            
-                System.out.println("HiloSplash <Estado> ::: " +estado);
                 
-                if( Long.parseLong(estado) == estadoA ){
-                    archivoRun.setEstado(estadoC);
-                    archivoRun.mtdGenerarXmlRun();
-                    System.out.println("Next");
+                if( mtdVerificarPID() || mtdObtenerEstado() > 3 ){
+                    archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+                    String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
+
+                    System.out.println("HiloSplash <Estado> ::: " +estado);
+
+                    if( Long.parseLong(estado) == estadoA ){
+                        archivoRun.setAgregarTiempoInicial(true);
+                        archivoRun.setEstado(estadoC);
+                        archivoRun.mtdGenerarXmlRun();
+                        System.out.println("Next");
+                    }else{
+                        System.out.println("Salir");
+                        System.exit(0);
+                    }
                 }else{
-                    System.out.println("Salir");
                     System.exit(0);
                 }
+                
             } catch (Exception e) {
                 System.exit(0);
             }
