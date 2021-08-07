@@ -108,7 +108,7 @@ public class CtrlPrincipal implements ActionListener {
             @Override
             public void windowActivated(WindowEvent e) {
                 ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-                archivoRun.setEstado(3);
+                archivoRun.setId( MyFreeLab.id );
                 archivoRun.setAgregarTiempoInicial(true);
                 archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
                 archivoRun.mtdGenerarXmlRun();
@@ -276,8 +276,10 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdAbriendoPrograma() {
         ////System.out.println("Ventana abierto.");
-        //MyFreeLab.mtdVerificarArranque();
-        MyFreeLab.mtdVerificarEstado(2, 3);
+        // ***** FASE 3  | Verificar ID
+        System.out.println("***** FASE 3 | Verificar ID");
+        MyFreeLab.mtdVerificarID(MyFreeLab.id, MyFreeLab.id * 3 + 7);
+        MyFreeLab.id = MyFreeLab.id * 3 + 7;
         mtdCrearHiloModificaciones();
 
         // Obtener los datos de la conexion antes de abrir el programa

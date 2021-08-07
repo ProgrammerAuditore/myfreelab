@@ -31,7 +31,7 @@ public class HiloSplash extends Thread{
         splash.setVisible(true);
         src = 8; avance = 0; pause = src;
         
-        mtdVerificarEstado();
+        mtdVerificarID();
         mtdCargarConfiguracion();
         mtdCargarDatosDeConexion();
         mtdEstablecerConexion();
@@ -54,9 +54,11 @@ public class HiloSplash extends Thread{
         splash.dispose();
     }
     
-    private void mtdVerificarEstado(){
-        //MyFreeLab.mtdVerificarArranque();
-        MyFreeLab.mtdVerificarEstado(0, 2); 
+    private void mtdVerificarID(){
+        // ***** FASE 2 | Verificar ID
+        System.out.println("***** FASE 2 | Verificar ID");
+        MyFreeLab.mtdVerificarID(MyFreeLab.id, MyFreeLab.id * 3 + 7);
+        MyFreeLab.id = MyFreeLab.id * 3 + 7;
     }
     
     private void mtdCargarConfiguracion(){

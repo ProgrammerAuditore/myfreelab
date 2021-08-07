@@ -20,12 +20,12 @@ import src.Recursos;
 public class ObjEjecucionXml {
 
     private String path_archivo;
-    private long estado;
+    private long id;
     private boolean agregarTiempoInicial;
     private boolean agregarTiempoFinal;
 
     public ObjEjecucionXml() {
-        estado = 0;
+        id = 0;
         agregarTiempoInicial=false;
         agregarTiempoFinal=false;
     }
@@ -57,11 +57,10 @@ public class ObjEjecucionXml {
             // * Obtener el primer nodo
             Element campo = valores.get(0);
 
+            info.put("app_id", campo.getChildTextTrim("app_id"));
             info.put("app_pid", campo.getChildTextTrim("app_pid"));
-            info.put("app_estado", campo.getChildTextTrim("app_estado"));
             info.put("tiempo_inicial", campo.getChildTextTrim("tiempo_inicial"));
             info.put("tiempo_final", campo.getChildTextTrim("tiempo_final"));
-            System.out.println("Archivo leido jajaj xD");
 
         } catch (JDOMException ex) {
             //Logger.getLogger(ObjEjecucionXml.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,14 +88,14 @@ public class ObjEjecucionXml {
 
             Element app = new Element("App");
             root.addContent(app);
-
+            
+            Element estado = new Element("app_id");
+            estado.setText("" + this.id);
+            app.addContent(estado);
+            
             Element pid = new Element("app_pid");
             pid.setText("" + Recursos.PID);
             app.addContent(pid);
-            
-            Element estado = new Element("app_estado");
-            estado.setText("" + this.estado);
-            app.addContent(estado);
             
             Element tiempo_inicial = new Element("tiempo_inicial");
             tiempo_inicial.setText("" + (agregarTiempoInicial ? System.nanoTime() : 0 ) );
@@ -110,7 +109,6 @@ public class ObjEjecucionXml {
             xmlRun.setFormat(Format.getPrettyFormat());
             xmlRun.output(doc, new FileWriter(Recursos.dataRun().getAbsoluteFile()));
             
-            System.out.println("Archivo creado ajajaja xD");
             return true;
         } catch (IOException ex) {
             System.out.println("Archivo .run no creado...\n\n" + ex.getMessage());
@@ -127,12 +125,12 @@ public class ObjEjecucionXml {
         this.path_archivo = path_archivo;
     }
 
-    public long getEstado() {
-        return estado;
+    public long getId() {
+        return id;
     }
 
-    public void setEstado(long estado) {
-        this.estado = estado;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public boolean isAgregarTiempoFinal() {

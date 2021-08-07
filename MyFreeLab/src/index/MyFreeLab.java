@@ -30,6 +30,7 @@ public class MyFreeLab {
     
     private VentanaPrincipal ventana;
     public static Properties idioma = new Idiomas("en");
+    public static long id;
     
     public void mtdTagInit() {
         
@@ -78,39 +79,47 @@ public class MyFreeLab {
     public static void mtdVerificarArranque(){
         if( Recursos.dataRun().exists() ){
             
-            // Si tiene un estado no valido
-            if( mtdObtenerEstado() < 0 ){
+            // Si tiene un id no valido
+            if( mtdObtenerID() < 0 ){
                 Recursos.dataRun().delete();
-                System.out.println("Tienes un estado no validos");
+                //System.out.println("Tienes un id no validos");
                 System.exit(0);
                 
             }
             
-            // Si tiene un PID en ejecucion o estado mayor a 3
-            if( mtdVerificarPID() || mtdObtenerEstado() > 3 ){
-                System.out.println("Tienes un estado no validos o un PID en ejecucion");
+            // Si tiene un PID en ejecucion o id mayor a 3
+            if( mtdVerificarPID() ){
+                //System.out.println("Tienes un id no validos o un PID en ejecucion");
                 System.exit(0);
             }
             
             // Si tiene un PID no en ejecucion
             if( mtdVerificarPID() == false ){
                 Recursos.dataRun().delete();
-                System.out.println("Tienes un PID no valido");
+                //System.out.println("Tienes un PID no valido");
                 System.exit(0);
             }
             
             // Si no se puede eliminar el archivo .run
             if( !Recursos.dataRun().delete() ){
-                System.out.println("El archivo .run no se puede eliminar, alguien esta usandolo.");
+                //System.out.println("El archivo .run no se puede eliminar, alguien esta usandolo.");
                 System.exit(0);
             }
             
+        } else {
+            
+            // ***** FASE 1  | Verificar ID
+            System.out.println("***** FASE 1 | Verificar ID");
+            MyFreeLab.id = Recursos.PID * 3 + 7;
+            ObjEjecucionXml archivoRun = new ObjEjecucionXml();
+            
+            archivoRun.setId(MyFreeLab.id);
+            archivoRun.setAgregarTiempoInicial(true);
+            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+            archivoRun.mtdGenerarXmlRun();
+            
         }
         
-        if( Recursos.OsLinuxDeb )
-            MyFreeLab.mtdVerificarPIDLinux();
-        else if ( Recursos.OsWin )
-            MyFreeLab.mtdVerificarPIDWin();
     }
     
     private void mtdCargarPreferencias(){
@@ -134,116 +143,24 @@ public class MyFreeLab {
             
     }
     
-    public static void mtdVerificarPIDLinux(){
-        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-        
-        if( Recursos.dataRun().getAbsoluteFile().exists() ){
-            archivoRun.setAgregarTiempoInicial(true);
-            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-            String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
-
-            // * Obtener todos los procesos PID de java
-            String result = null;
-            String cmd = "ps -C java -o pid=";
-            try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
-                    Scanner s = new Scanner(inputStream).useDelimiter("\\A")) {
-                result = s.hasNext() ? s.next() : null;
-            } catch (IOException e) {
-                // e.printStackTrace();
-            }
-            
-            try{
-                if( result.contains(pid) ){
-                    // En ejecución
-                    System.out.println(Info.NombreSoftware + " in action. ");
-                    System.exit(0);
-                } else {
-                    if( Recursos.dataRun().delete() ){
-                        // *WARNING* PID corrupto
-                        System.out.println("[!] " + pid);
-                    }
-                }
-            }catch(Exception ex){
-                // Suspendido
-                System.out.println(Info.NombreSoftware + " suspended. ");
-                archivoRun.mtdGenerarXmlRun();
-                System.exit(0);
-            }
-
-        }
-        
-        if( archivoRun.mtdGenerarXmlRun() )
-                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-        
-    }
-    
-    public static void mtdVerificarPIDWin(){
-        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-        
-        if( Recursos.dataRun().getAbsoluteFile().exists() ){
-            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-            //System.out.println("XX " + Recursos.dataRun.getAbsolutePath());
-            String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
-
-            // * Obtener todos los procesos PID de java
-            String result = null;
-            String cmd = "tasklist /fi \"imagename eq java*\" ";
-            try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
-                    Scanner s = new Scanner(inputStream).useDelimiter("\\A")) {
-                result = s.hasNext() ? s.next() : null;
-            } catch (IOException e) {
-                // e.printStackTrace();
-            }
-
-            //System.out.println("Respuesta CMD : " + result);
-            //System.out.println("PID : " + pid);
-            try{
-                if( result.contains(pid) ){
-                    // En ejecución
-                    System.out.println(Info.NombreSoftware + " in action. ");
-                    System.exit(0);
-                } else {
-                    if( Recursos.dataRun().delete() ){
-                        // *WARNING* PID corrupto
-                        System.out.println("[!] " + pid);
-                    }
-                }
-            }catch(Exception ex){
-                // Suspendido
-                System.out.println(Info.NombreSoftware + " suspended. ");
-                archivoRun.mtdGenerarXmlRun();
-                System.exit(0);
-            }
-            
-            archivoRun.setAgregarTiempoInicial(true);
-        }
-        
-        if( archivoRun.mtdGenerarXmlRun() )
-                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-        
-    }
-    
-    public static void mtdVerificarEstado(long estadoA, long estadoC){
+    public static void mtdVerificarID(long estadoA, long estadoC){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
         
         if( Recursos.dataRun().getAbsoluteFile().exists() ){
             try {
                 
-                if( mtdVerificarPID() || mtdObtenerEstado() > 3 ){
+                if( mtdVerificarPID() || mtdObtenerID() > 3 ){
                     archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-                    String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
-
-                    System.out.println("HiloSplash <Estado> ::: " +estado);
+                    String estado = archivoRun.mtdMapearXmlRun().get("app_id");
 
                     if( Long.parseLong(estado) == estadoA ){
                         archivoRun.setAgregarTiempoInicial(true);
-                        archivoRun.setEstado(estadoC);
+                        archivoRun.setId(estadoC);
                         archivoRun.mtdGenerarXmlRun();
-                        System.out.println("Next");
                     }else{
-                        System.out.println("Salir");
                         System.exit(0);
                     }
+                    
                 }else{
                     System.exit(0);
                 }
@@ -266,8 +183,6 @@ public class MyFreeLab {
                 archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
                 String pid = archivoRun.mtdMapearXmlRun().get("app_pid");
 
-                System.out.println("HiloSplash <Estado> ::: " + pid);
-                
                 // * Obtener todos los procesos PID de java
                 String result = null;
                 String cmd = null;
@@ -299,22 +214,27 @@ public class MyFreeLab {
         return runPID;
     }
     
-    public static long mtdObtenerEstado(){
+    public static long mtdObtenerID(){
         ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-        long runEstado = -1000;
+        long runID = -1000;
         
-        if( Recursos.dataRun().getAbsoluteFile().exists() ){
-            archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-            //System.out.println("XX " + Recursos.dataRun.getAbsolutePath());
-            String estado = archivoRun.mtdMapearXmlRun().get("app_estado");
-            runEstado = Long.parseLong(estado);
+        try {
+            if( Recursos.dataRun().getAbsoluteFile().exists() ){
+                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
+                //System.out.println("XX " + Recursos.dataRun.getAbsolutePath());
+                String estado = archivoRun.mtdMapearXmlRun().get("app_id");
+                runID = Long.parseLong(estado);
+
+                return runID;
+            }else {
+                System.exit(0);
+            }
             
-            return runEstado;
-        }else {
+        } catch (Exception e) {
             System.exit(0);
         }
         
-        return runEstado;
+        return runID;
     }
     
     
