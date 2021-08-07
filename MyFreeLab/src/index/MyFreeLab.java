@@ -318,9 +318,6 @@ public class MyFreeLab {
         System.out.print("  --init              ");
         System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg2") +" "+Info.NombreSoftware);
         
-        System.out.print("  --mkrun, -mr        ");
-        System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg3") + " .run");
-        
         System.out.print("  --mkconn, -mc       ");
         System.out.println(MyFreeLab.idioma.get("MyFreeLab.mtdTagHelp.msg3") + " conn");
         
@@ -393,23 +390,8 @@ public class MyFreeLab {
         return Recursos.PID;
     }
 
-
-    void mtdTagMkRun() {
-        File run = Recursos.dataRun();
-        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-        archivoRun.setPath_archivo(run.getAbsolutePath() );
-        
-        if( run.exists() ) 
-            run.delete();
-        
-        if( archivoRun.mtdGenerarXmlRun() ){
-            System.out.println("" + run.getAbsolutePath());
-        }
-        
-    }
-    
     void mtdTagMkConn() {
-        File conn = Recursos.dataRun();
+        File conn = Recursos.dataConexion();
         
         if( conn.exists() )
             conn.delete();
