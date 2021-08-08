@@ -190,7 +190,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlOpciones.setBackground(new java.awt.Color(211, 211, 211));
         pnlOpciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel2.setBackground(new java.awt.Color(45, 52, 93));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         checkProEliminados.setBackground(new java.awt.Color(255, 255, 255));
         checkProEliminados.setAutoscrolls(true);
@@ -219,7 +219,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addComponent(etqFiltroProEliminados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel4.setBackground(new java.awt.Color(45, 52, 93));
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
         checkProRealizados.setBackground(new java.awt.Color(255, 255, 255));
         checkProRealizados.setAutoscrolls(true);
@@ -243,7 +243,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addComponent(etqFiltroProRealizados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel5.setBackground(new java.awt.Color(45, 52, 93));
+        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
 
         checkProEnProceso.setBackground(new java.awt.Color(255, 255, 255));
         checkProEnProceso.setAutoscrolls(true);
@@ -308,7 +308,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogoLayout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addComponent(cmpBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
