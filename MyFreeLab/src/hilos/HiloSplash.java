@@ -2,7 +2,7 @@ package hilos;
 
 import controlador.CtrlHiloConexion;
 import index.MyFreeLab;
-import modelo.ObjEjecucionXml;
+import modelo.dao.EjecucionDao;
 import modelo.dao.ConexionDao;
 import modelo.dao.MyFreeLabDao;
 import modelo.dao.PreferenciaDao;
@@ -56,9 +56,8 @@ public class HiloSplash extends Thread{
     
     private void mtdVerificarID(){
         // ***** FASE 2 | Verificar ID
-        System.out.println("***** FASE 2 | Verificar ID");
-        MyFreeLab.mtdVerificarID(MyFreeLab.id, MyFreeLab.id * 3 + 7);
-        MyFreeLab.id = MyFreeLab.id * 3 + 7;
+        //System.out.println("***** FASE 2 | Verificar ID");
+        MyFreeLab.mtdVerificarID();
     }
     
     private void mtdCargarConfiguracion(){

@@ -149,9 +149,9 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
             /*
             System.out.println("***********************************************");
             System.out.println("Nombre proyecto : "  + nombre_proyecto);
-            System.out.println("Nombre id : "  + id_proyecto);
+            System.out.println("Nombre ctrlID : "  + id_proyecto);
             System.out.println("Nombre empresa : "  + nombre_empresa);
-            System.out.println("Empresa id : "  + id_empresa);
+            System.out.println("Empresa ctrlID : "  + id_empresa);
             System.out.println("\n");
             */
             

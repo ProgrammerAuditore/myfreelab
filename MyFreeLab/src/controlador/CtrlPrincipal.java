@@ -23,11 +23,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.FabricarModal;
-import modelo.ObjEjecucionXml;
+import modelo.dao.EjecucionDao;
 import modelo.dao.ConexionDao;
 import modelo.dao.EmpresaDao;
 import modelo.dao.ProyectoDao;
 import modelo.dao.RequisitoDao;
+import modelo.dto.EjecucionDto;
 import modelo.dto.ProyectoDto;
 import src.Info;
 import src.Recursos;
@@ -107,11 +108,14 @@ public class CtrlPrincipal implements ActionListener {
 
             @Override
             public void windowActivated(WindowEvent e) {
-                ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-                archivoRun.setId( MyFreeLab.id );
-                archivoRun.setAgregarTiempoInicial(true);
-                archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-                archivoRun.mtdGenerarXmlRun();
+                // * Guardar datos de ejecución del programa
+                EjecucionDao archivoRun = new EjecucionDao();
+                EjecucionDto xml = archivoRun.mtdObetenerDatos();
+                xml.setId(MyFreeLab.ctrlID);
+                xml.setPid(Recursos.PID);
+                xml.setEstado(3);
+                xml.setTiempo_ejecucion(System.nanoTime());
+                archivoRun.mtdRegistrarDatos(xml);
             }
             
             @Override
@@ -277,9 +281,8 @@ public class CtrlPrincipal implements ActionListener {
     private void mtdAbriendoPrograma() {
         ////System.out.println("Ventana abierto.");
         // ***** FASE 3  | Verificar ID
-        System.out.println("***** FASE 3 | Verificar ID");
-        MyFreeLab.mtdVerificarID(MyFreeLab.id, MyFreeLab.id * 3 + 7);
-        MyFreeLab.id = MyFreeLab.id * 3 + 7;
+        //System.out.println("***** FASE 3 | Verificar ID");
+        MyFreeLab.mtdVerificarID();
         mtdCrearHiloModificaciones();
 
         // Obtener los datos de la conexion antes de abrir el programa
@@ -309,10 +312,15 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdCerrandoPrograma() {
         ////System.out.println("Finalizo el programa.");
-        ObjEjecucionXml archivoRun = new ObjEjecucionXml();
-        archivoRun.setAgregarTiempoFinal(true);
-        archivoRun.setPath_archivo(Recursos.dataRun().getAbsolutePath() );
-        archivoRun.mtdGenerarXmlRun();
+        
+        // * Guardar datos de finalizacion del programa
+        EjecucionDao archivoRun = new EjecucionDao();
+        EjecucionDto xml = archivoRun.mtdObetenerDatos();
+        xml.setId(MyFreeLab.ctrlID);
+        xml.setPid(Recursos.PID);
+        xml.setEstado(0);
+        xml.setTiempo_final(System.nanoTime());
+        archivoRun.mtdRegistrarDatos(xml);
 
         // Guardar los datos de la conexion antes de cerrar el programa
         if (CtrlHiloConexion.checkConexion()) {
@@ -332,8 +340,6 @@ public class CtrlPrincipal implements ActionListener {
         laVista.setVisible(false);
         laVista.dispose();
         mtdCerrandoPrograma();
-        Recursos.dataRun().delete();
-        Recursos.dataRun().getAbsoluteFile().delete();
         System.exit(0);
         
     }
