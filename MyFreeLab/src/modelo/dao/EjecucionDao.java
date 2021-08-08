@@ -102,7 +102,9 @@ public class EjecucionDao {
             datos.setTiempo_final( Long.parseLong(campo.getChildTextTrim("tiempo_final")) );
             
         }catch (Exception ex) {
-            Logger.getLogger(EjecucionDao.class.getName()).log(Level.SEVERE, null, ex);
+            Recursos.dataRun().delete();
+            System.exit(0);
+            //Logger.getLogger(EjecucionDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (is != null) {
                 try {

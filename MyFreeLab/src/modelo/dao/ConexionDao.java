@@ -35,6 +35,7 @@ public class ConexionDao implements keyword_binario<ConexionDto>{
             
         } catch(Exception e){
             //System.out.println("Error");
+            Recursos.dataConexion().delete();
             //e.printStackTrace();
         }
         

@@ -30,7 +30,8 @@ public class PreferenciaDao implements keyword_binario<PreferenciaDto>{
             
         } catch(Exception e){
             //System.out.println("Error");
-           // e.printStackTrace();
+            Recursos.dataPreferencias().delete();
+            //e.printStackTrace();
         }
         
         return db;
