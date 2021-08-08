@@ -80,51 +80,50 @@ public class MyFreeLab {
     public static void mtdVerificarArranque(){
         if( Recursos.dataRun().exists() ){
             
-            // Si tiene un ctrlID no valido
-            if( mtdObtenerID() < 0 ){
-                Recursos.dataRun().delete();
-                //System.out.println("Tienes un ctrlID no validos");
-                System.exit(0);
-                
-            }
-            
             // Si tiene un PID en ejecucion o ctrlID mayor a 3
             if( mtdVerificarPID() ){
                 //System.out.println("Tienes un ctrlID no validos o un PID en ejecucion");
                 System.exit(0);
             }
             
+            // Si tiene un ctrlID no valido
+            if( mtdObtenerID() < 0 ){
+                Recursos.dataRun().delete();
+                //System.out.println("Tienes un ctrlID no validos");
+                //System.exit(0);
+                
+            }
+            
             // Si tiene un PID no en ejecucion
             if( mtdVerificarPID() == false ){
                 Recursos.dataRun().delete();
                 //System.out.println("Tienes un PID no valido");
-                System.exit(0);
+                //System.exit(0);
             }
             
             // Si no se puede eliminar el archivo .run
-            if( !Recursos.dataRun().delete() ){
+            if( Recursos.dataRun().exists() && !Recursos.dataRun().delete() ){
                 //System.out.println("El archivo .run no se puede eliminar, alguien esta usandolo.");
                 System.exit(0);
             }
             
-        } else {
-            
-            // ***** FASE 1  | Verificar ID
-            //System.out.println("***** FASE 1 | Verificar ID");
-            System.out.println(Info.NombreSoftware + " running.");
-            MyFreeLab.ctrlID = Recursos.PID * 3 + 7;
-            
-            // * Guardar datos de inicialización del programa
-            EjecucionDao archivoRun = new EjecucionDao();
-            EjecucionDto dto = new EjecucionDto();
-            dto.setId(MyFreeLab.ctrlID);
-            dto.setPid(Recursos.PID);
-            dto.setEstado(1);
-            dto.setTiempo_inicial(System.nanoTime());
-            dto.setTiempo_ejecucion(System.nanoTime());
-            archivoRun.mtdRegistrarDatos(dto);
-            
         }
+            
+        // ***** FASE 1  | Verificar ID
+        //System.out.println("***** FASE 1 | Verificar ID");
+        System.out.println(Info.NombreSoftware + " running.");
+        MyFreeLab.ctrlID = Recursos.PID * 3 + 7;
+
+        // * Guardar datos de inicialización del programa
+        EjecucionDao archivoRun = new EjecucionDao();
+        EjecucionDto dto = new EjecucionDto();
+        dto.setId(MyFreeLab.ctrlID);
+        dto.setPid(Recursos.PID);
+        dto.setEstado(1);
+        dto.setTiempo_inicial(System.nanoTime());
+        dto.setTiempo_ejecucion(System.nanoTime());
+        archivoRun.mtdRegistrarDatos(dto);
+            
         
     }
     

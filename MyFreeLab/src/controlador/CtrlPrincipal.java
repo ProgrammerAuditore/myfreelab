@@ -111,11 +111,21 @@ public class CtrlPrincipal implements ActionListener {
                 // * Guardar datos de ejecución del programa
                 EjecucionDao archivoRun = new EjecucionDao();
                 EjecucionDto xml = archivoRun.mtdObetenerDatos();
-                xml.setId(MyFreeLab.ctrlID);
-                xml.setPid(Recursos.PID);
-                xml.setEstado(3);
-                xml.setTiempo_ejecucion(System.nanoTime());
-                archivoRun.mtdRegistrarDatos(xml);
+                
+                // Verificar que los datos sean validos y correctos
+                if( xml.getId() != MyFreeLab.ctrlID || xml.getPid() != Recursos.PID ){
+                    System.exit(0);
+                
+                } else {
+                    
+                    xml.setId(MyFreeLab.ctrlID);
+                    xml.setPid(Recursos.PID);
+                    xml.setEstado(3);
+                    xml.setTiempo_ejecucion(System.nanoTime());
+
+                    archivoRun.mtdRegistrarDatos(xml);
+                    
+                }
             }
             
             @Override
