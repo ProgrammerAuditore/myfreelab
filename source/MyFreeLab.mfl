@@ -5,6 +5,31 @@
             <!-- Información del software -->
             <app_autor>ProgrammerAuditore</app_autor>
             <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v1.0.5Beta</app_name_version>
+            <app_num_version>1050</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>xxxxx</app_link_exe>
+            <app_link_deb>yyyyy</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+            <novedad>* Se agrego la ventana y opción de resumen</novedad>
+            <novedad>* Se agrego la ventana y opción de preferencias</novedad>
+            <novedad>+ para modificar botones, fuentes e idioma</novedad>
+            <novedad>* Se agrego soporte para inglés y español</novedad>
+            <novedad>* Se agrego nuevos estilos para los botones</novedad>
+            <novedad>* Se agrego nuevos estilos para las fuentes</novedad>
+            <novedad>* Se modifico el diseño del logotipo</novedad>
+            <novedad>* Se modifico la ventana principal</novedad>
+            <novedad>* Se modifico la ventana de configurar la conexión</novedad>
+            <novedad>* Se corrigió bugs al ejecutar el programa</novedad>
+            <novedad>* Se corrigió bugs</novedad>
+            <novedad>* etc</novedad>
+            </app_novedades>
+        </Version>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
             <app_name_version>v0.9.90Alpha</app_name_version>
             <app_num_version>0990</app_num_version>
             <!-- Links de descarga -->

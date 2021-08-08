@@ -14,8 +14,8 @@ public class Info {
             "Tiene la funcionalidad de conexión a una base de datos MYSQL local o remoto para registrar los datos.";
     public static final String Licencia="Todos los derechos reservados.";
     public static final String sNombre = "MyFreeLab";
-    public static final String sVersionName = "v1.0";
-    public static final String sVersionNum = "1000";
+    public static final String sVersionName = "v1.0.5";
+    public static final String sVersionNum = "1050";
     public static final String sProduccion = "Beta";
     public static final String NombreSoftware = sNombre + " " + sVersionName + sProduccion;
     public static final String Novedades = 
@@ -26,12 +26,14 @@ public class Info {
             "* Se agrego nuevos estilos para los botones" + "\n" +
             "* Se agrego nuevos estilos para las fuentes" + "\n" +
             "* Se modifico el diseño del logotipo" + "\n" +
+            "* Se modifico la ventana principal" + "\n" +
             "* Se modifico la ventana de configurar la conexión" + "\n" +
-            "* Se corrigió bugs al ingresar datos" + "\n" +
+            "* Se corrigió bugs al ejecutar el programa" + "\n" +
             "* Se corrigió bugs" + "\n" +
             "* etc." + "\n";
     
     public static final String SitioWeb = "https://programmerauditore.gitlab.io/myfreelab";
     public static final String PaginaAyuda = "https://programmerauditore.gitlab.io/myfreelab/#/obtener-ayuda";
-    public static final String LinkVersiones = "https://raw.githubusercontent.com/ProgrammerAuditore/netbeans-freelancer-software/master/source/MyFreeLab.mfl";
+    public static final String LinkVersiones = "https://raw.githubusercontent.com/ProgrammerAuditore/myfreelab/master/source/MyFreeLab.mfl";
+    //public static final String LinkVersiones = "https://raw.githubusercontent.com/ProgrammerAuditore/myfreelab/avance/source/MyFreeLab.mfl";
 }
