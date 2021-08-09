@@ -158,6 +158,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
                 CtrlPrincipal.mensajeCtrlPrincipal(
                         MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg5")+
                         " " + doc.get("app_name_version"));
+                
                 if ( Recursos.OsWin ) {
                     //System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
                     mtdInstalarActualizacionExe( doc.get("app_link_exe") , versionNum );
@@ -204,6 +205,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
         // Instalar la version nueva
         if ( archivo.exists()  ) {
             modal.getParent().setVisible(false);
+            String msg = "";
+            
+            /*
             try {
                 String dir = archivo.getCanonicalPath();
                 String cmd = "cmd /c start " + fileName + "";
@@ -213,16 +217,24 @@ public class ctrlBuscarActualizacion implements MouseListener {
             } catch (IOException ex) {
                 Logger.getLogger(ctrlBuscarActualizacion.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
-                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg2")
-                .replaceAll("<MyFreeLab>", Info.NombreSoftware));
+            */
             
+            msg += MyFreeLab.idioma.
+                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg2")
+                .replaceAll("<MyFreeLab>", Info.NombreSoftware);
+            
+            msg +="\n";
+            
+            msg += MyFreeLab.idioma.
+                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg3")
+                .replaceAll("<MyFreeLab>", fileName);
+            
+            JOptionPane.showMessageDialog(laVista, msg );
             System.exit(0);
             return true;
         } else{
             JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
-                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg3"));
+                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg4"));
         }
         
         return false;
@@ -247,23 +259,35 @@ public class ctrlBuscarActualizacion implements MouseListener {
         // Instalar la version nueva
         if ( archivo.exists()  ) {
             modal.getParent().setVisible(false);
+            String msg = "";
+            
+            /*
             try {
                 // Se procede su instalacion
                 String dir = archivo.getCanonicalPath();
                 String cmd = mtdInstaladorDeb() + " " + fileName;
                 Runtime run = Runtime.getRuntime();
                 Process pr = run.exec(cmd);
-
+            
             } catch (IOException ex) {}
-
-            JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
+            */
+            
+            msg += MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg2")
-                .replaceAll("<MyFreeLab>", Info.NombreSoftware));
+                .replaceAll("<MyFreeLab>", Info.NombreSoftware);
+            
+            msg +="\n";
+            
+            msg += MyFreeLab.idioma.
+                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg3")
+                .replaceAll("<MyFreeLab>", fileName);
+            
+            JOptionPane.showMessageDialog(laVista, msg );
             System.exit(0);
             return true;
         } else{
             JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
-                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg3"));
+                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg4"));
         }
         
         return false;
