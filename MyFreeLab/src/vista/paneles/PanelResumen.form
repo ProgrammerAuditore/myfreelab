@@ -129,7 +129,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="mensaje1" pref="628" max="32767" attributes="0"/>
+                          <Component id="lblProMsg" pref="628" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cmpProFinalizados" pref="280" max="32767" attributes="0"/>
@@ -154,7 +154,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="mensaje1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblProMsg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -254,7 +254,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="vista.componentes.etiqueta.Mensaje" name="mensaje1">
+            <Component class="vista.componentes.etiqueta.Mensaje" name="lblProMsg">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Aqu&#xed; se muestran un resumen de todo los proyectos en proceso, finalizados y eliminados."/>
               </Properties>
@@ -276,7 +276,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="mensaje2" pref="628" max="32767" attributes="0"/>
+                          <Component id="lblMonMsg" pref="628" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lblMontoEsperado" max="32767" attributes="0"/>
@@ -301,7 +301,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="mensaje2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMonMsg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -329,7 +329,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="vista.componentes.etiqueta.Mensaje" name="mensaje2">
+            <Component class="vista.componentes.etiqueta.Mensaje" name="lblMonMsg">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Aqu&#xed; se muestran un resumen acerca de la monetizaci&#xf3;n esperados de los proyectos."/>
               </Properties>

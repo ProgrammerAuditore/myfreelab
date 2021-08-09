@@ -45,6 +45,10 @@ public class PanelResumen extends javax.swing.JPanel {
         this.cmpMontoLibre.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblMontoLibre"));
         this.cmpMontoObtenido.setPlaceholder(MyFreeLab.idioma.getProperty("panelInforme.lblMontoObtenido"));
         
+        // * Mensajes
+        this.lblMonMsg.setText(MyFreeLab.idioma.getProperty("panelInforme.lblMonMsg"));
+        this.lblProMsg.setText(MyFreeLab.idioma.getProperty("panelInforme.lblProMsg"));
+        
         // * Botones
         this.btnAceptar.setTexto(MyFreeLab.idioma.getProperty("panelInforme.btnAceptar"));
     }
@@ -72,9 +76,9 @@ public class PanelResumen extends javax.swing.JPanel {
         cmpProFinalizados = new vista.componentes.campos.CampoTexto();
         lblProTotales = new vista.componentes.etiqueta.Etiqueta();
         cmpProTotales = new vista.componentes.campos.CampoTexto();
-        mensaje1 = new vista.componentes.etiqueta.Mensaje();
+        lblProMsg = new vista.componentes.etiqueta.Mensaje();
         jPanel3 = new javax.swing.JPanel();
-        mensaje2 = new vista.componentes.etiqueta.Mensaje();
+        lblMonMsg = new vista.componentes.etiqueta.Mensaje();
         lblMontoEsperado = new vista.componentes.etiqueta.Etiqueta();
         cmpMontoEsperado = new vista.componentes.campos.CampoTexto();
         lblMontoPerdidas = new vista.componentes.etiqueta.Etiqueta();
@@ -145,7 +149,7 @@ public class PanelResumen extends javax.swing.JPanel {
         cmpProTotales.setEnabled(false);
         cmpProTotales.setFocusable(false);
 
-        mensaje1.setText("Aquí se muestran un resumen de todo los proyectos en proceso, finalizados y eliminados.");
+        lblProMsg.setText("Aquí se muestran un resumen de todo los proyectos en proceso, finalizados y eliminados.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,7 +158,7 @@ public class PanelResumen extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mensaje1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                    .addComponent(lblProMsg, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmpProFinalizados, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
@@ -173,7 +177,7 @@ public class PanelResumen extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mensaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblProMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -197,7 +201,7 @@ public class PanelResumen extends javax.swing.JPanel {
 
         tpanelInformativo.addTab("Proyectos", jPanel2);
 
-        mensaje2.setText("Aquí se muestran un resumen acerca de la monetización esperados de los proyectos.");
+        lblMonMsg.setText("Aquí se muestran un resumen acerca de la monetización esperados de los proyectos.");
 
         lblMontoEsperado.setText("Monto esperado");
 
@@ -234,7 +238,7 @@ public class PanelResumen extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mensaje2, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                    .addComponent(lblMonMsg, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblMontoEsperado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -253,7 +257,7 @@ public class PanelResumen extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mensaje2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblMonMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -322,6 +326,7 @@ public class PanelResumen extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private vista.componentes.etiqueta.Mensaje lblMonMsg;
     private vista.componentes.etiqueta.Etiqueta lblMontoEsperado;
     private vista.componentes.etiqueta.Etiqueta lblMontoLibre;
     private vista.componentes.etiqueta.Etiqueta lblMontoObtenido;
@@ -329,9 +334,8 @@ public class PanelResumen extends javax.swing.JPanel {
     private vista.componentes.etiqueta.Etiqueta lblProEliminados;
     private vista.componentes.etiqueta.Etiqueta lblProEnProceso;
     private vista.componentes.etiqueta.Etiqueta lblProFinalizados;
+    private vista.componentes.etiqueta.Mensaje lblProMsg;
     private vista.componentes.etiqueta.Etiqueta lblProTotales;
-    private vista.componentes.etiqueta.Mensaje mensaje1;
-    private vista.componentes.etiqueta.Mensaje mensaje2;
     private javax.swing.JTabbedPane tpanelInformativo;
     // End of variables declaration//GEN-END:variables
 }
