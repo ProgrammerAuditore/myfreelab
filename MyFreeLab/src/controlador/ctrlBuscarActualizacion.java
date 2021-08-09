@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import static java.lang.System.in;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -134,12 +135,14 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Verificar versiones
         int versionNum = Integer.parseInt( doc.get("app_num_version") );
+        String versionName = doc.get("app_name_version");
+        
         if ( versionNum > Integer.parseInt(Info.sVersionNum) ||
             !doc.get("app_name_version").contains(Info.sProduccion) ) {
-
+        
             // * Actualizar el programa
             CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg1"));
-            // * Establecer informacion de la nueva version
+            // * Establecer informacion de la archivo_descarga version
             laVista.etqVersionActual.setText(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg2"));
             laVista.cmpVersionActual.setText(doc.get("app_name_version"));
             laVista.cmpNovedades.setText(doc.get("app_novedades"));
@@ -161,11 +164,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
                 
                 if ( Recursos.OsWin ) {
                     //System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
-                    mtdInstalarActualizacionExe( doc.get("app_link_exe") , versionNum );
+                    mtdInstalarActualizacionExe( doc.get("app_link_exe") , versionName );
 
                 } else  {
                     //System.out.println("Link de descargar :: " + doc.get("app_link_deb"));
-                    mtdInstalarActualizacionDeb( doc.get("app_link_deb"), versionNum );
+                    mtdInstalarActualizacionDeb( doc.get("app_link_deb"), versionName );
 
                 }
 
@@ -187,11 +190,19 @@ public class ctrlBuscarActualizacion implements MouseListener {
         }
     }
     
-    private boolean mtdInstalarActualizacionExe(String url, int versionNum) {
+    private boolean mtdInstalarActualizacionExe(String url, String versionNum) {
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg1"));
+        
         String fileName;
-        fileName = Recursos.dirTemp + "myfreelab-" + versionNum + ".exe";
+        File archivo_descarga = mtdObtenerDestino();
+        
+        // * Seleccionar la ruta de destino
+        if( archivo_descarga != null)
+            fileName = archivo_descarga.getAbsolutePath() + "/" + "myfreelab-" + versionNum + ".deb";
+        else
+            fileName = Recursos.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
+        
         File archivo = new File(fileName);
         //System.out.println("Ejecutable exe :: " + path);
 
@@ -202,7 +213,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         }
         
         // * Procede a instalarlo
-        // Instalar la version nueva
+        // Instalar la version archivo_descarga
         if ( archivo.exists()  ) {
             modal.getParent().setVisible(false);
             String msg = "";
@@ -227,7 +238,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             
             msg += MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg3")
-                .replaceAll("<MyFreeLab>", fileName);
+                .replaceAll("<MyFreeLab>", archivo.getAbsolutePath());
             
             JOptionPane.showMessageDialog(laVista, msg );
             System.exit(0);
@@ -241,11 +252,19 @@ public class ctrlBuscarActualizacion implements MouseListener {
     }
 
 
-    private boolean mtdInstalarActualizacionDeb(String url, int versionNum) {
+    private boolean mtdInstalarActualizacionDeb(String url, String versionNum) {
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg1"));
+        
         String fileName;
-        fileName = Recursos.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
+        File archivo_descarga = mtdObtenerDestino();
+        
+        // * Seleccionar la ruta de destino
+        if( archivo_descarga != null)
+            fileName = archivo_descarga.getAbsolutePath() + "/" + "myfreelab-" + versionNum + ".deb";
+        else
+            fileName = Recursos.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
+        
         File archivo = new File(fileName);
         //System.out.println("Ejecutable deb :: " + path);
 
@@ -256,7 +275,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         }
         
         // * Procede a instalarlo
-        // Instalar la version nueva
+        // Instalar la version archivo_descarga
         if ( archivo.exists()  ) {
             modal.getParent().setVisible(false);
             String msg = "";
@@ -280,7 +299,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
             
             msg += MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg3")
-                .replaceAll("<MyFreeLab>", fileName);
+                .replaceAll("<MyFreeLab>", archivo.getAbsolutePath());
             
             JOptionPane.showMessageDialog(laVista, msg );
             System.exit(0);
@@ -357,6 +376,36 @@ public class ctrlBuscarActualizacion implements MouseListener {
             return "echo";
         }
         
+    }
+    
+    private File mtdObtenerDestino(){
+        File path = null;
+        
+        // * Buscar la carpeta de escritorio
+        if( path == null ){
+            File escritorio = new File(Recursos.dirHome+"/Escritorio").getAbsoluteFile();
+            File desktop = new File(Recursos.dirHome+"/Desktop").getAbsoluteFile();
+
+            if( escritorio.exists() && escritorio.isDirectory() ){
+                path = escritorio;
+            } else if( desktop.exists() && desktop.isDirectory() ){
+                path = desktop;
+            }
+        }
+        
+        // * Buscar la carpeta de descargas
+        if( path == null ){
+            File descargas = new File(Recursos.dirHome+"/Descargas").getAbsoluteFile();
+            File download = new File(Recursos.dirHome+"/Download").getAbsoluteFile();
+
+            if( descargas.exists() && descargas.isDirectory() ){
+                path = descargas;
+            } else if( download.exists() && download.isDirectory() ){
+                path = download;
+            }
+        }
+        
+        return path;
     }
     
     @Override
