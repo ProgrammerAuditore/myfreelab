@@ -135,9 +135,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
             !doc.get("app_name_version").contains(Info.sProduccion) ) {
 
             // * Actualizar el programa
-            CtrlPrincipal.mensajeCtrlPrincipal("Nueva versión encontrada");
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg1"));
             // * Establecer informacion de la nueva version
-            laVista.etqVersionActual.setText("Nueva versión");
+            laVista.etqVersionActual.setText(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg2"));
             laVista.cmpVersionActual.setText(doc.get("app_name_version"));
             laVista.cmpNovedades.setText(doc.get("app_novedades"));
 
@@ -145,15 +145,15 @@ public class ctrlBuscarActualizacion implements MouseListener {
             laVista.cmpNovedades.setBorder(new LineBorder(Color.green));
 
             int resp = JOptionPane.showConfirmDialog(laVista,
-                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg1"),
-                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg2"), 
+                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg3"),
+                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg4"), 
                     JOptionPane.YES_NO_OPTION);
 
             if (resp == JOptionPane.YES_OPTION) {
 
                 // Verificar el sistema operativo
                 CtrlPrincipal.mensajeCtrlPrincipal(
-                        MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg3")+
+                        MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg5")+
                         " " + doc.get("app_name_version"));
                 if ( Recursos.OsWin ) {
                     //System.out.println("Link de descargar :: " + doc.get("app_link_exe"));
@@ -171,7 +171,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
         // * Verificar si la version es identico
         } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
             JOptionPane.showMessageDialog(laVista, Info.NombreSoftware + " "+
-                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg4"));
+                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg6"));
         }
     }
     
@@ -204,7 +204,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
             }
 
             JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
-                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg2"));
+                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg2")
+                .replaceAll("<MyFreeLab>", Info.NombreSoftware));
+            
             System.exit(0);
             return true;
         } else{
@@ -244,7 +246,8 @@ public class ctrlBuscarActualizacion implements MouseListener {
             } catch (IOException ex) {}
 
             JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma.
-                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg2"));
+                getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg2")
+                .replaceAll("<MyFreeLab>", Info.NombreSoftware));
             System.exit(0);
             return true;
         } else{
