@@ -8,8 +8,8 @@
             <app_name_version>v1.0.5Beta</app_name_version>
             <app_num_version>1050</app_num_version>
             <!-- Links de descarga -->
-            <app_link_exe>xxxxx</app_link_exe>
-            <app_link_deb>yyyyy</app_link_deb>
+            <app_link_exe>https://gitlab.com/ProgrammerAuditore/mfl-releases/-/raw/main/v1.0.5Beta/Setup_-_MyFreeLab_v1.0.5Beta.exe?inline=false</app_link_exe>
+            <app_link_deb>https://gitlab.com/ProgrammerAuditore/mfl-releases/-/raw/main/v1.0.5Beta/myfreelab-1.0.5-all.deb?inline=false</app_link_deb>
             <!-- Lista de novedades -->
             <app_novedades>
             <novedad>* Se agrego la ventana y opción de resumen</novedad>
