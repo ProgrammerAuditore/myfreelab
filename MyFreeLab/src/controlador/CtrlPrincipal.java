@@ -56,6 +56,7 @@ public class CtrlPrincipal implements ActionListener {
     public static Boolean modificacionesCard;
     public static Integer ctrlBarraEstadoNumProyectos;
     public static Integer ctrlBarraEstadoNumEmpresas;
+    public static boolean ctrlBuscarActualizacion;
 
     public CtrlPrincipal(VentanaPrincipal laVista, FabricarModal fabrica, ProyectoDao dao, EmpresaDao daoE, RequisitoDao daoR) {
         this.laVista = laVista;
@@ -75,6 +76,7 @@ public class CtrlPrincipal implements ActionListener {
 
     private void mtdInit() {
         actualizarBarraEstado();
+        CtrlPrincipal.ctrlBuscarActualizacion = false;
         mtdMensaje(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdInit.msg1"));
         CtrlPrincipal.ctrlBarraEstadoNumEmpresas = 0;
         CtrlPrincipal.ctrlBarraEstadoNumProyectos = 0;
@@ -317,7 +319,14 @@ public class CtrlPrincipal implements ActionListener {
             mtdCrearHiloConexion();
         
         }
-
+        
+        ctrlBuscarActualizacion = true;
+        mtdBuscarActualizacion();
+        
+    }
+    
+    private void mtdBuscarActualizacion(){
+        fabrica.construir("BuscarActualizacion");
     }
 
     private void mtdCerrandoPrograma() {

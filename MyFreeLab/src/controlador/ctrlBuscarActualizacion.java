@@ -40,6 +40,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
     // * Atributos
     private String msgPrevia;
 
+    public ctrlBuscarActualizacion() {
+    }
+    
     public ctrlBuscarActualizacion(PanelActualizacion laVista, ObjVersionesXml modelo) {
         this.laVista = laVista;
         this.objDocXml = modelo;
@@ -101,7 +104,7 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
     }
 
-    private void mtdBuscarActualizacion() {
+    public void mtdBuscarActualizacion() {
         
         CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdBuscarActualizacion.msg1"));
@@ -170,6 +173,14 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Verificar si la version es identico
         } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
+            
+            if( CtrlPrincipal.ctrlBuscarActualizacion ){
+                modal.setVisible(false);
+                modal.dispose();
+                CtrlPrincipal.ctrlBuscarActualizacion = false; 
+                return;
+            }
+            
             JOptionPane.showMessageDialog(laVista, Info.NombreSoftware + " "+
                     MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg6"));
         }
