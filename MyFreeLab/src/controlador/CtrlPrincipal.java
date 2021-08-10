@@ -319,14 +319,11 @@ public class CtrlPrincipal implements ActionListener {
             mtdCrearHiloConexion();
         
         }
-        
+       
+        // *Buscar actualizacion
         ctrlBuscarActualizacion = true;
-        mtdBuscarActualizacion();
+        new ctrlBuscarActualizacion().mtdBuscarActualizacion();
         
-    }
-    
-    private void mtdBuscarActualizacion(){
-        fabrica.construir("BuscarActualizacion");
     }
 
     private void mtdCerrandoPrograma() {

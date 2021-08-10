@@ -42,6 +42,8 @@ public class ctrlBuscarActualizacion implements MouseListener {
     private String msgPrevia;
 
     public ctrlBuscarActualizacion() {
+        msgPrevia = VentanaPrincipal.etqMensaje.getText();
+        objDocXml = new ObjVersionesXml();
     }
     
     public ctrlBuscarActualizacion(PanelActualizacion laVista, ObjVersionesXml modelo) {
@@ -142,13 +144,16 @@ public class ctrlBuscarActualizacion implements MouseListener {
         
             // * Actualizar el programa
             CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg1"));
+            
             // * Establecer informacion de la archivo_descarga version
-            laVista.etqVersionActual.setText(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg2"));
-            laVista.cmpVersionActual.setText(doc.get("app_name_version"));
-            laVista.cmpNovedades.setText(doc.get("app_novedades"));
+            if( CtrlPrincipal.ctrlBuscarActualizacion == false ){
+                laVista.etqVersionActual.setText(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg2"));
+                laVista.cmpVersionActual.setText(doc.get("app_name_version"));
+                laVista.cmpNovedades.setText(doc.get("app_novedades"));
 
-            laVista.cmpVersionActual.setBorder(new LineBorder(Color.green));
-            laVista.cmpNovedades.setBorder(new LineBorder(Color.green));
+                laVista.cmpVersionActual.setBorder(new LineBorder(Color.green));
+                laVista.cmpNovedades.setBorder(new LineBorder(Color.green));
+            }
 
             int resp = JOptionPane.showConfirmDialog(laVista,
                     MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg3"),
@@ -174,20 +179,23 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
             }
 
-
         // * Verificar si la version es identico
         } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
             
             if( CtrlPrincipal.ctrlBuscarActualizacion ){
-                modal.setVisible(false);
-                modal.dispose();
                 CtrlPrincipal.ctrlBuscarActualizacion = false; 
                 return;
             }
             
             JOptionPane.showMessageDialog(laVista, Info.NombreSoftware + " "+
                     MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg6"));
+            
+        }else{
+            
+            CtrlPrincipal.ctrlBuscarActualizacion = false; 
+            return;
         }
+        
     }
     
     private boolean mtdInstalarActualizacionExe(String url, String versionNum) {
@@ -199,9 +207,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
         
         // * Seleccionar la ruta de destino
         if( archivo_descarga != null)
-            fileName = archivo_descarga.getAbsolutePath() + "/" + "myfreelab-" + versionNum + ".deb";
+            fileName = archivo_descarga.getAbsolutePath() + "/" + "myfreelab-" + versionNum + ".exe";
         else
-            fileName = Recursos.dirTemp + "/" + "myfreelab-" + versionNum + ".deb";
+            fileName = Recursos.dirTemp + "/" + "myfreelab-" + versionNum + ".exe";
         
         File archivo = new File(fileName);
         //System.out.println("Ejecutable exe :: " + path);
@@ -215,8 +223,10 @@ public class ctrlBuscarActualizacion implements MouseListener {
         // * Procede a instalarlo
         // Instalar la version archivo_descarga
         if ( archivo.exists()  ) {
-            modal.getParent().setVisible(false);
             String msg = "";
+            
+            if( CtrlPrincipal.ctrlBuscarActualizacion == false)
+                modal.getParent().setVisible(false);
             
             /*
             try {
@@ -277,8 +287,10 @@ public class ctrlBuscarActualizacion implements MouseListener {
         // * Procede a instalarlo
         // Instalar la version archivo_descarga
         if ( archivo.exists()  ) {
-            modal.getParent().setVisible(false);
             String msg = "";
+            
+            if( CtrlPrincipal.ctrlBuscarActualizacion == false)
+                modal.getParent().setVisible(false);
             
             /*
             try {
