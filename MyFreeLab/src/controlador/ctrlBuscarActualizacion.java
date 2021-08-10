@@ -143,7 +143,9 @@ public class ctrlBuscarActualizacion implements MouseListener {
             !doc.get("app_name_version").contains(Info.sProduccion) ) {
         
             // * Actualizar el programa
-            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg1"));
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma
+                    .getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg1")
+                    .replaceAll("<MyFreeLab>", versionName));
             
             // * Establecer informacion de la archivo_descarga version
             if( CtrlPrincipal.ctrlBuscarActualizacion == false ){
@@ -157,7 +159,8 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
             int resp = JOptionPane.showConfirmDialog(laVista,
                     MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg3"),
-                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg4"), 
+                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg4")
+                    .replaceAll("<MyFreeLab>", versionName), 
                     JOptionPane.YES_NO_OPTION);
 
             if (resp == JOptionPane.YES_OPTION) {
@@ -181,21 +184,16 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Verificar si la version es identico
         } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
-            
-            if( CtrlPrincipal.ctrlBuscarActualizacion ){
-                CtrlPrincipal.ctrlBuscarActualizacion = false; 
+            if( CtrlPrincipal.ctrlBuscarActualizacion ){ 
                 return;
             }
             
             JOptionPane.showMessageDialog(laVista, Info.NombreSoftware + " "+
                     MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg6"));
             
-        }else{
-            
-            CtrlPrincipal.ctrlBuscarActualizacion = false; 
-            return;
         }
         
+        CtrlPrincipal.ctrlBuscarActualizacion = false;
     }
     
     private boolean mtdInstalarActualizacionExe(String url, String versionNum) {
