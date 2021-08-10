@@ -205,12 +205,15 @@ public class ctrlBuscarActualizacion implements MouseListener {
         
         // * Seleccionar la ruta de destino
         if( archivo_descarga != null)
-            fileName = archivo_descarga.getAbsolutePath() + "/" + "myfreelab-" + versionNum + ".exe";
+            fileName = archivo_descarga.getAbsolutePath() + "\\" + "myfreelab-" + versionNum + ".exe";
         else
-            fileName = Recursos.dirTemp + "/" + "myfreelab-" + versionNum + ".exe";
+            fileName = Recursos.dirTemp + "myfreelab-" + versionNum + ".exe";
         
         File archivo = new File(fileName);
         //System.out.println("Ejecutable exe :: " + path);
+        //System.out.println("fileName :: " + fileName);
+        //System.out.println("archivo_descarga :: " + archivo_descarga.getAbsolutePath());
+        //System.out.println("archivo :: " + archivo.getAbsolutePath());
 
         if( !archivo.exists() ){
             if (mtdDescargaURL(url, fileName)){
@@ -240,13 +243,13 @@ public class ctrlBuscarActualizacion implements MouseListener {
             
             msg += MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg2")
-                .replaceAll("<MyFreeLab>", Info.NombreSoftware);
+                .replace("<MyFreeLab>", Info.NombreSoftware);
             
             msg +="\n";
             
             msg += MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionExe.msg3")
-                .replaceAll("<MyFreeLab>", archivo.getAbsolutePath());
+                .replace("<MyFreeLab>", archivo.getAbsolutePath());
             
             JOptionPane.showMessageDialog(laVista, msg );
             System.exit(0);
@@ -303,13 +306,13 @@ public class ctrlBuscarActualizacion implements MouseListener {
             
             msg += MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg2")
-                .replaceAll("<MyFreeLab>", Info.NombreSoftware);
+                .replace("<MyFreeLab>", Info.NombreSoftware);
             
             msg +="\n";
             
             msg += MyFreeLab.idioma.
                 getProperty("ctrlBuscarActualizacion.mtdInstalarActualizacionDeb.msg3")
-                .replaceAll("<MyFreeLab>", archivo.getAbsolutePath());
+                .replace("<MyFreeLab>", archivo.getAbsolutePath());
             
             JOptionPane.showMessageDialog(laVista, msg );
             System.exit(0);
