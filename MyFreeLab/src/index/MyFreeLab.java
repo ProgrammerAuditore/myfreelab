@@ -32,6 +32,7 @@ public class MyFreeLab {
     private VentanaPrincipal ventana;
     public static Properties idioma = new Idiomas("en");
     public static long ctrlID;
+    public static String IdiomaDefinido;
     
     public void mtdTagInit() {
         
@@ -138,11 +139,13 @@ public class MyFreeLab {
             dto = dao.obtener_datos();
         }
             
-            if( dto.getIdioma().trim().equals("Español") || dto.getIdioma().trim().equals("Spanish") )
+            if( dto.getIdioma().trim().equals("Español") || dto.getIdioma().trim().equals("Spanish") ){
                 idioma = new Idiomas("es");
-            else
+                MyFreeLab.IdiomaDefinido = "ESP";
+            }else{
                 idioma = new Idiomas("en");
-            
+                MyFreeLab.IdiomaDefinido = "ENG";
+            }
             Recursos.mtdCambiarFuente( dto.getFuente() );
             Recursos.styleButtonDefault = dto.getEstilo();
             

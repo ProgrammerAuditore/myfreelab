@@ -16,6 +16,7 @@
  */
 package vista.splash;
 
+import index.MyFreeLab;
 import src.Info;
 import src.Recursos;
 
@@ -29,15 +30,22 @@ public class Splash extends javax.swing.JFrame {
      * Creates new form Splash
      */
     public Splash() {
+        // [163,184,204]
         this.setUndecorated(true);
         initComponents();
+        
+        // * Establece propiedades
         this.etqCarga.setVisible(false);
         this.jPanelBackground1.setImgBackgroundEnabled(true);
         this.jPanelBackground1.setImgBackgroundIn_Ex(true);
         this.jPanelBackground1.setImgRutaInterno(Recursos.bkgSplash );
-        this.etqAppNombre.setText(Info.NombreSoftware + "  ");
-        this.etqMantenedor.setText( Info.Avatar + " " + Info.Mantenedor + "  ");
-        this.etqVendor.setText(Info.Copyright + "  ");
+        
+        // * Establace información del software
+        this.etqSoftware.setText(Info.NombreSoftware);
+        this.etqIdioma.setText(MyFreeLab.IdiomaDefinido);
+        this.eqtCopyright.setText(MyFreeLab.idioma.getProperty("Splash.eqtCopyright"));
+        
+        // * Realiza los cambios
         pack();
         revalidate();
         repaint();
@@ -56,10 +64,10 @@ public class Splash extends javax.swing.JFrame {
         etqMensaje = new javax.swing.JLabel();
         pbProgreso = new javax.swing.JProgressBar();
         etqCarga = new vista.componentes.etiqueta.SubTitulo();
-        etqMantenedor = new vista.componentes.etiqueta.Mensaje();
-        etqAppNombre = new vista.componentes.etiqueta.Etiqueta();
-        mensaje1 = new vista.componentes.etiqueta.Mensaje();
-        etqVendor = new vista.componentes.etiqueta.Mensaje();
+        eqtCopyright = new vista.componentes.etiqueta.Mensaje();
+        etqIdioma = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        etqSoftware = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,73 +75,36 @@ public class Splash extends javax.swing.JFrame {
         jPanelBackground1.setImgBackgroundIn_Ex(false);
         jPanelBackground1.setImgOpacidad(0.8F);
         jPanelBackground1.setImgRutaInterno(src.Recursos.bkgSplash);
+        jPanelBackground1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         etqMensaje.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         etqMensaje.setForeground(new java.awt.Color(255, 255, 255));
+        jPanelBackground1.add(etqMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 259, 311, 21));
+        jPanelBackground1.add(pbProgreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 286, 600, -1));
 
-        etqCarga.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etqCarga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqCarga.setText("100%");
+        jPanelBackground1.add(etqCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 29, 139, -1));
 
-        etqMantenedor.setForeground(new java.awt.Color(204, 204, 204));
-        etqMantenedor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        etqMantenedor.setText("Victor J. Maximo (c) 2021");
+        eqtCopyright.setForeground(new java.awt.Color(255, 255, 255));
+        eqtCopyright.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eqtCopyright.setText("Todo los derechos reservados.");
+        jPanelBackground1.add(eqtCopyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 266, 180, -1));
 
-        etqAppNombre.setForeground(new java.awt.Color(255, 255, 255));
-        etqAppNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        etqAppNombre.setText("MyFreeLab v0.90Alpha ");
+        etqIdioma.setForeground(new java.awt.Color(255, 255, 255));
+        etqIdioma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etqIdioma.setText("ESP");
+        jPanelBackground1.add(etqIdioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 32, -1));
 
-        mensaje1.setForeground(new java.awt.Color(51, 51, 51));
-        mensaje1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        mensaje1.setText("Todo los derechos reservados.");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Victor J. Maximo (c) 2021");
+        jPanelBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 180, -1));
 
-        etqVendor.setForeground(new java.awt.Color(51, 51, 51));
-        etqVendor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        etqVendor.setText("Victor J. Maximo (c) 2021");
-
-        javax.swing.GroupLayout jPanelBackground1Layout = new javax.swing.GroupLayout(jPanelBackground1);
-        jPanelBackground1.setLayout(jPanelBackground1Layout);
-        jPanelBackground1Layout.setHorizontalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pbProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanelBackground1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelBackground1Layout.createSequentialGroup()
-                        .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etqMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etqCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mensaje1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(etqVendor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 9, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackground1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(etqAppNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(etqMantenedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        jPanelBackground1Layout.setVerticalGroup(
-            jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBackground1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etqAppNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etqMantenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addGroup(jPanelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackground1Layout.createSequentialGroup()
-                        .addComponent(etqCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(etqMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackground1Layout.createSequentialGroup()
-                        .addComponent(etqVendor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mensaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pbProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        etqSoftware.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        etqSoftware.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        etqSoftware.setText("MyFreeLab vX.X.XProd");
+        jPanelBackground1.add(etqSoftware, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 0, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,13 +156,13 @@ public class Splash extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.componentes.etiqueta.Etiqueta etqAppNombre;
+    private vista.componentes.etiqueta.Mensaje eqtCopyright;
     public vista.componentes.etiqueta.SubTitulo etqCarga;
-    public vista.componentes.etiqueta.Mensaje etqMantenedor;
+    private javax.swing.JLabel etqIdioma;
     public javax.swing.JLabel etqMensaje;
-    private vista.componentes.etiqueta.Mensaje etqVendor;
+    private javax.swing.JLabel etqSoftware;
+    private javax.swing.JLabel jLabel2;
     private vista.componentes.jpanelbackground.JPanelBackground jPanelBackground1;
-    private vista.componentes.etiqueta.Mensaje mensaje1;
     public javax.swing.JProgressBar pbProgreso;
     // End of variables declaration//GEN-END:variables
 }
