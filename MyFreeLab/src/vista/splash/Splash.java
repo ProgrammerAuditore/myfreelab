@@ -84,7 +84,7 @@ public class Splash extends javax.swing.JFrame {
 
         etqCarga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqCarga.setText("100%");
-        jPanelBackground1.add(etqCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 29, 139, -1));
+        jPanelBackground1.add(etqCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 139, -1));
 
         eqtCopyright.setForeground(new java.awt.Color(255, 255, 255));
         eqtCopyright.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -104,7 +104,7 @@ public class Splash extends javax.swing.JFrame {
         etqSoftware.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         etqSoftware.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         etqSoftware.setText("MyFreeLab vX.X.XProd");
-        jPanelBackground1.add(etqSoftware, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 0, 180, -1));
+        jPanelBackground1.add(etqSoftware, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
