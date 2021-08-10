@@ -69,6 +69,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         this.btnConexion.setText(MyFreeLab.idioma.getProperty("btn.Conexion"));
         
+        this.btnReportarError.setText(MyFreeLab.idioma.getProperty("btn.ReportarError"));
         this.btnObtenerAyuda.setText(MyFreeLab.idioma.getProperty("btn.ObtenerAyuda"));
         this.btnActualizarPrograma.setText(MyFreeLab.idioma.getProperty("btn.ActualizarPrograma"));
         this.btnAcercaDe.setText(MyFreeLab.idioma.getProperty("btn.AcercaDe"));
@@ -123,6 +124,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuConfigurar = new javax.swing.JMenu();
         btnConexion = new javax.swing.JMenuItem();
         menuAyuda = new javax.swing.JMenu();
+        btnReportarError = new javax.swing.JMenuItem();
         btnObtenerAyuda = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         btnActualizarPrograma = new javax.swing.JMenuItem();
@@ -393,6 +395,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuAyuda.setText("Ayuda");
 
+        btnReportarError.setText("Reportar error");
+        menuAyuda.add(btnReportarError);
+
         btnObtenerAyuda.setText("Obtener ayuda");
         menuAyuda.add(btnObtenerAyuda);
         menuAyuda.add(jSeparator1);
@@ -506,6 +511,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnGestionarProyectos;
     public javax.swing.JMenuItem btnObtenerAyuda;
     public javax.swing.JMenuItem btnPreferencias;
+    public javax.swing.JMenuItem btnReportarError;
     public javax.swing.JMenuItem btnSalir;
     public javax.swing.JMenuItem btnVinculacion;
     public javax.swing.JCheckBox checkProEliminados;

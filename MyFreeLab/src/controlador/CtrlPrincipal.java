@@ -95,6 +95,7 @@ public class CtrlPrincipal implements ActionListener {
         laVista.btnGestionarProyectos.addActionListener(this);
         laVista.btnGestionarEmpresas.addActionListener(this);
         laVista.btnVinculacion.addActionListener(this);
+        laVista.btnReportarError.addActionListener(this);
         laVista.btnAcercaDe.addActionListener(this);
         laVista.btnActualizarPrograma.addActionListener(this);
         laVista.btnObtenerAyuda.addActionListener(this);
@@ -244,7 +245,10 @@ public class CtrlPrincipal implements ActionListener {
             fabrica.construir("BuscarActualizacion");
         
         if( e.getSource() == laVista.btnObtenerAyuda )
-            mtdObtenerAyuda();
+            mtdAbrirNavegador(Info.PaginaAyuda);
+        
+        if( e.getSource() == laVista.btnReportarError )
+            mtdAbrirNavegador(Info.PaginaIssues);
  
     }
 
@@ -360,8 +364,7 @@ public class CtrlPrincipal implements ActionListener {
         
     }
     
-    private void mtdObtenerAyuda(){
-        String url = Info.PaginaAyuda;
+    private void mtdAbrirNavegador(String url){
 
         if(Desktop.isDesktopSupported()){
             Desktop desktop = Desktop.getDesktop();
@@ -382,7 +385,7 @@ public class CtrlPrincipal implements ActionListener {
         }
         
     }
-
+    
     private void modalConfigurarConexion() {
         
         // * Crear el modal Configurar conexión con su respectivo patrón de diseño MVC
