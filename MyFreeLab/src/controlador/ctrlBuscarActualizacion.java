@@ -184,12 +184,11 @@ public class ctrlBuscarActualizacion implements MouseListener {
 
         // * Verificar si la version es identico
         } else if( versionNum == Integer.parseInt(Info.sVersionNum)  ){
-            if( CtrlPrincipal.ctrlBuscarActualizacion ){ 
-                return;
-            }
             
-            JOptionPane.showMessageDialog(laVista, Info.NombreSoftware + " "+
-                    MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg6"));
+            if( CtrlPrincipal.ctrlBuscarActualizacion == false ){
+                JOptionPane.showMessageDialog(laVista, Info.NombreSoftware + " "+
+                        MyFreeLab.idioma.getProperty("ctrlBuscarActualizacion.ProcesoDeActualizacion.msg6"));
+            }
             
         }
         
