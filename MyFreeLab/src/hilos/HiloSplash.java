@@ -65,10 +65,9 @@ public class HiloSplash extends Thread{
         Recursos.dataConexion().exists();
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarConfiguracion.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-
+        
         // Proceso de carga
         if( new PreferenciaDao().obtener_datos() != null ){
             splash.etqMensaje.setText(MyFreeLab.idioma
@@ -81,13 +80,8 @@ public class HiloSplash extends Thread{
                 .getProperty("hiloSplash.mtdCargarConfiguracion.msg3"));
             //System.out.println("Datos de conexión creado. [!]");
         }
-
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
         
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-        
+        mtdTiempoDeEspera();
     }
     
     private void mtdCargarDatosDeConexion(){
@@ -95,9 +89,8 @@ public class HiloSplash extends Thread{
         Recursos.dataConexion().exists();
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarDatosDeConexion.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
 
         // Proceso de carga
         if( new ConexionDao().obtener_datos() != null ){
@@ -112,12 +105,7 @@ public class HiloSplash extends Thread{
             //System.out.println("Datos de conexión creado. [!]");
         }
 
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
-
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-
+        mtdTiempoDeEspera();
     }
     
     private void mtdEstablecerConexion(){
@@ -125,10 +113,9 @@ public class HiloSplash extends Thread{
         CtrlHiloConexion.ctrlDatos = new ConexionDao().obtener_datos();
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdEstablecerConexion.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-
+        
         // Proceso de carga
         if(CtrlHiloConexion.mtdEstablecer())
             splash.etqMensaje.setText(MyFreeLab.idioma
@@ -137,21 +124,15 @@ public class HiloSplash extends Thread{
             splash.etqMensaje.setText(MyFreeLab.idioma
                 .getProperty("hiloSplash.conexion.off"));
 
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
-
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-
+        mtdTiempoDeEspera();
     }
     
     private void mtdCargarBaseDeDatos() {
         // * Cargar tabla datos personales..
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarBaseDeDatos.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
 
         // Proceso de carga
         if( CtrlHiloConexion.checkConexion() ){
@@ -165,12 +146,7 @@ public class HiloSplash extends Thread{
         splash.etqMensaje.setText(MyFreeLab.idioma
                 .getProperty("hiloSplash.conexion.off"));
 
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
-
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-            
+        mtdTiempoDeEspera();
     }
     
     
@@ -178,9 +154,8 @@ public class HiloSplash extends Thread{
         // * Cargar tabla datos personales..
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarTablaDatosPersonales.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
 
         // Proceso de carga
         if( CtrlHiloConexion.checkConexion() ){
@@ -194,21 +169,15 @@ public class HiloSplash extends Thread{
         splash.etqMensaje.setText(MyFreeLab.idioma
                 .getProperty("hiloSplash.conexion.off"));
 
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
-        
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-        
+        mtdTiempoDeEspera();
     }
     
     private void mtdCargarTablaProyectos(){
         // * Cargar tabla proyectos..
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarTablaProyectos.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
 
         // Proceso de carga
         if( CtrlHiloConexion.checkConexion() ){
@@ -222,21 +191,15 @@ public class HiloSplash extends Thread{
         splash.etqMensaje.setText(MyFreeLab.idioma
                 .getProperty("hiloSplash.conexion.off"));
 
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
-
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-            
+        mtdTiempoDeEspera();
     }
     
     private void mtdCargarTablaEmpresas() {
         // * Cargar tabla datos personales..
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarTablaEmpresas.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
 
         // Proceso de carga
         if( CtrlHiloConexion.checkConexion() ){
@@ -250,21 +213,15 @@ public class HiloSplash extends Thread{
         splash.etqMensaje.setText(MyFreeLab.idioma
                 .getProperty("hiloSplash.conexion.off"));
 
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
-        
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-        
+        mtdTiempoDeEspera();
     }
     
     private void mtdCargarTablaRequisitos() {
         // * Cargar tabla requisitos..
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarTablaRequisitos.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
 
         // Proceso de carga
         if( CtrlHiloConexion.checkConexion() ){
@@ -278,21 +235,15 @@ public class HiloSplash extends Thread{
         splash.etqMensaje.setText(MyFreeLab.idioma
                 .getProperty("hiloSplash.conexion.off"));
 
-        avance += (100 / src);
-        splash.pbProgreso.setValue(avance);
-        splash.etqCarga.setText("" + avance + "%");
-
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-            
+        mtdTiempoDeEspera();
     }
     
     private void mtdCargarTablaAsociados() {
         // * Cargar tabla requisitos..
             
         // Titulo - Carga
-        splash.etqMensaje.setText(MyFreeLab.idioma
+        mtdCargarTitulo(MyFreeLab.idioma
                 .getProperty("hiloSplash.mtdCargarTablaAsociados.msg1"));
-        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
 
         // Proceso de carga
         if( CtrlHiloConexion.checkConexion() ){
@@ -306,12 +257,20 @@ public class HiloSplash extends Thread{
         splash.etqMensaje.setText(MyFreeLab.idioma
                 .getProperty("hiloSplash.conexion.off"));
 
+        mtdTiempoDeEspera();
+    }
+    
+    private void mtdCargarTitulo(String titulo){
+        splash.etqMensaje.setText(titulo);
+        try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
+    } 
+    
+    private void mtdTiempoDeEspera(){
         avance += (100 / src);
         splash.pbProgreso.setValue(avance);
         splash.etqCarga.setText("" + avance + "%");
 
         try {  Thread.sleep( avance * pause ); } catch (Exception e) {}
-    
     }
     
 }
