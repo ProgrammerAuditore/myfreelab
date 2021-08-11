@@ -29,7 +29,7 @@ public class HiloSplash extends Thread{
         splash.setTitle(Info.NombreSoftware);
         splash.setLocationRelativeTo(null);
         splash.setVisible(true);
-        src = 8; avance = 0; pause = src;
+        src = 9; avance = 0; pause = src;
         
         mtdVerificarID();
         mtdCargarConfiguracion();
