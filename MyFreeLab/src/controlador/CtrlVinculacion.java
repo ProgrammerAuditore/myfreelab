@@ -48,6 +48,9 @@ public class CtrlVinculacion implements MouseListener, ItemListener{
         this.vinculacion_dto = vinculacion_dto;
         
         // * Defini propiedades
+        this.laVista.cmbProyectos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
+            MyFreeLab.idioma.getProperty("ctrlVinculacion.msg1")
+        }));
         this.laVista.lstEmpresas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.laVista.lstEmpresasAsociadas.setFocusable(false);
         this.laVista.lstEmpresasAsociadas.setEnabled(false);
