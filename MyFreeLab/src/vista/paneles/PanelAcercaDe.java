@@ -74,7 +74,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         cmpDescripcion.setColumns(20);
         cmpDescripcion.setLineWrap(true);
         cmpDescripcion.setRows(5);
-        cmpDescripcion.setText("<Descripcion>\n\n<Detalles>\n\n<Avatar> <Mantenedor>\n<Copyright>\nTodos los derechos reservados.\n");
+        cmpDescripcion.setText("<Descripcion>\n\n<Detalles>\n\n<Avatar> <Mantenedor>\n<Copyright>\n<Derechos>\n");
         jScrollPane1.setViewportView(cmpDescripcion);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -93,6 +93,8 @@ public class PanelAcercaDe extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        etqLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/storage/img/apple-icon-60x60.png"))); // NOI18N
 
         etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqTitulo.setText("MyFreeLab vx.x.x");

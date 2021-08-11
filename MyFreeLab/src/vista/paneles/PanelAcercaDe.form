@@ -126,7 +126,7 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="&lt;Descripcion&gt;&#xa;&#xa;&lt;Detalles&gt;&#xa;&#xa;&lt;Avatar&gt; &lt;Mantenedor&gt;&#xa;&lt;Copyright&gt;&#xa;Todos los derechos reservados.&#xa;"/>
+                <Property name="text" type="java.lang.String" value="&lt;Descripcion&gt;&#xa;&#xa;&lt;Detalles&gt;&#xa;&#xa;&lt;Avatar&gt; &lt;Mantenedor&gt;&#xa;&lt;Copyright&gt;&#xa;&lt;Derechos&gt;&#xa;"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

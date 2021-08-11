@@ -72,13 +72,24 @@ public class CtrlAcercaDe implements MouseListener{
         this.laVista.cmpDescripcion.setLineWrap(true);
         this.laVista.cmpDescripcion.setEditable(false);
         
+        // * Definir datos del software
         String acercaDe = this.laVista.cmpDescripcion.getText();
-        acercaDe = acercaDe.replace("<Descripcion>", Info.Descripcion);
-        acercaDe = acercaDe.replace("<Detalles>", Info.Detalle );
         acercaDe = acercaDe.replace("<Copyright>", Info.Copyright);
         acercaDe = acercaDe.replace("<Avatar>", Info.Avatar);
         acercaDe = acercaDe.replace("<Mantenedor>", Info.Mantenedor);
         acercaDe = acercaDe.replace("<SitioWeb>", Info.SitioWeb);
+        acercaDe = acercaDe.replace("<Derechos>", 
+            MyFreeLab.idioma.getProperty("ctrlAcercaDe.mtdEstablecerDatos.derechos"));
+        acercaDe = acercaDe.replace("<Descripcion>", 
+            MyFreeLab.idioma.getProperty("ctrlAcercaDe.mtdEstablecerDatos.descripcion"));
+        
+        // * Definir detalles del software
+        if( MyFreeLab.IdiomaDefinido.equals("ESP")){
+            acercaDe = acercaDe.replace("<Detalles>", Info.DetalleEsp );
+        }else{
+            acercaDe = acercaDe.replace("<Detalles>", Info.DetalleEng );
+        }
+        
         this.laVista.cmpDescripcion.setText(acercaDe);
         
     }
