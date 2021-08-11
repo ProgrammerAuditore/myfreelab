@@ -3,8 +3,8 @@
 
 ; Variables para el proceso de instalacion
 #define MyAppName "MyFreeLab"
-#define MyAppVersion "v0.9.80"
-#define MyAppProduccion "Alpha"
+#define MyAppVersion "v1.1.0"
+#define MyAppProduccion "Beta"
 #define MyAppNameFull MyAppName + " " + MyAppVersion + MyAppProduccion
 #define MyAppPublisher "ProgrammerAuditore <victorvj098@gmail.com>"
 #define MyAppPublisherURL "https://programmerauditore.gitlab.io/myfreelab"
@@ -14,13 +14,13 @@
 #define MyAppRunName MyAppName + ".bat" ; Con JRE
 #define MyAppExeName MyAppName + ".jar" ; Con JRE
 #define MyAppDir "MyFreeLab_JRE" ; Con JRE
-#define MyAppIconoDefault "icons/default.ico"
+#define MyAppIconoDefault "icons/myfreelab.ico"
 #define MyAppIconoDesinstall "icons/uninstall.ico"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{DCCABEC2-DC46-4E19-BE0A-5A713CEED6ED}
+AppId={{FC0E6CA0-9F02-4C27-976A-311F56DEDF8D}
 AppName={#MyAppNameFull}
 AppVersion={#MyAppVersion}{#MyAppProduccion}
 AppVerName={#MyAppNameFull}
@@ -40,7 +40,7 @@ AllowNoIcons=no
 PrivilegesRequired=admin
 ;PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=Setup MyFreeLab
-OutputBaseFilename=Setup - JRE - {#MyAppNameFull}
+OutputBaseFilename=Installer - {#MyAppNameFull}
 ;SetupIconFile=
 Compression=lzma
 SolidCompression=yes
@@ -151,10 +151,10 @@ begin
 end;
 
 [Run]
-; Nota: Esto se ejecuta al momento de la instalaciÃ³n de nuestro programa
+; Nota: Esto se ejecuta al momento de la instalación de nuestro programa
 
 ; Instalamos MySQL
-; (AquÃ­ tenemos que poner el nombre de nuestro motor de base de datos que se encuentra en nuestra carpeta complementos)
+; (Aquí­ tenemos que poner el nombre de nuestro motor de base de datos que se encuentra en nuestra carpeta complementos)
 ; Filename: {src}\complementos\wampserver.exe; Parameters: "/q:a /C:""install /q"""; WorkingDir: {src}\complementos;
 
 ; Esto se debe de quitar solo en caso de en que quieras  Agregar la ruta de JRE al PATH

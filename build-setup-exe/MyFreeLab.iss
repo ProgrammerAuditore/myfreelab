@@ -3,8 +3,8 @@
 
 ; Variables para el proceso de instalacion
 #define MyAppName "MyFreeLab"
-#define MyAppVersion "v0.9.80"
-#define MyAppProduccion "Alpha"
+#define MyAppVersion "v1.1.0"
+#define MyAppProduccion "Beta"
 #define MyAppNameFull MyAppName + " " + MyAppVersion + MyAppProduccion
 #define MyAppPublisher "ProgrammerAuditore <victorvj098@gmail.com>"
 #define MyAppPublisherURL "https://programmerauditore.gitlab.io/myfreelab"
@@ -14,13 +14,13 @@
 #define MyAppRunName MyAppName + ".jar" ; Sin JRE
 #define MyAppExeName MyAppName + ".jar" ; Sin JRE
 #define MyAppDir "MyFreeLab" ; Sin JRE
-#define MyAppIconoDefault "icons/default.ico"
+#define MyAppIconoDefault "icons/myfreelab.ico"
 #define MyAppIconoDesinstall "icons/uninstall.ico"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{DCCABEC2-DC46-4E19-BE0A-5A713CEED6ED}
+AppId={{D7C7ADBF-5D86-431B-BAC7-F34C7D626E41}
 AppName={#MyAppNameFull}
 AppVersion={#MyAppVersion}{#MyAppProduccion}
 AppVerName={#MyAppNameFull}

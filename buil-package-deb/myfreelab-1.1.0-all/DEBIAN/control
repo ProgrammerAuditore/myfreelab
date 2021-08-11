@@ -1,11 +1,11 @@
 Package: myfreelab
-Version: 0.9.80
-Standards-Version: 0.9.80Alpha
+Version: 1.1.0
+Standards-Version: 1.1.0Beta
 Package-Type: deb
 Architecture: all
 Essential: no
 Priority: optional
-Installed-Size: 50374
+Installed-Size: 45466
 Section: java, education, base
 Homepage: https://programmerauditore.gitlab.io/myfreelab
 Maintainer: ProgrammerAuditore <victorvj098@gmail.com>
