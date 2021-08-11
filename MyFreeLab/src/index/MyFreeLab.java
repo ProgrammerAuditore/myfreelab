@@ -1,5 +1,6 @@
 package index;
 
+import controlador.CtrlHiloConexion;
 import controlador.CtrlPrincipal;
 import hilos.HiloConexion;
 import hilos.HiloPrincipal;
@@ -75,6 +76,13 @@ public class MyFreeLab {
         ventana.requestFocus();
         ventana.setExtendedState(JFrame.NORMAL);
         ventana.setVisible(true);
+        
+        // * Verificar conexion 
+        if( CtrlHiloConexion.ctrlEstado ){
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
+        }else{
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.off.msg2"));
+        }
         
     }
     

@@ -172,7 +172,7 @@ public class CtrlPrincipal implements ActionListener {
                 
             }           
         });
-
+        
     }
 
     @Override
@@ -304,6 +304,7 @@ public class CtrlPrincipal implements ActionListener {
         // Obtener los datos de la conexion antes de abrir el programa
         if (CtrlHiloConexion.checkConexion()) {
             ////System.out.println("Iniciando el programa con exion establecida.");
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.on.msg2"));
             Runnable carga = () -> {
                 //mtdObtenerListaProyectos();
                 //mtdEstablecerCamposBar();
@@ -319,6 +320,7 @@ public class CtrlPrincipal implements ActionListener {
             HiloCargandoProyectos.start();
             
         } else {
+            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.conexion.off.msg2"));
             mtdDesHabilitarMenus();
             mtdCrearHiloConexion();
         
