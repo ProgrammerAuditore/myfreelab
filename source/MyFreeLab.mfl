@@ -5,6 +5,30 @@
             <!-- Información del software -->
             <app_autor>ProgrammerAuditore</app_autor>
             <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v1.1.0Beta</app_name_version>
+            <app_num_version>1100</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>xxx</app_link_exe>
+            <app_link_deb>yyyy</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+            <novedades>* Se agrego un nuevo splash de entrada</novedades>
+            <novedades>* Se agrego buscar actualización al iniciar el software</novedades>
+            <novedades>* Se agrego la traducción para inglés para acerca de</novedades>
+            <novedades>* Se agrego un submenu para reportar un error</novedades>
+            <novedades>* Se modifico el modal para configurar conexión</novedades>
+            <novedades>* Se modifico el proceso de actualización</novedades>
+            <novedades>* Se corrigio la traducción para inglés</novedades>
+            <novedades>* Se corrigio un error en el modal vinculación</novedades>
+            <novedades>* Se corrigio un error al ejecutar el programa</novedades>
+            <novedades>* Se corrigio errores</novedades>
+            <novedades>* etc.</novedades>
+            </app_novedades>
+        </Version>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
             <app_name_version>v1.0.5Beta</app_name_version>
             <app_num_version>1050</app_num_version>
             <!-- Links de descarga -->
