@@ -67,7 +67,7 @@ public class PanelConexion extends javax.swing.JPanel {
         this.etqPuerto.setText(MyFreeLab.idioma.getProperty("panelConexion.etqPuerto"));
         this.etqTitulo.setText(MyFreeLab.idioma.getProperty("panelConexion.etqTitulo"));
         this.etqOpcAvanzadas.setText(MyFreeLab.idioma.getProperty("panelConexion.etqOpcAvanzadas"));
-        this.etqAutoReconexion.setText(MyFreeLab.idioma.getProperty("panelConexion.etqAutoReconexion"));
+        this.etqCrearBaseDatos.setText(MyFreeLab.idioma.getProperty("panelConexion.etqCrearBaseDatos"));
         this.etqUsarSSL.setText(MyFreeLab.idioma.getProperty("panelConexion.etqUsarSSL"));
         
         // * Campos (Placeholder)
@@ -110,9 +110,9 @@ public class PanelConexion extends javax.swing.JPanel {
         bckgPanel = new vista.componentes.jpanelbackground.JPanelBackground();
         etqUsarSSL = new vista.componentes.etiqueta.Etiqueta();
         cmpUseSSL = new javax.swing.JCheckBox();
-        etqAutoReconexion = new vista.componentes.etiqueta.Etiqueta();
+        etqCrearBaseDatos = new vista.componentes.etiqueta.Etiqueta();
         etqOpcAvanzadas = new vista.componentes.etiqueta.Mensaje();
-        cmpAutoReconnect = new javax.swing.JCheckBox();
+        cmpCrearBaseDatos = new javax.swing.JCheckBox();
         btnEstablecerConexion = new vista.componentes.boton.Boton();
         btnCerrarConexion = new vista.componentes.boton.Boton();
 
@@ -190,7 +190,7 @@ public class PanelConexion extends javax.swing.JPanel {
 
         etqUsarSSL.setText("Usar SSL");
 
-        etqAutoReconexion.setText("Auto-Reconexión");
+        etqCrearBaseDatos.setText("Crear Base de Datos");
 
         etqOpcAvanzadas.setText("Opciones avanzadas");
 
@@ -208,12 +208,12 @@ public class PanelConexion extends javax.swing.JPanel {
                                 .addGap(197, 197, 197))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(etqAutoReconexion, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                                    .addComponent(etqUsarSSL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(etqUsarSSL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(etqCrearBaseDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmpUseSSL)
-                                    .addComponent(cmpAutoReconnect))
+                                    .addComponent(cmpCrearBaseDatos))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(bckgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -270,16 +270,18 @@ public class PanelConexion extends javax.swing.JPanel {
                         .addComponent(etqDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmpDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(etqOpcAvanzadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etqUsarSSL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpUseSSL, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(etqAutoReconexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpAutoReconnect))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(etqUsarSSL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)
+                                .addComponent(etqCrearBaseDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cmpUseSSL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmpCrearBaseDatos)))
                         .addGap(26, 26, 26))))
         );
 
@@ -330,16 +332,16 @@ public class PanelConexion extends javax.swing.JPanel {
     public vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnCerrarConexion;
     public vista.componentes.boton.Boton btnEstablecerConexion;
-    public javax.swing.JCheckBox cmpAutoReconnect;
     public vista.componentes.campos.CampoPassword cmpContrasenha;
+    public javax.swing.JCheckBox cmpCrearBaseDatos;
     public vista.componentes.campos.CampoTexto cmpDatabase;
     public vista.componentes.campos.CampoTexto cmpHost;
     public javax.swing.JCheckBox cmpNull;
     public vista.componentes.campos.CampoNumerico cmpPuerto;
     public javax.swing.JCheckBox cmpUseSSL;
     public vista.componentes.campos.CampoTexto cmpUsuario;
-    private vista.componentes.etiqueta.Etiqueta etqAutoReconexion;
     public vista.componentes.etiqueta.Etiqueta etqContrasenha;
+    private vista.componentes.etiqueta.Etiqueta etqCrearBaseDatos;
     public vista.componentes.etiqueta.Etiqueta etqDatabase;
     public vista.componentes.etiqueta.Etiqueta etqHost;
     private vista.componentes.etiqueta.Mensaje etqOpcAvanzadas;

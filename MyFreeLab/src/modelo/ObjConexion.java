@@ -20,11 +20,13 @@ public class ObjConexion {
         try {
             
             // Estableciendo los parametros avanzados
-            String param = "";
-            param += "autoReconnect=" + datos.isAutoReconnect();
-            param += "&useSSL=" + datos.isAutoReconnect();
-            //param +="&verifyServerCertificate=false&serverTimezone=UTC";
-            //param +="&useUnicode=yes&characterEncoding=UTF-8";
+            String param = "?autoReconnect=";
+            param += "&createDatabaseIfNotExist=" + datos.isCreateDatabaseIfNotExist();
+            param += "&useSSL=" + datos.isUseSSL();
+            //param +="&verifyServerCertificate=false";
+            //param +="&serverTimezone=UTC";
+            //param +="&characterEncoding=UTF-8";
+            //param +="&useUnicode=yes";
             
             String conexion_mysql = "jdbc:mysql://" + datos.getHost() + ":" + datos.getPuerto() + "/" + datos.getDatabase() +"?"+ param;
             //System.out.println("\n" + datos.toString());

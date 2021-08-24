@@ -177,7 +177,7 @@ public class CtrlConexion implements MouseListener{
             dto.setHost( laVista.cmpHost.getText().trim() );
             dto.setPuerto( laVista.cmpPuerto.getText().trim() );
             dto.setUsuario( laVista.cmpUsuario.getText().trim() );
-            dto.setAutoReconnect( laVista.cmpAutoReconnect.isSelected() );
+            dto.setCreateDatabaseIfNotExist( laVista.cmpCrearBaseDatos.isSelected() );
             dto.setUseSSL( laVista.cmpUseSSL.isSelected() );
             
             if( laVista.cmpNull.isSelected() ){
@@ -200,7 +200,7 @@ public class CtrlConexion implements MouseListener{
         laVista.cmpHost.setText(dto.getHost());
         laVista.cmpPuerto.setText("" + dto.getPuerto() );
         laVista.cmpUsuario.setText(dto.getUsuario() );
-        laVista.cmpAutoReconnect.setSelected( dto.isAutoReconnect() );
+        laVista.cmpCrearBaseDatos.setSelected( dto.isCreateDatabaseIfNotExist() );
         laVista.cmpUseSSL.setSelected( dto.isUseSSL() );
         
         // * Obtener la contraseña
@@ -223,7 +223,7 @@ public class CtrlConexion implements MouseListener{
         establecerImg(Recursos.bkgConexionOn);
         laVista.btnEstablecerConexion.setEnabled(false);
         
-        laVista.cmpAutoReconnect.setEnabled(false);
+        laVista.cmpCrearBaseDatos.setEnabled(false);
         laVista.cmpUseSSL.setEnabled(false);
         laVista.btnCerrarConexion.setEnabled(true);
         laVista.cmpContrasenha.setEnabled(false);
@@ -239,7 +239,7 @@ public class CtrlConexion implements MouseListener{
         establecerImg(Recursos.bkgConexionOff);
         laVista.btnCerrarConexion.setEnabled(false);
         
-        laVista.cmpAutoReconnect.setEnabled(true);
+        laVista.cmpCrearBaseDatos.setEnabled(true);
         laVista.cmpUseSSL.setEnabled(true);
         laVista.btnEstablecerConexion.setEnabled(true);
         laVista.cmpContrasenha.setEnabled(true);
