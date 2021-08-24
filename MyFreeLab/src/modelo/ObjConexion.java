@@ -22,10 +22,10 @@ public class ObjConexion {
             String param = "?autoReconnect=true&useSSL=false";
             //param +="&verifyServerCertificate=false&serverTimezone=UTC";
             //param +="&useUnicode=yes&characterEncoding=UTF-8";
-            
-            System.out.println("\n" + datos.toString());
             String dm = "jdbc:mysql://" + datos.getHost() + ":" + datos.getPuerto() + "/" + datos.getDatabase() + param;
-            System.out.println("MYSQL X = " + dm);
+            
+            //System.out.println("\n" + datos.toString());
+            //System.out.println("MYSQL X = " + dm);
             
             Class.forName("com.mysql.jdbc.Driver").getInterfaces();
             conn = DriverManager.getConnection(dm, datos.getUsuario(), datos.getPass());

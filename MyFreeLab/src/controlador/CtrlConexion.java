@@ -208,7 +208,8 @@ public class CtrlConexion implements MouseListener{
             laVista.cmpContrasenha.setEnabled(false);
             laVista.cmpContrasenha.setFocusable(false);
         } else{
-            laVista.cmpContrasenha.setText( passwd );
+            laVista.cmpContrasenha.setText(passwd);
+            laVista.cmpContrasenha.setEchoChar('*');
         }
         
     }
