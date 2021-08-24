@@ -3,8 +3,8 @@ package src;
 // Aquí se incluye la información del softwares
 public class Info {
     public static final String sNombre = "MyFreeLab";
-    public static final String sVersionName = "v1.1.0";
-    public static final String sVersionNum = "1100";
+    public static final String sVersionName = "v1.2.0";
+    public static final String sVersionNum = "1200";
     public static final String sProduccion = "Beta";
     public static final String Autor = "Victor J. Maximo";
     public static final String Avatar = "ProgrammerAuditore";
@@ -21,15 +21,11 @@ public class Info {
             "Also, to be able to generate a quote for each company in particular and calculate the cost of the project, among other things." +"\n"+
             "It has the functionality of connecting to a local or remote MYSQL database to record the data.";
     public static final String Novedades = 
-            "* Se agrego un nuevo splash de entrada" + "\n" +
-            "* Se agrego buscar actualización al iniciar el software" + "\n" +
-            "* Se agrego la traducción para inglés para acerca de" + "\n" +
-            "* Se agrego un submenu para reportar un error" + "\n" +
-            "* Se modifico el modal para configurar conexión" + "\n" +
-            "* Se modifico el proceso de actualización" + "\n" +
-            "* Se corrigio la traducción para inglés" + "\n" +
-            "* Se corrigio un error en el modal vinculación" + "\n" +
-            "* Se corrigio un error al ejecutar el programa" + "\n" +
+            "* Se agrego propiedades avanzadas en establecer conexión" + "\n" +
+            "* Se agrego soporte de inglés y español para las propiedades avanzadas" + "\n" +
+            "* Se modifico el modal de establecer conexión" + "\n" +
+            "* Se corrigio un error al capturar la contraseña" + "\n" +
+            "de la base de datos." + "\n" +
             "* Se corrigio errores" + "\n" +
             "* etc." + "\n";
     
