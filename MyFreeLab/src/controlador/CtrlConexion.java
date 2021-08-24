@@ -181,7 +181,7 @@ public class CtrlConexion implements MouseListener{
             if( laVista.cmpNull.isSelected() ){
                 dto.setPass("");
             }else{
-                dto.setPass(Arrays.toString(laVista.cmpContrasenha.getPassword()) );
+                dto.setPass( String.valueOf(laVista.cmpContrasenha.getPassword()) );
             }
             
             return true;
