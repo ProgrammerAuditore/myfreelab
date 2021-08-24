@@ -134,13 +134,13 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="mensaje1" max="32767" attributes="0"/>
+                                  <Component id="etqOpcAvanzadas" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="etiqueta2" pref="153" max="32767" attributes="0"/>
-                                      <Component id="etiqueta1" max="32767" attributes="0"/>
+                                      <Component id="etqAutoReconexion" pref="153" max="32767" attributes="0"/>
+                                      <Component id="etqUsarSSL" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -223,15 +223,15 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cmpDatabase" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="24" max="32767" attributes="0"/>
-                          <Component id="mensaje1" min="-2" max="-2" attributes="0"/>
+                          <Component id="etqOpcAvanzadas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="etiqueta1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqUsarSSL" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="cmpUseSSL" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="etiqueta2" min="-2" max="-2" attributes="0"/>
+                              <Component id="etqAutoReconexion" min="-2" max="-2" attributes="0"/>
                               <Component id="cmpAutoReconnect" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -362,7 +362,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqUsarSSL">
           <Properties>
             <Property name="text" type="java.lang.String" value="Usar SSL"/>
           </Properties>
@@ -372,12 +372,12 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta2">
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etqAutoReconexion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Auto-Reconexi&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="vista.componentes.etiqueta.Mensaje" name="mensaje1">
+        <Component class="vista.componentes.etiqueta.Mensaje" name="etqOpcAvanzadas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Opciones avanzadas"/>
           </Properties>
