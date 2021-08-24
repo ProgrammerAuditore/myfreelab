@@ -132,10 +132,27 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="mensaje1" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="etiqueta2" pref="153" max="32767" attributes="0"/>
+                                      <Component id="etiqueta1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cmpUseSSL" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmpAutoReconnect" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                           <Component id="bckgPanel" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cmpUsuario" alignment="0" pref="280" max="32767" attributes="0"/>
@@ -156,8 +173,8 @@
                                   <Component id="cmpNull" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="cmpContrasenha" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="cmpPuerto" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
                               <Component id="etqPuerto" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="cmpPuerto" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -196,18 +213,30 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="bckgPanel" min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="etqDatabase" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cmpDatabase" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
-                          <Component id="bckgPanel" min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace pref="24" max="32767" attributes="0"/>
+                          <Component id="mensaje1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="etiqueta1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpUseSSL" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="etiqueta2" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmpAutoReconnect" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -333,6 +362,31 @@
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Usar SSL"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cmpUseSSL">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="vista.componentes.etiqueta.Etiqueta" name="etiqueta2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Auto-Reconexi&#xf3;n"/>
+          </Properties>
+        </Component>
+        <Component class="vista.componentes.etiqueta.Mensaje" name="mensaje1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Opciones avanzadas"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cmpAutoReconnect">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="vista.componentes.boton.Boton" name="btnEstablecerConexion">

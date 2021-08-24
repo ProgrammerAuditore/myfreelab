@@ -8,6 +8,8 @@ public class ConexionDto implements Serializable{
     private String database;
     private String usuario;
     private String pass;
+    private boolean useSSL;
+    private boolean autoReconnect;
 
     public ConexionDto() {
     }
@@ -60,9 +62,33 @@ public class ConexionDto implements Serializable{
         this.pass = pass;
     }
 
+    public boolean isUseSSL() {
+        return useSSL;
+    }
+
+    public void setUseSSL(boolean useSSL) {
+        this.useSSL = useSSL;
+    }
+
+    public boolean isAutoReconnect() {
+        return autoReconnect;
+    }
+
+    public void setAutoReconnect(boolean autoReconnect) {
+        this.autoReconnect = autoReconnect;
+    }
+    
     @Override
     public String toString() {
-        return "ConexionDto{" + "puerto=" + puerto + ", host=" + host + ", database=" + database + ", usuario=" + usuario + ", pass=" + pass + '}';
+        return "ConexionDto{" + 
+                "\n puerto=" + puerto + 
+                "\n host=" + host + 
+                "\n database=" + database + 
+                "\n usuario=" + usuario + 
+                "\n pass=" + pass + 
+                "\n useSSL=" + useSSL + 
+                "\n autoReconnect=" + autoReconnect + 
+            '}';
     }
     
 }

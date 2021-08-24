@@ -19,16 +19,19 @@ public class ObjConexion {
         // Crear una una conexion
         try {
             
-            String param = "?autoReconnect=true&useSSL=false";
+            // Estableciendo los parametros avanzados
+            String param = "";
+            param += "autoReconnect=" + datos.isAutoReconnect();
+            param += "&useSSL=" + datos.isAutoReconnect();
             //param +="&verifyServerCertificate=false&serverTimezone=UTC";
             //param +="&useUnicode=yes&characterEncoding=UTF-8";
-            String dm = "jdbc:mysql://" + datos.getHost() + ":" + datos.getPuerto() + "/" + datos.getDatabase() + param;
             
+            String conexion_mysql = "jdbc:mysql://" + datos.getHost() + ":" + datos.getPuerto() + "/" + datos.getDatabase() +"?"+ param;
             //System.out.println("\n" + datos.toString());
-            //System.out.println("MYSQL X = " + dm);
+            //System.out.println("MYSQL X = " + conexion_mysql);
             
             Class.forName("com.mysql.jdbc.Driver").getInterfaces();
-            conn = DriverManager.getConnection(dm, datos.getUsuario(), datos.getPass());
+            conn = DriverManager.getConnection(conexion_mysql, datos.getUsuario(), datos.getPass());
             
         } catch (SQLException ex) {
             throw new SQLException(ex);

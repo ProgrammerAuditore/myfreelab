@@ -105,6 +105,11 @@ public class PanelConexion extends javax.swing.JPanel {
         cmpContrasenha = new vista.componentes.campos.CampoPassword();
         cmpPuerto = new vista.componentes.campos.CampoNumerico();
         bckgPanel = new vista.componentes.jpanelbackground.JPanelBackground();
+        etiqueta1 = new vista.componentes.etiqueta.Etiqueta();
+        cmpUseSSL = new javax.swing.JCheckBox();
+        etiqueta2 = new vista.componentes.etiqueta.Etiqueta();
+        mensaje1 = new vista.componentes.etiqueta.Mensaje();
+        cmpAutoReconnect = new javax.swing.JCheckBox();
         btnEstablecerConexion = new vista.componentes.boton.Boton();
         btnCerrarConexion = new vista.componentes.boton.Boton();
 
@@ -180,6 +185,12 @@ public class PanelConexion extends javax.swing.JPanel {
             .addGap(0, 80, Short.MAX_VALUE)
         );
 
+        etiqueta1.setText("Usar SSL");
+
+        etiqueta2.setText("Auto-Reconexión");
+
+        mensaje1.setText("Opciones avanzadas");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -188,7 +199,19 @@ public class PanelConexion extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(mensaje1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(197, 197, 197))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(etiqueta2, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                    .addComponent(etiqueta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmpUseSSL)
+                                    .addComponent(cmpAutoReconnect))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(bckgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,8 +230,8 @@ public class PanelConexion extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmpNull))
                             .addComponent(cmpContrasenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmpPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etqPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(etqPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpPuerto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -237,14 +260,24 @@ public class PanelConexion extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bckgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(etqDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmpDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 82, Short.MAX_VALUE)
-                        .addComponent(bckgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addComponent(mensaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etiqueta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpUseSSL, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(etiqueta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpAutoReconnect))
+                        .addGap(26, 26, 26))))
         );
 
         btnEstablecerConexion.setImgButtonType("success");
@@ -294,12 +327,16 @@ public class PanelConexion extends javax.swing.JPanel {
     public vista.componentes.jpanelbackground.JPanelBackground bkgAside;
     public vista.componentes.boton.Boton btnCerrarConexion;
     public vista.componentes.boton.Boton btnEstablecerConexion;
+    public javax.swing.JCheckBox cmpAutoReconnect;
     public vista.componentes.campos.CampoPassword cmpContrasenha;
     public vista.componentes.campos.CampoTexto cmpDatabase;
     public vista.componentes.campos.CampoTexto cmpHost;
     public javax.swing.JCheckBox cmpNull;
     public vista.componentes.campos.CampoNumerico cmpPuerto;
+    public javax.swing.JCheckBox cmpUseSSL;
     public vista.componentes.campos.CampoTexto cmpUsuario;
+    private vista.componentes.etiqueta.Etiqueta etiqueta1;
+    private vista.componentes.etiqueta.Etiqueta etiqueta2;
     public vista.componentes.etiqueta.Etiqueta etqContrasenha;
     public vista.componentes.etiqueta.Etiqueta etqDatabase;
     public vista.componentes.etiqueta.Etiqueta etqHost;
@@ -308,5 +345,6 @@ public class PanelConexion extends javax.swing.JPanel {
     public vista.componentes.etiqueta.Etiqueta etqUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private vista.componentes.etiqueta.Mensaje mensaje1;
     // End of variables declaration//GEN-END:variables
 }

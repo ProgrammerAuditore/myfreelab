@@ -419,27 +419,29 @@ public class CtrlPrincipal implements ActionListener {
         
     }
 
-    private void mtdObtenerListaProyectos() {
+    private synchronized void mtdObtenerListaProyectos() {
         proyectos.clear();
         proyectos = daoP.mtdListar(ctrlPaginacion.ctrlRegistrosPorPagina, ctrlPaginacion.ctrlNumRegistrosDesplazados);
         int tam = proyectos.size();
         String puntos = "";
         
         for (int i = 0; i < tam; i++) {
-            ProyectoDto proyecto = proyectos.get(i);
-            
-            // * Calcular el costo estimado
-            double costoEstimado = daoR.mtdObtenerCostoEstimado( proyecto.getCmpID() );
-            BigDecimal bd = new BigDecimal(costoEstimado).setScale(2, RoundingMode.HALF_EVEN);
-            proyecto.setCmpCostoEstimado( bd.doubleValue() );
-            daoP.mtdActualizar(proyecto);
-            
-            CtrlTarjetaProyectos tarjeta = new CtrlTarjetaProyectos(laVista, proyecto, daoP, fabrica, i);
-            lista.add(tarjeta);
-            
-            // * Mostrar progreso con puntos
-            puntos = ( i%4 == 0 ) ? "" : puntos + ".";
-            CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdObtenerListaProyectos.msg1")+" " + puntos);
+            try {
+                ProyectoDto proyecto = proyectos.get(i);
+
+                // * Calcular el costo estimado
+                double costoEstimado = daoR.mtdObtenerCostoEstimado( proyecto.getCmpID() );
+                BigDecimal bd = new BigDecimal(costoEstimado).setScale(2, RoundingMode.HALF_EVEN);
+                proyecto.setCmpCostoEstimado( bd.doubleValue() );
+                daoP.mtdActualizar(proyecto);
+
+                CtrlTarjetaProyectos tarjeta = new CtrlTarjetaProyectos(laVista, proyecto, daoP, fabrica, i);
+                lista.add(tarjeta);
+
+                // * Mostrar progreso con puntos
+                puntos = ( i%4 == 0 ) ? "" : puntos + ".";
+                CtrlPrincipal.mensajeCtrlPrincipal(MyFreeLab.idioma.getProperty("ctrlPrincipal.mtdObtenerListaProyectos.msg1")+" " + puntos);
+            } catch (Exception e) {}
             
             //System.out.println("Testin :: Tarjeta agregado #" + itemFila);
             try { Thread.sleep(60); } catch (InterruptedException ex) { }
