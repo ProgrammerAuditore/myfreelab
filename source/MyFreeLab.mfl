@@ -5,6 +5,27 @@
             <!-- Información del software -->
             <app_autor>ProgrammerAuditore</app_autor>
             <app_contacto>victorvj098@gmail.com</app_contacto>
+            <app_name_version>v1.2.0Beta</app_name_version>
+            <app_num_version>1200</app_num_version>
+            <!-- Links de descarga -->
+            <app_link_exe>https://gitlab.com/ProgrammerAuditore/mfl-releases/-/raw/main/v1.2.0Beta/Setup_-_MyFreeLab_v1.2.0Beta.exe?inline=false</app_link_exe>
+            <app_link_deb>https://gitlab.com/ProgrammerAuditore/mfl-releases/-/raw/main/v1.2.0Beta/myfreelab-1.2.0-all.deb?inline=false</app_link_deb>
+            <!-- Lista de novedades -->
+            <app_novedades>
+                <novedades>* Se agrego propiedades avanzadas en establecer conexión</novedades>
+                <novedades>* Se agrego soporte de inglés y español</novedades>
+                <novedades>para las propiedades avanzadas.</novedades>
+                <novedades>* Se modifico el modal de establecer conexión</novedades>
+                <novedades>* Se corrigio un error al capturar la contraseña</novedades>
+                <novedades>de la base de datos.</novedades>
+                <novedades>* Se corrigio errores</novedades>
+                <novedades>* etc.</novedades>
+            </app_novedades>
+        </Version>
+        <Version>
+            <!-- Información del software -->
+            <app_autor>ProgrammerAuditore</app_autor>
+            <app_contacto>victorvj098@gmail.com</app_contacto>
             <app_name_version>v1.1.0Beta</app_name_version>
             <app_num_version>1100</app_num_version>
             <!-- Links de descarga -->
