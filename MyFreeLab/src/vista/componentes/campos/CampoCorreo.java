@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import org.apache.commons.validator.routines.EmailValidator;
 import src.Recursos;
 
 /**
@@ -67,21 +68,21 @@ public class CampoCorreo extends JTextField implements FocusListener, KeyListene
     }
     
     // Métodos custom
-    private void getEstiloTextEmpty(){
+    public void getEstiloTextEmpty(){
         setBackground( backgroundColor );
         setBorderMargin( Color.RED );
         setForeground( placeholderColor );
         setCaretColor( cursorColor );
     }
     
-    private void getEstiloTextEscritura(){
+    public void getEstiloTextEscritura(){
         setBackground( backgroundColor );
         setBorderMargin( borderColor );
         setForeground( textoColor );
         setCaretColor( cursorColor );
     }
     
-    private void getEstiloTextEstablecido(){
+    public void getEstiloTextEstablecido(){
         setBackground( backgroundColor );
         setBorderMargin( borderColor );
         setForeground( textoColor );
@@ -133,11 +134,13 @@ public class CampoCorreo extends JTextField implements FocusListener, KeyListene
     }
     
     private boolean comprobarCorreo(){
+        
         String campo = getText();
         String nombre = null;
         String dominio = null;
         String extension = null;
         
+        /*
         if( campo.contains("@") && campo.contains(".") ){
             nombre = getText().substring(0, getText().indexOf("@"));
             dominio = getText().substring(getText().indexOf("@") + 1, getText().indexOf("."));
@@ -151,8 +154,9 @@ public class CampoCorreo extends JTextField implements FocusListener, KeyListene
                 return true;
             }
         }
+        */
         
-        return false;
+        return EmailValidator.getInstance().isValid(campo);
     }
     
     public boolean isAprobado(){

@@ -94,42 +94,100 @@ public class CtrlDatosPersonales implements MouseListener{
         ////System.out.println("Establecer datos personales [!DP]");
        
         // * Verificar la restricción de los campos
-        if( mtdRtnNombreApellido() && mtdRtnCorreoDireccion() && mtdRtnTMovil() ){
-            if( mtdCapturarDatos()){
+        if( !mtdValidarCamposDatos() ){
+            //if( mtdRtnNombreApellido() && mtdRtnCorreoDireccion() && mtdRtnTMovil() ){
+                //if( mtdCapturarDatos()){
 
-                if( dao.mtdConsultar(dto) == false ){
+                    if( dao.mtdConsultar(dto) == false ){
 
-                    // Registrarlo a la base de datos...
-                    ////System.out.println("Registrarlo a la base de datos");
-                    if(dao.mtdInsertar(dto)){
-                        JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
-                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg1"));
-                    }
-
-                } else{
-
-                    // Actualizar los datos personales en la base de datos
-                    String[] msg = new String[2];
-                    // Titulo
-                    msg[0] = MyFreeLab.idioma
-                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg2");
-                    // Pregunta
-                    msg[1] = MyFreeLab.idioma
-                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg3"); 
-                    int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
-                    mtdCapturarDatos();
-
-                    if( opc ==  JOptionPane.YES_OPTION ){
-                        if(dao.mtdActualizarDatos(dto))
+                        // Registrarlo a la base de datos...
+                        ////System.out.println("Registrarlo a la base de datos");
+                        if(dao.mtdInsertar(dto)){
                             JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
-                                .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg4"));
+                                    .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg1"));
+                        }
+
+                    } else{
+
+                        // Actualizar los datos personales en la base de datos
+                        String[] msg = new String[2];
+                        // Titulo
+                        msg[0] = MyFreeLab.idioma
+                                    .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg2");
+                        // Pregunta
+                        msg[1] = MyFreeLab.idioma
+                                    .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg3"); 
+                        int opc = JOptionPane.showConfirmDialog(laVista, msg[1], msg[0], JOptionPane.YES_NO_OPTION);
+                        mtdCapturarDatos();
+
+                        if( opc ==  JOptionPane.YES_OPTION ){
+                            if(dao.mtdActualizarDatos(dto))
+                                JOptionPane.showMessageDialog(laVista, MyFreeLab.idioma
+                                    .getProperty("ctrlDatosPersonales.mtdEstablecerDatos.msg4"));
+                        }
+
                     }
 
-                }
-
-            }
+                //}
+            //}
         }
         
+    }
+    
+    private boolean mtdValidarCamposDatos () {
+        String gMensaje = "Verifica los siguientes datos: \n\n";
+        int gCheck = 0;
+        
+        // * Validar datos del campo nombres
+        if( laVista.cmpNombres.getText().isEmpty() || 
+            laVista.cmpNombres.getText().trim().length() >= 30 || 
+            !laVista.cmpNombres.isAprobado() ){
+            gCheck++;
+            laVista.cmpNombres.getEstiloNoAprobado();
+            gMensaje += "* El campo nombre es incorrecto. \n";
+        }
+        
+        // * Validar datos del campo apellidos
+        if( laVista.cmpApellidos.getText().isEmpty() || 
+            laVista.cmpApellidos.getText().trim().length() >= 30 || 
+            !laVista.cmpApellidos.isAprobado() ){
+            gCheck++;
+            laVista.cmpApellidos.getEstiloNoAprobado();
+            gMensaje += "* El campo apellido es incorrecto. \n";
+        }
+        
+        // * Validar datos del campo direccion
+        if( laVista.cmpDireccion.getText().isEmpty() || 
+            laVista.cmpDireccion.getText().trim().length() >= 30 || 
+            !laVista.cmpDireccion.isAprobado() ){
+            gCheck++;
+            laVista.cmpDireccion.getEstiloNoAprobado();
+            gMensaje += "* El campo direccion es incorrecto. \n";
+        }
+        
+        // * Validar datos del campo telefono o movil
+        if( laVista.cmpTelMovil.getText().isEmpty() || 
+            laVista.cmpTelMovil.getText().trim().length() < 10 || 
+            laVista.cmpTelMovil.getText().trim().length() > 10 ||
+            !laVista.cmpTelMovil.isAprobado() ){
+            gCheck++;
+            laVista.cmpTelMovil.getEstiloNoAprobado();
+            gMensaje += "* El campo telefono o movil es incorrecto. \n";
+        }
+        
+        // * Validar datos del correo
+        if( laVista.cmpCorreo.getText().isEmpty() || 
+            laVista.cmpCorreo.getText().trim().length() >= 30 || 
+            !laVista.cmpCorreo.isAprobado() ){
+            gCheck++;
+            laVista.cmpCorreo.getEstiloNoAprobado();
+            gMensaje += "* El campo correo es incorrecto. \n";
+        }
+        
+         if( gCheck > 0)
+            JOptionPane.showMessageDialog(laVista, gMensaje);
+        
+        return (gCheck > 0);
     }
     
     private boolean mtdCapturarDatos(){
@@ -158,6 +216,7 @@ public class CtrlDatosPersonales implements MouseListener{
         return false;
     }
     
+    /*
     private boolean mtdRtnNombreApellido(){
         boolean gAceptado = true;
         String msg=MyFreeLab.idioma
@@ -244,6 +303,7 @@ public class CtrlDatosPersonales implements MouseListener{
         
         return gAceptado;
     }
+    */
     
 
     @Override
